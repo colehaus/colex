@@ -146,7 +146,7 @@ header > span {
     position: absolute;
     right: -35ex;
     width: 30ex;
-    padding: 1ex;
+    padding: 0.5ex;
     text-align: left;
     font-weight: 300;
     font-size: smaller;
