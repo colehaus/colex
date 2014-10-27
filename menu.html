@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Foo</title>
+  <script type="text/javascript" src="zepto.js"></script>
+  <script type="text/javascript" src="menu.js"></script>
+  <link rel="stylesheet" type="text/css" href="menu.css" />
+</head>
+<body>
+
+<menu>
+ <li>
+  <button type=menu value="File" menu="filemenu">File</button>
+  <menu id="filemenu" type="popup">
+   <menuitem onclick="fnew()" label="New..."></menuitem>
+   <menuitem onclick="fopen()" label="Open..."></menuitem>
+   <menuitem onclick="fsave()" label="Save"></menuitem>
+   <menuitem onclick="fsaveas()" label="Save as..."></menuitem>
+  </menu>
+ </li>
+ <li>
+  <button type=menu value="Edit" menu="editmenu">Edit</button>
+  <menu id="editmenu" type="popup">
+   <menuitem onclick="ecopy()" label="Copy"></menuitem>
+   <menuitem onclick="ecut()" label="Cut"></menuitem>
+   <menuitem onclick="epaste()" label="Paste"></menuitem>
+  </menu>
+ </li>
+ <li>
+  <button type=menu value="Help" menu="helpmenu">Help</button>
+  <menu id="helpmenu" type="popup">
+   <menuitem onclick="location='help.html'" label="Help"></menuitem>
+   <menuitem onclick="location='about.html'" label="About"></menuitem>
+  </menu>
+ </li>
+</menu>
+
+</body>
+</html>

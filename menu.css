@@ -1,0 +1,21 @@
+menu[type="popup"] {
+    visibility: hidden;
+    margin: 0;
+    padding: 0;
+}
+
+menu[type="popup"] > hr {
+    display: none;
+}
+
+menu[type="popup"] > menuitem {
+    display: none;
+}
+
+.menu {
+    margin: 0;
+    padding: 1ex;
+    visibility: visible;
+    list-style-type: none;
+    display: inline-block;
+}
