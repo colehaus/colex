@@ -1,13 +1,26 @@
 'use strict';
 
+var defaultHandlers = function(el) {
+    var radioSelect = function() {
+        var gp = el.attr('radiogroup');
+        var mn = el.closest('menu');
+        var sel = gp ? 'menuitem[radiogroup="'+gp+'"]' : 'menuitem:not([radiogroup])';
+        mn.children(sel).removeAttr('checked');
+        $(mn.children()[el.index()]).attr('checked', 'checked');
+    };
+
+    if (el.attr('type') === 'radio') { radioSelect(); }
+    el.parent().remove();
+};
+
 var buildMenu = function(el) {
     var menuItem = function(el_) {
         var el = $(el_);
         var lb = el.attr('label');
         if (lb !== null) {
-            var li = $('<li/>').text(lb).attr('onclick', el.attr('onclick'));
-            li.click(function(ev) {
-                $(ev.target).parent().remove();
+            var li = $('<li/>').text(lb);
+            $(['onclick', 'checked', 'type', 'radiogroup']).each(function(_, at) {
+                li.attr(at, el.attr(at));
             });
             return [li];
         } else {
@@ -69,7 +82,11 @@ var toggleMenu = function(ev) {
     var mn = $('#'+el.attr('menu')).filter(isPopup);
     var ul = mn.children('ul.menu');
     if (ul.length === 0) {
-       mn.append(buildMenu(mn));
+        ul = buildMenu(mn);
+        ul.children().click(function(ev) {
+            defaultHandlers($(ev.target));
+        });
+        mn.append(ul);
     } else {
        ul.remove();
     }

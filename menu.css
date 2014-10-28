@@ -19,3 +19,6 @@ menu[type="popup"] > menuitem {
     list-style-type: none;
     position: absolute;
 }
+.menu > li[checked=checked] {
+    font-weight: 700;
+}

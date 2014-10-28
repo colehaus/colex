@@ -1,10 +1,10 @@
 var choose = function(ev) {
     ev.stopPropagation();
     var el = $(ev.target);
-    var ch = $(el.closest('.nest').children()[el.parent().children().index(el)]);
+    var ch = $(el.closest('.nest').children()[el.index()]);
     ch.addClass('open');
     ch.siblings().removeClass('open');
-    el.parent().remove();
+    defaultHandlers(el);
 };
 
 $(function() {
@@ -14,11 +14,8 @@ $(function() {
             mn.offset({top: ev.pageY, left: ev.pageX});
         };
         var addMenuHandlers = function(ev) {
-            var mn = $(ev.target).closest('[type="menu"]').children('menu');
-            var lis = mn.children('.menu').children('li');
-            lis.each(function(_, el) {
-                $(el).off().click(choose);
-            });
+            $(ev.target).closest('[type="menu"]').children('menu').
+                children('.menu').children('li').off().click(choose);
         };
 
         var el = $(el_);
