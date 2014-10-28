@@ -137,6 +137,7 @@ header > span {
 /* ========== */
 
 .noted {
+    /* hue 7 7 */
     background-color: #96ccc7;
 }
 .noted::after {

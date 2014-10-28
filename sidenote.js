@@ -1,3 +1,5 @@
+'use strict';
+
 var fixNotes = function() {
     var prevBot = 0;
     var positionCompare = function (el1, el2){

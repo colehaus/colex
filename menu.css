@@ -17,5 +17,5 @@ menu[type="popup"] > menuitem {
     padding: 1ex;
     visibility: visible;
     list-style-type: none;
-    display: inline-block;
+    position: absolute;
 }

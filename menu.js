@@ -1,6 +1,6 @@
 'use strict';
 
-var menuContents = function(el) {
+var buildMenu = function(el) {
     var menuItem = function(el_) {
         var el = $(el_);
         var lb = el.attr('label');
@@ -20,7 +20,7 @@ var menuContents = function(el) {
         if (lb !== null) {
             return [$('<li>'+lb+'</li>').get()];
         } else {
-            return [$('<hr/>').get()].concat(menuContents(el), [$('<hr/>').get()]);
+            return [$('<hr/>').get()].concat(buildMenu(el), [$('<hr/>').get()]);
         }
     };
 
@@ -54,22 +54,22 @@ var menuContents = function(el) {
 };
 
 var toggleMenu = function(ev) {
+    ev.stopPropagation();
     var isPopup = function(_) {
         var el = $(this);
         var pe = el.parent().get(0);
 
         var isMenu = this.nodeName === 'MENU';
         var isSelfPop = el.attr('type') === 'popup';
-        var hasParentPop = typeof pe !== 'undefined' && isPopup(pe);
 
-        return isMenu && (isSelfPop || hasParentPop);
+        return isMenu && (isSelfPop || typeof pe !== 'undefined' && isPopup(pe));
     };
 
-    var el = ev.target;
-    var mn = $('#'+$(el).attr('menu')).filter(isPopup);
+    var el = $(ev.target).closest('[type="menu"]');
+    var mn = $('#'+el.attr('menu')).filter(isPopup);
     var ul = mn.children('ul.menu');
     if (ul.length === 0) {
-       mn.append(menuContents(mn));
+       mn.append(buildMenu(mn));
     } else {
        ul.remove();
     }

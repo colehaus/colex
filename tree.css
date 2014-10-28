@@ -1,0 +1,31 @@
+body {
+    /* h 3.939 v 0.761 c 0.375 */
+    /* value 6 6 */
+    color: #211d26;
+    /* value 6 1 */
+    background-color: #acb7f0;
+}
+.nest {
+    list-style-type: none;
+    padding: 0 1ex;
+    margin: 0;
+    display: inline-block;
+    vertical-align: top;
+    /* hue 7 5 */
+    background-color: rgba(199, 204, 140, 0.3);
+}
+.nest p {
+    margin: 0;
+    padding: 0;
+}
+.nest > li {
+    display: none;
+}
+.nest > li.open {
+    display: inline
+}
+.menu {
+    /* hue 7 6 */
+    background-color: #96cc8f;
+    border-radius: 5px;
+}
