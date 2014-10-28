@@ -1,4 +1,5 @@
 'use strict';
+$(function() {
 
 var fixNotes = function() {
     var prevBot = 0;
@@ -44,9 +45,12 @@ var fixNotes = function() {
     $($('#warnings').concat(notes)).each(budge);
 };
 
-window.onload = function () {
-    fixNotes();
-    $('details').each(function (_, el) {
-        (new MutationObserver (fixNotes)).observe(el, {attributes: true});
-    });
-};
+$('details').each(function (_, el) {
+    (new MutationObserver (fixNotes)).observe(el, {attributes: true});
+});
+$('body').fontSpy({
+    onFail: 'font-fail',
+    callback: fixNotes
+});
+
+});

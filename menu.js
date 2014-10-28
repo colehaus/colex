@@ -13,6 +13,8 @@ var defaultHandlers = function(el) {
     el.parent().remove();
 };
 
+$(function () {
+
 var buildMenu = function(el) {
     var menuItem = function(el_) {
         var el = $(el_);
@@ -92,7 +94,6 @@ var toggleMenu = function(ev) {
     }
 };
 
-$(function () {
     $('[type="menu"]').each(function(_, el) {
         $(el).click(toggleMenu);
     });

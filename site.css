@@ -8,8 +8,6 @@ body,
 input,
 select,
 textarea {
-    font-family: 'Raleway', sans-serif;
-
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
     hyphens: auto;
@@ -23,6 +21,14 @@ textarea {
     font-feature-settings: "kern";
     font-kerning: normal;
 }
+body {
+    font-family: 'Raleway';
+}
+.font-fail {
+    font-family: sans-serif;
+}
+
+
 h1, h2, h3, h4, h5, h6 {
     margin: 0;
 }
@@ -139,18 +145,6 @@ header > span {
 .noted {
     /* hue 7 7 */
     background-color: #96ccc7;
-}
-.noted::after {
-    content: " ↳";
-}
-.sidenote {
-    position: absolute;
-    right: -35ex;
-    width: 30ex;
-    padding: 0.5ex;
-    text-align: left;
-    font-weight: 300;
-    font-size: smaller;
 }
 .sidenote::first-letter {
     background-color: #96ccc7;
