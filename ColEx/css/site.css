@@ -180,7 +180,7 @@ nav > ul {
     display: -ms-flex;
     display: flex;
 }
-.home-menu > nav > ul {
+.main-menu > nav > ul {
     margin: 1ex 0;
 
     -webkit-box-pack: justify;
@@ -219,11 +219,11 @@ nav > ul {
     color: #211d26;
     text-decoration: none;
 }
-.home-menu {
+.main-menu {
     min-width: 45ex;
     max-width: 65ex;
 }
-.home-menu.top {
+.main-menu.top {
     -webkit-box-ordinal-group: -2;
     -webkit-order: -2;
     -ms-order: -2;
@@ -236,6 +236,6 @@ nav > ul {
     order: -1;
 }
 .inactive {
-    /* value 6 2 */
-    color: #969bcd;
+    /* value 6 3 */
+    color: #7d7fa8;
 }

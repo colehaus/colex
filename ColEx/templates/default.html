@@ -9,12 +9,22 @@
       <script type="text/javascript" src="/combined.js"></script>
   </head>
   <body>
-      $body$
+    $body$
 
     <header>
       <h1>Collectively Exhaustive</h1><span>A weblog</span>
       <hr/>
     </header>
+
+    <div class="main-menu top">
+      $partial("templates/menu.html")$
+      <hr/>
+    </div>
+
+    <div class="main-menu bottom">
+      <hr/>
+      $partial("templates/menu.html")$
+    </div>
 
   </body>
 </html>

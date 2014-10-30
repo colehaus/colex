@@ -4,7 +4,7 @@ import           Control.Arrow   ((***))
 import           Data.Functor    ((<$>))
 import           Data.List       (stripPrefix)
 import qualified Data.Map        as M
-import           Data.Monoid     (mconcat, (<>))
+import           Data.Monoid     (mconcat, mempty, (<>))
 import           System.FilePath
 
 import           Hakyll
@@ -17,11 +17,12 @@ main = hakyll $ do
   tagsRules tags $ \tag pat -> do
     route idRoute
     compile $ let ctx = constField "title" ("Tagged " <> tag) <>
+                        constField (tag <> "-page") mempty <>
                         listField "posts"
                                   (tagsCtx tags <> postCtx)
                                   (recentFirst =<< loadAll pat) <>
                                   defaultContext in
-              makeItem "" >>=
+              makeItem mempty >>=
               loadAndApplyTemplate "templates/tag.html" ctx >>=
               loadAndApplyTemplate "templates/default.html" ctx >>=
               relativizeUrls >>=
@@ -32,8 +33,9 @@ main = hakyll $ do
       tagCloud <- renderTagCloud 50 180 tags
       let ctx = constField "tag-cloud" tagCloud <>
                 constField "title" "Tags" <>
+                constField "tags-page" mempty <>
                 defaultContext
-      makeItem "" >>=
+      makeItem mempty >>=
         loadAndApplyTemplate "templates/tags.html" ctx >>=
         loadAndApplyTemplate "templates/default.html" ctx >>=
         relativizeUrls >>=
@@ -46,10 +48,11 @@ main = hakyll $ do
     route idRoute
     compile $ let pageCtx = paginateContext pages n
                   ctx = constField "title" "Home" <>
+                        constField "home-page" mempty <>
                         listField "posts" (tagsCtx tags <> pageCtx <> postCtx) (loadAll pat) <>
                         pageCtx <>
                         defaultContext in
-              makeItem "" >>=
+              makeItem mempty >>=
               loadAndApplyTemplate "templates/index.html" ctx >>=
               loadAndApplyTemplate "templates/default.html" ctx >>=
               relativizeUrls >>=
@@ -71,11 +74,12 @@ main = hakyll $ do
   create ["archive"] $ do
       route $ constRoute "posts/index.html"
       compile $ let ctx = constField "title" "Archive" <>
+                          constField "archive-page" mempty <>
                           listField "posts"
                                     (tagsCtx tags <> postCtx)
                                     (recentFirst =<< loadAll "posts/*") <>
                           defaultContext in
-                makeItem "" >>=
+                makeItem mempty >>=
                 loadAndApplyTemplate "templates/archive.html" ctx >>=
                 loadAndApplyTemplate "templates/default.html" ctx >>=
                 relativizeUrls >>=
