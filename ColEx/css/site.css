@@ -45,6 +45,7 @@ a:hover {
 }
 .date {
     font-size: smaller;
+    /* value 6 5 */
     color: #454157;
 }
 
@@ -147,6 +148,7 @@ header > span {
     background-color: #96ccc7;
 }
 .sidenote::first-letter {
+    /* hue 7 7 */
     background-color: #96ccc7;
 }
 #warnings {
@@ -201,16 +203,19 @@ nav > ul {
 }
 .tags > ul > li~li::before {
     content: "—";
+    /* value 6 5 */
     color: #454157;
 }
 #tag-cloud {
     margin-top: 1ex;
 }
 .pagination > ul > li > a, .tags > ul > li > a, #tag-cloud > a {
+    /* value 6 5 */
     color: #454157;
     transition: color 0.3s ease;
 }
 .pagination > ul > li > a:hover, .tags > ul > li > a:hover, #tag-cloud > a:hover {
+    /* value 6 6 */
     color: #211d26;
     text-decoration: none;
 }
@@ -229,4 +234,8 @@ nav > ul {
     -webkit-order: -1;
     -ms-order: -1;
     order: -1;
+}
+.inactive {
+    /* value 6 2 */
+    color: #969bcd;
 }

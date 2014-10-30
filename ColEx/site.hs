@@ -39,7 +39,7 @@ main = hakyll $ do
         relativizeUrls >>=
         deIndexUrls
 
-  pages <- buildPaginateWith ((paginateOverflow 5 <$>) . sortChronological)
+  pages <- buildPaginateWith ((paginateOverflow 2 <$>) . sortChronological)
                             "posts/*"
                             (\n -> (fromCapture (fromGlob "posts/page/*/index.html") $ show n))
   paginateRules pages $ \n pat -> do
