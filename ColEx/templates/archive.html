@@ -1,0 +1,20 @@
+<main>
+  <h2>Archive</h2>
+  <dl class="posts">
+    $for(posts)$
+      <dt><a href="$url$">$title$</a></dt>
+      <dd>$partial("templates/tag-nav.html")$</dd>
+      <dd class="date"><time datetime="$date$">$date$</time></dd>
+    $endfor$
+  </dl>
+</main>
+
+<div class="home-menu top">
+  $partial("templates/archive-menu.html")$
+  <hr/>
+</div>
+
+<div class="home-menu bottom">
+  <hr/>
+  $partial("templates/archive-menu.html")$
+</div>

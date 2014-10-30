@@ -1,0 +1,14 @@
+<ul>
+  $if(firstPageUrl)$
+    <li><a title="Oldest" href="$firstPageUrl$">⇤</a></li>
+  $endif$
+  $if(previousPageUrl)$
+    <li><a title="Older" href="$previousPageUrl$">←</a></li>
+  $endif$
+  $if(nextPageUrl)$
+    <li><a title="Newer" href="$nextPageUrl$">→</a></li>
+  $endif$
+  $if (lastPageUrl)$
+    <li><a title="Newest" href="$lastPageUrl$">⇥</a></li>
+  $endif$
+</ul>

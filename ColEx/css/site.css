@@ -186,15 +186,18 @@ nav > ul {
     -ms-justify-content: space-between;
     justify-content: space-between;
 }
+.pagination {
+    font-size: larger;
+}
 .pagination > ul {
-    margin: 0;
+    margin: 0 0 0 -2ex;
 }
 .tags > ul {
     margin: 0;
     font-size: smaller;
 }
 .pagination > ul > li {
-    margin: 1ex;
+    margin: 1ex 2ex;
 }
 .tags > ul > li~li::before {
     content: "—";
