@@ -13,73 +13,90 @@ import           Hakyll
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
-  tags <- buildTags "posts/*" (fromCapture "posts/tag/*.html")
-  pages <- buildPaginateWith ((paginateOverflow 1 <$>) . sortChronological)
-                            "posts/*"
-                            (\n -> (fromCapture (fromGlob "posts/page/*/index.html") $ show n))
-
-  paginateRules pages $ \n pat -> do
+  tags <- buildTags "posts/*" (fromCapture "posts/tag/*/index.html")
+  tagsRules tags $ \tag pat -> do
+    route idRoute
+    compile $ let ctx = constField "title" ("Tagged " <> tag) <>
+                        listField "posts"
+                                  (tagsCtx tags <> postCtx)
+                                  (recentFirst =<< loadAll pat) <>
+                                  defaultContext in
+              makeItem "" >>=
+              loadAndApplyTemplate "templates/tag.html" ctx >>=
+              loadAndApplyTemplate "templates/default.html" ctx >>=
+              relativizeUrls >>=
+              deIndexUrls
+  create ["tags/index.html"] $ do
     route idRoute
     compile $ do
-      let pageCtx = paginateContext pages n
-      let ctx = constField "title" "Home" <>
-                listField "posts" (tagsCtx <> pageCtx) (loadAll pat) <>
-                pageCtx <>
+      tagCloud <- renderTagCloud 50 180 tags
+      let ctx = constField "tag-cloud" tagCloud <>
+                constField "title" "Tags" <>
                 defaultContext
-      makeItem ""
-        >>= loadAndApplyTemplate "templates/index.html" ctx
-        >>= loadAndApplyTemplate "templates/default.html" ctx
-        >>= relativizeUrls
-        >>= deIndexUrls
+      makeItem "" >>=
+        loadAndApplyTemplate "templates/tags.html" ctx >>=
+        loadAndApplyTemplate "templates/default.html" ctx >>=
+        relativizeUrls >>=
+        deIndexUrls
 
+  pages <- buildPaginateWith ((paginateOverflow 5 <$>) . sortChronological)
+                            "posts/*"
+                            (\n -> (fromCapture (fromGlob "posts/page/*/index.html") $ show n))
+  paginateRules pages $ \n pat -> do
+    route idRoute
+    compile $ let pageCtx = paginateContext pages n
+                  ctx = constField "title" "Home" <>
+                        listField "posts" (tagsCtx tags <> pageCtx <> postCtx) (loadAll pat) <>
+                        pageCtx <>
+                        defaultContext in
+              makeItem "" >>=
+              loadAndApplyTemplate "templates/index.html" ctx >>=
+              loadAndApplyTemplate "templates/default.html" ctx >>=
+              relativizeUrls >>=
+              deIndexUrls
   create ["index.html"] $ do
     route idRoute
     compile $ (load $ paginateLastPage pages :: Compiler (Item String)) >>= makeItem . itemBody
-
-  match "images/*" $ do
-      route   idRoute
-      compile copyFileCompiler
-
-  match "css/*" $ compile getResourceBody
-  create ["combined.css"] $ do
-    route idRoute
-    compile $ do
-      items  <- loadAll "css/*"
-      makeItem . compressCss $ concatMap itemBody (items :: [Item String])
-
-  match "js/*" $ compile getResourceBody
-  create ["combined.js"] $ do
-    route idRoute
-    compile $ do
-      items <- loadAll "js/*"
-      let compressJs = id
-      makeItem . compressJs $ concatMap itemBody (items :: [Item String])
 
   match "posts/*" $ do
       route . customRoute $ \ident -> "posts/" <>
                                      (takeBaseName . toFilePath) ident <>
                                      "/index.html"
-      compile $ pandocCompiler
-          >>= loadAndApplyTemplate "templates/post.html"    tagsCtx
-          >>= loadAndApplyTemplate "templates/default.html" tagsCtx
-          >>= relativizeUrls
-          >>= deIndexUrls
+      compile $ pandocCompiler >>=
+        loadAndApplyTemplate "templates/post.html" (tagsCtx tags <> postCtx) >>=
+        loadAndApplyTemplate "templates/default.html" (tagsCtx tags <> postCtx) >>=
+        relativizeUrls >>=
+        deIndexUrls
 
   create ["archive"] $ do
       route $ constRoute "posts/index.html"
-      compile $ do
-          let archiveCtx =
-                  listField "posts" tagsCtx (recentFirst =<< loadAll "posts/*") <>
-                  constField "title" "Archive" <>
-                  defaultContext
-
-          makeItem ""
-              >>= loadAndApplyTemplate "templates/archive.html" archiveCtx
-              >>= loadAndApplyTemplate "templates/default.html" archiveCtx
-              >>= relativizeUrls
-              >>= deIndexUrls
+      compile $ let ctx = constField "title" "Archive" <>
+                          listField "posts"
+                                    (tagsCtx tags <> postCtx)
+                                    (recentFirst =<< loadAll "posts/*") <>
+                          defaultContext in
+                makeItem "" >>=
+                loadAndApplyTemplate "templates/archive.html" ctx >>=
+                loadAndApplyTemplate "templates/default.html" ctx >>=
+                relativizeUrls >>=
+                deIndexUrls
 
   match "templates/*" $ compile templateCompiler
+  match "images/*" $ do
+      route idRoute
+      compile copyFileCompiler
+  match "css/*" $ compile getResourceBody
+  create ["combined.css"] $ do
+    route idRoute
+    compile $ loadAll "css/*" >>= makeItem . compressCss . concatMap itemBody
+  match "js/*" $ compile getResourceBody
+  create ["combined.js"] $ do
+    route idRoute
+    compile $ loadAll "js/*" >>= makeItem . compressJs . concatMap itemBody
+
+--TODO: Actual js compressor
+compressJs :: String -> String
+compressJs = id
 
 deIndexUrls :: Item String -> Compiler (Item String)
 deIndexUrls = return . ((withUrls deIndex) <$>) where
@@ -87,22 +104,26 @@ deIndexUrls = return . ((withUrls deIndex) <$>) where
     Just u' -> reverse u'
     Nothing -> u
 
-tagsCtx :: Context String
-tagsCtx = listField "tags" missingField (return []) <> postCtx
-
 postCtx :: Context String
 postCtx =
     dateField "date" "%B %e, %Y" <>
     defaultContext
 
 paginateOverflow :: Int -> [a] -> [[a]]
-paginateOverflow low xs = if length (last pgs) < low
-                          then reverse . uncurry (:) . (mconcat *** id) .
-                               (splitAt 2) . reverse $ pgs
-                          else pgs where
-                            pgs = paginateEvery low xs
+paginateOverflow low xs =
+  if length (last pgs) < low
+  then reverse . uncurry (:) . (mconcat *** id) . (splitAt 2) . reverse $ pgs
+  else pgs where
+    pgs = paginateEvery low xs
 
 paginateLastPage :: Paginate -> Identifier
 paginateLastPage pg = paginateMakeId pg $ paginateNumPages pg where
   paginateNumPages :: Paginate -> Int
   paginateNumPages = M.size . paginateMap
+
+tagsCtx :: Tags -> Context String
+tagsCtx tags = listFieldWith "tags"
+                        tagCtx
+                        ((mapM makeItem =<<) . getTags . itemIdentifier) where
+  tagCtx = (field "tag-name" $ return . itemBody) <>
+           (field "tag-url" $ return . toUrl . toFilePath . (tagsMakeId tags) . itemBody)

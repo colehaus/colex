@@ -2,7 +2,7 @@
 title: S.P.Q.R.
 published: 2012-08-12
 edited: 2013-08-12
-tags: foo, bar
+tags: baz, bar
 ---
 
 Mauris in lorem nisl. Maecenas tempus facilisis ante, eget viverra nisl

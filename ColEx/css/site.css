@@ -203,11 +203,14 @@ nav > ul {
     content: "—";
     color: #454157;
 }
-.pagination > ul > li > a, .tags > ul > li > a {
+#tag-cloud {
+    margin-top: 1ex;
+}
+.pagination > ul > li > a, .tags > ul > li > a, #tag-cloud > a {
     color: #454157;
     transition: color 0.3s ease;
 }
-.pagination > ul > li > a:hover, .tags > ul > li > a:hover {
+.pagination > ul > li > a:hover, .tags > ul > li > a:hover, #tag-cloud > a:hover {
     color: #211d26;
     text-decoration: none;
 }

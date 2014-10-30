@@ -1,0 +1,7 @@
+<dl class="posts">
+  $for(posts)$
+    <dt><a href="$url$">$title$</a></dt>
+    <dd>$partial("templates/tag-nav.html")$</dd>
+    <dd class="date"><time datetime="$date$">$date$</time></dd>
+  $endfor$
+</dl>

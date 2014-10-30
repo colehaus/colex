@@ -2,7 +2,7 @@
 title: Rosa Rosa Rosam
 author: Ovidius
 published: 2012-10-07
-tags: foo, bar
+tags: bar
 ---
 
 Suspendisse pharetra ullamcorper sem et auctor. Suspendisse vitae tellus eu
