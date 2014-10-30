@@ -49,7 +49,12 @@ main = hakyll $ do
     compile $ let pageCtx = paginateContext pages n
                   ctx = constField "title" "Home" <>
                         constField "home-page" mempty <>
-                        listField "posts" (tagsCtx tags <> pageCtx <> postCtx) (loadAll pat) <>
+                        listField "posts"
+                                  (teaserField "teaser" "content" <>
+                                   tagsCtx tags <>
+                                   pageCtx <>
+                                   postCtx)
+                                  (loadAll pat) <>
                         pageCtx <>
                         defaultContext in
               makeItem mempty >>=
@@ -66,6 +71,7 @@ main = hakyll $ do
                                      (takeBaseName . toFilePath) ident <>
                                      "/index.html"
       compile $ pandocCompiler >>=
+        saveSnapshot "content" >>=
         loadAndApplyTemplate "templates/post.html" (tagsCtx tags <> postCtx) >>=
         loadAndApplyTemplate "templates/default.html" (tagsCtx tags <> postCtx) >>=
         relativizeUrls >>=
