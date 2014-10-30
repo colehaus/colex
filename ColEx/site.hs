@@ -50,7 +50,7 @@ main = hakyll $ do
                   ctx = constField "title" "Home" <>
                         constField "home-page" mempty <>
                         listField "posts"
-                                  (teaserField "teaser" "content" <>
+                                  (teaserField "teaser" "teaser" <>
                                    tagsCtx tags <>
                                    pageCtx <>
                                    postCtx)
@@ -70,8 +70,9 @@ main = hakyll $ do
       route . customRoute $ \ident -> "posts/" <>
                                      (takeBaseName . toFilePath) ident <>
                                      "/index.html"
-      compile $ pandocCompiler >>=
-        saveSnapshot "content" >>=
+      compile $ getResourceBody >>=
+        (renderPandoc <$>) . saveSnapshot "feed" >>=
+        saveSnapshot "teaser" >>=
         loadAndApplyTemplate "templates/post.html" (tagsCtx tags <> postCtx) >>=
         loadAndApplyTemplate "templates/default.html" (tagsCtx tags <> postCtx) >>=
         relativizeUrls >>=
@@ -90,6 +91,18 @@ main = hakyll $ do
                 loadAndApplyTemplate "templates/default.html" ctx >>=
                 relativizeUrls >>=
                 deIndexUrls
+
+  create ["atom"] $ do
+    route $ constRoute "posts/feed/atom.xml"
+    compile $ let feedCtx = postCtx <> bodyField "description" in
+              loadAllSnapshots "posts/*" "feed" >>= (take 10 <$>) . recentFirst >>=
+              renderAtom feedConf feedCtx
+  create ["rss"] $ do
+    route $ constRoute "posts/feed/rss.xml"
+    compile $ let feedCtx = postCtx <> bodyField "description" in
+              loadAllSnapshots "posts/*" "feed" >>= (take 10 <$>) . recentFirst >>=
+              renderRss feedConf feedCtx
+
 
   match "templates/*" $ compile templateCompiler
   match "images/*" $ do
@@ -137,3 +150,12 @@ tagsCtx tags = listFieldWith "tags"
                         ((mapM makeItem =<<) . getTags . itemIdentifier) where
   tagCtx = (field "tag-name" $ return . itemBody) <>
            (field "tag-url" $ return . toUrl . toFilePath . (tagsMakeId tags) . itemBody)
+
+feedConf :: FeedConfiguration
+feedConf = FeedConfiguration
+  { feedTitle       = "Collectively Exhaustive"
+  , feedDescription = "A weblog"
+  , feedAuthorName  = "Cole Haus"
+  , feedAuthorEmail = "colehaus@cryptolab.net"
+  , feedRoot        = "http://colex.me"
+  }
