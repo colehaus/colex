@@ -71,11 +71,12 @@ data WriterState = WriterState
     , stQuotes           :: Bool    -- ^ <q> tag is used
     , stHighlighting     :: Bool    -- ^ Syntax highlighting is used
     , stSecNum           :: [Int]   -- ^ Number of current section
+    , stMenuId           :: Int     -- ^ Number of next menu
     }
 
 defaultWriterState :: WriterState
 defaultWriterState = WriterState {stNotes= [], stMath = False, stQuotes = False,
-                                  stHighlighting = False, stSecNum = []}
+                                  stHighlighting = False, stSecNum = [], stMenuId = 1}
 
 -- Helpers to render HTML with the appropriate function.
 
@@ -217,6 +218,21 @@ ordList opts = toList H.ol opts . toListItems opts
 
 defList :: WriterOptions -> [Html] -> Html
 defList opts items = toList H.dl opts (items ++ [nl opts])
+
+menu :: WriterOptions -> Int -> [(Html, Html)] -> Html
+menu opts identNum items = H.ul (mconcat . first (H.! A.class_ "open") $
+                                 contents <> [nl opts] <> [menu]) H.!
+                           A.class_ "nest" H.!
+                           A.type_ "menu" H.!
+                           customAttribute "menu" ident where
+  (labels, contents) = unzip items
+  menu = H5.menu (mconcat . first (H.! A.checked "checked") $
+                  labels <> [nl opts]) H.!
+         A.type_ "popup" H.!
+         A.id ident
+  first _ [] = []
+  first f (x : xs) = f x : xs
+  ident = toValue $ "menu-" <> show identNum
 
 -- | Construct table of contents from list of elements.
 tableOfContents :: WriterOptions -> [Element] -> State WriterState (Maybe Html)
@@ -534,6 +550,16 @@ blockToHtml opts (DefinitionList lst) = do
                      return $ mconcat $ nl opts : term' : nl opts :
                                         intersperse (nl opts) defs') lst
   return $ defList opts contents
+blockToHtml opts (Menu lst) = do
+  contents <- mapM (\(label, content) ->
+                  do label' <- if null label
+                                 then return mempty
+                                 else return $ H5.menuitem H.! A.label (H.toValue label)
+                     content' <- H.li . toHtml <$> mapM (blockListToHtml opts) content
+                     return $ (label', content')) lst
+  st <- get
+  put (st {stMenuId = stMenuId st + 1})
+  return $ menu opts (stMenuId st) contents
 blockToHtml opts (Table capt aligns widths headers rows') = do
   captionDoc <- if null capt
                    then return mempty

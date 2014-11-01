@@ -137,6 +137,7 @@ module Text.Pandoc.Builder ( module Text.Pandoc.Definition
                            , orderedListWith
                            , orderedList
                            , definitionList
+                           , menu
                            , header
                            , headerWith
                            , horizontalRule
@@ -406,6 +407,9 @@ bulletList = singleton . BulletList . map toList
 
 definitionList :: [(Inlines, [Blocks])] -> Blocks
 definitionList = singleton . DefinitionList .  map (toList *** map toList)
+
+menu :: [(String, [Blocks])] -> Blocks
+menu = singleton . Menu .  map (id *** map toList)
 
 header :: Int  -- ^ Level
        -> Inlines

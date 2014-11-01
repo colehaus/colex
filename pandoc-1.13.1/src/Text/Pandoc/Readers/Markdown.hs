@@ -467,6 +467,7 @@ block = do
                , blockQuote
                , hrule
                , orderedList
+               , menu
                , definitionList
                , noteBlock
                , referenceKey
@@ -909,6 +910,63 @@ normalDefinitionList = do
   guardEnabled Ext_definition_lists
   items <- fmap sequence $ many1 $ definitionListItem False
   return $ B.definitionList <$> items
+
+-- Menu
+
+menuRawBlock :: Bool -> MarkdownParser String
+menuRawBlock compact = try $ do
+  hasBlank <- option False $ blankline >> return True
+  menuMarker
+  firstline <- anyLine
+  let dline = try
+               ( do notFollowedBy blankline
+                    if compact -- laziness not compatible with compact
+                       then () <$ indentSpaces
+                       else (() <$ indentSpaces)
+                             <|> notFollowedBy menuMarker
+                    anyLine )
+  rawlines <- many dline
+  cont <- liftM concat $ many $ try $ do
+            trailing <- option "" blanklines
+            ln <- indentSpaces >> notFollowedBy blankline >> anyLine
+            lns <- many dline
+            return $ trailing ++ unlines (ln:lns)
+  return $ trimr (firstline ++ "\n" ++ unlines rawlines ++ cont) ++
+            if hasBlank || not (null cont) then "\n\n" else ""
+
+menuMarker :: MarkdownParser ()
+menuMarker = do
+  sps <- nonindentSpaces
+  string "::"
+  tabStop <- getOption readerTabStop
+  let remaining = tabStop - (length sps + 2)
+  if remaining > 0
+     then count remaining (char ' ') <|> string "\t"
+     else mzero
+  return ()
+
+menu :: MarkdownParser (F Blocks)
+menu = try $ do
+  lookAhead (anyLine >> optional blankline >> menuMarker)
+  compactMenu <|> normalMenu
+
+menuItem :: Bool -> MarkdownParser (F (String, [Blocks]))
+menuItem compact = try $ do
+  label <- anyLine
+  raw <- many1 $ menuRawBlock compact
+  contents <- mapM (parseFromString parseBlocks) raw
+  optional blanklines
+  return $ liftM2 (,) (return label) (sequence contents)
+
+compactMenu :: MarkdownParser (F Blocks)
+compactMenu = do
+  items <- fmap sequence $ many1 $ menuItem True
+  return $ B.menu <$> items
+
+normalMenu :: MarkdownParser (F Blocks)
+normalMenu = do
+  items <- fmap sequence $ many1 $ menuItem False
+  return $ B.menu <$> items
 
 --
 -- paragraph block
