@@ -4,3 +4,5 @@ ColEx/dist
 ColEx/site
 ColEx/site.hi
 ColEx/site.o
+**/dist/
+sandbox/
