@@ -1,13 +1,15 @@
 --------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
-import           Control.Arrow   ((***))
-import           Data.Functor    ((<$>))
-import           Data.List       (stripPrefix)
-import qualified Data.Map        as M
-import           Data.Monoid     (mconcat, mempty, (<>))
+import           Control.Arrow       ((***))
+import           Data.Functor        ((<$>))
+import           Data.List           (stripPrefix)
+import qualified Data.Map            as M
+import           Data.Monoid         (mconcat, mempty, (<>))
 import           System.FilePath
 
 import           Hakyll
+import           Text.Parsec
+import           Text.Regex          (mkRegex, subRegex)
 
 
 --------------------------------------------------------------------------------
@@ -71,7 +73,7 @@ main = hakyll $ do
                                      (takeBaseName . toFilePath) ident <>
                                      "/index.html"
       compile $ getResourceBody >>=
-        (renderPandoc <$>) . saveSnapshot "feed" >>=
+        (renderPandoc . (sidenotes <$>) <$>) . saveSnapshot "feed" >>=
         saveSnapshot "teaser" >>=
         loadAndApplyTemplate "templates/post.html" (tagsCtx tags <> postCtx) >>=
         loadAndApplyTemplate "templates/default.html" (tagsCtx tags <> postCtx) >>=
@@ -122,10 +124,7 @@ compressJs :: String -> String
 compressJs = id
 
 deIndexUrls :: Item String -> Compiler (Item String)
-deIndexUrls = return . ((withUrls deIndex) <$>) where
-  deIndex u = case stripPrefix (reverse "index.html") (reverse u) of
-    Just u' -> reverse u'
-    Nothing -> u
+deIndexUrls = return . (replaceAll "index.html" (const mempty) <$>) where
 
 postCtx :: Context String
 postCtx =
@@ -159,3 +158,7 @@ feedConf = FeedConfiguration
   , feedAuthorEmail = "colehaus@cryptolab.net"
   , feedRoot        = "http://colex.me"
   }
+
+sidenotes :: String -> String
+sidenotes = flip (subRegex $ mkRegex "\\[(.*)\\]\\^\\[(.*)\\]")
+                 "<span class=\"noted\">\\1<span class=\"sidenote\">\\2</span></span>"

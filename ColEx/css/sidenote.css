@@ -1,5 +1,5 @@
 .noted::after {
-    content: " ↳";
+    content: " ↪";
 }
 .sidenote {
     position: absolute;

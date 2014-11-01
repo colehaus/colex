@@ -162,7 +162,7 @@ header > span {
     padding-left: 2ex;
     list-style-type: none;
 }
-#warnings > ul > li > details > p {
+details > p {
     margin: 0;
     padding-left: 1ex;
 }

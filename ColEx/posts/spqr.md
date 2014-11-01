@@ -11,12 +11,12 @@ Morbi condimentum, tortor et tincidunt ullamcorper, sem quam pretium nulla, id
 convallis lectus libero nec turpis. Proin dapibus nisi id est sodales nec
 ultrices tortor pellentesque. Vivamus vel nisi ac lacus sollicitudin vulputate
 ac ut ligula. Nullam feugiat risus eget eros gravida in molestie sapien euismod.
-Nunc sed hendrerit orci. Nulla mollis consequat lorem ac blandit. Ut et turpis
+Nunc sed^[aeulch] hendrerit orci. Nulla mollis consequat lorem ac blandit. Ut et turpis
 mauris. Nulla est odio, posuere id ullamcorper sit amet, tincidunt vel justo.
 Curabitur placerat tincidunt varius. Nulla vulputate, ipsum eu consectetur
-mollis, dui nibh aliquam neque, at ultricies leo ligula et arcu. Proin et mi
+mollis, dui nibh [aliquam neque]^[at ultricies leo ligula et arcu]. Proin et mi
 eget tellus sodales lobortis. Sed tempor, urna vel pulvinar faucibus, lectus
-urna vehicula ante, at facilisis dolor odio at lorem. Morbi vehicula euismod
+urna vehicula ante, at facilisis dolor odio at lorem. [Morbi]^[vehicula] euismod
 urna, et imperdiet urna ornare vitae.
 
 <!--more-->
@@ -35,6 +35,17 @@ sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus
 mus. Suspendisse hendrerit nisl eu felis sagittis faucibus. Nunc eu congue
 lorem. Quisque non nibh nisi, et ultrices massa. Sed vitae erat vitae nulla
 pellentesque fermentum.
+
+Foo
+
+::  Definition
+
+    oeulch
+    ::  ealche eulrch
+
+Bar
+
+::  Continued
 
 Ut diam nunc, consectetur ut ultrices eu, iaculis sed felis. Sed lacinia, odio
 et accumsan luctus, arcu ipsum accumsan erat, sit amet malesuada libero lacus et
