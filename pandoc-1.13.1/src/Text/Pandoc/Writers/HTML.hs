@@ -554,7 +554,9 @@ blockToHtml opts (Menu lst) = do
   contents <- mapM (\(label, content) ->
                   do label' <- if null label
                                  then return mempty
-                                 else return $ H5.menuitem H.! A.label (H.toValue label)
+                                 else return $ H5.menuitem H.!
+                                               A.label (H.toValue label) H.!
+                                               A.type_ "radio"
                      content' <- H.li . toHtml <$> mapM (blockListToHtml opts) content
                      return $ (label', content')) lst
   st <- get

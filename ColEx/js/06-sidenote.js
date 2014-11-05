@@ -38,11 +38,15 @@ var fixNotes = function() {
             return ofs;
         });
     };
+
     var notes = $('.noted').sort(positionCompare).map(function (_, el) {
         return $(el).children();
     });
-
-    $($('#warnings').concat(notes)).each(budge);
+    if ($('#warnings').length > 0) {
+        $($('#warnings').concat(notes)).each(budge);
+    } else {
+        notes.each(budge);
+    }
 };
 
 $('details').each(function (_, el) {
