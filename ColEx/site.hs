@@ -113,7 +113,7 @@ main = hakyll $ do
   match "css/*" $ compile getResourceBody
   create ["combined.css"] $ do
     route idRoute
-    compile $ loadAll "css/*" >>= makeItem . compressCss . concatMap itemBody
+    compile $ loadAll "css/*.css" >>= makeItem . compressCss . concatMap itemBody
   match "js/*" $ compile getResourceBody
   create ["combined.js"] $ do
     route idRoute

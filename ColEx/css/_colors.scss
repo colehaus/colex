@@ -1,0 +1,33 @@
+$colors: (
+    hue: (
+        #b5bae6,
+        #d1abe6,
+        #e6abd0,
+        #e6bcb5,
+        #dee2b5,
+        #b5e2b5,
+        #b5e2df
+    ),
+    chroma: (
+        #d7d6e6,
+        #b5bbe6,
+        #919fe6,
+        #6d84e6,
+        #4769e6,
+        #1d4de6
+    ),
+    value: (
+        #b5bbe6,
+        #9090b8,
+        #6b6688,
+        #443c56,
+        #18121e
+    )
+);
+
+$inactive-color: nth(map-get($colors, value), 3);
+$light-text-color: nth(map-get($colors, value), 4);
+$body-text-color: nth(map-get($colors, value), 5);
+$body-back-color: nth(map-get($colors, value), 1);
+$body-back-alt-color: nth(map-get($colors, value), 2);
+$note-back-color: nth(map-get($colors, hue), 7);

@@ -1,8 +1,11 @@
 ColEx/_cache
 ColEx/_site
+**/.sass-cache/
+**.map
 ColEx/dist
 ColEx/site
 ColEx/site.hi
 ColEx/site.o
+ColEx/css/site.css
 **/dist/
 sandbox/

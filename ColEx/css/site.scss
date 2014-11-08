@@ -1,0 +1,211 @@
+@import 'flex-box';
+@import 'colors';
+
+/* ========== */
+/*  General   */
+/* ========== */
+
+html,
+button,
+body,
+input,
+select,
+textarea {
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    hyphens: auto;
+
+    text-rendering: optimizeLegibility;
+    -webkit-font-variant-ligatures: common-ligatures;
+    font-variant-ligatures: common-ligatures;
+
+    -webkit-font-feature-settings: "kern";
+    -moz-font-feature-settings: "kern";
+    font-feature-settings: "kern";
+    font-kerning: normal;
+}
+.font-fail {
+    font-family: sans-serif;
+}
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+hr {
+    margin-left: 0;
+    border: 1px solid #7d7fa8;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+a:hover {
+    text-decoration: underline;
+}
+.date {
+    font-size: smaller;
+    color: $light-text-color;
+}
+
+/* ========== */
+/*  Body      */
+/* ========== */
+
+body {
+    font-family: 'Raleway';
+
+    @include display(flex);
+    @include flex-direction(column);
+
+    padding-left: 5vw;
+    font-size: 1.2em;
+    min-height: 100vh;
+    color: $body-text-color;
+    background-color: $body-back-color;
+}
+main {
+    position: relative;
+    min-width: 45ex;
+    max-width: 65ex;
+    padding-right: 5vw;
+    margin: 2ex 0;
+
+    @include flex(1);
+}
+
+/* ========== */
+/*  Header    */
+/* ========== */
+
+header {
+    @include order(-3);
+
+    min-width: 45ex;
+    max-width: 65ex;
+
+    > hr {
+        margin-bottom: 0;
+    }
+    > h1 {
+        margin: 0.5ex 0ex;
+        display: inline;
+    }
+    > span {
+        margin: 1ex;
+    }
+}
+
+/* ========== */
+/*  Home      */
+/* ========== */
+
+.teasers {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    > hr {
+        width: 45ex;
+    }
+}
+.teaser {
+    .noted {
+        background-color: inherit;
+        &::after {
+            content: "";
+        }
+    }
+    .sidenote {
+        display: none;
+    }
+}
+
+/* ========== */
+/*  Archive   */
+/* ========== */
+
+.posts > dt {
+        margin-top: 1ex;
+}
+
+/* ========== */
+/*  Notes     */
+/* ========== */
+
+.noted {
+    background-color: $note-back-color;
+}
+.sidenote::first-letter {
+    background-color: $note-back-color;
+}
+#warnings {
+   top: 0;
+   &::first-letter {
+       background-color: inherit;
+   }
+   > ul {
+       margin: 0;
+       padding-left: 2ex;
+       list-style-type: none;
+   }
+}
+details > p {
+    margin: 0;
+    padding-left: 1ex;
+}
+
+/* ========== */
+/*  Nav       */
+/* ========== */
+
+nav > ul {
+    padding: 0;
+    list-style-type: none;
+    @include display(flex);
+}
+.main-menu > nav > ul {
+    margin: 1ex 0;
+    @include justify-content(space-between);
+}
+.pagination {
+    font-size: larger;
+    > ul {
+        margin: 0 0 0 -2ex;
+        > li {
+            margin: 1ex 2ex;
+        }
+    }
+}
+.tags > ul {
+    margin: 0;
+    font-size: smaller;
+    > li~li::before {
+        content: "—";
+        color: $light-text-color;
+    }
+}
+#tag-cloud {
+    margin-top: 1ex;
+}
+.pagination > ul > li > a,
+.tags > ul > li > a,
+#tag-cloud > a {
+    /* value 6 5 */
+    color: $light-text-color;
+    transition: color 0.3s ease;
+    &:hover {
+        color: $body-text-color;
+        text-decoration: none;
+    }
+}
+.main-menu {
+    min-width: 45ex;
+    max-width: 65ex;
+}
+.main-menu.top {
+    @include order(-2);
+}
+.pagination.top {
+    @include order(-1);
+}
+.inactive {
+    color: $inactive-color;
+}
