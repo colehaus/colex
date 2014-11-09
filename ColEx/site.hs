@@ -2,13 +2,11 @@
 {-# LANGUAGE OverloadedStrings #-}
 import           Control.Arrow       ((***))
 import           Data.Functor        ((<$>))
-import           Data.List           (stripPrefix)
 import qualified Data.Map            as M
 import           Data.Monoid         (mconcat, mempty, (<>))
 import           System.FilePath
 
 import           Hakyll
-import           Text.Parsec
 import           Text.Regex          (mkRegex, subRegex)
 
 
@@ -26,9 +24,7 @@ main = hakyll $ do
                                   defaultContext in
               makeItem mempty >>=
               loadAndApplyTemplate "templates/tag.html" ctx >>=
-              loadAndApplyTemplate "templates/default.html" ctx >>=
-              relativizeUrls >>=
-              deIndexUrls
+              finish
   create ["tags/index.html"] $ do
     route idRoute
     compile $ do
@@ -39,11 +35,9 @@ main = hakyll $ do
                 defaultContext
       makeItem mempty >>=
         loadAndApplyTemplate "templates/tags.html" ctx >>=
-        loadAndApplyTemplate "templates/default.html" ctx >>=
-        relativizeUrls >>=
-        deIndexUrls
+        finish
 
-  pages <- buildPaginateWith ((paginateOverflow 2 <$>) . sortChronological)
+  pages <- buildPaginateWith ((paginateOverflow 5 <$>) . sortChronological)
                             "posts/*"
                             (\n -> (fromCapture (fromGlob "posts/page/*/index.html") $ show n))
   paginateRules pages $ \n pat -> do
@@ -61,9 +55,7 @@ main = hakyll $ do
                         defaultContext in
               makeItem mempty >>=
               loadAndApplyTemplate "templates/index.html" ctx >>=
-              loadAndApplyTemplate "templates/default.html" ctx >>=
-              relativizeUrls >>=
-              deIndexUrls
+              finish
   create ["index.html"] $ do
     route idRoute
     compile $ (load $ paginateLastPage pages :: Compiler (Item String)) >>= makeItem . itemBody
@@ -75,10 +67,8 @@ main = hakyll $ do
       compile $ getResourceBody >>=
         (renderPandoc . (sidenotes <$>) <$>) . saveSnapshot "feed" >>=
         saveSnapshot "teaser" >>=
-        loadAndApplyTemplate "templates/post.html" (tagsCtx tags <> postCtx) >>=
-        loadAndApplyTemplate "templates/default.html" (tagsCtx tags <> postCtx) >>=
-        relativizeUrls >>=
-        deIndexUrls
+        loadAndApplyTemplate "templates/post.html" (jsCtx <> cssCtx <> tagsCtx tags <> postCtx) >>=
+        finish
 
   create ["archive"] $ do
       route $ constRoute "posts/index.html"
@@ -90,46 +80,48 @@ main = hakyll $ do
                           defaultContext in
                 makeItem mempty >>=
                 loadAndApplyTemplate "templates/archive.html" ctx >>=
-                loadAndApplyTemplate "templates/default.html" ctx >>=
-                relativizeUrls >>=
-                deIndexUrls
+                finish
 
+  let feedRender f = loadAllSnapshots "posts/*" "feed" >>= (take 10 <$>) . recentFirst >>=
+                     f feedConf (postCtx <> bodyField "description")
   create ["atom"] $ do
     route $ constRoute "posts/feed/atom.xml"
-    compile $ let feedCtx = postCtx <> bodyField "description" in
-              loadAllSnapshots "posts/*" "feed" >>= (take 10 <$>) . recentFirst >>=
-              renderAtom feedConf feedCtx
+    compile $ feedRender renderAtom
   create ["rss"] $ do
     route $ constRoute "posts/feed/rss.xml"
-    compile $ let feedCtx = postCtx <> bodyField "description" in
-              loadAllSnapshots "posts/*" "feed" >>= (take 10 <$>) . recentFirst >>=
-              renderRss feedConf feedCtx
-
+    compile $ feedRender renderRss
 
   match "templates/*" $ compile templateCompiler
   match "images/*" $ do
       route idRoute
       compile copyFileCompiler
-  match "css/*" $ compile getResourceBody
-  create ["combined.css"] $ do
+  match "css/default/*.css" $ compile getResourceBody
+  create ["css/default.css"] $ do
     route idRoute
-    compile $ loadAll "css/*.css" >>= makeItem . compressCss . concatMap itemBody
-  match "js/*" $ compile getResourceBody
-  create ["combined.js"] $ do
+    compile $ loadAll "css/default/*.css" >>= makeItem . compressCss . concatMap itemBody
+  match "css/*.css" $ do
     route idRoute
-    compile $ loadAll "js/*" >>= makeItem . compressJs . concatMap itemBody
+    compile copyFileCompiler
+  match "js/default/*.js" $ compile getResourceBody
+  create ["js/default.js"] $ do
+    route idRoute
+    compile $ loadAll "js/default/*.js" >>= makeItem . compressJs . concatMap itemBody
+  match "js/*.js" $ do
+    route idRoute
+    compile copyFileCompiler
+
+finish :: Item String -> Compiler (Item String)
+finish x = loadAndApplyTemplate "templates/default.html" postCtx x >>=
+           ((replaceAll "index.html" (const mempty) <$>) <$>) . relativizeUrls
 
 --TODO: Actual js compressor
 compressJs :: String -> String
 compressJs = id
 
-deIndexUrls :: Item String -> Compiler (Item String)
-deIndexUrls = return . (replaceAll "index.html" (const mempty) <$>) where
-
 postCtx :: Context String
-postCtx =
-    dateField "date" "%B %e, %Y" <>
-    defaultContext
+postCtx = dateField "date" "%B %e, %Y" <>
+          dateField "num-date" "%F" <>
+          defaultContext
 
 paginateOverflow :: Int -> [a] -> [[a]]
 paginateOverflow low xs =
@@ -143,10 +135,21 @@ paginateLastPage pg = paginateMakeId pg $ paginateNumPages pg where
   paginateNumPages :: Paginate -> Int
   paginateNumPages = M.size . paginateMap
 
+listFieldWith' :: String -> Context a -> (Identifier -> Compiler [a]) -> Context b
+listFieldWith' k ctx f = listFieldWith k ctx ((mapM makeItem =<<) . f . itemIdentifier)
+
+jsCtx :: Context String
+jsCtx = listFieldWith' "jses" fileNameCtx (getListMeta "js")
+cssCtx :: Context String
+cssCtx = listFieldWith' "csses" fileNameCtx (getListMeta "css")
+fileNameCtx :: Context String
+fileNameCtx = field "filename" $ return . itemBody
+getListMeta :: MonadMetadata m => String -> Identifier -> m [String]
+getListMeta k ident = return . maybe [] (map trim . splitAll ",") . M.lookup k =<<
+                      getMetadata ident
+
 tagsCtx :: Tags -> Context String
-tagsCtx tags = listFieldWith "tags"
-                        tagCtx
-                        ((mapM makeItem =<<) . getTags . itemIdentifier) where
+tagsCtx tags = listFieldWith' "tags" tagCtx getTags where
   tagCtx = (field "tag-name" $ return . itemBody) <>
            (field "tag-url" $ return . toUrl . toFilePath . (tagsMakeId tags) . itemBody)
 

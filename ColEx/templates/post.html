@@ -1,7 +1,12 @@
+$for(csses)$
+  <link rel="stylesheet" type="text/css" href="/css/$filename$.css" />
+$endfor$
+</head>
+<body>
 <main><article>
   <h2>$title$</h2>
   $partial("templates/tag-nav.html")$
-  <span class="date">Published on <time datetime="$date$">$date$</time>.</span>
+  <span class="date">Published on <time datetime="$num-date$">$date$</time>.</span>
   $if(edited)$
     <br><span class="date">Last edited on <time datetime="$date$">$date$</time>.</span>
   $endif$
@@ -16,3 +21,9 @@
     </ul></aside>
   $endif$
 </article></main>
+
+$partial("templates/bottom.html")$
+
+$for(jses)$
+<script type="text/javascript" src="$filename$"></script>
+$endfor$

@@ -6,6 +6,7 @@ ColEx/dist
 ColEx/site
 ColEx/site.hi
 ColEx/site.o
-ColEx/css/site.css
+ColEx/css/default/site.css
+ColEx/css/*.css
 **/dist/
 sandbox/

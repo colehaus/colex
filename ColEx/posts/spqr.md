@@ -3,6 +3,8 @@ title: S.P.Q.R.
 published: 2012-08-12
 edited: 2013-08-12
 tags: baz, bar, meta
+css: foo, bar
+js: baz
 ---
 
 Mauris in lorem nisl. Maecenas tempus facilisis ante, eget viverra nisl
@@ -38,14 +40,14 @@ pellentesque fermentum.
 
 Foo
 
-::  Definition
+:  Definition
 
     oeulch
-    ::  ealche eulrch
+    :  ealche eulrch
 
 Bar
 
-::  Continued
+:  Continued
 
 Ut diam nunc, consectetur ut ultrices eu, iaculis sed felis. Sed lacinia, odio
 et accumsan luctus, arcu ipsum accumsan erat, sit amet malesuada libero lacus et
