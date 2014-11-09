@@ -1,0 +1,52 @@
+@import 'default/colors';
+
+th {
+    font-size: smaller;
+}
+col {
+    &:first-of-type {
+        min-width: 8ex;
+    }
+    &:nth-of-type(n+2) {
+        width: 50%;
+    }
+}
+#best > tbody > tr {
+    > td {
+        padding: 1ex;
+    }
+    &.double-plot > td {
+        padding: 0;
+    }
+    > td > figure {
+        display: inline-block;
+        min-height: 20ex;
+        min-width: 22ex;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+    }
+    > td[colspan="2"] > figure {
+        min-height: 40ex;
+    }
+}
+#data1, #data2 {
+    width: 100%;
+    background-color: $body-back-alt-color;
+    resize: none;
+    height: 25ex;
+    font-family: monospace;
+    font-size: smaller;
+}
+.legend, .flot-tick-label {
+    font-size: smaller;
+}
+.legendLabel {
+    padding: 0.5ex;
+}
+.output {
+    display: none;
+}
+/* .detail { */
+/*     display: none; */
+/* } */
