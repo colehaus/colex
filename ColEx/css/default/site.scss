@@ -5,6 +5,8 @@
 /*  General   */
 /* ========== */
 
+$overlay-dur: 1s;
+
 html,
 button,
 body,
@@ -53,14 +55,34 @@ a:hover {
 body {
     font-family: 'Raleway';
 
-    @include display(flex);
-    @include flex-direction(column);
 
     padding-left: 5vw;
     font-size: 1.2em;
     min-height: 100vh;
     color: $body-text-color;
     background-color: $body-back-color;
+}
+#underlay {
+    @include display(flex);
+    @include flex-direction(column);
+    transition: $overlay-dur;
+}
+#underlay.inactive {
+    -webkit-filter: blur(5px);
+    filter: blur(5px);
+    filter: url(/images/blur.svg#blur);
+}
+#overlay {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: $body-back-color;
+    opacity: 0.5;
+}
+#overlay.inactive {
+    display: none;
 }
 main {
     position: relative;
@@ -190,7 +212,7 @@ nav > ul {
 #tag-cloud > a {
     /* value 6 5 */
     color: $light-text-color;
-    transition: color 0.3s ease;
+    transition: color 0.3s;
     &:hover {
         color: $body-text-color;
         text-decoration: none;
@@ -206,6 +228,6 @@ nav > ul {
 .pagination.top {
     @include order(-1);
 }
-.inactive {
+nav > ul > li.inactive {
     color: $inactive-color;
 }

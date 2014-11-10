@@ -13,7 +13,7 @@ import           Text.Regex          (mkRegex, subRegex)
 --------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
-  tags <- buildTags "posts/*" (fromCapture "posts/tag/*/index.html")
+  tags <- buildTags postPat (fromCapture "posts/tag/*/index.html")
   tagsRules tags $ \tag pat -> do
     route idRoute
     compile $ let ctx = constField "title" ("Tagged " <> tag) <>
@@ -38,7 +38,7 @@ main = hakyll $ do
         finish
 
   pages <- buildPaginateWith ((paginateOverflow 5 <$>) . sortChronological)
-                            "posts/*"
+                            postPat
                             (\n -> (fromCapture (fromGlob "posts/page/*/index.html") $ show n))
   paginateRules pages $ \n pat -> do
     route idRoute
@@ -60,14 +60,17 @@ main = hakyll $ do
     route idRoute
     compile $ (load $ paginateLastPage pages :: Compiler (Item String)) >>= makeItem . itemBody
 
-  match "posts/*" $ do
+  match overPat $ compile pandocCompiler
+  match warnPat $ compile getResourceBody
+  match postPat $ do
       route . customRoute $ \ident -> "posts/" <>
-                                     (takeBaseName . toFilePath) ident <>
+                                     (takeBaseName . takeDirectory . toFilePath) ident <>
                                      "/index.html"
-      compile $ getResourceBody >>=
+      compile $ let ctx = warnCtx <> overCtx <> jsCtx <> cssCtx <> tagsCtx tags <> postCtx in
+        getResourceBody >>=
         (renderPandoc . (sidenotes <$>) <$>) . saveSnapshot "feed" >>=
         saveSnapshot "teaser" >>=
-        loadAndApplyTemplate "templates/post.html" (jsCtx <> cssCtx <> tagsCtx tags <> postCtx) >>=
+        loadAndApplyTemplate "templates/post.html" ctx >>=
         finish
 
   create ["archive"] $ do
@@ -76,13 +79,13 @@ main = hakyll $ do
                           constField "archive-page" mempty <>
                           listField "posts"
                                     (tagsCtx tags <> postCtx)
-                                    (recentFirst =<< loadAll "posts/*") <>
+                                    (recentFirst =<< loadAll postPat) <>
                           defaultContext in
                 makeItem mempty >>=
                 loadAndApplyTemplate "templates/archive.html" ctx >>=
                 finish
 
-  let feedRender f = loadAllSnapshots "posts/*" "feed" >>= (take 10 <$>) . recentFirst >>=
+  let feedRender f = loadAllSnapshots postPat "feed" >>= (take 10 <$>) . recentFirst >>=
                      f feedConf (postCtx <> bodyField "description")
   create ["atom"] $ do
     route $ constRoute "posts/feed/atom.xml"
@@ -109,6 +112,13 @@ main = hakyll $ do
   match "js/*.js" $ do
     route idRoute
     compile copyFileCompiler
+
+postPat :: Pattern
+postPat = "posts/*/main.md"
+overPat :: Pattern
+overPat = "posts/*/overlay.md"
+warnPat :: Pattern
+warnPat = "posts/*/warnings.md"
 
 finish :: Item String -> Compiler (Item String)
 finish x = loadAndApplyTemplate "templates/default.html" postCtx x >>=
@@ -137,6 +147,20 @@ paginateLastPage pg = paginateMakeId pg $ paginateNumPages pg where
 
 listFieldWith' :: String -> Context a -> (Identifier -> Compiler [a]) -> Context b
 listFieldWith' k ctx f = listFieldWith k ctx ((mapM makeItem =<<) . f . itemIdentifier)
+
+overCtx :: Context String
+overCtx = field "overlay" (loadBody . fromFilePath . (<> "/overlay.md") . takeDirectory . toFilePath . itemIdentifier)
+warnCtx :: Context String
+warnCtx = listFieldWith "warnings"
+                        (details <> summary)
+                        ((mapM makeItem =<<) . (lines <$>) . loadBody .
+                         fromFilePath . (<> "/warnings.md") .
+                         takeDirectory . toFilePath . itemIdentifier) where
+  split g = return . g . break (== '|') . itemBody
+  details = field "details" $ split (tail . snd)
+  summary = field "summary" $ split fst
+
+
 
 jsCtx :: Context String
 jsCtx = listFieldWith' "jses" fileNameCtx (getListMeta "js")
