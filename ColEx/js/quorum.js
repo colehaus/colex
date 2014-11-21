@@ -1,105 +1,305 @@
-var burn_timeout_id;
-var sample_timeout_id;
-var plot_timeout_id;
+/* @flow */
+$(function() {
+'use strict';
 
-function run_BEST(y1, y2) {
-    var n_samples = 20000;
-    var n_burnin = 20000;
-    var plot_count = 0;
-    var update_mod = 32;
+var plotOptions = { font: { size: 8 }
+                  , shadowSize: 0
+                  , yaxis: { tickLength: 5 }
+                  , xaxis: { tickLength: 5 }
+                  , legend: { backgroundColor: 'rgba(0, 0, 0, 0)'
+                            , color: colors.bodyText }
+                  , grid: { backgroundColor: null
+                          , color: colors.bodyText
+                          }
+                  , colors: colors.chroma.slice(1)
+                  };
+var interval = [-1, 1];
 
-    var data_calc = function(p) {
-        return [jStat.beta.mean(p[0], p[2]) - jStat.beta.mean(p[1], p[3])];
-    };
-    var burn_asynch = function(n) {
-        $('progress').attr('value', 1 - 500 * n / n_burnin );
-        sampler.burn(500);
+var plotMcmcHist = function (jq, paramData, conf, preds) {
+    var plotOpts = $.extend(true, {}, plotOptions);
+    var data = [];
+    if (conf.log === true) {
+        var logTrans = { ticks: [0, 0.01, 0.1, 1, 10, 100]
+                       , transform: function (v) { return Math.log(v + 0.001); }
+                       , inverseTransform: function (v) { return Math.exp(v); }
+                       , tickDecimals: 2
+                       };
+        $.extend(plotOpts.xaxis, logTrans);
+        $.extend(plotOpts.yaxis, logTrans);
+    }
 
-        if(n > 0) {
-            burn_timeout_id = setTimeout(function() {burn_asynch(n - 1);}, 0);
+    var lims = function(l) {
+        if (conf.log === true) {
+            return { min: l[0] / 2
+                   , max: l[1] * 2
+                   };
         } else {
-            sample_timeout_id = sampler.n_samples_asynch(n_samples, 50);
-            plot_count = 0;
-            $('.output').css('display', 'table-row');
-            plot_asynch();
+            return { min: l[0]
+                   , max: l[1]
+                   };
         }
     };
-    var plot_asynch = function() {
-        var plot_start_time = new Date();
-        if (plot_count % update_mod === 0) { show_result(); }
-        plot_count++;
-        var plot_time = (new Date()) - plot_start_time;
+    if (typeof conf.xlims === 'object' && conf.xlims !== null) {
+        $.extend(plotOpts.xaxis, lims(conf.xlims));
+    }
+    if (typeof conf.ylims === 'object' && conf.ylims !== null) {
+        $.extend(plotOpts.yaxis, lims(conf.ylims));
+    }
 
-        if(sampler.running_asynch) {
-            $('progress').attr('value', 1 - sampler.samples_left / n_samples);
-            plot_timeout_id = setTimeout(plot_asynch, plot_time);
-        } else {
-            $('progress').attr('value', 1);
-            show_result();
-            var chain = sampler.get_chain();
-            input_graph.apply(this, post_pred(chain));
+    var l = (preds || []).length || 0;
+    if (l !== 0) {
+        preds.forEach(function(pred) {
+            data.push({ data: pred
+                        // chroma[0] with alpha
+                       , color: 'rgba(165, 170, 204, 0.7)'
+                      // , color: 'rgba(215, 214, 230, 0.5)'
+                      });
+        });
+        data[0].label = 'Posterior Prediction';
+    }
+    if (paramData.length !== 0) {
+        var barData = plot.histogramCounts(paramData);
+        var width = barData.length > 1 ? barData[1][0] - barData[0][0] : 0.05;
+        data.push({ data: barData
+                  , bars: { show: true
+                          , align: "center"
+                          , barWidth: width
+                          }
+                  , color: 1
+                  });
+    }
+
+    var percSmallerLarger = function (comp, data) {
+        var percLarger = jStat.mean(jStat.map(data, function(x) {
+            return x >= comp ? 1 : 0;
+        }));
+        return [1 - percLarger, percLarger];
+    };
+    if (typeof conf.compValue === 'number') {
+        var compPerc = percSmallerLarger(conf.compValue, paramData);
+        data.push({ data: [[conf.compValue, 0], [conf.compValue, Infinity]]
+                  , label: "" + (compPerc[0] * 100).toPrecision(3) + "% < " +
+                           conf.compValue + " < " + (compPerc[1] * 100).toPrecision(3) + "%"
+                  , lines: { lineWidth: 2 }
+                  , color: 2
+                  });
+    }
+
+    var boundedI = function (c, x) {
+        var l = x.length;
+        x = x.sort(function(a, b){ return a - b; });
+        var nbrPoints = Math.floor(x.length * c);
+        var upper = [x[l - 1 - nbrPoints], interval[1]];
+        var lower = [interval[0], x[nbrPoints]];
+        return -upper[0] < lower[1] ? upper : lower;
+    };
+    var HDI = function (c, x) {
+        x = x.sort(function(a, b){ return a - b; });
+        var nbrPoints = Math.floor(x.length * c);
+        var minWidth = [jStat.min(x), jStat.max(x)];
+        for(var i = 0, l = x.length - nbrPoints; i < l; i++) {
+            var width = x[i + nbrPoints] - x[i];
+            if (width < minWidth[1] - minWidth[0]) {
+                minWidth = [x[i], x[i + nbrPoints]];
+            }
         }
+        return minWidth;
     };
-    var show_result = function() {
-        var chain = sampler.get_chain();
-        plot_mcmc_hist($("#diff"), param_chain(chain, 4), true, 0);
-
-        var m1 = param_chain(chain, 0);
-        var m2 = param_chain(chain, 1);
-        var s1 = param_chain(chain, 2);
-        var s2 = param_chain(chain, 3);
-        var xlims = x_lims([m1, m2, s1, s2]);
-        var ylims = y_hist_lims([m1, m2, s1, s2]);
-        plot_mcmc_hist($("#mean1"), m1, true, null, [xlims, ylims], true);
-        plot_mcmc_hist($("#mean2"), m2, true, null, [xlims, ylims], true);
-        plot_mcmc_hist($("#sd1"), s1, true, null,  [xlims, ylims], true);
-        plot_mcmc_hist($("#sd2"), s2, true, null, [xlims, ylims], true);
-    };
-    window.clearTimeout(burn_timeout_id);
-    window.clearTimeout(sample_timeout_id);
-    window.clearTimeout(plot_timeout_id);
-    $("#best button").html('Restart');
-
-    var sampler = new amwg( [1, 1, 1, 1]
-                          , make_BEST_posterior_func(y1, y2)
-                          , data_calc);
-    burn_asynch(Math.ceil(n_burnin /  500));
+    if (typeof conf.di !== 'undefined' && conf.di !== null) {
+        var intervAdd = function(c, di) {
+            data.push({ data: [ [di[0], plot.getHeight(di[0] === interval[0] ? di[1] : di[0], barData)]
+                              , [di[1], plot.getHeight(di[1] === interval[1] ? di[0] : di[1], barData)]
+                              ]
+                      , label: c.toPrecision(2).slice(2) + '% ' + conf.di + ' ('+
+                               di[0].toPrecision(3) + ', ' + di[1].toPrecision(3) +')'
+                      , lines: { lineWidth: 5 }
+                      , color: 3
+                      });
+        };
+        if (conf.di === 'BI') {
+            [0.95, 0.99].forEach(function(c) {
+                var di = boundedI(c, paramData);
+                intervAdd(c, di);
+            });
+        } else {
+            [0.95].forEach(function(c) {
+                var di = HDI(c, paramData);
+                intervAdd(c, di);
+            });
+        }
+    }
+    if (typeof paramData.length !== 'undefined' && paramData.length !== 0) {
+        var mean = jStat.mean(paramData);
+        data.push({ data: [[mean, 0]]
+                  , label: 'Mean: ' + mean.toPrecision(3)
+                  , points: { show: true }
+                  , color: 4
+                  });
+    }
+    return $.plot(jq, data, plotOpts);
 };
 
-var empty_plots = function() {
-    plot_mcmc_hist($("#diff"), []);
-    plot_mcmc_hist($("#mean1"), []);
-    plot_mcmc_hist($("#mean2"), []);
-    plot_mcmc_hist($("#sd1"), []);
-    plot_mcmc_hist($("#sd2"), []);
+var best = function(ds) {
+    var showResult = function(chain) {
+        inputGraph(mcmc.posterior_predictive_check(chain));
+        progress(0.925);
+
+        $('#stat-out').show();
+        plotMcmcHist( $("#mean > div")
+                    , plot.twoDArrayCol(chain, 2)
+                    , {di: 'BI', comp: 0, xlims: [-1, 1]}
+                    );
+        progress(0.95);
+
+        var a = plot.twoDArrayCol(chain, 0);
+        var b = plot.twoDArrayCol(chain, 1);
+        var xlims = plot.xLims([a, b]);
+        var ylims = plot.yHistLims([a, b]);
+        plotMcmcHist($("#alpha > div"), a, { di: 'HDI', xlims: xlims, ylims: ylims, log: true });
+        progress(0.975);
+        plotMcmcHist($("#beta > div"), b, { di: 'HDI', xlims: xlims, ylims: ylims, log: true });
+        progress(1);
+    };
+    var progress = function(x) {
+        $('progress').attr('value', x);
+    };
+
+    $(".analyze").html('Re-analyze');
+    mcmc.run_BEST(ds, 20000, 20000, progress, showResult);
 };
 
-var get_data = function() {
-    try {
-        var y1 = string_to_num_array($("#data1").val());
-        var y2 = string_to_num_array($("#data2").val());
-        return [y1, y2];
-    } catch(err) {
-        console.log("ERROR: Data not supplied for both groups or not formatted correctly.\n");
+var freq = function(ds) {
+    var l = ds.length;
+    var dof = l - 1;
+    if (l < 30) {
+        alert('We need at least 30 votes for this calculation. You need at least ' + (30 - l) + ' more.');
         return undefined;
     }
-};
 
-var input_graph = function(pred1_, pred2_) {
-    var pred1 = pred1_ || [];
-    var pred2 = pred2_ || [];
-    var d = get_data();
-    var ylims = y_hist_lims(d);
-    plot_mcmc_hist($('#preview1'), d[0], false, null, [[0, 1], ylims], false, pred1);
-    plot_mcmc_hist($('#preview2'), d[1], false, null, [[0, 1], ylims], false, pred2);
-};
-
-$(function() {
-    $("#best button").click(function() {
-        var d = get_data();
-        if (typeof d === 'object') { run_BEST(d[0], d[1]); }
+    var mean = jStat.mean(ds);
+    var stdev = jStat.stdev(ds);
+    var cis = plot.sampleFunc(-1, 1, function(mu) {
+        return jStat.studentt.pdf((mean - mu) / stdev * Math.sqrt(l), dof);
     });
+    var ci = function(conf) {
+        var bound = jStat.studentt.inv(conf, dof) * stdev / Math.sqrt(l);
+        var y = jStat.studentt.pdf(jStat.studentt.inv(conf, dof), dof);
+        if (mean > 0) {
+            return [y, mean - bound, Infinity];
+        } else {
+            return [y, -Infinity, mean + bound];
+        }
+    };
+    var data = [{data: cis
+               , lines: { show: true }
+               , color: 1
+               },{
+                 data: [[mean, 0]]
+               , label: "Mean: " + mean.toPrecision(3)
+               , points: { show: true }
+               , color: 4
+               }];
+    [0.95, 0.99].forEach(function(conf) {
+        var bs = ci(conf);
+        var y = bs[0];
+        var lb = bs[1];
+        var ub = bs[2];
+        data.push({ data: [[lb, y], [ub, y]]
+                  , label: conf.toPrecision(2).slice(2) + "% CI ("+
+                           lb.toPrecision(3) + ", " + ub.toPrecision(3) +")"
+                  , lines: { lineWidth: 5 }
+                  , color: 3
+                  });
+    });
+    $('#stat-out').show();
+    $.plot($('#freq > div'), data, plotOptions);
+    $('progress').attr('value', 1);
+};
 
-    input_graph();
-    $("#best textarea").on('input propertychange', input_graph);
+var getData = function(check) {
+    var stringToNums = function (s) {
+        s = s.replace(/[^-1234567890.]+$/, '').replace(/^[^-1234567890.]+/, '');
+        return jStat.map(s.split(/[^-1234567890.]+/), function(x) {
+            var f = parseFloat(x);
+            if (isNaN(f)) {
+                throw "NaN";
+            }
+            // If we let in 0 or 1, we end up taking log(0) later
+            var eps = 0.001;
+            if (f <= 0) {
+                return eps;
+            }
+            if (f >= 1) {
+                return 1 - eps;
+            }
+            return f;
+        });
+    };
+
+    try {
+        var y1 = stringToNums($("#data1").val());
+        var y2 = stringToNums($("#data2").val());
+    } catch(err) {
+        alert("ERROR: Data not supplied for both groups or not formatted correctly.");
+        return;
+    }
+    var dif = y2.length - y1.length;
+    if (dif !== 0 && check === true) {
+        var err = " Since we're supposed to pair data, that's bad.";
+        if (dif > 0) {
+            alert("You have " + dif + " more data points for Proposal 2 than for Proposal 1." + err);
+            return;
+        } else {
+            alert("You have " + -dif + " more data points for Proposal 1 than for Proposal 2." + err);
+            return;
+        }
+    }
+    var ds = [];
+    var l = Math.min(y1.length, y2.length);
+    for (var i = 0; i < l; i++) {
+        ds.push(y2[i] - y1[i]);
+    }
+    return [y1, y2, ds];
+};
+
+var inputGraph = function(pred) {
+    var ys = getData();
+    if (typeof ys === 'undefined') { return; }
+    var ylims = plot.yHistLims(ys);
+    plotMcmcHist($('#preview1 > div'), ys[0], { xlims: [0, 1], ylims: ylims });
+    plotMcmcHist($('#preview2 > div'), ys[1], { xlims: [0, 1], ylims: ylims });
+    plotMcmcHist($('#diff > div'), ys[2], { xlims: [-1, 1] }, pred);
+};
+
+$(".act > .analyze").click(function() {
+    var d = getData(true);
+    if (typeof d === 'undefined') { return; }
+    if ($('#best').closest('li').hasClass('open')) {
+        best(d[2]);
+    } else {
+        freq(d[2]);
+    }
+});
+inputGraph();
+$(".preview").click(inputGraph);
+
+(function() {
+    var plotOpts = { grid: { show: false }
+                   , colors: [colors.value[3]]
+                   };
+
+    $.plot($('#non-norm'),
+           [{ bars: { show: true }
+           , data: [[-2, 4], [-1, 1], [0, 0], [1, 1], [2, 4]]
+           }], plotOpts);
+    $.plot($('#sym1'),
+           [{ bars: { show: true }
+           , data: [[-2, 1], [-1, 0], [0, 0], [1, 2], [2, 0]]
+           }], plotOpts);
+    $.plot($('#sym2'),
+           [{ bars: { show: true }
+           , data: [[-2, 0], [-1, 0], [0, 3], [1, 0], [2, 0]]
+           }], plotOpts);
+})();
+
 });
