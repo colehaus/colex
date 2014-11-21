@@ -7,6 +7,8 @@ ColEx/site
 ColEx/site.hi
 ColEx/site.o
 ColEx/css/default/site.css
+ColEx/css/default/tree.css
+ColEx/css/default/sidenote.css
 ColEx/css/*.css
 ColEx/.cabal-sandbox
 **/dist/

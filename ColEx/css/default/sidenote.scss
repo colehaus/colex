@@ -1,0 +1,23 @@
+@import 'colors';
+
+.noted {
+    background-color: $note-back-color;
+}
+.sidenote > *:first-child::first-letter {
+    background-color: $note-back-color;
+}
+.noted::after {
+    content: " ↪";
+}
+.sidenote {
+    position: absolute;
+    right: -25ex;
+    margin-bottom: 2ex;
+    width: 30ex;
+    font-weight: 300;
+    font-size: smaller;
+}
+.sidenote > p {
+    margin: 0;
+    padding: 0;
+}

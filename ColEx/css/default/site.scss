@@ -13,6 +13,8 @@ body,
 input,
 select,
 textarea {
+    font-family: 'Open Sans';
+
     -webkit-hyphens: auto;
     -moz-hyphens: auto;
     hyphens: auto;
@@ -29,19 +31,24 @@ textarea {
 .font-fail {
     font-family: sans-serif;
 }
-h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-}
-hr {
-    margin-left: 0;
-    border: 1px solid #7d7fa8;
-}
 a {
     text-decoration: none;
     color: inherit;
 }
 a:hover {
-    text-decoration: underline;
+    border-bottom: 1px solid $body-text-color;
+}
+article a {
+    border-bottom: 1px dashed $body-text-color;
+}
+h1, h2, h3, h4, h5, h6 {
+    > a {
+        border-bottom: none;
+    }
+}
+hr {
+    margin-left: 0;
+    border: 1px solid $light-text-color;
 }
 .date {
     font-size: smaller;
@@ -53,19 +60,17 @@ a:hover {
 /* ========== */
 
 body {
-    font-family: 'Raleway';
-
+    font-size: 1.2em;
 
     padding-left: 5vw;
-    font-size: 1.2em;
-    min-height: 100vh;
     color: $body-text-color;
     background-color: $body-back-color;
 }
 #underlay {
+    min-height: 100vh;
     @include display(flex);
     @include flex-direction(column);
-    transition: $overlay-dur;
+    transition: -webkit-filter $overlay-dur, filter $overlay-dur;
 }
 #underlay.inactive {
     -webkit-filter: blur(5px);
@@ -125,7 +130,7 @@ header {
     padding: 0;
     list-style-type: none;
     > hr {
-        width: 45ex;
+        width: 60%;
     }
 }
 .teaser {
@@ -149,15 +154,9 @@ header {
 }
 
 /* ========== */
-/*  Notes     */
+/*  Warnigs   */
 /* ========== */
 
-.noted {
-    background-color: $note-back-color;
-}
-.sidenote::first-letter {
-    background-color: $note-back-color;
-}
 #warnings {
    top: 0;
    &::first-letter {
@@ -186,6 +185,13 @@ nav > ul {
 .main-menu > nav > ul {
     margin: 1ex 0;
     @include justify-content(space-between);
+    > li > a {
+        transition: color 0.3s;
+        &:hover {
+            border: none;
+            color: $inactive-color;
+        }
+    }
 }
 .pagination {
     font-size: larger;
@@ -210,6 +216,7 @@ nav > ul {
 .pagination > ul > li > a,
 .tags > ul > li > a,
 #tag-cloud > a {
+    border-bottom: none;
     /* value 6 5 */
     color: $light-text-color;
     transition: color 0.3s;
@@ -228,6 +235,35 @@ nav > ul {
 .pagination.top {
     @include order(-1);
 }
+.main-menu.bottom {
+    @include order(1);
+}
 nav > ul > li.inactive {
     color: $inactive-color;
+}
+blockquote {
+    padding-left: 2ex;
+    quotes: "“" "”" "‘" "’";
+    margin: 0;
+}
+.quote::before {
+    content: open-quote;
+    font-size: 6ex;
+    line-height: 0;
+    vertical-align: -0.7ex;
+}
+dd {
+    margin-left: 2ex;
+}
+.abstract {
+    margin: 0 6ex;
+    font-size: smaller;
+}
+.references {
+    font-size: smaller;
+}
+hr.references {
+    /* margin: auto; */
+    width: 60%;
+    /* width: 45ex; */
 }

@@ -1,3 +1,5 @@
+// http://projects.kumpf.cc/projects/MunsellForDesigners/index.html
+
 $colors: (
     hue: (
         #b5bae6,
@@ -25,9 +27,11 @@ $colors: (
     )
 );
 
+$body-back-color: #eee;
+$body-back-alt-color: nth(map-get($colors, value), 1);
 $inactive-color: nth(map-get($colors, value), 3);
 $light-text-color: nth(map-get($colors, value), 4);
 $body-text-color: nth(map-get($colors, value), 5);
-$body-back-color: nth(map-get($colors, value), 1);
-$body-back-alt-color: nth(map-get($colors, value), 2);
-$note-back-color: nth(map-get($colors, hue), 7);
+
+$note-back-color: nth(map-get($colors, hue), 5);
+$menu-color: nth(map-get($colors, hue), 6);

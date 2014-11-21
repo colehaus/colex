@@ -1,40 +1,56 @@
 @import 'default/colors';
+@import 'default/flex-box';
 
-th {
-    font-size: smaller;
-}
-col {
-    &:first-of-type {
-        min-width: 8ex;
-    }
-    &:nth-of-type(n+2) {
-        width: 50%;
-    }
-}
-#best > tbody > tr {
-    > td {
-        padding: 1ex;
-    }
-    &.double-plot > td {
-        padding: 0;
-    }
-    > td > figure {
-        display: inline-block;
-        min-height: 20ex;
-        min-width: 22ex;
-        width: 100%;
-        padding: 0;
+form {
+    figure {
+        figcaption {
+            text-align: center;
+        }
         margin: 0;
+        > div {
+            min-height: 20ex;
+            min-width: 22ex;
+            margin: 0;
+        }
     }
-    > td[colspan="2"] > figure {
-        min-height: 40ex;
+}
+#stat-out {
+    display: none;
+}
+#diff > div, #mean > div, #freq > div {
+        min-height: 30ex;
+}
+.act {
+    @include display(flex);
+    @include justify-content(center);
+    > progress {
+        margin: 1ex;
+        height: 3ex;
+    }
+    > button {
+        margin: 1ex;
+    }
+}
+#kuwa-parms {
+    @include display(flex);
+    > figure {
+        flex: 1 1 0;
+    }
+}
+.data-input {
+    @include display(flex);
+    > div {
+        padding: 0 1ex;
+        flex: 1 1 0;
+        > label {
+            display: block;
+            text-align: center;
+        }
     }
 }
 #data1, #data2 {
     width: 100%;
-    background-color: $body-back-alt-color;
-    resize: none;
-    height: 25ex;
+    height: 23ex;
     font-family: monospace;
     font-size: smaller;
 }
@@ -44,9 +60,26 @@ col {
 .legendLabel {
     padding: 0.5ex;
 }
-.output {
-    display: none;
+.spark {
+    display: inline-block;
+    width: 5ex;
+    height: 2ex;
 }
-/* .detail { */
-/*     display: none; */
-/* } */
+#distrogram {
+    margin: 1ex 0;
+    > img {
+        width: 100%;/* calc(100% - 24ex); */
+    }
+    > figcaption {
+        margin: 0 4ex;
+        font-size: smaller;
+    }
+}
+.bounds {
+    font-size: smaller;
+    tbody > tr {
+        > td, > th {
+            padding: 1ex;
+        }
+    }
+}
