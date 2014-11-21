@@ -1,17 +1,17 @@
 $for(csses)$
   <link rel="stylesheet" type="text/css" href="/css/$filename$.css" />
 $endfor$
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </head>
 <body>
 <div id="underlay">
 <main><article>
-  <h2>$title$</h2>
+  <h2 id="article-title">$title$</h2>
   $partial("templates/tag-nav.html")$
   <span class="date">Published on <time datetime="$num-date$">$date$</time>.</span>
   $if(edited)$
     <br><span class="date">Last edited on <time datetime="$date$">$date$</time>.</span>
   $endif$
-
   $body$
 
   $if(warnings)$
@@ -29,7 +29,6 @@ $if(overlay)$
 <div id="overlay" class="inactive">$overlay$</div>
 $endif$
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 <script type="text/javascript" src="/js/default.js"></script>
 $for(jses)$
 <script type="text/javascript" src="$filename$"></script>
