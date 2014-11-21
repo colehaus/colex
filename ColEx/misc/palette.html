@@ -1,0 +1,74 @@
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+$(function () {
+
+var colors = {
+    hue: [
+        '#8495cc',
+        '#b778cc',
+        '#c57890',
+        '#b9be8f',
+        '#84bea8'
+    ], chroma: [
+        '#a5aacc',
+        '#8496cc',
+        '#5f81cc',
+        '#376bcc',
+        '#0356cc'
+    ], value: [
+        '#a0bbf1',
+        '#8496cc',
+        '#656fa3',
+        '#454874',
+        '#201e3c'
+    ]
+};
+$('body').css('background-color', '#eee');
+[].concat(colors.hue, colors.chroma, colors.value).forEach(function (c) {
+  $('body').append($('<div>' + c + '</div>').css({ width: '100px'
+                                                 , height: '40px'
+                                                 , 'background-color': c
+                                                 }));
+});
+
+var colors =  {
+    hue: [
+        '#b5bae6',
+        '#d1abe6',
+        '#e6abd0',
+        '#e6bcb5',
+        '#dee2b5',
+        '#b5e2b5',
+        '#b5e2df'
+    ],
+    chroma: [
+        '#d7d6e6',
+        '#b5bbe6',
+        '#919fe6',
+        '#6d84e6',
+        '#4769e6',
+        '#1d4de6'
+    ],
+    value: [
+        '#b5bbe6',
+        '#9090b8',
+        '#6b6688',
+        '#443c56',
+        '#18121e'
+    ]
+};
+[].concat(colors.hue, colors.chroma, colors.value).forEach(function (c) {
+  $('body').append($('<div>' + c + '</div>').css({ width: '100px'
+                                                 , height: '40px'
+                                                 , 'background-color': c
+                                                 }));
+});
+
+});
+</script>
+</head>
+<body>
+</body>
+</html>
