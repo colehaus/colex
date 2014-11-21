@@ -1,60 +1,81 @@
+var sidenote = (function($) {
 'use strict';
-$(function() {
 
-var fixNotes = function() {
-    var prevBot = 0;
-    var positionCompare = function (el1, el2){
-        var o1 = $(el1).offset();
-        var o2 = $(el2).offset();
-        if (o1.top === o2.top) {
-            if (o1.left < o2.left) {
-                return -1;
-            }
-            if (o1.left === o2.left) {
-                return 0;
-            }
-            if (o1.left > o2.left) {
-                return 1;
-            }
-        }
-        if (o1.top < o2.top) {
-            return -1;
-        }
-        if (o1.top > o2.top) {
-            return 1;
-        }
-    };
-    var budge = function (_, el_) {
-        var el = $(el_);
-        el.offset(function(_, ofs) {
-            var pofs = el.parent('.noted').offset();
-            if (pofs !== null) {
-                ofs.top = pofs.top;
-            }
-            if (ofs.top < prevBot) {
-                ofs.top = prevBot;
-            }
-            prevBot = ofs.top + ofs.height;
-            return ofs;
-        });
-    };
-
-    var notes = $('.noted').sort(positionCompare).map(function (_, el) {
-        return $(el).children();
-    });
-    if ($('#warnings').length > 0) {
-        $($('#warnings').concat(notes)).each(budge);
+var referrer = function(el) {
+    var id = $(el).find('a').last().attr('href');
+    if (id === undefined) {
+        return [];
     } else {
-        notes.each(budge);
+        return $('[id="'+id.slice(1)+'"]');
     }
 };
 
-$('details').each(function (_, el) {
-    (new MutationObserver (fixNotes)).observe(el, {attributes: true});
-});
-$('body').fontSpy({
-    onFail: 'font-fail',
-    callback: fixNotes
+var fixNotes = function() {
+    var prevBot = 0;
+
+    var budge = function (_, el_) {
+        var el = $(el_);
+        el.offset(function(_, ofs) {
+            var top = ofs.top;
+            var pofs = referrer(el);
+            if (pofs.length !== 0) {
+                top = pofs.prev().offset().top;
+            }
+            if (top < prevBot) {
+                top = prevBot;
+            }
+            prevBot = top + el.outerHeight(true);
+            return {top: top, left: ofs.left};
+        });
+    };
+
+    $('.sidenote').each(budge);
+};
+
+var setNotes = function(n) {
+    var addSidenote = function(el) {
+        //Putting block elements in a <p> auto-closes it
+        var noted = referrer(el).prev();
+        if (noted.is(':visible')) {
+            var p = noted.closest('p');
+            if (p.length !== 0) {
+                noted = p;
+            }
+            noted.before('<aside class="sidenote">' + $(el).html() + '</aside>');
+        }
+    };
+    var delink = function() {
+        $('.noted').next().hide();
+        $('.sidenote').each(function(_, el) {
+            $(el).find('a').last().hide();
+        });
+    };
+
+    $('.sidenote').not('#warnings').remove();
+    $('#article-title').before($('#warnings'));
+    $('.footnotes > ol > li').each(function(_, el) {
+        addSidenote(el);
+    });
+    delink();
+};
+
+$(function() {
+    $('.footnotes').hide();
+    setNotes();
+    $('details').each(function (_, el) {
+        (new MutationObserver (fixNotes)).observe(el, {attributes: true});
+    });
+    $('body').fontSpy({
+        onFail: 'font-fail',
+        callback: fixNotes
+    });
+    MathJax.Hub.Queue(function () {
+        fixNotes();
+    });
 });
 
-});
+return { setNotes: setNotes
+       , fixNotes: fixNotes
+       };
+
+})($);

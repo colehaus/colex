@@ -24,9 +24,12 @@ var colors =  {
         '#18121e'
     ]
 };
-colors.inactive = colors.value[3];
-colors.lightText = colors.value[4];
-colors.bodyText = colors.value[5];
-colors.bodyBack = colors.value[1];
-colors.bodyBackAlt = colors.value[2];
-colors.noteBack = colors.value[7];
+
+colors.bodyBack = '#eee';
+colors.bodyBackAlt = colors.value[0];
+colors.inactive = colors.value[2];
+colors.lightText = colors.value[3];
+colors.bodyText = colors.value[4];
+
+colors.noteBack = colors.hue[4];
+colors.menu = colors.hue[5];

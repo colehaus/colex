@@ -1,3 +1,4 @@
+var menu = (function($) {
 'use strict';
 
 var defaultHandlers = function(el) {
@@ -11,6 +12,9 @@ var defaultHandlers = function(el) {
 
     if (el.attr('type') === 'radio') { radioSelect(); }
     el.parent().remove();
+};
+var getMenu = function(el) {
+    return $('#'+ $(el).closest('[type="menu"]').attr('menu'));
 };
 
 $(function () {
@@ -69,6 +73,20 @@ var buildMenu = function(el) {
 };
 
 var toggleMenu = function(ev) {
+    // Menu shouldn't popup when clicking on interactive element
+    var isInter = [ 'TEXTAREA'
+                  , 'BUTTON'
+                  , 'INPUT'
+                  , 'OPTION'
+                  , 'SELECT'
+                  , 'DETAILS'
+                  , 'SUMMARY'
+                  , 'A'
+                  ].some(function(tg) {
+        return ev.target.nodeName == tg;
+    });
+    if (isInter) { return; }
+
     ev.stopPropagation();
     var isPopup = function(_) {
         var el = $(this);
@@ -80,17 +98,15 @@ var toggleMenu = function(ev) {
         return isMenu && (isSelfPop || typeof pe !== 'undefined' && isPopup(pe));
     };
 
-    var el = $(ev.target).closest('[type="menu"]');
-    var mn = $('#'+el.attr('menu')).filter(isPopup);
+    var mn = getMenu(ev.target).filter(isPopup);
     var ul = mn.children('ul.menu');
+    $('ul.menu').remove();
     if (ul.length === 0) {
         ul = buildMenu(mn);
         ul.children().click(function(ev) {
             defaultHandlers($(ev.target));
         });
         mn.append(ul);
-    } else {
-       ul.remove();
     }
 };
 
@@ -98,3 +114,9 @@ var toggleMenu = function(ev) {
         $(el).click(toggleMenu);
     });
 });
+
+return { getMenu: getMenu
+       , defaultHandlers: defaultHandlers
+       };
+
+})($);
