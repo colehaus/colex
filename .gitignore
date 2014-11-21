@@ -8,5 +8,6 @@ ColEx/site.hi
 ColEx/site.o
 ColEx/css/default/site.css
 ColEx/css/*.css
+ColEx/.cabal-sandbox
 **/dist/
 sandbox/

@@ -1,16 +1,18 @@
---------------------------------------------------------------------------------
 {-# LANGUAGE OverloadedStrings #-}
+
 import           Control.Arrow       ((***))
+import           Control.Applicative ((<*>))
 import           Data.Functor        ((<$>))
 import qualified Data.Map            as M
+import qualified Data.Set            as S
 import           Data.Monoid         (mconcat, mempty, (<>))
 import           System.FilePath
 
 import           Hakyll
+import           Text.Pandoc.Options
 import           Text.Regex          (mkRegex, subRegex)
+import           Text.Parsec
 
-
---------------------------------------------------------------------------------
 main :: IO ()
 main = hakyll $ do
   tags <- buildTags postPat (fromCapture "posts/tag/*/index.html")
@@ -60,18 +62,21 @@ main = hakyll $ do
     route idRoute
     compile $ (load $ paginateLastPage pages :: Compiler (Item String)) >>= makeItem . itemBody
 
-  match overPat $ compile pandocCompiler
-  match warnPat $ compile getResourceBody
+  match "posts/*/overlay.md" $ compile pandocCompiler
+  match "posts/*/warnings.md" $ compile getResourceBody
   match postPat $ do
       route . customRoute $ \ident -> "posts/" <>
                                      (takeBaseName . takeDirectory . toFilePath) ident <>
                                      "/index.html"
       compile $ let ctx = warnCtx <> overCtx <> jsCtx <> cssCtx <> tagsCtx tags <> postCtx in
-        getResourceBody >>=
-        (renderPandoc . (sidenotes <$>) <$>) . saveSnapshot "feed" >>=
-        saveSnapshot "teaser" >>=
-        loadAndApplyTemplate "templates/post.html" ctx >>=
-        finish
+        do bib <- load "misc/biblio.bib"
+           csl <- load "misc/biblio.csl"
+           getResourceBody >>=
+             saveSnapshot "feed" >>=
+             readPandocBiblio readerOpt csl bib >>=
+             saveSnapshot "teaser" . (demoteHeaders . demoteHeaders <$>) . writePandocWith writerOpt >>=
+             loadAndApplyTemplate "templates/post.html" ctx >>=
+             finish
 
   create ["archive"] $ do
       route $ constRoute "posts/index.html"
@@ -94,6 +99,8 @@ main = hakyll $ do
     route $ constRoute "posts/feed/rss.xml"
     compile $ feedRender renderRss
 
+  match "misc/biblio.csl" $ compile cslCompiler
+  match "misc/biblio.bib" $ compile biblioCompiler
   match "templates/*" $ compile templateCompiler
   match "images/*" $ do
       route idRoute
@@ -115,10 +122,6 @@ main = hakyll $ do
 
 postPat :: Pattern
 postPat = "posts/*/main.md"
-overPat :: Pattern
-overPat = "posts/*/overlay.md"
-warnPat :: Pattern
-warnPat = "posts/*/warnings.md"
 
 finish :: Item String -> Compiler (Item String)
 finish x = loadAndApplyTemplate "templates/default.html" postCtx x >>=
@@ -160,8 +163,6 @@ warnCtx = listFieldWith "warnings"
   details = field "details" $ split (tail . snd)
   summary = field "summary" $ split fst
 
-
-
 jsCtx :: Context String
 jsCtx = listFieldWith' "jses" fileNameCtx (getListMeta "js")
 cssCtx :: Context String
@@ -186,6 +187,13 @@ feedConf = FeedConfiguration
   , feedRoot        = "http://colex.me"
   }
 
-sidenotes :: String -> String
-sidenotes = flip (subRegex $ mkRegex "\\[(.*)\\]\\^\\[(.*)\\]")
-                 "<span class=\"noted\">\\1<span class=\"sidenote\">\\2</span></span>"
+readerOpt :: ReaderOptions
+readerOpt = defaultHakyllReaderOptions { readerExtensions = S.insert Ext_compact_definition_lists $ readerExtensions def }
+
+writerOpt :: WriterOptions
+writerOpt = defaultHakyllWriterOptions { writerHtml5 = True
+                                       , writerHTMLMathMethod = MathJax ""
+                                       -- , writerTableOfContents = True
+                                       -- , writerStandalone = True
+                                       -- , writerTemplate = unlines ["$toc$", "$body$"]
+                                       }
