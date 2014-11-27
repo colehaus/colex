@@ -1,0 +1,129 @@
+While there are some arguments for why foresight can change mindsets, such as due to the memorability of scenarios, there is lack of a solid theoretical foundation from which to explore the cognitive value of foresight.
+
+Memorability is a central argument for why scenarios can help alter mental models (Chermack, 2004; Bood and Postma, 1997).
+
+In sum, the theory provides a good explanation for how employees and managers judge, decide and act, for instance related to perceived future business opportunities: They consider one hypothesis about the future at a time (singularity principle) and confine themselves to it until they find good reason to give it up (satisficing principle).
+
+However, intuition is per definition involving decision-making based on existing knowledge, which may lead to biases. This paper
+
+/cite{lillegraven14}
+
+Within the intuitive-logics scenario methodology (the most widely discussed scenario tech- nique in the literature), the various tasks comprising the scenario development process are primarily creative, undertaken in facilitated groups, and rely heavily on the subjective judgments or disciplined intuition of the group members.
+
+one widely accepted theory is that knowledge is stored and orga- nized in the brain in the form of a cognitive schema, which comprises the total of our past experiences (Minsky, 1975; Rumelhart, 1984; Schank & Abelson, 1977; Tversky & Khaneman, 1982c).
+
+First, the schemata limit the solution space avail- able to individuals in that they comprise deep-rooted, unquestioned assump- tions as to the nature of a problem and a preconceived conceptualization of the available range of feasible options and solutions to the problem (Anderson & Johnson, 1966; Newell & Simon, 1972; Simon, 1973). Second, following from the above, once the problem set is established by the schemata the information search set is also then established, and as has been demonstrated in numerous experiments, individuals are insensitive as to the completeness of information in the search set, even when missing data that are crucial to the type of decision being taken (Fischoff, Slovic, & Lichtenstein, 1978). The third consequence is that where the existing schema cannot be readily applied because the individ- ual is attempting to construct previously unexperienced patterns of events, the individual will generally force the situation to suit the existing schema using causal inferences from his or her schema to compensate for gaps.
+
+Closely allied to the above is the theory espoused by a number of researchers in cognitive psychology (Anderson & Bower, 1973; Collins & Loftus, 1975; Collins & Quillian, 1969; Norman & Rumelhart, 1975) that information is stored in human memory in the form of an associative network in which vari- ous nodes representing concepts are connected by links representing relations between the concepts. Activation of one node in the network automatically acti- vates other nodes in a search set according to the associative or causal links between nodes. It follows, therefore, that what instances or events are searched for and retrieved from memory is largely dependent on what search set within the individual’s knowledge base is elicited. What set is elicited depends on the starting point, as the starting point (which is itself influenced by factors such as saliency) will, by activating nodes in an associative pathway, determine what information is subsequently generated. Consequently, activation of different search sets will generally result in different frequency and probability judg- ments being assigned to the same problem, because different search sets are unlikely to contain the identical availability of instances or events.
+
+- Representativeness
+- Availability
+  - Salience
+  - Familiarity
+- Anchoring
+  - Belief perseverance
+  - Confirmation
+
+At the same time, empirical evidence suggests that individuals tend to be satisfied with a single interpretation of a situation and are predisposed at the outset of a decision process to focus on a single outcome and a single alternative for achieving that outcome, especially in highly uncer- tain and complex decision domains (Festinger, 1957; Steinbruner, 1974).
+
+Media-determined search set. What initial search set was triggered in the syn- dicates determined which variables the group subsequently explored, and the trigger essentially related to recent happenings highly publicized in the media.  Thus, events such as AIDS and Bird Flu, the war in Afghanistan, Iraq and the Middle East tensions, the situation in North Korea, the question of the sus- tainability of the U.S. economy, and stem cell research were the initial issues raised in all syndicates in determining the list of potential drivers of change in the contextual environment. Numerous other issues were raised but accorded relatively minor attention. Even when provided with evidence, for example, that pneumonia, diarrheal diseases, and malaria are responsible for more childhood deaths in developing countries than AIDS/HIV, the syndicates dis- missed this and continued to focus their discussions on AIDS/HIV.
+
+invariably they returned to contemplate combinations and alternatives that were already known. In reviewing these, it was apparent that developments envisaged by all syndicates essentially epitomized variations around a com- mon, already well-articulated midpoint of events that were expected to occur and the order in which they were expected to occur, representing what might be called an embedded cognitive script. Although extreme developments were raised, they largely lay dormant and were eventually discarded as being unreal- istic and implausible.
+
+The overall preliminary conclusion in this research project was that the scenarios subsequently developed by the syndicates largely matched the collective belief systems and previous experiences of the syndicate members, as was later confirmed in the questionnaire and interview data. Although the scenarios were well constructed, written and presented, there were no extreme or surprising developments in any of the scenarios, all evolved in largely predictable patterns.
+
+In essence, there was no evidence of the so-called out of the box thinking in the scenarios and there were no strategic insights as to how the future might evolve in new and unprecedented ways, they largely represented what might be best described as described as “canonical variations around a midpoint” (Kahn & Wiener, 1967, p. 256).
+
+As was evident from the preliminary findings of the research pro- ject described in this article, saliency and primacy largely determined the start- ing point of the information search, which in turn determined what information was searched for as pathways of linked nodes in the neural network of the brain were presumably activated. The search for information was largely guided by what individuals already had an understanding of and was constrained by their cognitive anchors, experiences, and belief systems; information that did not accord with this was generally discarded. Once this search set was activated, individuals were generally insensitive to missing information, sample size, prior probabilities, and the concept of regression and correlation among other things. At the same time, events that were representative, easily imagined, and founded on recent highly publicized happenings, and which could be causality linked in a plausible manner so as to explain why an event had occurred, were accorded a high (but unwarranted) likelihood of occurrence.
+
+in advocating particular methodolo- gies, only a small number cite supporting empirical evidence.
+
+/cite{bradfield08}
+
+And intuitive views about the future remain the raw material upon which modern forecasting methods operate. As a consequence, an analysis of the accuracy of such intuitive forecasts is worth- while.
+
+My analysis is based on a collection of 1556 predictions made publicly by Americans between 1890 and 1940. These predictions were limited to two types of statements: predictions of technological changes that were to occur (or not occur) in one of 18 specified areas of technology (Table 1) ; and predictions of the effects-social, economic, or political-to be expected from changes in these 18 fields.
+
+For convenience in subsequent discussion, the categories fulilled and in progress will be lumped together to define the category of “right” predictions; the categories not proven and refuted will be lumped to define the category of “wrong” predictions. The term “batting average” of a predicator is defined as the number of right predictions divided by the total number of predictions made by that predictor. By this definition, the batting average for all predictors put together is 0.399 (620/l 556).
+
+/cite{wise76}
+
+Deﬁne the scope of the project.
+Identify the key stakeholders.
+Identify trends.
+Identify and consider the key uncertainties.
+Construct the initial scenarios.
+Check initial scenarios for plausibility.
+Develop learning scenarios.
+Investigate “blind spots” in the scenarios and further research.
+Reexamine internal consistencies.
+Select speciﬁc decision scenarios relevant to the organization.
+
+it is important to acknowledge that there has been little if any systematic empirical research aimed at examining or making generalized statements about the effects of scenario planning.
+
+Rational Decision-Making Style. Rational decision making is the corner- stone of MBA education. It focuses on breaking issues into component pieces (Mintzberg, 2005). Aimed at separating most any managerial issue into analy- sis and implementation, rational decision makers focus on creating a sense of order and structure to deal with information. Rational decision makers also usually attempt to establish a procedure for choosing options that can be applied and reapplied to any situation and generally assume that available information is accurate and reliable (Mintzberg, 2005).
+
+Intuitive Decision-Making Style. Intuitive decision-making style is char- acterized by individual efforts from data-based hunches; it is usually a strategy employed by people with extensive experience in a given ﬁeld or environment.  Often the result of past experiences, intuitive approaches to decision making are truly understood only by the individual and are, by deﬁnition, unexplain- able.
+
+More speciﬁcally, scenario planning decreased rational decision making and increased intuitive decision making.
+
+
+\cite{chermak08}
+
+in this study. Twenty-two agreed, of which, seven were water and sewage, and 15 were water-only.
+
+The correlation coefficient of scenario use with each of the performance variables showed no significant correla- tions at the 5% level.
+
+Systematic sampling was used to select 100 UK companies of which 50 companies were using scenario planning and 50 compa- nies were not.  The questionnaire was designed from initial contact with
+
+Growth in both profit and ROCE showed significantly better performance for scenario plan- ning companies. In line with this trend, companies using scenario planning have increased the number of clients by 11.27%, whereas those not using it only have a 6.57% increase (and two of them have negative rates). This suggests a further performance advantage to the scenario generating firms, although it was not significant at the 5% level.
+
+/cite{phelps01}
+
+The results of these studies demonstrate that instructions to imagine an event are sufficient to increase expectations for that event. Subjects who imagined Jimmy Carter the victor in the presidential election predicted he was more likely to win than subjects who imagined Gerald Ford the win- ner. Similarly, a higher proportion of subjects who imagined a good Pitt football season capped by a major bowl bid predicted a major bowl bid than subjects who imagined a bad Pitt football season.
+
+The objective fact that some events are imaginary, hypothetical, inferred rather than observed, or even factually discredited is poorly coded or not properly used. Thus, the act of posing a problem or asking a question could itself change t beliefs of subjects.
+
+Nisbett and Borgida (1975) found that the presentation of a few concrete case histories of participants in an experi- ment and their behaviors strongly altered predictions about the expected behaviors of other participants. This was particularly striking when com- pared to the result that summary statistics about the behaviors of al participants in the experiment did not alter expectations about individ behaviors.
+
+\cite{carroll78}
+
+Our data provided full support for Hypothesis 1a. Specifically, our analysis showed that scenario planning reduced the framing bias, as the comparison between the respective choices of the control group and the full scenario analysis group yielded significant differences. As shown above, we observed the framing bias in the control group. In the full scenario analysis group, in contrast, we found no evidence of a framing bias (see Table A2).
+
+Hypothesis 2 proposed that scenario planning possesses a stronger debiasing effect than traditional strategic planning. As Table A2 shows, we found no framing bias in the strategic planning group. In this group slightly more participants (62%) selected Alternative 1 under the “bankrupt” framing condition compared with the “in business” framing (57%). This difference, however, was also insignificant (Pearson's chi-square 0.164, NS; Fisher's exact test 0.779, NS), suggesting that traditional strategic planning tools, contrary to our expectations, also possess a debiasing effect.
+
+\cite{meissner13}
+
+Several lines of research suggest that such scenario thinking may contribute to overly confident and optimistic predictions. First, although the future is almost always uncertain, people typically generate only a single or very limited number of scenarios (Griffin et al., 1990). Second, people generate scenarios that reflect their hopes and preferences. For exmaple, when reporting scenarios about task completion, people focus on how they will successfully accomplish their objectives; they generally fail to consider the possibility of setbacks or delays (Buehler et al., 1994). Third, there is evidence that the content of scenarios affects people's beliefs about the future. When individuals are instructed to imagine or explain the occurence of a particular event, they become more convinced that it will occur (Koehler, 1991).
+
+Participants' final task completion time estimates were not affected when they generated pessimistic scenarios ... in combination with more optimistic scenarios. Of importance, Experiment 4 demonstrated that regardless of plausibility, predictors did not attend to pessimistic scenarios.
+
+\cite{newby00}
+
+In this paper, scenarios will be defined more broadly as focused descriptions of fundamentally different futures presented in coherent script-like or narrative fashion.
+
+Usually, however, the nega- tive scenarios are hard to envision and accept.  Shoemaker (1992) provides a comparison of positive and negative scenarios constructed by MBA students for the industry they expected to be employed in upon graduation.  The negative scenarios were systematically given less weight and credence than the positive by the students who constructed them.
+
+Para- doxically, more cohesive and detailed scenarios are often perceived as more credible and believ- able. The more detail a scenario provides, the less probable it becomes statistically. However, people commonly fall prey to what Tversky and Kahnernan (1983) termed the conjunction fallacy.
+
+Specifically, the 50 percent rages idened 56 percent and 67 percent for subjects and colleagues respectively after scenario construction. These stretch factors were 44 percent and 55 percent respectively for the 90 percent confidence ranges.
+
+In sum, the scenario process may be beneficial in reducing overconfidence but is likely to be based on subjective inputs that fail simple tests of statistical coherence.
+
+Scenarios thus exploit one set of biases (such as the conjunction fallacy and intransitivities of beliefs) to overcome another set, namely overconfidence, anchoring and availability biases.
+
+\cite{schoemaker93}
+
+Subject achievement was significantly lower in OF groups in Experiment Two but not in Experiment One. Again, this difference was likely due to the lower task predictability in this experiment. The "correct" values with lower Re are more likely to appear confusing and arbitrary.  Even when subjects were applying what amounted to a reasonably correct weighting strategy, they would be making large errors.
+
+(3) subject performance changes with feedback are most extreme in terms of consistency, in which case OF reliably decreases subjects' consistency
+
+It seems that a human information processor is capable of more effectively using infor- mation which tells him how to do a task correctly and why he is wrong, than information regarding the rightness or wrongness of his decisions.
+
+\cite{schmitt76}
+
+In addition, the results indicated that providing CI feedback or CI and FVI feedback along with TI feedback did not result in greater improve- ments in performance than TI feedback alone. In no case was the perfor- mance better for subjects who received TI feedback plus some other component of feedback than that of subjects who received only TI feedback.
+
+Finally, our results are limited to situations where subjects receive “one-shot” CFB. Perhaps with multiple presentations of CFB, the CI and FVI components may play a significant role in improving performance.
+
+\cite{balzer92}
