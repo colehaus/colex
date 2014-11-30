@@ -192,6 +192,7 @@ readerOpt = defaultHakyllReaderOptions { readerExtensions = S.insert Ext_compact
 
 writerOpt :: WriterOptions
 writerOpt = defaultHakyllWriterOptions { writerHtml5 = True
+                                       , writerHtmlQTags = True
                                        , writerHTMLMathMethod = MathJax ""
                                        -- , writerTableOfContents = True
                                        -- , writerStandalone = True

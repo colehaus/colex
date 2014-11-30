@@ -246,18 +246,39 @@ blockquote {
     quotes: "“" "”" "‘" "’";
     margin: 0;
 }
+.epigraph > p::before,
 .quote::before {
     content: open-quote;
     font-size: 6ex;
     line-height: 0;
     vertical-align: -0.7ex;
 }
+// Must close quote to satisfy browser nesting algo
+.epigraph > p::after,
+.quote::after {
+    content: close-quote;
+    visibility: hidden;
+}
+.conversation {
+    display: inline-block;
+    > p {
+        &:nth-of-type(odd) {
+            background-color: $convo-1;
+        }
+        &:nth-of-type(even) {
+            background-color: $convo-2;
+        }
+    }
+}
 dd {
     margin-left: 2ex;
 }
-.abstract {
+.epigraph, .abstract {
     margin: 0 6ex;
     font-size: smaller;
+}
+.epigraph {
+    padding: 0;
 }
 .references {
     font-size: smaller;

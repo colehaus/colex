@@ -1,7 +1,7 @@
 ---
 title: A Quorum Alternative
-published: 2014-06-12
-tags: social choice, bayes
+published: 2014-09-12
+tags: voting, bayes, frequentist, statistics
 css: quorum
 js: /js/jquery.flot.min.js, /js/jstat.min.js, /js/plot.js, /js/mcmc.js, /js/quorum.js
 ---
@@ -159,7 +159,7 @@ Speaking of, can anyone even do all the math required here? Even after a full ni
 
 <ul class="inline switch" type="menu" menu="stat-type"><li class="open">The conclusions have a rather intuitive interpretation in terms of likelihood, maybe even more intuitive than the traditional quorum interpretation ("We ensure that our decisions are representative by requiring 25% of our members to attend."). But getting to the conclusions requires a computer and uncommon math.</li><li>The math itself may be familiar to some, but there are still the perennial problems of frequentist interpretation [@goodman08]:
 
-<blockquote class="conversation">
+<span class="conversation">
 
 "Neat. The test showed it's highly likely that buko pie is the preferred pie?"
 
@@ -171,7 +171,7 @@ Speaking of, can anyone even do all the math required here? Even after a full ni
 
 "Uhh..."
 
-</blockquote>
+</span>
 
 </li></ul>
 
@@ -188,7 +188,7 @@ Finally, this procedure admits only post-hoc declarations of quorum. With the tr
 
 ## Non-parametric
 
-As mentioned, the procedure specified above assumes that the paired differences are amenable to modelling by a beta distribution. This assumption can be relaxed through the use of Bayesian [non-parametric](https://en.wikipedia.org/wiki/Nonparametric_statistics) methods [@walker99]. The idea is to use a model with an infinite number of parameters and marginalize out surplus dimensions on our finite data.
+As mentioned, the procedure specified above assumes that the paired differences are amenable to modelling by a beta distribution. This leads to overconfident inferences [@hoeting99]. The assumption can be relaxed through the use of Bayesian [non-parametric](https://en.wikipedia.org/wiki/Nonparametric_statistics) methods [@walker99]. The idea is to use a model with an infinite number of parameters and marginalize out surplus dimensions on our finite data.
 
 ## Tying
 
