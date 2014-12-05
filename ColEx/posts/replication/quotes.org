@@ -1,0 +1,89 @@
+Despite these evident limitations, the impact factors of journals that authors publish in are very influential. Although even Thomson Scientific acknowledges that the impact factor has grown beyond its control and is being used in many inappropriate ways, the impact factors of journals have been used to decide whether or not authors get promoted, are given tenure or are offered a position in a department, or are awarded a grant. In some countries, government funding of entire institutions is dependent on the number of publications in journals with high impact factors.
+
+Small wonder, then, that authors care so much about journals' impact factors and take them into consideration when submitting papers.
+
+[@plos06]
+
+it is well known that editors at many journals plan and implement strategies to massage their impact factors. Such strategies include attempting to increase the numerator in the above equation by encouraging authors to cite articles published in the journal or by publishing reviews that will garner large numbers of citations. Alternatively, editors may decrease the denominator by attempting to have whole article types removed from it (by making such articles superficially less substantial, such as by forcing authors to cut down on the number of references or removing abstracts) or by decreasing the number of research articles published. These are just a few of the many ways of “playing the impact factor game.”
+
+[@plos06]
+
+Thomson Scientific, the sole arbiter of the impact factor game, is part of The Thomson Corporation, a for-profit organization that is responsible primarily to its shareholders. It has no obligation to be accountable to any of the stakeholders who care most about the impact factor—the authors and readers of scientific research.
+
+[@plos06]
+
+These 2 articles are the most-cited papers on benefits from vitamin E supplementation and they have received 1395 and 1234 ci- tations, respectively, until the end of
+2006.
+
+Publication of the CHAOS and HOPE trials have also accumu- lated a large number of citations (1172 and 704 citations by the end of 2006, respectively
+
+Citingarticlesshowedsignificantdif- ference in their stance over time ( P =.0002).Theproportionofunfavor- ablearticlesincreasedfrom1.9%in1997 to14.3%in2001andto33.9%in2005.  Despite a decrease in the proportion of favorablearticles,thesestillrepresented 50% of the total in 2005.  HOPE trial cited b Yes 10 (16.7) 19 (76.0) 15 (55.6)  .001 No 50 (83.3) 6 (24.0) 12 (44.4)
+
+Nev- ertheless, despite the eventual accu- mulation of strongly refuting evi- dence, even in 2005, half of the articles citing these epidemiological studies were still favorable to the vitamin E claim. Even among articles that cited thecontradictingHOPEtrialratherthan thepositiveepidemiologicalstudies,the majority in 2005 still could not con- clude that vitamin E was ineffective.
+
+In a simi- lar fashion, in 2006 more than half of the articles citing the highly cited epi- demiologicarticlesonbeta-carotenefor cancer prevention and estrogen for de- mentia prevention remained favor- able for these interventions. For beta- carotene,afteradecadehadpassedfrom the contradiction of its effectiveness, counterarguments were uncommon: citing articles simply did not mention the contradicting trials.
+
+Our data also suggest that contra- diction through randomized trials may lead eventually to a decrease in the ab- solute frequency of citations to the epi- demiologicalstudies.However,thismay occur with considerable delay and a considerable segment of the literature continues to cite the contradicted ar- ticles long after the contradiction. The articles that cited these observational studies continued to be predomi- nantly favorable. Moreover, even when we considered articles that referenced the most prominent contradicting trial against vitamin E, clearly unfavorable citations for vitamin E were still the mi- nority. Beta-carotene, in particular, of- fers the opportunity to examine what happens when many years have passed after the contradiction: a citation rate of decreasing (but still substantial) vol- ume continues to support the contra- dicted claims without even mention- ingthecontradictingevidenceorraising counterarguments.
+
+[@tatsioni07]
+
+publishing in relatively high Impact Factor journals has been broadly applied as a stamp of approval for hiring and promotions, to rate the accomplishments of academic departments, and the importance of particu- lar disciplines. Both authors and publishers strive to publish high impact journal articles, and the pressure to do so has apparently lead to an insidious abuse in how some publishers correspond with authors of nearly accepted manuscripts. At or before the time of acceptance, several journals’ editors are requesting that authors cite additional papers published in that same journal.
+
+[@agrawal05]
+
+Economic models with heterogeneous agents, applied to economists themselves, suggest that utility maximizing researchers will rationally choose outcomes other than those c hosen by a social planner whose goal is to maximize scientific progress per dollar spent.  Further, information-theoretic models suggest that, unless the preferences of aut hors, editors and readers are fully aligned, authors perceive a strategi c advantage to withholding some information.
+
+ These models suggest that researchers will exercise a level of care in their research that is less than that which would be chosen by an omni potent social planner,
+
+o-one cares about the large majority of scientific results—whether they are right or wrong makes no difference to anyone. A reasonable guess, based on some old surveys, is that about 50 percent of scientific papers are not read by anyone except the author , referees, and editor, while studies of the citation indice s suggest that about 90 percent of published papers are never cited. (Collins, p. 233)
+
+[@anderson08]
+
+Of the 45 eligible highly cited stud- ies with efficacy claims (Table 2), 7 (16%) were contradicted by subse- quent research, and another 7 (16%) were found to have initially stronger ef- fects. In all these 14 cases ( B OX 1 ), sub- sequent studies were either larger or bettercontrolled(randomizedvsanon- randomized original study). The find- ings of 20 highly cited articles (44%) were replicated (also with a larger sample size in subsequent research comparedwiththeoriginalhighlycited study) and 11 (24%) had remained largely unchallenged.
+
+Contradictedandpotentiallyex- aggeratedfindingsarenotuncommonin the most visible and most influential originalclinicalresearch:16%ofthetop- cited clinical research articles on postu- latedeffectivemedicalinterventionsthat have been published within the last 15 years have been contradicted by subse- quent clinical studies and another 16% have been found to have initially stron- ger effects than subsequent research.  Contradiction or initially stronger ef- fects have been encountered in 5 of 6 cases for which nonrandomized de- signs were used, but even randomized trialshavenotescapedcontroversy.
+
+none of the con- tradicted interventions is currently rec- ommended by practice guidelines
+
+[@ioannidis05]
+
+One side effect of impact factors is the incentive they create for editors to coerce authors to add citations to their journal.  Coercive self citation does not refer to the normal citation directions, given during a peer review pr ocess, meant to improve a paper. Coercive self citation refers to requests that (i) give no indication that the manuscript was lacking in attribution, (ii) make no suggestion as to specific articles, authors, or a body of work requiring review, and (iii) o nly guide authors to add citations from the editor’s journal.
+
+Our survey asked respondents about their experiences with, and opinions of, such coercion (Fig. 1)(See Supplementary Online Materials (SOM) for details). They also identified 175 j ournals as coercers, many identified multiple times, with the worst offender being named by 49 different respondents
+
+journals published by commercial, for profi t companies show significantly greater use of coercive tactics than journals from university presses.
+
+[@wilhite12]
+
+hiring, funding and promotion are mostly based on the number of publications, particularly in ‘‘high impact factor journals’’;
+
+A prompt look at job advertisements or grant attribution criteria also demonstrate a strong fixation on publication record in ‘‘high impact factor journals’’ as a prerequisiste feature before application
+
+[@moustafa14]
+
+The common pattern seen where the decline effect has been documented is one of an initial publication in a high-ranking journal, followed by attempts at replication in lower-ranked jour- nals which either failed to replicate the original findings, or suggested a much weaker effect ( Lehrer, 2010 ).
+
+ there is converging evidence from two studies that journal rank is indeed indicative of a publication’s perceived importance.
+
+overall, consistent with the citation data already avaILABLE, the coefficient of determination between journal rank and citations was always in the range of ∼ 0.1 to 0.3 (i.e., quite low). It thus appears that indeed a small but significant correlation between journal rank and future citations can be observed. Moreover, the data sug- gest that most of this small effect stems from visibility effects due to the influence of the IF on reading habits ( Lozano et al., 2012 )
+
+That is, authors use jour- nal rank, in part, to make decisions of where to submit their manuscripts, such that well-performed studies yielding ground- breaking discoveries with general implications are preferentially submitted to high-ranking journal s. Readers, in turn, expect only to read aboutsuch articles in high-ranking journals, leading to the exposure and visibility confounds discussed above and at length in the cited literature
+
+[@brembs13]
+
+figure 1
+
+[@moonesinghe07]
+
+Tested the hypothesis that an editorial bias against the publication of replication (REP) research exists. 79 past and present editors of social and behavioral science journals completed a 13-item questionnaire that measured behaviors and attitudes about REPs. Ss' responses revealed a strong bias against publishing REP studies. Many were unaware of REPs being submitted to the journals, and few REPs were published. Ss gave more importance to studies that demonstrated some new effect than to REPs. This bias hinders the creation of cumulative knowledge and the disconfirmation of existing findings. (PsycINFO Database Record (c) 2012 APA, all rights reserved)
+
+[@neuliep90]
+
+Both citations and publications have effect on salary
+
+[@tuckman75]
+[@hamermesh82]
+
+Using the complete publication history of the 100 psychology journals with the highest 5-year impact factors, the current article provides an overview of replications in psychological research since 1900. This investigation revealed that roughly 1.6% of all psychology publications used the term replication in text. A more thorough analysis of 500 randomly selected articles revealed that only 68% of articles using the term replication were actual replications, resulting in an overall replication rate of 1.07%.
+
+[@makel12]
