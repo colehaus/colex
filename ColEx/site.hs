@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 import           Control.Arrow       ((***))
-import           Control.Applicative ((<*>))
 import           Data.Functor        ((<$>))
 import qualified Data.Map            as M
 import qualified Data.Set            as S
@@ -10,8 +9,6 @@ import           System.FilePath
 
 import           Hakyll
 import           Text.Pandoc.Options
-import           Text.Regex          (mkRegex, subRegex)
-import           Text.Parsec
 
 main :: IO ()
 main = hakyll $ do
@@ -39,7 +36,7 @@ main = hakyll $ do
         loadAndApplyTemplate "templates/tags.html" ctx >>=
         finish
 
-  pages <- buildPaginateWith ((paginateOverflow 5 <$>) . sortChronological)
+  pages <- buildPaginateWith ((paginateOverflow perPage <$>) . sortChronological)
                             postPat
                             (\n -> (fromCapture (fromGlob "posts/page/*/index.html") $ show n))
   paginateRules pages $ \n pat -> do
@@ -52,7 +49,7 @@ main = hakyll $ do
                                    tagsCtx tags <>
                                    pageCtx <>
                                    postCtx)
-                                  (loadAll pat) <>
+                                  (recentFirst =<< loadAll pat) <>
                         pageCtx <>
                         defaultContext in
               makeItem mempty >>=
@@ -139,7 +136,7 @@ postCtx = dateField "date" "%B %e, %Y" <>
 paginateOverflow :: Int -> [a] -> [[a]]
 paginateOverflow low xs =
   if length (last pgs) < low
-  then reverse . uncurry (:) . (mconcat *** id) . (splitAt 2) . reverse $ pgs
+  then uncurry (:) . (mconcat *** id) . (splitAt 2) $ pgs
   else pgs where
     pgs = paginateEvery low xs
 
@@ -198,3 +195,6 @@ writerOpt = defaultHakyllWriterOptions { writerHtml5 = True
                                        -- , writerStandalone = True
                                        -- , writerTemplate = unlines ["$toc$", "$body$"]
                                        }
+
+perPage :: Int
+perPage = 5

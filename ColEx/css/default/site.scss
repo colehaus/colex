@@ -288,3 +288,13 @@ hr.references {
     width: 60%;
     /* width: 45ex; */
 }
+figure {
+    > img {
+        width: 100%;
+    }
+    > figcaption {
+        margin: 0 4ex;
+        font-size: smaller;
+    }
+
+}

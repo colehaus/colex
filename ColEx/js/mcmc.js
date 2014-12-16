@@ -1,4 +1,3 @@
-/* @flow */
 var mcmc = (function(jStat, plot) {
 'use strict';
 

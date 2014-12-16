@@ -67,13 +67,6 @@ form {
 }
 #distrogram {
     margin: 1ex 0;
-    > img {
-        width: 100%;/* calc(100% - 24ex); */
-    }
-    > figcaption {
-        margin: 0 4ex;
-        font-size: smaller;
-    }
 }
 .bounds {
     font-size: smaller;
