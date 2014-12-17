@@ -39,6 +39,9 @@ a:hover {
     border-bottom: 1px solid $body-text-color;
 }
 article a {
+    &[href^="#"] {
+        border-bottom: 1px dotted $body-text-color;
+    }
     border-bottom: 1px dashed $body-text-color;
 }
 h1, h2, h3, h4, h5, h6 {
@@ -81,10 +84,10 @@ body {
     width: 100vw;
     height: 100vh;
     position: fixed;
+    padding-left: 5vw;
     top: 0;
     left: 0;
-    background-color: $body-back-color;
-    opacity: 0.5;
+    background-color: rgba($body-back-color, 0.5);
 }
 #overlay.inactive {
     display: none;

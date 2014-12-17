@@ -38,7 +38,7 @@ main = hakyll $ do
 
   pages <- buildPaginateWith ((paginateOverflow perPage <$>) . sortChronological)
                             postPat
-                            (\n -> (fromCapture (fromGlob "posts/page/*/index.html") $ show n))
+                            (fromCapture (fromGlob "posts/page/*/index.html") . show)
   paginateRules pages $ \n pat -> do
     route idRoute
     compile $ let pageCtx = paginateContext pages n
@@ -146,10 +146,10 @@ paginateLastPage pg = paginateMakeId pg $ paginateNumPages pg where
   paginateNumPages = M.size . paginateMap
 
 listFieldWith' :: String -> Context a -> (Identifier -> Compiler [a]) -> Context b
-listFieldWith' k ctx f = listFieldWith k ctx ((mapM makeItem =<<) . f . itemIdentifier)
+listFieldWith' k ctx f = listFieldWith k ctx $ (mapM makeItem =<<) . f . itemIdentifier
 
 overCtx :: Context String
-overCtx = field "overlay" (loadBody . fromFilePath . (<> "/overlay.md") . takeDirectory . toFilePath . itemIdentifier)
+overCtx = field "overlay" $ loadBody . fromFilePath . (<> "/overlay.md") . takeDirectory . toFilePath . itemIdentifier
 warnCtx :: Context String
 warnCtx = listFieldWith "warnings"
                         (details <> summary)
@@ -161,9 +161,9 @@ warnCtx = listFieldWith "warnings"
   summary = field "summary" $ split fst
 
 jsCtx :: Context String
-jsCtx = listFieldWith' "jses" fileNameCtx (getListMeta "js")
+jsCtx = listFieldWith' "jses" fileNameCtx $ getListMeta "js"
 cssCtx :: Context String
-cssCtx = listFieldWith' "csses" fileNameCtx (getListMeta "css")
+cssCtx = listFieldWith' "csses" fileNameCtx $ getListMeta "css"
 fileNameCtx :: Context String
 fileNameCtx = field "filename" $ return . itemBody
 getListMeta :: MonadMetadata m => String -> Identifier -> m [String]

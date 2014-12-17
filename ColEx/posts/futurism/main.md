@@ -2,6 +2,8 @@
 title: On Casual Futurism
 published: 2014-09-28
 tags: future, bias
+js: /js/d3.v3.min.js, /js/futurism.js
+css: futurism
 ---
 
 <blockquote class="epigraph">
@@ -18,7 +20,7 @@ The human race, to which so many of my readers belong, has been playing at child
 
 "Take this seriously! Give me your best estimate."
 
-"Hm... Well, people in the future will probably be really into opera and the arts because shiny metal robots will do all the real work. So they'll be sitting on their hover chairs in their spandex togas. And they'll want to listen to something---but see something at the same time---just like laser light shows. But lasers will be pretty blasé in the future (what with the ubiquitous laser pocket knifes, laser watches, and laser pointers) so holophonors will be the perfect thing. So, I guess a 98% chance of holophonors?"
+"Hm... Well, people in the future will probably be really into opera and the arts because shiny metal robots will do all the real work. So they'll be sitting on their hover chairs in their spandex togas. And <a href="#arg-map" id="target1">they'll want</a> to listen to something---but see something at the same time---just like laser light shows. But lasers will be pretty blasé in the future (what with the ubiquitous laser pocket knifes, laser watches, and laser pointers) so holophonors will be the perfect thing. So, I guess a 98% chance of holophonors?"
 
 "Ah ha ha. You fell right into my trap! Your casual futurism betrays you! Just by imagining that scenario, you think it's more likely."
 

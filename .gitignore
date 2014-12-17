@@ -11,5 +11,6 @@ ColEx/css/default/tree.css
 ColEx/css/default/sidenote.css
 ColEx/css/*.css
 ColEx/.cabal-sandbox
+ColEx/js/.tern-port
 **/dist/
 sandbox/
