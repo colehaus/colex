@@ -1,0 +1,65 @@
+@import 'default/colors';
+
+$contradicts-color: nth(map-get($colors, hue), 4);
+$motivates-color: nth(map-get($colors, hue), 2);
+$causes-color: nth(map-get($colors, hue), 5);
+$subtype-color: nth(map-get($colors, hue), 6);
+
+path.link {
+  fill: none;
+  stroke-width: 3px;
+  stroke: nth(map-get($colors, value), 3);
+}
+#causes {
+  fill: $causes-color;
+}
+#subtype {
+  fill: $subtype-color;
+}
+#contradicts {
+  fill: $contradicts-color;
+}
+#motivates {
+  fill: $motivates-color;
+}
+.link {
+  &.contradicts {
+    stroke: $contradicts-color;
+  }
+  &.motivates {
+    stroke: $motivates-color;
+  }
+  &.causes {
+    stroke: $causes-color;
+  }
+  &.subtype {
+    stroke: $subtype-color;
+  }
+}
+
+polygon {
+  stroke: nth(map-get($colors, value), 5);
+  fill: nth(map-get($colors, value), 1);
+  stroke-width: 0px;
+}
+.fixed {
+  stroke-width: 2px;
+}
+
+#arg-map {
+  width: 100vw;
+  height: 100vh;
+}
+text {
+  font-size: smaller;
+  text-shadow: 0 1px 0 $body-back-color,
+               1px 0 0 $body-back-color,
+               0 -1px 0 $body-back-color,
+               -1px 0 0 $body-back-color;
+  &.node {
+    fill: nth(map-get($colors, value), 5);
+  }
+  &.link {
+    fill: nth(map-get($colors, value), 3);
+  }
+}
