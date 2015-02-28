@@ -75,7 +75,6 @@ main = hakyll $ do
         do bib <- load "misc/biblio.bib"
            csl <- load "misc/biblio.csl"
            getResourceBody >>=
-             saveSnapshot "feed" >>=
              readPandocBiblio readerOpt csl bib >>=
              saveSnapshot "teaser" . (demoteHeaders . demoteHeaders <$>) . writePandocWith writerOpt >>=
              loadAndApplyTemplate "templates/post.html" ctx >>=
@@ -92,15 +91,6 @@ main = hakyll $ do
                 makeItem mempty >>=
                 loadAndApplyTemplate "templates/archive.html" ctx >>=
                 finish ctx
-
-  let feedRender f = loadAllSnapshots postPat "feed" >>= (take 10 <$>) . recentFirst >>=
-                     f feedConf (postCtx <> bodyField "description")
-  create ["atom"] $ do
-    route $ constRoute "posts/feed/atom.xml"
-    compile $ feedRender renderAtom
-  create ["rss"] $ do
-    route $ constRoute "posts/feed/rss.xml"
-    compile $ feedRender renderRss
 
   match "misc/biblio.csl" $ compile cslCompiler
   match "misc/biblio.bib" $ compile biblioCompiler
@@ -178,15 +168,6 @@ tagsCtx :: Tags -> Context String
 tagsCtx tags = listFieldWith' "tags" tagCtx getTags where
   tagCtx = (field "tag-name" $ return . itemBody) <>
            (field "tag-url" $ return . toUrl . toFilePath . (tagsMakeId tags) . itemBody)
-
-feedConf :: FeedConfiguration
-feedConf = FeedConfiguration
-  { feedTitle       = "Collectively Exhaustive"
-  , feedDescription = "A weblog"
-  , feedAuthorName  = "Cole Haus"
-  , feedAuthorEmail = "colehaus@cryptolab.net"
-  , feedRoot        = "http://colex.me"
-  }
 
 readerOpt :: ReaderOptions
 readerOpt = defaultHakyllReaderOptions { readerExtensions = S.insert Ext_compact_definition_lists $ readerExtensions def }
