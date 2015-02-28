@@ -1,4 +1,4 @@
-var sidenote = (function($) {
+var sidenote = (function($, MathJax) {
 'use strict';
 
 var referrer = function(el) {
@@ -78,4 +78,4 @@ return { setNotes: setNotes
        , fixNotes: fixNotes
        };
 
-})($);
+})($, MathJax);

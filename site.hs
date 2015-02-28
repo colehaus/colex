@@ -3,8 +3,8 @@
 import           Control.Arrow       ((***))
 import           Data.Functor        ((<$>))
 import qualified Data.Map            as M
-import qualified Data.Set            as S
 import           Data.Monoid         (mconcat, mempty, (<>))
+import qualified Data.Set            as S
 import           System.FilePath
 
 import           Hakyll
@@ -23,7 +23,7 @@ main = hakyll $ do
                                   defaultContext in
               makeItem mempty >>=
               loadAndApplyTemplate "templates/tag.html" ctx >>=
-              finish
+              finish ctx
   create ["tags/index.html"] $ do
     route idRoute
     compile $ do
@@ -34,7 +34,7 @@ main = hakyll $ do
                 defaultContext
       makeItem mempty >>=
         loadAndApplyTemplate "templates/tags.html" ctx >>=
-        finish
+        finish ctx
 
   pages <- buildPaginateWith ((paginateOverflow perPage <$>) . sortChronological)
                             postPat
@@ -42,8 +42,7 @@ main = hakyll $ do
   paginateRules pages $ \n pat -> do
     route idRoute
     compile $ let pageCtx = paginateContext pages n
-                  ctx = constField "title" "Home" <>
-                        constField "home-page" mempty <>
+                  ctx = constField "title" ("Page " <> show n) <>
                         listField "posts"
                                   (teaserField "teaser" "teaser" <>
                                    tagsCtx tags <>
@@ -53,11 +52,18 @@ main = hakyll $ do
                         pageCtx <>
                         defaultContext in
               makeItem mempty >>=
+              loadAndApplyTemplate "templates/index-content.html" ctx >>=
+              saveSnapshot "page" >>=
               loadAndApplyTemplate "templates/index.html" ctx >>=
-              finish
+              finish ctx
   create ["index.html"] $ do
     route idRoute
-    compile $ (load $ paginateLastPage pages :: Compiler (Item String)) >>= makeItem . itemBody
+    compile $ let ctx = constField "home-page" mempty <>
+                        constField "title" "Home" <>
+                        defaultContext in
+              loadSnapshotBody (lastPage pages) "page" >>= makeItem >>=
+              loadAndApplyTemplate "templates/index.html" ctx >>=
+              finish ctx
 
   match "posts/*/overlay.md" $ compile pandocCompiler
   match "posts/*/warnings.md" $ compile getResourceBody
@@ -73,7 +79,7 @@ main = hakyll $ do
              readPandocBiblio readerOpt csl bib >>=
              saveSnapshot "teaser" . (demoteHeaders . demoteHeaders <$>) . writePandocWith writerOpt >>=
              loadAndApplyTemplate "templates/post.html" ctx >>=
-             finish
+             finish ctx
 
   create ["archive"] $ do
       route $ constRoute "posts/index.html"
@@ -85,7 +91,7 @@ main = hakyll $ do
                           defaultContext in
                 makeItem mempty >>=
                 loadAndApplyTemplate "templates/archive.html" ctx >>=
-                finish
+                finish ctx
 
   let feedRender f = loadAllSnapshots postPat "feed" >>= (take 10 <$>) . recentFirst >>=
                      f feedConf (postCtx <> bodyField "description")
@@ -99,7 +105,7 @@ main = hakyll $ do
   match "misc/biblio.csl" $ compile cslCompiler
   match "misc/biblio.bib" $ compile biblioCompiler
   match "templates/*" $ compile templateCompiler
-  match "images/*" $ do
+  match "images/**" $ do
       route idRoute
       compile copyFileCompiler
   match "css/default/*.css" $ compile getResourceBody
@@ -120,8 +126,8 @@ main = hakyll $ do
 postPat :: Pattern
 postPat = "posts/*/main.md"
 
-finish :: Item String -> Compiler (Item String)
-finish x = loadAndApplyTemplate "templates/default.html" postCtx x >>=
+finish :: Context String -> Item String -> Compiler (Item String)
+finish ctx i = loadAndApplyTemplate "templates/default.html" ctx i >>=
            ((replaceAll "index.html" (const mempty) <$>) <$>) . relativizeUrls
 
 --TODO: Actual js compressor
@@ -140,10 +146,8 @@ paginateOverflow low xs =
   else pgs where
     pgs = paginateEvery low xs
 
-paginateLastPage :: Paginate -> Identifier
-paginateLastPage pg = paginateMakeId pg $ paginateNumPages pg where
-  paginateNumPages :: Paginate -> Int
-  paginateNumPages = M.size . paginateMap
+lastPage :: Paginate -> Identifier
+lastPage pg = paginateMakeId pg . M.size . paginateMap $ pg where
 
 listFieldWith' :: String -> Context a -> (Identifier -> Compiler [a]) -> Context b
 listFieldWith' k ctx f = listFieldWith k ctx $ (mapM makeItem =<<) . f . itemIdentifier

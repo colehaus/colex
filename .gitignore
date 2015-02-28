@@ -13,4 +13,5 @@ css/default/sidenote.css
 css/*.css
 .cabal-sandbox
 js/.tern-port
+**.tern-port
 **/dist/

@@ -1,0 +1,23 @@
+</head>
+<body>
+<div id="underlay">
+<main><ul class="teasers">
+  $for(posts)$
+    <li><article class="teaser">
+        <h2><a href="$url$">$title$</a></h2>
+        $partial("templates/tag-nav.html")$
+        <span class="date">Published on <time datetime="$date$">$date$</time>.</span>
+
+        $teaser$
+
+    </article></li>
+    $sep$<hr/>
+  $endfor$
+</ul></main>
+
+<nav class="pagination top">
+  $partial("templates/pagination.html")$
+</nav>
+<nav class="pagination bottom">
+  $partial("templates/pagination.html")$
+</nav>

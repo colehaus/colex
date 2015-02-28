@@ -5,6 +5,7 @@ $endfor$
 </head>
 <body>
 <div id="underlay">
+<div><a href="/">Home</a></div>
 <main><article>
   <h2 id="article-title">$title$</h2>
   $partial("templates/tag-nav.html")$
@@ -23,7 +24,6 @@ $endfor$
   $endif$
 </article></main>
 
-$partial("templates/bottom.html")$
 </div>
 $if(overlay)$
 <div id="overlay" class="inactive">$overlay$</div>
