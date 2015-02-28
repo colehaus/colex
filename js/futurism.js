@@ -1,3 +1,5 @@
+(function($, argMap) {
+"use strict";
 $(function() {
 
 var nodeData = {
@@ -62,7 +64,7 @@ var nodeData = {
     x: function(width) { return -20; },
     y: function(height) { return -height / 4; }
   }, pessimistic: {
-    label: ['Pessimistic', 'scenarios don't',  'affect predictions'],
+    label: ['Pessimistic', 'scenarios don\'t',  'affect predictions'],
     type: 'conclusion',
     x: function(width) { return width / 4; },
     y: function(height) { return 20; }
@@ -99,7 +101,7 @@ var linkData = [
   {source: 'multiple', target: 'rational', type: 'causes'}
 ];
 
-var shapeData = [{type: 'outcome', label: ['Outcome']}, 
+var shapeData = [{type: 'outcome', label: ['Outcome']},
                  {type: 'method', label: ['Prediction method']},
                  {type: 'conclusion', label: ['Conclusion']}];
 
@@ -114,7 +116,7 @@ var nodeShapes = {method: argMap.square,
 
 var first = true;
 var map;
-  
+
 $('a[href="#arg-map"]').click(function() {
   $('#underlay').toggleClass('inactive');
   $('#overlay').toggleClass('inactive');
@@ -131,5 +133,5 @@ $('a[href="#arg-map"]').click(function() {
     map.resume();
   }
 });
-
 });
+})($, argMap);

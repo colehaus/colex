@@ -1,3 +1,5 @@
+// Use menus to build tree of choices
+(function($, menu, sidenote) {
 $(function() {
 'use strict';
 
@@ -6,31 +8,37 @@ var transition = function(from, to, finalCb) {
     if(typeof from[0] === 'undefined') { return; }
     var parent = to.parent();
     if (!parent.is(':visible')) { from.removeClass('open'); to.addClass('open'); return; }
-    from.css({ opacity: '1'
-             , transition: ''
-             });
+    from.css({
+        opacity: '1',
+        transition: ''
+    });
     // The 100ms timeouts ensure the transition triggers
     setTimeout(function() {
-        from.css({ opacity: '0'
-                 , transition: 'opacity 0.25s'
-                 });
+        from.css({
+            opacity: '0',
+            transition: 'opacity 0.25s'
+        });
         setTimeout(function() {
             var pho = parent.height();
             from.removeClass('open');
             to.addClass('open');
             var phn = parent.height();
-            to.css({ opacity: '0'
-                   , transition: ''
-                   });
-            parent.css({ height: pho
-                        , transition: ''
-                       });
+            to.css({
+                opacity: '0',
+                transition: ''
+            });
+            parent.css({
+                height: pho,
+                transition: ''
+            });
             setTimeout(function() {
-                to.css({ opacity: '1'
-                       , transition: 'opacity 0.25s'});
-                parent.css({ height: phn
-                           , transition: 'height 0.25s'
-                           , overflow: 'hidden'
+                to.css({
+                    opacity: '1',
+                    transition: 'opacity 0.25s'
+                });
+                parent.css({ height: phn,
+                             transition: 'height 0.25s',
+                             overflow: 'hidden'
                            });
                 setTimeout(function() {
                     parent.removeAttr('style');
@@ -73,3 +81,4 @@ $('[type="menu"]').each(function(_, el_) {
 });
 
 });
+})($, menu, sidenote);

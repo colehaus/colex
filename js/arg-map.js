@@ -20,7 +20,7 @@ var diamond = function(r) {
   return -r + ' ' + 0 + ', ' +
          0 + ' ' + r + ', ' +
          r + ' ' + 0 + ', ' +
-         0 + ' ' + -r; 
+         0 + ' ' + -r;
 };
 var linkArc = function(d) {
   var dx = d.target.x - d.source.x,
@@ -87,7 +87,7 @@ var mkMap = function(canvasId, nodeData, linkData, shapeData, colorData, nodeSha
           });
         });
   };
-  
+
   var mkForce = function(nodeData, linkData) {
 
     var tick = function() {
@@ -100,13 +100,13 @@ var mkMap = function(canvasId, nodeData, linkData, shapeData, colorData, nodeSha
         var yAvg = (d.target.y + d.source.y) / 2;
         return 'translate(' + xAvg + ',' + yAvg + ')';
       };
- 
+
       links.attr('d', linkArc);
       nodes.attr('transform', transform);
       nodeTexts.attr('transform', transform);
       linkTexts.attr('transform', linkCenter);
     };
-    
+
     // Per-type markers, as they don't inherit styles.
     svg.append('defs').selectAll('marker')
         .data(['causes', 'subtype', 'contradicts', 'motivates'])
@@ -153,7 +153,7 @@ var mkMap = function(canvasId, nodeData, linkData, shapeData, colorData, nodeSha
             .text(t);
         });
       });
-          
+
     var nodes = svg.append('g').selectAll('polygon')
         .data(force.nodes())
       .enter().append('polygon')
@@ -197,7 +197,6 @@ var mkMap = function(canvasId, nodeData, linkData, shapeData, colorData, nodeSha
 
   for (var prop in nodeData) {
     if(nodeData.hasOwnProperty(prop)) {
-      console.log(nodeData[prop]);
       if (typeof nodeData[prop].x !== 'undefined') {
         nodeData[prop].x = nodeData[prop].x(width) + xCenter;
       }
@@ -206,11 +205,11 @@ var mkMap = function(canvasId, nodeData, linkData, shapeData, colorData, nodeSha
       }
     }
   }
-  
+
   var svg = d3.select(canvasId).append('svg')
     .attr('width', width)
     .attr('height', height);
-  
+
   mkLegend(shapeData, colorData);
   return mkForce(nodeData, linkData);
 };
@@ -219,4 +218,3 @@ return {square: square,
         diamond: diamond,
         mkMap: mkMap};
 })($, d3);
- 

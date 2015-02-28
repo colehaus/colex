@@ -5,16 +5,18 @@ var yHistLims = function(yss) {
     for (var i = 0, l = yss.length; i < l; i++) {
         ys = ys.concat(twoDArrayCol(histogramCounts(yss[i]), 1));
     }
-    return [ jStat.min(ys) * 0.8
-           , jStat.max(ys) * 1.2
-           ];
+    return [
+        jStat.min(ys) * 0.8,
+        jStat.max(ys) * 1.2
+    ];
 };
 var xLims = function(xss) {
     //flatten xs_
     var xs = [].concat.apply([], xss);
-    return [ jStat.min(xs)
-           , jStat.max(xs)
-           ];
+    return [
+        jStat.min(xs),
+        jStat.max(xs)
+    ];
 };
 var sampleFunc = function (min, max, func) {
     var step = (max - min) / 200;
@@ -60,12 +62,13 @@ var twoDArrayCol = function (array, col_i) {
     return col;
 };
 
-return { twoDArrayCol: twoDArrayCol
-       , histogramCounts: histogramCounts
-       , sampleFunc: sampleFunc
-       , xLims: xLims
-       , yHistLims: yHistLims
-       , getHeight: getHeight
-       };
+return {
+    twoDArrayCol: twoDArrayCol,
+    histogramCounts: histogramCounts,
+    sampleFunc: sampleFunc,
+    xLims: xLims,
+    yHistLims: yHistLims,
+    getHeight: getHeight
+};
 
 })(jStat);

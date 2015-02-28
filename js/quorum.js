@@ -1,41 +1,49 @@
-$(function() {
+(function ($, colors, plot, mcmc, jStat) {
 'use strict';
+$(function() {
 
-var plotOptions = { font: { size: 8 }
-                  , shadowSize: 0
-                  , yaxis: { tickLength: 5 }
-                  , xaxis: { tickLength: 5 }
-                  , legend: { backgroundColor: 'rgba(0, 0, 0, 0)'
-                            , color: colors.bodyText }
-                  , grid: { backgroundColor: null
-                          , color: colors.bodyText
-                          }
-                  , colors: colors.chroma.slice(1)
-                  };
+var plotOptions = {
+    font: { size: 8 },
+    shadowSize: 0,
+    yaxis: { tickLength: 5 },
+    xaxis: { tickLength: 5 },
+    legend: {
+        backgroundColor: 'rgba(0, 0, 0, 0)',
+        color: colors.bodyText
+    },
+    grid: {
+        backgroundColor: null,
+        color: colors.bodyText
+    },
+    colors: colors.chroma.slice(1)
+};
 var interval = [-1, 1];
 
 var plotMcmcHist = function (jq, paramData, conf, preds) {
     var plotOpts = $.extend(true, {}, plotOptions);
     var data = [];
     if (conf.log === true) {
-        var logTrans = { ticks: [0, 0.01, 0.1, 1, 10, 100]
-                       , transform: function (v) { return Math.log(v + 0.001); }
-                       , inverseTransform: function (v) { return Math.exp(v); }
-                       , tickDecimals: 2
-                       };
+        var logTrans = {
+            ticks: [0, 0.01, 0.1, 1, 10, 100],
+            transform: function (v) { return Math.log(v + 0.001); },
+            inverseTransform: function (v) { return Math.exp(v); },
+            tickDecimals: 2
+        };
         $.extend(plotOpts.xaxis, logTrans);
         $.extend(plotOpts.yaxis, logTrans);
     }
 
     var lims = function(l) {
         if (conf.log === true) {
-            return { min: l[0] / 2
-                   , max: l[1] * 2
-                   };
+            return {
+                min: l[0] / 2,
+                max: l[1] * 2
+            };
         } else {
-            return { min: l[0]
-                   , max: l[1]
-                   };
+            return {
+                min: l[0],
+                max: l[1]
+            };
         }
     };
     if (typeof conf.xlims === 'object' && conf.xlims !== null) {
@@ -48,24 +56,27 @@ var plotMcmcHist = function (jq, paramData, conf, preds) {
     var l = (preds || []).length || 0;
     if (l !== 0) {
         preds.forEach(function(pred) {
-            data.push({ data: pred
-                        // chroma[0] with alpha
-                       , color: 'rgba(165, 170, 204, 0.7)'
-                      // , color: 'rgba(215, 214, 230, 0.5)'
-                      });
+            data.push({
+                data: pred,
+                // chroma[0] with alpha
+                color: 'rgba(165, 170, 204, 0.7)'
+                // color: 'rgba(215, 214, 230, 0.5)'
+            });
         });
         data[0].label = 'Posterior Prediction';
     }
     if (paramData.length !== 0) {
         var barData = plot.histogramCounts(paramData);
         var width = barData.length > 1 ? barData[1][0] - barData[0][0] : 0.05;
-        data.push({ data: barData
-                  , bars: { show: true
-                          , align: "center"
-                          , barWidth: width
-                          }
-                  , color: 1
-                  });
+        data.push({
+            data: barData,
+            bars: {
+                show: true,
+                align: "center",
+                barWidth: width
+            },
+            color: 1
+        });
     }
 
     var percSmallerLarger = function (comp, data) {
@@ -76,12 +87,13 @@ var plotMcmcHist = function (jq, paramData, conf, preds) {
     };
     if (typeof conf.compValue === 'number') {
         var compPerc = percSmallerLarger(conf.compValue, paramData);
-        data.push({ data: [[conf.compValue, 0], [conf.compValue, Infinity]]
-                  , label: "" + (compPerc[0] * 100).toPrecision(3) + "% < " +
-                           conf.compValue + " < " + (compPerc[1] * 100).toPrecision(3) + "%"
-                  , lines: { lineWidth: 2 }
-                  , color: 2
-                  });
+        data.push({
+            data: [[conf.compValue, 0], [conf.compValue, Infinity]],
+            label: "" + (compPerc[0] * 100).toPrecision(3) + "% < " +
+                   conf.compValue + " < " + (compPerc[1] * 100).toPrecision(3) + "%",
+            lines: { lineWidth: 2 },
+            color: 2
+        });
     }
 
     var boundedI = function (c, x) {
@@ -106,14 +118,16 @@ var plotMcmcHist = function (jq, paramData, conf, preds) {
     };
     if (typeof conf.di !== 'undefined' && conf.di !== null) {
         var intervAdd = function(c, di) {
-            data.push({ data: [ [di[0], plot.getHeight(di[0] === interval[0] ? di[1] : di[0], barData)]
-                              , [di[1], plot.getHeight(di[1] === interval[1] ? di[0] : di[1], barData)]
-                              ]
-                      , label: c.toPrecision(2).slice(2) + '% ' + conf.di + ' ('+
-                               di[0].toPrecision(3) + ', ' + di[1].toPrecision(3) +')'
-                      , lines: { lineWidth: 5 }
-                      , color: 3
-                      });
+            data.push({
+                data: [
+                    [di[0], plot.getHeight(di[0] === interval[0] ? di[1] : di[0], barData)],
+                    [di[1], plot.getHeight(di[1] === interval[1] ? di[0] : di[1], barData)]
+                ],
+                label: c.toPrecision(2).slice(2) + '% ' + conf.di + ' ('+
+                       di[0].toPrecision(3) + ', ' + di[1].toPrecision(3) +')',
+                lines: { lineWidth: 5 },
+                color: 3
+            });
         };
         if (conf.di === 'BI') {
             [0.95, 0.99].forEach(function(c) {
@@ -129,10 +143,10 @@ var plotMcmcHist = function (jq, paramData, conf, preds) {
     }
     if (typeof paramData.length !== 'undefined' && paramData.length !== 0) {
         var mean = jStat.mean(paramData);
-        data.push({ data: [[mean, 0]]
-                  , label: 'Mean: ' + mean.toPrecision(3)
-                  , points: { show: true }
-                  , color: 4
+        data.push({ data: [[mean, 0]],
+                    label: 'Mean: ' + mean.toPrecision(3),
+                    points: { show: true },
+                    color: 4
                   });
     }
     return $.plot(jq, data, plotOpts);
@@ -144,9 +158,9 @@ var best = function(ds) {
         progress(0.925);
 
         $('#stat-out').show();
-        plotMcmcHist( $("#mean > div")
-                    , plot.twoDArrayCol(chain, 2)
-                    , {di: 'BI', comp: 0, xlims: [-1, 1]}
+        plotMcmcHist( $("#mean > div"),
+                      plot.twoDArrayCol(chain, 2),
+                      {di: 'BI', comp: 0, xlims: [-1, 1]}
                     );
         progress(0.95);
 
@@ -189,30 +203,33 @@ var freq = function(ds) {
             return [y, -Infinity, mean + bound];
         }
     };
-    var data = [{data: cis
-               , lines: { show: true }
-               , color: 1
-               },{
-                 data: [[mean, 0]]
-               , label: "Mean: " + mean.toPrecision(3)
-               , points: { show: true }
-               , color: 4
-               }];
+    var data = [{
+        data: cis,
+        lines: { show: true },
+        color: 1
+    },{
+        data: [[mean, 0]],
+        label: "Mean: " + mean.toPrecision(3),
+        points: { show: true },
+        color: 4
+    }];
     [0.95, 0.99].forEach(function(conf) {
         var bs = ci(conf);
         var y = bs[0];
         var lb = bs[1];
         var ub = bs[2];
-        data.push({ data: [[lb, y], [ub, y]]
-                  , label: conf.toPrecision(2).slice(2) + "% CI ("+
-                           lb.toPrecision(3) + ", " + ub.toPrecision(3) +")"
-                  , lines: { lineWidth: 5 }
-                  , color: 3
-                  });
+        data.push({
+            data: [[lb, y], [ub, y]],
+            label: conf.toPrecision(2).slice(2) + "% CI ("+
+                   lb.toPrecision(3) + ", " + ub.toPrecision(3) +")",
+            lines: { lineWidth: 5 },
+            color: 3
+        });
     });
     $('#stat-out').show();
     $.plot($('#freq > div'), data, plotOptions);
     $('progress').attr('value', 1);
+    return null;
 };
 
 var getData = function(check) {
@@ -234,23 +251,23 @@ var getData = function(check) {
             return f;
         });
     };
-
+    var y1, y2;
     try {
-        var y1 = stringToNums($("#data1").val());
-        var y2 = stringToNums($("#data2").val());
+        y1 = stringToNums($("#data1").val());
+        y2 = stringToNums($("#data2").val());
     } catch(err) {
         alert("ERROR: Data not supplied for both groups or not formatted correctly.");
-        return;
+        return null;
     }
     var dif = y2.length - y1.length;
     if (dif !== 0 && check === true) {
         var err = " Since we're supposed to pair data, that's bad.";
         if (dif > 0) {
             alert("You have " + dif + " more data points for Proposal 2 than for Proposal 1." + err);
-            return;
+            return null;
         } else {
             alert("You have " + -dif + " more data points for Proposal 1 than for Proposal 2." + err);
-            return;
+            return null;
         }
     }
     var ds = [];
@@ -283,22 +300,26 @@ inputGraph();
 $(".preview").click(inputGraph);
 
 (function() {
-    var plotOpts = { grid: { show: false }
-                   , colors: [colors.value[3]]
-                   };
+    var plotOpts = {
+        grid: { show: false },
+        colors: [colors.value[3]]
+    };
 
     $.plot($('#non-norm'),
-           [{ bars: { show: true }
-           , data: [[-2, 4], [-1, 1], [0, 0], [1, 1], [2, 4]]
+           [{
+               bars: { show: true },
+               data: [[-2, 4], [-1, 1], [0, 0], [1, 1], [2, 4]]
            }], plotOpts);
     $.plot($('#sym1'),
-           [{ bars: { show: true }
-           , data: [[-2, 1], [-1, 0], [0, 0], [1, 2], [2, 0]]
+           [{
+               bars: { show: true },
+               data: [[-2, 1], [-1, 0], [0, 0], [1, 2], [2, 0]]
            }], plotOpts);
     $.plot($('#sym2'),
-           [{ bars: { show: true }
-           , data: [[-2, 0], [-1, 0], [0, 3], [1, 0], [2, 0]]
+           [{ bars: { show: true },
+              data: [[-2, 0], [-1, 0], [0, 3], [1, 0], [2, 0]]
            }], plotOpts);
 })();
 
 });
+})($, colors, plot, mcmc, jStat);

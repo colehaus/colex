@@ -47,13 +47,10 @@ var buildMenu = function(el) {
         switch (el.nodeName) {
             case 'MENUITEM':
               return menuItem(el);
-              break;
             case 'HR':
               return [el];
-              break;
             case 'MENU':
               return menu(el);
-              break;
         }
     });
     var flattened = Array.prototype.concat.apply([], contents);
@@ -74,15 +71,16 @@ var buildMenu = function(el) {
 
 var toggleMenu = function(ev) {
     // Menu shouldn't popup when clicking on interactive element
-    var isInter = [ 'TEXTAREA'
-                  , 'BUTTON'
-                  , 'INPUT'
-                  , 'OPTION'
-                  , 'SELECT'
-                  , 'DETAILS'
-                  , 'SUMMARY'
-                  , 'A'
-                  ].some(function(tg) {
+    var isInter = [
+        'TEXTAREA',
+        'BUTTON',
+        'INPUT',
+        'OPTION',
+        'SELECT',
+        'DETAILS',
+        'SUMMARY',
+        'A'
+    ].some(function(tg) {
         return ev.target.nodeName == tg;
     });
     if (isInter) { return; }
@@ -115,8 +113,9 @@ var toggleMenu = function(ev) {
     });
 });
 
-return { getMenu: getMenu
-       , defaultHandlers: defaultHandlers
-       };
+return {
+    getMenu: getMenu,
+    defaultHandlers: defaultHandlers
+};
 
 })($);

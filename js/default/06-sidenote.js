@@ -74,8 +74,9 @@ $(function() {
     });
 });
 
-return { setNotes: setNotes
-       , fixNotes: fixNotes
-       };
+return {
+    setNotes: setNotes,
+    fixNotes: fixNotes
+};
 
 })($, MathJax);

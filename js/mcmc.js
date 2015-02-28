@@ -68,7 +68,7 @@ var run_BEST = function (ys, n_samples_, n_burnin, progress_cb, final_cb) {
                 }
             }
 
-            if(chain.length % batch_size == 0) {
+            if(chain.length % batch_size === 0) {
                 batch_count++;
                 for(param_i = 0; param_i < n_params; param_i++) {
                     if(acceptance_count[param_i] / batch_size > 0.44) {
@@ -97,15 +97,16 @@ var run_BEST = function (ys, n_samples_, n_burnin, progress_cb, final_cb) {
                 return setTimeout(function() {n_samples_asynch(n - nbr_of_samples, nbr_of_samples);}, 0);
             } else {
                 running_asynch = false;
+                return null;
             }
         };
-        return { chain: function() {return chain;}
-               , running_asynch: function() {return running_asynch;}
-               , burn: burn
-               , n_samples: n_samples
-               , samples_left: function () {return samples_left;}
-               , n_samples_asynch: n_samples_asynch
-               };
+        return {
+            chain: function() {return chain;},
+            running_asynch: function() {return running_asynch;},
+            burn: burn,
+            n_samples: n_samples, samples_left: function () {return samples_left;},
+            n_samples_asynch: n_samples_asynch
+        };
     };
 
     var make_BEST_posterior_func = function (data) {
@@ -151,8 +152,9 @@ var run_BEST = function (ys, n_samples_, n_burnin, progress_cb, final_cb) {
     burn_asynch(Math.ceil(n_burnin /  500));
 };
 
-return { posterior_predictive_check: posterior_predictive_check
-       , run_BEST: run_BEST
-       };
+    return {
+        posterior_predictive_check: posterior_predictive_check,
+        run_BEST: run_BEST
+    };
 
 })(jStat, plot);
