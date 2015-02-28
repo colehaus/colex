@@ -15,3 +15,7 @@ css/*.css
 js/.tern-port
 **.tern-port
 **/dist/
+**/bower_components/
+**/.psci
+**/.psci_modules
+js/**/output/
