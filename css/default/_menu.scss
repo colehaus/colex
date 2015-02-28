@@ -2,14 +2,9 @@ menu[type="popup"] {
     visibility: hidden;
     margin: 0;
     padding: 0;
-}
-
-menu[type="popup"] > hr {
-    display: none;
-}
-
-menu[type="popup"] > menuitem {
-    display: none;
+    & > hr, & > menuitem {
+        display: none;
+    }
 }
 
 .menu {
@@ -18,7 +13,7 @@ menu[type="popup"] > menuitem {
     visibility: visible;
     list-style-type: none;
     position: absolute;
-}
-.menu > li[checked=checked] {
-    font-weight: 700;
+    & > li[checked=checked] {
+        font-weight: 700;
+    }
 }
