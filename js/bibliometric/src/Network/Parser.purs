@@ -1,14 +1,15 @@
-module Information.Parser where
+module Network.Parser where
 
 import Control.Alt
 import Control.Alternative
+import Control.Bind
 import Control.Monad
 import Control.Monad.Error.Class
 import Control.Monad.Trans
 import qualified Data.Array as A
 import qualified Data.Array.Unsafe as AU
 import Data.Either
-import Data.Foldable
+import qualified Data.Foldable as F
 import qualified Data.Map as M
 import Data.Maybe
 import Data.Maybe.Unsafe
@@ -21,7 +22,8 @@ import Text.Parsing.Parser
 import Text.Parsing.Parser.Combinators
 import Text.Parsing.Parser.String
 
-import Information.Types
+import Network.Types
+import Probability hiding (lift, oneOf)
 
 instance eqParse :: Eq ParseError where
   (==) (ParseError { message = a }) (ParseError { message = b }) = a == b
@@ -31,16 +33,16 @@ hRuleP :: forall m. (Monad m) => ParserT String m Unit
 hRuleP = do
   string "----"
   many $ string "-"
-  return unit
+  pure unit
 
 word :: forall m. (Monad m) => ParserT String m String
-word = mconcat <$> some (noneOf ["\n", "\r", "\t", " ", ""])
+word = F.mconcat <$> some (noneOf ["\n", "\r", "\t", " ", ""])
 
 wordSpace :: forall m. (Monad m) => ParserT String m String
 wordSpace = do
   w <- word
   many inlineSpace
-  return w
+  pure w
 
 inlineSpace :: forall m. (Monad m) => ParserT String m String
 inlineSpace = string " " <|> string "\t"
@@ -57,7 +59,7 @@ depVarsP = manyTill (Variable <$> wordSpace) (string "|")
 
 mainVarP :: forall m. (Monad m) => ParserT String m Variable
 mainVarP = Variable <$> word
-   
+
 headerP :: forall m. (Monad m) => ParserT String m (Tuple [Variable] Variable)
 headerP = do
   deps <- depVarsP
@@ -65,7 +67,7 @@ headerP = do
   var <- mainVarP
   some inlineSpace
   string "P"
-  return $ Tuple deps var
+  pure $ Tuple deps var
 
 depsP :: forall m. (Monad m) => ParserT String m [State]
 depsP = manyTill (State <$> wordSpace) (lookAhead $ string "|")
@@ -76,7 +78,7 @@ stateP = State <$> word
 probP :: forall m. (MonadError PmfError m, Monad m) => ParserT String m Prob
 probP = do
   w <- word
-  lift <<< maybe (throwError $ ProbParse w) prob $ readNumber w
+  lift <<< maybe (throwError $ ProbParse w) pure $ prob =<< readNumber w
 
 outcomeP :: forall m. (MonadError PmfError m, Monad m) =>
             ParserT String m (Tuple State Prob)
@@ -84,60 +86,49 @@ outcomeP = do
   s <- stateP
   some inlineSpace
   p <- probP
-  return $ Tuple s p
+  pure $ Tuple s p
 
-pmfBodyP :: forall m. (MonadError PmfError m, Monad m) =>
+distEleP :: forall m. (MonadError PmfError m, Monad m) =>
             ParserT String m (Tuple State Prob)
-pmfBodyP = do
+distEleP = do
   string "|"
   some inlineSpace
   outcomeP
 
-pmfP :: forall m. (MonadError PmfError m, Monad m) =>
-        Variable -> ParserT String m PMF
-pmfP v = do
-  os <- some (do p <- pmfBodyP
+distP :: forall m. (MonadError PmfError m, Monad m) =>
+        ParserT String m (Dist State)
+distP = do
+  os <- some (do p <- distEleP
                  whiteSpace
-                 return p)
-  lift $ pmf v (M.fromList os)
+                 pure p)
+  lift <<< maybe (throwError BadDist) pure $ dist os
 
 casePmfP :: forall m. (MonadError PmfError m, Monad m) =>
-            Variable -> ParserT String m (Tuple [State] PMF)
-casePmfP v = do
+            ParserT String m (Tuple [State] (Dist State))
+casePmfP = do
   d <- depsP
-  p <- pmfP v
-  return $ Tuple d p
+  p <- distP
+  pure $ Tuple d p
 
 condPmfP :: forall m. (MonadError PmfError m, Monad m) =>
-            ParserT String m CondPMF
+            ParserT String m (CondPMF Variable State [Variable] [State])
 condPmfP = do
   whiteSpace
   (Tuple vs v) <- headerP
   whiteSpace >> hRuleP >> whiteSpace
-  cs <- many1Till (casePmfP v) (hRuleP <|> eof)
-  -- depify :: [State] -> Deps
-  let depify = deps <<< S.fromList <<< A.zipWith Outcome vs
-  lift (T.traverse (firstF depify) cs) >>= 
-    lift <<< condPmf <<< M.fromList
+  cs <- many1Till casePmfP (hRuleP <|> eof)
+  let mainSpace = Space v <<< extract <<< snd $ AU.head cs
+  let depSpace = Space vs $ fst <$> cs
+  let probLists = distProbs <<< snd <$> cs
+  lift $ condPmf mainSpace depSpace probLists
 
 networkP :: forall m. (MonadError PmfError m, Monad m) =>
-            ParserT String m Network
+            ParserT String m (Network Variable State [Variable] [State])
 networkP = do
   whiteSpace
   hRuleP
   cs <- some condPmfP
-  lift <<< network $ S.fromList cs
-
-first f (Tuple a c) = Tuple (f a) c
-  
-firstF :: forall a b c m. (Functor m) => (a -> m b) -> Tuple a c -> m (Tuple b c)
-firstF f (Tuple a c) = flip Tuple c <$> f a
-
--- Assumes all lists are same length
-transpose :: forall a. [[a]] -> [[a]]
-transpose [] = []
-transpose ([] : _) = []
-transpose rows = A.map AU.head rows : transpose (A.map AU.tail rows) 
+  lift $ network cs
 
 foreign import readNumber """
   function readNumber(x) {

@@ -1,116 +1,67 @@
 module Information where
 
-import Control.Bind
-import qualified Control.Monad.State as ST
-import qualified Control.Monad.State.Class as ST
-import qualified Data.Array as A
-import qualified Data.Array.Unsafe as AU
+import Control.Arrow
 import qualified Data.Foldable as F
-import qualified Data.Map as M
-import Data.Maybe
-import Data.Maybe.Unsafe
-import Data.Monoid.All
-import qualified Data.Set as S
-import qualified Data.Traversable as T
 import Data.Tuple
+import qualified Data.Map as M
+import Data.Maybe.Unsafe
+import qualified Data.Set as S
 import Math
 
-import Information.Types
+import Probability
+
+newtype Entropy = Entropy Number
+entropyNum = Iso (\(Entropy e) -> e) Entropy
+
+nonCond :: forall a b c. ((Dist Unit) -> (Unit -> Dist b) -> c) -> Dist b -> c
+nonCond f d = f (pure unit) (const d)
+
+entropy :: forall x z. (Eq x) => Dist z -> (z -> Dist x) -> Entropy
+entropy zs x'zs = expected entropyNum $ do
+  z <- zs
+  x'z <- x'zs z
+  let px'z = just x'z ?? x'zs z
+  pure $ selfInformation px'z
+
+pointwiseInformation :: Prob -> Prob -> Prob -> Entropy
+pointwiseInformation pxy'z px'z py'z =
+  from entropyNum $ log2 (xy / (x * y)) where
+    xy = runProb pxy'z
+    x = runProb px'z
+    y = runProb py'z
+
+mutualInformation ::
+  forall j x y z. (Eq x, Eq y, Eq j) =>
+  Dist z -> (z -> Dist j) -> (j -> x) -> (j -> y)  -> Entropy
+mutualInformation zs xys'z jx jy = expected entropyNum $ do
+  z <- zs
+  xy'z <- xys'z z
+  pure $ pointwiseInformation (just xy'z ?? xys'z z)
+                              ((==) (jx xy'z) <<< jx ?? xys'z z)
+                              ((==) (jy xy'z) <<< jy ?? xys'z z)
+
+log2 :: Number -> Number
+log2 = logBase 2
 
 logBase :: Number -> Number -> Number
 logBase b n = log n / log b
 
-pmfEntropy :: PMF -> Entropy
-pmfEntropy = entropy <<< M.values <<< pmfBody
+selfInformation :: Prob -> Entropy
+selfInformation = from entropyNum <<< negate <<< log2 <<< runProb
 
-entropy :: [Prob] -> Entropy  
-entropy =
-  Entropy <<< F.sum <<< (<$>) (\p -> let n = runProb p in -n * logBase 2 n)
+divergence :: forall x z. (Eq x) =>
+              Dist z -> (z -> Dist x) -> (z -> Dist x) -> Entropy
+divergence zs x'zs y'zs = expected entropyNum $ do
+  z <- zs
+  x'z <- x'zs z
+  let px'z = just x'z ?? x'zs z
+  let py'z = just x'z ?? y'zs z
+  pure <<< from entropyNum <<< log2 $ runProb px'z / runProb py'z
 
-networkEntropy :: Network -> Entropy
-networkEntropy n = 
-  entropy <<< fromJust <<< T.traverse (comboProb n) <<< S.toList <<< combos <<<
-  S.fromList <<< (<$>) (uncurry condMainSpace) <<< M.toList $ runNet n 
-
-comboProb :: Network -> Deps -> Maybe Prob
-comboProb n ds =
-  T.traverse (\o -> runProb <$> lookup n o (fromJust <<< deps $ S.delete o os))
-  (S.toList os) >>=
-  prob <<< F.product where
-    os = runDeps ds
-
-lookup :: Network -> Outcome -> Deps -> Maybe Prob
-lookup n (Outcome v s) ds =
-  case v `M.lookup` runNet n of
-    Nothing -> Nothing
-    Just c -> (M.lookup s <=< flip M.lookup c) $ prune c ds where
-        prune :: CondPMFBody -> Deps -> Deps
-        prune c =
-          fromJust <<< depsAlter (A.filter $ flip S.member vs <<< outcomeVar) where
-          vs = depVars c
-
-picks :: forall a. (Eq a) => [a] -> [Tuple a [a]]
-picks as = (\a -> Tuple a $ A.delete a as) <$> as 
-
-permutations :: forall a. (Eq a) => [a] -> [[a]]
-permutations [] = [[]]
-permutations xs = do
-  Tuple x xs' <- picks xs
-  (:) x <$> permutations xs'
-
-uniformPmf :: PMFBody -> [Prob]
-uniformPmf b = const p <$> M.keys b where
-  p = fromJust <<< prob $ 1 / M.size b
-
-aggregateInfo :: Network -> S.Set Variable -> S.Set Variable -> Maybe Entropy
-aggregateInfo n vs gs = do
-  n' <- uniformize us n
-  e' <- networkEntropy <$> uniformize vs n'
-  let e = networkEntropy n'
-  return <<< Entropy $  (runEntropy e') - (runEntropy e) where
-    us = (S.fromList <<< M.keys $ runNet n) `S.difference` vs `S.difference` gs
-
-info :: Network -> S.Set (Tuple Variable Entropy)
-info n =
-  S.fromList <<< avg <<< (<$>) (\(Tuple v vs) -> Tuple v <<< fromJust <<<
-                                                 aggregateInfo n (S.singleton v) $
-                                                 S.fromList vs) <<<
-  A.concatMap chain $ permutations vs where
-    vs = M.keys $ runNet n
-    avg = (<$>) (\xs -> Tuple (fst $ AU.head xs) <<< Entropy <<< average $
-                        runEntropy <<< snd <$> xs) <<<
-          A.groupBy ((==) `on` fst) <<< A.sortBy (compare `on` fst)
-
-average :: [Number] -> Number
-average ns = F.sum ns / A.length ns
-
-uniformize :: S.Set Variable -> Network -> Maybe Network
-uniformize vs n | let vs' = S.fromList <<< M.keys $ runNet n in
-  runAll <<< F.mconcat $ (All <<< flip S.member vs') <$> S.toList vs =
-    Just <<< F.foldl (\acc a -> fromJust $ netPmfAlter uniformPmf a acc) n $
-    S.toList vs
-uniformize _ _ | otherwise = Nothing
-
-chain :: forall a. [a] -> [Tuple a [a]]
-chain = unfoldr f where
-  f [] = Nothing
-  f (b : bs) = Just (Tuple (Tuple b bs) bs)
-
-unfoldr :: forall a b. (b -> Maybe (Tuple a b)) -> b -> [a]
-unfoldr f b =
-  case f b of
-    Just (Tuple a b') -> a : unfoldr f b'
-    Nothing -> []
-
--- uniformNet :: Variable -> Network -> Network
--- uniformNet v n = fromJust <<< network $ x where
---   x :: M.Map Variable
---   x = M.alter ((<$>) f) v m 
---   m :: M.Map Variable CondPMFBody
---   m = runNet n
---   f :: CondPMFBody -> CondPMFBody
---   f = (<$>) uniformPMF
-  
--- uniformCond :: CondPMFBody -> CondPMFBody
--- uniformCond c = fromJust <<< condPmf (condVar c) $ uniformPMF <$> condBody c
-
+instance eqEnt :: Eq Entropy where
+  (==) (Entropy a) (Entropy b) = a == b
+  (/=) a b = not $ a == b
+instance ordEnt :: Ord Entropy where
+  compare (Entropy a) (Entropy b) = compare a b
+instance showEnt :: Show Entropy where
+  show (Entropy n) = "Entropy " <> show n

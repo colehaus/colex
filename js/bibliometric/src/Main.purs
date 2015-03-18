@@ -12,9 +12,10 @@ import Debug.Trace
 import DOM
 import Text.Parsing.Parser
 
-import Information
-import Information.Parser (networkP)
-import Information.Types
+import Information (Entropy (..))
+import Network (netScores)
+import Network.Parser (networkP)
+import Network.Types
 
 header :: forall eff. [Variable] -> Eff (dom :: DOM | eff) J.JQuery
 header vs = do
@@ -68,11 +69,11 @@ process = do
     Left e -> show e `J.appendText` output
     Right r -> case r of
       Left e -> show e `J.appendText` output
-      Right n' -> table (info n') >>= flip J.append output
+      Right n' -> table (netScores n') >>= flip J.append output
 
 fromRight (Right r) = r
 
 main = J.ready $ do
   button <- J.select ".net > button"
   process
-  J.on "click" (\_ _ -> process) button 
+  J.on "click" (\_ _ -> process) button

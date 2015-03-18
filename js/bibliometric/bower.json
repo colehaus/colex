@@ -17,7 +17,9 @@
     "purescript-maps": "~0.3.1",
     "purescript-sets": "~0.3.0",
     "purescript-parsing": "~0.3.0",
-    "purescript-test-unit": "~1.1.5"
+    "purescript-test-unit": "~1.1.5",
+    "purescript-arrows": "~0.3.0",
+    "purescript-quickcheck": "~0.5.0"
   },
   "main": "Main.purs"
 }
