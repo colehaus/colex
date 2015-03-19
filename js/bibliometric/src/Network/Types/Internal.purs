@@ -8,7 +8,7 @@ import qualified Data.Set as S
 import qualified Data.Traversable as T
 import Data.Tuple
 
-import Probability
+import Math.Probability
 
 data Space a b = Space a [b]
 data CondPMF a b c d = CondPMF a c (M.Map d (Dist b))

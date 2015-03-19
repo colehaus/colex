@@ -16,7 +16,7 @@ import Text.Parsing.Parser
 import Network (netScores)
 import Network.Parser (networkP)
 import Network.Types
-import Probability.Information (Entropy (..))
+import Math.Probability.Information (Entropy (..))
 
 header :: forall eff. [Variable] -> Eff (dom :: DOM | eff) J.JQuery
 header vs = do

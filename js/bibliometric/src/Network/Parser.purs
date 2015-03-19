@@ -15,7 +15,7 @@ import Text.Parsing.Parser.String
 
 import Network.Types hiding (PmfError())
 import Network.Types.Internal (throwPmf, PmfError())
-import Probability hiding (oneOf)
+import Math.Probability hiding (oneOf)
 
 hRuleP :: forall m. (Monad m) => ParserT String m Unit
 hRuleP = do

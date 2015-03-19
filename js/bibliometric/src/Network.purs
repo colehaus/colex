@@ -5,6 +5,7 @@ import Control.Bind
 import Control.Monad.Error.Class
 import qualified Data.Array as A
 import qualified Data.Array.Unsafe as AU
+import Data.Either
 import qualified Data.Foldable as F
 import Data.Function
 import qualified Data.Set as S
@@ -14,9 +15,10 @@ import Data.Maybe.Unsafe
 import qualified Data.Traversable as T
 import Data.Tuple
 
-import Probability
-import Probability.Information
+import Math.Probability
+import Math.Probability.Information
 import Network.Types
+import Network.Types.Internal (throwPmf)
 
 netScores :: Network Variable State [Variable] [State] ->
              S.Set (Tuple Variable Entropy)
@@ -35,11 +37,11 @@ scores v n = do
   let ve = to entropyNum $ gain [v] [] n
   let ts =
         (\d -> Tuple d <<< from entropyNum $
-               (to entropyNum $ gain [d,v] [d] n) - ve) <$> ds
+               to entropyNum (gain [d,v] [d] n) - ve) <$> ds
   let t =
         Tuple v <<< from entropyNum $
         to entropyNum (gain (v : tds) tds n) -
-        (F.sum $ (to entropyNum <<< snd) <$> ts)
+        F.sum ((to entropyNum <<< snd) <$> ts)
   pure $ t : ts
 
 gain :: [Variable] -> [Variable] -> Network Variable State [Variable] [State] ->
@@ -49,8 +51,10 @@ gain l r n =
      (const <<< netDist <<< flip uniformize n <<< complement)
      l r where
     complement = S.toList <<< S.difference (S.fromList $ netVars n) <<< S.fromList
-    uniformize =
-      flip (F.foldl (\n v -> fromJust $ netPmfAlter (condPmfMap (reshape uniform)) v n))
+    uniformize = 
+      flip (F.foldl (\n v -> fromJust <<< right $
+        netPmfAlter (condPmfMap (maybe (throwPmf "") pure <<< reshape uniform)) v n ::
+          Either PmfError (Network Variable State [Variable] [State])))
 
 dependencies :: forall a b c d. (Ord a) => a -> Network a b c d -> Maybe c
 dependencies a n = condDeps <$> a `lookup` n

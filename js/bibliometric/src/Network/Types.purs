@@ -12,7 +12,7 @@ import qualified Data.Set as S
 import qualified Data.Traversable as T
 import Data.Tuple
 
-import Probability
+import Math.Probability
 import qualified Network.Types.Internal as N
 
 type Space = N.Space
