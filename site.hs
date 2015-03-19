@@ -1,6 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
-import           Control.Arrow       ((***))
+import           Control.Arrow       (first)
 import           Data.Functor        ((<$>))
 import qualified Data.Map            as M
 import           Data.Monoid         (mconcat, mempty, (<>))
@@ -111,14 +111,15 @@ main = hakyll $ do
   match "images/**" $ do
       route idRoute
       compile copyFileCompiler
-  match "css/default/site.scss" $ do
-    route $ constRoute "css/default.css"
-    compile $ do
-      i <- getResourceString
-      let dir = takeDirectory . toFilePath . itemIdentifier $ i
-      withItemBody (unixFilter "scss"
-                               ["--sourcemap=none", "--trace", "-I", dir]) i >>=
-        return . fmap compressCss
+  includes <- makePatternDependency "css/default/_*.scss"
+  rulesExtraDependencies [includes] $ match "css/default/site.scss" $ do
+      route $ constRoute "css/default.css"
+      compile $ do
+        i <- getResourceString
+        let dir = takeDirectory . toFilePath . itemIdentifier $ i
+        fmap compressCss <$>
+          withItemBody (unixFilter "scss"
+                                   ["--sourcemap=none", "--trace", "-I", dir]) i
   match "js/default/*.js" $ compile getResourceBody
   create ["js/default.js"] $ do
     route idRoute
@@ -129,6 +130,8 @@ main = hakyll $ do
   match "js/*.js" $ do
     route idRoute
     compile copyFileCompiler
+
+
 
 postPat :: Pattern
 postPat = "posts/*/main.md"
@@ -148,10 +151,12 @@ postCtx =
 
 paginateOverflow :: Int -> [a] -> [[a]]
 paginateOverflow low xs =
-  if length (last pgs) < low
-  then uncurry (:) . (mconcat *** id) . (splitAt 2) $ pgs
-  else pgs where
-    pgs = paginateEvery low xs
+  case paginateEvery low xs of
+    [] -> []
+    pgs ->
+      if length (last pgs) < low
+      then uncurry (:) . first mconcat . splitAt 2 $ pgs
+      else pgs where
 
 lastPage :: Paginate -> Identifier
 lastPage pg = paginateMakeId pg . M.size . paginateMap $ pg
@@ -189,9 +194,9 @@ getListMeta k ident =
 tagsCtx :: Tags -> Context String
 tagsCtx tags =
   listFieldWith' "tags" tagCtx getTags where
-    tagCtx = (field "tag-name" $ return . itemBody) <>
-             (field "tag-url" $ return . toUrl . toFilePath .
-              (tagsMakeId tags) . itemBody)
+    tagCtx = field "tag-name" (return . itemBody) <>
+             field "tag-url" (return . toUrl . toFilePath .
+                              tagsMakeId tags . itemBody)
 
 readerOpt :: ReaderOptions
 readerOpt =
