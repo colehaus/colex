@@ -3,31 +3,19 @@ module Network.Parser where
 import Control.Alt
 import Control.Alternative
 import Control.Bind
-import Control.Monad
 import Control.Monad.Error.Class
 import Control.Monad.Trans
-import qualified Data.Array as A
 import qualified Data.Array.Unsafe as AU
-import Data.Either
 import qualified Data.Foldable as F
-import qualified Data.Map as M
 import Data.Maybe
-import Data.Maybe.Unsafe
-import qualified Data.Set as S
-import qualified Data.StrMap as SM
-import qualified Data.StrMap.Unsafe as SMU
-import qualified Data.Traversable as T
 import Data.Tuple
 import Text.Parsing.Parser
 import Text.Parsing.Parser.Combinators
 import Text.Parsing.Parser.String
 
-import Network.Types
-import Probability hiding (lift, oneOf)
-
-instance eqParse :: Eq ParseError where
-  (==) (ParseError { message = a }) (ParseError { message = b }) = a == b
-  (/=) a b = not $ a == b
+import Network.Types hiding (PmfError())
+import Network.Types.Internal (throwPmf, PmfError())
+import Probability hiding (oneOf)
 
 hRuleP :: forall m. (Monad m) => ParserT String m Unit
 hRuleP = do
@@ -78,7 +66,8 @@ stateP = State <$> word
 probP :: forall m. (MonadError PmfError m, Monad m) => ParserT String m Prob
 probP = do
   w <- word
-  lift <<< maybe (throwError $ ProbParse w) pure $ prob =<< readNumber w
+  lift <<< maybe (throwPmf $ "Couldn't parse as probability: " <> w) pure $
+    prob =<< readNumber w
 
 outcomeP :: forall m. (MonadError PmfError m, Monad m) =>
             ParserT String m (Tuple State Prob)
@@ -101,7 +90,8 @@ distP = do
   os <- some (do p <- distEleP
                  whiteSpace
                  pure p)
-  lift <<< maybe (throwError BadDist) pure $ dist os
+  lift <<< maybe (throwPmf $ "Couldn't construct distribution: " <> show os)
+    pure $ dist os
 
 casePmfP :: forall m. (MonadError PmfError m, Monad m) =>
             ParserT String m (Tuple [State] (Dist State))
@@ -117,10 +107,10 @@ condPmfP = do
   (Tuple vs v) <- headerP
   whiteSpace >> hRuleP >> whiteSpace
   cs <- many1Till casePmfP (hRuleP <|> eof)
-  let mainSpace = Space v <<< extract <<< snd $ AU.head cs
-  let depSpace = Space vs $ fst <$> cs
-  let probLists = distProbs <<< snd <$> cs
-  lift $ condPmf mainSpace depSpace probLists
+  lift $ do
+    mainSpace <- space v <<< extract <<< snd $ AU.head cs
+    depSpace <- space vs $ fst <$> cs
+    condPmf mainSpace depSpace (distProbs <<< snd <$> cs)
 
 networkP :: forall m. (MonadError PmfError m, Monad m) =>
             ParserT String m (Network Variable State [Variable] [State])
@@ -140,6 +130,3 @@ foreign import readNumber """
     }
   }
 """ :: String -> Maybe Number
-
--- foreign import undefined :: forall a. a
-

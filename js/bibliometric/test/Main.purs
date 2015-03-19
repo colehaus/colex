@@ -1,11 +1,11 @@
 module Test.Main where
 
-import Control.Arrow
+import Control.Monad
 import Control.Bind
 import qualified Data.Array as A
 import Data.Either
+import Data.Either.Unsafe
 import qualified Data.Foldable as F
-import Data.Function
 import qualified Data.Map as M
 import Data.Maybe
 import Data.Maybe.Unsafe
@@ -15,16 +15,18 @@ import Data.Tuple
 import Debug.Trace
 import Test.QuickCheck
 import Test.QuickCheck.Gen hiding (uniform)
-import qualified Test.Unit as U
-import Text.Parsing.Parser
+import Text.Parsing.Parser (runParserT, ParseError())
 
-import Information
 import Network
 import Network.Parser
-import Network.Types
-import Probability hiding (choose, oneOf)
+import Network.Types hiding (Space(), CondPMF()) -- No type synonym instances
+import Network.Types.Internal (Space(), CondPMF()) 
+import Probability hiding (choose, oneOf, ProbList(), Prob(), Dist())
+import Probability.Internal ((<~), (~~), ProbList(), Prob(), Dist())
+import Probability.Information
 
-main = do
+-- TODO: Finish out properties
+main' = do
   trace "H(X) >= 0"
   quickCheck entPos
   trace "H(X|Y) <= H(X)"
@@ -50,293 +52,10 @@ main = do
   trace "p(.|a,b,i)||p(.|i) = p(.|a,b,i)||p(.|a,i) + p(.|a,i)||p(.|i) (given that \\alpha is independent of \\beta)"
   quickCheck add
   trace "p(.|a,b,i)||p(.|b,i) = p(.|a,i)||p(.|i) (given that \\alpha is independent of \\beta)"
-  quickCheck cite
-main' = do
-  -- let f2 = gain' ["a", "b", "c", "d"] ["a", "b", "c"] input''
-  -- let f6 = gain' ["c", "d"] ["c"] input''
-  -- let f7 = gain' ["b", "d"] ["b"] input''
-  -- let f8 = gain' ["d"] [] input''
-  -- let f9 = gain' ["a", "d"] ["a"] input''
-  -- let f3 = gain' ["a", "b"] ["a"] input''
-  -- let f4 = gain' ["a", "c"] ["a"] input''
-  -- let f5 = gain' ["a"] [] input''
-  print $ gain' ["a", "b", "c", "d"] [] input'' 
-  let g1 = netScores input''
-  print g1
-  print <<< F.sum $ (to entropyNum <<< snd) <$> S.toList g1
-  -- ABCD||ABC = ABCD||ABC - D|| + D||
-  -- ABCD||ABC = (BD||B - D||) + (CD||C - D||) +
-  --             (ABCD||ABC - (BD||B - D||) - (CD||C - D||))
-  -- let f = [f2, f3, f4, f5]
-  -- print f1
-  -- print f
-  -- print <<< F.sum $ to entropyNum <$> f
+  quickCheck context
 
-  -- print $ divergence (pure unit) (const dist2AB) (const dist2A)
-  -- print $ divergence (pure unit) (const dist2B) (const dist2)
-  -- print $ divergence (pure unit) (const dist2AB) (const dist2B)
-  -- print $ divergence (pure unit) (const dist2A) (const dist2)
-  -- print $ divergence (pure unit) (const dist2AB) (const dist2)
-  -- print $ divergence (pure unit) (const dist3) (const dist3A)
-  -- print $ divergence (pure unit) (const dist3) (const dist3B)
-  -- print $ divergence (pure unit) (const dist3) (const dist3C)
-  -- print $ divergence (pure unit) (const dist2) (const dist2A)
-  -- print $ divergence (pure unit) (const dist2) (const dist2B)
-  -- print <<< netDivergence <<< fromRight $ fromRight input'
-
--- p(.|a,b,i)||p(.|i) = p(.|a,b,i)||p(.|a,i) + p(.|a,i)||p(.|i)
--- D(A,B) = D(B|A) + D(A)
-
-filterM :: forall a m. (Monad m) => (a -> m Boolean) -> [a] -> m [a]
-filterM _ [] = return []
-filterM p (x:xs) = do
-  b <- p x
-  xs' <- filterM p xs
-  return $ if b
-           then x : xs'
-           else xs'
-
--- (ABCD||) = (ABCD||ABC) + (AB||A) + (AC||A) + (A||) =
--- (ABCD||ABC) - (D||) + (D||) +
--- (AB||A) - (B||) + (B||) +
--- (AC||A) - (C||) + (C||) +
--- (A||) - (A||) + (A||)
-
--- (A||) + (AC||A) - (C||) + (AB||A) - (B||)
--- (B||) + 1/2((ABCD||ABC)-(D||))
--- (C||) + 1/2((ABCD||ABC)-(D||))
--- (D||)
-
-powerset :: forall a. [a] -> [[a]]
-powerset = filterM (const [true, false])
-
-subset :: forall a. (Ord a) => S.Set a -> S.Set a -> Boolean
-subset a b = S.isEmpty $ a `S.difference` b
-properSubset :: forall a. (Ord a) => S.Set a -> S.Set a -> Boolean
-properSubset a b = subset a b && (not <<< S.isEmpty $ b `S.difference` a)
-
-divPairs :: forall a. (Ord a) => [a] -> [Tuple [a] [a]]
-divPairs as =
-  A.filter (uncurry $ properSubset `on` S.fromList) $ Tuple <$> p <*> p where
-    p = powerset as
-
-gain' l r = to entropyNum <<< gain (Variable <$> l) (Variable <$> r)
-
--- sumTo :: Network Variable State [Variable] [State] ->
---          [[Tuple [Variable] [Variable]]]
--- sumTo n =
---   (<$>) fst <<< A.filter ((~~) fullGain <<< snd) $
---   (\ts -> Tuple ((nonUniform *** nonUniform) <$> ts) <<< F.sum $ gain <$> ts) <$> combos where
---     -- This form's a bit more readable
---     nonUniform vs' = S.toList $ S.fromList vs `S.difference` S.fromList vs'
---     gain =
---       to entropyNum <<< uncurry
---       (divergence (pure unit) `on` (const <<< netDist <<< flip uniformize n))
---     combos = powerset $ divPairs vs
---     fullGain = gain $ Tuple [] vs
---     vs = M.keys $ netMap n
-
-
-
-input'' :: Network Variable State [Variable] [State]
-input'' = fromRight $ fromRight input'
-input' :: Either PmfError (Either ParseError
-                           (Network Variable State [Variable] [State]))
-input' = runParserT netString networkP
-fromRight (Right a) = a
-fromLeft (Left a) = a
-
-netString = """
-----
-b c | d P
-----
-t t | t 0.9
-    | f 0.1
-t f | t 0.85
-    | f 0.15
-f t | t 0.825
-    | f 0.175
-f f | t 0.8
-    | f 0.2
-
-----
-a | c P
-----
-t | t 0.75
-  | f 0.25
-f | t 0.7
-  | f 0.3
-
-----
-a | b P
-----
-t | t 0.65
-  | f 0.35
-f | t 0.6
-  | f 0.4
-
-----
-| a P
-----
-| t 0.55
-| f 0.45
-"""
-
-
--- f :: [Tuple String Number] -> Dist String
--- f = fromJust <<< (dist <=< T.traverse (\(Tuple s n) -> Tuple s <$> prob n))
-
--- dist2AB = f [
---   Tuple "11" $ 0.8 * 0.9,
---   Tuple "12" $ 0.2 * 0.9,
---   Tuple "21" $ 0.5 * 0.1,
---   Tuple "22" $ 0.5 * 0.1
--- ]
--- dist2A = f [
---   Tuple "11" $ 0.8 * 0.5,
---   Tuple "12" $ 0.2 * 0.5,
---   Tuple "21" $ 0.5 * 0.5,
---   Tuple "22" $ 0.5 * 0.5
--- ]
--- dist2B = f [
---   Tuple "11" $ 0.5 * 0.9,
---   Tuple "12" $ 0.5 * 0.9,
---   Tuple "21" $ 0.5 * 0.1,
---   Tuple "22" $ 0.5 * 0.1
--- ]
--- dist2 = f [
---   Tuple "11" $ 0.5 * 0.5,
---   Tuple "12" $ 0.5 * 0.5,
---   Tuple "21" $ 0.5 * 0.5,
---   Tuple "22" $ 0.5 * 0.5
--- ]
-
-
--- dist2 = f [
---   Tuple ["1", "1"] $ 0.2 * 0.4,
---   Tuple ["1", "2"] $ 0.2 * 0.6,
---   Tuple ["2", "1"] $ 0.8 * 0.4,
---   Tuple ["2", "2"] $ 0.8 * 0.6
---   ]
--- dist2A = f [
---   Tuple ["1", "1"] $ 0.5 * 0.4,
---   Tuple ["1", "2"] $ 0.5 * 0.6,
---   Tuple ["2", "1"] $ 0.5 * 0.4,
---   Tuple ["2", "2"] $ 0.5 * 0.6
---   ]
--- dist2B = f [
---   Tuple ["1", "1"] $ 0.2 * 0.5,
---   Tuple ["1", "2"] $ 0.2 * 0.5,
---   Tuple ["2", "1"] $ 0.8 * 0.5,
---   Tuple ["2", "2"] $ 0.8 * 0.5
---   ]
-
--- dist3 = f [
---   Tuple ["1", "1", "t"] $ 0.2 * 0.4 * 0.4,
---   Tuple ["1", "1", "f"] $ 0.2 * 0.4 * 0.6,
---   Tuple ["1", "2", "t"] $ 0.2 * 0.6 * 0.6,
---   Tuple ["1", "2", "f"] $ 0.2 * 0.6 * 0.4,
---   Tuple ["2", "1", "t"] $ 0.8 * 0.4 * 0.6,
---   Tuple ["2", "1", "f"] $ 0.8 * 0.4 * 0.4,
---   Tuple ["2", "2", "t"] $ 0.8 * 0.6 * 0.7,
---   Tuple ["2", "2", "f"] $ 0.8 * 0.6 * 0.3
---   ]
-
--- dist3A = f [
---   Tuple ["1", "1", "t"] $ 0.5 * 0.4 * 0.4,
---   Tuple ["1", "1", "f"] $ 0.5 * 0.4 * 0.6,
---   Tuple ["1", "2", "t"] $ 0.5 * 0.6 * 0.6,
---   Tuple ["1", "2", "f"] $ 0.5 * 0.6 * 0.4,
---   Tuple ["2", "1", "t"] $ 0.5 * 0.4 * 0.6,
---   Tuple ["2", "1", "f"] $ 0.5 * 0.4 * 0.4,
---   Tuple ["2", "2", "t"] $ 0.5 * 0.6 * 0.7,
---   Tuple ["2", "2", "f"] $ 0.5 * 0.6 * 0.3
---   ]
-
--- dist3B = f [
---   Tuple ["1", "1", "t"] $ 0.2 * 0.5 * 0.4,
---   Tuple ["1", "1", "f"] $ 0.2 * 0.5 * 0.6,
---   Tuple ["1", "2", "t"] $ 0.2 * 0.5 * 0.6,
---   Tuple ["1", "2", "f"] $ 0.2 * 0.5 * 0.4,
---   Tuple ["2", "1", "t"] $ 0.8 * 0.5 * 0.6,
---   Tuple ["2", "1", "f"] $ 0.8 * 0.5 * 0.4,
---   Tuple ["2", "2", "t"] $ 0.8 * 0.5 * 0.7,
---   Tuple ["2", "2", "f"] $ 0.8 * 0.5 * 0.3
---   ]
-
--- dist3C = f [
---   Tuple ["1", "1", "t"] $ 0.2 * 0.4 * 0.5,
---   Tuple ["1", "1", "f"] $ 0.2 * 0.4 * 0.5,
---   Tuple ["1", "2", "t"] $ 0.2 * 0.6 * 0.5,
---   Tuple ["1", "2", "f"] $ 0.2 * 0.6 * 0.5,
---   Tuple ["2", "1", "t"] $ 0.8 * 0.4 * 0.5,
---   Tuple ["2", "1", "f"] $ 0.8 * 0.4 * 0.5,
---   Tuple ["2", "2", "t"] $ 0.8 * 0.6 * 0.5,
---   Tuple ["2", "2", "f"] $ 0.8 * 0.6 * 0.5
---   ]
-
-
-
--- input = """
--- ----
--- a b | c P
--- ----
--- 1 1 | t 0.5
---     | f 0.5
-
--- 1 2 | t 0.6
---     | f 0.4
-
--- 2 1 | t 0.6
---     | f 0.4
-
--- 2 2 | t 0.7
---     | f 0.3
-
--- ----
--- | a P
--- ----
--- | 1 0.2
--- | 2 0.8
-
--- ----
--- | b P
--- ----
--- | 1 0.4
--- | 2 0.6
--- """
-
--- inputBase = """
--- ----
--- a b | c P
--- ----
--- 1 1 | t 0.5
---     | f 0.5
-
--- 1 2 | t 0.5
---     | f 0.5
-
--- 2 1 | t 0.5
---     | f 0.5
-
--- 2 2 | t 0.5
---     | f 0.5
-
--- ----
--- | a P
--- ----
--- | 1 0.5
--- | 2 0.5
-
--- ----
--- | b P
--- ----
--- | 1 0.5
--- | 2 0.5
--- """
-
-cite :: PMFPair Variable State Variable State -> Result
-cite (PMFPair c (PMF _ as)) =
+context :: PMFPair Variable State Variable State -> Result
+context (PMFPair c (PMF _ as)) =
   d_a'b ~~ d_a <?> show c <> " " <> show as where
     d_a'b = to entropyNum $ divergence (pure unit) (const abs) (const aUbs)
     d_a = to entropyNum $ divergence (pure unit) (const abUs) (const aUbUs)
@@ -430,7 +149,6 @@ wrapEnt = to entropyNum <<< nonCond entropy
 
 instance arbProb :: Arbitrary Prob where
   arbitrary = do
-    -- Combing these lines runs into purescript bug
     p <- prob <$> choose 0 1
     maybe arbitrary pure $ p
 instance arbState :: Arbitrary State where
@@ -448,7 +166,7 @@ instance arbSpaceSingle :: Arbitrary (Space Variable State) where
 instance arbSpaceMulti :: Arbitrary (Space [Variable] [State]) where
   arbitrary = do
     spaces <- arrayOf arbitrary
-    Tuple vs ss <- pure <<< unzip $ (\(Space v s) -> Tuple v s) <$> spaces
+    Tuple vs ss <- pure <<< unzip $ (\s -> Tuple (spaceVar s) $ spaceStates s) <$> spaces
     let s = space vs (T.sequence ss)
     maybe arbitrary pure $ s
 instance arbPmf :: (Arbitrary a, Arbitrary b) => Arbitrary (PMF a b) where
@@ -461,9 +179,9 @@ instance arbCondMulti :: Arbitrary (CondPMF Variable State [Variable] [State]) w
   arbitrary = do
     _ <- pure unit
     arbCond (\m d -> m `S.member` S.fromList d)
-arbCond :: forall a b c d.
-       (Arbitrary (Space a b), Arbitrary (Space c d),
-        Arbitrary (CondPMF a b c d), Ord d) =>
+arbCond :: forall a b c d. 
+       (Arbitrary (Space a b), Arbitrary (Space c d), Arbitrary (CondPMF a b c d),
+        Show a, Show b, Show c, Show d, Ord d) =>
        (a -> c -> Boolean) -> Gen (CondPMF a b c d)
 arbCond f = do
     mainSpace <- arbitrary
@@ -504,3 +222,52 @@ probListArb :: Number -> Gen ProbList
 probListArb n =
   fromJust <<< (probList <=< T.traverse prob) <<< normalize <$>
   vectorOf n (choose 0 1)
+
+main = do
+  print $ gain' ["a", "b", "c", "d"] [] input''
+  let g1 = netScores input''
+  print g1
+  print <<< F.sum $ (to entropyNum <<< snd) <$> S.toList g1
+
+gain' l r = to entropyNum <<< gain (Variable <$> l) (Variable <$> r)
+
+input'' = fromRight $ fromRight input'
+input' :: Either PmfError (Either ParseError
+                           (Network Variable State [Variable] [State]))
+input' = runParserT netString networkP
+
+netString = """
+----
+b c | d P
+----
+t t | t 0.9
+    | f 0.1
+t f | t 0.85
+    | f 0.15
+f t | t 0.825
+    | f 0.175
+f f | t 0.8
+    | f 0.2
+
+----
+a | c P
+----
+t | t 0.75
+  | f 0.25
+f | t 0.7
+  | f 0.3
+
+----
+a | b P
+----
+t | t 0.65
+  | f 0.35
+f | t 0.6
+  | f 0.4
+
+----
+| a P
+----
+| t 0.55
+| f 0.45
+"""

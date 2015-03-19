@@ -3,6 +3,7 @@ module Main where
 import Control.Monad.Eff
 import qualified Control.Monad.JQuery as J
 import Data.Either
+import Data.Either.Unsafe
 import qualified Data.Foldable as F
 import Data.Foreign
 import qualified Data.Set as S
@@ -12,10 +13,10 @@ import Debug.Trace
 import DOM
 import Text.Parsing.Parser
 
-import Information (Entropy (..))
 import Network (netScores)
 import Network.Parser (networkP)
 import Network.Types
+import Probability.Information (Entropy (..))
 
 header :: forall eff. [Variable] -> Eff (dom :: DOM | eff) J.JQuery
 header vs = do
@@ -70,8 +71,6 @@ process = do
     Right r -> case r of
       Left e -> show e `J.appendText` output
       Right n' -> table (netScores n') >>= flip J.append output
-
-fromRight (Right r) = r
 
 main = J.ready $ do
   button <- J.select ".net > button"

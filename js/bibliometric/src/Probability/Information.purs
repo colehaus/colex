@@ -1,11 +1,5 @@
-module Information where
+module Probability.Information where
 
-import Control.Arrow
-import qualified Data.Foldable as F
-import Data.Tuple
-import qualified Data.Map as M
-import Data.Maybe.Unsafe
-import qualified Data.Set as S
 import Math
 
 import Probability
