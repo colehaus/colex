@@ -1,6 +1,36 @@
 var argMap = (function($, d3) {
 'use strict';
 
+var uniq = function(a) {
+    var seen = {};
+    return a.filter(function(item) {
+        return seen.hasOwnProperty(item) ? false : (seen[item] = true);
+    });
+};
+
+if (!Array.prototype.find) {
+  Array.prototype.find = function(predicate) {
+    if (this === null) {
+      throw new TypeError('Array.prototype.find called on null or undefined');
+    }
+    if (typeof predicate !== 'function') {
+      throw new TypeError('predicate must be a function');
+    }
+    var list = Object(this);
+    var length = list.length >>> 0;
+    var thisArg = arguments[1];
+    var value;
+
+    for (var i = 0; i < length; i++) {
+      value = list[i];
+      if (predicate.call(thisArg, value, i, list)) {
+        return value;
+      }
+    }
+    return undefined;
+  };
+}
+  
 var square = function(r) {
   return -r + ' ' + -r + ', ' +
          r + ' ' + -r + ', ' +
@@ -30,7 +60,7 @@ var linkArc = function(d) {
 };
 
 //Purifying is non-trivial since building svg in memory doesn't seem to work
-var mkMap = function(canvasId, nodeData, linkData, shapeData, colorData, nodeShapes) {
+var mkMap = function(canvasId, nodeData, linkData, nodeTypeData, linkTypeData) {
 
   var canvas = $(canvasId);
   var width = canvas.width();
@@ -41,17 +71,18 @@ var mkMap = function(canvasId, nodeData, linkData, shapeData, colorData, nodeSha
   var defStrength = 0.2;
   var radius = 10;
 
-  var mkLegend = function(shapeData, colorData) {
+  var mkLegend = function(nodeTypeData, linkTypeData) {
 
     svg.append('g')
       .attr('transform', 'translate(20, 50)')
       .classed('legend', true)
       .selectAll('.legend')
-      .data(shapeData)
+      .data(nodeTypeData)
       .enter().append('g')
         .attr('transform', function (_, i) { return 'translate(0, ' + i * 30 + ')'; })
         .each(function(d) {
-          d3.select(this).append('polygon').attr('points', nodeShapes[d.type](radius));
+          var nodeType = nodeTypeData.find(function(t) { return t.type === d.type; });
+          d3.select(this).append('polygon').attr('points', nodeType.shape(radius));
           d.label = d.label || [];
           var text = d3.select(this).append('text')
             .attr('x', radius + 5);
@@ -67,7 +98,7 @@ var mkMap = function(canvasId, nodeData, linkData, shapeData, colorData, nodeSha
       .attr('transform', 'translate(20, 180)')
       .classed('legend', true)
       .selectAll('.legend')
-      .data(colorData)
+      .data(linkTypeData)
       .enter().append('g')
         .attr('transform', function (_, i) { return 'translate(0, ' + i * 30 + ')'; })
         .each(function(d) {
@@ -107,9 +138,10 @@ var mkMap = function(canvasId, nodeData, linkData, shapeData, colorData, nodeSha
       linkTexts.attr('transform', linkCenter);
     };
 
+    var linkTypes = uniq(linkData.map(function(l) { return l.type; }));
     // Per-type markers, as they don't inherit styles.
     svg.append('defs').selectAll('marker')
-        .data(['causes', 'subtype', 'contradicts', 'motivates'])
+        .data(linkTypes)
       .enter().append('marker')
         .attr('id', function(d) { return d; })
         .attr('viewBox', '0 -5 10 10')
@@ -160,7 +192,7 @@ var mkMap = function(canvasId, nodeData, linkData, shapeData, colorData, nodeSha
         .attr('class', function(d) {
           return d.type;
         }).attr('points', function(d) {
-          return nodeShapes[d.type](radius);
+          return nodeTypeData.find(function(t) { return t.type === d.type; }).shape(radius);
         }).on('dblclick', function(d) {
           d3.select(this).classed('fixed', d.fixed = false);
         }).call(force.drag().on('dragend', function(d) {
@@ -210,7 +242,7 @@ var mkMap = function(canvasId, nodeData, linkData, shapeData, colorData, nodeSha
     .attr('width', width)
     .attr('height', height);
 
-  mkLegend(shapeData, colorData);
+  mkLegend(nodeTypeData, linkTypeData);
   return mkForce(nodeData, linkData);
 };
 return {square: square,

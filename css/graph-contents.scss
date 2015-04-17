@@ -1,0 +1,14 @@
+@import 'default/colors';
+@import 'arg-map';
+
+$imply-color: nth(map-get($colors, hue), 6);
+
+#imply {
+  fill: $imply-color;
+}
+.link {
+  &.imply {
+    stroke: $imply-color;
+  }
+}
+

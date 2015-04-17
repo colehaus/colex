@@ -101,29 +101,30 @@ var linkData = [
   {source: 'multiple', target: 'rational', type: 'causes'}
 ];
 
-var shapeData = [{type: 'outcome', label: ['Outcome']},
-                 {type: 'method', label: ['Prediction method']},
-                 {type: 'conclusion', label: ['Conclusion']}];
+var nodeTypeData = [
+  {type: 'outcome', label: ['Outcome'], shape: argMap.circle},
+  {type: 'method', label: ['Prediction method'], shape: argMap.square},
+  {type: 'conclusion', label: ['Conclusion'], shape: argMap.diamond}
+];
 
-var colorData = [{type: 'causes', label: ['Possible causation']},
-                 {type: 'subtype', label: ['Subtype']},
-                 {type: 'contradicts', label: ['Contradict']},
-                 {type: 'motivates', label: ['Motivate']}];
-
-var nodeShapes = {method: argMap.square,
-                  outcome: argMap.circle,
-                  conclusion: argMap.diamond};
+var linkTypeData = [
+  {type: 'causes', label: ['Possible causation']},
+  {type: 'subtype', label: ['Subtype']},
+  {type: 'contradicts', label: ['Contradict']},
+  {type: 'motivates', label: ['Motivate']}
+];
 
 var first = true;
 var map;
 
-$('a[href="#arg-map"]').click(function() {
+$('a[href="#arg-map"]').click(function(e) {
   $('#underlay').toggleClass('inactive');
   $('#overlay').toggleClass('inactive');
   if (first) {
-    map = argMap.mkMap('#arg-map', nodeData, linkData, shapeData, colorData, nodeShapes);
+    map = argMap.mkMap('#arg-map', nodeData, linkData, nodeTypeData, linkTypeData);
     map.start();
     $('#arg-map a').click(function() {
+      $('#arg-map a').removeAttr('style');
       $('#underlay').toggleClass('inactive');
       $('#overlay').toggleClass('inactive');
       map.stop();
@@ -132,6 +133,8 @@ $('a[href="#arg-map"]').click(function() {
   } else {
     map.resume();
   }
+  // SVG requires that we not quote id here?
+  $('a[href=#' + $(e.target).attr('id') + ']').css('font-weight', 'bold');
 });
 });
 })($, argMap);
