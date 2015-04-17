@@ -1,30 +1,35 @@
 @import 'colors';
 .switch {
-    width: calc(100% - 2ex - 10px);
+    width: calc(100% - 2ex);
     cursor: pointer;
     list-style-type: none;
     margin: 0;
     padding: 1ex 1ex;
     display: inline-block;
-    border-left: 10px solid $menu-color;
-    background-color: rgba($menu-color, 0.3);
+   // inline-block and overflow interact badly without valign
+    vertical-align: bottom; 
     p {
         padding: 0;
     }
     > li {
+        border-left: 10px solid $menu-back-color;
+        background-color: rgba($menu-back-color, 0.3);
         display: none;
-        width: 100%;
+        width: calc(100% - 10px);
         &.open {
             display: inline-block;
         }
     }
     &.inline {
-        padding: 0 1ex;
-        /* margin-top: -1em; */
+        display: inline;
+        padding: 0.3ex 1ex;
         + p {
-            margin-top: 0;
+            margin-top: -1ex;
         }
         > li {
+            &.open {
+                display: inline;
+            }
             > *:first-child {
                 margin-top: 0;
             }

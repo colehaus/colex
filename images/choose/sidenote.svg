@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created by diasvg.py -->
+<svg width="5.100cm" height="15.664cm" viewBox="6.190 3.641 11.290 19.305"
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect x="6.240" y="5.255" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="7.240" y="6.450"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+A</text>
+<rect x="6.240" y="11.255" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="7.240" y="12.450"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+B</text>
+<rect x="9.240" y="11.255" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="10.240" y="12.450"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+C</text>
+<rect x="6.240" y="17.255" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="7.240" y="18.450"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+D</text>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 6.636,7.304 A 5.000,5.000 0 0,0 6.451,10.691 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="6.191,10.797 6.617,11.160 6.652,10.602 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="6.191,10.797 6.617,11.160 6.652,10.602 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 6.636,13.304 A 5.000,5.000 0 0,0 6.451,16.691 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="6.191,16.797 6.617,17.160 6.652,16.602 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="6.191,16.797 6.617,17.160 6.652,16.602 "/>
+<text x="6.240" y="4.255"  fill="#000000" text-anchor="start" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Sidenote graph</text>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 8.287,13.191 A 1.625,1.625 0 0,0 8.669,13.253 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="8.735,13.584 9.145,13.205 8.595,13.104 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="8.735,13.584 9.145,13.205 8.595,13.104 "/>
+</svg>

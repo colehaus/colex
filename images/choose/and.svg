@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created by diasvg.py -->
+<svg width="26.658cm" height="15.664cm" viewBox="5.950 2.386 32.608 18.050"
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect x="10.000" y="4.000" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="11.000" y="5.195"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+A</text>
+<rect x="6.000" y="10.000" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="7.000" y="11.195"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+B</text>
+<rect x="10.000" y="10.000" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="11.000" y="11.195"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+C</text>
+<rect x="14.000" y="10.000" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="15.000" y="11.195"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+D</text>
+<rect x="10.000" y="16.000" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="11.000" y="17.195"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+E</text>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 9.950,5.613 A 7.000,7.000 0 0,0 7.258,9.417 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="6.992,9.362 7.139,9.901 7.483,9.460 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="6.992,9.362 7.139,9.901 7.483,9.460 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 10.396,6.049 A 5.000,5.000 0 0,0 10.211,9.436 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="9.951,9.542 10.377,9.905 10.412,9.347 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="9.951,9.542 10.377,9.905 10.412,9.347 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 11.129,6.050 A 7.000,7.000 0 0,0 13.515,10.053 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="13.357,10.273 13.909,10.358 13.645,9.865 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="13.357,10.273 13.909,10.358 13.645,9.865 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 7.129,12.050 A 7.000,7.000 0 0,0 9.515,16.053 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="9.357,16.273 9.909,16.358 9.645,15.865 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="9.357,16.273 9.909,16.358 9.645,15.865 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 10.396,12.049 A 5.000,5.000 0 0,0 10.211,15.436 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="9.951,15.542 10.377,15.905 10.412,15.347 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="9.951,15.542 10.377,15.905 10.412,15.347 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 13.950,11.613 A 7.000,7.000 0 0,0 11.258,15.417 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="10.992,15.362 11.139,15.901 11.483,15.460 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="10.992,15.362 11.139,15.901 11.483,15.460 "/>
+<rect x="18.000" y="4.000" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="19.000" y="5.195"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+A</text>
+<rect x="18.000" y="7.000" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="19.000" y="8.195"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+B</text>
+<rect x="18.000" y="10.000" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="19.000" y="11.195"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+C</text>
+<rect x="18.000" y="13.000" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="19.000" y="14.195"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+D</text>
+<rect x="18.000" y="16.000" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="19.000" y="17.195"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+E</text>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 18.064,6.047 A 1.625,1.625 0 0,0 18.002,6.429 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="17.671,6.495 18.050,6.905 18.151,6.355 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="17.671,6.495 18.050,6.905 18.151,6.355 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 18.064,9.047 A 1.625,1.625 0 0,0 18.002,9.429 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="17.671,9.495 18.050,9.905 18.151,9.355 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="17.671,9.495 18.050,9.905 18.151,9.355 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 18.064,12.047 A 1.625,1.625 0 0,0 18.002,12.429 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="17.671,12.495 18.050,12.905 18.151,12.355 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="17.671,12.495 18.050,12.905 18.151,12.355 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 18.064,15.047 A 1.625,1.625 0 0,0 18.002,15.429 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="17.671,15.495 18.050,15.905 18.151,15.355 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="17.671,15.495 18.050,15.905 18.151,15.355 "/>
+<rect x="25.000" y="4.000" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="26.000" y="5.195"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+A</text>
+<rect x="25.000" y="7.000" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="26.000" y="8.195"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+C</text>
+<rect x="25.000" y="10.000" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="26.000" y="11.195"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+B</text>
+<rect x="25.000" y="13.000" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="26.000" y="14.195"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+D</text>
+<rect x="25.000" y="16.000" width="2.000" height="2.000" fill="none" stroke="#000000" stroke-width="0.100" />
+<text x="26.000" y="17.195"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+E</text>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 25.064,6.047 A 1.625,1.625 0 0,0 25.002,6.429 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="24.671,6.495 25.050,6.905 25.151,6.355 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="24.671,6.495 25.050,6.905 25.151,6.355 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 25.064,9.047 A 1.625,1.625 0 0,0 25.002,9.429 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="24.671,9.495 25.050,9.905 25.151,9.355 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="24.671,9.495 25.050,9.905 25.151,9.355 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 25.064,12.047 A 1.625,1.625 0 0,0 25.002,12.429 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="24.671,12.495 25.050,12.905 25.151,12.355 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="24.671,12.495 25.050,12.905 25.151,12.355 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 25.064,15.047 A 1.625,1.625 0 0,0 25.002,15.429 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="24.671,15.495 25.050,15.905 25.151,15.355 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="24.671,15.495 25.050,15.905 25.151,15.355 "/>
+<text x="10.000" y="3.000"  fill="#000000" text-anchor="start" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Additive graph</text>
+<text x="18.000" y="3.000"  fill="#000000" text-anchor="start" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Linearization 1</text>
+<text x="25.000" y="3.000"  fill="#000000" text-anchor="start" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Linearization 2</text>
+<text x="32.000" y="3.000"  fill="#000000" text-anchor="start" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+...</text>
+</svg>

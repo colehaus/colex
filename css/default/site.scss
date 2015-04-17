@@ -5,12 +5,15 @@
 @import 'sidenote';
 @import 'menu';
 @import 'tree';
+@import 'swap';
 
 /* ========== */
 /*  General   */
 /* ========== */
 
 $overlay-dur: 1s;
+$min-width: 45ex;
+$max-width: 65ex;
 
 html,
 button,
@@ -99,8 +102,8 @@ body {
 }
 main {
     position: relative;
-    min-width: 45ex;
-    max-width: 65ex;
+    min-width: $min-width;
+    max-width: $max-width;
     padding-right: 5vw;
     margin: 2ex 0;
 
@@ -114,8 +117,8 @@ main {
 header {
     @include order(-3);
 
-    min-width: 45ex;
-    max-width: 65ex;
+    min-width: $min-width;
+    max-width: $max-width;
 
     > hr {
         margin-bottom: 0;
@@ -234,8 +237,8 @@ nav > ul {
     }
 }
 .main-menu {
-    min-width: 45ex;
-    max-width: 65ex;
+    min-width: $min-width;
+    max-width: $max-width;
 }
 .main-menu.top {
     @include order(-2);
@@ -253,17 +256,16 @@ blockquote {
     padding-left: 2ex;
     quotes: "“" "”" "‘" "’";
     margin: 0;
+        margin-top: 0.5ex;
 }
-.epigraph > p::before,
-.quote::before {
+blockquote::before {
     content: open-quote;
     font-size: 6ex;
     line-height: 0;
     vertical-align: -0.7ex;
 }
 // Must close quote to satisfy browser nesting algo
-.epigraph > p::after,
-.quote::after {
+blockquote::after {
     content: close-quote;
     visibility: hidden;
 }
@@ -304,4 +306,7 @@ figure {
         margin: 0 4ex;
         font-size: smaller;
     }
+}
+.math {
+    font-size: 95%;
 }
