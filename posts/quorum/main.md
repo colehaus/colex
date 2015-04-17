@@ -396,8 +396,13 @@ limits on the maximum size of the interval.
 For example, suppose Pie Club put the size of its budget for the next year to a
 vote. If it were feeling fiscally responsible, it could simply sets its budget
 to the 95% lower bound on the mean vote. An alternative would be to declare a
-failure of quorum if the vote didn't produce a 95% interval smaller than <span
-class="math">\\(\\mu \\pm 10\\%\\)</span>.
+failure of quorum if the vote didn't produce a 95% interval smaller than $\mu
+\pm 10%$.
+
+# Future work
+
+- Comparative social welfare analysis versus traditional quorum
+- Human trials
 
 [^range]: Throughout this post, I'll be working with continuous
 [range voting](https://en.wikipedia.org/wiki/Range_voting):
