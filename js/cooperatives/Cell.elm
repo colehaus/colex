@@ -84,10 +84,10 @@ threshold = Lens .threshold (\a s -> {s | threshold <- a})
 defLabor : Discount -> Generation -> GroupId -> Firm
 defLabor d n i =
   let stepAd = stepProfit * laborAdvantage - laborShare * stepProfit
-      calcThreshold discount altruism = stepAd * altruism / (1 - (1 - discount) * (1 - deathP))
+      calcThreshold altruism = stepAd * altruism / (1 - (1 - deathP) * (1 - d))
   in Firm (stepProfit * laborShare * laborAdvantage)
           (stepProfit * capitalShare * laborAdvantage)
-          0 i n (MkLabor << Labor <| calcThreshold d)
+          0 i n (MkLabor << Labor <| calcThreshold)
 
 defCapital : Generation -> GroupId -> Firm
 defCapital n i = Firm (stepProfit * laborShare)

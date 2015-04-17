@@ -148,26 +148,54 @@ Elm.Automaton.make = function (_elm) {
             {case "_Tuple2":
                return $Graphics$Collage.moveX($Basics.toFloat(gs) * _v0._0 * labelSquish)($Graphics$Collage.toForm(plainText$($String.show(_v0._1))));}
             _E.Case($moduleName,
-            "between lines 84 and 85");
+            "between lines 85 and 86");
          }();
       },
       stops));
    };
    var legends = function (gs) {
-      return A2($Graphics$Element.flow,
-      $Graphics$Element.down,
-      _L.fromArray([plainText$("Capital-managed firms")
-                   ,A3($Graphics$Collage.collage,
-                   gs,
-                   35,
-                   _L.fromArray([$Graphics$Collage.moveY(15)(A2(legend,
-                                gs,
-                                $Render.capitalColor))
-                                ,$Graphics$Collage.moveX($Basics.toFloat(gs) / -4 * (labelSquish + 1))(labels(gs))
-                                ,$Graphics$Collage.moveY(-15)(A2(legend,
-                                gs,
-                                $Render.laborColor))]))
-                   ,plainText$("Labor-managed firms")]));
+      return function () {
+         var wealthLabel = plainText$("Wealth");
+         var _ = $Graphics$Element.sizeOf(wealthLabel);
+         var w = function () {
+            switch (_.ctor)
+            {case "_Tuple2": return _._0;}
+            _E.Case($moduleName,
+            "on line 100, column 16 to 34");
+         }();
+         var gs$ = gs - w - 30;
+         var wealthLegend = A2($Graphics$Element.flow,
+         $Graphics$Element.down,
+         _L.fromArray([plainText$("Capital-managed firms")
+                      ,A3($Graphics$Collage.collage,
+                      gs$,
+                      35,
+                      _L.fromArray([$Graphics$Collage.moveY(15)(A2(legend,
+                                   gs$,
+                                   $Render.capitalColor))
+                                   ,$Graphics$Collage.moveX($Basics.toFloat(gs$) / -4 * (labelSquish + 1))(labels(gs$))
+                                   ,$Graphics$Collage.moveY(-15)(A2(legend,
+                                   gs$,
+                                   $Render.laborColor))]))
+                      ,plainText$("Labor-managed firms")]));
+         var _ = $Graphics$Element.sizeOf(wealthLegend);
+         var h = function () {
+            switch (_.ctor)
+            {case "_Tuple2": return _._1;}
+            _E.Case($moduleName,
+            "on line 111, column 16 to 35");
+         }();
+         return A2($Graphics$Element.flow,
+         $Graphics$Element.right,
+         _L.fromArray([A3($Graphics$Element.container,
+                      w,
+                      h,
+                      $Graphics$Element.middle)(wealthLabel)
+                      ,A2($Graphics$Element.spacer,
+                      10,
+                      h)
+                      ,wealthLegend]));
+      }();
    };
    var ticks = A2($Ticks.totalTicks,
    $Signal.constant(2.0e-3),
@@ -197,9 +225,9 @@ Elm.Automaton.make = function (_elm) {
             ,_3: n};
    });
    var update = F2(function (s,
-   _v4) {
+   _v10) {
       return function () {
-         switch (_v4.ctor)
+         switch (_v10.ctor)
          {case "_Tuple4":
             return function () {
                  switch (s.ctor)
@@ -207,61 +235,63 @@ Elm.Automaton.make = function (_elm) {
                       {case 0: switch (s._1.ctor)
                            {case "Reseed":
                               return function () {
-                                   var $ = $Grid.init(s._2)(_v4._1),
+                                   var $ = $Grid.init(s._2)(_v10._1),
                                    auto$ = $._0,
                                    next = $._1;
                                    return {ctor: "_Tuple4"
                                           ,_0: auto$
                                           ,_1: next
-                                          ,_2: _v4._1
+                                          ,_2: _v10._1
                                           ,_3: 0};
                                 }();
                               case "Reset":
                               return function () {
-                                   var $ = $Grid.init(s._2)(_v4._2),
+                                   var $ = $Grid.init(s._2)(_v10._2),
                                    auto$ = $._0,
                                    next = $._1;
                                    return {ctor: "_Tuple4"
                                           ,_0: auto$
                                           ,_1: next
-                                          ,_2: _v4._2
+                                          ,_2: _v10._2
                                           ,_3: 0};
                                 }();}
                            break;}
                       switch (s._1.ctor)
                       {case "Pause":
                          return {ctor: "_Tuple4"
-                                ,_0: _v4._0
-                                ,_1: _v4._1
-                                ,_2: _v4._2
-                                ,_3: _v4._3};
+                                ,_0: _v10._0
+                                ,_1: _v10._1
+                                ,_2: _v10._2
+                                ,_3: _v10._3};
                          case "Play": return A6(step,
-                           _v4._3,
+                           _v10._3,
                            s._0,
-                           _v4._1,
-                           _v4._2,
-                           _v4._0,
+                           _v10._1,
+                           _v10._2,
+                           _v10._0,
                            s._2);
                          case "Step": return A6(step,
-                           _v4._3,
+                           _v10._3,
                            s._0,
-                           _v4._1,
-                           _v4._2,
-                           _v4._0,
+                           _v10._1,
+                           _v10._2,
+                           _v10._0,
                            s._2);}
                       break;}
                  _E.Case($moduleName,
-                 "between lines 61 and 68");
+                 "between lines 62 and 69");
               }();}
          _E.Case($moduleName,
-         "between lines 61 and 68");
+         "between lines 62 and 69");
       }();
    });
    var altruism = $Graphics$Input.input(0);
    var altSlider = A3($Slider.slider,
    altruism.handle,
    $Basics.identity,
-   $Slider.defaultSlider);
+   _U.replace([["max",1]
+              ,["step",1.0e-2]],
+   $Slider.defaultSlider));
    var gridSize = $Window.width;
    var gridLength = 25;
    var seed = 2348912;
@@ -276,13 +306,13 @@ Elm.Automaton.make = function (_elm) {
              ,_3: 0};
    }();
    var grid = A2($Signal._op["<~"],
-   function (_v14) {
+   function (_v20) {
       return function () {
-         switch (_v14.ctor)
+         switch (_v20.ctor)
          {case "_Tuple4":
-            return _v14._0;}
+            return _v20._0;}
          _E.Case($moduleName,
-         "on line 57, column 26 to 27");
+         "on line 58, column 26 to 27");
       }();
    },
    A3($Signal.foldp,
@@ -396,6 +426,15 @@ Elm.Transition.make = function (_elm) {
          return $List.last($List.sortBy(f)($Array.toList($)));
       };
    };
+   var groupAccum = function (i) {
+      return A2($Optics$Traversal._op["##"],
+      $Grid.groupAt(i),
+      A2($Optics$Traversal._op["@#"],
+      $Grid.groupType,
+      A2($Optics$Traversal._op["?@"],
+      $Grid.capitalGroup,
+      $Grid.accum)));
+   };
    var subCost = F3(function (e,
    c,
    a) {
@@ -405,13 +444,7 @@ Elm.Transition.make = function (_elm) {
             return A2($Optics$Traversal._op["#%"],
               A2($Optics$Traversal._op["@#"],
               $Grid.groups,
-              A2($Optics$Traversal._op["##"],
-              $Grid.groupAt(e._0),
-              A2($Optics$Traversal._op["@#"],
-              $Grid.groupType,
-              A2($Optics$Traversal._op["?@"],
-              $Grid.capitalGroup,
-              $Grid.accum)))),
+              groupAccum(e._0)),
               function (acc) {
                  return acc - c;
               })(a);
@@ -428,7 +461,7 @@ Elm.Transition.make = function (_elm) {
                  return acc - c;
               })(a);}
          _E.Case($moduleName,
-         "between lines 99 and 101");
+         "between lines 107 and 109");
       }();
    });
    var fromMaybe = A2($Basics.flip,
@@ -441,32 +474,23 @@ Elm.Transition.make = function (_elm) {
          $Cell.firmType);
          switch (_v5.ctor)
          {case "MkCapital":
-            return function () {
-                 var gs$ = A2($Optics$Traversal._op["#%"],
-                 A2($Optics$Traversal._op["##"],
-                 $Grid.groupAt(A2($Optics$Lens._op["^@"],
-                 f,
-                 $Cell.groupId)),
-                 A2($Optics$Traversal._op["@#"],
-                 $Grid.groupType,
-                 A2($Optics$Traversal._op["?@"],
-                 $Grid.capitalGroup,
-                 $Grid.accum))),
-                 F2(function (x,y) {
-                    return x + y;
-                 })(A2($Optics$Lens._op["^@"],
-                 f,
-                 $Cell.capitalProfit)))(gs);
-                 return {ctor: "_Tuple2"
-                        ,_0: A2($Optics$Lens._op["@%"],
-                        $Cell.accum,
-                        F2(function (x,y) {
-                           return x + y;
-                        })(A2($Optics$Lens._op["^@"],
-                        f,
-                        $Cell.laborProfit)))(f)
-                        ,_1: gs$};
-              }();
+            return {ctor: "_Tuple2"
+                   ,_0: A2($Optics$Lens._op["@%"],
+                   $Cell.accum,
+                   F2(function (x,y) {
+                      return x + y;
+                   })(A2($Optics$Lens._op["^@"],
+                   f,
+                   $Cell.laborProfit)))(f)
+                   ,_1: A2($Optics$Traversal._op["#%"],
+                   groupAccum(A2($Optics$Lens._op["^@"],
+                   f,
+                   $Cell.groupId)),
+                   F2(function (x,y) {
+                      return x + y;
+                   })(A2($Optics$Lens._op["^@"],
+                   f,
+                   $Cell.capitalProfit)))(gs)};
             case "MkLabor":
             return {ctor: "_Tuple2"
                    ,_0: A2($Optics$Lens._op["@%"],
@@ -480,7 +504,7 @@ Elm.Transition.make = function (_elm) {
                    })(f)
                    ,_1: gs};}
          _E.Case($moduleName,
-         "between lines 58 and 63");
+         "between lines 60 and 68");
       }();
    });
    var maxDiscount = 0.2;
@@ -514,7 +538,7 @@ Elm.Transition.make = function (_elm) {
                                   switch (_v11.ctor)
                                   {case "Just": return _v11._0;}
                                   _E.Case($moduleName,
-                                  "on line 147, column 37 to 38");
+                                  "on line 155, column 37 to 38");
                                }();
                             }(A2($Optics$Traversal._op["!#"],
                             gp,
@@ -526,14 +550,18 @@ Elm.Transition.make = function (_elm) {
                             var acc = A2($Optics$Lens._op["^@"],
                             g,
                             $Grid.accum);
-                            return _U.cmp(acc,
-                            0) > 0 && _U.cmp(A2($Optics$Lens._op["^@"],
+                            return _U.cmp(A2($Optics$Lens._op["^@"],
+                            e,
+                            $Cell.cost),
+                            acc) < 0 && _U.cmp(A2($Optics$Lens._op["^@"],
                             e,
                             $Cell.cost),
                             A2($Optics$Lens._op["^@"],
                             g,
                             $Grid.threshold)) < 0 ? $Maybe.Just({ctor: "_Tuple3"
-                                                                ,_0: acc
+                                                                ,_0: A2($Optics$Lens._op["^@"],
+                                                                g,
+                                                                $Grid.threshold)
                                                                 ,_1: gi
                                                                 ,_2: $Maybe.Nothing}) : $Maybe.Nothing;
                          }();
@@ -542,54 +570,67 @@ Elm.Transition.make = function (_elm) {
                             var acc = A2($Optics$Lens._op["^@"],
                             _v7._0,
                             $Cell.accum);
-                            return _U.cmp(acc,
-                            0) > 0 && _U.cmp(A2($Optics$Lens._op["^@"],
+                            return _U.cmp(A2($Optics$Lens._op["^@"],
+                            e,
+                            $Cell.cost),
+                            acc) < 0 && _U.cmp(A2($Optics$Lens._op["^@"],
                             e,
                             $Cell.cost),
                             A2($Optics$Lens._op["^@"],
                             _v9._0,
                             $Cell.threshold)(al)) < 0 ? $Maybe.Just({ctor: "_Tuple3"
-                                                                    ,_0: acc
+                                                                    ,_0: A2($Optics$Lens._op["^@"],
+                                                                    _v9._0,
+                                                                    $Cell.threshold)(al)
                                                                     ,_1: A2($Optics$Lens._op["^@"],
                                                                     _v7._0,
                                                                     $Cell.groupId)
                                                                     ,_2: $Maybe.Just(i)}) : $Maybe.Nothing;
                          }();}
                     _E.Case($moduleName,
-                    "between lines 138 and 153");
+                    "between lines 147 and 161");
                  }() : $Maybe.Nothing;
               },
               $Pseudorandom.$float);
             case "Nothing":
             return $Pseudorandom.constant($Maybe.Nothing);}
          _E.Case($moduleName,
-         "between lines 132 and 153");
+         "between lines 141 and 161");
       }();
    });
-   var grow = F6(function (gd,
-   al,
-   n,
+   var grow = F3(function (at,
    i,
-   e,
-   gp) {
+   e) {
       return A2($Pseudorandom$Infix._op["=<<"],
       function (claimants) {
          return _U.eq(claimants,
          $Array.empty) ? $Pseudorandom.constant($Maybe.Nothing) : function () {
-            var $ = A2(maximumBy,
+            var n = A2($Optics$Lens._op["^@"],
+            at,
+            $Grid.generation);
+            var _ = A2(maximumBy,
             function (_v14) {
                return function () {
                   switch (_v14.ctor)
                   {case "_Tuple3":
                      return _v14._0;}
                   _E.Case($moduleName,
-                  "on line 113, column 53 to 54");
+                  "on line 119, column 53 to 54");
                }();
             },
-            claimants),
-            a = $._0,
-            gi = $._1,
-            mi = $._2;
+            claimants);
+            var gi = function () {
+               switch (_.ctor)
+               {case "_Tuple3": return _._1;}
+               _E.Case($moduleName,
+               "on line 119, column 28 to 65");
+            }();
+            var mi = function () {
+               switch (_.ctor)
+               {case "_Tuple3": return _._2;}
+               _E.Case($moduleName,
+               "on line 119, column 28 to 65");
+            }();
             return function () {
                switch (mi.ctor)
                {case "Just":
@@ -616,15 +657,21 @@ Elm.Transition.make = function (_elm) {
                                                             $Cell.cost)
                                                             ,_2: $Either.Left(gi)}));}
                _E.Case($moduleName,
-               "between lines 114 and 120");
+               "between lines 121 and 129");
             }();
          }();
       },
       $Pseudorandom.lift($Grid.filterMap($Basics.identity))($Grid.combine($Grid.indexedMap(A3(claim,
-      al,
-      gp,
+      A2($Optics$Lens._op["^@"],
+      at,
+      $Grid.altruism),
+      A2($Optics$Lens._op["^@"],
+      at,
+      $Grid.groups),
       e))(A2($Grid.neighbors,
-      gd,
+      A2($Optics$Lens._op["^@"],
+      at,
+      $Grid.grid),
       i)))));
    });
    var deathP = 0.1;
@@ -647,19 +694,19 @@ Elm.Transition.make = function (_elm) {
          var birth = function (r) {
             return _U.cmp(r,
             abioP) < 0 ? A2($Pseudorandom$Infix._op["<$>"],
-            function (r) {
+            function (r$) {
                return $Maybe.Just({ctor: "_Tuple2"
                                   ,_0: A2($Cell.defCapital,n,gi)
                                   ,_1: A2($Optics$Traversal._op["#~"],
                                   $Grid.groupAt(gi),
-                                  _L.fromArray([$Grid.defCapital(r * maxDiscount)]))(gs)});
+                                  _L.fromArray([$Grid.defCapital(r$ * maxDiscount)]))(gs)});
             },
             $Pseudorandom.$float) : _U.cmp(r,
             abioP * 2) < 0 ? A2($Pseudorandom$Infix._op["<$>"],
-            function (r) {
+            function (r$) {
                return $Maybe.Just({ctor: "_Tuple2"
                                   ,_0: A3($Cell.defLabor,
-                                  r * maxDiscount,
+                                  r$ * maxDiscount,
                                   n,
                                   gi)
                                   ,_1: A2($Optics$Traversal._op["#~"],
@@ -677,14 +724,14 @@ Elm.Transition.make = function (_elm) {
    i,
    curr) {
       return function () {
-         var _v21 = A2($Optics$Traversal._op["!#"],
+         var _v29 = A2($Optics$Traversal._op["!#"],
          curr,
          A2($Optics$Traversal._op["@#"],
          $Grid.grid,
          $Grid.index(i)));
-         switch (_v21.ctor)
+         switch (_v29.ctor)
          {case "Just":
-            switch (_v21._0.ctor)
+            switch (_v29._0.ctor)
               {case "MkEmpty":
                  return function () {
                       var grown = function (mf) {
@@ -722,7 +769,7 @@ Elm.Transition.make = function (_elm) {
                                                break;
                                              case "Nothing": return curr;}
                                           _E.Case($moduleName,
-                                          "between lines 79 and 84");
+                                          "between lines 88 and 93");
                                        }();
                                     };
                                     return A2($Pseudorandom$Infix._op["<$>"],
@@ -741,26 +788,12 @@ Elm.Transition.make = function (_elm) {
                                     $Grid.groups)));
                                  }();}
                             _E.Case($moduleName,
-                            "between lines 73 and 85");
+                            "between lines 81 and 94");
                          }();
                       };
                       return A2($Pseudorandom$Infix._op["=<<"],
                       grown,
-                      A6(grow,
-                      A2($Optics$Lens._op["^@"],
-                      init,
-                      $Grid.grid),
-                      A2($Optics$Lens._op["^@"],
-                      curr,
-                      $Grid.altruism),
-                      A2($Optics$Lens._op["^@"],
-                      curr,
-                      $Grid.generation),
-                      i,
-                      _v21._0._0,
-                      A2($Optics$Lens._op["^@"],
-                      init,
-                      $Grid.groups)));
+                      A3(grow,init,i,_v29._0._0));
                    }();
                  case "MkFirm":
                  return function () {
@@ -776,7 +809,7 @@ Elm.Transition.make = function (_elm) {
                                case "Nothing":
                                return function () {
                                     var $ = A2(accum,
-                                    _v21._0._0,
+                                    _v29._0._0,
                                     A2($Optics$Lens._op["^@"],
                                     curr,
                                     $Grid.groups)),
@@ -793,7 +826,7 @@ Elm.Transition.make = function (_elm) {
                                     _L.fromArray([$Cell.MkFirm(f$)]))(curr));
                                  }();}
                             _E.Case($moduleName,
-                            "between lines 88 and 94");
+                            "between lines 97 and 103");
                          }();
                       };
                       return A2($Pseudorandom$Infix._op["<$>"],
@@ -802,7 +835,7 @@ Elm.Transition.make = function (_elm) {
                    }();}
               break;}
          _E.Case($moduleName,
-         "between lines 70 and 94");
+         "between lines 78 and 103");
       }();
    });
    var autoStep = function (at) {
@@ -836,6 +869,7 @@ Elm.Transition.make = function (_elm) {
                             ,death: death
                             ,accum: accum
                             ,fromMaybe: fromMaybe
+                            ,groupAccum: groupAccum
                             ,cellStep: cellStep
                             ,subCost: subCost
                             ,grow: grow
@@ -1856,17 +1890,16 @@ Elm.Cell.make = function (_elm) {
    i) {
       return function () {
          var stepAd = stepProfit * laborAdvantage - laborShare * stepProfit;
-         var calcThreshold = F2(function (discount,
-         altruism) {
-            return stepAd * altruism / (1 - (1 - discount) * (1 - deathP));
-         });
+         var calcThreshold = function (altruism) {
+            return stepAd * altruism / (1 - (1 - deathP) * (1 - d));
+         };
          return A6(Firm,
          stepProfit * laborShare * laborAdvantage,
          stepProfit * capitalShare * laborAdvantage,
          0,
          i,
          n,
-         MkLabor(Labor(calcThreshold(d))));
+         MkLabor(Labor(calcThreshold)));
       }();
    });
    var defCapital = F2(function (n,

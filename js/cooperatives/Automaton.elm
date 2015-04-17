@@ -51,7 +51,8 @@ altruism : Input Altruism
 altruism = input 0
 
 altSlider : Element
-altSlider = slider altruism.handle identity defaultSlider
+altSlider = slider altruism.handle identity { defaultSlider | max <- 1
+                                                            , step <- 0.01 }
 
 grid : Signal (Automaton)
 grid = (\(g, _, _, _) -> g) <~ foldp update initState ((,,) <~ ticks ~ run.signal ~ altruism.signal)
@@ -94,13 +95,25 @@ legend gs f =
   in gradient gradient' (rect (toFloat gs) 10)
 
 legends : GridSize -> Element
-legends gs = flow down [ plainText' "Capital-managed firms"
-                       , collage gs 35 [ moveY 15 <| legend gs R.capitalColor
-                                       , moveX (toFloat gs / -4 * (labelSquish + 1)) <| labels gs
-                                       , moveY -15 <| legend gs R.laborColor
-                                       ]
-                       , plainText' "Labor-managed firms"
-                       ]
+legends gs =
+  let wealthLabel = plainText' "Wealth"
+      (w, _) = sizeOf wealthLabel
+      gs' = gs - w - 30 
+      wealthLegend =
+        flow down [ plainText' "Capital-managed firms"
+                  , collage gs' 35
+                    [ moveY 15 <| legend gs' R.capitalColor
+                    , moveX (toFloat gs' / -4 * (labelSquish + 1)) <| labels gs'
+                    , moveY -15 <| legend gs'  R.laborColor
+                    ]
+                  , plainText' "Labor-managed firms"
+                  ]
+      (_, h) = sizeOf wealthLegend in
+  flow right [
+    container w h middle <| wealthLabel,
+    spacer 10 h,
+    wealthLegend
+  ]
 
 plainText' : String -> Element
 plainText' = leftAligned << style textStyle << toText

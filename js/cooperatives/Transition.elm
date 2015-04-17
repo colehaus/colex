@@ -37,12 +37,14 @@ maxDiscount = 0.2
 abiogenesis : Generation -> GroupId -> Groups -> Random (Maybe (Firm, Groups))
 abiogenesis n gi gs =
   let birth r = 
-    if | r < abioP -> (\r -> Just ( C.defCapital n gi
-                                  , gs |> G.groupAt gi #~ [G.defCapital <| r * maxDiscount])) <$>
-                      R.float
-       | r < abioP * 2 -> (\r -> Just ( C.defLabor (r * maxDiscount) n gi
-                                      , gs |> G.groupAt gi #~ [G.defLabor])) <$>
-                          R.float
+    if | r < abioP -> (\r' ->
+         Just ( C.defCapital n gi
+              , gs |> G.groupAt gi #~ [G.defCapital <| r' * maxDiscount])) <$>
+         R.float
+       | r < abioP * 2 -> (\r' ->
+         Just ( C.defLabor (r' * maxDiscount) n gi
+              , gs |> G.groupAt gi #~ [G.defLabor])) <$>
+         R.float
        | otherwise -> R.constant Nothing
   in birth =<< R.float
 
@@ -56,14 +58,20 @@ death =
 accum : Firm -> Groups -> (Firm, Groups)
 accum f gs =
  case f ^@ C.firmType of
-  C.MkLabor _ -> ( f |> C.accum @% (\a -> a + (f ^@ C.laborProfit) + (f ^@ C.capitalProfit))
-                 , gs)
-  C.MkCapital -> let gs' = gs |> G.groupAt (f ^@ C.groupId) ## G.groupType @# G.capitalGroup ?@ G.accum #% (+) (f ^@ C.capitalProfit) in
-                 ( f |> C.accum @% (+) (f ^@ C.laborProfit)
-                 , gs')
+  C.MkLabor _ ->
+    ( f |> C.accum @% (\a -> a + (f ^@ C.laborProfit) + (f ^@ C.capitalProfit))
+    , gs)
+  C.MkCapital ->
+    -- let groupAccum = G.groupAt (f ^@ C.groupId) ## G.groupType @#
+    --                  G.capitalGroup ?@ G.accum in
+    ( f |> C.accum @% (+) (f ^@ C.laborProfit)
+    , gs |> groupAccum (f ^@ C.groupId) #% (+) (f ^@ C.capitalProfit))
 
 fromMaybe : a -> Maybe a -> a
 fromMaybe = flip M.maybe identity
+
+groupAccum : GroupId -> Traversal' Groups Float
+groupAccum i = G.groupAt i ## G.groupType @# G.capitalGroup ?@ G.accum 
 
 cellStep : Automaton -> Index -> Automaton -> Random Automaton
 cellStep init i curr =
@@ -71,9 +79,10 @@ cellStep init i curr =
     Just (C.MkEmpty e) ->
       let grown mf =
         case mf of
-          Just (f, c, egi) -> R.constant (subCost egi c curr
-                                           |> G.grid @# G.index i #~ [C.MkFirm f]
-                                           |> G.groups @% G.dirty f)
+          Just (f, c, egi) ->
+            R.constant (subCost egi c curr
+                        |> G.grid @# G.index i #~ [C.MkFirm f]
+                        |> G.groups @% G.dirty f)
           Nothing ->
             let abio mf =
               case mf of
@@ -82,7 +91,7 @@ cellStep init i curr =
                        |> G.groups @~ gs'
                 Nothing -> curr
             in abio <$> abiogenesis (curr ^@ G.generation) (G.genGroupId (curr ^@ G.generation) i) (curr ^@ G.groups)
-      in grown =<< grow (init ^@ G.grid) (curr ^@ G.altruism) (curr ^@ G.generation) i e (init ^@ G.groups)
+      in grown =<< grow init i e
     Just (C.MkFirm f) ->
       let killed me = 
         case me of
@@ -93,40 +102,40 @@ cellStep init i curr =
                     |> G.groups @~ G.dirty f' gs'
       in killed <$> death
 
-
 subCost : Either GroupId Index -> Cost -> Automaton -> Automaton
 subCost e c a =
   case e of
-    Left gi -> a |> G.groups @# G.groupAt gi ## G.groupType @# G.capitalGroup ?@ G.accum #% (\acc -> acc - c)
+    Left gi -> a |> G.groups @# groupAccum gi #% (\acc -> acc - c)
     Right i -> a |> G.grid @# G.index i ## C.firm ?@ C.accum #% (\acc -> acc - c)
 
 type Cost = Float
--- Maybe (Firm, Cost, Either GroupId Index)
 
 type Growth = (Firm, Cost, Either GroupId Index)
-grow : Grid Cell -> Altruism -> Generation -> Index -> Empty -> Groups ->
-       Random (Maybe Growth)
-grow gd al n i e gp =
+grow : Automaton -> Index -> Empty -> Random (Maybe Growth)
+grow at i e =
   (\claimants ->
     if claimants == A.empty
     then R.constant Nothing
-    else let (a, gi, mi) = maximumBy (\(a, _, _) -> a) claimants
+    else let (_, gi, mi) = maximumBy (\(t, _, _) -> t) claimants
+             n = at ^@ G.generation
          in case mi of
-              Just i -> (\r -> Just ( C.defLabor (r * maxDiscount) n gi
-                                    , e ^@ C.cost
-                                    , Right i)) <$> R.float
-              Nothing -> R.constant <| Just (C.defCapital n gi
-                                     , e ^@ C.cost
-                                     , Left gi)) =<<
+              Just i -> (\r ->
+                Just ( C.defLabor (r * maxDiscount) n gi
+                     , e ^@ C.cost
+                     , Right i)) <$> R.float
+              Nothing ->
+                R.constant <| Just (C.defCapital n gi
+                                   , e ^@ C.cost
+                                   , Left gi)) =<<
   (R.lift (G.filterMap identity) << G.combine <<
-    G.indexedMap (claim al gp e) <| G.neighbors gd i)
-
+   G.indexedMap (claim (at ^@ G.altruism) (at ^@ G.groups) e) <|
+   G.neighbors (at ^@ G.grid) i)
 
 maximumBy : (a -> comparable) -> Array a -> a
 maximumBy f = last << sortBy f << A.toList
 
-type Accum = Float
-type ClaimAttempt = (Accum, GroupId, Maybe Index)
+type Threshold = Float
+type ClaimAttempt = (Threshold, GroupId, Maybe Index)
 claim : Altruism -> Groups -> Empty -> Index -> Cell -> Random (Maybe ClaimAttempt)
 claim al gp e i c = 
   case c ^? C.firm of
@@ -138,20 +147,20 @@ claim al gp e i c =
           case f ^@ C.firmType of
             C.MkLabor l ->
               let acc = f ^@ C.accum
-              in if acc > 0 &&
-                    e ^@ C.cost < (l ^@ C.threshold) al
-                 then Just (acc, f ^@ C.groupId, Just i)
+              in if e ^@ C.cost < acc && e ^@ C.cost < (l ^@ C.threshold) al
+                 then Just (l ^@ C.threshold <| al, f ^@ C.groupId, Just i)
                  else Nothing
             C.MkCapital ->
               let gi = f ^@ C.groupId
-                  g = (\(Just g) -> g) <| gp !# G.groupAt gi ## G.groupType @? G.capitalGroup
+                  g = (\(Just g) -> g) <| gp !# G.groupAt gi ##
+                      G.groupType @? G.capitalGroup
                   acc = g ^@ G.accum
-              in if acc > 0 &&
-                    e ^@ C.cost < (g ^@ G.threshold)
-                 then Just (acc, gi, Nothing)
+              in if e ^@ C.cost < acc && e ^@ C.cost < (g ^@ G.threshold)
+                 then Just (g ^@ G.threshold, gi, Nothing)
                  else Nothing
         else Nothing) <$> R.float
 
+-- Remove groups which no longer have any active firms
 sweep : Groups -> Groups
 sweep = D.filter (\_ gp -> not <| gp ^@ G.clean)
 
