@@ -9,6 +9,7 @@ import           System.FilePath
 
 import           Hakyll
 import           Text.Pandoc.Options
+import           Text.Regex
 
 main :: IO ()
 main = hakyll $ do
@@ -87,7 +88,7 @@ main = hakyll $ do
         csl <- load "misc/biblio.csl"
         getResourceBody >>=
           readPandocBiblio readerOpt csl bib >>=
-          saveSnapshot "teaser" . (demoteHeaders . demoteHeaders <$>) .
+          saveSnapshot "teaser" . (stripVerbatim . demoteHeaders . demoteHeaders <$>) .
             writePandocWith writerOpt >>=
           loadAndApplyTemplate "templates/post.html" ctx >>=
           finish ctx
@@ -198,10 +199,22 @@ tagsCtx tags =
              field "tag-url" (return . toUrl . toFilePath .
                               tagsMakeId tags . itemBody)
 
+
+-- Special tag that (in combination with code block) isn't interpolated by pandoc
+stripVerbatim :: String -> String
+stripVerbatim = 
+  flip (subRegex (mkRegexWithOpts
+            ("<p><verbatim></p>\n<pre><code>" <>
+             "(.*)" <> "</code></pre>\n</verbatim>") False True))
+  "\\1"
+
 readerOpt :: ReaderOptions
 readerOpt =
   defaultHakyllReaderOptions {
-    readerExtensions = S.insert Ext_compact_definition_lists $ readerExtensions def
+    readerApplyMacros = True,
+    readerExtensions = S.insert Ext_compact_definition_lists $
+                       S.insert Ext_latex_macros $
+                       readerExtensions def
     }
 
 writerOpt :: WriterOptions

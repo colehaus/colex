@@ -6,6 +6,7 @@ import Data.Either
 import Data.Either.Unsafe
 import qualified Data.Foldable as F
 import Data.Foreign
+import Data.Maybe.Unsafe
 import qualified Data.Set as S
 import qualified Data.String as ST
 import Data.Tuple
@@ -13,7 +14,7 @@ import Debug.Trace
 import DOM
 import Text.Parsing.Parser
 
-import Network (netScores)
+import Network (netScores, comboProb)
 import Network.Parser (networkP)
 import Network.Types
 import Math.Probability.Information (Entropy (..))
@@ -45,10 +46,10 @@ body ps = do
   row `J.append` body
 
 table :: forall eff.
-         S.Set (Tuple Variable Entropy) -> Eff (dom :: DOM | eff) J.JQuery
+         [Tuple Variable Entropy] -> Eff (dom :: DOM | eff) J.JQuery
 table ss = do
   t <- J.create "<table>"
-  let ss' = unzip $ S.toList ss
+  let ss' = unzip ss
   h <- header $ fst ss'
   b <- body $ snd ss'
   h `J.append` t
@@ -70,9 +71,10 @@ process = do
     Left e -> show e `J.appendText` output
     Right r -> case r of
       Left e -> show e `J.appendText` output
-      Right n' -> table (netScores n') >>= flip J.append output
+      Right n' -> table (netScores (\n -> fromJust <<< comboProb n) n') >>= flip J.append output
 
 main = J.ready $ do
   button <- J.select ".net > button"
+  -- trace "hello"
   process
   J.on "click" (\_ _ -> process) button

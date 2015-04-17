@@ -4,6 +4,7 @@ import Control.Monad.Error.Class
 import qualified Data.Array as A
 import qualified Data.Array.Unsafe as AU
 import qualified Data.Map as M
+import Data.Maybe.Unsafe
 import qualified Data.Set as S
 import qualified Data.Traversable as T
 import Data.Tuple
@@ -13,13 +14,14 @@ import Math.Probability
 data Space a b = Space a [b]
 data CondPMF a b c d = CondPMF a c (M.Map d (Dist b))
 data CondPMFN b c d = CondPMFN c (M.Map d (Dist b))
-newtype Network a b c d = Network (M.Map a (CondPMFN b c d))
+data Network a b c d = Network (M.Map a (CondPMFN b c d)) [a]
 newtype PmfError = PmfError String
 
 cpn (CondPMF _ c m) = CondPMFN c m
 cp a (CondPMFN c m) = CondPMF a c m
 
-netList (Network m) = uncurry cp <$> M.toList m
+netList :: forall a b c d. (Ord a) => Network a b c d -> [CondPMF a b c d]
+netList (Network m as) = (\a -> cp a <<< fromJust $ a `M.lookup` m) <$> as
 
 combos :: forall a. (Ord a) => [[a]] -> [[a]]
 combos = T.sequence <<< (<$>) setNub <<< transpose
@@ -76,11 +78,11 @@ instance ordCondN :: (Ord b, Ord c, Ord d) => Ord (CondPMFN b c d) where
   compare (CondPMFN vsa ma) (CondPMFN vsb mb) = compare vsa vsb <> compare ma mb
 
 instance eqNet :: (Eq a, Eq b, Eq c, Eq d) => Eq (Network a b c d) where
-  (==) (Network a) (Network b) = a == b
+  (==) (Network a _) (Network b _) = a == b
   (/=) a b = not $ a == b
 instance ordNet :: (Ord a, Ord b, Ord c, Ord d) => Ord (Network a b c d) where
-  compare (Network a) (Network b) = compare a b
-instance showNet :: (Show a, Show b, Show c, Show d) =>
+  compare (Network a _) (Network b _) = compare a b
+instance showNet :: (Show a, Show b, Show c, Show d, Ord a) =>
          Show (Network a b c d) where
   show n = "Network " <> show (netList n)
 

@@ -66,15 +66,6 @@ condPmf xs zs ps |
   pure <<< N.CondPMF (spaceVar xs) (spaceVar zs) <<< M.fromList $
   A.zipWith (\z p -> Tuple z $ zipDist (spaceStates xs) p) (spaceStates zs) ps
 
-condPmf' :: forall a b c d m.
-            (MonadError N.PmfError m, Monad m, Ord d, Spacy a b, Spacy c d,
-             Show a, Show b, Show c, Show d) =>
-            a -> c -> M.Map d (Dist b) -> m (CondPMF a b c d)
-condPmf' v vs m = do
-  ms <- space v <<< extract <<< AU.head $ M.values m
-  ds <- space vs $ M.keys m
-  condPmf ms ds $ distProbs <$> M.values m
-
 condMain (N.CondPMF v _ _) = v
 condMainSpace (N.CondPMF v _ m) = N.Space v <<< extract <<< AU.head $ M.values m
 condDeps (N.CondPMF _ v _) = v
@@ -98,31 +89,24 @@ network cs | A.null cs = N.throwPmf "No CondPMF when constructing Network"
            | N.duplicate $ condMain <$> cs =
   N.throwPmf $ "Duplicated variable when constructing Network: " <> show cs
            | otherwise =
-  pure <<< N.Network <<< M.fromList $
-  (\(N.CondPMF x z m) -> Tuple x $ N.CondPMFN z m) <$> cs
+  pure $ N.Network (M.fromList $
+  (\(N.CondPMF x z m) -> Tuple x $ N.CondPMFN z m) <$> cs) (condMain <$> cs)
 
 lookup :: forall a b c d. (Ord a) => a -> Network a b c d -> Maybe (CondPMF a b c d)
-lookup a (N.Network m) = N.cp a <$> a `M.lookup` m
+lookup a (N.Network m _) = N.cp a <$> a `M.lookup` m
 
-netVars (N.Network m) = M.keys m
+netVars (N.Network m _) = M.keys m
 netList = N.netList
 
-condPmfMap :: forall a b c d m.
-              (MonadError N.PmfError m, Monad m, Ord d, Spacy a b, Spacy c d,
-              Show a, Show b, Show c, Show d) =>
-              (Dist b -> m (Dist b)) -> CondPMF a b c d -> m (CondPMF a b c d)
-condPmfMap f (N.CondPMF a c m) = condPmf' a c =<< T.traverse f m
+condPmfMap :: forall a b c d.
+              (Dist b -> Dist b) -> CondPMF a b c d -> CondPMF a b c d
+condPmfMap f (N.CondPMF a c m) = N.CondPMF a c $ f <$> m
 
-netPmfAlter :: forall a b c d m.
-               (MonadError N.PmfError m, Monad m, Ord a, Ord d,
-               Show a, Show b, Show c, Show d) =>
-               (CondPMF a b c d -> m (CondPMF a b c d)) -> a ->
-               Network a b c d -> m (Network a b c d)
-netPmfAlter f a n@(N.Network m) =
-  network <<< (<$>) (uncurry N.cp) <<< M.toList <<<
-  flip (M.insert a) m <<< N.cpn <=< f <=<
-  maybe (N.throwPmf $ "Failed lookup for " <> show a <> "in: " <> show n) pure $
-  a `lookup` n
+netPmfAlter :: forall a b c d. (Ord a) =>
+               (CondPMF a b c d -> CondPMF a b c d) -> a ->
+               Network a b c d -> Network a b c d
+netPmfAlter f a n@(N.Network m as) =
+  maybe n (flip N.Network as <<< flip (M.insert a) m <<< N.cpn <<< f) $ a `lookup` n
 
 -- Utility
 

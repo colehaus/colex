@@ -20,72 +20,50 @@ import Math.Probability.Information
 import Network.Types
 import Network.Types.Internal (throwPmf)
 
-netScores :: Network Variable State [Variable] [State] ->
-             S.Set (Tuple Variable Entropy)
-netScores n =
-  S.fromList <<< (<$>) (\ts ->
-    Tuple (fst $ AU.head ts) <<<
-    from entropyNum <<< F.sum $ (to entropyNum <<< snd) <$> ts) <<<
-  A.groupBy ((==) `on` fst) <<< A.sortBy (compare `on` fst) <<<
-  F.mconcat <<< fromJust <<< T.traverse (`scores` n) $ netVars n
+inits as = case A.init as of
+  Nothing -> [[]]
+  Just as' -> A.snoc (inits as') as
 
-scores :: Variable -> Network Variable State [Variable] [State] ->
-          Maybe [Tuple Variable Entropy]
-scores v n = do
-  ds <- dependencies v n
-  tds <- transitiveDeps v n
-  let ve = to entropyNum $ gain [v] [] n
-  let ts =
-        (\d -> Tuple d <<< from entropyNum $
-               to entropyNum (gain [d,v] [d] n) - ve) <$> ds
-  let t =
-        Tuple v <<< from entropyNum $
-        to entropyNum (gain (v : tds) tds n) -
-        F.sum ((to entropyNum <<< snd) <$> ts)
-  pure $ t : ts
+type GetProb a b c d = Network a b c d -> S.Set (Tuple a b) -> Prob
 
-gain :: [Variable] -> [Variable] -> Network Variable State [Variable] [State] ->
-        Entropy
-gain l r n =
-  on (divergence (pure unit))
-     (const <<< netDist <<< flip uniformize n <<< complement)
-     l r where
-    complement = S.toList <<< S.difference (S.fromList $ netVars n) <<< S.fromList
-    uniformize = 
-      flip (F.foldl (\n v -> fromJust <<< right $
-        netPmfAlter (condPmfMap (maybe (throwPmf "") pure <<< reshape uniform)) v n ::
-          Either PmfError (Network Variable State [Variable] [State])))
+netScores :: forall a b c d. (Ord a, Ord b) => 
+             GetProb a b c d -> Network a b c d -> [Tuple a Entropy]
+netScores f n =
+  zip as $ A.zipWith (\a b -> from entropyNum $ a - b)
+                     (fromJust $ A.tail ns) ns where
+    ns = to entropyNum <<< nonCond entropy <<< netDist f <<<
+         flip uniformize n <$> inits as
+    as = condMain <$> netList n
 
-dependencies :: forall a b c d. (Ord a) => a -> Network a b c d -> Maybe c
-dependencies a n = condDeps <$> a `lookup` n
+uniformize :: forall a b c d. (Ord a) => [a] -> Network a b c d -> Network a b c d
+uniformize vs n = 
+  F.foldl (flip (netPmfAlter (condPmfMap (fromJust <<< reshape uniform)))) n vs
 
-transitiveDeps :: forall a b c d. (Ord a) => a -> Network a b [a] d -> Maybe [a]
-transitiveDeps a n = do
-  c <- dependencies a n
-  c' <- F.mconcat <$> T.traverse (`transitiveDeps` n) c
-  pure <<< setNub $ c <> c'
+netDist :: forall a b c d. (Ord a, Ord b) =>
+           GetProb a b c d -> Network a b c d -> Dist (S.Set (Tuple a b))
+netDist f n =
+  fromJust <<< dist $ (id &&& f n) <$> S.toList (netCombos n)
 
-netDist :: Network Variable State [Variable] [State] -> Dist (S.Set Outcome)
-netDist n =
-  fromJust <<< dist $ (id &&& (fromJust <<< comboProb n)) <$>
-  S.toList (netCombos n)
-
-netCombos :: forall c d. Network Variable State c d -> S.Set (S.Set Outcome)
+netCombos :: forall a b c d. (Ord a, Ord b) =>
+             Network a b c d -> S.Set (S.Set (Tuple a b))
 netCombos =
   S.fromList <<< (<$>) S.fromList <<< T.sequence <<<
-  (<$>) ((\s -> Outcome (spaceVar s) <$> spaceStates s) <<< condMainSpace) <<<
+  (<$>) ((\s -> Tuple (spaceVar s) <$> spaceStates s) <<< condMainSpace) <<<
   netList
 
-comboProb :: Network Variable State [Variable] [State] ->
-             S.Set Outcome -> Maybe Prob
+comboProb :: forall a b c d. (Ord a, Ord b) =>
+             Network a b [a] [b] -> S.Set (Tuple a b) -> Maybe Prob
 comboProb n os =
   prob <<< F.product =<<
-  T.traverse (\o -> runProb <$> fullLookup o (S.delete o os) n) (S.toList os)
+  T.traverse (\o -> runProb <$>
+                    fullLookup (fst o) (prune (S.delete o os)) (snd o) n)
+             (S.toList os) where
+    prune os c =
+      snd <$> A.filter (flip S.member (S.fromList $ condDeps c) <<< fst)
+      (S.toList os)
 
-fullLookup :: Outcome -> S.Set Outcome ->
-              Network Variable State [Variable] [State] -> Maybe Prob
-fullLookup (Outcome a s) os n = do
+fullLookup :: forall a b c d. (Ord a, Eq b, Ord d) =>
+              a -> (CondPMF a b c d -> d) -> b -> Network a b c d -> Maybe Prob
+fullLookup a f b n = do
   c <- a `lookup` n
-  (??) (just s) <$> prune (S.fromList $ condDeps c) os `M.lookup` condMap c where
-    prune vs =
-      (<$>) outcomeState <<< A.filter (flip S.member vs <<< outcomeVar) <<< S.toList
+  (??) (just b) <$> f c `M.lookup` condMap c

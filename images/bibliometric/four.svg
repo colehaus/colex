@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created by diasvg.py -->
+<svg width="23.015cm" height="25.737cm" viewBox="-3.050 2.950 19.965 28.687"
+ xmlns="http://www.w3.org/2000/svg"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+<rect x="4.000" y="3.000" width="8.000" height="4.000" fill="none" stroke="#B5E2B5" stroke-width="0.100" />
+<text x="8.000" y="4.395"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Cigarette smoke</text>
+<text x="8.000" y="5.195"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+is inhaled into</text>
+<text x="8.000" y="5.995"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+the lungs</text>
+<rect x="9.000" y="9.000" width="7.000" height="4.000" fill="none" stroke="#B5E2B5" stroke-width="0.100" />
+<text x="12.500" y="10.795"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Smoking causes</text>
+<text x="12.500" y="11.595"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+chronic bronchitis</text>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 8.551,7.044 A 7.531,7.531 0 0,0 9.390,8.518 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="9.183,8.692 9.697,8.912 9.564,8.369 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="9.183,8.692 9.697,8.912 9.564,8.369 "/>
+<text x="12.300" y="5.500"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+----</text>
+<text x="12.300" y="6.300"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+| A P</text>
+<text x="12.300" y="7.100"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+----</text>
+<text x="12.300" y="7.900"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+| t 0.8</text>
+<text x="12.300" y="8.700"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+| f 0.2</text>
+<text x="16.500" y="11.600"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+----</text>
+<text x="16.500" y="12.400"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+A | B P</text>
+<text x="16.500" y="13.200"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+----</text>
+<text x="16.500" y="14.000"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+t | t 0.9</text>
+<text x="16.500" y="14.800"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+__| f 0.1</text>
+<text x="16.500" y="15.600"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+f | t 0.5</text>
+<text x="16.500" y="16.400"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+__| f 0.5</text>
+<rect x="-3.000" y="9.000" width="8.000" height="4.000" fill="none" stroke="#B5E2B5" stroke-width="0.100" />
+<text x="1.000" y="10.795"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Smoking causes</text>
+<text x="1.000" y="11.595"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+lung cancer</text>
+<text x="5.300" y="11.500"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+----</text>
+<text x="5.300" y="12.300"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+A | C P</text>
+<text x="5.300" y="13.100"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+----</text>
+<text x="5.300" y="13.900"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+t | t 0.7</text>
+<text x="5.300" y="14.700"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+__| f 0.3</text>
+<text x="5.300" y="15.500"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+f | t 0.6</text>
+<text x="5.300" y="16.300"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+__| f 0.4</text>
+<rect x="4.000" y="18.000" width="8.000" height="4.000" fill="none" stroke="#B5E2B5" stroke-width="0.100" />
+<text x="8.000" y="19.795"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+Smoking causes</text>
+<text x="8.000" y="20.595"  fill="#000000" text-anchor="middle" font-size="0.80" font-family="sans" font-style="normal" font-weight="400">
+fatigue</text>
+<text x="12.300" y="20.500"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+----</text>
+<text x="12.300" y="21.300"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+B C | D P</text>
+<text x="12.300" y="22.100"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+----</text>
+<text x="12.300" y="22.900"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+t t | t 0.99</text>
+<text x="12.300" y="23.700"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+____| f 0.01</text>
+<text x="12.300" y="24.500"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+t f | t 0.9</text>
+<text x="12.300" y="25.300"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+____| f 0.1</text>
+<text x="12.300" y="26.100"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+f t | t 0.8</text>
+<text x="12.300" y="26.900"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+____| f 0.2</text>
+<text x="12.300" y="27.700"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+f f | t 0.55</text>
+<text x="12.300" y="28.500"  fill="#000000" text-anchor="start" font-size="0.80" font-family="monospace" font-style="normal" font-weight="400">
+____| f 0.45</text>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 4.193,6.958 A 11.125,11.125 0 0,0 2.579,8.522 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="2.370,8.362 2.266,8.911 2.768,8.665 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="2.370,8.362 2.266,8.911 2.768,8.665 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 1.817,13.048 A 16.750,16.750 0 0,0 4.986,17.572 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="4.808,17.759 5.342,17.923 5.152,17.397 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="4.808,17.759 5.342,17.923 5.152,17.397 "/>
+<path stroke="#000000" fill="none" stroke-width="0.100"  d ="M 10.593,13.049 A 13.156,13.156 0 0,0 8.446,17.418 "/>
+<polygon fill="#000000" stroke="none" stroke-width="0.100" points="8.191,17.358 8.321,17.902 8.678,17.471 "/>
+<polygon fill="none" stroke="#000000" stroke-width="0.100"  points="8.191,17.358 8.321,17.902 8.678,17.471 "/>
+</svg>
