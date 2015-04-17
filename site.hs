@@ -112,15 +112,13 @@ main = hakyll $ do
   match "images/**" $ do
       route idRoute
       compile copyFileCompiler
+  match "css/*.scss" $ do
+    route $ setExtension "css"
+    compile compileScss
   includes <- makePatternDependency "css/default/_*.scss"
   rulesExtraDependencies [includes] $ match "css/default/site.scss" $ do
       route $ constRoute "css/default.css"
-      compile $ do
-        i <- getResourceString
-        let dir = takeDirectory . toFilePath . itemIdentifier $ i
-        fmap compressCss <$>
-          withItemBody (unixFilter "scss"
-                                   ["--sourcemap=none", "--trace", "-I", dir]) i
+      compile compileScss
   match "js/default/*.js" $ compile getResourceBody
   create ["js/default.js"] $ do
     route idRoute
@@ -132,10 +130,16 @@ main = hakyll $ do
     route idRoute
     compile copyFileCompiler
 
-
+compileScss :: Compiler (Item String)
+compileScss = do
+  i <- getResourceString
+  let dir = takeDirectory . toFilePath . itemIdentifier $ i
+  fmap compressCss <$>
+    withItemBody (unixFilter "scss"
+                             ["--sourcemap=none", "--trace", "-I", dir]) i
 
 postPat :: Pattern
-postPat = "posts/*/main.md"
+postPat = "posts/*/main.*"
 
 finish :: Context String -> Item String -> Compiler (Item String)
 finish ctx i =
@@ -222,6 +226,8 @@ writerOpt =
   defaultHakyllWriterOptions {
     writerHtml5 = True,
     writerHtmlQTags = True,
+    -- Hakyll + Pandoc don't insert <script> correctly,
+    -- so we add dummy URL and do it manually
     writerHTMLMathMethod = MathJax ""
     -- writerTableOfContents = True
     -- writerStandalone = True
