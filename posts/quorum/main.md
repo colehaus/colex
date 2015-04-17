@@ -399,6 +399,11 @@ to the 95% lower bound on the mean vote. An alternative would be to declare a
 failure of quorum if the vote didn't produce a 95% interval smaller than <span
 class="math">\\(\\mu \\pm 10\\%\\)</span>.
 
+# Future work
+
+- Comparative social welfare analysis versus traditional quorum
+- Human trials
+
 [^range]: Throughout this post, I'll be working with continuous
 [range voting](https://en.wikipedia.org/wiki/Range_voting):
 
