@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+    <title>ColEx—Choose your own exposition</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../css/default.css" />
+    
+  <link rel="stylesheet" type="text/css" href="../../css/choose.css" />
+
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="underlay">
+<nav><a href="../../">Home</a></nav>
+<main><article>
+  <h2 id="article-title">Choose your own exposition</h2>
+  <div class="metadata">
+  <nav class="tags"><ul>
+    
+      <li><a href="../../posts/tag/meta/">meta</a></li>
+    
+      <li><a href="../../posts/tag/text/">text</a></li>
+    
+      <li><a href="../../posts/tag/structure/">structure</a></li>
+    
+</ul></nav>
+
+  <span class="date">Published on <time datetime="2015-02-18">February 18, 2015</time>.</span>
+  
+  </div>
+  <div class="abstract">
+<p>We can use interactivity to augment traditional text. In particular, we allow for choice of ordering and between alternatives.</p>
+</div>
+<h3 id="ordering">Ordering</h3>
+<p>When teaching something, is it best to start with concrete and move to the abstract? Or is it best to emphasize the abstract and introduce concrete applications later? Research on this topic is ambivalent <span class="citation" data-cites="flores09">(Flores 2009)</span> <span class="citation" data-cites="debock11">(De Bock et al. 2011)</span> <span class="citation" data-cites="kaminski08">(Kaminski, Sloutsky, and Heckler 2008)</span> <span class="citation" data-cites="peterson88">(Peterson, Mercer, and O’Shea 1988)</span>. It’s conceivable that the superior approach depends on the student. With one-on-one in-person instruction, this sort of adaptation is possible. With traditional, static text, it’s not. On the web (with computers generally), it is.</p>
+<p>For example (Click one of the arrows on the side to swap the order.):</p>
+<p class="swap monoid">
+For each <a href="https://en.wikipedia.org/wiki/Natural_number">natural number</a>, addition with <span class="math">\(0\)</span> produces the same number. For each natural number, multiplication with <span class="math">\(1\)</span> produces the same number.
+</p>
+<p class="swap monoid">
+A <a href="https://en.wikipedia.org/wiki/Monoid">monoid</a> is an algebraic structure with a single associative binary operation and an identity element.
+</p>
+<!--more-->
+<h3 id="alternatives">Alternatives</h3>
+<p>Now suppose that we wish to make some argument which holds, as a premise, that the state is just and necessary. Because it is not the core of our argument, any argument which convinces the reader to accept that premise suffices. Instead of presenting many arguments equally in the text and implicitly asking the reader to choose, we can make that choice explicit.</p>
+<p>For example (Click the highlighted region to bring up a menu. Click one of the options in the menu to activate that choice.):</p>
+<ul class="switch" type="menu" menu="state">
+<li class="open">
+<p>The state is a <q>framework … needed to simplify the application of the two principles of justice</q>:</p>
+<blockquote>
+First: each person is to have an equal right to the most extensive scheme of equal basic liberties compatible with a similar scheme of liberties for others. Second: social and economic inequalities are to be arranged so that they are both (a) reasonably expected to be to everyone’s advantage, and (b) attached to positions and offices open to all. <span class="citation" data-cites="rawls09">(Rawls 2009)</span>
+</blockquote>
+<p>(these principles justified by the <a href="http://plato.stanford.edu/entries/original-position/">original position</a>.)</p>
+</li>
+<li>
+<blockquote>
+In a state of nature, … [g]roups of individuals may form mutual-protection associations: all will answer the call of any member for defense or for the enforcement of his rights. … [I]nconvenciences attend such simple mutual-protection associations …. Some people will be hired to perform protective functions, and some entrepreneurs will go into the business of selling protective services. <span class="citation" data-cites="nozick74">(Nozick 1974)</span>
+</blockquote>
+<p>Nozick then goes on to suggest that these protective agencies would form virtual monopolies, approximating a state.</p>
+</li>
+</ul>
+<p>This technique can be found <em>in vivo</em> in <a href="../quorum/">the post on quorum</a> (which also demonstrates synchronized choice i.e. changing what needs to be changed in subsequent sections to congrue with early choices).</p>
+<h3 id="sidenote">Sidenote</h3>
+<p>This site also uses <span class="noted">sidenotes.</span><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> By highlighting the noted text, we can provide a little extra clarity about the referent of the note.</p>
+<h3 id="commonality">Commonality</h3>
+<p>The common element here is that these tools allow for more dialogic text. Instead of fixing one canonical version of the text, we can now, in a limited way, respond to the reader’s preferences.</p>
+<p>An alternate view is that these tools allow us to express the structure of our argument with greater fidelity. Traditional text enforces linearity. These structural aspects must be described within the text itself, mixing levels (i.e. we have text which provides the content of our argument interspersed with text which describes the structure of our argument). A standard grammar here could increase both parsimony and efficacy. Viewing the structure of an argument as a <a href="https://en.wikipedia.org/wiki/Directed_graph">directed graph</a> permits a visualization of the tools described above:</p>
+<figure>
+<img src="../../images/choose/and.svg" alt="'Additive' graph">
+<figcaption>
+A graph in which each of B, C, and D are necessary to establish E. (In the language of <span class="citation" data-cites="kelley88">(Kelley 1988)</span>, an additive argument.) However, they have no dependence relation amongst themselves so may be reordered freely in the text.
+</figcaption>
+</figure>
+<figure>
+<img src="../../images/choose/or.svg" alt="'Disjunct' graph">
+<figcaption>
+A graph in which any of B, C, or D suffices to establish E. (In the language of <span class="citation" data-cites="kelley88">(Kelley 1988)</span>, a disjunct argument.) Any one of them may be presented in the text.
+</figcaption>
+</figure>
+<figure>
+<img id="sidenote-img" src="../../images/choose/sidenote.svg" alt="Sidenote graph">
+<figcaption>
+A graph in which C is a sidenote on B. It is not necessary to establish D and so could be omitted.
+</figcaption>
+</figure>
+<h3 id="future-work">Future work</h3>
+<ul>
+<li>Extend the grammar</li>
+<li>Make writing with these tools more friendly</li>
+<li>Learn and predict readers’ preferences (e.g. If a reader tends to prefer to start with the concrete explanation, default to that order.)</li>
+<li>Usability and usefulness investigation (i.e. After familiarization, do readers actually benefit from these tools?)</li>
+</ul>
+<menu id="state" type="popup">
+<menuitem label="A Theory of Justice" type="radio" checked="checked"></menuitem> <menuitem label="Anarchy, State and Utopia" type="radio"></menuitem>
+</menu>
+<hr class="references">
+<div class="references">
+<p>De Bock, Dirk, Johan Deprez, Wim Van Dooren, Michel Roelens, and Lieven Verschaffel. 2011. “Abstract or Concrete Examples in Learning Mathematics? A Replication and Elaboration of Kaminski, Sloutsky, and Heckler’s Study.” <em>Journal for Research in Mathematics Education</em>.</p>
+<p>Flores, Margaret M. 2009. “Using the Concrete–Representational–Abstract Sequence to Teach Subtraction with Regrouping to Students at Risk for Failure.” <em>Remedial and Special Education</em>.</p>
+<p>Kaminski, Jennifer A., Vladimir M. Sloutsky, and Andrew F. Heckler. 2008. “The Advantage of Abstract Examples in Learning Math.” <em>Science</em>.</p>
+<p>Kelley, David. 1988. <em>The Art of Reasoning</em>. Norton New York.</p>
+<p>Nozick, Robert. 1974. <em>Anarchy, State, and Utopia</em>. Basic books.</p>
+<p>Peterson, Susan K, Cecil D Mercer, and Lawrence O’Shea. 1988. “Teaching Learning Disabled Students Place Value Using the Concrete to Abstract Sequence.” <em>Learning Disabilities Research</em>.</p>
+<p>Rawls, John. 2009. <em>A Theory of Justice</em>. Harvard university press.</p>
+</div>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>They look like this.<a href="#fnref1">↩</a></p></li>
+</ol>
+</section>
+
+  
+    <aside class="sidenote" id="warnings">Warnings: <ul>
+      
+        <li><details><summary>Abstruse</summary><p>Replaces something widely understood with something unfamiliar---for dubious benefit</p></details></li>
+      
+    </ul></aside>
+  
+</article></main>
+
+</div>
+
+
+<script type="text/javascript" src="../../js/default.js"></script>
+
+
+  </body>
+</html>

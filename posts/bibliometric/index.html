@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=0.9">
+    <title>ColEx—Toward an alternative bibliometric</title>
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="../../css/default.css" />
+    
+  <link rel="stylesheet" type="text/css" href="../../css/bibliometric.css" />
+
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="underlay">
+<nav><a href="../../">Home</a></nav>
+<main><article>
+  <h2 id="article-title">Toward an alternative bibliometric</h2>
+  <div class="metadata">
+  <nav class="tags"><ul>
+    
+      <li><a href="../../posts/tag/bibliometrics/">bibliometrics</a></li>
+    
+      <li><a href="../../posts/tag/science/">science</a></li>
+    
+      <li><a href="../../posts/tag/publishing/">publishing</a></li>
+    
+      <li><a href="../../posts/tag/bayes/">bayes</a></li>
+    
+      <li><a href="../../posts/tag/information-theory/">information-theory</a></li>
+    
+</ul></nav>
+
+  <span class="date">Published on <time datetime="2014-11-08">November  8, 2014</time>.</span>
+  
+  </div>
+  <div class="abstract">
+<p>Impact factor isn’t great. A bibliometric based on entropy reduction may be promising.</p>
+</div>
+<h3 id="impact-factor">Impact factor</h3>
+<p>There are a variety of citation-based <a href="https://en.wikipedia.org/wiki/Bibliometrics">bibliometrics</a>. The current dominant metric is <a href="https://en.wikipedia.org/wiki/Impact_factor">impact factor</a>. It is highly influential, factoring into decisions on promotion, hiring, tenure, grants and departmental funding <span class="citation" data-cites="plos06">(Editors 2006)</span> <span class="citation" data-cites="agrawal05">(Agrawal 2005)</span> <span class="citation" data-cites="moustafa14">(Moustafa 2014)</span>. Editors preferentially publish review articles and push authors to <a href="https://en.wikipedia.org/wiki/Coercive_citation">self-cite</a> in pursuit of increased impact factor <span class="citation" data-cites="plos06">(Editors 2006)</span> <span class="citation" data-cites="agrawal05">(Agrawal 2005)</span> <span class="citation" data-cites="wilhite12">(Wilhite and Fong 2012)</span>. It may be responsible for editorial bias against replications <span class="citation" data-cites="neuliep90">(Neuliep and Crandall 1990)</span> <span class="citation" data-cites="brembs13">(Brembs, Button, and Munaf<span>ò</span> 2013)</span>. Consequently, academics take impact factor into account throughout the planning, execution and reporting of a study <span class="citation" data-cites="plos06">(Editors 2006)</span>.</p>
+<p>This is <a href="https://en.wikipedia.org/wiki/Campbell's_law">Campbell’s law</a> in action. Because average citation count isn’t what we actually value, when it becomes the metric by which decisions are made, it distorts academic research. In the rest of this post I propose a bibliometric that measures the <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">entropy reduction</a> of the <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">research graph</a>, on the supposition that this hews more closely to what we value.</p>
+<!--more-->
+<p><span class="math">\[
+\newcommand{cond}[3] {
+  #1\mathopen{}\left(#2\mathbin{\big|}#3\right)\mathclose{}
+}
+\]</span></p>
+<h3 id="entropy">Entropy</h3>
+<p>Claude Shannon codified entropy as <span class="math">\(H(X) = -\sum\limits_{i} P(x_i) \log_2 P(x_i)\)</span> where <span class="math">\(x_i\)</span> are the possible values of a discrete random variable <span class="math">\(X\)</span> <span class="citation" data-cites="shannon48">(Shannon 1948)</span><span class="citation" data-cites="cover12">(Cover and Thomas 2012)</span>. For example, the entropy of a 6-sided die is <span class="math">\[\begin{align}
+  H(D) &amp;= - P(⚀) \log_2 P(⚀) - P(⚁) \log_2 P(⚁) - P(⚂) \log_2 P(⚂) \\
+       &amp; - P(⚃) \log_2 P(⚃) - P(⚄) \log_2 P(⚄) - P(⚅) \log_2 P(⚅) \\
+       &amp;= -\left(6 \left(\frac{1}{6} \log_2 \frac{1}{6}\right)\right) \\
+       &amp;= \log_2 6
+\end{align}\]</span>.</p>
+<p>If we next learn that the die is weighted and can only roll even numbers, this changes the entropy (our uncertainty).</p>
+<p><span class="math">\[\begin{align}
+H(D|\epsilon) &amp;= - P(⚁) \log_2 P(⚁) -
+                   P(⚃) \log_2 P(⚃) -
+                   P(⚅) \log_2 P(⚅) \\
+     &amp;= - \left(3 \left(\frac{1}{3} \log_2 \frac{1}{3}\right)\right) \\
+     &amp;= \log_2 3
+\end{align}\]</span></p>
+<p><span class="noted">So the reduction in uncertainty is <span class="math">\(H(D) - H(D|\epsilon) = \log_2 6 - \log_2 3 = 1\)</span>.</span><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<h3 id="example">Example</h3>
+<p>We can use these definitions to calculate the information provided by a research paper and assign an Infometric®™ score. We’ll start with a fairly classic example about cigarette smoking.</p>
+<h4 id="first-study">First study</h4>
+<p>Suppose we do a study on whether, in the normal course of smoking, cigarette smoke is inhaled into the lungs. Prior to the study we use the (extremely) uninformative prior <span class="math">\(\cond{P}{A=t}{} = 0.5\)</span>. After the study (which we’ll call <span class="math">\(\alpha\)</span>) we perform a <a href="https://en.wikipedia.org/wiki/Bayes'_theorem">Bayesian update</a> and find that <span class="math">\(\cond{P}{A=t}{\alpha} = 0.8\)</span>. So our study has provided</p>
+<p><span class="math">\[\begin{align}
+H(A) - \cond{H}{A}{\alpha} &amp;= -P(A=t)\log_2P(A=t) - P(A=f)\log_2P(A=f) \\
+  &amp;+ \cond{P}{A=t}{\alpha}\log_2\cond{P}{A=t}{\alpha} \\
+  &amp;+ \cond{P}{A=f}{\alpha}\log_2\cond{P}{A=f}{\alpha} \\
+  &amp;= 2 \left(-0.5\log_20.5\right) \\
+  &amp;+ 0.8\log_20.8 \\
+  &amp;+ 0.2\log_20.2 \\
+  &amp;\approx 0.278
+\end{align}\]</span></p>
+<p>bits of entropy reduction. Thus its score at the moment is <span class="math">\(0.278\)</span>. So far, so good?</p>
+<h4 id="second-study">Second study</h4>
+<p>Now, we wish to study whether smoking causes chronic bronchitis. Suppose the study we design pipes smoke directly into the lungs of experimental subjects. The validity of our conclusion (Smoking does (not) cause chronic bronchitis.) now depends on the truth of the claim that cigarette smoke is inhaled into the lungs. So this new study is dependent on the prior study and will cite it.</p>
+<figure>
+<img src="../../images/bibliometric/bronchitis-pre.svg" alt="Graph depicting conditional dependencies" width="300" height="300">
+<figcaption>
+<p>We are using uninformative priors.</p>
+(In this and subsequent graphs, we follow the conventions of <a href="https://en.wikipedia.org/wiki/Bayesian_network">Bayesian networks</a> (i.e. a cited paper is the parent rather than the child—the arrow runs from rather than to the cited paper) rather than the conventions of <a href="https://en.wikipedia.org/wiki/Citation_graph">citation graphs</a>.)
+</figcaption>
+</figure>
+<p>Now we carry out our study (we’ll call it <span class="math">\(\beta\)</span>). It provides evidence that cigarette smoking does lead to bronchitis (conditional on the supposition that cigarette smoke is inhaled into the lungs). So we update our <span class="math">\(\cond{P}{B=t}{\beta}\)</span>. The entropy reduction from this study, considered in isolation, is <span class="math">\(H(A,B) - \cond{H}{A,B}{\beta} \approx 0.266\)</span>.</p>
+<figure>
+<img src="../../images/bibliometric/bronchitis-post.svg" alt="Graph depicting conditional dependencies" width="300" height="300">
+<figcaption>
+We have integrated data from the second study.
+</figcaption>
+</figure>
+<p>But what if we don’t consider it in isolation? First, we look for the total entropy reduction from both studies and find <span class="math">\(H(A,B) - \cond{H}{A,B}{\alpha,\beta} \approx 0.703\)</span>. <span class="noted">Note that this is not simply the sum of the isolated reductions.</span><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a></p>
+<figure>
+<img src="../../images/bibliometric/bronchitis-both.svg" alt="Graph depicting conditional dependencies" width="300" height="300">
+<figcaption>
+We have integrated data from both studies now.
+</figcaption>
+</figure>
+<p>How do we apportion this gain into Infometric®™ scores then? We can decompose the aggregate gain into a sum like</p>
+<p><span class="math">\[\begin{align}
+H(A,B) - \cond{H}{A,B}{\alpha,\beta} &amp;=
+    \cond{H}{A,B}{\beta} - \cond{H}{A,B}{\alpha,\beta} \\
+  &amp;+ H(A,B) - \cond{H}{A,B}{\beta}
+\end{align}\]</span></p>
+<p>where <span class="math">\(\cond{H}{A,B}{\beta} - \cond{H}{A,B}{\alpha,\beta} \approx 0.437\)</span> represents <span class="math">\(\alpha\)</span>’s score and <span class="math">\(H(A,B) - \cond{H}{A,B}{\beta} \approx 0.266\)</span> represents <span class="math">\(\beta\)</span>’s score.</p>
+<p>(the general form is <span class="math">\(H(S_1,S_2,\cdots,S_n) - \cond{H}{S_1,S_2,\cdots,S_n}{\sigma_1,\sigma_2,\cdots,\sigma_n} = \sum\limits_{i=1}^n I(\sigma_i))\)</span> where <span class="math">\(I(\sigma_i) = \cond{H}{S_1,S_2,\cdots,S_i}{\sigma_{i+1},\sigma_{i+2},\cdots,\sigma_n} - \cond{H}{S_1,S_2,\cdots,S_i}{\sigma_i,\sigma_{i+1},\sigma_{i+2},\cdots,\sigma_n}\)</span></p>
+<p>We can see that <span class="math">\(\beta\)</span> citing <span class="math">\(\alpha\)</span> has increased <span class="math">\(\alpha\)</span>’s score (<span class="math">\(\alpha\)</span> now reduces our uncertainty not only about <span class="math">\(A\)</span>, but also about <span class="math">\(B\)</span>), a <q>citation bonus</q>.</p>
+<h4 id="fourth-study">Fourth study</h4>
+<p>We’ll now jump to a fourth study so we can examine a fuller set of interactions (i.e. multiples studies citing one study, one study citing multiple studies).</p>
+<figure>
+<img src="../../images/bibliometric/four.svg" alt="Graph depicting conditional dependencies" width="500" height="500">
+</figure>
+<p>The decomposition</p>
+<p><span class="math">\[\begin{align}
+H(A,B,C,D) - \cond{H}{A,B,C,D}{\alpha,\beta,\kappa,\delta} &amp;=
+    \cond{H}{A,B,C,D}{\beta,\kappa,\delta} -
+    \cond{H}{A,B,C,D}{\alpha,\beta,\kappa,\delta} \\
+  &amp;+ \cond{H}{A,B,C,D}{\kappa,\delta} -
+    \cond{H}{A,B,C,D}{\beta,\kappa,\delta} \\
+  &amp;+ \cond{H}{A,B,C,D}{\delta} - \cond{H}{A,B,C,D}{\kappa,\delta} \\
+  &amp;+ H(A,B,C,D) - \cond{H}{A,B,C,D}{\delta} \\
+\end{align}\]</span> leads to scores of <span class="math">\(I(\alpha) = 0.547\)</span>, <span class="math">\(I(\beta) = 0.387\)</span>, <span class="math">\(I(\kappa) = 0.123\)</span>, and <span class="math">\(I(\delta) = 0.434\)</span>.</p>
+<h3 id="demo">Demo</h3>
+<p>Try it out:</p>
+<form class="net">
+<div>
+<textarea>
+----
+| A P
+----
+| t 0.8
+| f 0.2
+
+----
+A | B P
+----
+t | t 0.9
+  | f 0.1
+f | t 0.5
+  | f 0.5
+
+----
+A | C P
+----
+t | t 0.7
+  | f 0.3
+f | t 0.6
+  | f 0.4
+
+----
+B C | D P
+----
+t t | t 0.99
+    | f 0.01
+t f | t 0.9
+    | f 0.1
+f t | t 0.8
+    | f 0.2
+f f | t 0.55
+    | f 0.45
+</textarea>
+</div>
+<button type="button">
+Calculate scores
+</button>
+<div>
+<output>
+</output>
+</div>
+</form>
+<h3 id="discussion">Discussion</h3>
+<h4 id="desirable-properties">Desirable properties</h4>
+<dl>
+<dt>Score depends on study design</dt>
+<dd>e.g. <em>ceteris paribus</em>, a study with higher power will have a higher score
+</dd>
+<dt>Aggregates sensibly</dt>
+<dd>The impact factor is often used in inappropriate circumstances <span class="citation" data-cites="plos06">(Editors 2006)</span> <span class="citation" data-cites="agrawal05">(Agrawal 2005)</span> <span class="citation" data-cites="moustafa14">(Moustafa 2014)</span>. That is, the warning that impact factor is a metric for journals, not authors or departments, is seldom heeded. The proposed metric can used in such cases trivially. For example, if an author has published studies <span class="math">\(\eta\)</span> and <span class="math">\(\theta\)</span>, their score is simply <span class="math">\(I(\eta) + I(\theta)\)</span>, the total reduction in entropy they contribute.
+</dd>
+<dt>Handles replications appropriately</dt>
+<dd>Impact factor tends to undervalue replications <span class="citation" data-cites="neuliep90">(Neuliep and Crandall 1990)</span> <span class="citation" data-cites="brembs13">(Brembs, Button, and Munaf<span>ò</span> 2013)</span>. With a simple extension of the proposed metric, if <span class="math">\(\iota\)</span> is a replication of <span class="math">\(\eta\)</span> about proposition <span class="math">\(E\)</span> it shares the <q>citation bonus</q> in proportion to how much it increases our certainty in <span class="math">\(E\)</span>.
+</dd>
+<dt>Gradated citations</dt>
+<dd>With impact factor, a citation to study <span class="math">\(\alpha\)</span> essential to the validity of study <span class="math">\(\gamma\)</span> is given the same weight as a citation to study <span class="math">\(\beta\)</span> providing some minor context for <span class="math">\(\gamma\)</span>. With the proposed metric, if <span class="math">\(\gamma\)</span> only depends minorly on <span class="math">\(\beta\)</span>, <span class="math">\(\gamma\)</span> will only boost <span class="math">\(\beta\)</span>’s score minorly. This should counteract the inflated value of review articles.
+</dd>
+</dl>
+<h4 id="undesirable-properties">Undesirable properties</h4>
+<dl>
+<dt>Not <a href="https://en.wikipedia.org/wiki/Incentive_compatibility">incentive compatible</a></dt>
+<dd><p>For example, if study <span class="math">\(\beta\)</span> depends on study <span class="math">\(\alpha\)</span> it will receive a better score by hiding this dependence and marginalizing. For example, <span class="math">\(\beta\)</span> receives a higher score when presented as</p>
+<pre><code> ----
+ | A P
+ ----
+ | t 0.8
+ | f 0.2
+
+ ----
+ | B P
+ ----
+ | t 0.82
+ | f 0.18</code></pre>
+<p>than when presented as</p>
+<pre><code> ----
+ | A P
+ ----
+ | t 0.8
+ | f 0.2
+
+ ----
+ A | B P
+ ----
+ t | t 0.9
+   | f 0.1
+ f | t 0.5
+   | f 0.5</code></pre>
+<p>. However, when considering impact factor as a relative metric used for comparisons, it also theoretically discourages citation (e.g. citing the paper of a competing applicant for a position boosts their impact factor-derived score). This problem does not seem to be devastating <span class="citation" data-cites="liu93">(Liu 1993)</span>.</p>
+</dd>
+<dt>Complicated</dt>
+<dd>The proposed metric is more procedurally complicated than impact factor. (Though the actual impact factor calculation procedure is more complicated than one would naively suppose.)
+</dd>
+<dt>Requires assessment of degree of dependence</dt>
+<dd>The <q>degree of dependence</q> (e.g. <span class="math">\(\cond{P}{B}{A=t}\)</span> vs. <span class="math">\(\cond{P}{B}{A=f}\)</span>) occupies an important role in the procedure. It’s not obvious to me how this should be determined other than by discussion between authors, editors and reviewers.
+</dd>
+</dl>
+<h3 id="future-work">Future work</h3>
+<ul>
+<li>Improve interface of demonstration</li>
+<li>Extend to replications and multi-proposition studies</li>
+<li>Compare with impact factor on real corpus</li>
+<li>Compare with expert evalution on real corpus</li>
+</ul>
+<hr class="references">
+<div class="references">
+<p>Agrawal, Anurag A. 2005. “Corruption of Journal Impact Factors.” <em>TRENDS in Ecology and Evolution</em>.</p>
+<p>Brembs, Bj<span>ö</span>rn, Katherine Button, and Marcus Munaf<span>ò</span>. 2013. “Deep Impact: Unintended Consequences of Journal Rank.” <em>Frontiers in Human Neuroscience</em>.</p>
+<p>Cover, Thomas M, and Joy A Thomas. 2012. <em>Elements of Information Theory</em>. John Wiley &amp; Sons.</p>
+<p>Editors, The PLoS Medicine. 2006. “The Impact Factor Game.” <em>PLoS Med</em>. <a href="http://www.plosmedicine.org/article/info:doi/10.1371/journal.pmed.0030291" class="uri">http://www.plosmedicine.org/article/info:doi/10.1371/journal.pmed.0030291</a>.</p>
+<p>Liu, Mengxiong. 1993. “Progress in Documentation the Complexities of Citation Practice: A Review of Citation Studies.” <em>Journal of Documentation</em>.</p>
+<p>Moustafa, Khaled. 2014. “The Disaster of the Impact Factor.” <em>Science and Engineering Ethics</em>.</p>
+<p>Neuliep, James W, and Rick Crandall. 1990. “Editorial Bias Against Replication Research.” <em>Journal of Social Behavior &amp; Personality</em>.</p>
+<p>Shannon, Claude Elwood. 1948. “A Mathematical Theory of Communication.” <em>Bell Systems Technical Journal</em>.</p>
+<p>Wilhite, Allen W, and Eric A Fong. 2012. “Coercive Citation in Academic Publishing.” <em>Science</em>.</p>
+</div>
+<section class="footnotes">
+<hr />
+<ol>
+<li id="fn1"><p>The intuition behind this result is something like our uncertainty is halved (1 bit) because one half of the fair die states are no longer possible.<a href="#fnref1">↩</a></p></li>
+<li id="fn2"><p>This accords with the intuition that value of two facts considered together is not simply the sum of their separate values (e.g. learning that Fido is small is largely redundant once you’ve learned that Fido is a Chihuahua).<a href="#fnref2">↩</a></p></li>
+</ol>
+</section>
+
+  
+    <aside class="sidenote" id="warnings">Warnings: <ul>
+      
+        <li><details><summary>Inaccessible</summary><p>Substantially more complicated than the status quo</p></details></li>
+      
+        <li><details><summary>Incomplete</summary><p>As currently presented, its problems are probably fatal</p></details></li>
+      
+    </ul></aside>
+  
+</article></main>
+
+</div>
+
+
+<script type="text/javascript" src="../../js/default.js"></script>
+
+<script type="text/javascript" src="../../js/bibliometric.min.js"></script>
+
+
+  </body>
+</html>
