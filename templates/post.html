@@ -5,14 +5,16 @@ $endfor$
 </head>
 <body>
 <div id="underlay">
-<div><a href="/">Home</a></div>
+<nav><a href="/">Home</a></nav>
 <main><article>
   <h2 id="article-title">$title$</h2>
+  <div class="metadata">
   $partial("templates/tag-nav.html")$
   <span class="date">Published on <time datetime="$num-date$">$date$</time>.</span>
   $if(edited)$
     <br><span class="date">Last edited on <time datetime="$date$">$date$</time>.</span>
   $endif$
+  </div>
   $body$
 
   $if(warnings)$

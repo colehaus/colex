@@ -6,6 +6,10 @@ js: /js/d3.v3.min.js, /js/arg-map.js, /js/graph-contents.js
 css: graph-contents
 ---
 
+<div class="abstract">
+A graph of contents is a more structured alternative to a table of contents.
+</div>
+
 A [table of contents](https://en.wikipedia.org/wiki/Table_of_contents) can
 provide a useful overview of a document's content. However, because of its
 [limited form](https://en.wikipedia.org/wiki/Tree_(graph_theory)), additional
@@ -16,7 +20,6 @@ If, instead, we use a
 can convey additional information about the relationships between sections. In
 effect, we combine the table of contents with an
 [argument map](https://en.wikipedia.org/wiki/Argument_map).
-
 
 <!--more-->
 

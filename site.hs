@@ -19,7 +19,7 @@ main = hakyll $ do
     compile $ let
       ctx =
         constField "title" ("Tagged " <> tag) <>
-        constField (tag <> "-page") mempty <>
+        boolField (tag <> "-page") (const True) <>
         listField "posts"
                   (tagsCtx tags <> postCtx)
                   (recentFirst =<< loadAll pat) <>
@@ -30,11 +30,10 @@ main = hakyll $ do
   create ["tags/index.html"] $ do
     route idRoute
     compile $ do
-      tagCloud <- renderTagCloud 50 180 tags
       let ctx =
-            constField "tag-cloud" tagCloud <>
+            tagCloudField "tag-cloud" 50 180 tags <>
             constField "title" "Tags" <>
-            constField "tags-page" mempty <>
+            boolField "tags-page" (const True) <>
             defaultContext
       makeItem mempty >>=
         loadAndApplyTemplate "templates/tags.html" ctx >>=
@@ -67,7 +66,7 @@ main = hakyll $ do
     route idRoute
     compile $ let
       ctx =
-        constField "home-page" mempty <>
+        boolField "home-page" (const True) <>
         constField "title" "Home" <>
         defaultContext in
       loadSnapshotBody (lastPage pages) "page" >>= makeItem >>=
@@ -75,8 +74,10 @@ main = hakyll $ do
       finish ctx
 
   match "posts/*/overlay.md" $ compile pandocCompiler
+  overlays <- makePatternDependency "posts/*/overlay.md"
   match "posts/*/warnings.md" $ compile getResourceBody
-  match postPat $ do
+  warnings <- makePatternDependency "posts/*/warnings.md"
+  rulesExtraDependencies [overlays, warnings] $ match postPat $ do
       route . customRoute $ \ident ->
         "posts/" <>
         (takeBaseName . takeDirectory . toFilePath) ident <>
@@ -97,7 +98,7 @@ main = hakyll $ do
       route $ constRoute "posts/index.html"
       compile $ let
         ctx = constField "title" "Archive" <>
-              constField "archive-page" mempty <>
+              boolField "archive-page" (const True) <>
               listField "posts"
                         (tagsCtx tags <> postCtx)
                         (recentFirst =<< loadAll postPat) <>
@@ -177,11 +178,10 @@ overCtx =
   takeDirectory . toFilePath . itemIdentifier
 warnCtx :: Context String
 warnCtx =
-  listFieldWith "warnings"
+  listFieldWith' "warnings"
                 (details <> summary)
-                ((mapM makeItem =<<) . (lines <$>) . loadBody .
-                 fromFilePath . (<> "/warnings.md") .
-                 takeDirectory . toFilePath . itemIdentifier) where
+                ((lines <$>) . loadBody . fromFilePath . (<> "/warnings.md") .
+                 takeDirectory . toFilePath) where
     split g = return . g . break (== '|') . itemBody
     details = field "details" $ split (tail . snd)
     summary = field "summary" $ split fst

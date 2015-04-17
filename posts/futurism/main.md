@@ -6,8 +6,12 @@ js: /js/d3.v3.min.js, /js/arg-map.js, /js/futurism.js
 css: futurism
 ---
 
-<blockquote>
+<div class="abstract">
+Predicting the future is hard. Research on forecasting techniques is
+inconclusive, but scenario planning might be the least bad approach.
+</div>
 
+<blockquote>
 The human race, to which so many of my readers belong, has been playing at
 children's games from the beginning.... And one of the games to which it is most
 attached is called "Keep to-morrow dark," .... The players listen very carefully
@@ -15,7 +19,6 @@ and respectfully to all that the clever men have to say about what is to happen
 in the next generation. The players then wait until all the clever men are dead,
 and bury them nicely. They then go and do something else. That is all. For a
 race of simple tastes, however, it is great fun. [@chesterton04]
-
 </blockquote>
 
 <div class="conversation">

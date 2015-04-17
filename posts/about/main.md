@@ -4,8 +4,7 @@ published: 2015-03-18
 tags: meta, biographical
 ---
 
-This is a single-author half-heartedly pseudonymous (That is, you can probably
-figure out my legal name. If you do, please don't shout it from mountaintops.)
+This is a single-author, half-heartedly pseudonymous (the pseudonym being Cole)
 blog.
 
 You can contact me at [colehaus@cryptolab.net](mailto:colehaus@cryptolab.net).

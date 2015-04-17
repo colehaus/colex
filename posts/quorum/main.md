@@ -7,12 +7,9 @@ js: /js/jquery.flot.min.js, /js/jstat.min.js, /js/plot.js, /js/mcmc.js, /js/quor
 ---
 
 <div class="abstract">
-
-In rough summary: This post proposes the application of statistical techniques
-like those used in [opinion polls](https://en.wikipedia.org/wiki/Opinion_poll)
-to voting itself. If aggregate votes on proposals are "sameish", according to
+Voting procedures can replace traditional quorum with the use of statistical
+techniques. If aggregate opinion on the alternatives is "similar", according to
 those techniques, we declare a failure of quorum.
-
 </div>
 
 # Motivating examples
@@ -253,7 +250,7 @@ for:
 We've tacitly assumed that our actual voters are a random sample of the
 population of potential voters. This is almost certainly not true
 (Though one could make it true through adoption of appropriate
-[electoral procedures](https://en.wikipedia.org/wiki/Sortition)).
+[voting procedures](https://en.wikipedia.org/wiki/Sortition)).
 [Self-selection bias](https://en.wikipedia.org/wiki/Self-selection_bias),
 whether due to differential interest, availability, transportation, &c., means
 that the sample is emphatically non-random. However, the problem of non-random

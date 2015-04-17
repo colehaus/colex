@@ -5,6 +5,11 @@ tags: meta, text, structure
 css: choose
 ---
 
+<div class="abstract">
+We can use interactivity to augment traditional text. In particular, we allow
+for choice of ordering and between alternatives. 
+</div>
+
 # Ordering
 
 When teaching something, is it best to start with concrete and move to the

@@ -62,7 +62,6 @@ hr {
     border: 1px solid $light-text-color;
 }
 .date {
-    font-size: smaller;
     color: $light-text-color;
 }
 
@@ -160,8 +159,11 @@ header {
 /*  Archive   */
 /* ========== */
 
+dl.posts > dd {
+    font-size: smaller;
+}
 .posts > dt {
-        margin-top: 1ex;
+    margin-top: 1ex;
 }
 
 /* ========== */
@@ -169,7 +171,7 @@ header {
 /* ========== */
 
 #warnings {
-   top: 0;
+   top: 10ex;
    &::first-letter {
        background-color: inherit;
    }
@@ -187,6 +189,10 @@ details > p {
 /* ========== */
 /*  Nav       */
 /* ========== */
+
+.metadata {
+    font-size: smaller;
+}
 
 nav > ul {
     padding: 0;
@@ -215,7 +221,6 @@ nav > ul {
 }
 .tags > ul {
     margin: 0;
-    font-size: smaller;
     > li~li::before {
         content: "—";
         color: $light-text-color;

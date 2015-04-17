@@ -6,6 +6,11 @@ js: /js/bibliometric.min.js
 css: bibliometric
 ---
 
+<div class="abstract">
+Impact factor isn't great. A bibliometric based on entropy reduction may be
+promising. 
+</div>
+
 # Impact factor
 
 There are a variety of citation-based
