@@ -1,8 +1,7 @@
-(function($, argMap) {
-"use strict";
-$(function() {
+(($, argMap) => {
+$(() => {
 
-var nodeData = {
+const nodeData = {
   major: {
     label: ['All men are mortal'],
     type: 'major'
@@ -14,26 +13,23 @@ var nodeData = {
     type: 'conclusion'
   }
 };
-for (var prop in nodeData) {
+for (let prop in nodeData) {
   if(nodeData.hasOwnProperty(prop)) {
     nodeData[prop].url = '#' + prop;
   }
 }
-var linkData = [
+const linkData = [
   {source: 'major', target: 'conclusion', type: 'imply'},
   {source: 'minor', target: 'conclusion', type: 'imply'}
 ];
 
-var nodeTypeData = [
+const nodeTypeData = [
   {type: 'major', label: ['Major premise'], shape: argMap.square},
   {type: 'minor', label: ['Minor premise'], shape: argMap.diamond},
   {type: 'conclusion', label: ['Conclusion'], shape: argMap.circle}
 ];
 
-var linkTypeData = [{type: 'imply', label: ['Jointly implies']}];
-
-var first = true;
-var map;
+const linkTypeData = [{type: 'imply', label: ['Jointly implies']}];
 
 argMap.handler(argMap.mkMap('#arg-map',
                             nodeData,

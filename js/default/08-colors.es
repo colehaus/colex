@@ -1,4 +1,4 @@
-var colors =  {
+const colors =  {
     hue: [
         '#b5bae6',
         '#d1abe6',

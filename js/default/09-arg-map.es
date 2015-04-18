@@ -1,27 +1,19 @@
-var argMap = (function($, d3) {
-'use strict';
-
-var uniq = function(a) {
-    var seen = {};
-    return a.filter(function(item) {
-        return seen.hasOwnProperty(item) ? false : (seen[item] = true);
-    });
-};
+const argMap = (($, d3) => {
 
 if (!Array.prototype.find) {
-  Array.prototype.find = function(predicate) {
+  Array.prototype.find = function (predicate) {
     if (this === null) {
       throw new TypeError('Array.prototype.find called on null or undefined');
     }
     if (typeof predicate !== 'function') {
       throw new TypeError('predicate must be a function');
     }
-    var list = Object(this);
-    var length = list.length >>> 0;
-    var thisArg = arguments[1];
-    var value;
+    const list = Object(this);
+    const length = list.length >>> 0;
+    const thisArg = arguments[1];
+    let value;
 
-    for (var i = 0; i < length; i++) {
+    for (let i = 0; i < length; i++) {
       value = list[i];
       if (predicate.call(thisArg, value, i, list)) {
         return value;
@@ -30,48 +22,55 @@ if (!Array.prototype.find) {
     return undefined;
   };
 }
-  
-var square = function(r) {
-  return -r + ' ' + -r + ', ' +
-         r + ' ' + -r + ', ' +
-         r + ' ' + r + ', ' +
-         -r + ' ' + r;
+
+const uniq = a => {
+  let seen = {};
+  return a.filter(item => 
+    seen.hasOwnProperty(item) ? false : (seen[item] = true)
+  );
 };
-var circle = function(r) {
-  var sides = 16;
-  var circle_ = [];
-  for (var i = 0; i < sides; i++) {
+  
+const square = r => 
+  -r + ' ' + -r + ', ' +
+  r + ' ' + -r + ', ' +
+  r + ' ' + r + ', ' +
+  -r + ' ' + r;
+const circle = r => {
+  const sides = 16;
+  let circle_ = [];
+  for (let i = 0; i < sides; i++) {
     circle_.push(r * Math.cos(2 * Math.PI / sides * i) + ' ' +
                  r * Math.sin(2 * Math.PI / sides * i));
   }
   return circle_.join(', ');
 };
-var diamond = function(r) {
-  return -r + ' ' + 0 + ', ' +
-         0 + ' ' + r + ', ' +
-         r + ' ' + 0 + ', ' +
-         0 + ' ' + -r;
-};
-var linkArc = function(d) {
-  var dx = d.target.x - d.source.x,
-      dy = d.target.y - d.source.y,
-      dr = Math.sqrt(dx * dx + dy * dy);
-  return 'M' + d.source.x + ',' + d.source.y + 'A' + dr + ',' + dr + ' 0 0,1 ' + d.target.x + ',' + d.target.y;
+const diamond = r =>
+  -r + ' ' + 0 + ', ' +
+  0 + ' ' + r + ', ' +
+  r + ' ' + 0 + ', ' +
+  0 + ' ' + -r;
+const linkArc = ({target, source}) => {
+  const dx = target.x - source.x;
+  const dy = target.y - source.y;
+  const dr = Math.sqrt(dx * dx + dy * dy);
+  return 'M' + source.x + ',' + source.y +
+    'A' + dr + ',' + dr + ' 0 0,1 ' +
+    target.x + ',' + target.y;
 };
 
 //Purifying is non-trivial since building svg in memory doesn't seem to work
-var mkMap = function(canvasId, nodeData, linkData, nodeTypeData, linkTypeData) {
+const mkMap = (canvasId, nodeData, linkData, nodeTypeData, linkTypeData) => {
 
-  var canvas = $(canvasId);
-  var width = canvas.width();
-  var height = canvas.height();
-  var defLength = width / 5;
-  var xCenter = width / 2;
-  var yCenter = height / 2;
-  var defStrength = 0.2;
-  var radius = 10;
+  const canvas = $(canvasId);
+  const width = canvas.width();
+  const height = canvas.height();
+  const defLength = width / 5;
+  const xCenter = width / 2;
+  const yCenter = height / 2;
+  const defStrength = 0.2;
+  const radius = 10;
 
-  var mkLegend = function(nodeTypeData, linkTypeData) {
+  const mkLegend = (nodeTypeData, linkTypeData) => {
 
     svg.append('g')
       .attr('transform', 'translate(20, 50)')
@@ -79,14 +78,14 @@ var mkMap = function(canvasId, nodeData, linkData, nodeTypeData, linkTypeData) {
       .selectAll('.legend')
       .data(nodeTypeData)
       .enter().append('g')
-        .attr('transform', function (_, i) { return 'translate(0, ' + i * 30 + ')'; })
-        .each(function(d) {
-          var nodeType = nodeTypeData.find(function(t) { return t.type === d.type; });
+        .attr('transform', (_, i) => 'translate(0, ' + i * 30 + ')')
+        .each(function (d) {
+          const nodeType = nodeTypeData.find(t => t.type === d.type);
           d3.select(this).append('polygon').attr('points', nodeType.shape(radius));
           d.label = d.label || [];
-          var text = d3.select(this).append('text')
+          const text = d3.select(this).append('text')
             .attr('x', radius + 5);
-          d.label.forEach(function(t, i) {
+          d.label.forEach((t, i) => {
             text.append('tspan')
               .attr('y', 0.5 + 1.6 * i + 'ex')
               .classed('node', true)
@@ -100,17 +99,17 @@ var mkMap = function(canvasId, nodeData, linkData, nodeTypeData, linkTypeData) {
       .selectAll('.legend')
       .data(linkTypeData)
       .enter().append('g')
-        .attr('transform', function (_, i) { return 'translate(0, ' + i * 30 + ')'; })
-        .each(function(d) {
+        .attr('transform', (_, i) => 'translate(0, ' + i * 30 + ')')
+        .each(function (d) {
           d3.select(this).append('path')
             .attr('d', linkArc({source: {x: -radius, y: radius},
                                 target: {x: radius, y: -radius}}))
             .classed(d.type, true)
             .classed('link', true);
           d.label = d.label || [];
-          var text = d3.select(this).append('text')
+          const text = d3.select(this).append('text')
             .attr('x', radius + 5);
-          d.label.forEach(function(t, i) {
+          d.label.forEach((t, i) => {
             text.append('tspan')
               .attr('y', 0.5 + 1.6 * i + 'ex')
               .classed('node', true)
@@ -119,16 +118,14 @@ var mkMap = function(canvasId, nodeData, linkData, nodeTypeData, linkTypeData) {
         });
   };
 
-  var mkForce = function(nodeData, linkData) {
+  const mkForce = (nodeData, linkData) => {
 
-    var tick = function() {
-      var transform = function(d) {
-        return 'translate(' + d.x + ',' + d.y + ')';
-      };
+    const tick = () => {
+      const transform = ({x, y}) => 'translate(' + x + ',' + y + ')';
 
-      var linkCenter = function(d) {
-        var xAvg = (d.target.x + d.source.x) / 2;
-        var yAvg = (d.target.y + d.source.y) / 2;
+      const linkCenter = ({target, source}) => {
+        const xAvg = (target.x + source.x) / 2;
+        const yAvg = (target.y + source.y) / 2;
         return 'translate(' + xAvg + ',' + yAvg + ')';
       };
 
@@ -138,12 +135,12 @@ var mkMap = function(canvasId, nodeData, linkData, nodeTypeData, linkTypeData) {
       linkTexts.attr('transform', linkCenter);
     };
 
-    var linkTypes = uniq(linkData.map(function(l) { return l.type; }));
+    const linkTypes = uniq(linkData.map(({type}) => type));
     // Per-type markers, as they don't inherit styles.
     svg.append('defs').selectAll('marker')
         .data(linkTypes)
       .enter().append('marker')
-        .attr('id', function(d) { return d; })
+        .attr('id', d => d)
         .attr('viewBox', '0 -5 10 10')
         .attr('refX', 15)
         .attr('refY', -1.5)
@@ -153,62 +150,55 @@ var mkMap = function(canvasId, nodeData, linkData, nodeTypeData, linkTypeData) {
       .append('path')
         .attr('d', 'M0,-5L10,0L0,5');
 
-    var force = d3.layout.force()
+    const force = d3.layout.force()
         .nodes(d3.values(nodeData))
         .links(linkData)
         .size([width, height])
-        .linkDistance(function(l) {
-          return l.length || defLength;
-        })
-        .linkStrength(function(l) {
-          return l.strength || defStrength;
-        })
+        .linkDistance(({length}) => length || defLength)
+        .linkStrength(({strength}) => strength || defStrength)
         .gravity(0.05)
         .charge(-300)
         .on('tick', tick);
 
-    var links = svg.append('g').selectAll('path')
+    const links = svg.append('g').selectAll('path')
         .data(force.links())
       .enter().append('path')
-        .attr('class', function(d) { return 'link ' + d.type; })
-        .attr('marker-end', function(d) { return 'url(#' + d.type + ')'; });
+        .attr('class', ({type}) => 'link ' + type)
+        .attr('marker-end', ({type}) => 'url(#' + type + ')');
 
-    var linkTexts = svg.append('g').selectAll('text')
+    const linkTexts = svg.append('g').selectAll('text')
         .data(force.links())
       .enter().append('text')
-      .each(function(d) {
+      .each(function (d) {
         d.label = d.label || [];
-        var that = this;
-        d.label.forEach(function(t, i) {
-          d3.select(that).append('tspan')
+        d.label.forEach((t, i) => {
+          d3.select(this).append('tspan')
             .classed('link', true)
             .text(t);
         });
       });
 
-    var nodes = svg.append('g').selectAll('polygon')
+    const nodes = svg.append('g').selectAll('polygon')
         .data(force.nodes())
       .enter().append('polygon')
-        .attr('class', function(d) {
-          return d.type;
-        }).attr('points', function(d) {
-          return nodeTypeData.find(function(t) { return t.type === d.type; }).shape(radius);
-        }).on('dblclick', function(d) {
-          d3.select(this).classed('fixed', d.fixed = false);
-        }).call(force.drag().on('dragend', function(d) {
-          d3.select(this).classed('fixed', d.fixed = true);
+        .attr('class', ({type}) => type)
+        .attr('points', d =>
+          nodeTypeData.find(t => t.type === d.type).shape(radius)
+        ).on('dblclick', function ({fixed}) {
+          d3.select(this).classed('fixed', fixed = false);
+        }).call(force.drag().on('dragend', function ({fixed}) {
+          d3.select(this).classed('fixed', fixed = true);
         }));
 
-    var nodeTexts = svg.append('g').selectAll('a')
+    const nodeTexts = svg.append('g').selectAll('a')
         .data(force.nodes())
       .enter().append('a')
-        .attr('xlink:href', function(d) { return d.url; })
+        .attr('xlink:href', ({url}) => url)
       .append('text')
-      .each(function(d) {
+      .each(function (d) {
         d.label = d.label || [];
-        var that = this;
-        d.label.forEach(function(t, i) {
-          d3.select(that).append('tspan')
+        d.label.forEach((t, i) => {
+          d3.select(this).append('tspan')
              .attr('x', 10)
              .attr('y', 1.6 * i + 'ex')
              .classed('node', true)
@@ -218,7 +208,7 @@ var mkMap = function(canvasId, nodeData, linkData, nodeTypeData, linkTypeData) {
     return force;
   };
 
-  linkData.forEach(function(link) {
+  linkData.forEach(link => {
     if (typeof nodeData[link.source] === 'undefined' ||
         typeof nodeData[link.target] === 'undefined') {
       throw 'Linking to non-existent node';
@@ -227,7 +217,7 @@ var mkMap = function(canvasId, nodeData, linkData, nodeTypeData, linkTypeData) {
     link.target = nodeData[link.target];
   });
 
-  for (var prop in nodeData) {
+  for (let prop in nodeData) {
     if(nodeData.hasOwnProperty(prop)) {
       if (typeof nodeData[prop].x !== 'undefined') {
         nodeData[prop].x = nodeData[prop].x(width) + xCenter;
@@ -238,7 +228,7 @@ var mkMap = function(canvasId, nodeData, linkData, nodeTypeData, linkTypeData) {
     }
   }
 
-  var svg = d3.select(canvasId).append('svg')
+  const svg = d3.select(canvasId).append('svg')
     .attr('width', width)
     .attr('height', height);
 
@@ -246,24 +236,24 @@ var mkMap = function(canvasId, nodeData, linkData, nodeTypeData, linkTypeData) {
   return mkForce(nodeData, linkData);
 };
 
-var handler = function (map) {
+const handler = map => {
 
-  var first = true;
-  var close = function () {
+  let first = true;
+  const close = () => {
     $('#arg-map a').removeAttr('style');
     $('#underlay').toggleClass('inactive');
     $('#overlay').toggleClass('inactive');
     map.stop();
   };
     
-  $('a[href="#arg-map"]').click(function(e) {
+  $('a[href="#arg-map"]').click(e => {
     $('#underlay').toggleClass('inactive');
     $('#overlay').toggleClass('inactive');
     if (first) {
       map.start();
       $('#arg-map a').click(close);
       $('#arg-map > svg, #overlay').click(function (e) {
-        if ( e.target === this) { close(); }
+        if (e.target === this) { close(); }
       });
       first = false;
     } else {
@@ -275,11 +265,6 @@ var handler = function (map) {
 
 };
   
-return {
-  square: square,
-  circle: circle,
-  diamond: diamond,
-  mkMap: mkMap,
-  handler: handler
-};
+return {square, circle, diamond, mkMap, handler};
+
 })($, d3);

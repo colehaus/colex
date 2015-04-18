@@ -1,11 +1,12 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 import           Control.Arrow       (first)
+import           Control.Monad       ((<=<))
 import           Data.Functor        ((<$>))
 import qualified Data.Map            as M
 import           Data.Monoid         (mconcat, mempty, (<>))
 import qualified Data.Set            as S
-import           System.FilePath
+import           System.FilePath    (takeBaseName, takeDirectory, takeExtension)
 
 import           Hakyll
 import           Text.Pandoc.Options
@@ -120,16 +121,19 @@ main = hakyll $ do
   rulesExtraDependencies [includes] $ match "css/default/site.scss" $ do
       route $ constRoute "css/default.css"
       compile compileScss
-  match "js/default/*.js" $ compile getResourceBody
+  match defJsPat $ compile getResourceBody
   create ["js/default.js"] $ do
     route idRoute
     compile $
-      loadAll "js/default/*.js" >>=
-      compressJs . concatMap itemBody >>=
+      loadAll defJsPat >>=
+      concatMapM (compressJS . itemBody <=< compileES6) >>=
       makeItem
-  match "js/*.js" $ do
-    route idRoute
-    compile copyFileCompiler
+  match ("js/*.js" .||. "js/*.es") $ do
+    route $ setExtension "js"
+    compile $ (withItemBody compressJS <=< compileES6) =<< getResourceBody
+
+concatMapM :: (Functor m, Monad m) => (a -> m [b]) -> [a] -> m [b]
+concatMapM f xs = concat <$> mapM f xs
 
 compileScss :: Compiler (Item String)
 compileScss = do
@@ -139,6 +143,9 @@ compileScss = do
     withItemBody (unixFilter "scss"
                              ["--sourcemap=none", "--trace", "-I", dir]) i
 
+defJsPat :: Pattern
+defJsPat = "js/default/*.js" .||. "js/default/*.es"
+
 postPat :: Pattern
 postPat = "posts/*/main.*"
 
@@ -147,8 +154,19 @@ finish ctx i =
   loadAndApplyTemplate "templates/default.html" ctx i >>=
   ((replaceAll "index.html" (const mempty) <$>) <$>) . relativizeUrls
 
-compressJs :: String -> Compiler String
-compressJs = unixFilter "uglifyjs" ["-cm", "--screw-ie8"]
+compileES6 :: Item String -> Compiler (Item String)
+compileES6 i =
+  case takeExtension . toFilePath . itemIdentifier $ i of
+    ".es" -> withItemBody
+             (unixFilter "babel" [
+                 "--optional", "utility.inlineExpressions",
+                 "--optional", "utility.deadCodeElimination"
+                 ]) i
+    ".js" -> return i
+
+compressJS :: String -> Compiler String
+compressJS = return -- unixFilter "uglifyjs" ["-cm", "--screw-ie8"]
+
 postCtx :: Context String
 postCtx =
   dateField "date" "%B %e, %Y" <>
