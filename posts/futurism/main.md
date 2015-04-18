@@ -2,9 +2,11 @@
 title: On casual futurism
 published: 2014-09-28
 tags: future, bias, review
-js: /js/d3.v3.min.js, /js/arg-map.js, /js/futurism.js
+js: /js/futurism.js
 css: futurism
 ---
+
+<div id="graph-of-contents"><a href="#arg-map">Contents</a></div>
 
 <div class="abstract">
 Predicting the future is hard. Research on forecasting techniques is

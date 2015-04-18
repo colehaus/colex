@@ -1,5 +1,4 @@
 @import 'default/colors';
-@import 'arg-map';
 
 $contradicts-color: nth(map-get($colors, hue), 4);
 $motivates-color: nth(map-get($colors, hue), 2);

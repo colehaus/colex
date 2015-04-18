@@ -35,24 +35,11 @@ var linkTypeData = [{type: 'imply', label: ['Jointly implies']}];
 var first = true;
 var map;
 
-$('a[href="#arg-map"]').click(function(e) {
-  $('#underlay').toggleClass('inactive');
-  $('#overlay').toggleClass('inactive');
-  if (first) {
-    map = argMap.mkMap('#arg-map', nodeData, linkData, nodeTypeData, linkTypeData);
-    map.start();
-    $('#arg-map a').click(function() {
-      $('#arg-map a').removeAttr('style');
-      $('#underlay').toggleClass('inactive');
-      $('#overlay').toggleClass('inactive');
-      map.stop();
-    });
-    first = false;
-  } else {
-    map.resume();
-  }
-  // SVG requires that we not quote id here?
-  $('a[href=#' + $(e.target).attr('id') + ']').css('font-weight', 'bold');
-});
+argMap.handler(argMap.mkMap('#arg-map',
+                            nodeData,
+                            linkData,
+                            nodeTypeData,
+                            linkTypeData));
+  
 });
 })($, argMap);

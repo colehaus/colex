@@ -2,7 +2,7 @@
 title: Graph of contents
 published: 2015-03-28
 tags: meta, structure
-js: /js/d3.v3.min.js, /js/arg-map.js, /js/graph-contents.js
+js: /js/graph-contents.js
 css: graph-contents
 ---
 
@@ -33,10 +33,12 @@ For example:
 
 Clicking on a dotted link brings up the graph. The label for the current section
 (as identified by the link used to bring up the graph) is bolded in the graph.
+Clicking a label in the graph hides the graph and scrolls to that section in the
+document. Clicking the background just hides the graph.
+
 You can reorganize the graph by dragging a node to fix it into a position.
 For example, if you were skipping around in a large document, you could track
 which sections you'd read by dragging their nodes to the right margin.
-Double-clicking releases a node that's been fixed in place. Clicking a label in
-the graph hides the graph and scrolls to that section in the document.
+Double-clicking releases a node that's been fixed in place.
 
 This technique can be found *in vivo* in [the post on futurism](../futurism).

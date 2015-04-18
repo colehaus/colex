@@ -6,6 +6,7 @@
 @import 'menu';
 @import 'tree';
 @import 'swap';
+@import 'arg-map';
 
 /* ========== */
 /*  General   */
@@ -189,6 +190,15 @@ details > p {
 /* ========== */
 /*  Nav       */
 /* ========== */
+
+#graph-of-contents {
+    font-size: smaller;
+    color: $light-text-color;
+}
+
+#graph-of-contents::before {
+    content: '◈ '
+}
 
 .metadata {
     font-size: smaller;

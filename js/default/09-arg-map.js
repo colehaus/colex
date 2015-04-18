@@ -245,8 +245,41 @@ var mkMap = function(canvasId, nodeData, linkData, nodeTypeData, linkTypeData) {
   mkLegend(nodeTypeData, linkTypeData);
   return mkForce(nodeData, linkData);
 };
-return {square: square,
-        circle: circle,
-        diamond: diamond,
-        mkMap: mkMap};
+
+var handler = function (map) {
+
+  var first = true;
+  var close = function () {
+    $('#arg-map a').removeAttr('style');
+    $('#underlay').toggleClass('inactive');
+    $('#overlay').toggleClass('inactive');
+    map.stop();
+  };
+    
+  $('a[href="#arg-map"]').click(function(e) {
+    $('#underlay').toggleClass('inactive');
+    $('#overlay').toggleClass('inactive');
+    if (first) {
+      map.start();
+      $('#arg-map a').click(close);
+      $('#arg-map > svg, #overlay').click(function (e) {
+        if ( e.target === this) { close(); }
+      });
+      first = false;
+    } else {
+      map.resume();
+    }
+    // SVG requires that we not quote id here?
+    $('a[href=#' + $(e.target).attr('id') + ']').css('font-weight', 'bold');
+  });
+
+};
+  
+return {
+  square: square,
+  circle: circle,
+  diamond: diamond,
+  mkMap: mkMap,
+  handler: handler
+};
 })($, d3);
