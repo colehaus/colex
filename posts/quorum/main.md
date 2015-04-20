@@ -65,8 +65,10 @@ Statistics!
 
 <ul class="switch" type="menu" menu="stat-type">
 <li class="open">
-
 ## Bayesian
+</li><li>
+## Frequentist
+</li></ul>
 
 For each pair of alternatives, we'd like to find which of these three is true:
 
@@ -79,30 +81,51 @@ $x > y$." and $x \approx y$ means something like "We aren't justified in
 believing that $x > y$ or that $y > x$.". The first two correspond to quorum and
 the third corresponds to a failure of quorum.
 
-To establish $\mu_2 \gg \mu_1$, we construct a lower credible bound (a one-sided
-[credible interval](https://en.wikipedia.org/wiki/Credible_interval))
+To establish $\mu_2 \gg \mu_1$, we construct a lower
+<span class="inline switch" type="menu" menu="stat-type">
+<span class="open">credible bound (a one-sided
+[credible interval](https://en.wikipedia.org/wiki/Credible_interval))</span>
+<span>confidence bound (a one-sided
+[confidence interval](https://en.wikipedia.org/wiki/Confidence_interval))</span>
+</span>
 on $\mu_2 - \mu_1$ base on our votes. The lower bound delimits the region where
 $\mu_2 - \mu_1$ is largest. If the delimited region includes $0$, we must reject
-$\mu_2 \gg \mu_1$ (i.e. if the credible region most favorable to $\mu_2$ still
+$\mu_2 \gg \mu_1$ (i.e. if the region most favorable to $\mu_2$ still
 doesn't exclude $0$, we aren't justified in believing $\mu_2 > \mu_1$ (at the
-chosen credibility level)).
+chosen
+<span class="inline switch" type="menu" menu="stat-type">
+<span class="open">credibility</span>
+<span>confidence</span>
+</span>
+level)).
 
-The approach for $\mu_1 \gg \mu_2$ is similar (simply swap in an upper credible
-bound or $\mu_1 - \mu_2$).
+The approach for $\mu_1 \gg \mu_2$ is similar (simply swap in an upper bound or
+$\mu_1 - \mu_2$).
 
 If we reject $\mu_2 \gg \mu_1$ and $\mu_1 \gg \mu_2$, we must accept
 $\mu_2 \approx \mu_1$ and declare a failure of quorum.
 
 For example, we'd like to <a href="#arg-map" id="bayes">determine if the
-credible bounds support the conclusion</a> that buko pie really is preferred to
-fish pie. If Pie Club bylaws specified a $95\%$ credible bound and the lower bound
-for $\mu_{buko} - \mu_{fish}$ stretched to $0.359$ while the upper bound stretched
-to $0.58$, we'd declare that quorum had been reached in favor of buko pie. (We
-reject $\mu_{fish} \gg \mu_{buko}$ because it's bounded region includes $0$. We
-can't reject $\mu_{buko} \gg \mu_{fish}$ because it's bounded region excludes
-$0$.) Alternately, if the lower bound stretched to $-0.1$ and the upper bound
-stretched to $0.58$, we'd declare a failure of quorum.
+<span class="inline switch" type="menu" menu="stat-type">
+<span class="open">credible</span>
+<span>confidence</span> 
+</span>
+bounds support the conclusion</a> that buko pie really is preferred to fish pie.
+If Pie Club bylaws specified a $95\%$
+<span class="inline switch" type="menu" menu="stat-type">
+<span class="open">credible</span>
+<span>confidence</span> 
+</span>
+bound and the lower bound for $\mu_{buko} - \mu_{fish}$ stretched to $0.359$
+while the upper bound stretched to $0.58$, we'd declare that quorum had been
+reached in favor of buko pie. (We reject $\mu_{fish} \gg \mu_{buko}$ because
+it's bounded region includes $0$. We can't reject $\mu_{buko} \gg \mu_{fish}$
+because it's bounded region excludes $0$.) Alternately, if the lower bound
+stretched to $-0.1$ and the upper bound stretched to $0.58$, we'd declare a
+failure of quorum.
 
+<ul class="switch" type="menu" menu="stat-type">
+<li class="open">
 How do we construct these credible bounds? We derive them from the
 [posterior probability distribution](https://en.wikipedia.org/wiki/Posterior_probability)
 created using Bayesian parameter estimation [@kruschke13]. To construct this
@@ -145,62 +168,19 @@ adaptive Metropolis-within-Gibbs [@roberts09] [@sumsar-best]. These posteriors
 on the parameters of beta allow us to straightforwardly calculate the posterior
 on the mean of the difference using the formula for the mean of a beta
 distribution.
-
 </li>
 <li>
-
-## Frequentist
-
-For each pair of alternatives, we'd like to find which of these three is true:
-
-- $\mu_2 \gg \mu_1$
-- $\mu_1 \gg \mu_2$
-- $\mu_2 \approx \mu_1$
-
-where $x \gg y$ means something like "We are justified in believing that
-$x > y$." and $x \approx y$ means something like "We aren't justified in
-believing that $x > y$ or that $y > x$.". The first two correspond to quorum and
-the third corresponds to a failure of quorum.
-
-To establish $\mu_2 \gg \mu_1$, we construct a lower confidence bound (a
-one-sided
-[confidence interval](https://en.wikipedia.org/wiki/Confidence_interval))
-on $\mu_2 - \mu_1$ base on our votes. The lower bound delimits the region where
-$\mu_2 - \mu_1$ is largest. If the delimited region includes $0$, we must reject
-$\mu_2 \gg \mu_1$ (i.e. if the region most favorable to $\mu_2$ still doesn't
-exclude $0$, we aren't justified in believing $\mu_2 > \mu_1$ (at the chosen
-confidence level)).
-
-The approach for $\mu_1 \gg \mu_2$ is similar (simply swap in an upper
-confidence bound or $\mu_1 - \mu_2$).
-
-If we reject $\mu_2 \gg \mu_1$ and $\mu_1 \gg \mu_2$, we must accept
-$\mu_2 \approx \mu_1$ and declare a failure of quorum.
-
-For example, we'd like to <a href="#arg-map" id="freq-bounds">determine if the
-confidence bounds support the conclusion</a> that buko pie really is preferred
-to fish pie. If Pie Club bylaws specified a $95\%$ confidence bound and the
-lower bound for $\mu_{buko} - \mu_{fish}$ stretched to $0.359$ while the upper
-bound stretched to $0.58$, we'd declare that quorum had been reached in favor of
-buko pie. (We reject $\mu_{fish} \gg \mu_{buko}$ because it's bounded region
-includes $0$. We can't reject $\mu_{buko} \gg \mu_{fish}$ because it's bounded
-region excludes $0$.) Alternatively, if the lower bound stretched to $-0.1$ and
-the upper bound stretched to $0.58$, we'd declare a failure of quorum.
-
 How do we construct these confidence bounds? That depends.
 
 <ul class="switch" type="menu" menu="sample-size">
 <li class="open">
-
 If the number of votes is "large" (say, more than 30) (and the distribution of
 votes satisfies some other
 [conditions](https://en.wikipedia.org/wiki/Central_limit_theorem)), we can do
 <span class="noted">a $t$-test on the paired differences of the
 votes.</span>[^difference]
-
 </li>
 <li>
-
 If the number of votes is "small" (say, 30 or fewer), we have a problem. We
 cannot assume that the underlying distribution of votes is
 [normal](https://en.wikipedia.org/wiki/Normal_distribution). Voters could be
@@ -219,7 +199,6 @@ assume <span class="spark" id="sym2"></span> that.
 
 So, as far as I know, there's no simple frequentist procedure which is
 applicable in the small sample case.
-
 </li>
 </ul>
 </li>
@@ -294,20 +273,16 @@ Also, <a href="#arg-map" id="complicated">isn't all this math a bit
 forbidding?</a>
 
 <ul class="switch" type="menu" menu="stat-type"><li class="open">
-
 The conclusions have a rather intuitive interpretation in terms of likelihood,
 maybe even more intuitive than the traditional quorum interpretation ("We ensure
 that our decisions are representative by requiring 25% of our members to
 attend."). But getting to the conclusions requires a computer and uncommon
 math.
-
 </li><li>
-
 The math itself may be familiar to some, but there are still the
 perennial problems of frequentist interpretation [@goodman08]:
 
 <div class="conversation">
-
 "Neat. The test showed it's highly likely that buko pie is the preferred pie?"
 
 "No, it either is or isn't the preferred pie. There's no probability involved."
@@ -318,9 +293,7 @@ perennial problems of frequentist interpretation [@goodman08]:
 contain the true population difference."
 
 "Uhh..."
-
 </div>
-
 </li></ul>
 
 So this procedure is less accessible than traditional quorum. How much less
@@ -345,7 +318,6 @@ quorum.
 
 <ul class="switch" type="menu" menu="stat-type">
 <li class="open">
-
 ## Non-parametric
 
 As mentioned, the procedure specified above assumes that the paired differences
@@ -384,11 +356,9 @@ deal with the
 better solution would be to perform a Bayesian
 [ANOVA](https://en.wikipedia.org/wiki/Analysis_of_variance) analogue with
 follow-up tests [@wetzels12].
-
 </li>
 <li>
-
-## Multiple proposals
+## Multiple alternatives
 
 For simplicity, we looked at referenda with only two alternatives. We can extend
 the procedure to referenda with more alternatives. The most straightforward
@@ -400,7 +370,6 @@ deal with the
 better solution would be to perform
 [ANOVA](https://en.wikipedia.org/wiki/Analysis_of_variance) with follow-up
 tests.
-
 </li>
 </ul>
 
