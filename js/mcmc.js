@@ -6,8 +6,6 @@ var burn_timeout_id;
 var sample_timeout_id;
 var plot_timeout_id;
 
-// Our supported interval after subtracting scores
-// (which each range from 0 to 1)
 var posterior_predictive_check = function(chain) {
     var rand_int = function (min, max) {
         return Math.floor(Math.random() * (max - min)) + min;

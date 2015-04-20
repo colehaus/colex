@@ -10,7 +10,7 @@ var yHistLims = function(yss) {
         jStat.max(ys) * 1.2
     ];
 };
-var xLims = function(xss) {
+var xHistLims = function(xss) {
     //flatten xs_
     var xs = [].concat.apply([], xss);
     return [
@@ -66,7 +66,7 @@ return {
     twoDArrayCol: twoDArrayCol,
     histogramCounts: histogramCounts,
     sampleFunc: sampleFunc,
-    xLims: xLims,
+    xHistLims: xHistLims,
     yHistLims: yHistLims,
     getHeight: getHeight
 };
