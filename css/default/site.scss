@@ -48,6 +48,8 @@ a:hover {
     border-bottom: 1px solid $body-text-color;
 }
 article a {
+    // Fixes background-color overlap
+    position: relative;
     &[href^="#"] {
         border-bottom: 1px dotted $body-text-color;
     }

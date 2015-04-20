@@ -17,10 +17,10 @@ those techniques, we declare a failure of quorum.
 # Motivating examples
 
 <ol><li id="example1">Pie Club is voting on which pie will be featured at
-their first August meeting. <span class="noted"><span>After tallying the votes,
-[buko pie](https://en.wikipedia.org/wiki/Buko_pie) receives a mean score of 0.69
-and [fish pie](https://en.wikipedia.org/wiki/Fish_pie) receives a mean score of
-0.18.</span></span>[^range]
+their first August meeting. <span class="noted">After tallying the votes,
+[buko pie](https://en.wikipedia.org/wiki/Buko_pie) receives a mean score of
+$0.69$ and [fish pie](https://en.wikipedia.org/wiki/Fish_pie) receives a mean
+score of $0.18$.</span>[^range]
 
 Before the decision is finalized, however, an observant member notices that the
 meeting is <a href="#arg-map" id="restrictive">two members short of the 25
@@ -170,8 +170,8 @@ How do we construct these confidence bounds? That depends.
 If the number of votes is "large" (say, more than 30) (and the distribution of
 votes satisfies some other
 [conditions](https://en.wikipedia.org/wiki/Central_limit_theorem)), we can do
-<span class="noted"><span>a $t$-test on the paired differences of the
-votes.</span></span>[^difference]
+<span class="noted">a $t$-test on the paired differences of the
+votes.</span>[^difference]
 
 </li>
 <li>

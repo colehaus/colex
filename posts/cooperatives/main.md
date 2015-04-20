@@ -39,8 +39,8 @@ is also a cooperative). Any new profit goes to worker-owners in the new segment.
 
 We can make this hypothesis more tangible by representing it as a
 [cellular automaton](https://en.wikipedia.org/wiki/Cellular_automaton).
-<span class="noted"><span><a href="#arg-map" id="automaton-link">In this
-automaton</a></span></span>[^elm], <a href="#arg-map" id="segment">each cell represents
+<span class="noted"><a href="#arg-map" id="automaton-link">In this
+automaton</a></span>[^elm], <a href="#arg-map" id="segment">each cell represents
 a market segment requiring a fixed quantity of labor and capital</a>. Adjacent
 cells represent similar market segments.
 

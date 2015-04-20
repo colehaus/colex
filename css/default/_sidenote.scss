@@ -6,10 +6,6 @@
       content: " ↪";
     }
 }
-// Necessary to prevent overlapping background colors
-.noted > span:first-child {
-    position: relative;
-}
 .sidenote {
     position: absolute;
     right: -25ex;

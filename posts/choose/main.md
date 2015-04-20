@@ -85,7 +85,7 @@ subsequent sections to congrue with early choices).
 
 # Sidenote
 
-This site also uses <span class="noted"><span>sidenotes.</span></span>[^example]
+This site also uses <span class="noted">sidenotes.</span>[^example]
 By highlighting the noted text, we can provide a little extra clarity about the
 referent of the note.
 
