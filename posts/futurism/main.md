@@ -37,10 +37,10 @@ oboes, right? 80% chance?</a>"
 "Alright, 70% chance."
 
 "Also, note that people are pretty bad at predictions. A study by George Wise
-found that <span class="noted"><a href="#arg-map" id="mediocre">out of 1556
-naive medium-term predictions made publicly by Americans between 1890 and 1940,
-just under 40% had been fulfilled or were in progress by
-1976</a></span>[^feedback] [@wise76]."
+found that <span class="noted"><span><a href="#arg-map" id="mediocre">out of
+1556 naive medium-term predictions made publicly by Americans between 1890 and
+1940, just under 40% had been fulfilled or were in progress by
+1976</a></span></span>[^feedback] [@wise76]."
 
 "Fine. Then I won't just make a naive prediction. I'll give the matter serious
 thought... Well, <a href="#arg-map" id="single">people in the future will

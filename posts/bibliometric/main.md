@@ -71,8 +71,8 @@ H(D|\epsilon) &= - P(⚁) \log_2 P(⚁) -
      &= \log_2 3
 \end{align}$$
 
-<span class="noted">So the reduction in uncertainty is
-$H(D) - H(D|\epsilon) = \log_2 6 - \log_2 3 = 1$.</span>[^intuition]
+<span class="noted"><span>So the reduction in uncertainty is
+$H(D) - H(D|\epsilon) = \log_2 6 - \log_2 3 = 1$.</span></span>[^intuition]
 
 # Example
 
@@ -142,8 +142,9 @@ isolation, is $H(A,B) - \cond{H}{A,B}{\beta} \approx 0.266$.
 
 But what if we don't consider it in isolation? First, we look for the total
 entropy reduction from both studies and find 
-$H(A,B) - \cond{H}{A,B}{\alpha,\beta} \approx 0.703$. <span class="noted">Note
-that this is not simply the sum of the isolated reductions.</span>[^sum] 
+$H(A,B) - \cond{H}{A,B}{\alpha,\beta} \approx 0.703$.
+<span class="noted"><span>Note that this is not simply the sum of the isolated
+reductions.</span></span>[^sum] 
 
 <figure>
   <img src="/images/bibliometric/bronchitis-both.svg"

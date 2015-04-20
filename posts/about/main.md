@@ -8,9 +8,10 @@ This is a single-author, half-heartedly pseudonymous (the pseudonym being Cole)
 blog.
 
 You can contact me at [colehaus@cryptolab.net](mailto:colehaus@cryptolab.net).
-<span class="noted">If you have any comments, please message me and I'll try to
-incorporate and attribute them.</span>[^comment] If I've referenced a
-resource that you can't access but would like to, please message me.
+<span class="noted"><span>If you have any comments, please message me and I'll
+try to incorporate and attribute them.</span></span>[^comment] If I've
+referenced a resource that you can't access but would like to, please message
+me.
 
 <!--more-->
 

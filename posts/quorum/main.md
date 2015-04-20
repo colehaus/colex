@@ -17,10 +17,10 @@ those techniques, we declare a failure of quorum.
 # Motivating examples
 
 <ol><li id="example1">Pie Club is voting on which pie will be featured at
-their first August meeting. <span class="noted">After tallying the votes,
+their first August meeting. <span class="noted"><span>After tallying the votes,
 [buko pie](https://en.wikipedia.org/wiki/Buko_pie) receives a mean score of 0.69
 and [fish pie](https://en.wikipedia.org/wiki/Fish_pie) receives a mean score of
-0.18.</span>[^range]
+0.18.</span></span>[^range]
 
 Before the decision is finalized, however, an observant member notices that the
 meeting is <a href="#arg-map" id="restrictive">two members short of the 25
@@ -76,8 +76,8 @@ lower bound delimits the region where $\mu_2 - \mu_1$ is largest. If the lower
 bound is less than 0, $\mu_2 > \mu_1$ is not credible (at a given credibility
 level). The same is true for the upper bound, with the necessary
 modifications. By comparing both bounds on this criterion, we determine that
-<span class="noted" id="bound-50">$\mu_2 > \mu_1$ or $\mu_1 > \mu_2$ or quorum
-has failed.</span>[^bound-50]
+<span class="noted" id="bound-50"><span>$\mu_2 > \mu_1$ or $\mu_1 > \mu_2$ or
+quorum has failed.</span></span>[^bound-50]
 
 <table class="bounds"><tbody>
 <tr><th></th><th>Lower bound < 0</th><th>Lower bound > 0</th></tr>
@@ -96,11 +96,11 @@ Alternately, if the lower bound stretched to -0.1 and the upper bound stretch to
 How do we construct these credible bounds? We derive them from the
 [posterior probability distribution](https://en.wikipedia.org/wiki/Posterior_probability)
 created using Bayesian parameter estimation [@kruschke13]. To construct this
-posterior, we start by specifying <span class="noted">a model for the
-distribution of paired differences</span>[^difference]. Because the votes can
-only take on values in the interval $\left[0, 1\right]$, the <span
-class="noted">[beta distribution](https://en.wikipedia.org/wiki/Beta_distribution)
-is a sensible choice</span>[^beta]. To get a sense of the beta distribution, you
+posterior, we start by specifying <span class="noted"><span>a model for the
+distribution of paired differences</span></span>[^difference]. Because the votes
+can only take on values in the interval $\left[0, 1\right]$, the
+<span class="noted"><span>[beta distribution](https://en.wikipedia.org/wiki/Beta_distribution)
+is a sensible choice</span></span>[^beta]. To get a sense of the beta distribution, you
 can look at the calculator
 [here](http://keisan.casio.com/has10/SpecExec.cgi?id=system/2006/1180573226).
 
@@ -145,8 +145,8 @@ difference in mean scores). A lower credible bound delimits the region where
 $\mu_2 - \mu_1$ is largest. If the lower bound is less than 0, we reject $\mu_2
 > \mu_1$. The same is true for the upper bound, with the necessary
 modifications. By comparing both bounds on this criterion, we determine that
-<span class="noted">$\mu_2 > \mu_1$ or $\mu_1 > \mu_2$ or quorum has
-failed.</span>[^bound-50]
+<span class="noted"><span>$\mu_2 > \mu_1$ or $\mu_1 > \mu_2$ or quorum has
+failed.</span></span>[^bound-50]
 
 <table class="bounds"><tbody>
 <tr><th></th><th>Lower bound < 0</th><th>Lower bound > 0</th></tr>
@@ -170,8 +170,8 @@ How do we construct these confidence bounds? That depends.
 If the number of votes is "large" (say, more than 30) (and the distribution of
 votes satisfies some other
 [conditions](https://en.wikipedia.org/wiki/Central_limit_theorem)), we can do
-<span class="noted">a $t$-test on the paired differences of the
-votes.</span>[^difference]
+<span class="noted"><span>a $t$-test on the paired differences of the
+votes.</span></span>[^difference]
 
 </li>
 <li>
@@ -200,8 +200,8 @@ applicable in the small sample case.
 </li>
 </ul>
 
-<span class="noted">You can try it out below</span>[^single-bound]. Maybe look
-for:
+<span class="noted"><span>You can try it out below</span></span>[^single-bound].
+Maybe look for:
 
 - A scenario in which the quorum status (achieved or failed) depends on the
   credibility level chosen (e.g. 95% or 99%)
@@ -416,8 +416,7 @@ failure of quorum if the vote didn't produce a 95% interval smaller than $\mu
     :   The individual scores are then averaged to arrive at an overall score.
     Decision rule
     :   The option with the highest mean is the winner.
-This is primarily for simplicity. The techniques described here could be
-extended to many alternate procedures.
+The techniques described here could be extended to many alternate procedures.
 [^difference]: When using paired samples (here, we'd like to pair each person's
 vote on buko pie to their vote on fish pie), we can transform two samples into a
 single sample of their differences. We can then use our single sample techniques
