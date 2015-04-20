@@ -29,26 +29,46 @@ const uniq = a => {
     seen.hasOwnProperty(item) ? false : (seen[item] = true)
   );
 };
+
+const shape = as =>
+  r => as.map(a => Math.cos(a) * r + ' ' + Math.sin(a) * r).join(', ');
   
-const square = r => 
-  -r + ' ' + -r + ', ' +
-  r + ' ' + -r + ', ' +
-  r + ' ' + r + ', ' +
-  -r + ' ' + r;
+const triangle = shape([3 / 6 * Math.PI, 7 / 6 * Math.PI, 11 / 6 * Math.PI]);
+const square = shape([
+  1 / 4 * Math.PI,
+  3 / 4 * Math.PI,
+  5 / 4 * Math.PI,
+  7 / 4 * Math.PI
+]);
+const diamond = shape([
+  0 / 2 * Math.PI,
+  1 / 2 * Math.PI,
+  2 / 2 * Math.PI,
+  3 / 2 * Math.PI
+]);
+const pentagon = shape([
+  3 / 10 * Math.PI,
+  7 / 10 * Math.PI,
+  11 / 10 * Math.PI,
+  15 / 10 * Math.PI,
+  19 / 10 * Math.PI,
+]);
+const hexagon = shape([
+  1 / 6 * Math.PI,
+  3 / 6 * Math.PI,
+  5 / 6 * Math.PI,
+  7 / 6 * Math.PI,
+  9 / 6 * Math.PI,
+  11 / 6 * Math.PI
+]);
 const circle = r => {
   const sides = 16;
-  let circle_ = [];
+  let angles = [];
   for (let i = 0; i < sides; i++) {
-    circle_.push(r * Math.cos(2 * Math.PI / sides * i) + ' ' +
-                 r * Math.sin(2 * Math.PI / sides * i));
+    angles.push(2 * Math.PI / sides * i);
   }
-  return circle_.join(', ');
+  return shape(angles)(r);
 };
-const diamond = r =>
-  -r + ' ' + 0 + ', ' +
-  0 + ' ' + r + ', ' +
-  r + ' ' + 0 + ', ' +
-  0 + ' ' + -r;
 const linkArc = ({target, source}) => {
   const dx = target.x - source.x;
   const dy = target.y - source.y;
@@ -68,7 +88,7 @@ const mkMap = (canvasId, nodeData, linkData, nodeTypeData, linkTypeData) => {
   const xCenter = width / 2;
   const yCenter = height / 2;
   const defStrength = 0.2;
-  const radius = 10;
+  const radius = 13;
 
   const mkLegend = (nodeTypeData, linkTypeData) => {
 
@@ -120,6 +140,12 @@ const mkMap = (canvasId, nodeData, linkData, nodeTypeData, linkTypeData) => {
 
   const mkForce = (nodeData, linkData) => {
 
+    for (let prop in nodeData) {
+      if (nodeData.hasOwnProperty(prop) && nodeData[prop].url === undefined) {
+        nodeData[prop].url = '#' + prop;
+      }
+    }
+  
     const tick = () => {
       const transform = ({x, y}) => 'translate(' + x + ',' + y + ')';
 
@@ -149,7 +175,7 @@ const mkMap = (canvasId, nodeData, linkData, nodeTypeData, linkTypeData) => {
         .attr('orient', 'auto')
       .append('path')
         .attr('d', 'M0,-5L10,0L0,5');
-
+   
     const force = d3.layout.force()
         .nodes(d3.values(nodeData))
         .links(linkData)
@@ -184,10 +210,10 @@ const mkMap = (canvasId, nodeData, linkData, nodeTypeData, linkTypeData) => {
         .attr('class', ({type}) => type)
         .attr('points', d =>
           nodeTypeData.find(t => t.type === d.type).shape(radius)
-        ).on('dblclick', function ({fixed}) {
-          d3.select(this).classed('fixed', fixed = false);
-        }).call(force.drag().on('dragend', function ({fixed}) {
-          d3.select(this).classed('fixed', fixed = true);
+        ).on('dblclick', function (d) {
+          d3.select(this).classed('fixed', d.fixed = false);
+        }).call(force.drag().on('dragend', function (d) {
+          d3.select(this).classed('fixed', d.fixed = true);
         }));
 
     const nodeTexts = svg.append('g').selectAll('a')
@@ -265,6 +291,7 @@ const handler = map => {
 
 };
   
-return {square, circle, diamond, mkMap, handler};
+return {shapes: {square, circle, diamond, triangle, hexagon, pentagon},
+        mkMap, handler};
 
 })($, d3);

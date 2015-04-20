@@ -3,8 +3,10 @@ title: A quorum alternative
 published: 2014-09-12
 tags: voting, bayes, frequentist, statistics
 css: quorum
-js: /js/jquery.flot.min.js, /js/jstat.min.js, /js/plot.js, /js/mcmc.js, /js/quorum.js
+js: /js/jquery.flot.min.js, /js/jstat.min.js, /js/plot.js, /js/mcmc.js, /js/quorum.js, /js/quorum-map.js
 ---
+
+<div id="graph-of-contents"><a href="#arg-map">Contents</a></div>
 
 <div class="abstract">
 Voting procedures can replace traditional quorum with the use of statistical
@@ -14,38 +16,40 @@ those techniques, we declare a failure of quorum.
 
 # Motivating examples
 
-<ol> <li id="example1"> Pie Club is voting on which pie will be featured at
+<ol><li id="example1">Pie Club is voting on which pie will be featured at
 their first August meeting. <span class="noted">After tallying the votes,
 [buko pie](https://en.wikipedia.org/wiki/Buko_pie) receives a mean score of 0.69
 and [fish pie](https://en.wikipedia.org/wiki/Fish_pie) receives a mean score of
 0.18.</span>[^range]
 
 Before the decision is finalized, however, an observant member notices that the
-meeting is two members short of the 25 required for quorum. Because Pie Club is
-scrupulously democratic, the vote is annulled. Some members grumble their doubt
-that the landslide will reverse with two more votes.  </li>
+meeting is <a href="#arg-map" id="restrictive">two members short of the 25
+required for quorum</a>. Because Pie Club is scrupulously democratic, the vote
+is annulled. Some members grumble their doubt that the landslide will reverse
+with two more votes.</li>
 
-<li id="example2"> Pie Club is voting on which pie will take home the title "Pie
+<li id="example2">Pie Club is voting on which pie will take home the title "Pie
 of the Decade". Will it be
 [lemon meringue pie](https://en.wikipedia.org/wiki/Lemon_meringue_pie) or
 [Tarta de Santiago](https://en.wikipedia.org/wiki/Tarta_de_Santiago)? The
 results are in---quorum checked in advance this time--and they are... 0.49 for
 meringue and 0.48 for Tarta. While meringue's devotees celebrate, Tarta's
-die-hards feel something has gone wrong. Can such a close result really give
-them confidence that meringue is the preference of the whole club, including the
-12 members who couldn't make it to meeting? If just one of them had attended and
-cast a vote favoring Tarta, wouldn't that have swung the outcome?  </li></ol>
+die-hards feel something has gone wrong. <a href="#arg-map" id="permissive">Can
+such a close result really give them confidence</a> that meringue is the
+preference of the whole club, including the 12 members who couldn't make it to
+meeting? If just one of them had attended and cast a vote favoring Tarta,
+wouldn't that have swung the outcome?</li></ol>
 
 <!--more-->
 
 # Quorum
 
 <blockquote>
-The minimum number of members who must be present at the meetings of a
-deliberative assembly for business to be validly transacted is the *quorum* of
-the assembly. The requirement of a quorum is a protection against totally
-unrepresentative action in the name of the body by an unduly small number of
-persons. [@ronr]
+<a href="#arg-map" id="quorum-def">The minimum number of members who must be
+present at the meetings</a> of a deliberative assembly for business to be
+validly transacted is the *quorum* of the assembly. The requirement of a quorum
+is a protection against totally unrepresentative action in the name of the body
+by an unduly small number of persons. [@ronr]
 </blockquote>
 
 So quorum is a proxy for representativeness. But as the examples demonstrate,
@@ -72,8 +76,8 @@ lower bound delimits the region where $\mu_2 - \mu_1$ is largest. If the lower
 bound is less than 0, $\mu_2 > \mu_1$ is not credible (at a given credibility
 level). The same is true for the upper bound, with the necessary
 modifications. By comparing both bounds on this criterion, we determine that
-<span class="noted">$\mu_2 > \mu_1$ or $\mu_1 > \mu_2$ or quorum has
-failed.</span>[^bound-50]
+<span class="noted" id="bound-50">$\mu_2 > \mu_1$ or $\mu_1 > \mu_2$ or quorum
+has failed.</span>[^bound-50]
 
 <table class="bounds"><tbody>
 <tr><th></th><th>Lower bound < 0</th><th>Lower bound > 0</th></tr>
@@ -81,13 +85,13 @@ failed.</span>[^bound-50]
 <tr><th>Upper bound < 0</th><td>Only $\mu_1 > \mu_2$ credible;<br>quorum achieved</td><td>Impossible</td></tr>
 </tbody></table>
 
-For example, we'd like to determine if the credible bounds support the
-conclusion that buko pie really is preferred to fish pie. If Pie Club bylaws
-specified a 95% credible bound and the lower bound for $\mu_{buko} - \mu_{fish}$
-stretched to 0.359 while the upper bound stretched to 0.58, we'd declare that
-quorum had been reached in favor of buko pie. Alternately, if the lower bound
-stretched to -0.1 and the upper bound stretech to 0.58, we'd declare a failure
-of quorum.
+For example, we'd like to <a href="#arg-map" id="bayes">determine if the
+credible bounds support the conclusion</a> that buko pie really is preferred to
+fish pie. If Pie Club bylaws specified a 95% credible bound and the lower bound
+for $\mu_{buko} - \mu_{fish}$ stretched to 0.359 while the upper bound stretched
+to 0.58, we'd declare that quorum had been reached in favor of buko pie.
+Alternately, if the lower bound stretched to -0.1 and the upper bound stretch to
+0.58, we'd declare a failure of quorum.
 
 How do we construct these credible bounds? We derive them from the
 [posterior probability distribution](https://en.wikipedia.org/wiki/Posterior_probability)
@@ -150,13 +154,13 @@ failed.</span>[^bound-50]
 <tr><th>Upper bound < 0</th><td>Only $\mu_1 > \mu_2$ acceptable;<br>quorum achieved</td><td>Impossible</td></tr>
 </tbody></table>
 
-For example, we'd like to determine if the confidence bounds permit the
-conclusion that buko pie really is preferred to fish pie. If Pie Club bylaws
-specified a 95% confidence bound and the lower bound for $\mu_{buko} -
-\mu_{fish}$ stretched to 0.359 while the upper bound stretched to 0.58, we'd
-declare that quorum had been reached in favor of buko pie. Alternately, if the
-lower bound stretched to -0.1 and the upper bound stretech to 0.58, we'd declare
-a failure of quorum.
+For example, we'd like to <a href="#arg-map" id="freq-bounds">determine if the
+confidence bounds permit the conclusion</a> that buko pie really is preferred to
+fish pie. If Pie Club bylaws specified a 95% confidence bound and the lower
+bound for $\mu_{buko} - \mu_{fish}$ stretched to 0.359 while the upper bound
+stretched to 0.58, we'd declare that quorum had been reached in favor of buko
+pie. Alternately, if the lower bound stretched to -0.1 and the upper bound
+stretch to 0.58, we'd declare a failure of quorum.
 
 How do we construct these confidence bounds? That depends.
 
@@ -247,10 +251,10 @@ for:
 
 # Potential problems
 
-We've tacitly assumed that our actual voters are a random sample of the
-population of potential voters. This is almost certainly not true
-(Though one could make it true through adoption of appropriate
-[voting procedures](https://en.wikipedia.org/wiki/Sortition)).
+We've tacitly <a href="#arg-map" id="random">assumed that our actual voters are
+a random sample</a> of the population of potential voters. This is almost
+certainly not true (Though one could make it true through adoption of
+appropriate [voting procedures](https://en.wikipedia.org/wiki/Sortition)).
 [Self-selection bias](https://en.wikipedia.org/wiki/Self-selection_bias),
 whether due to differential interest, availability, transportation, &c., means
 that the sample is emphatically non-random. However, the problem of non-random
@@ -267,15 +271,14 @@ Is representativeness even desirable? By supposing that the population score
 procedure assumes so. But should Pie Club's die-hard members be trying to
 account for the votes of members that only attend the annual holiday party?
 
-Speaking of, can anyone even do all the math required here? Even after a full
-night of holiday schnapps?
+Speaking of, <a href="#arg-map" id="complicated">can anyone even do all the
+math</a> required here? Even after a full night of holiday schnapps?
 
 <ul class="switch" type="menu" menu="stat-type"><li class="open">
 
-The
-conclusions have a rather intuitive interpretation in terms of likelihood, maybe
-even more intuitive than the traditional quorum interpretation ("We ensure that
-our decisions are representative by requiring 25% of our members to
+The conclusions have a rather intuitive interpretation in terms of likelihood,
+maybe even more intuitive than the traditional quorum interpretation ("We ensure
+that our decisions are representative by requiring 25% of our members to
 attend."). But getting to the conclusions requires a computer and uncommon
 math.
 
@@ -301,7 +304,7 @@ the true population difference."
 
 </li></ul>
 
-So this procedure is more technocratic than traditional quorum. How much more so
+So this procedure is less accessible than traditional quorum. How much more so
 depends on the relative importances placed on accessible conclusions and
 accessible process.
 
@@ -311,11 +314,11 @@ modeling distribution after exploratory data analysis. The more degrees of
 freedom we give the analyst, the more power we give them to influence results
 [@simmons11].
 
-Finally, this procedure admits only post-hoc declarations of quorum. With the
-traditional procedure, we can just take attendance at a meeting and determine
-the quorum status for every referendum therein. With the new procedure, after
-tallying the votes on an issue, we have to run the quorum calculation to
-retroactively determine quorum status.
+Finally, this procedure <a href="#arg-map" id="post-hoc">admits only post-hoc
+declarations of quorum</a>. With the traditional procedure, we can just take
+attendance at a meeting and determine the quorum status for every referendum
+therein. With the new procedure, after tallying the votes on an issue, we have
+to run the quorum calculation to retroactively determine quorum status.
 
 # Extended procedures
 
@@ -425,12 +428,14 @@ follow a beta distribution. Later, we'll discuss possibilities for remedying
 this. For the moment, the beta distribution gives passable results for its
 simplicity.
 [^bound-50]: As long as our critical level is greater than 50%, it can't be true
-that both bounds fail to cross 0. Overlapping bounds allow us to look at just
-the bound which "crosses zero the least". If it still crosses zero, quorum has
-failed. If it doesn't cross 0, the other bound does and quorum has been reached.
+that both bounded regions fail to cross 0. Overlapping bounds allow us to look
+at just the bound which "crosses zero the least". If it still crosses zero,
+quorum has failed. If it doesn't cross 0, the other bound does and quorum has
+been reached.
+ANOTHER WAY TO LOOK AT IT
 [^single-bound]: For visual clarity, the plots below take the approach of
-showing only the bound which "crosses 0 the least", as described in a previous
-sidenote.
+showing only the bound which "crosses 0 the least", as described in
+<a href="#bound-50">a previous sidenote</a>.
 
 <menu id="sample-size" type="popup">
   <menuitem label="Many votes" type="radio" checked="checked"></menuitem>

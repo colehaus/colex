@@ -5,80 +5,76 @@ const nodeData = {
   naive: {
     label: ['Naive prediction'],
     type: 'method',
-    x: width => 10,
-    y: height => height / 2
+    x: w => 10,
+    y: h => h / 2
   }, mediocre: {
     label: ['Mediocre accuracy'],
     type: 'outcome',
-    x: width => -width / 4,
-    y: height => -20,
+    x: w => -w / 4,
+    y: h => -20,
   }, overconfident: {
     label: ['Overconfident'],
     type: 'outcome',
-    x: width => -width / 4,
-    y: height => 0
+    x: w => -w / 4,
+    y: h => 0
   }, optimistic: {
     label: ['Highly', 'optimistic'],
     type: 'outcome',
-    x: width => -width / 4,
-    y: height => 20
+    x: w => -w / 4,
+    y: h => 20
   }, single: {
     label: ['Envisioning a', 'single scenario'],
     type: 'method',
-    x: width => -10,
-    y: height => height / 2
+    x: w => -10,
+    y: h => h / 2
   }, moreLikely: {
     label: ['Believing the', 'scenario more likely'],
     type: 'outcome',
-    x: width => width / 4,
-    y: height => height / 2
+    x: w => w / 4,
+    y: h => h / 2
   }, multiple: {
     label: ['Envisioning', 'multiple scenarios'],
     type: 'method',
-    x: width => 0,
-    y: height => -height / 4
+    x: w => 0,
+    y: h => -h / 4
   }, outcomes: {
     label: ['Better outcomes for', 'scenario-planning', 'companies'],
     type: 'outcome',
-    x: width => width / 4,
-    y: height => -30
+    x: w => w / 4,
+    y: h => -30
   }, widened: {
     label: ['Widened', 'confidence intervals'],
     type: 'outcome',
-    x: width => width / 4,
-    y: height => -20
+    x: w => w / 4,
+    y: h => -20
   }, narrowed: {
     label: ['Narrowed', 'confidence intervals'],
     type: 'outcome',
-    x: width => width / 4,
-    y: height => -10
+    x: w => w / 4,
+    y: h => -10
   }, framing: {
     label: ['Reduced', 'framing bias'],
     type: 'outcome',
-    x: width => width / 4,
-    y: height => -40
+    x: w => w / 4,
+    y: h => -40
   }, other: {
     label: ['Other', 'planning techniques'],
     type: 'method',
-    x: width => -20,
-    y: height => -height / 4
+    x: w => -20,
+    y: h => -h / 4
   }, pessimistic: {
     label: ['Pessimistic', 'scenarios don\'t',  'affect predictions'],
     type: 'conclusion',
-    x: width => width / 4,
-    y: height => 20
+    x: w => w / 4,
+    y: h => 20
   }, rational: {
     label: ['Decreased rational', 'decision-making style'],
     type: 'outcome',
-    x: width => width / 4,
-    y: height => 10
+    x: w => w / 4,
+    y: h => 10
   }
 };
-for (let prop in nodeData) {
-  if(nodeData.hasOwnProperty(prop)) {
-    nodeData[prop].url = '#' + prop;
-  }
-}
+
 const linkData = [
   {source: 'mediocre', target: 'other', type: 'motivates'},
   {source: 'mediocre', target: 'multiple', type: 'motivates'},
@@ -101,9 +97,9 @@ const linkData = [
 ];
 
 const nodeTypeData = [
-  {type: 'outcome', label: ['Outcome'], shape: argMap.circle},
-  {type: 'method', label: ['Prediction method'], shape: argMap.square},
-  {type: 'conclusion', label: ['Conclusion'], shape: argMap.diamond}
+  {type: 'outcome', label: ['Outcome'], shape: argMap.shapes.circle},
+  {type: 'method', label: ['Prediction method'], shape: argMap.shapes.square},
+  {type: 'conclusion', label: ['Conclusion'], shape: argMap.shapes.diamond}
 ];
 
 const linkTypeData = [

@@ -2,49 +2,54 @@
 title: Toward an alternative bibliometric
 published: 2014-11-08
 tags: bibliometrics, science, publishing, bayes, information-theory
-js: /js/bibliometric.min.js
+js: /js/bibliometric.min.js, /js/bibliometric-map.js
 css: bibliometric
 ---
+
+<div id="graph-of-contents"><a href="#arg-map">Contents</a></div>
 
 <div class="abstract">
 Impact factor isn't great. A bibliometric based on entropy reduction may be
 promising. 
 </div>
 
+<div class="macros">
+$$
+\newcommand{cond}[3] {
+  #1\mathopen{}\left(#2\mathbin{\big|}#3\right)\mathclose{}
+}
+$$
+</div>
+
 # Impact factor
 
 There are a variety of citation-based
 [bibliometrics](https://en.wikipedia.org/wiki/Bibliometrics). The current
-dominant metric is
+<a href="#arg-map" id="impact">dominant metric</a> is
 [impact factor](https://en.wikipedia.org/wiki/Impact_factor). It is highly
 influential, factoring into decisions on promotion, hiring, tenure, grants and
 departmental funding [@plos06] [@agrawal05] [@moustafa14]. Editors
-preferentially publish review articles and push authors to
-[self-cite](https://en.wikipedia.org/wiki/Coercive_citation) in pursuit of
+<a href="#arg-map" id="review">preferentially publish review articles</a>, and
+<a href="#arg-map" id="self-cite">push authors to
+[self-cite](https://en.wikipedia.org/wiki/Coercive_citation)</a> in pursuit of
 increased impact factor [@plos06] [@agrawal05] [@wilhite12]. It may be
-responsible for editorial bias against replications [@neuliep90]
-[@brembs13]. Consequently, academics take impact factor into account throughout
-the planning, execution and reporting of a study [@plos06].
+responsible for editorial <a href="#arg-map" id="replication">bias against
+replications</a> [@neuliep90] [@brembs13]. Consequently, academics take impact
+factor into account throughout the planning, execution and reporting of a study
+[@plos06].
 
 This is [Campbell's law](https://en.wikipedia.org/wiki/Campbell's_law) in
 action. Because average citation count isn't what we actually value, when it
 becomes the metric by which decisions are made, it distorts academic research.
 In the rest of this post I propose a bibliometric that measures the
 [entropy reduction](https://en.wikipedia.org/wiki/Entropy_(information_theory))
-of the [research graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph),
-on the supposition that this hews more closely to what we value.
+of the [research graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
 
 <!--more-->
 
-$$
-\newcommand{cond}[3] {
-  #1\mathopen{}\left(#2\mathbin{\big|}#3\right)\mathclose{}
-}
-$$
-
 # Entropy
 
-Claude Shannon codified entropy as
+Claude Shannon <a href="#arg-map" id="entropy">codified entropy</a> as
 $H(X) = -\sum\limits_{i} P(x_i) \log_2 P(x_i)$
 where $x_i$ are the possible values of a discrete random variable $X$
 [@shannon48][@cover12]. For example, the entropy of a 6-sided die is
@@ -77,10 +82,10 @@ example about cigarette smoking.
 
 ## First study
 
-Suppose we do a study on whether, in the normal course of smoking, cigarette
-smoke is inhaled into the lungs. Prior to the study we use the (extremely)
-uninformative prior $\cond{P}{A=t}{} = 0.5$. After the study (which we'll call
-$\alpha$) we perform a
+Suppose <a href="#arg-map" id="single">we do a study</a> on whether, in the
+normal course of smoking, cigarette smoke is inhaled into the lungs. Prior to
+the study we use the (extremely) uninformative prior $\cond{P}{A=t}{} = 0.5$.
+After the study (which we'll call $\alpha$) we perform a
 [Bayesian update](https://en.wikipedia.org/wiki/Bayes'_theorem) and find that
 $\cond{P}{A=t}{\alpha} = 0.8$. So our study has provided
 
@@ -174,8 +179,9 @@ bonus".
 
 ## Fourth study
 
-We'll now jump to a fourth study so we can examine a fuller set of interactions
-(i.e. multiples studies citing one study, one study citing multiple studies). 
+We'll now jump to <a href="#arg-map" id="four">a fourth study</a> so we can
+examine a fuller set of interactions (i.e. multiples studies citing one study,
+one study citing multiple studies). 
 
 <figure>
   <img src="/images/bibliometric/four.svg"
@@ -251,21 +257,22 @@ Try it out:
 
 ## Desirable properties
 
-Score depends on study design
-  :  e.g. *ceteris paribus*, a study with higher power will have a higher score
-Aggregates sensibly
+<a href="#arg-map" id="design">Score depends on study design</a>
+  :  Tends to encourage
+     [Bayesion optimal designs](https://en.wikipedia.org/wiki/Bayesian_experimental_design)
+<a href="#arg-map" id="aggregates">Aggregates sensibly</a>
   :  The impact factor is often used in inappropriate circumstances [@plos06]
      [@agrawal05] [@moustafa14]. That is, the warning that impact factor is a
      metric for journals, not authors or departments, is seldom heeded. The
      proposed metric can used in such cases trivially. For example, if an author
      has published studies $\eta$ and $\theta$, their score is simply
      $I(\eta) + I(\theta)$, the total reduction in entropy they contribute.
-Handles replications appropriately
+<a href="#arg-map" id="repli-beni">Handles replications appropriately</a>
   :  Impact factor tends to undervalue replications [@neuliep90] [@brembs13].
      With a simple extension of the proposed metric, if $\iota$ is a replication
      of $\eta$ about proposition $E$ it shares the "citation bonus" in
      proportion to how much it increases our certainty in $E$.
-Gradated citations
+<a href="#arg-map" id="gradated">Gradated citations</a>
   :  With impact factor, a citation to study $\alpha$ essential to the validity
      of study $\gamma$ is given the same weight as a citation to study $\beta$
      providing some minor context for $\gamma$. With the proposed metric, if
@@ -275,7 +282,8 @@ Gradated citations
 
 ## Undesirable properties
 
-Not [incentive compatible](https://en.wikipedia.org/wiki/Incentive_compatibility)
+<a href="#arg-map" id="incentive">Not
+[incentive compatible](https://en.wikipedia.org/wiki/Incentive_compatibility)</a>
   :  For example, if study $\beta$ depends on study $\alpha$ it will receive a
      better score by hiding this dependence and marginalizing. For example,
      $\beta$ receives a higher score when presented as
@@ -312,11 +320,11 @@ Not [incentive compatible](https://en.wikipedia.org/wiki/Incentive_compatibility
      paper of a competing applicant for a position boosts their impact
      factor-derived score). This problem does not seem to be devastating
      [@liu93].
-Complicated
-  :  The proposed metric is more procedurally complicated than impact factor.
+<a href="#arg-map" id="complicated">Complicated</a>
+  :  The proposed metric is more calculationally complicated than impact factor.
      (Though the actual impact factor calculation procedure is more complicated
      than one would naively suppose.)
-Requires assessment of degree of dependence
+<a href="#arg-map" id="dependence">Requires assessment of degree of dependence</a>
   :  The "degree of dependence" (e.g. $\cond{P}{B}{A=t}$ vs. $\cond{P}{B}{A=f}$)
      occupies an important role in the procedure. It's not obvious to me how
      this should be determined other than by discussion between authors, editors
@@ -326,6 +334,8 @@ Requires assessment of degree of dependence
 
 - Improve interface of demonstration
 - Extend to replications and multi-proposition studies
+- Extend to richer outcome spaces (i.e. not just studies about a single
+  discrete value)
 - Compare with impact factor on real corpus
 - Compare with expert evalution on real corpus
 

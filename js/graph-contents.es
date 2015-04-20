@@ -13,20 +13,16 @@ const nodeData = {
     type: 'conclusion'
   }
 };
-for (let prop in nodeData) {
-  if(nodeData.hasOwnProperty(prop)) {
-    nodeData[prop].url = '#' + prop;
-  }
-}
+
 const linkData = [
   {source: 'major', target: 'conclusion', type: 'imply'},
   {source: 'minor', target: 'conclusion', type: 'imply'}
 ];
 
 const nodeTypeData = [
-  {type: 'major', label: ['Major premise'], shape: argMap.square},
-  {type: 'minor', label: ['Minor premise'], shape: argMap.diamond},
-  {type: 'conclusion', label: ['Conclusion'], shape: argMap.circle}
+  {type: 'major', label: ['Major premise'], shape: argMap.shapes.square},
+  {type: 'minor', label: ['Minor premise'], shape: argMap.shapes.diamond},
+  {type: 'conclusion', label: ['Conclusion'], shape: argMap.shapes.circle}
 ];
 
 const linkTypeData = [{type: 'imply', label: ['Jointly implies']}];

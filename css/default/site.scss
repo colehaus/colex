@@ -65,6 +65,12 @@ hr {
 .date {
     color: $light-text-color;
 }
+.math {
+    font-size: 95%;
+}
+.macros {
+    display: none;
+}
 
 /* ========== */
 /*  Body      */
@@ -168,7 +174,7 @@ dl.posts > dd {
 }
 
 /* ========== */
-/*  Warnigs   */
+/*  Warnings   */
 /* ========== */
 
 #warnings {
@@ -321,7 +327,4 @@ figure {
         margin: 0 4ex;
         font-size: smaller;
     }
-}
-.math {
-    font-size: 95%;
 }
