@@ -32,8 +32,8 @@ with two more votes.</li>
 of the Decade". Will it be
 [lemon meringue pie](https://en.wikipedia.org/wiki/Lemon_meringue_pie) or
 [Tarta de Santiago](https://en.wikipedia.org/wiki/Tarta_de_Santiago)? The
-results are in---quorum checked in advance this time--and they are... 0.49 for
-meringue and 0.48 for Tarta. While meringue's devotees celebrate, Tarta's
+results are in---quorum checked in advance this time---and they are... $0.49$
+for meringue and $0.48$ for Tarta. While meringue's devotees celebrate, Tarta's
 die-hards feel something has gone wrong. <a href="#arg-map" id="permissive">Can
 such a close result really give them confidence</a> that meringue is the
 preference of the whole club, including the 12 members who couldn't make it to
@@ -68,51 +68,63 @@ Statistics!
 
 ## Bayesian
 
-For each pair of proposals, we'd like to find the most likely difference in
-population scores ($\mu_2 - \mu_1$), given the votes. To do so, we construct
-upper and lower credible bounds (one-sided
-[credible intervals](https://en.wikipedia.org/wiki/Credible_interval)). The
-lower bound delimits the region where $\mu_2 - \mu_1$ is largest. If the lower
-bound is less than 0, $\mu_2 > \mu_1$ is not credible (at a given credibility
-level). The same is true for the upper bound, with the necessary
-modifications. By comparing both bounds on this criterion, we determine that
-<span class="noted" id="bound-50"><span>$\mu_2 > \mu_1$ or $\mu_1 > \mu_2$ or
-quorum has failed.</span></span>[^bound-50]
+For each pair of alternatives, we'd like to find which of these three is true:
 
-<table class="bounds"><tbody>
-<tr><th></th><th>Lower bound < 0</th><th>Lower bound > 0</th></tr>
-<tr><th>Upper bound > 0</th><td>Both $\mu_2 > \mu_1$<br>and $\mu_1 > \mu_2$ credible;<br>quorum failed</td><td>Only $\mu_2 > \mu_1$ credible;<br>quorum achieved</td></tr>
-<tr><th>Upper bound < 0</th><td>Only $\mu_1 > \mu_2$ credible;<br>quorum achieved</td><td>Impossible</td></tr>
-</tbody></table>
+- $\mu_2 \gg \mu_1$
+- $\mu_1 \gg \mu_2$
+- $\mu_2 \approx \mu_1$
+
+where $x \gg y$ means something like "We are justified in believing that
+$x > y$." and $x \approx y$ means something like "We aren't justified in
+believing that $x > y$ or that $y > x$.". The first two correspond to quorum and
+the third corresponds to a failure of quorum.
+
+To establish $\mu_2 \gg \mu_1$, we construct a lower credible bound (a one-sided
+[credible interval](https://en.wikipedia.org/wiki/Credible_interval))
+on $\mu_2 - \mu_1$ base on our votes. The lower bound delimits the region where
+$\mu_2 - \mu_1$ is largest. If the delimited region includes $0$, we must reject
+$\mu_2 \gg \mu_1$ (i.e. if the credible region most favorable to $\mu_2$ still
+doesn't exclude $0$, we aren't justified in believing $\mu_2 > \mu_1$ (at the
+chosen credibility level)).
+
+The approach for $\mu_1 \gg \mu_2$ is similar (simply swap in an upper credible
+bound or $\mu_1 - \mu_2$).
+
+If we reject $\mu_2 \gg \mu_1$ and $\mu_1 \gg \mu_2$, we must accept
+$\mu_2 \approx \mu_1$ and declare a failure of quorum.
 
 For example, we'd like to <a href="#arg-map" id="bayes">determine if the
 credible bounds support the conclusion</a> that buko pie really is preferred to
-fish pie. If Pie Club bylaws specified a 95% credible bound and the lower bound
-for $\mu_{buko} - \mu_{fish}$ stretched to 0.359 while the upper bound stretched
-to 0.58, we'd declare that quorum had been reached in favor of buko pie.
-Alternately, if the lower bound stretched to -0.1 and the upper bound stretch to
-0.58, we'd declare a failure of quorum.
+fish pie. If Pie Club bylaws specified a $95\%$ credible bound and the lower bound
+for $\mu_{buko} - \mu_{fish}$ stretched to $0.359$ while the upper bound stretched
+to $0.58$, we'd declare that quorum had been reached in favor of buko pie. (We
+reject $\mu_{fish} \gg \mu_{buko}$ because it's bounded region includes $0$. We
+can't reject $\mu_{buko} \gg \mu_{fish}$ because it's bounded region excludes
+$0$.) Alternately, if the lower bound stretched to $-0.1$ and the upper bound
+stretched to $0.58$, we'd declare a failure of quorum.
 
 How do we construct these credible bounds? We derive them from the
 [posterior probability distribution](https://en.wikipedia.org/wiki/Posterior_probability)
 created using Bayesian parameter estimation [@kruschke13]. To construct this
-posterior, we start by specifying <span class="noted"><span>a model for the
-distribution of paired differences</span></span>[^difference]. Because the votes
-can only take on values in the interval $\left[0, 1\right]$, the
-<span class="noted"><span>[beta distribution](https://en.wikipedia.org/wiki/Beta_distribution)
-is a sensible choice</span></span>[^beta]. To get a sense of the beta distribution, you
+posterior, we start by specifying <span class="noted">a model for the
+distribution of paired differences</span>[^difference]. Because the
+difference can only take on values in the interval $\left(-1, 1\right)$, the
+([transformed](https://en.wikipedia.org/wiki/Location-scale_family) from
+$(0, 1)$ to $(-1, 1)$)
+<span class="noted">[beta distribution](https://en.wikipedia.org/wiki/Beta_distribution)
+is a sensible choice</span>[^beta]. To get a sense of the beta distribution, you
 can look at the calculator
 [here](http://keisan.casio.com/has10/SpecExec.cgi?id=system/2006/1180573226).
 
 Now that we have a model of differences, we must choose
 [prior probability distributions](https://en.wikipedia.org/wiki/Prior_probability)
 for its parameters. Note that $\alpha = \beta = 1$ collapses the beta
-distribution to the uniform distribution on $\left[0, 1\right]$. Because the
-uniform distribution is the
+distribution to the uniform distribution. Because the uniform distribution is
+the
 [maximum entropy distribution](https://en.wikipedia.org/wiki/Maximum_entropy_probability_distribution)
 on a supported interval, we should choose prior distributions of $\alpha$ and
-$\beta$ with means of 1 [@sivia06]. The maximum entropy distribution with mean 1
-supported on $\left(0, \infty\right)$ is the exponential distribution with
+$\beta$ with means of $1$ [@sivia06]. The maximum entropy distribution with mean
+$1$ supported on $\left(0, \infty\right)$ is the exponential distribution with
 $\lambda = 1$. So the prior on each of $\alpha$ and $\beta$ is $Exp(1)$. All of
 this is diagrammatically represented in the accompanying figure.
 
@@ -139,28 +151,41 @@ distribution.
 
 ## Frequentist
 
-For each pair of proposals, we'd like to construct confidence bounds (one-sided
-[confidence intervals](https://en.wikipedia.org/wiki/Confidence_interval) on the
-difference in mean scores). A lower credible bound delimits the region where
-$\mu_2 - \mu_1$ is largest. If the lower bound is less than 0, we reject $\mu_2
-> \mu_1$. The same is true for the upper bound, with the necessary
-modifications. By comparing both bounds on this criterion, we determine that
-<span class="noted"><span>$\mu_2 > \mu_1$ or $\mu_1 > \mu_2$ or quorum has
-failed.</span></span>[^bound-50]
+For each pair of alternatives, we'd like to find which of these three is true:
 
-<table class="bounds"><tbody>
-<tr><th></th><th>Lower bound < 0</th><th>Lower bound > 0</th></tr>
-<tr><th>Upper bound > 0</th><td>Both $\mu_2 > \mu_1$<br>and $\mu_1 > \mu_2$ acceptable;<br>quorum failed</td><td>Only $\mu_2 > \mu_1$ acceptable;<br>quorum achieved</td></tr>
-<tr><th>Upper bound < 0</th><td>Only $\mu_1 > \mu_2$ acceptable;<br>quorum achieved</td><td>Impossible</td></tr>
-</tbody></table>
+- $\mu_2 \gg \mu_1$
+- $\mu_1 \gg \mu_2$
+- $\mu_2 \approx \mu_1$
+
+where $x \gg y$ means something like "We are justified in believing that
+$x > y$." and $x \approx y$ means something like "We aren't justified in
+believing that $x > y$ or that $y > x$.". The first two correspond to quorum and
+the third corresponds to a failure of quorum.
+
+To establish $\mu_2 \gg \mu_1$, we construct a lower confidence bound (a
+one-sided
+[confidence interval](https://en.wikipedia.org/wiki/Confidence_interval))
+on $\mu_2 - \mu_1$ base on our votes. The lower bound delimits the region where
+$\mu_2 - \mu_1$ is largest. If the delimited region includes $0$, we must reject
+$\mu_2 \gg \mu_1$ (i.e. if the region most favorable to $\mu_2$ still doesn't
+exclude $0$, we aren't justified in believing $\mu_2 > \mu_1$ (at the chosen
+confidence level)).
+
+The approach for $\mu_1 \gg \mu_2$ is similar (simply swap in an upper
+confidence bound or $\mu_1 - \mu_2$).
+
+If we reject $\mu_2 \gg \mu_1$ and $\mu_1 \gg \mu_2$, we must accept
+$\mu_2 \approx \mu_1$ and declare a failure of quorum.
 
 For example, we'd like to <a href="#arg-map" id="freq-bounds">determine if the
-confidence bounds permit the conclusion</a> that buko pie really is preferred to
-fish pie. If Pie Club bylaws specified a 95% confidence bound and the lower
-bound for $\mu_{buko} - \mu_{fish}$ stretched to 0.359 while the upper bound
-stretched to 0.58, we'd declare that quorum had been reached in favor of buko
-pie. Alternately, if the lower bound stretched to -0.1 and the upper bound
-stretch to 0.58, we'd declare a failure of quorum.
+confidence bounds support the conclusion</a> that buko pie really is preferred
+to fish pie. If Pie Club bylaws specified a $95\%$ confidence bound and the
+lower bound for $\mu_{buko} - \mu_{fish}$ stretched to $0.359$ while the upper
+bound stretched to $0.58$, we'd declare that quorum had been reached in favor of
+buko pie. (We reject $\mu_{fish} \gg \mu_{buko}$ because it's bounded region
+includes $0$. We can't reject $\mu_{buko} \gg \mu_{fish}$ because it's bounded
+region excludes $0$.) Alternatively, if the lower bound stretched to $-0.1$ and
+the upper bound stretched to $0.58$, we'd declare a failure of quorum.
 
 How do we construct these confidence bounds? That depends.
 
@@ -200,26 +225,25 @@ applicable in the small sample case.
 </li>
 </ul>
 
-<span class="noted"><span>You can try it out below</span></span>[^single-bound].
+<span class="noted">You can try it out below</span>[^single-bound].
 Maybe look for:
 
 - A scenario in which the quorum status (achieved or failed) depends on the
-  credibility level chosen (e.g. 95% or 99%)
-- Two scenarios in which each proposal retains its mean score, but the quorum
+  credibility level chosen (e.g. $95\%$ or $99\%$)
+- Two scenarios in which each alternative retains its mean score, but the quorum
   status changes
-- Two scenarios in which the number of votes remains the same, but the quorum
+- Two scenarios in which the number of voters remains the same, but the quorum
   status changes
-
 
 <form>
   <div class="data-input">
   <div>
-  <label>Proposal 1</label>
+  <label>Alternative 1</label>
   <textarea id="data1">0.10 0.00 0.01 0.45 0.40 0.00 0.01 0.12 0.02 0.00 0.15 0.29 0.19 0.08 0.12 0.09 0.17 0.95 0.01 0.00 0.64 0.17 0.07 0.02 0.21 0.31 0.18 0.45 0.18 0.12</textarea>
   <output><figure id="preview1"><div></div></figure></output>
   </div>
   <div>
-  <label>Proposal 2</label>
+  <label>Alternative 2</label>
   <textarea id="data2">0.61 0.58 0.53 0.70 0.71 0.64 0.57 0.61 0.43 0.70 0.85 0.61 0.66 0.70 0.74 0.80 0.59 0.37 0.81 0.72 0.52 0.69 0.73 0.84 0.91 0.93 0.84 0.85 0.73 0.61</textarea>
   <output><figure id="preview2"><div></div></figure></output>
   </div>
@@ -249,30 +273,25 @@ Maybe look for:
 </form>
 </li>
 
-# Potential problems
+# Problems
 
 We've tacitly <a href="#arg-map" id="random">assumed that our actual voters are
-a random sample</a> of the population of potential voters. This is almost
-certainly not true (Though one could make it true through adoption of
-appropriate [voting procedures](https://en.wikipedia.org/wiki/Sortition)).
+a random sample</a> of the population of potential voters. This is false (Though
+one could make it true through adoption of appropriate
+[voting procedures](https://en.wikipedia.org/wiki/Sortition)).
 [Self-selection bias](https://en.wikipedia.org/wiki/Self-selection_bias),
 whether due to differential interest, availability, transportation, &c., means
-that the sample is emphatically non-random. However, the problem of non-random
+that the sample is non-representative. However, the problem of non-random
 samples also applies to traditional quorum's assurances of representativeness.
 
 The procedure also accepts the claim of [@ronr] that the purpose of quorum is to
 ensure representativeness. In consequence, the procedure takes votes as
 exogenous and characterizes only the resulting information. But one could
-support quorum for its deliberative, community-building, or even stultifying
+support quorum for its deliberative, community-building, or even obstructive
 effects.
 
-Is representativeness even desirable? By supposing that the population score
-(rather than the mean score of actual voters) is the appropriate metric, this
-procedure assumes so. But should Pie Club's die-hard members be trying to
-account for the votes of members that only attend the annual holiday party?
-
-Speaking of, <a href="#arg-map" id="complicated">can anyone even do all the
-math</a> required here? Even after a full night of holiday schnapps?
+Also, <a href="#arg-map" id="complicated">isn't all this math a bit
+forbidding?</a>
 
 <ul class="switch" type="menu" menu="stat-type"><li class="open">
 
@@ -287,38 +306,40 @@ math.
 The math itself may be familiar to some, but there are still the
 perennial problems of frequentist interpretation [@goodman08]:
 
-<span class="conversation">
+<div class="conversation">
 
 "Neat. The test showed it's highly likely that buko pie is the preferred pie?"
 
 "No, it either is or isn't the preferred pie. There's no probability involved."
 
-"What was all that 5% talk then?"
+"What was all that $5\%$ talk then?"
 
-"Of all confidence intervals constructed at the 95% level, 95% should contain
-the true population difference."
+"Of all confidence intervals constructed at the $95\%$ level, $95\%$ should
+contain the true population difference."
 
 "Uhh..."
 
-</span>
+</div>
 
 </li></ul>
 
-So this procedure is less accessible than traditional quorum. How much more so
+So this procedure is less accessible than traditional quorum. How much less
 depends on the relative importances placed on accessible conclusions and
 accessible process.
 
-How can we reign in our new statistical overlords? By providing them with a
-rigid, predefined procedure. We should not permit, for example, the choice of
-modeling distribution after exploratory data analysis. The more degrees of
-freedom we give the analyst, the more power we give them to influence results
+Because this calculation is less accessible and will likely be performed by one
+or a few individuals, it's import to establish a clear and strict procedure.
+We should not permit, for example, the choice of modeling distribution after
+exploratory data analysis. The more degrees of freedom we give the analyst, the
+more power we give them to influence results
 [@simmons11].
 
 Finally, this procedure <a href="#arg-map" id="post-hoc">admits only post-hoc
 declarations of quorum</a>. With the traditional procedure, we can just take
 attendance at a meeting and determine the quorum status for every referendum
 therein. With the new procedure, after tallying the votes on an issue, we have
-to run the quorum calculation to retroactively determine quorum status.
+to run the quorum calculation to retroactively determine quorum if we achieved
+quorum.
 
 # Extended procedures
 
@@ -338,11 +359,11 @@ and marginalize out surplus dimensions on our finite data.
 ## Tying
 
 We can also modify the procedure to permit tying. Under standing voting
-procedures, scores of 0.490 to 0.485 produce an identical outcome (i.e. victory
-for the first option) to scores of 0.82 to 0.12. However, if those values are
-accurate estimates of the population scores (the uncertainty is small), one
-could argue that the former scenario suggests a compromise or synthesis
-position.
+procedures, scores of $0.490$ to $0.488$ produce an identical outcome (i.e.
+victory for the first option) to scores of $0.82$ to $0.12$. However, if those
+values are accurate estimates of the population scores (i.e. the uncertainty is
+small), one could argue that the former scenario suggests a compromise or
+synthesis position.
 
 By defining "regions of practical equivalence", parameter estimation allows the
 possibility of a tie [@kruschke13]. For example, Pie Club could decide that a
@@ -351,12 +372,12 @@ interval on the difference of means is contained entirely in this region, we
 don't have a failure of quorum (uncertainy about which option is preferred), but
 certainty that neither option is substantially preferred.
 
-## Multiple proposals
+## Multiple alternatives
 
-For simplicity, we looked at referenda with only two proposals. We can extend
-the procedure to referenda with more proposals. The most straightforward method
-would be to apply the procedure described above pairwise. The credibility level
-would need to adjusted by something like the
+For simplicity, we looked at referenda with only two alternatives. We can extend
+the procedure to referenda with more alternatives. The most straightforward
+method would be to apply the procedure described above pairwise. The credibility
+level would need to adjusted by something like the
 [Šidák correction](https://en.wikipedia.org/wiki/%C5%A0id%C3%A1k_correction) to
 deal with the
 [problem of multiple comparisons](https://en.wikipedia.org/wiki/Multiple_comparisons_problem). A
@@ -369,10 +390,10 @@ follow-up tests [@wetzels12].
 
 ## Multiple proposals
 
-For simplicity, we looked at referenda with only two proposals. We can extend
-the procedure to referenda with more proposals. The most straightforward method
-would be to apply the procedure described above pairwise. The confidence level
-would need to adjusted by something like the
+For simplicity, we looked at referenda with only two alternatives. We can extend
+the procedure to referenda with more alternatives. The most straightforward
+method would be to apply the procedure described above pairwise. The confidence
+level would need to adjusted by something like the
 [Šidák correction](https://en.wikipedia.org/wiki/%C5%A0id%C3%A1k_correction) to
 deal with the
 [problem of multiple comparisons](https://en.wikipedia.org/wiki/Multiple_comparisons_problem). A
@@ -386,8 +407,8 @@ tests.
 ## Non-ordinal outcomes
 
 The procedure described above applies to ordinal outcomes. That is, we were
-looking for the proposal with a score higher than all others. If we are trying
-to assess outcomes on
+looking for the alternative with a score higher than all others. If we are
+trying to assess outcomes on
 [a ratio or interval scale](https://en.wikipedia.org/wiki/Level_of_measurement),
 we'd have to use a different procedure.
 
@@ -398,9 +419,9 @@ limits on the maximum size of the interval.
 
 For example, suppose Pie Club put the size of its budget for the next year to a
 vote. If it were feeling fiscally responsible, it could simply sets its budget
-to the 95% lower bound on the mean vote. An alternative would be to declare a
-failure of quorum if the vote didn't produce a 95% interval smaller than $\mu
-\pm 10%$.
+to the $95\%$ lower bound on the mean vote. An alternative would be to declare a
+failure of quorum if the vote didn't produce a $95\%$ interval smaller than $\mu
+\pm 10\%$.
 
 # Future work
 
@@ -411,7 +432,7 @@ failure of quorum if the vote didn't produce a 95% interval smaller than $\mu
 [range voting](https://en.wikipedia.org/wiki/Range_voting):
 
     Polling rule
-    :   That is, each voter scores each option on a range from 0 to 1 (inclusive).
+    :   That is, each voter scores each option on a range from 0 to 1 (exclusive).
     Aggregation rule
     :   The individual scores are then averaged to arrive at an overall score.
     Decision rule
@@ -422,19 +443,12 @@ vote on buko pie to their vote on fish pie), we can transform two samples into a
 single sample of their differences. We can then use our single sample techniques
 on $d_i = buko_i - fish_i$ where $y_i$ is the $i$th person's vote on proposal
 $y$.
-[^beta]: This entails the false assumption that our paired differences will
-follow a beta distribution. Later, we'll discuss possibilities for remedying
-this. For the moment, the beta distribution gives passable results for its
-simplicity.
-[^bound-50]: As long as our critical level is greater than 50%, it can't be true
-that both bounded regions fail to cross 0. Overlapping bounds allow us to look
-at just the bound which "crosses zero the least". If it still crosses zero,
-quorum has failed. If it doesn't cross 0, the other bound does and quorum has
-been reached.
-ANOTHER WAY TO LOOK AT IT
-[^single-bound]: For visual clarity, the plots below take the approach of
-showing only the bound which "crosses 0 the least", as described in
-<a href="#bound-50">a previous sidenote</a>.
+[^beta]: This entails the false assumption that our paired differences follow a
+beta distribution. Later, we'll discuss possibilities for remedying this. For
+the moment, the beta distribution gives passable results, for its simplicity.
+[^single-bound]: For visual clarity, the plots below show only the bound which
+"crosses $0$ the least". If and only if this bounded region includes $0$, quorum
+has failed.
 
 <menu id="sample-size" type="popup">
   <menuitem label="Many votes" type="radio" checked="checked"></menuitem>
