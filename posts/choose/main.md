@@ -20,6 +20,8 @@ on the student. With one-on-one in-person instruction, this sort of adaptation
 is possible. With traditional, static text, it's not. On the web (with
 computers generally), it is.
 
+<!--more-->
+
 For example (Click one of the arrows on the side to swap the order.):
 
 <p class="swap monoid">
@@ -31,8 +33,6 @@ For example (Click one of the arrows on the side to swap the order.):
 A [monoid](https://en.wikipedia.org/wiki/Monoid) is an algebraic structure
 with a single associative binary operation and an identity element.
 </p>
-
-<!--more-->
 
 # Alternatives
 

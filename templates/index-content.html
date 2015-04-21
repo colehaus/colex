@@ -1,3 +1,4 @@
+  <script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
 </head>
 <body>
 <div id="underlay">
@@ -5,8 +6,10 @@
   $for(posts)$
     <li><article class="teaser">
         <h2><a href="$url$">$title$</a></h2>
+       <div class="metadata">
         $partial("templates/tag-nav.html")$
         <span class="date">Published on <time datetime="$date$">$date$</time>.</span>
+       </div>
 
         $teaser$
 

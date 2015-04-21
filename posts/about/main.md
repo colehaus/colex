@@ -7,13 +7,13 @@ tags: meta, biographical
 This is a single-author, half-heartedly pseudonymous (the pseudonym being Cole)
 blog.
 
+<!--more-->
+
 You can contact me at [colehaus@cryptolab.net](mailto:colehaus@cryptolab.net).
 <span class="noted">If you have any comments, please message me and I'll
 try to incorporate and attribute them.</span>[^comment] If I've
 referenced a resource that you can't access, but would like to, please message
 me.
-
-<!--more-->
 
 You can find the source for this blog at
 [GitHub](https://github.com/colehaus/ColEx). Where possible, code is licensed
