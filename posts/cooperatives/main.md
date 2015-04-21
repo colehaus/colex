@@ -1,6 +1,6 @@
 ---
 title: The scarcity of cooperatives
-published: 2014-11-18
+published: 2015-04-05
 tags: automaton, cooperatives, economics
 js: /js/elm-runtime.js, /js/Automaton.js, /js/cooperatives.js
 css: cooperatives

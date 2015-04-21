@@ -1,6 +1,6 @@
 ---
 title: On casual futurism
-published: 2014-09-28
+published: 2015-02-17
 tags: future, bias, review
 js: /js/futurism.js
 css: futurism

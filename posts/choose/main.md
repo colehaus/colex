@@ -1,6 +1,6 @@
 ---
 title: Choose your own exposition
-published: 2015-02-18
+published: 2015-02-01
 tags: meta, text, structure
 css: choose
 ---
