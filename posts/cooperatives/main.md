@@ -19,17 +19,17 @@ The <a href="#arg-map" id="predominate">predominance of capital-managed firms
 (CMF) over worker cooperatives (WC)</a> remains an open question in economics.
 Early explanations relied on a hypothesized comparative inefficiency of
 cooperatives. Subsequent empirical study has shown that
-<a href="arg-map" id="efficient">cooperatives are at least as efficient
+<a href="#arg-map" id="efficient">cooperatives are at least as efficient
 as capital-managed firms</a> [@doucouliagos95] [@estrin87] [@craig95]
 [@levine90].
 
 A profusion of hypotheses has since arisen. [@dow99] offers a good summary
-(though the term must be used loosely for a 126 page paper). One that I have not
+(though the term must be used loosely for a 126-page paper). One that I have not
 seen presented is: <a href="#arg-map" id="hypothesis">capital-managed firms
 predominate because capitalists have a greater incentive to expand than
 worker-owners in worker cooperatives</a>. Roughly, for each market segment a
-capitalist expands to, their income increases by capital's share of the new
-segment's profit. For each market segment a cooperative expands to, the
+capitalist expands into, their income increases by capital's share of the new
+segment's profit. For each market segment a cooperative expands into, the
 expanders receive no direct remuneration (supposing that the new market segment
 is also a cooperative). Any new profit goes to worker-owners in the new segment.
 
@@ -64,19 +64,19 @@ bankrupt, its market segment becomes empty once again.
 If it does not go bankrupt, <a href="#arg-map" id="accum">the profits generated
 during that step are distributed</a>. For worker cooperatives, all profits
 accrue to the worker-owners within the cooperative. For capital-managed
-segments, labor's share of income (estimated at 70% (which is on the high end)
-[@karabarbounis13] [@gomme04]) accrues to the segment's workers and capital's
-share of income accrues to the capitalists of the segment's firm.
+segments, labor's share of income (estimated at 70% [@karabarbounis13]
+[@gomme04]) accrues to the segment's workers and capital's share of income
+accrues to the capitalists of the segment's firm.
 
-The accumulated profit of workers in a capital-managed segment is represented in
-the automaton by opacity of a <span class="capital">purple cell interior</span>.
-The accumulated profit of the capitalists for capital-managed segments is
-represented by the opacity of a <span class="capital">purple cell border</span>
-enclosing all segments owned by the firm. The accumulated profit of
-worker-owners in a worker cooperative is represented in the automaton by the
-opacity of a <span class="labor">green cell interior</span>. Worker cooperatives
-sharing an ancestor (e.g. cooperative B and C were both founded by cooperative
-A) will be enclosed by a single border.
+The accumulated income of workers in a capital-managed segment is represented in
+the automaton by opacity of the <span class="capital">purple cell
+interior</span>. The accumulated income of the capitalists (of a given firm) is
+represented by the opacity of the <span class="capital">purple cell
+border</span> enclosing all segments owned by the firm. The accumulated income
+of worker-owners in a worker cooperative is represented in the automaton by the
+opacity of the <span class="labor">green cell interior</span>. Worker
+cooperatives sharing an ancestor (e.g. cooperative B and C were both founded by
+cooperative A) are enclosed by a single border.
 
 ### Empty market segments
 
@@ -88,9 +88,9 @@ be subject to expansion</a> from
 [adjacent firms](https://en.wikipedia.org/wiki/Von_Neumann_neighborhood).
 Each adjacent firm has a 20% chance of attempting expansion (representing market
 conditions, firm conditions, &c.). The cost of expansion into the market segment
-must be less than the accumulated profits of the expanding firm and less than
-the projected value of the segment. In the event of multiple firms competing
-to expand into a single segment, the firm with the greatest valuation for the
+must be less than the accumulated income of the expander and less than the
+projected value of the segment. In the event of multiple firms competing to
+expand into a single segment, the firm with the greatest valuation for the
 segment succeeds.
 
 Valuations are determined thus:
@@ -117,8 +117,8 @@ Worker cooperative
      cooperative cares about these potential gains.</a>
 
 A quick consequence of this model is that worker cooperatives and
-capital-managed firms will value expansions equally (assuming equal discount
-rates) when
+capital-managed firms will value expansions equally (assuming equal discount and
+bankruptcy rates) when
 
 $$\begin{align}
 \frac{AS}{1 - (1 - B)(1 - D)} &= \frac{KP}{1 - (1 - B)(1 - D)} \\
@@ -133,11 +133,13 @@ A &= \frac{K}{K - 1 + G} \\
 # Future work
 
 - Allow manual specification of automaton initial state
+- Increase fidelity of model
+- Permit tweaking of other parameters
 - Provide analysis in terms of
 [evolutionarily stable strategy](https://en.wikipedia.org/wiki/Evolutionarily_stable_strategy)
 - Survey of how cooperatives decide to expand
 - Empirical examination of rate of worker cooperative formation and altruism
-  (diversity [@putnam07], charitable giving, &c.)
+  (charitable giving, diversity [@putnam07], &c.)
 - Empirical examination of rate of worker cooperative formation and labor's
   share of income
 

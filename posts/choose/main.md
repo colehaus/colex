@@ -96,11 +96,11 @@ text. Instead of fixing one canonical version of the text, we can now, in a
 limited way, respond to the reader's preferences.
 
 An alternate view is that these tools allow us to express the structure of our
-argument with greater fidelity. Traditional text enforces linearity. These
-structural aspects must be described within the text itself, mixing levels (i.e.
-we have text which provides the content of our argument interspersed with text
-which describes the structure of our argument). A standard grammar here could
-increase both parsimony and efficacy. Viewing the structure of an argument as a
+argument with greater fidelity. Traditional text enforces linearity. Structural
+aspects must be described within the text itself, mixing levels (i.e. we have
+text which provides the content of our argument interspersed with text which
+describes the structure of our argument). A standard grammar here could increase
+both parsimony and efficacy. Viewing the structure of an argument as a
 [directed graph](https://en.wikipedia.org/wiki/Directed_graph) permits a
 visualization of the tools described above:
 

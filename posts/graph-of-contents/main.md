@@ -41,4 +41,5 @@ For example, if you were skipping around in a large document, you could track
 which sections you'd read by dragging their nodes to the right margin.
 Double-clicking releases a node that's been fixed in place.
 
-This technique can be found *in vivo* in [the post on futurism](../futurism).
+This technique can be found *in vivo* in
+[the post on biblometrics](../bibliometric).

@@ -41,7 +41,7 @@ factor into account throughout the planning, execution and reporting of a study
 This is [Campbell's law](https://en.wikipedia.org/wiki/Campbell's_law) in
 action. Because average citation count isn't what we actually value, when it
 becomes the metric by which decisions are made, it distorts academic research.
-In the rest of this post I propose a bibliometric that measures the
+In the rest of this post, I propose a bibliometric that measures the
 [entropy reduction](https://en.wikipedia.org/wiki/Entropy_(information_theory))
 of the [research graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
 
@@ -83,17 +83,18 @@ example about cigarette smoking.
 ## First study
 
 Suppose <a href="#arg-map" id="single">we do a study</a> on whether, in the
-normal course of smoking, cigarette smoke is inhaled into the lungs. Prior to
-the study we use the (extremely) uninformative prior $\cond{P}{A=t}{} = 0.5$.
-After the study (which we'll call $\alpha$) we perform a
-[Bayesian update](https://en.wikipedia.org/wiki/Bayes'_theorem) and find that
-$\cond{P}{A=t}{\alpha} = 0.8$. So our study has provided
+normal course of smoking, cigarette smoke is inhaled into the lungs (we'll call
+this proposition $A$). Prior to the study we use the (extremely) uninformative
+prior $\cond{P}{A=t}{} = 0.5$. After the study (which we'll call $\alpha$) we
+perform a [Bayesian update](https://en.wikipedia.org/wiki/Bayes'_theorem) and
+find that $\cond{P}{A=t}{\alpha} = 0.8$. So our study has provided
 
 $$\begin{align}
 H(A) - \cond{H}{A}{\alpha} &= -P(A=t)\log_2P(A=t) - P(A=f)\log_2P(A=f) \\
   &+ \cond{P}{A=t}{\alpha}\log_2\cond{P}{A=t}{\alpha} \\
   &+ \cond{P}{A=f}{\alpha}\log_2\cond{P}{A=f}{\alpha} \\
-  &= 2 \left(-0.5\log_20.5\right) \\
+  &= -0.5\log_20.5 \\
+  &- 0.5\log_20.5 \\
   &+ 0.8\log_20.8 \\
   &+ 0.2\log_20.2 \\
   &\approx 0.278
@@ -126,7 +127,7 @@ will cite it.
   </figcaption>
 </figure>
 
-Now we carry out our study (we'll call it $\beta$). It provides evidence that
+Now we carry out our study. It provides evidence that
 cigarette smoking does lead to bronchitis (conditional on the supposition that
 cigarette smoke is inhaled into the lungs). So we update our
 $\cond{P}{B=t}{\beta}$. The entropy reduction from this study, considered in
@@ -176,7 +177,8 @@ $I(\sigma_i) = \cond{H}{S_1,S_2,\cdots,S_i}{\sigma_{i+1},\sigma_{i+2},\cdots,\si
 
 We can see that $\beta$ citing $\alpha$ has increased $\alpha$'s score ($\alpha$
 now reduces our uncertainty not only about $A$, but also about $B$), a "citation
-bonus".
+bonus". Or, if you prefer, you can think of it as $\alpha$ capturing the
+externalities it generates in $B$.
 
 ## Fourth study
 
@@ -204,7 +206,12 @@ $I(\kappa) = 0.123$, and $I(\delta) = 0.434$.
 
 # Demo
 
-Try it out:
+You can try it out below. Maybe look for:
+
+- Two studies that, when considered in isolation, have the same score but have
+  different scores when placed in the network context
+- A citation that doesn't give any "citation bonus"
+- Two networks with the same topology but different scores
 
 <form class="net">
 <div>
@@ -260,7 +267,7 @@ Try it out:
 
 <a href="#arg-map" id="design">Score depends on study design</a>
   :  Tends to encourage
-     [Bayesion optimal designs](https://en.wikipedia.org/wiki/Bayesian_experimental_design)
+     [Bayesian optimal designs](https://en.wikipedia.org/wiki/Bayesian_experimental_design)
 <a href="#arg-map" id="aggregates">Aggregates sensibly</a>
   :  The impact factor is often used in inappropriate circumstances [@plos06]
      [@agrawal05] [@moustafa14]. That is, the warning that impact factor is a
@@ -281,13 +288,16 @@ Try it out:
      $\beta$'s score minorly. This should counteract the inflated value of
      review articles.
 
+     Additionally, being cited by an "important paper" (one that provides great
+     certainty or occupies an important position in the research network)
+     provides a larger boost than being cited by a peripheral paper.
+
 ## Undesirable properties
 
-<a href="#arg-map" id="incentive">Not
-[incentive compatible](https://en.wikipedia.org/wiki/Incentive_compatibility)</a>
+<a href="#arg-map" id="incentive">Not [incentive compatible](https://en.wikipedia.org/wiki/Incentive_compatibility)</a>
   :  For example, if study $\beta$ depends on study $\alpha$ it will receive a
-     better score by hiding this dependence and marginalizing. For example,
-     $\beta$ receives a higher score when presented as
+     better score by hiding that dependence and marginalizing. $\beta$ receives
+     a higher score when presented as
 
          ----
          | A P
@@ -316,15 +326,14 @@ Try it out:
            | f 0.1
          f | t 0.5
            | f 0.5
-     . However, when considering impact factor as a relative metric used for
-     comparisons, it also theoretically discourages citation (e.g. citing the
-     paper of a competing applicant for a position boosts their impact
-     factor-derived score). This problem does not seem to be devastating
+     . However, impact factor also theoretically discourages citation (e.g.
+     boosting the impact factor of someone that might compete against you come
+     hiring time). This problem does not seem to be devastating
      [@liu93].
 <a href="#arg-map" id="complicated">Complicated</a>
   :  The proposed metric is more calculationally complicated than impact factor.
      (Though the actual impact factor calculation procedure is more complicated
-     than one would naively suppose.)
+     than one would suppose.)
 <a href="#arg-map" id="dependence">Requires assessment of degree of dependence</a>
   :  The "degree of dependence" (e.g. $\cond{P}{B}{A=t}$ vs. $\cond{P}{B}{A=f}$)
      occupies an important role in the procedure. It's not obvious to me how

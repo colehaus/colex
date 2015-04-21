@@ -10,7 +10,7 @@ blog.
 You can contact me at [colehaus@cryptolab.net](mailto:colehaus@cryptolab.net).
 <span class="noted">If you have any comments, please message me and I'll
 try to incorporate and attribute them.</span>[^comment] If I've
-referenced a resource that you can't access but would like to, please message
+referenced a resource that you can't access, but would like to, please message
 me.
 
 <!--more-->

@@ -394,7 +394,7 @@ failure of quorum if the vote didn't produce a $95\%$ interval smaller than $\mu
 
 # Future work
 
-- Comparative social welfare analysis versus traditional quorum
+- Social welfare analysis versus traditional quorum [@bordley83]
 - Human trials
 
 [^range]: Throughout this post, I'll be working with continuous

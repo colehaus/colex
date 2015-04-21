@@ -42,15 +42,15 @@ found that <span class="noted"><a href="#arg-map" id="mediocre">out of
 1940, just under 40% had been fulfilled or were in progress by
 1976</a></span>[^feedback] [@wise76]."
 
-"Fine. Then I won't just make a naive prediction. I'll give the matter serious
-thought... Well, <a href="#arg-map" id="single">people in the future will
-probably be really into opera and the arts because shiny metal robots will do
-all the real work. So they'll be sitting on their hover chairs in their spandex
-togas. And they'll want to listen to something---but see something at the same
-time---just like laser light shows. But lasers will be pretty blasé in the
-future (what with the ubiquitous laser pocket knifes, laser watches, and laser
-pointers) so holophonors will be the perfect thing. So, I guess a 90% chance of
-holophonors?</a>"
+"Fine. Then I won't just make a reflexive prediction. I'll give the matter
+serious thought... Well, <a href="#arg-map" id="single">people in the future
+will probably be really into opera and the arts because shiny, metal robots will
+do all the real work. So they'll be sitting on their hover chairs in their
+spandex togas. And they'll want to listen to something---but see something at
+the same time---just like laser light shows. But lasers will be pretty blasé in
+the future (what with the ubiquitous laser pocket knifes, laser watches, and
+laser pointers). So holophonors will be the perfect thing. So, I guess a 90%
+chance of holophonors?</a>"
 
 "Ah ha ha. You fell right into my trap! Your casual futurism betrays you! Just
 by imagining that scenario, you think it's more likely."
@@ -67,7 +67,7 @@ Carter winning. They were significantly more certain that Carter would win than
 those that didn't imagine anything.</a>"
 
 "Well, maybe it was a persuasively coherent reverie. My holophonor scenario was
-pretty airtight. That doesn't sound so bad to be convinced by an unusually
+pretty airtight. That doesn't sound so bad to be convinced by an exceptionally
 plausible scenarios.... Wait, what happened with those told to imagine Ford
 winning?"
 
@@ -83,8 +83,8 @@ a problem or asking a question could itself change the beliefs of subjects.'"
 holophonors. Out of all possible scenarios, I described the most plausible."
 
 "Nope. <a href="#arg-map" id="optimistic">People's default, 'realistic'
-predictions are actually just close to their most optimistic predictions
-[@buehler94] [@newby00].</a>"
+predictions are pretty much just their most optimistic predictions [@buehler94]
+[@newby00].</a>"
 
 "But how common is this problem? It seems like you just tricked me into a vivid
 visualization."
@@ -105,7 +105,7 @@ empirical evidence on effective forecasting techniques."
 "Yeah. There a lot of techniques to choose from though [@tag04]. Since we're
 just a couple of schlemiels, we can't really call up a panel of experts for the
 [Delphi method](https://en.wikipedia.org/wiki/Delphi_method). And for a lot of
-the mathematical models 'even the relevant variables are not known, let alone
+the mathematical models, 'even the relevant variables are not known, let alone
 the linkages between the variables.' [@martino03] If we feel we must forecast,
 the best general-purpose technique might be
 [scenario planning](https://en.wikipedia.org/wiki/Scenario_planning)."
@@ -121,7 +121,7 @@ suggest the consideration of multiple scenarios is salubrious."
 
 "Maybe. As I lamented already, evidence is sparse. And a lot of that evidence
 relies on self-report about the decision process. 'Since [decision] outcome is
-often difficult to evaluate the second, process perspective has become the major
+often difficult to evaluate the ... process perspective has become the major
 stream of research on decision quality.' [@meissner13]"
 
 "That sounds problematic, since your major contention is the dominating role of
@@ -163,9 +163,9 @@ scenario planning process showed no evidence of the
 [@meissner13]. Students that went through only the initial part of the scenario
 process, but didn't actually generate scenarios, still showed susceptibility to
 the framing bias. However, students that used <a href="#arg-map"
-id="other">traditional strategic planning tools (like
+id="other">traditional strategic planning tools</a> (like
 [SWOT](https://en.wikipedia.org/wiki/SWOT_analysis) and
-[Porter's five forces](https://en.wikipedia.org/wiki/Porter_five_forces_analysis))</a>
+[Porter's five forces](https://en.wikipedia.org/wiki/Porter_five_forces_analysis))
 were also effectively debiased. Other researchers even suggest that directions
 akin to 'think harder' are sufficient to defeat the framing bias [@wright02]."
 
@@ -214,14 +214,14 @@ unprecedented ways'."
 "I'm not totally sure. Schoemaker concluded that, 'Scenarios thus exploit one
 set of biases (such as the conjunction fallacy and intransitivities of beliefs)
 to overcome another set, namely overconfidence, anchoring and availability
-biases.' [@schoemaker93]. If scenario planning is done well, that may not be too
-far from the truth."
+biases.' [@schoemaker93]. Ultimately, scenario planning may be one of the less
+bad prediction methods."
 
 </div>
 
 [^feedback]: I expected to find that one of the major difficulties in making
-forecasts is the limited opportunity, due to the timespans involved, for
-confirmation or rejection. I was quite surprised to find that, at least for some
+forecasts is the limited opportunity for confirmation or rejection, due to the
+timespans involved. I was quite surprised to find that, at least for some
 experimental tasks, this sort of feedback makes predictions worse [@balzer92]
 [@schmitt76].
 

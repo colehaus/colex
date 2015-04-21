@@ -24,7 +24,6 @@ const transition = (from, to, finalCb) => {
       from.removeClass('open');
       to.addClass('open');
       phn = parent.height();
-      parent.css('overflow-y', 'hidden');
       start = timestamp;
       requestAnimationFrame(stage2);
     }
