@@ -153,6 +153,9 @@ header {
     }
 }
 .teaser {
+    #graph-of-contents {
+        display: none;
+    }
     .noted {
         background-color: inherit;
         &::after {
