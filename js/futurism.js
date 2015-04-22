@@ -15,15 +15,16 @@
         }
       }, mediocre: {
         label: ['Mediocre accuracy'],
-        type: 'outcome',
+        type: 'attribute',
         x: function x(w) {
           return -w / 4;
         },
         y: function y(h) {
           return -20;
-        } }, overconfident: {
+        }
+      }, overconfident: {
         label: ['Overconfident'],
-        type: 'outcome',
+        type: 'attribute',
         x: function x(w) {
           return -w / 4;
         },
@@ -32,7 +33,7 @@
         }
       }, optimistic: {
         label: ['Highly', 'optimistic'],
-        type: 'outcome',
+        type: 'attribute',
         x: function x(w) {
           return -w / 4;
         },
@@ -50,7 +51,7 @@
         }
       }, moreLikely: {
         label: ['Believe the', 'scenario more likely'],
-        type: 'outcome',
+        type: 'attribute',
         x: function x(w) {
           return w / 4;
         },
@@ -68,7 +69,7 @@
         }
       }, outcomes: {
         label: ['Better outcomes for', 'scenario-planning', 'companies'],
-        type: 'outcome',
+        type: 'attribute',
         x: function x(w) {
           return w / 4;
         },
@@ -77,7 +78,7 @@
         }
       }, widened: {
         label: ['Widened', 'confidence intervals'],
-        type: 'outcome',
+        type: 'attribute',
         x: function x(w) {
           return w / 4;
         },
@@ -86,7 +87,7 @@
         }
       }, narrowed: {
         label: ['Narrowed', 'confidence intervals'],
-        type: 'outcome',
+        type: 'attribute',
         x: function x(w) {
           return w / 4;
         },
@@ -95,7 +96,7 @@
         }
       }, framing: {
         label: ['Reduced', 'framing bias'],
-        type: 'outcome',
+        type: 'attribute',
         x: function x(w) {
           return w / 4;
         },
@@ -113,7 +114,7 @@
         }
       }, pessimistic: {
         label: ['Pessimistic', 'scenarios don\'t', 'affect predictions'],
-        type: 'conclusion',
+        type: 'attribute',
         x: function x(w) {
           return w / 4;
         },
@@ -122,7 +123,7 @@
         }
       }, rational: {
         label: ['Decreased rational', 'decision-making style'],
-        type: 'outcome',
+        type: 'attribute',
         x: function x(w) {
           return w / 4;
         },
@@ -134,9 +135,9 @@
 
     var linkData = [{ source: 'mediocre', target: 'other', type: 'motivates' }, { source: 'mediocre', target: 'multiple', type: 'motivates' }, { source: 'optimistic', target: 'other', type: 'motivates' }, { source: 'optimistic', target: 'multiple', type: 'motivates' }, { source: 'overconfident', target: 'other', type: 'motivates' }, { source: 'overconfident', target: 'multiple', type: 'motivates' }, { source: 'naive', target: 'single', type: 'supertype' }, { source: 'pessimistic', target: 'multiple', type: 'contradicts' }, { target: 'single', source: 'moreLikely', type: 'describes' }, { target: 'naive', source: 'overconfident', type: 'describes' }, { target: 'naive', source: 'mediocre', type: 'describes' }, { target: 'naive', source: 'optimistic', type: 'describes' }, { target: 'multiple', source: 'outcomes', type: 'describes' }, { target: 'multiple', source: 'widened', type: 'describes' }, { target: 'multiple', source: 'narrowed', type: 'describes' }, { target: 'multiple', source: 'framing', type: 'describes' }, { target: 'other', source: 'framing', type: 'describes' }, { target: 'multiple', source: 'rational', type: 'describes' }];
 
-    var nodeTypeData = [{ type: 'outcome', label: ['Outcome'], shape: argMap.shapes.circle }, { type: 'method', label: ['Prediction method'], shape: argMap.shapes.square }, { type: 'conclusion', label: ['Conclusion'], shape: argMap.shapes.diamond }];
+    var nodeTypeData = [{ type: 'attribute', label: ['Attribute'], shape: argMap.shapes.circle }, { type: 'method', label: ['Prediction method'], shape: argMap.shapes.square }];
 
-    var linkTypeData = [{ type: 'describes', label: ['Describes'] }, { type: 'supertype', label: ['Supertype'] }, { type: 'contradicts', label: ['Contradict'] }, { type: 'motivates', label: ['Motivate'] }];
+    var linkTypeData = [{ type: 'describes', label: ['Describes'] }, { type: 'supertype', label: ['Supertype of'] }, { type: 'contradicts', label: ['Contradicts'] }, { type: 'motivates', label: ['Motivates'] }];
 
     argMap.handler(argMap.mkMap('#arg-map', nodeData, linkData, nodeTypeData, linkTypeData));
   });
