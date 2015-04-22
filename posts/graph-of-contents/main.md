@@ -12,7 +12,7 @@ A graph of contents is a more structured alternative to a table of contents.
 
 A [table of contents](https://en.wikipedia.org/wiki/Table_of_contents) can
 provide a useful overview of a document's content. However, because of its
-[limited form](https://en.wikipedia.org/wiki/Tree_(graph_theory)), additional
+[limited form](https://en.wikipedia.org/wiki/Tree_(graph_theory)), some
 information about the structure of the document must be omitted.
 
 If, instead, we use a

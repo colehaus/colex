@@ -32,14 +32,12 @@ form {
         min-height: 30ex;
 }
 .act {
-    @include display(flex);
-    @include justify-content(center);
-    > progress {
-        margin: 1ex;
-        height: 3ex;
+    > * {
+        margin: 2ex 1ex 0 0;
     }
-    > button {
-        margin: 1ex;
+    > progress {
+        height: 3ex;
+        vertical-align: bottom;
     }
 }
 #kuwa-parms {
