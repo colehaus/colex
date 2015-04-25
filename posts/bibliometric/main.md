@@ -343,6 +343,8 @@ You can try it out below. Maybe look for:
 # Future work
 
 - Improve interface of demonstration
+- [KL divergence](https://en.wikipedia.org/wiki/Kullback–Leibler_divergence) and
+  [Shapley value](https://en.wikipedia.org/wiki/Shapley_value) approach
 - Extend to replications and multi-proposition studies
 - Extend to richer outcome spaces (i.e. not just studies about a single
   discrete value)

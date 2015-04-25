@@ -165,7 +165,7 @@ compileES6 i =
     ".js" -> return i
 
 compressJS :: String -> Compiler String
-compressJS = return -- unixFilter "uglifyjs" ["-cm", "--screw-ie8"]
+compressJS = unixFilter "uglifyjs" ["-cm", "--screw-ie8"]
 
 postCtx :: Context String
 postCtx =
