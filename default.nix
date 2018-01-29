@@ -1,18 +1,7 @@
 let
   pkgs = import <nixpkgs> {};
   stdenv = pkgs.stdenv;
-  generatorFn = { mkDerivation, hakyll, regex-compat-tdfa, pandoc, containers, filepath, stdenv }:
-    mkDerivation {
-      pname = "ColEx";
-      version = "0.1.0.0";
-      license = stdenv.lib.licenses.agpl3;
-      src = ./infrastructure;
-      isExecutable = true;
-      isLibrary = false;
-      doHaddock = false;
-      executableHaskellDepends = [ hakyll regex-compat-tdfa pandoc containers filepath ];
-    };
-  generator = pkgs.haskellPackages.callPackage generatorFn {};
+  generator = pkgs.haskellPackages.callCabal2nix "ColEx" ./infrastructure {};
 in {
   colExWebsite =
     stdenv.mkDerivation {
