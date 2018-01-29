@@ -157,15 +157,12 @@ compileES6 :: Item String -> Compiler (Item String)
 compileES6 i =
   case takeExtension . toFilePath . itemIdentifier $ i of
     ".es" -> withItemBody
-             (unixFilter "babel" [
-                 "--optional", "utility.inlineExpressions",
-                 "--optional", "utility.deadCodeElimination"
-                 ]) i
+             (unixFilter "babel" ["--es2015"]) i
     ".js" -> return i
     _ -> error "Somehow tried to JS compile a non-js file"
 
 compressJS :: String -> Compiler String
-compressJS = unixFilter "uglifyjs" ["-cm", "--screw-ie8"]
+compressJS = unixFilter "uglifyjs" ["-cm"]
 
 postCtx :: Context String
 postCtx =
