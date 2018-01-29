@@ -19,3 +19,5 @@ js/.tern-port
 **/.psci
 **/.psci_modules
 js/**/output/
+.stack-work/
+TAGS

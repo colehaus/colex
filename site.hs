@@ -5,8 +5,7 @@ import           Control.Monad       ((<=<))
 import           Data.Functor        ((<$>))
 import qualified Data.Map            as M
 import           Data.Monoid         (mconcat, mempty, (<>))
-import qualified Data.Set            as S
-import           System.FilePath    (takeBaseName, takeDirectory, takeExtension)
+import           System.FilePath     (takeBaseName, takeDirectory, takeExtension)
 
 import           Hakyll
 import           Text.Pandoc.Options
@@ -163,6 +162,7 @@ compileES6 i =
                  "--optional", "utility.deadCodeElimination"
                  ]) i
     ".js" -> return i
+    _ -> error "Somehow tried to JS compile a non-js file"
 
 compressJS :: String -> Compiler String
 compressJS = unixFilter "uglifyjs" ["-cm", "--screw-ie8"]
@@ -212,7 +212,7 @@ fileNameCtx :: Context String
 fileNameCtx = field "filename" $ return . itemBody
 getListMeta :: MonadMetadata m => String -> Identifier -> m [String]
 getListMeta k ident =
-  return . maybe [] (map trim . splitAll ",") . M.lookup k =<< getMetadata ident
+  return . maybe [] (map trim . splitAll ",") . lookupString k =<< getMetadata ident
 
 tagsCtx :: Tags -> Context String
 tagsCtx tags =
@@ -224,32 +224,41 @@ tagsCtx tags =
 
 -- Special tag that (in combination with code block) isn't interpolated by pandoc
 stripVerbatim :: String -> String
-stripVerbatim = 
+stripVerbatim =
   flip (subRegex (mkRegexWithOpts
             ("<p><verbatim></p>\n<pre><code>" <>
              "(.*)" <> "</code></pre>\n</verbatim>") False True))
   "\\1"
 
+extensions :: Extensions
+extensions = enableExtension Ext_compact_definition_lists $
+             enableExtension Ext_latex_macros $
+             enableExtension Ext_raw_html $
+             enableExtension Ext_citations $
+             enableExtension Ext_footnotes $
+             enableExtension Ext_intraword_underscores $
+             enableExtension Ext_markdown_in_html_blocks $
+             enableExtension Ext_fenced_divs $
+             enableExtension Ext_native_divs $
+             disableExtension Ext_escaped_line_breaks $
+             pandocExtensions
+
+
 readerOpt :: ReaderOptions
 readerOpt =
-  defaultHakyllReaderOptions {
-    readerApplyMacros = True,
-    readerExtensions = S.insert Ext_compact_definition_lists $
-                       S.insert Ext_latex_macros $
-                       readerExtensions def
-    }
+  defaultHakyllReaderOptions { readerExtensions = extensions }
 
 writerOpt :: WriterOptions
 writerOpt =
   defaultHakyllWriterOptions {
-    writerHtml5 = True,
     writerHtmlQTags = True,
     -- Hakyll + Pandoc don't insert <script> correctly,
     -- so we add dummy URL and do it manually
-    writerHTMLMathMethod = MathJax ""
+    writerHTMLMathMethod = MathJax "",
     -- writerTableOfContents = True
     -- writerStandalone = True
     -- writerTemplate = unlines ["$toc$", "$body$"]
+    writerExtensions = extensions
     }
 
 perPage :: Int
