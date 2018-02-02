@@ -237,9 +237,8 @@ extensions = enableExtension Ext_compact_definition_lists $
              enableExtension Ext_markdown_in_html_blocks $
              enableExtension Ext_fenced_divs $
              enableExtension Ext_native_divs $
-             disableExtension Ext_escaped_line_breaks $
+             disableExtension Ext_escaped_line_breaks
              pandocExtensions
-
 
 readerOpt :: ReaderOptions
 readerOpt =

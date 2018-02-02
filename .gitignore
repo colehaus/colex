@@ -21,3 +21,5 @@ js/.tern-port
 js/**/output/
 .stack-work/
 TAGS
+node_modules/
+**-result

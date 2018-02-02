@@ -1,0 +1,4 @@
+* TODO Make mathjax script faster
+* TODO Clean up arg-map on indices
+* TODO Try theme-color
+* TODO prefetch fonts

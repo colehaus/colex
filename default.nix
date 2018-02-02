@@ -1,20 +1,20 @@
-let
-  pkgs = import <nixpkgs> {};
-  stdenv = pkgs.stdenv;
-  generator = pkgs.haskellPackages.callCabal2nix "ColEx" ./infrastructure {};
-in {
-  colExWebsite =
-    stdenv.mkDerivation {
+{ pkgs ? import <nixpkgs> {} } :
+  let
+    generator = pkgs.haskellPackages.callCabal2nix "ColEx" ./hakyll {};
+  in
+    pkgs.stdenv.mkDerivation {
       name = "colExWebsite";
       src = ./content;
       phases = "unpackPhase buildPhase";
-      version = "0.1";
-      buildInputs = with pkgs; with nodePackages_6_x; [ generator sass uglify-js better-babel-cli ];
+      buildInputs = with pkgs; [
+        generator
+        sass
+        nodePackages_6_x.uglify-js
+        nodePackages_6_x.better-babel-cli ];
+      LC_ALL = "en_US.UTF-8";
       buildPhase = ''
-        export LC_ALL=en_US.UTF-8
         site build
         mkdir $out
         cp -r _site/* $out
       '';
-    };
-}
+    }
