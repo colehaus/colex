@@ -4,9 +4,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.9">
     <title>ColEx—Graph of contents</title>
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../../css/default.css" />
-    <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script type="text/javascript">
+     // For reasons that are beyond my ken, a literal dollar sign breaks at least Hakyll's watch
+     window.MathJax = {
+       tex2jax: {
+         inlineMath: [ [String.fromCharCode(36), String.fromCharCode(36)], ["\\(","\\)"] ],
+         processEscapes: true
+       }
+     };
+    </script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
     
   <link rel="stylesheet" type="text/css" href="../../css/graph-contents.css" />
 
@@ -41,9 +51,6 @@
 <p>Clicking on a dotted link brings up the graph. The label for the current section (as identified by the link used to bring up the graph) is bolded in the graph. Clicking a label in the graph hides the graph and scrolls to that section in the document. Clicking the background just hides the graph.</p>
 <p>You can reorganize the graph by dragging a node to fix it into a position. For example, if you were skipping around in a large document, you could track which sections you’d read by dragging their nodes to the right margin. Double-clicking releases a node that’s been fixed in place.</p>
 <p>This technique can be found <em>in vivo</em> in <a href="../bibliometric">the post on biblometrics</a>.</p>
-<div class="references">
-
-</div>
 
   
     <aside class="sidenote" id="warnings">Warnings: <ul>

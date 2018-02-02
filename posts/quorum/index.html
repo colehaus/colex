@@ -4,9 +4,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.9">
     <title>ColEx—A quorum alternative</title>
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../../css/default.css" />
-    <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script type="text/javascript">
+     // For reasons that are beyond my ken, a literal dollar sign breaks at least Hakyll's watch
+     window.MathJax = {
+       tex2jax: {
+         inlineMath: [ [String.fromCharCode(36), String.fromCharCode(36)], ["\\(","\\)"] ],
+         processEscapes: true
+       }
+     };
+    </script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
     
   <link rel="stylesheet" type="text/css" href="../../css/quorum.css" />
 
@@ -41,11 +51,11 @@
 <h3 id="motivating-examples">Motivating examples</h3>
 <ol>
 <li id="example1">
-<p>Pie Club is voting on which pie will be featured at their first August meeting. <span class="noted">After tallying the votes, <a href="https://en.wikipedia.org/wiki/Buko_pie">buko pie</a> receives a mean score of <span class="math">\(0.69\)</span> and <a href="https://en.wikipedia.org/wiki/Fish_pie">fish pie</a> receives a mean score of <span class="math">\(0.18\)</span>.</span><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a></p>
+<p>Pie Club is voting on which pie will be featured at their first August meeting. <span class="noted">After tallying the votes, <a href="https://en.wikipedia.org/wiki/Buko_pie">buko pie</a> receives a mean score of <span class="math inline">\(0.69\)</span> and <a href="https://en.wikipedia.org/wiki/Fish_pie">fish pie</a> receives a mean score of <span class="math inline">\(0.18\)</span>.</span><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
 Before the decision is finalized, however, an observant member notices that the meeting is <a href="#arg-map" id="restrictive">two members short of the 25 required for quorum</a>. Because Pie Club is scrupulously democratic, the vote is annulled. Some members grumble their doubt that the landslide will reverse with two more votes.
 </li>
 <li id="example2">
-Pie Club is voting on which pie will take home the title <q>Pie of the Decade</q>. Will it be <a href="https://en.wikipedia.org/wiki/Lemon_meringue_pie">lemon meringue pie</a> or <a href="https://en.wikipedia.org/wiki/Tarta_de_Santiago">Tarta de Santiago</a>? The results are in—quorum checked in advance this time—and they are… <span class="math">\(0.49\)</span> for meringue and <span class="math">\(0.48\)</span> for Tarta. While meringue’s devotees celebrate, Tarta’s die-hards feel something has gone wrong. <a href="#arg-map" id="permissive">Can such a close result really give them confidence</a> that meringue is the preference of the whole club, including the 12 members who couldn’t make it to meeting? If just one of them had attended and cast a vote favoring Tarta, wouldn’t that have swung the outcome?
+Pie Club is voting on which pie will take home the title <q>Pie of the Decade</q>. Will it be <a href="https://en.wikipedia.org/wiki/Lemon_meringue_pie">lemon meringue pie</a> or <a href="https://en.wikipedia.org/wiki/Tarta_de_Santiago">Tarta de Santiago</a>? The results are in—quorum checked in advance this time—and they are… <span class="math inline">\(0.49\)</span> for meringue and <span class="math inline">\(0.48\)</span> for Tarta. While meringue’s devotees celebrate, Tarta’s die-hards feel something has gone wrong. <a href="#arg-map" id="permissive">Can such a close result really give them confidence</a> that meringue is the preference of the whole club, including the 12 members who couldn’t make it to meeting? If just one of them had attended and cast a vote favoring Tarta, wouldn’t that have swung the outcome?
 </li>
 </ol>
 <!--more-->
@@ -66,24 +76,24 @@ Pie Club is voting on which pie will take home the title <q>Pie of the Decade</q
 </ul>
 <p>For each pair of alternatives, we’d like to find which of these three is true:</p>
 <ul>
-<li><span class="math">\(\mu_2 \gg \mu_1\)</span></li>
-<li><span class="math">\(\mu_1 \gg \mu_2\)</span></li>
-<li><span class="math">\(\mu_2 \approx \mu_1\)</span></li>
+<li><span class="math inline">\(\mu_2 \gg \mu_1\)</span></li>
+<li><span class="math inline">\(\mu_1 \gg \mu_2\)</span></li>
+<li><span class="math inline">\(\mu_2 \approx \mu_1\)</span></li>
 </ul>
-<p>where <span class="math">\(x \gg y\)</span> means something like <q>We are justified in believing that <span class="math">\(x &gt; y\)</span>.</q> and <span class="math">\(x \approx y\)</span> means something like <q>We aren’t justified in believing that <span class="math">\(x &gt; y\)</span> or that <span class="math">\(y &gt; x\)</span>.</q>. The first two correspond to quorum and the third corresponds to a failure of quorum.</p>
-<p>To establish <span class="math">\(\mu_2 \gg \mu_1\)</span>, we construct a lower <span class="inline switch" type="menu" menu="stat-type"> <span class="open">credible bound (a one-sided <a href="https://en.wikipedia.org/wiki/Credible_interval">credible interval</a>)</span> <span>confidence bound (a one-sided <a href="https://en.wikipedia.org/wiki/Confidence_interval">confidence interval</a>)</span> </span> on <span class="math">\(\mu_2 - \mu_1\)</span> base on our votes. The lower bound delimits the region where <span class="math">\(\mu_2 - \mu_1\)</span> is largest. If the delimited region includes <span class="math">\(0\)</span>, we must reject <span class="math">\(\mu_2 \gg \mu_1\)</span> (i.e. if the region most favorable to <span class="math">\(\mu_2\)</span> still doesn’t exclude <span class="math">\(0\)</span>, we aren’t justified in believing <span class="math">\(\mu_2 &gt; \mu_1\)</span> (at the chosen <span class="inline switch" type="menu" menu="stat-type"> <span class="open">credibility</span> <span>confidence</span> </span> level)).</p>
-<p>The approach for <span class="math">\(\mu_1 \gg \mu_2\)</span> is similar (simply swap in an upper bound or <span class="math">\(\mu_1 - \mu_2\)</span>).</p>
-<p>If we reject <span class="math">\(\mu_2 \gg \mu_1\)</span> and <span class="math">\(\mu_1 \gg \mu_2\)</span>, we must accept <span class="math">\(\mu_2 \approx \mu_1\)</span> and declare a failure of quorum.</p>
-<p>For example, we’d like to <a href="#arg-map" id="bayes">determine if the <span class="inline switch" type="menu" menu="stat-type"> <span class="open">credible</span> <span>confidence</span> </span> bounds support the conclusion</a> that buko pie really is preferred to fish pie. If Pie Club bylaws specified a <span class="math">\(95\%\)</span> <span class="inline switch" type="menu" menu="stat-type"> <span class="open">credible</span> <span>confidence</span> </span> bound and the lower bound for <span class="math">\(\mu_{buko} - \mu_{fish}\)</span> stretched to <span class="math">\(0.359\)</span> while the upper bound stretched to <span class="math">\(0.58\)</span>, we’d declare that quorum had been reached in favor of buko pie. (We reject <span class="math">\(\mu_{fish} \gg \mu_{buko}\)</span> because it’s bounded region includes <span class="math">\(0\)</span>. We can’t reject <span class="math">\(\mu_{buko} \gg \mu_{fish}\)</span> because it’s bounded region excludes <span class="math">\(0\)</span>.) Alternately, if the lower bound stretched to <span class="math">\(-0.1\)</span> and the upper bound stretched to <span class="math">\(0.58\)</span>, we’d declare a failure of quorum.</p>
+<p>where <span class="math inline">\(x \gg y\)</span> means something like <q>We are justified in believing that <span class="math inline">\(x &gt; y\)</span>.</q> and <span class="math inline">\(x \approx y\)</span> means something like <q>We aren’t justified in believing that <span class="math inline">\(x &gt; y\)</span> or that <span class="math inline">\(y &gt; x\)</span>.</q>. The first two correspond to quorum and the third corresponds to a failure of quorum.</p>
+<p>To establish <span class="math inline">\(\mu_2 \gg \mu_1\)</span>, we construct a lower <span class="inline switch" type="menu" data-menu="stat-type"> <span class="open">credible bound (a one-sided <a href="https://en.wikipedia.org/wiki/Credible_interval">credible interval</a>)</span> <span>confidence bound (a one-sided <a href="https://en.wikipedia.org/wiki/Confidence_interval">confidence interval</a>)</span> </span> on <span class="math inline">\(\mu_2 - \mu_1\)</span> base on our votes. The lower bound delimits the region where <span class="math inline">\(\mu_2 - \mu_1\)</span> is largest. If the delimited region includes <span class="math inline">\(0\)</span>, we must reject <span class="math inline">\(\mu_2 \gg \mu_1\)</span> (i.e. if the region most favorable to <span class="math inline">\(\mu_2\)</span> still doesn’t exclude <span class="math inline">\(0\)</span>, we aren’t justified in believing <span class="math inline">\(\mu_2 &gt; \mu_1\)</span> (at the chosen <span class="inline switch" type="menu" data-menu="stat-type"> <span class="open">credibility</span> <span>confidence</span> </span> level)).</p>
+<p>The approach for <span class="math inline">\(\mu_1 \gg \mu_2\)</span> is similar (simply swap in an upper bound or <span class="math inline">\(\mu_1 - \mu_2\)</span>).</p>
+<p>If we reject <span class="math inline">\(\mu_2 \gg \mu_1\)</span> and <span class="math inline">\(\mu_1 \gg \mu_2\)</span>, we must accept <span class="math inline">\(\mu_2 \approx \mu_1\)</span> and declare a failure of quorum.</p>
+<p>For example, we’d like to <a href="#arg-map" id="bayes">determine if the <span class="inline switch" type="menu" data-menu="stat-type"> <span class="open">credible</span> <span>confidence</span> </span> bounds support the conclusion</a> that buko pie really is preferred to fish pie. If Pie Club bylaws specified a <span class="math inline">\(95\%\)</span> <span class="inline switch" type="menu" data-menu="stat-type"> <span class="open">credible</span> <span>confidence</span> </span> bound and the lower bound for <span class="math inline">\(\mu_{buko} - \mu_{fish}\)</span> stretched to <span class="math inline">\(0.359\)</span> while the upper bound stretched to <span class="math inline">\(0.58\)</span>, we’d declare that quorum had been reached in favor of buko pie. (We reject <span class="math inline">\(\mu_{fish} \gg \mu_{buko}\)</span> because it’s bounded region includes <span class="math inline">\(0\)</span>. We can’t reject <span class="math inline">\(\mu_{buko} \gg \mu_{fish}\)</span> because it’s bounded region excludes <span class="math inline">\(0\)</span>.) Alternately, if the lower bound stretched to <span class="math inline">\(-0.1\)</span> and the upper bound stretched to <span class="math inline">\(0.58\)</span>, we’d declare a failure of quorum.</p>
 <ul class="switch" type="menu" menu="stat-type">
 <li class="open">
-<p>How do we construct these credible bounds? We derive them from the <a href="https://en.wikipedia.org/wiki/Posterior_probability">posterior probability distribution</a> created using Bayesian parameter estimation <span class="citation" data-cites="kruschke13">(Kruschke 2013)</span>. To construct this posterior, we start by specifying <span class="noted">a model for the distribution of paired differences</span><a href="#fn2" class="footnoteRef" id="fnref2"><sup>2</sup></a>. Because the difference can only take on values in the interval <span class="math">\(\left(-1, 1\right)\)</span>, the (<a href="https://en.wikipedia.org/wiki/Location-scale_family">transformed</a> from <span class="math">\((0, 1)\)</span> to <span class="math">\((-1, 1)\)</span>) <span class="noted"><a href="https://en.wikipedia.org/wiki/Beta_distribution">beta distribution</a> is a sensible choice</span><a href="#fn3" class="footnoteRef" id="fnref3"><sup>3</sup></a>. To get a sense of the beta distribution, you can look at the calculator <a href="http://keisan.casio.com/has10/SpecExec.cgi?id=system/2006/1180573226">here</a>.</p>
-<p>Now that we have a model of differences, we must choose <a href="https://en.wikipedia.org/wiki/Prior_probability">prior probability distributions</a> for its parameters. Note that <span class="math">\(\alpha = \beta = 1\)</span> collapses the beta distribution to the uniform distribution. Because the uniform distribution is the <a href="https://en.wikipedia.org/wiki/Maximum_entropy_probability_distribution">maximum entropy distribution</a> on a supported interval, we should choose prior distributions of <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span> with means of <span class="math">\(1\)</span> <span class="citation" data-cites="sivia06">(Sivia and Skilling 2006)</span>. The maximum entropy distribution with mean <span class="math">\(1\)</span> supported on <span class="math">\(\left(0, \infty\right)\)</span> is the exponential distribution with <span class="math">\(\lambda = 1\)</span>. So the prior on each of <span class="math">\(\alpha\)</span> and <span class="math">\(\beta\)</span> is <span class="math">\(Exp(1)\)</span>. All of this is diagrammatically represented in the accompanying figure.</p>
+<p>How do we construct these credible bounds? We derive them from the <a href="https://en.wikipedia.org/wiki/Posterior_probability">posterior probability distribution</a> created using Bayesian parameter estimation <span class="citation" data-cites="kruschke13">(Kruschke 2013)</span>. To construct this posterior, we start by specifying <span class="noted">a model for the distribution of paired differences</span><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. Because the difference can only take on values in the interval <span class="math inline">\(\left(-1, 1\right)\)</span>, the (<a href="https://en.wikipedia.org/wiki/Location-scale_family">transformed</a> from <span class="math inline">\((0, 1)\)</span> to <span class="math inline">\((-1, 1)\)</span>) <span class="noted"><a href="https://en.wikipedia.org/wiki/Beta_distribution">beta distribution</a> is a sensible choice</span><a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. To get a sense of the beta distribution, you can look at the calculator <a href="http://keisan.casio.com/has10/SpecExec.cgi?id=system/2006/1180573226">here</a>.</p>
+<p>Now that we have a model of differences, we must choose <a href="https://en.wikipedia.org/wiki/Prior_probability">prior probability distributions</a> for its parameters. Note that <span class="math inline">\(\alpha = \beta = 1\)</span> collapses the beta distribution to the uniform distribution. Because the uniform distribution is the <a href="https://en.wikipedia.org/wiki/Maximum_entropy_probability_distribution">maximum entropy distribution</a> on a supported interval, we should choose prior distributions of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> with means of <span class="math inline">\(1\)</span> <span class="citation" data-cites="sivia06">(Sivia and Skilling 2006)</span>. The maximum entropy distribution with mean <span class="math inline">\(1\)</span> supported on <span class="math inline">\(\left(0, \infty\right)\)</span> is the exponential distribution with <span class="math inline">\(\lambda = 1\)</span>. So the prior on each of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> is <span class="math inline">\(Exp(1)\)</span>. All of this is diagrammatically represented in the accompanying figure.</p>
 <figure id="distrogram">
 <img src="../../images/quorum/distro.png" alt="Diagrammatic representation of
   distributions and dependencies">
 <figcaption>
-We model the vote differences with a beta distribution. That beta distribution’s parameters have priors of <span class="math">\(Exp(1)\)</span>.
+We model the vote differences with a beta distribution. That beta distribution’s parameters have priors of <span class="math inline">\(Exp(1)\)</span>.
 </figcaption>
 </figure>
 Now that we have our data and prior probability distributions, <a href="https://en.wikipedia.org/wiki/Bayes'_theorem">Bayes’ theorem</a> allows us to reallocate probability mass to form the posterior probability distributions. We generate numerical estimates of the posterior probability distributions using adaptive Metropolis-within-Gibbs <span class="citation" data-cites="roberts09">(Roberts and Rosenthal 2009)</span> <span class="citation" data-cites="sumsar-best">(Bååth 2012)</span>. These posteriors on the parameters of beta allow us to straightforwardly calculate the posterior on the mean of the difference using the formula for the mean of a beta distribution.
@@ -92,7 +102,7 @@ Now that we have our data and prior probability distributions, <a href="https://
 <p>How do we construct these confidence bounds? That depends.</p>
 <ul class="switch" type="menu" menu="sample-size">
 <li class="open">
-If the number of votes is <q>large</q> (say, more than 30) (and the distribution of votes satisfies some other <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">conditions</a>), we can do <span class="noted">a <span class="math">\(t\)</span>-test on the paired differences of the votes.</span><a href="#fn4" class="footnoteRef" id="fnref4"><sup>4</sup></a>
+If the number of votes is <q>large</q> (say, more than 30) (and the distribution of votes satisfies some other <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">conditions</a>), we can do <span class="noted">a <span class="math inline">\(t\)</span>-test on the paired differences of the votes.</span><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>
 </li>
 <li>
 <p>If the number of votes is <q>small</q> (say, 30 or fewer), we have a problem. We cannot assume that the underlying distribution of votes is <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal</a>. Voters could be polarized <span id="non-norm" class="spark"></span>, for example. And because the number of votes is small, we can’t rely on the <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">central limit theorem</a> to approximate normality. So we must use a <a href="https://en.wikipedia.org/wiki/Nonparametric_statistics">distribution-free</a> (sometimes called non-parametric) method.</p>
@@ -102,9 +112,9 @@ So, as far as I know, there’s no simple frequentist procedure which is applica
 </ul>
 </li>
 </ul>
-<p><span class="noted">You can try it out below</span><a href="#fn5" class="footnoteRef" id="fnref5"><sup>5</sup></a>. Maybe look for:</p>
+<p><span class="noted">You can try it out below</span><a href="#fn5" class="footnote-ref" id="fnref5"><sup>5</sup></a>. Maybe look for:</p>
 <ul>
-<li>A scenario in which the quorum status (achieved or failed) depends on the credibility level chosen (e.g. <span class="math">\(95\%\)</span> or <span class="math">\(99\%\)</span>)</li>
+<li>A scenario in which the quorum status (achieved or failed) depends on the credibility level chosen (e.g. <span class="math inline">\(95\%\)</span> or <span class="math inline">\(99\%\)</span>)</li>
 <li>Two scenarios in which each alternative retains its mean score, but the quorum status changes</li>
 <li>Two scenarios in which the number of voters remains the same, but the quorum status changes</li>
 </ul>
@@ -148,13 +158,7 @@ Differences (Prop 2 - Prop 1)
 </figure>
 </output>
 <div class="act">
-<button class="preview" type="button">
-Update Preview
-</button>
-<button class="analyze" type="button">
-Analyze
-</button>
-<progress value="0"></progress>
+<button class="preview" type="button">Update Preview</button> <button class="analyze" type="button">Analyze</button> <progress value="0"></progress>
 </div>
 <output id="stat-out">
 <ul class="switch" type="menu" menu="stat-type">
@@ -215,8 +219,8 @@ The conclusions have a rather intuitive interpretation in terms of likelihood, m
 <div class="conversation">
 <p><q>Neat. The test showed it’s highly likely that buko pie is the preferred pie?</q></p>
 <p><q>No, it either is or isn’t the preferred pie. There’s no probability involved.</q></p>
-<p><q>What was all that <span class="math">\(5\%\)</span> talk then?</q></p>
-<p><q>Of all confidence intervals constructed at the <span class="math">\(95\%\)</span> level, <span class="math">\(95\%\)</span> should contain the true population difference.</q></p>
+<p><q>What was all that <span class="math inline">\(5\%\)</span> talk then?</q></p>
+<p><q>Of all confidence intervals constructed at the <span class="math inline">\(95\%\)</span> level, <span class="math inline">\(95\%\)</span> should contain the true population difference.</q></p>
 <p><q>Uhh…</q></p>
 </div>
 </li>
@@ -230,7 +234,7 @@ The conclusions have a rather intuitive interpretation in terms of likelihood, m
 <h4 id="non-parametric">Non-parametric</h4>
 <p>As mentioned, the procedure specified above assumes that the paired differences are amenable to modelling by a beta distribution. This leads to overconfident inferences <span class="citation" data-cites="hoeting99">(Hoeting et al. 1999)</span>. The assumption can be relaxed through the use of Bayesian <a href="https://en.wikipedia.org/wiki/Nonparametric_statistics">non-parametric</a> methods <span class="citation" data-cites="walker99">(Walker et al. 1999)</span>. The idea is to use a model with an infinite number of parameters and marginalize out surplus dimensions on our finite data.</p>
 <h4 id="tying">Tying</h4>
-<p>We can also modify the procedure to permit tying. Under standing voting procedures, scores of <span class="math">\(0.490\)</span> to <span class="math">\(0.488\)</span> produce an identical outcome (i.e. victory for the first option) to scores of <span class="math">\(0.82\)</span> to <span class="math">\(0.12\)</span>. However, if those values are accurate estimates of the population scores (i.e. the uncertainty is small), one could argue that the former scenario suggests a compromise or synthesis position.</p>
+<p>We can also modify the procedure to permit tying. Under standing voting procedures, scores of <span class="math inline">\(0.490\)</span> to <span class="math inline">\(0.488\)</span> produce an identical outcome ( i.e. victory for the first option) to scores of <span class="math inline">\(0.82\)</span> to <span class="math inline">\(0.12\)</span>. However, if those values are accurate estimates of the population scores (i.e. the uncertainty is small), one could argue that the former scenario suggests a compromise or synthesis position.</p>
 <p>By defining <q>regions of practical equivalence</q>, parameter estimation allows the possibility of a tie <span class="citation" data-cites="kruschke13">(Kruschke 2013)</span>. For example, Pie Club could decide that a difference of mean scores smaller than 0.01 counts as a tie. If the credible interval on the difference of means is contained entirely in this region, we don’t have a failure of quorum (uncertainy about which option is preferred), but certainty that neither option is substantially preferred.</p>
 <h4 id="multiple-alternatives">Multiple alternatives</h4>
 For simplicity, we looked at referenda with only two alternatives. We can extend the procedure to referenda with more alternatives. The most straightforward method would be to apply the procedure described above pairwise. The credibility level would need to adjusted by something like the <a href="https://en.wikipedia.org/wiki/%C5%A0id%C3%A1k_correction">Šidák correction</a> to deal with the <a href="https://en.wikipedia.org/wiki/Multiple_comparisons_problem">problem of multiple comparisons</a>. A better solution would be to perform a Bayesian <a href="https://en.wikipedia.org/wiki/Analysis_of_variance">ANOVA</a> analogue with follow-up tests <span class="citation" data-cites="wetzels12">(Wetzels, Grasman, and Wagenmakers 2012)</span>.
@@ -243,7 +247,7 @@ For simplicity, we looked at referenda with only two alternatives. We can extend
 <h4 id="non-ordinal-outcomes">Non-ordinal outcomes</h4>
 <p>The procedure described above applies to ordinal outcomes. That is, we were looking for the alternative with a score higher than all others. If we are trying to assess outcomes on <a href="https://en.wikipedia.org/wiki/Level_of_measurement">a ratio or interval scale</a>, we’d have to use a different procedure.</p>
 <p>The appropriate modification depends on the issue at hand. In cases where caution is required, an organization could dispense with quorum and simply use the conservative bound. In other circumstances, an organization could place limits on the maximum size of the interval.</p>
-<p>For example, suppose Pie Club put the size of its budget for the next year to a vote. If it were feeling fiscally responsible, it could simply sets its budget to the <span class="math">\(95\%\)</span> lower bound on the mean vote. An alternative would be to declare a failure of quorum if the vote didn’t produce a <span class="math">\(95\%\)</span> interval smaller than <span class="math">\(\mu \pm 10\%\)</span>.</p>
+<p>For example, suppose Pie Club put the size of its budget for the next year to a vote. If it were feeling fiscally responsible, it could simply sets its budget to the <span class="math inline">\(95\%\)</span> lower bound on the mean vote. An alternative would be to declare a failure of quorum if the vote didn’t produce a <span class="math inline">\(95\%\)</span> interval smaller than <span class="math inline">\(\mu \pm 10\%\)</span>.</p>
 <h3 id="future-work">Future work</h3>
 <ul>
 <li>Social welfare analysis versus traditional quorum <span class="citation" data-cites="bordley83">(Bordley 1983)</span></li>
@@ -256,19 +260,43 @@ For simplicity, we looked at referenda with only two alternatives. We can extend
 <menuitem label="Bayesian" type="radio" checked="checked"></menuitem> <menuitem label="Frequentist" type="radio"></menuitem>
 </menu>
 <hr class="references">
-<div class="references">
-<p>Bååth, Rasmus. 2012. “Bayesian Estimation Supersedes the T-Test (BEST) - Online.” <a href="http://sumsar.net/best_online/" class="uri">http://sumsar.net/best_online/</a>.</p>
+<div id="refs" class="references">
+<div id="ref-sumsar-best">
+<p>Bååth, Rasmus. 2012. “Bayesian Estimation Supersedes the T-Test (Best) - Online.” <a href="http://sumsar.net/best_online/" class="uri">http://sumsar.net/best_online/</a>.</p>
+</div>
+<div id="ref-bordley83">
 <p>Bordley, Robert F. 1983. “A Pragmatic Method for Evaluating Election Schemes Through Simulation.” <em>American Political Science Review</em>.</p>
+</div>
+<div id="ref-goodman08">
 <p>Goodman, Steven. 2008. “A Dirty Dozen: Twelve P-Value Misconceptions.” <em>Seminars in Hematology</em>.</p>
+</div>
+<div id="ref-hoeting99">
 <p>Hoeting, Jennifer A., David Madigan, Adrian E. Raftery, and Chris T. Volinsky. 1999. “Bayesian Model Averaging: A Tutorial.” <em>Statistical Science</em>. <a href="http://projecteuclid.org/download/pdf_1/euclid.ss/1009212519" class="uri">http://projecteuclid.org/download/pdf_1/euclid.ss/1009212519</a>.</p>
+</div>
+<div id="ref-kruschke13">
 <p>Kruschke, John K. 2013. “Bayesian Estimation Supersedes the T Test.” <em>Journal of Experimental Psychology: General</em>. <a href="http://www.indiana.edu/~kruschke/articles/Kruschke2013JEPG.pdf" class="uri">http://www.indiana.edu/~kruschke/articles/Kruschke2013JEPG.pdf</a>.</p>
+</div>
+<div id="ref-ronr">
 <p>Robert, Henry M. III, Daniel H. Honemann, and Thomas J. Balch. 2011. <em>Robert’s Rules of Order Newly Revised</em>. 11th ed. Da Capo Press.</p>
-<p>Roberts, Gareth O, and Jeffrey S Rosenthal. 2009. “Examples of Adaptive MCMC.” <em>Journal of Computational and Graphical Statistics</em>. <a href="http://www.utstat.toronto.edu/wordpress/WSFiles/technicalreports/0610.pdf" class="uri">http://www.utstat.toronto.edu/wordpress/WSFiles/technicalreports/0610.pdf</a>.</p>
+</div>
+<div id="ref-roberts09">
+<p>Roberts, Gareth O, and Jeffrey S Rosenthal. 2009. “Examples of Adaptive Mcmc.” <em>Journal of Computational and Graphical Statistics</em>. <a href="http://www.utstat.toronto.edu/wordpress/WSFiles/technicalreports/0610.pdf" class="uri">http://www.utstat.toronto.edu/wordpress/WSFiles/technicalreports/0610.pdf</a>.</p>
+</div>
+<div id="ref-simmons11">
 <p>Simmons, Joseph P, Leif D Nelson, and Uri Simonsohn. 2011. “False-Positive Psychology Undisclosed Flexibility in Data Collection and Analysis Allows Presenting Anything as Significant.” <em>Psychological Science</em>. <a href="http://www.haas.berkeley.edu/groups/online_marketing/facultyCV/papers/nelson_false-positive.pdf" class="uri">http://www.haas.berkeley.edu/groups/online_marketing/facultyCV/papers/nelson_false-positive.pdf</a>.</p>
+</div>
+<div id="ref-sivia06">
 <p>Sivia, Devinderjit, and John Skilling. 2006. <em>Data Analysis: A Bayesian Tutorial</em>. Oxford University Press.</p>
+</div>
+<div id="ref-walker99">
 <p>Walker, Stephen G, Paul Damien, Purushottam W Laud, and Adrian FM Smith. 1999. “Bayesian Nonparametric Inference for Random Distributions and Related Functions.” <em>Journal of the Royal Statistical Society: Series B (Statistical Methodology)</em>. <a href="http://deepblue.lib.umich.edu/bitstream/handle/2027.42/73242/1467-9868.00190.pdf" class="uri">http://deepblue.lib.umich.edu/bitstream/handle/2027.42/73242/1467-9868.00190.pdf</a>.</p>
-<p>Wetzels, Ruud, Raoul PPP Grasman, and Eric-Jan Wagenmakers. 2012. “A Default Bayesian Hypothesis Test for ANOVA Designs.” <em>The American Statistician</em>. <a href="http://www.ejwagenmakers.com/2012/WetzelsEtAl2012AmStat.pdf" class="uri">http://www.ejwagenmakers.com/2012/WetzelsEtAl2012AmStat.pdf</a>.</p>
+</div>
+<div id="ref-wetzels12">
+<p>Wetzels, Ruud, Raoul PPP Grasman, and Eric-Jan Wagenmakers. 2012. “A Default Bayesian Hypothesis Test for Anova Designs.” <em>The American Statistician</em>. <a href="http://www.ejwagenmakers.com/2012/WetzelsEtAl2012AmStat.pdf" class="uri">http://www.ejwagenmakers.com/2012/WetzelsEtAl2012AmStat.pdf</a>.</p>
+</div>
+<div id="ref-wilcoxon45">
 <p>Wilcoxon, Frank. 1945. “Individual Comparisons by Ranking Methods.” <em>Biometrics Bulletin</em>.</p>
+</div>
 </div>
 <section class="footnotes">
 <hr />
@@ -285,11 +313,11 @@ For simplicity, we looked at referenda with only two alternatives. We can extend
 <dd>The option with the highest mean is the winner.
 </dd>
 </dl>
-<p>The techniques described here could be extended to many alternate procedures.<a href="#fnref1">↩</a></p></li>
-<li id="fn2"><p>When using paired samples (here, we’d like to pair each person’s vote on buko pie to their vote on fish pie), we can transform two samples into a single sample of their differences. We can then use our single sample techniques on <span class="math">\(d_i = buko_i - fish_i\)</span> where <span class="math">\(y_i\)</span> is the <span class="math">\(i\)</span>th person’s vote on proposal <span class="math">\(y\)</span>.<a href="#fnref2">↩</a></p></li>
-<li id="fn3"><p>This entails the false assumption that our paired differences follow a beta distribution. Later, we’ll discuss possibilities for remedying this. For the moment, the beta distribution gives passable results, for its simplicity.<a href="#fnref3">↩</a></p></li>
-<li id="fn4"><p>When using paired samples (here, we’d like to pair each person’s vote on buko pie to their vote on fish pie), we can transform two samples into a single sample of their differences. We can then use our single sample techniques on <span class="math">\(d_i = buko_i - fish_i\)</span> where <span class="math">\(y_i\)</span> is the <span class="math">\(i\)</span>th person’s vote on proposal <span class="math">\(y\)</span>.<a href="#fnref4">↩</a></p></li>
-<li id="fn5"><p>For visual clarity, the plots below show only the bound which <q>crosses <span class="math">\(0\)</span> the least</q>. If and only if this bounded region includes <span class="math">\(0\)</span>, quorum has failed.<a href="#fnref5">↩</a></p></li>
+<p>The techniques described here could be extended to many alternate procedures.<a href="#fnref1" class="footnote-back">↩</a></p></li>
+<li id="fn2"><p>When using paired samples (here, we’d like to pair each person’s vote on buko pie to their vote on fish pie), we can transform two samples into a single sample of their differences. We can then use our single sample techniques on <span class="math inline">\(d_i = buko_i - fish_i\)</span> where <span class="math inline">\(y_i\)</span> is the <span class="math inline">\(i\)</span>th person’s vote on proposal <span class="math inline">\(y\)</span>.<a href="#fnref2" class="footnote-back">↩</a></p></li>
+<li id="fn3"><p>This entails the false assumption that our paired differences follow a beta distribution. Later, we’ll discuss possibilities for remedying this. For the moment, the beta distribution gives passable results, for its simplicity.<a href="#fnref3" class="footnote-back">↩</a></p></li>
+<li id="fn4"><p>When using paired samples (here, we’d like to pair each person’s vote on buko pie to their vote on fish pie), we can transform two samples into a single sample of their differences. We can then use our single sample techniques on <span class="math inline">\(d_i = buko_i - fish_i\)</span> where <span class="math inline">\(y_i\)</span> is the <span class="math inline">\(i\)</span>th person’s vote on proposal <span class="math inline">\(y\)</span>.<a href="#fnref4" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p>For visual clarity, the plots below show only the bound which <q>crosses <span class="math inline">\(0\)</span> the least</q>. If and only if this bounded region includes <span class="math inline">\(0\)</span>, quorum has failed.<a href="#fnref5" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
 

@@ -4,9 +4,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.9">
     <title>ColEx—The scarcity of cooperatives</title>
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../../css/default.css" />
-    <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script type="text/javascript">
+     // For reasons that are beyond my ken, a literal dollar sign breaks at least Hakyll's watch
+     window.MathJax = {
+       tex2jax: {
+         inlineMath: [ [String.fromCharCode(36), String.fromCharCode(36)], ["\\(","\\)"] ],
+         processEscapes: true
+       }
+     };
+    </script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
     
   <link rel="stylesheet" type="text/css" href="../../css/cooperatives.css" />
 
@@ -41,30 +51,30 @@
 <p>A profusion of hypotheses has since arisen. <span class="citation" data-cites="dow99">(Dow and Putterman 1999)</span> offers a good summary (though the term must be used loosely for a 126-page paper). One that I have not seen presented is: <a href="#arg-map" id="hypothesis">capital-managed firms predominate because capitalists have a greater incentive to expand than worker-owners in worker cooperatives</a>. Roughly, for each market segment a capitalist expands into, their income increases by capital’s share of the new segment’s profit. For each market segment a cooperative expands into, the expanders receive no direct remuneration (supposing that the new market segment is also a cooperative). Any new profit goes to worker-owners in the new segment.</p>
 <!--more-->
 <h3 id="cellular-automaton">Cellular automaton</h3>
-<p>We can make this hypothesis more tangible by representing it as a <a href="https://en.wikipedia.org/wiki/Cellular_automaton">cellular automaton</a>. <span class="noted"><a href="#arg-map" id="automaton-link">In this automaton</a></span><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a>, <a href="#arg-map" id="segment">each cell represents a market segment requiring a fixed quantity of labor and capital</a>. Adjacent cells represent similar market segments.</p>
+<p>We can make this hypothesis more tangible by representing it as a <a href="https://en.wikipedia.org/wiki/Cellular_automaton">cellular automaton</a>. <span class="noted"><a href="#arg-map" id="automaton-link">In this automaton</a></span><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>, <a href="#arg-map" id="segment">each cell represents a market segment requiring a fixed quantity of labor and capital</a>. Adjacent cells represent similar market segments.</p>
 <div id="automaton"></div>
 
 <h4 id="initial-conditions">Initial conditions</h4>
 <p>In the beginning, the market is filled with <a href="#arg-map" id="empty">empty market segments which have a random cost</a> (represented in the automaton by the opacity of the <span class="empty">red cell interiors</span>) for a firm to expand into.</p>
 <h4 id="step">Step</h4>
 <h5 id="occupied-market-segments">Occupied market segments</h5>
-<p>In each step, an existing firm may go bankrupt (or exit the market segment in some other way) with fixed probability <span class="math">\(B = 0.1\)</span>. If a firm goes bankrupt, its market segment becomes empty once again.</p>
+<p>In each step, an existing firm may go bankrupt (or exit the market segment in some other way) with fixed probability <span class="math inline">\(B = 0.1\)</span>. If a firm goes bankrupt, its market segment becomes empty once again.</p>
 <p>If it does not go bankrupt, <a href="#arg-map" id="accum">the profits generated during that step are distributed</a>. For worker cooperatives, all profits accrue to the worker-owners within the cooperative. For capital-managed segments, labor’s share of income (estimated at 70% <span class="citation" data-cites="karabarbounis13">(Karabarbounis and Neiman 2013)</span> <span class="citation" data-cites="gomme04">(Gomme and Rupert 2004)</span>) accrues to the segment’s workers and capital’s share of income accrues to the capitalists of the segment’s firm.</p>
 <p>The accumulated income of workers in a capital-managed segment is represented in the automaton by opacity of the <span class="capital">purple cell interior</span>. The accumulated income of the capitalists (of a given firm) is represented by the opacity of the <span class="capital">purple cell border</span> enclosing all segments owned by the firm. The accumulated income of worker-owners in a worker cooperative is represented in the automaton by the opacity of the <span class="labor">green cell interior</span>. Worker cooperatives sharing an ancestor (e.g. cooperative B and C were both founded by cooperative A) are enclosed by a single border.</p>
 <h5 id="empty-market-segments">Empty market segments</h5>
-<p>In each step, an empty market segment may be occupied by <a href="#arg-map" id="firm">a newly formed firm</a> with chance <span class="math">\(N = 0.001\)</span>.</p>
+<p>In each step, an empty market segment may be occupied by <a href="#arg-map" id="firm">a newly formed firm</a> with chance <span class="math inline">\(N = 0.001\)</span>.</p>
 <p>Also, in each step, <a href="#arg-map" id="expand">an empty market segment may be subject to expansion</a> from <a href="https://en.wikipedia.org/wiki/Von_Neumann_neighborhood">adjacent firms</a>. Each adjacent firm has a 20% chance of attempting expansion (representing market conditions, firm conditions, &amp;c.). The cost of expansion into the market segment must be less than the accumulated income of the expander and less than the projected value of the segment. In the event of multiple firms competing to expand into a single segment, the firm with the greatest valuation for the segment succeeds.</p>
 <p>Valuations are determined thus:</p>
 <dl>
 <dt>Capital-managed firm</dt>
-<dd>The total value a capital-management firm can expect to extract from a segment takes the form <span class="math">\(KP + KP(1 - B)(1 - D) + KP(1 - B)^2(1 - D)^2 + \ldots\)</span> where <span class="math">\(K\)</span> is capital’s share of income, <span class="math">\(P\)</span> is the per-step profit, <span class="math">\(B\)</span> is the bankruptcy rate, and <span class="math">\(D\)</span> is the firm’s <a href="https://en.wikipedia.org/wiki/Present_value">discount rate</a> (ranging uniformly from <span class="math">\(0\)</span> to <span class="math">\(0.2\)</span>). Using the formula for <a href="https://en.wikipedia.org/wiki/Geometric_series#Formula">geometric series</a>, we can write this as <span class="math">\(\frac{KP}{1 - (1 - B)(1 - D)}\)</span>.
+<dd>The total value a capital-management firm can expect to extract from a segment takes the form <span class="math inline">\(KP + KP(1 - B)(1 - D) + KP(1 - B)^2(1 - D)^2 + \ldots\)</span> where <span class="math inline">\(K\)</span> is capital’s share of income, <span class="math inline">\(P\)</span> is the per-step profit, <span class="math inline">\(B\)</span> is the bankruptcy rate, and <span class="math inline">\(D\)</span> is the firm’s <a href="https://en.wikipedia.org/wiki/Present_value">discount rate</a> (ranging uniformly from <span class="math inline">\(0\)</span> to <span class="math inline">\(0.2\)</span>). Using the formula for <a href="https://en.wikipedia.org/wiki/Geometric_series#Formula">geometric series</a>, we can write this as <span class="math inline">\(\frac{KP}{1 - (1 - B)(1 - D)}\)</span>.
 </dd>
 <dt>Worker cooperative</dt>
-<dd>Similarly, the total value a worker cooperative can expect to extract from a segment takes the form <span class="math">\(\frac{AS}{1 - (1 - B)(1 - D)}\)</span>. <span class="math">\(S = GP -  LP\)</span>, where <span class="math">\(G\)</span> is the productivity advantage of worker cooperatives (set to 1.1 in the automaton) and <span class="math">\(L\)</span> is labor’s share of income, represents the comparative benefit for worker-owners in a worker cooperative over being laborers in a capital-managed firm. <a href="#arg-map" id="altruism"> <span class="math">\(A\)</span> (<q>altruism</q>) represents the extent to which the expanding worker cooperative cares about these potential gains.</a>
+<dd>Similarly, the total value a worker cooperative can expect to extract from a segment takes the form <span class="math inline">\(\frac{AS}{1 - (1 - B)(1 - D)}\)</span>. <span class="math inline">\(S = GP -  LP\)</span>, where <span class="math inline">\(G\)</span> is the productivity advantage of worker cooperatives (set to 1.1 in the automaton) and <span class="math inline">\(L\)</span> is labor’s share of income, represents the comparative benefit for worker-owners in a worker cooperative over being laborers in a capital-managed firm. <a href="#arg-map" id="altruism"> <span class="math inline">\(A\)</span> (<q>altruism</q>) represents the extent to which the expanding worker cooperative cares about these potential gains.</a>
 </dd>
 </dl>
 <p>A quick consequence of this model is that worker cooperatives and capital-managed firms will value expansions equally (assuming equal discount and bankruptcy rates) when</p>
-<p><span class="math">\[\begin{align}
+<p><span class="math display">\[\begin{align}
 \frac{AS}{1 - (1 - B)(1 - D)} &amp;= \frac{KP}{1 - (1 - B)(1 - D)} \\
 AS &amp;= KP \\
 A(GP - LP) &amp;= KP \\
@@ -89,20 +99,36 @@ document.addEventListener("DOMContentLoaded", function() {
     Elm.embed(Elm.Automaton, $('#automaton').get(0));
 });
 </script>
-<div class="references">
+<div id="refs" class="references">
+<div id="ref-craig95">
 <p>Craig, Ben, John Pencavel, Henry Farber, and Alan Krueger. 1995. “Participation and Productivity: A Comparison of Worker Cooperatives and Conventional Firms in the Plywood Industry.” <em>Brookings Papers on Economic Activity. Microeconomics</em>.</p>
+</div>
+<div id="ref-doucouliagos95">
 <p>Doucouliagos, Chris. 1995. “Worker Participation and Productivity in Labor-Managed and Participatory Capitalist Firms: A Meta-Analysis.” <em>Industrial &amp; Labor Relations Review</em>. <a href="http://library.uniteddiversity.coop/Money_and_Economics/Cooperatives/Worker_Participation_and_Productivity-Meta_Analysis.pdf" class="uri">http://library.uniteddiversity.coop/Money_and_Economics/Cooperatives/Worker_Participation_and_Productivity-Meta_Analysis.pdf</a>.</p>
+</div>
+<div id="ref-dow99">
 <p>Dow, Gregory K, and Louis Putterman. 1999. “Why Capital (Usually) Hires Labor: An Assessment of Proposed Explanations,“.” <em>Employees and Corporate Governance</em>. <a href="http://www.econ.brown.edu/1996/pdfs/96-21.pdf" class="uri">http://www.econ.brown.edu/1996/pdfs/96-21.pdf</a>.</p>
+</div>
+<div id="ref-estrin87">
 <p>Estrin, Saul, Derek C Jones, and Jan Svejnar. 1987. “The Productivity Effects of Worker Participation: Producer Cooperatives in Western Economies.” <em>Journal of Comparative Economics</em>.</p>
+</div>
+<div id="ref-gomme04">
 <p>Gomme, Paul, and Peter Rupert. 2004. “Measuring Labor’s Share of Income.” <em>FRB of Cleveland Policy Discussion Paper</em>. <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.405.7400&amp;rep=rep1&amp;type=pdf" class="uri">http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.405.7400&amp;rep=rep1&amp;type=pdf</a>.</p>
+</div>
+<div id="ref-karabarbounis13">
 <p>Karabarbounis, Loukas, and Brent Neiman. 2013. <em>The Global Decline of the Labor Share</em>. National Bureau of Economic Research.</p>
+</div>
+<div id="ref-levine90">
 <p>Levine, David I. 1990. “Participation, Productivity, and the Firm’s Environment.” <em>California Management Review</em>.</p>
+</div>
+<div id="ref-putnam07">
 <p>Putnam, Robert D. 2007. “E Pluribus Unum: Diversity and Community in the Twenty-First Century the 2006 Johan Skytte Prize Lecture.” <em>Scandinavian Political Studies</em>. <a href="http://www.aimlessgromar.com/wp-content/uploads/2013/12/j-1467-9477-2007-00176-x.pdf" class="uri">http://www.aimlessgromar.com/wp-content/uploads/2013/12/j-1467-9477-2007-00176-x.pdf</a>.</p>
+</div>
 </div>
 <section class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>Sorry, <a href="http://elm-lang.org/">Elm</a>, Firefox, and this program don’t seem to mix well.<a href="#fnref1">↩</a></p></li>
+<li id="fn1"><p>Sorry, <a href="http://elm-lang.org/">Elm</a>, Firefox, and this program don’t seem to mix well.<a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
 

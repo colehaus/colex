@@ -4,9 +4,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.9">
     <title>ColEx—Tagged publishing</title>
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../../../css/default.css" />
-    <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script type="text/javascript">
+     // For reasons that are beyond my ken, a literal dollar sign breaks at least Hakyll's watch
+     window.MathJax = {
+       tex2jax: {
+         inlineMath: [ [String.fromCharCode(36), String.fromCharCode(36)], ["\\(","\\)"] ],
+         processEscapes: true
+       }
+     };
+    </script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
     </head>
 <body>
 <div id="underlay">

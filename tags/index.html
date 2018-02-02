@@ -4,15 +4,25 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.9">
     <title>ColEx—Tags</title>
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../css/default.css" />
-    <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script type="text/javascript">
+     // For reasons that are beyond my ken, a literal dollar sign breaks at least Hakyll's watch
+     window.MathJax = {
+       tex2jax: {
+         inlineMath: [ [String.fromCharCode(36), String.fromCharCode(36)], ["\\(","\\)"] ],
+         processEscapes: true
+       }
+     };
+    </script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
     </head>
 <body>
 <div id="underlay">
 <main>
   <h2>Tags</h2>
-  <div id="tag-cloud"><a style="font-size: 50%" href="../posts/tag/automaton/">automaton</a> <a style="font-size: 93%" href="../posts/tag/bayes/">bayes</a> <a style="font-size: 50%" href="../posts/tag/bias/">bias</a> <a style="font-size: 50%" href="../posts/tag/bibliometrics/">bibliometrics</a> <a style="font-size: 50%" href="../posts/tag/biographical/">biographical</a> <a style="font-size: 50%" href="../posts/tag/cooperatives/">cooperatives</a> <a style="font-size: 50%" href="../posts/tag/economics/">economics</a> <a style="font-size: 50%" href="../posts/tag/frequentist/">frequentist</a> <a style="font-size: 50%" href="../posts/tag/future/">future</a> <a style="font-size: 50%" href="../posts/tag/information-theory/">information-theory</a> <a style="font-size: 136%" href="../posts/tag/meta/">meta</a> <a style="font-size: 50%" href="../posts/tag/publishing/">publishing</a> <a style="font-size: 50%" href="../posts/tag/review/">review</a> <a style="font-size: 50%" href="../posts/tag/science/">science</a> <a style="font-size: 50%" href="../posts/tag/statistics/">statistics</a> <a style="font-size: 93%" href="../posts/tag/structure/">structure</a> <a style="font-size: 50%" href="../posts/tag/text/">text</a> <a style="font-size: 50%" href="../posts/tag/voting/">voting</a></div>
+  <div id="tag-cloud"><a style="font-size: 50%" href="../posts/tag/automaton/">automaton</a> <a style="font-size: 93%" href="../posts/tag/bayes/">bayes</a> <a style="font-size: 50%" href="../posts/tag/bias/">bias</a> <a style="font-size: 50%" href="../posts/tag/bibliometrics/">bibliometrics</a> <a style="font-size: 50%" href="../posts/tag/biographical/">biographical</a> <a style="font-size: 50%" href="../posts/tag/cooperatives/">cooperatives</a> <a style="font-size: 50%" href="../posts/tag/economics/">economics</a> <a style="font-size: 50%" href="../posts/tag/frequentist/">frequentist</a> <a style="font-size: 50%" href="../posts/tag/future/">future</a> <a style="font-size: 50%" href="../posts/tag/information-theory/">information-theory</a> <a style="font-size: 136%" href="../posts/tag/meta/">meta</a> <a style="font-size: 50%" href="../posts/tag/publishing/">publishing</a> <a style="font-size: 50%" href="../posts/tag/review/">review</a> <a style="font-size: 50%" href="../posts/tag/science/">science</a> <a style="font-size: 50%" href="../posts/tag/scratch/">scratch</a> <a style="font-size: 50%" href="../posts/tag/statistics/">statistics</a> <a style="font-size: 93%" href="../posts/tag/structure/">structure</a> <a style="font-size: 50%" href="../posts/tag/text/">text</a> <a style="font-size: 50%" href="../posts/tag/voting/">voting</a></div>
 </main>
 
 <header>

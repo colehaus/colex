@@ -3,3 +3,5 @@ cabal.sandbox.config
 _cache
 _site
 **/.sass-cache/
+.stack-work
+**-result

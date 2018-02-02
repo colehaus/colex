@@ -4,9 +4,19 @@
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=0.9">
     <title>ColEx—Choose your own exposition</title>
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,300,700,400italic" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="../../css/default.css" />
-    <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+    <script type="text/javascript">
+     // For reasons that are beyond my ken, a literal dollar sign breaks at least Hakyll's watch
+     window.MathJax = {
+       tex2jax: {
+         inlineMath: [ [String.fromCharCode(36), String.fromCharCode(36)], ["\\(","\\)"] ],
+         processEscapes: true
+       }
+     };
+    </script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
     
   <link rel="stylesheet" type="text/css" href="../../css/choose.css" />
 
@@ -38,7 +48,7 @@
 <!--more-->
 <p>For example (Click one of the arrows on the side to swap the order.):</p>
 <p class="swap monoid">
-For each <a href="https://en.wikipedia.org/wiki/Natural_number">natural number</a>, addition with <span class="math">\(0\)</span> produces the same number. For each natural number, multiplication with <span class="math">\(1\)</span> produces the same number.
+For each <a href="https://en.wikipedia.org/wiki/Natural_number">natural number</a>, addition with <span class="math inline">\(0\)</span> produces the same number. For each natural number, multiplication with <span class="math inline">\(1\)</span> produces the same number.
 </p>
 <p class="swap monoid">
 A <a href="https://en.wikipedia.org/wiki/Monoid">monoid</a> is an algebraic structure with a single associative binary operation and an identity element.
@@ -63,7 +73,7 @@ In a state of nature, … [g]roups of individuals may form mutual-protection ass
 </ul>
 <p>This technique can be found <em>in vivo</em> in <a href="../quorum/">the post on quorum</a> (which also demonstrates synchronized choice i.e. changing what needs to be changed in subsequent sections to congrue with early choices).</p>
 <h3 id="sidenote">Sidenote</h3>
-<p>This site also uses <span class="noted">sidenotes.</span><a href="#fn1" class="footnoteRef" id="fnref1"><sup>1</sup></a> By highlighting the noted text, we can provide a little extra clarity about the referent of the note.</p>
+<p>This site also uses <span class="noted">sidenotes.</span><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a> By highlighting the noted text, we can provide a little extra clarity about the referent of the note.</p>
 <h3 id="commonality">Commonality</h3>
 <p>The common element here is that these tools allow for more dialogic text. Instead of fixing one canonical version of the text, we can now, in a limited way, respond to the reader’s preferences.</p>
 <p>An alternate view is that these tools allow us to express the structure of our argument with greater fidelity. Traditional text enforces linearity. Structural aspects must be described within the text itself, mixing levels (i.e. we have text which provides the content of our argument interspersed with text which describes the structure of our argument). A standard grammar here could increase both parsimony and efficacy. Viewing the structure of an argument as a <a href="https://en.wikipedia.org/wiki/Directed_graph">directed graph</a> permits a visualization of the tools described above:</p>
@@ -96,19 +106,33 @@ A graph in which C is a sidenote on B. It is not necessary to establish D and so
 <menuitem label="A Theory of Justice" type="radio" checked="checked"></menuitem> <menuitem label="Anarchy, State and Utopia" type="radio"></menuitem>
 </menu>
 <hr class="references">
-<div class="references">
+<div id="refs" class="references">
+<div id="ref-debock11">
 <p>De Bock, Dirk, Johan Deprez, Wim Van Dooren, Michel Roelens, and Lieven Verschaffel. 2011. “Abstract or Concrete Examples in Learning Mathematics? A Replication and Elaboration of Kaminski, Sloutsky, and Heckler’s Study.” <em>Journal for Research in Mathematics Education</em>.</p>
+</div>
+<div id="ref-flores09">
 <p>Flores, Margaret M. 2009. “Using the Concrete–Representational–Abstract Sequence to Teach Subtraction with Regrouping to Students at Risk for Failure.” <em>Remedial and Special Education</em>.</p>
+</div>
+<div id="ref-kaminski08">
 <p>Kaminski, Jennifer A., Vladimir M. Sloutsky, and Andrew F. Heckler. 2008. “The Advantage of Abstract Examples in Learning Math.” <em>Science</em>.</p>
+</div>
+<div id="ref-kelley88">
 <p>Kelley, David. 1988. <em>The Art of Reasoning</em>. Norton New York.</p>
+</div>
+<div id="ref-nozick74">
 <p>Nozick, Robert. 1974. <em>Anarchy, State, and Utopia</em>. Basic books.</p>
+</div>
+<div id="ref-peterson88">
 <p>Peterson, Susan K, Cecil D Mercer, and Lawrence O’Shea. 1988. “Teaching Learning Disabled Students Place Value Using the Concrete to Abstract Sequence.” <em>Learning Disabilities Research</em>.</p>
+</div>
+<div id="ref-rawls09">
 <p>Rawls, John. 2009. <em>A Theory of Justice</em>. Harvard university press.</p>
+</div>
 </div>
 <section class="footnotes">
 <hr />
 <ol>
-<li id="fn1"><p>They look like this.<a href="#fnref1">↩</a></p></li>
+<li id="fn1"><p>They look like this.<a href="#fnref1" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
 
