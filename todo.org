@@ -4,3 +4,7 @@
 * DONE prefetch fonts
   CLOSED: [2018-02-01 Thu 21:59]
 * TODO Clean up nativeBuildInputs
+* DONE Add drafts folder
+  CLOSED: [2018-02-02 Fri 23:15]
+* TODO Fix spurious rebuilds in nix
+* TODO Make arg-map links more distinguishable

@@ -42,7 +42,7 @@ main = hakyll $ do
   pages <- buildPaginateWith
            ((paginateOverflow perPage <$>) . sortChronological)
            postPat
-           (fromCapture (fromGlob "posts/page/*/index.html") . show)
+           (fromCapture "posts/page/*/index.html" . show)
   paginateRules pages $ \n pat -> do
     route idRoute
     compile $ let
@@ -73,26 +73,8 @@ main = hakyll $ do
       loadAndApplyTemplate "templates/index.html" ctx >>=
       finish ctx
 
-  match "posts/*/overlay.md" $ compile pandocCompiler
-  overlays <- makePatternDependency "posts/*/overlay.md"
-  match "posts/*/warnings.md" $ compile getResourceBody
-  warnings <- makePatternDependency "posts/*/warnings.md"
-  rulesExtraDependencies [overlays, warnings] $ match postPat $ do
-      route . customRoute $ \ident ->
-        "posts/" <>
-        (takeBaseName . takeDirectory . toFilePath) ident <>
-        "/index.html"
-      compile $ let
-        ctx = warnCtx <> overCtx <> jsCtx <>
-              cssCtx <> tagsCtx tags <> postCtx in do
-        bib <- load "misc/biblio.bib"
-        csl <- load "misc/biblio.csl"
-        getResourceBody >>=
-          readPandocBiblio readerOpt csl bib >>=
-          saveSnapshot "teaser" . (stripVerbatim . demoteHeaders . demoteHeaders <$>) .
-            writePandocWith writerOpt >>=
-          loadAndApplyTemplate "templates/post.html" ctx >>=
-          finish ctx
+  buildPosts tags "posts"
+  buildPosts tags "drafts"
 
   create ["archive"] $ do
       route $ constRoute "posts/index.html"
@@ -131,6 +113,29 @@ main = hakyll $ do
     route $ setExtension "js"
     compile $ (withItemBody compressJS <=< compileES6) =<< getResourceBody
 
+buildPosts :: Tags -> String -> Rules ()
+buildPosts tags dir = do
+  match (fromGlob $ dir <> "/*/overlay.md") $ compile pandocCompiler
+  overlays <- makePatternDependency (fromGlob $ dir <> "/*/overlay.md")
+  match (fromGlob $ dir <> "/*/warnings.md") $ compile getResourceBody
+  warnings <- makePatternDependency (fromGlob $ dir <> "/*/warnings.md")
+  rulesExtraDependencies [overlays, warnings] $ match (mkPostPat dir) $ do
+      route . customRoute $ \ident ->
+        dir <> "/" <>
+        (takeBaseName . takeDirectory . toFilePath) ident <>
+        "/index.html"
+      compile $ let
+        ctx = warnCtx <> overCtx <> jsCtx <>
+              cssCtx <> tagsCtx tags <> postCtx in do
+        bib <- load "misc/biblio.bib"
+        csl <- load "misc/biblio.csl"
+        getResourceBody >>=
+          readPandocBiblio readerOpt csl bib >>=
+          saveSnapshot "teaser" . (stripVerbatim . demoteHeaders . demoteHeaders <$>) .
+            writePandocWith writerOpt >>=
+          loadAndApplyTemplate "templates/post.html" ctx >>=
+          finish ctx
+
 concatMapM :: (Functor m, Monad m) => (a -> m [b]) -> [a] -> m [b]
 concatMapM f xs = concat <$> mapM f xs
 
@@ -145,13 +150,19 @@ compileScss = do
 defJsPat :: Pattern
 defJsPat = "js/default/*.js" .||. "js/default/*.es"
 
+mkPostPat :: String -> Pattern
+mkPostPat postDir = fromGlob $ postDir <> "/*/main.*"
+
 postPat :: Pattern
-postPat = "posts/*/main.*"
+postPat = mkPostPat "posts"
 
 finish :: Context String -> Item String -> Compiler (Item String)
 finish ctx i =
   loadAndApplyTemplate "templates/default.html" ctx i >>=
   ((replaceAll "index.html" (const mempty) <$>) <$>) . relativizeUrls
+
+compileES6' :: String -> Compiler String
+compileES6' = unixFilter "babel" ["--es2015"]
 
 compileES6 :: Item String -> Compiler (Item String)
 compileES6 i =
@@ -177,7 +188,7 @@ paginateOverflow low xs =
     pgs ->
       if length (last pgs) < low
       then uncurry (:) . first mconcat . splitAt 2 $ pgs
-      else pgs where
+      else pgs
 
 lastPage :: Paginate -> Identifier
 lastPage pg = paginateMakeId pg . M.size . paginateMap $ pg
@@ -209,7 +220,7 @@ fileNameCtx :: Context String
 fileNameCtx = field "filename" $ return . itemBody
 getListMeta :: MonadMetadata m => String -> Identifier -> m [String]
 getListMeta k ident =
-  return . maybe [] (map trim . splitAll ",") . lookupString k =<< getMetadata ident
+  maybe [] (map trim . splitAll ",") . lookupString k <$> getMetadata ident
 
 tagsCtx :: Tags -> Context String
 tagsCtx tags =
