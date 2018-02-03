@@ -2,7 +2,7 @@
   let
     nodeEnv = pkgs.callPackage ./callNode2nix.nix {
       name = "ColEx";
-      src = ./content;
+      src = ./content/package.json;
     };
   in
     pkgs.stdenv.mkDerivation rec {

@@ -7,4 +7,11 @@
 * DONE Add drafts folder
   CLOSED: [2018-02-02 Fri 23:15]
 * TODO Fix spurious rebuilds in nix
+** DONE npm rebuilds on any change to `content`
+   CLOSED: [2018-02-03 Sat 13:55]
+** TODO webpack on any change to `content`
 * TODO Make arg-map links more distinguishable
+* TODO Automate deploy
+** CI vs release.nix? Probably release.nix because I don't have automated tests
+* TODO Add shell mode to overall build that just prepares env
+* TODO Link up webpack and hakyll build outputs
