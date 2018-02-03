@@ -298,6 +298,9 @@ blockquote::after {
 .conversation {
     display: inline-block;
     > p {
+        box-shadow: inset 0px 0px 5px #eee;
+        border-radius: 4px;
+        padding: 0px 5px;
         &:nth-of-type(odd) {
             background-color: $convo-1;
         }

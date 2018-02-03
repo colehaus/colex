@@ -1,6 +1,9 @@
 @import 'colors';
 
 .noted {
+    box-shadow: inset 0px 0px 5px #eee;
+    border-radius: 4px;
+    padding: 0px 5px;
     background-color: $note-back-color;
     &::after {
       content: " ↪";
@@ -19,6 +22,7 @@
     }
     & > *:first-child::first-letter {
         background-color: $note-back-color;
+        box-shadow: inset 0px 0px 5px #eee;
     }
 }
 .footnoteRef {
