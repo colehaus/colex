@@ -39,7 +39,8 @@ module.exports = {
     cooperatives: './js/cooperatives.wp.es.js',
     'graph-contents': './js/graph-contents.wp.es.js',
     'bibliometric-map': './js/bibliometric-map.wp.es.js',
-    futurism: './js/futurism.wp.es.js'
+    futurism: './js/futurism.wp.es.js',
+    'custom-elements': './js/custom-elements.wp.es.js'
   },
   output: {
     filename: '[name].js',
