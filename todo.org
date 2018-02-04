@@ -27,3 +27,6 @@
 * TODO Fix swapper in quorum
 * TODO Eliminate jquery manual load from bibliometric
 * TODO Prune extraneous copies in _site
+* TODO Uglify only for prod
+* TODO Script to set up webpack and hakyll watch
+* TODO Enable source maps

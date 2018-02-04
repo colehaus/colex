@@ -1,8 +1,9 @@
 import { props, withComponent } from 'skatejs';
-import withReact from '@skatejs/renderer-react';
-import React from 'react';
+import withPreact from '@skatejs/renderer-preact';
+import preact from 'preact';
+import { h } from 'preact';
 
-class WithReact extends withComponent(withReact()) {
+class WithPreact extends withComponent(withPreact()) {
   static get props() {
     return {
       name: props.string
@@ -13,4 +14,4 @@ class WithReact extends withComponent(withReact()) {
   }
 }
 
-customElements.define('with-react', WithReact);
+customElements.define('with-preact', WithPreact);
