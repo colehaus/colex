@@ -62,10 +62,7 @@ $(() => {
   $('details').each((_, el) => {
       (new MutationObserver(fixNotes)).observe(el, {attributes: true});
   });
-  $('body').fontSpy({
-    onFail: 'font-fail',
-    callback: fixNotes
-  });
+  document.fonts.ready.then(fixNotes);
   MathJax.Hub.Queue(() => {
     fixNotes();
   });
