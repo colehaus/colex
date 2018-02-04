@@ -1,4 +1,4 @@
-var plot = (function(jStat) {
+import jStat from 'jStat'
 
 var yHistLims = function(yss) {
     var ys = [];
@@ -62,7 +62,7 @@ var twoDArrayCol = function (array, col_i) {
     return col;
 };
 
-return {
+export default {
     twoDArrayCol: twoDArrayCol,
     histogramCounts: histogramCounts,
     sampleFunc: sampleFunc,
@@ -70,5 +70,3 @@ return {
     yHistLims: yHistLims,
     getHeight: getHeight
 };
-
-})(jStat);

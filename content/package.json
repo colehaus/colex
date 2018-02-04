@@ -8,14 +8,16 @@
         "babel-preset-env": "^1.6.1",
         "babel-preset-react": "^6.24.1",
         "clean-webpack-plugin": "^0.1.18",
+        "imports-loader": "^0.7.1",
         "uglifyjs-webpack-plugin": "^1.1.8",
         "webpack": "^3.10.0"
     },
     "dependencies": {
         "@skatejs/renderer-react": "^0.2.1",
-        "d3": "^4.13.0",
+        "d3": "^3.5.17",
         "jquery": "^3.3.1",
-        "mathjax": "^2.7.2",
+        "jquery-flot": "^0.8.3",
+        "jStat": "^1.7.1",
         "react": "^16.2.0",
         "react-dom": "^16.2.0",
         "skatejs": "^5.1.1"

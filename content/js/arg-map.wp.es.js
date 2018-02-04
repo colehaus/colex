@@ -1,4 +1,5 @@
-const argMap = (($, d3) => {
+import $ from 'jquery'
+import * as d3 from 'd3'
 
 if (!Array.prototype.find) {
   Array.prototype.find = function (predicate) {
@@ -271,7 +272,7 @@ const handler = map => {
     $('#overlay').toggleClass('inactive');
     map.stop();
   };
-    
+
   $('a[href="#arg-map"]').click(e => {
     $('#underlay').toggleClass('inactive');
     $('#overlay').toggleClass('inactive');
@@ -286,12 +287,16 @@ const handler = map => {
       map.resume();
     }
     // SVG requires that we not quote id here?
-    $('a[href=#' + $(e.target).attr('id') + ']').css('font-weight', 'bold');
+    const id = $(e.target).attr('id')
+    if (id !== undefined) {
+      $('g a').filter((_, a) => a.href.baseVal === "#" + id).css('font-weight', 'bold');
+    }
   });
 
 };
-  
-return {shapes: {square, circle, diamond, triangle, hexagon, pentagon},
-        mkMap, handler};
 
-})($, d3);
+export default {
+  shapes: {square, circle, diamond, triangle, hexagon, pentagon},
+  mkMap,
+  handler
+}

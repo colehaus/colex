@@ -1,4 +1,7 @@
-(($, argMap) => {
+import $ from 'jquery'
+
+import argMap from 'arg-map'
+
 $(() => {
 
 const nodeData = {
@@ -32,6 +35,5 @@ argMap.handler(argMap.mkMap('#arg-map',
                             linkData,
                             nodeTypeData,
                             linkTypeData));
-  
+
 });
-})($, argMap);

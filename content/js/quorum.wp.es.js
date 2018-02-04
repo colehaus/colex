@@ -1,4 +1,10 @@
-(($, colors, plot, mcmc, jStat) => {
+import 'jquery-flot'
+import $ from 'jquery'
+import jStat from 'jStat'
+
+import colors from 'colors'
+import plot from 'plot'
+import mcmc from 'mcmc'
 
 const plotOptions = {
   font: {size: 8},
@@ -306,4 +312,3 @@ $.plot($('#sym2'),
    }], plotOpts);
 
 });
-})($, colors, plot, mcmc, jStat);

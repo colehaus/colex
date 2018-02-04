@@ -3,7 +3,9 @@
 * TODO Clean up arg-map on indices
 * DONE prefetch fonts
   CLOSED: [2018-02-01 Thu 21:59]
-* TODO Clean up nativeBuildInputs
+* Cleanup nix
+** TODO Use `runCommand`
+** TODO Clean up nativeBuildInputs
 * DONE Add drafts folder
   CLOSED: [2018-02-02 Fri 23:15]
 * TODO Fix spurious rebuilds in nix
@@ -14,4 +16,14 @@
 * TODO Automate deploy
 ** CI vs release.nix? Probably release.nix because I don't have automated tests
 * TODO Add shell mode to overall build that just prepares env
-* TODO Link up webpack and hakyll build outputs
+* DONE Link up webpack and hakyll build outputs
+  CLOSED: [2018-02-03 Sat 22:16]
+* TODO Fix spurious rebuilds in hakyll (site.scss)
+* TODO whitespace fixup
+* TODO Try site without font
+* TODO Edit defer/async message
+* TODO Switch to new version of d3
+* TODO Autogenerate chunk per post
+* TODO Fix swapper in quorum
+* TODO Eliminate jquery manual load from bibliometric
+* TODO Prune extraneous copies in _site

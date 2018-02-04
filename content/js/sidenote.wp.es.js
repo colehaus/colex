@@ -1,4 +1,4 @@
-const sidenote = (($, MathJax) => {
+import $ from 'jquery'
 
 const referrer = el => {
   const id = $(el).find('a').last().attr('href');
@@ -71,6 +71,4 @@ $(() => {
   });
 });
 
-return {setNotes, fixNotes};
-  
-})($, MathJax);
+export default {setNotes, fixNotes}

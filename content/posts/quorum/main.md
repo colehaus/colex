@@ -3,7 +3,7 @@ title: A quorum alternative
 published: 2015-01-28
 tags: voting, bayes, frequentist, statistics
 css: quorum
-js: /js/jquery.flot.min.js, /js/jstat.min.js, /js/plot.js, /js/mcmc.js, /js/quorum.js, /js/quorum-map.js
+js: /js/quorum.js, /js/quorum-map.js
 ---
 
 <div id="graph-of-contents"><a href="#arg-map">Contents</a></div>

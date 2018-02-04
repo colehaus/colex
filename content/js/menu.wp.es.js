@@ -1,4 +1,4 @@
-const menu = ($ => {
+import $ from 'jquery'
 
 const defaultHandlers = el => {
   if (el.attr('type') === 'radio') { 
@@ -105,6 +105,4 @@ $(() => {
   });
 });
 
-return {getMenu, defaultHandlers};
-
-})($);
+export default {getMenu, defaultHandlers}

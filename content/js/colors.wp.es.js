@@ -33,3 +33,5 @@ colors.bodyText = colors.value[4];
 
 colors.noteBack = colors.hue[4];
 colors.menu = colors.hue[5];
+
+export default colors

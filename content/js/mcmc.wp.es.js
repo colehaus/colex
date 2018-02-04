@@ -1,5 +1,5 @@
-var mcmc = (function(jStat, plot) {
-'use strict';
+import jStat from 'jStat'
+import plot from 'plot'
 
 var interval = [-1, 1];
 var burn_timeout_id;
@@ -150,9 +150,7 @@ var run_BEST = function (ys, n_samples_, n_burnin, progress_cb, final_cb) {
     burn_asynch(Math.ceil(n_burnin /  500));
 };
 
-    return {
+export default {
         posterior_predictive_check: posterior_predictive_check,
         run_BEST: run_BEST
     };
-
-})(jStat, plot);

@@ -1,5 +1,7 @@
-// Use menus to build tree of choices
-(($, menu, sidenote, MathJax) => {
+import $ from 'jquery'
+
+import menu from 'menu'
+import sidenote from 'sidenote'
 
 const transition = (from, to, finalCb) => {
   if (typeof from[0] === 'undefined') { return; }
@@ -85,5 +87,3 @@ $(() => {
     inlines.removeAttr('style');
   });
 });
-
-})($, menu, sidenote, MathJax);

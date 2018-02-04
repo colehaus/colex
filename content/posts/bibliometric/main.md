@@ -2,7 +2,7 @@
 title: Toward an alternative bibliometric
 published: 2015-03-10
 tags: bibliometrics, science, publishing, bayes, information-theory
-js: /js/bibliometric.min.js, /js/bibliometric-map.js
+js: /js/default/jquery.min.js, /js/bibliometric.min.js, /js/bibliometric-map.js
 css: bibliometric
 ---
 
@@ -10,7 +10,7 @@ css: bibliometric
 
 <div class="abstract">
 Impact factor isn't great. A bibliometric based on entropy reduction may be
-promising. 
+promising.
 </div>
 
 <div class="macros">

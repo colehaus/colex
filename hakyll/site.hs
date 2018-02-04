@@ -5,7 +5,7 @@ import           Control.Monad       ((<=<))
 import           Data.Functor        ((<$>))
 import qualified Data.Map            as M
 import           Data.Monoid         (mconcat, mempty, (<>))
-import           System.FilePath     (takeBaseName, takeDirectory, takeExtension)
+import           System.FilePath     (takeBaseName, takeDirectory, takeFileName)
 
 import           Hakyll
 import           Text.Pandoc.Options
@@ -103,15 +103,16 @@ main = hakyll $ do
       route $ constRoute "css/default.css"
       compile compileScss
   match defJsPat $ compile getResourceBody
-  create ["js/default.js"] $ do
+  match "dist/*.js" $ do
+    route . customRoute $ \ident ->
+      "js/" <> (takeFileName . toFilePath) ident
+    compile copyFileCompiler
+  match "js/**.js" $ do
     route idRoute
-    compile $
-      loadAll defJsPat >>=
-      concatMapM (compressJS . itemBody <=< compileES6) >>=
-      makeItem
-  match ("js/*.js" .||. "js/*.es") $ do
+    compile copyFileCompiler
+  match "js/*.es" $ do
     route $ setExtension "js"
-    compile $ (withItemBody compressJS <=< compileES6) =<< getResourceBody
+    compile $ withItemBody (compressJS <=< compileES6) =<< getResourceBody
 
 buildPosts :: Tags -> String -> Rules ()
 buildPosts tags dir = do
@@ -136,9 +137,6 @@ buildPosts tags dir = do
           loadAndApplyTemplate "templates/post.html" ctx >>=
           finish ctx
 
-concatMapM :: (Functor m, Monad m) => (a -> m [b]) -> [a] -> m [b]
-concatMapM f xs = concat <$> mapM f xs
-
 compileScss :: Compiler (Item String)
 compileScss = do
   i <- getResourceString
@@ -161,16 +159,8 @@ finish ctx i =
   loadAndApplyTemplate "templates/default.html" ctx i >>=
   ((replaceAll "index.html" (const mempty) <$>) <$>) . relativizeUrls
 
-compileES6' :: String -> Compiler String
-compileES6' = unixFilter "babel" ["--es2015"]
-
-compileES6 :: Item String -> Compiler (Item String)
-compileES6 i =
-  case takeExtension . toFilePath . itemIdentifier $ i of
-    ".es" -> withItemBody
-             (unixFilter "babel" ["--es2015"]) i
-    ".js" -> return i
-    _ -> error "Somehow tried to JS compile a non-js file"
+compileES6 :: String -> Compiler String
+compileES6 = unixFilter "babel" ["--es2015"]
 
 compressJS :: String -> Compiler String
 compressJS = unixFilter "uglifyjs" ["-cm"]

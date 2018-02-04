@@ -150,6 +150,6 @@ to mix well.
 
 <script type="text/javascript">
 document.addEventListener("DOMContentLoaded", function() {
-    Elm.embed(Elm.Automaton, $('#automaton').get(0));
+    Elm.embed(Elm.Automaton, document.querySelector('#automaton'));
 });
 </script>

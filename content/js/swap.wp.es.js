@@ -1,5 +1,7 @@
 // Doesn't currently handle nested swaps
-(($, sidenote) => {
+import $ from 'jquery'
+
+import sidenote from 'sidenote'
 
 const translations = (top, bottom) => {
   const bottomToTop = top.offset().top - bottom.offset().top;
@@ -141,5 +143,3 @@ const decorate = () => {
 };
 
 $(() => {decorate();});
-
-})($, sidenote);

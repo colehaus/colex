@@ -13,6 +13,6 @@
       nodeDependencies = nodeEnv.shell.nodeDependencies;
       NODE_PATH = "${nodeDependencies}/lib/node_modules";
       buildPhase = ''
-        "$nodeDependencies"/bin/webpack --env.outDir="$out"
+        "$nodeDependencies"/bin/webpack
       '';
     }
