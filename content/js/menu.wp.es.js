@@ -10,7 +10,7 @@ const defaultHandlers = el => {
   }
   el.parent().remove();
 };
-const getMenu = el => $('#'+ $(el).closest('[type="menu"]').attr('menu'));
+const getMenu = el => $('#'+ $(el).closest('[type="menu"]').attr('data-menu'));
 
 const buildMenu = el => {
   const menuItem = el_ => {

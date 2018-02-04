@@ -52,7 +52,7 @@ const transition = (from, to, finalCb) => {
 const choose = ev => {
   ev.stopPropagation();
   const el = $(ev.target);
-  const trs = $('[menu="' + $(ev.target).closest('menu').attr('id') + '"]');
+  const trs = $('[data-menu="' + $(ev.target).closest('menu').attr('id') + '"]');
   trs.each((_, tr) => {
     const ch = $($(tr).children()[el.index()]);
     transition(ch.siblings('.open'), ch, () => {

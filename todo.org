@@ -24,7 +24,8 @@
 * TODO Edit defer/async message
 * TODO Switch to new version of d3
 * TODO Autogenerate chunk per post
-* TODO Fix swapper in quorum
+* DONE Fix swapper in quorum
+  CLOSED: [2018-02-04 Sun 01:42]
 * TODO Eliminate jquery manual load from bibliometric
 * TODO Prune extraneous copies in _site
 * TODO Uglify only for prod

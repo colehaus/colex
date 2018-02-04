@@ -63,7 +63,7 @@ Statistics!
 
 # Statistics
 
-<ul class="switch" type="menu" menu="stat-type">
+<ul class="switch" type="menu" data-menu="stat-type">
 <li class="open">
 ## Bayesian
 </li><li>
@@ -82,7 +82,7 @@ believing that $x > y$ or that $y > x$.". The first two correspond to quorum and
 the third corresponds to a failure of quorum.
 
 To establish $\mu_2 \gg \mu_1$, we construct a lower
-<span class="inline switch" type="menu" menu="stat-type">
+<span class="inline switch" type="menu" data-menu="stat-type">
 <span class="open">credible bound (a one-sided
 [credible interval](https://en.wikipedia.org/wiki/Credible_interval))</span>
 <span>confidence bound (a one-sided
@@ -93,7 +93,7 @@ $\mu_2 - \mu_1$ is largest. If the delimited region includes $0$, we must reject
 $\mu_2 \gg \mu_1$ (i.e. if the region most favorable to $\mu_2$ still
 doesn't exclude $0$, we aren't justified in believing $\mu_2 > \mu_1$ (at the
 chosen
-<span class="inline switch" type="menu" menu="stat-type">
+<span class="inline switch" type="menu" data-menu="stat-type">
 <span class="open">credibility</span>
 <span>confidence</span>
 </span>
@@ -106,13 +106,13 @@ If we reject $\mu_2 \gg \mu_1$ and $\mu_1 \gg \mu_2$, we must accept
 $\mu_2 \approx \mu_1$ and declare a failure of quorum.
 
 For example, we'd like to <a href="#arg-map" id="bayes">determine if the
-<span class="inline switch" type="menu" menu="stat-type">
+<span class="inline switch" type="menu" data-menu="stat-type">
 <span class="open">credible</span>
 <span>confidence</span> 
 </span>
 bounds support the conclusion</a> that buko pie really is preferred to fish pie.
 If Pie Club bylaws specified a $95\%$
-<span class="inline switch" type="menu" menu="stat-type">
+<span class="inline switch" type="menu" data-menu="stat-type">
 <span class="open">credible</span>
 <span>confidence</span> 
 </span>
@@ -124,7 +124,7 @@ because it's bounded region excludes $0$.) Alternately, if the lower bound
 stretched to $-0.1$ and the upper bound stretched to $0.58$, we'd declare a
 failure of quorum.
 
-<ul class="switch" type="menu" menu="stat-type">
+<ul class="switch" type="menu" data-menu="stat-type">
 <li class="open">
 How do we construct these credible bounds? We derive them from the
 [posterior probability distribution](https://en.wikipedia.org/wiki/Posterior_probability)
@@ -172,7 +172,7 @@ distribution.
 <li>
 How do we construct these confidence bounds? That depends.
 
-<ul class="switch" type="menu" menu="sample-size">
+<ul class="switch" type="menu" data-menu="sample-size">
 <li class="open">
 If the number of votes is "large" (say, more than 30) (and the distribution of
 votes satisfies some other
@@ -234,7 +234,7 @@ Maybe look for:
   <progress value="0"></progress>
   </div>
   <output id="stat-out">
-  <ul class="switch" type="menu" menu="stat-type">
+  <ul class="switch" type="menu" data-menu="stat-type">
   <li class="open">
   <div id="best">
   <figure id="mean"><figcaption>Mean of differences</figcaption><div></div></figure>
@@ -272,7 +272,7 @@ effects.
 Also, <a href="#arg-map" id="complicated">isn't all this math a bit
 forbidding?</a>
 
-<ul class="switch" type="menu" menu="stat-type"><li class="open">
+<ul class="switch" type="menu" data-menu="stat-type"><li class="open">
 The conclusions have a rather intuitive interpretation in terms of likelihood,
 maybe even more intuitive than the traditional quorum interpretation ("We ensure
 that our decisions are representative by requiring 25% of our members to
@@ -316,7 +316,7 @@ quorum.
 
 # Extended procedures
 
-<ul class="switch" type="menu" menu="stat-type">
+<ul class="switch" type="menu" data-menu="stat-type">
 <li class="open">
 ## Non-parametric
 
