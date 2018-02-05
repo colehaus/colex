@@ -4,8 +4,10 @@
 * DONE prefetch fonts
   CLOSED: [2018-02-01 Thu 21:59]
 * Cleanup nix
-** TODO Use `runCommand`
-** TODO Clean up nativeBuildInputs
+** DONE Use `runCommand`
+   CLOSED: [2018-02-05 Mon 01:20]
+** DONE Clean up nativeBuildInputs
+   CLOSED: [2018-02-05 Mon 01:20]
 * DONE Add drafts folder
   CLOSED: [2018-02-02 Fri 23:15]
 * TODO Fix spurious rebuilds in nix
@@ -20,8 +22,10 @@
   CLOSED: [2018-02-03 Sat 22:16]
 * TODO Fix spurious rebuilds in hakyll (site.scss)
 * TODO whitespace fixup
-* TODO Try site without font
-* TODO Edit defer/async message
+* DONE Try site without font
+  CLOSED: [2018-02-05 Mon 01:12]
+* DONE Edit defer/async message
+  CLOSED: [2018-02-05 Mon 01:12]
 * TODO Switch to new version of d3
 * TODO Autogenerate chunk per post
 * DONE Fix swapper in quorum

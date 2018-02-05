@@ -13,7 +13,7 @@
       name = "hakyllColEx";
       src = ./content;
       phases = "unpackPhase buildPhase";
-      buildInputs = [
+      nativeBuildInputs = [
         generator
         pkgs.sass
         nodeEnv."better-babel-cli-^1.2.3"
