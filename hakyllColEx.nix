@@ -1,13 +1,6 @@
 { pkgs ? import <nixpkgs> {}, webpackColEx } :
   let
     generator = pkgs.haskellPackages.callCabal2nix "ColEx" ./hakyll {};
-    nodeEnv = pkgs.callPackage ./callNpm2nix.nix {
-      name = "forHakyll";
-      npmPkgs = [
-        { uglify-js = "^3.3.9"; }
-        { better-babel-cli = "^1.2.3"; }
-      ];
-    };
   in
     pkgs.stdenv.mkDerivation {
       name = "hakyllColEx";
@@ -16,13 +9,14 @@
       nativeBuildInputs = [
         generator
         pkgs.sass
-        nodeEnv."better-babel-cli-^1.2.3"
-        nodeEnv."uglify-js-^3.3.9"
-        webpackColEx
       ];
+      inherit webpackColEx;
       LC_ALL = "en_US.UTF-8";
       buildPhase = ''
         site clean
+        rm -rf dist
+        mkdir dist
+        cp -r "$webpackColEx"/* dist
         site build
         mkdir $out
         cp -r _site/* $out
