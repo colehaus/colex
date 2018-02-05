@@ -1,42 +1,44 @@
-* DONE Make mathjax script faster
-  CLOSED: [2018-02-01 Thu 21:47]
+* DONE Prune extraneous copies in _site
+  CLOSED: [2018-02-05 Mon 02:44]
+* TODO Script to set up webpack and hakyll watch
+* TODO Automate deploy
+** CI vs release.nix? Probably release.nix because I don't have automated tests
+* TODO Autogenerate chunk per post
+* TODO Add shell mode to overall build that just prepares env
 * TODO Clean up arg-map on indices
-* DONE prefetch fonts
-  CLOSED: [2018-02-01 Thu 21:59]
+* TODO Fix spurious rebuilds in nix
+** DONE npm rebuilds on any change to `content`
+   CLOSED: [2018-02-03 Sat 13:55]
+** TODO webpack on any change to `content`
+* TODO whitespace fixup
+* TODO Make arg-map links more distinguishable
+* TODO Fix spurious rebuilds in hakyll (site.scss)
+* TODO Switch to new version of d3
+* TODO Eliminate jquery manual load from bibliometric
+* TODO Eliminate mathjax overlap
+* TODO Introduce flow
 * Cleanup nix
 ** DONE Use `runCommand`
    CLOSED: [2018-02-05 Mon 01:20]
 ** DONE Clean up nativeBuildInputs
    CLOSED: [2018-02-05 Mon 01:20]
+* DONE Make mathjax script faster
+  CLOSED: [2018-02-01 Thu 21:47]
+* DONE prefetch fonts
+  CLOSED: [2018-02-01 Thu 21:59]
 * DONE Add drafts folder
   CLOSED: [2018-02-02 Fri 23:15]
-* TODO Fix spurious rebuilds in nix
-** DONE npm rebuilds on any change to `content`
-   CLOSED: [2018-02-03 Sat 13:55]
-** TODO webpack on any change to `content`
-* TODO Make arg-map links more distinguishable
-* TODO Automate deploy
-** CI vs release.nix? Probably release.nix because I don't have automated tests
-* TODO Add shell mode to overall build that just prepares env
 * DONE Link up webpack and hakyll build outputs
   CLOSED: [2018-02-03 Sat 22:16]
-* TODO Fix spurious rebuilds in hakyll (site.scss)
-* TODO whitespace fixup
 * DONE Try site without font
   CLOSED: [2018-02-05 Mon 01:12]
 * DONE Edit defer/async message
   CLOSED: [2018-02-05 Mon 01:12]
-* TODO Switch to new version of d3
-* TODO Autogenerate chunk per post
 * DONE Fix swapper in quorum
   CLOSED: [2018-02-04 Sun 01:42]
-* TODO Eliminate jquery manual load from bibliometric
-* TODO Prune extraneous copies in _site
 * DONE Uglify only for prod
   CLOSED: [2018-02-05 Mon 00:55]
-* TODO Script to set up webpack and hakyll watch
 * DONE Enable source maps
   CLOSED: [2018-02-04 Sun 21:04]
 * DONE Set up webpack watch togglability
   CLOSED: [2018-02-04 Sun 21:04]
-* TODO Eliminate mathjax overlap

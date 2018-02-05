@@ -1,7 +1,6 @@
 {-# LANGUAGE OverloadedStrings #-}
 
 import           Control.Arrow       (first)
-import           Control.Monad       ((<=<))
 import           Data.Functor        ((<$>))
 import qualified Data.Map            as M
 import           Data.Monoid         (mconcat, mempty, (<>))
@@ -111,12 +110,12 @@ main = hakyll $ do
     route . customRoute $ \ident ->
       "js/" <> (takeFileName . toFilePath) ident
     compile copyFileCompiler
-  match "js/**.js" $ do
+  match (
+    "js/**.js" .&&.
+    complement "js/**.wp.es.js" .&&.
+    complement "js/**/elm_dependencies/**.js") $ do
     route idRoute
     compile copyFileCompiler
-  match "js/*.es" $ do
-    route $ setExtension "js"
-    compile $ withItemBody (compressJS <=< compileES6) =<< getResourceBody
 
 buildPosts :: Tags -> String -> Rules ()
 buildPosts tags dir = do
@@ -162,12 +161,6 @@ finish :: Context String -> Item String -> Compiler (Item String)
 finish ctx i =
   loadAndApplyTemplate "templates/default.html" ctx i >>=
   ((replaceAll "index.html" (const mempty) <$>) <$>) . relativizeUrls
-
-compileES6 :: String -> Compiler String
-compileES6 = unixFilter "babel" ["--es2015"]
-
-compressJS :: String -> Compiler String
-compressJS = unixFilter "uglifyjs" ["-cm"]
 
 postCtx :: Context String
 postCtx =
