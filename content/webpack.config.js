@@ -5,7 +5,7 @@ const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
 const forProd = process.env.NODE_ENV === 'production'
 
-const outDir = path.resolve(__dirname, process.env.outDir || 'dist')
+const outDir = path.resolve(__dirname, process.env.OUT_DIR || 'dist')
 const sourceMap = forProd ? 'source-map' : 'cheap-module-source-map'
 const uglify = forProd ? [new UglifyJSPlugin({ sourceMap: true })] : []
 const watch = forProd ? false : true
