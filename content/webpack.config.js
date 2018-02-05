@@ -3,10 +3,16 @@ const webpack = require('webpack');
 const CleanWebpackPlugin = require('clean-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
 
+const forProd = process.env.NODE_ENV === 'production'
+
 const outDir = path.resolve(__dirname, process.env.outDir || 'dist')
+const sourceMap = forProd ? 'source-map' : 'cheap-module-source-map'
+const uglify = forProd ? [new UglifyJSPlugin({ sourceMap: true })] : []
+const watch = forProd ? false : true
 
 module.exports = {
-  watch: true,
+  devtool: sourceMap,
+  watch,
   resolve: {
     extensions: [".wp.es.js", ".es", ".js"],
     modules: process.env.NODE_PATH.split(':').concat(['js/'])
@@ -25,13 +31,12 @@ module.exports = {
     ],
   },
   plugins: [
-    new UglifyJSPlugin(),
     new CleanWebpackPlugin([outDir]),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'common',
       minChunks: 2
     })
-  ],
+  ].concat(uglify),
   entry: {
     scratch: './js/scratch.wp.es.js',
     quorum: './js/quorum.wp.es.js',

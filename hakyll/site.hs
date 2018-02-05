@@ -107,6 +107,10 @@ main = hakyll $ do
     route . customRoute $ \ident ->
       "js/" <> (takeFileName . toFilePath) ident
     compile copyFileCompiler
+  match "dist/*.js.map" $ do
+    route . customRoute $ \ident ->
+      "js/" <> (takeFileName . toFilePath) ident
+    compile copyFileCompiler
   match "js/**.js" $ do
     route idRoute
     compile copyFileCompiler
