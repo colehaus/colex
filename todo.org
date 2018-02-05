@@ -1,6 +1,7 @@
 * DONE Prune extraneous copies in _site
   CLOSED: [2018-02-05 Mon 02:44]
-* TODO Script to set up webpack and hakyll watch
+* DONE Script to set up webpack and hakyll watch
+  CLOSED: [2018-02-05 Mon 04:22]
 * TODO Automate deploy
 ** CI vs release.nix? Probably release.nix because I don't have automated tests
 * TODO Autogenerate chunk per post

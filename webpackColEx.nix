@@ -10,10 +10,10 @@
       src = ./content;
       phases = "unpackPhase buildPhase";
       nativeBuildInputs = [ pkgs.nodejs nodeEnv.shell ];
-      nodeDependencies = nodeEnv.shell.nodeDependencies;
-      NODE_PATH = "${nodeDependencies}/lib/node_modules";
+      NODE_DEPENDENCIES = nodeEnv.shell.nodeDependencies;
+      NODE_PATH = "${NODE_DEPENDENCIES}/lib/node_modules";
       NODE_ENV = "production";
       buildPhase = ''
-        OUT_DIR="$out" "$nodeDependencies"/bin/webpack
+        OUT_DIR="$out" "$NODE_DEPENDENCIES"/bin/webpack
       '';
     }

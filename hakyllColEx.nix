@@ -10,6 +10,7 @@
         generator
         pkgs.sass
       ];
+      NODE_DEPENDENCIES = webpackColEx.NODE_DEPENDENCIES;
       inherit webpackColEx;
       LC_ALL = "en_US.UTF-8";
       buildPhase = ''
