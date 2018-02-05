@@ -66,7 +66,7 @@ Pie Club is voting on which pie will take home the title <q>Pie of the Decade</q
 <p>So quorum is a proxy for representativeness. But as the examples demonstrate, it’s, at best, a loose proxy. Sometimes (as in the <a href="#example1">first example</a>) quorum is too demanding—it forbids a decision when the votes endorse one. On other occasions (as in the <a href="#example2">second example</a>), quorum is too lax—it declares representativeness when there can be no certainty of it.</p>
 <p>Is there an alternative then? How do we determine if a vote is representative? Statistics!</p>
 <h3 id="statistics">Statistics</h3>
-<ul class="switch" type="menu" menu="stat-type">
+<ul class="switch" type="menu" data-menu="stat-type">
 <li class="open">
 <h4 id="bayesian">Bayesian</h4>
 </li>
@@ -85,7 +85,7 @@ Pie Club is voting on which pie will take home the title <q>Pie of the Decade</q
 <p>The approach for <span class="math inline">\(\mu_1 \gg \mu_2\)</span> is similar (simply swap in an upper bound or <span class="math inline">\(\mu_1 - \mu_2\)</span>).</p>
 <p>If we reject <span class="math inline">\(\mu_2 \gg \mu_1\)</span> and <span class="math inline">\(\mu_1 \gg \mu_2\)</span>, we must accept <span class="math inline">\(\mu_2 \approx \mu_1\)</span> and declare a failure of quorum.</p>
 <p>For example, we’d like to <a href="#arg-map" id="bayes">determine if the <span class="inline switch" type="menu" data-menu="stat-type"> <span class="open">credible</span> <span>confidence</span> </span> bounds support the conclusion</a> that buko pie really is preferred to fish pie. If Pie Club bylaws specified a <span class="math inline">\(95\%\)</span> <span class="inline switch" type="menu" data-menu="stat-type"> <span class="open">credible</span> <span>confidence</span> </span> bound and the lower bound for <span class="math inline">\(\mu_{buko} - \mu_{fish}\)</span> stretched to <span class="math inline">\(0.359\)</span> while the upper bound stretched to <span class="math inline">\(0.58\)</span>, we’d declare that quorum had been reached in favor of buko pie. (We reject <span class="math inline">\(\mu_{fish} \gg \mu_{buko}\)</span> because it’s bounded region includes <span class="math inline">\(0\)</span>. We can’t reject <span class="math inline">\(\mu_{buko} \gg \mu_{fish}\)</span> because it’s bounded region excludes <span class="math inline">\(0\)</span>.) Alternately, if the lower bound stretched to <span class="math inline">\(-0.1\)</span> and the upper bound stretched to <span class="math inline">\(0.58\)</span>, we’d declare a failure of quorum.</p>
-<ul class="switch" type="menu" menu="stat-type">
+<ul class="switch" type="menu" data-menu="stat-type">
 <li class="open">
 <p>How do we construct these credible bounds? We derive them from the <a href="https://en.wikipedia.org/wiki/Posterior_probability">posterior probability distribution</a> created using Bayesian parameter estimation <span class="citation" data-cites="kruschke13">(Kruschke 2013)</span>. To construct this posterior, we start by specifying <span class="noted">a model for the distribution of paired differences</span><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. Because the difference can only take on values in the interval <span class="math inline">\(\left(-1, 1\right)\)</span>, the (<a href="https://en.wikipedia.org/wiki/Location-scale_family">transformed</a> from <span class="math inline">\((0, 1)\)</span> to <span class="math inline">\((-1, 1)\)</span>) <span class="noted"><a href="https://en.wikipedia.org/wiki/Beta_distribution">beta distribution</a> is a sensible choice</span><a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. To get a sense of the beta distribution, you can look at the calculator <a href="http://keisan.casio.com/has10/SpecExec.cgi?id=system/2006/1180573226">here</a>.</p>
 <p>Now that we have a model of differences, we must choose <a href="https://en.wikipedia.org/wiki/Prior_probability">prior probability distributions</a> for its parameters. Note that <span class="math inline">\(\alpha = \beta = 1\)</span> collapses the beta distribution to the uniform distribution. Because the uniform distribution is the <a href="https://en.wikipedia.org/wiki/Maximum_entropy_probability_distribution">maximum entropy distribution</a> on a supported interval, we should choose prior distributions of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> with means of <span class="math inline">\(1\)</span> <span class="citation" data-cites="sivia06">(Sivia and Skilling 2006)</span>. The maximum entropy distribution with mean <span class="math inline">\(1\)</span> supported on <span class="math inline">\(\left(0, \infty\right)\)</span> is the exponential distribution with <span class="math inline">\(\lambda = 1\)</span>. So the prior on each of <span class="math inline">\(\alpha\)</span> and <span class="math inline">\(\beta\)</span> is <span class="math inline">\(Exp(1)\)</span>. All of this is diagrammatically represented in the accompanying figure.</p>
@@ -100,7 +100,7 @@ Now that we have our data and prior probability distributions, <a href="https://
 </li>
 <li>
 <p>How do we construct these confidence bounds? That depends.</p>
-<ul class="switch" type="menu" menu="sample-size">
+<ul class="switch" type="menu" data-menu="sample-size">
 <li class="open">
 If the number of votes is <q>large</q> (say, more than 30) (and the distribution of votes satisfies some other <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">conditions</a>), we can do <span class="noted">a <span class="math inline">\(t\)</span>-test on the paired differences of the votes.</span><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a>
 </li>
@@ -161,7 +161,7 @@ Differences (Prop 2 - Prop 1)
 <button class="preview" type="button">Update Preview</button> <button class="analyze" type="button">Analyze</button> <progress value="0"></progress>
 </div>
 <output id="stat-out">
-<ul class="switch" type="menu" menu="stat-type">
+<ul class="switch" type="menu" data-menu="stat-type">
 <li class="open">
 <div id="best">
 <figure id="mean">
@@ -210,7 +210,7 @@ Mean of differences
 <p>We’ve tacitly <a href="#arg-map" id="random">assumed that our actual voters are a random sample</a> of the population of potential voters. This is false (Though one could make it true through adoption of appropriate <a href="https://en.wikipedia.org/wiki/Sortition">voting procedures</a>). <a href="https://en.wikipedia.org/wiki/Self-selection_bias">Self-selection bias</a>, whether due to differential interest, availability, transportation, &amp;c., means that the sample is non-representative. However, the problem of non-random samples also applies to traditional quorum’s assurances of representativeness.</p>
 <p>The procedure also accepts the claim of <span class="citation" data-cites="ronr">(Robert, Honemann, and Balch 2011)</span> that the purpose of quorum is to ensure representativeness. In consequence, the procedure takes votes as exogenous and characterizes only the resulting information. But one could support quorum for its deliberative, community-building, or even obstructive effects.</p>
 <p>Also, <a href="#arg-map" id="complicated">isn’t all this math a bit forbidding?</a></p>
-<ul class="switch" type="menu" menu="stat-type">
+<ul class="switch" type="menu" data-menu="stat-type">
 <li class="open">
 The conclusions have a rather intuitive interpretation in terms of likelihood, maybe even more intuitive than the traditional quorum interpretation (<q>We ensure that our decisions are representative by requiring 25% of our members to attend.</q>). But getting to the conclusions requires a computer and uncommon math.
 </li>
@@ -229,7 +229,7 @@ The conclusions have a rather intuitive interpretation in terms of likelihood, m
 <p>Because this calculation is less accessible and will likely be performed by one or a few individuals, it’s import to establish a clear and strict procedure. We should not permit, for example, the choice of modeling distribution after exploratory data analysis. The more degrees of freedom we give the analyst, the more power we give them to influence results <span class="citation" data-cites="simmons11">(Simmons, Nelson, and Simonsohn 2011)</span>.</p>
 <p>Finally, this procedure <a href="#arg-map" id="post-hoc">admits only post-hoc declarations of quorum</a>. With the traditional procedure, we can just take attendance at a meeting and determine the quorum status for every referendum therein. With the new procedure, after tallying the votes on an issue, we have to run the quorum calculation to retroactively determine quorum if we achieved quorum.</p>
 <h3 id="extended-procedures">Extended procedures</h3>
-<ul class="switch" type="menu" menu="stat-type">
+<ul class="switch" type="menu" data-menu="stat-type">
 <li class="open">
 <h4 id="non-parametric">Non-parametric</h4>
 <p>As mentioned, the procedure specified above assumes that the paired differences are amenable to modelling by a beta distribution. This leads to overconfident inferences <span class="citation" data-cites="hoeting99">(Hoeting et al. 1999)</span>. The assumption can be relaxed through the use of Bayesian <a href="https://en.wikipedia.org/wiki/Nonparametric_statistics">non-parametric</a> methods <span class="citation" data-cites="walker99">(Walker et al. 1999)</span>. The idea is to use a model with an infinite number of parameters and marginalize out surplus dimensions on our finite data.</p>
@@ -339,19 +339,12 @@ For simplicity, we looked at referenda with only two alternatives. We can extend
 </div></div>
 
 
-<script type="text/javascript" src="../../js/default.js"></script>
+<script defer type="text/javascript" src="../../js/common.js"></script>
+<script defer type="text/javascript" src="../../js/custom-elements.js"></script>
 
-<script type="text/javascript" src="../../js/jquery.flot.min.js"></script>
+<script defer type="text/javascript" src="../../js/quorum.js"></script>
 
-<script type="text/javascript" src="../../js/jstat.min.js"></script>
-
-<script type="text/javascript" src="../../js/plot.js"></script>
-
-<script type="text/javascript" src="../../js/mcmc.js"></script>
-
-<script type="text/javascript" src="../../js/quorum.js"></script>
-
-<script type="text/javascript" src="../../js/quorum-map.js"></script>
+<script defer type="text/javascript" src="../../js/quorum-map.js"></script>
 
 
   </body>

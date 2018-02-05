@@ -44,6 +44,9 @@ th{
  content:'▼ '}
 
 .noted{
+ box-shadow:inset 0px 0px 5px #eee;
+ border-radius:4px;
+ padding:0px 5px;
  background-color:#dee2b5}
  .noted::after{
  content:" ↪"}
@@ -59,7 +62,8 @@ th{
  margin:0;
  padding:0}
  .sidenote>*:first-child::first-letter{
- background-color:#dee2b5}
+ background-color:#dee2b5;
+ box-shadow:inset 0px 0px 5px #eee}
 
 .footnoteRef{
  display:none}
@@ -444,10 +448,14 @@ blockquote::after{
 
 .conversation{
  display:inline-block}
+ .conversation>p{
+ box-shadow:inset 0px 0px 5px #eee;
+ border-radius:4px;
+ padding:0px 5px}
  .conversation>p:nth-of-type(odd){
- background-color:rgba(209,171,230,0.5)}
+ background-color:rgba(209,171,230,0.15)}
  .conversation>p:nth-of-type(even){
- background-color:rgba(230,171,208,0.5)}
+ background-color:rgba(230,171,208,0.15)}
 
 dd{
  margin-left:2ex}
