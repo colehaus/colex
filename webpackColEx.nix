@@ -1,7 +1,7 @@
 { pkgs ? import <nixpkgs> { } } :
   let
     nodeEnv = pkgs.callPackage ./callNode2nix.nix {
-      name = "ColEx";
+      name = "webpackColExDeps";
       src = ./content/package.json;
     };
   in

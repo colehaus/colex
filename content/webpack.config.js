@@ -27,6 +27,13 @@ module.exports = {
           require.resolve('jquery-flot')
         ],
         use: 'imports-loader?$=jquery,jQuery=jquery'
+      },
+      {
+        test: require.resolve('jquery'),
+        use: [{
+          loader: 'expose-loader',
+          options: 'jQuery'
+        }]
       }
     ],
   },

@@ -14,11 +14,10 @@
       inherit webpackColEx;
       LC_ALL = "en_US.UTF-8";
       buildPhase = ''
-        site clean
         rm -rf dist
         mkdir dist
         cp -r "$webpackColEx"/* dist
-        site build
+        site rebuild
         mkdir $out
         cp -r _site/* $out
       '';

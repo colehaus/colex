@@ -2,7 +2,7 @@
 title: Toward an alternative bibliometric
 published: 2015-03-10
 tags: bibliometrics, science, publishing, bayes, information-theory
-js: /js/default/jquery.min.js, /js/bibliometric.min.js, /js/bibliometric-map.js
+js: /js/bibliometric.js, /js/bibliometric-map.js
 css: bibliometric
 ---
 

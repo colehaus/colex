@@ -101,7 +101,6 @@ main = hakyll $ do
   rulesExtraDependencies [includes] $ match "css/default/site.scss" $ do
       route $ constRoute "css/default.css"
       compile compileScss
-  match defJsPat $ compile getResourceBody
   match "dist/*.js" $ do
     route . customRoute $ \ident ->
       "js/" <> (takeFileName . toFilePath) ident
@@ -147,9 +146,6 @@ compileScss = do
   fmap compressCss <$>
     withItemBody (unixFilter "scss"
                              ["--sourcemap=none", "--trace", "-I", dir]) i
-
-defJsPat :: Pattern
-defJsPat = "js/default/*.js" .||. "js/default/*.es"
 
 mkPostPat :: String -> Pattern
 mkPostPat postDir = fromGlob $ postDir <> "/*/main.*"
