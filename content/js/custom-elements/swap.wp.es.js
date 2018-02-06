@@ -1,7 +1,7 @@
 // Doesn't currently handle nested swaps
 import $ from 'jquery'
 
-import sidenote from 'sidenote'
+import sidenote from 'custom-elements/sidenote'
 
 const translations = (top, bottom) => {
   const bottomToTop = top.offset().top - bottom.offset().top;

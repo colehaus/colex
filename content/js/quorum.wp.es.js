@@ -2,9 +2,9 @@ import 'jquery-flot'
 import $ from 'jquery'
 import jStat from 'jStat'
 
-import colors from 'colors'
-import plot from 'plot'
-import mcmc from 'mcmc'
+import colors from 'libs/colors'
+import plot from 'libs/plot'
+import mcmc from 'libs/mcmc'
 
 const plotOptions = {
   font: {size: 8},

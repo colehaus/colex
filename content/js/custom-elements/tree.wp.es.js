@@ -1,7 +1,7 @@
 import $ from 'jquery'
 
-import menu from 'menu'
-import sidenote from 'sidenote'
+import menu from 'custom-elements/menu'
+import sidenote from 'custom-elements/sidenote'
 
 const transition = (from, to, finalCb) => {
   if (typeof from[0] === 'undefined') { return; }

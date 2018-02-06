@@ -1,5 +1,5 @@
 import jStat from 'jStat'
-import plot from 'plot'
+import plot from 'libs/plot'
 
 var interval = [-1, 1];
 var burn_timeout_id;

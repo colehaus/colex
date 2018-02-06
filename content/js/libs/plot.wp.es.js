@@ -63,10 +63,10 @@ var twoDArrayCol = function (array, col_i) {
 };
 
 export default {
-    twoDArrayCol: twoDArrayCol,
-    histogramCounts: histogramCounts,
-    sampleFunc: sampleFunc,
-    xHistLims: xHistLims,
-    yHistLims: yHistLims,
-    getHeight: getHeight
+    twoDArrayCol,
+    histogramCounts,
+    sampleFunc,
+    xHistLims,
+    yHistLims,
+    getHeight
 };

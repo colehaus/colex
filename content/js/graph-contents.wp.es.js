@@ -1,6 +1,6 @@
 import $ from 'jquery'
 
-import argMap from 'arg-map'
+import argMap from 'libs/arg-map'
 
 $(() => {
 

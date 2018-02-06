@@ -1,4 +1,4 @@
-import 'tree'
-import 'swap'
-import 'sidenote'
-import 'menu'
+import 'custom-elements/tree'
+import 'custom-elements/swap'
+import 'custom-elements/sidenote'
+import 'custom-elements/menu'
