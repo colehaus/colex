@@ -1,5 +1,7 @@
 * DONE Eliminate jquery manual load from bibliometric
   CLOSED: [2018-02-05 Mon 17:35]
+* TODO Reorganize source files
+* TODO Make hakyll work relative to specified root
 * TODO [#A] Set up purescript and elm builds
 ** DONE Modernize purescript
    CLOSED: [2018-02-05 Mon 17:35]

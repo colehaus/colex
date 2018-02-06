@@ -1,24 +1,35 @@
-{ pkgs ? import <nixpkgs> {}, webpackColEx } :
+{ pkgs ? import <nixpkgs> {} } :
   let
     generator = pkgs.haskellPackages.callCabal2nix "ColEx" ./hakyll {};
+    webpackColEx = pkgs.callPackage ./webpackColEx.nix {};
+    bibliometric = pkgs.callPackage ./purescript.nix {
+      name = "bibliometric";
+      src = ./content/js/bibliometric;
+    };
   in
     pkgs.stdenv.mkDerivation {
       name = "hakyllColEx";
       src = ./content;
-      phases = "unpackPhase buildPhase";
+      phases = [ "unpackPhase" "patchPhase" "buildPhase" "installPhase" ];
       nativeBuildInputs = [
         generator
         pkgs.sass
       ];
-      NODE_DEPENDENCIES = webpackColEx.NODE_DEPENDENCIES;
       inherit webpackColEx;
+      inherit bibliometric;
       LC_ALL = "en_US.UTF-8";
-      buildPhase = ''
-        rm -rf dist
+      # TODO Remove `rm` once we reorganize source directory
+      patchPhase = ''
+        rm -r dist
         mkdir dist
-        cp -r "$webpackColEx"/* dist
+        cp "$webpackColEx"/* dist
+        cp "$bibliometric"/* dist
+      '';
+      buildPhase = ''
         site rebuild
-        mkdir $out
+      '';
+      installPhase = ''
+        mkdir "$out"
         cp -r _site/* $out
       '';
     }

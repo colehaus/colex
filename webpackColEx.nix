@@ -1,14 +1,14 @@
 { pkgs ? import <nixpkgs> { } } :
   let
     nodeEnv = pkgs.callPackage ./callNode2nix.nix {
-      name = "webpackColExDeps";
+      name = "webpackColEx";
       src = ./content/package.json;
     };
   in
     pkgs.stdenv.mkDerivation rec {
       name = "webpackColEx";
       src = ./content;
-      phases = "unpackPhase buildPhase";
+      phases = [ "unpackPhase" "buildPhase" ];
       nativeBuildInputs = [ pkgs.nodejs nodeEnv.shell ];
       NODE_DEPENDENCIES = nodeEnv.shell.nodeDependencies;
       NODE_PATH = "${NODE_DEPENDENCIES}/lib/node_modules";
