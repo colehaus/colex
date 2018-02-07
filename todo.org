@@ -11,7 +11,8 @@
 * TODO Sourcemaps and uglify for ps and elm
 * TODO Mobilize
 ** TODO Take tufte sidenotes
-* TODO Clean up graph of contents para spacing
+* DONE Clean up graph of contents para spacing
+  CLOSED: [2018-02-07 Wed 01:02]
 * TODO [#B] Add shell mode to overall build that just prepares env
 * TODO [#C] Make hakyll work relative to specified root
 * TODO [#C] Set up purescript and elm builds

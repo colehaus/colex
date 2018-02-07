@@ -6,7 +6,7 @@ module Main where
 
 import Control.Arrow (first)
 import Data.Functor ((<$>))
-import qualified Data.Map            as M
+import qualified Data.Map as M
 import Data.Monoid (mconcat, mempty, (<>))
 import System.FilePath (takeBaseName, takeDirectory, takeFileName)
 import Text.Pandoc.Options
@@ -63,16 +63,19 @@ main =
       defaultTemplate
       (narrowEx templates "templates/archive.html")
       tags
-    _ <- match "images/**" $ do
-      route idRoute
-      compile copyFileCompiler
+    _ <-
+      match "images/**" $ do
+        route idRoute
+        compile copyFileCompiler
     -- Copy output from webpack, purescript, &c.
-    _ <- match "js/dist/*" $ do
-      fileInDirectoryRoute "js"
-      compile copyFileCompiler
-    _ <- match "js/cooperatives/vendoredOut/*.js" $ do
-      fileInDirectoryRoute "js"
-      compile copyFileCompiler
+    _ <-
+      match "js/dist/*" $ do
+        fileInDirectoryRoute "js"
+        compile copyFileCompiler
+    _ <-
+      match "js/cooperatives/vendoredOut/*.js" $ do
+        fileInDirectoryRoute "js"
+        compile copyFileCompiler
     pure ()
 
 buildPages
@@ -153,11 +156,12 @@ buildIndex defaultTemplate indexTemplate pages =
          loadAndApplyTemplate indexTemplate ctx >>=
          finish defaultTemplate ctx
 
-buildArchive :: Blessed "post" Pattern
-             -> Blessed "template" Identifier
-             -> Blessed "template" Identifier
-             -> Tags
-             -> Rules ()
+buildArchive
+  :: Blessed "post" Pattern
+  -> Blessed "template" Identifier
+  -> Blessed "template" Identifier
+  -> Tags
+  -> Rules ()
 buildArchive postPat defaultTemplate archiveTemplate tags =
   create ["archive"] $ do
     route $ constRoute "posts/index.html"
@@ -182,8 +186,9 @@ buildCss = do
       compile compileScss
 
 fileInDirectoryRoute :: FilePath -> Rules ()
-fileInDirectoryRoute dir = route . customRoute $ \ident ->
-  dir <> "/" <> (takeFileName . toFilePath) ident
+fileInDirectoryRoute dir =
+  route . customRoute $ \ident ->
+    dir <> "/" <> (takeFileName . toFilePath) ident
 
 buildPosts
   :: Blessed "template" Identifier
@@ -262,6 +267,7 @@ listFieldWith' k ctx f =
 postCtx :: Context String
 postCtx =
   dateField "date" "%B %e, %Y" <> dateField "num-date" "%F" <> defaultContext
+
 overCtx :: Blessed "overlay" Pattern -> Context String
 overCtx overPat =
   field "overlay" $
@@ -269,6 +275,7 @@ overCtx overPat =
   narrowEx overPat .
   fromFilePath .
   (<> "/overlay.md") . takeDirectory . toFilePath . itemIdentifier
+
 warnCtx :: Blessed "warning" Pattern -> Context String
 warnCtx warnPat =
   listFieldWith'
@@ -282,15 +289,22 @@ warnCtx warnPat =
     split g = pure . g . break (== '|') . itemBody
     details = field "details" $ split (tail . snd)
     summary = field "summary" $ split fst
+
 jsCtx :: Context String
 jsCtx = listFieldWith' "jses" fileNameCtx $ getListMeta "js"
+
 cssCtx :: Context String
 cssCtx = listFieldWith' "csses" fileNameCtx $ getListMeta "css"
+
 fileNameCtx :: Context String
 fileNameCtx = field "filename" $ pure . itemBody
-getListMeta :: MonadMetadata m => String -> Identifier -> m [String]
+
+getListMeta
+  :: MonadMetadata m
+  => String -> Identifier -> m [String]
 getListMeta k ident =
   maybe [] (map trim . splitAll ",") . lookupString k <$> getMetadata ident
+
 tagsCtx :: Tags -> Context String
 tagsCtx tags = listFieldWith' "tags" tagCtx getTags
   where
