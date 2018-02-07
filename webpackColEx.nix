@@ -2,12 +2,12 @@
   let
     nodeEnv = pkgs.callPackage ./callNode2nix.nix {
       name = "webpackColEx";
-      src = ./content/package.json;
+      src = ./content/js/package.json;
     };
   in
     pkgs.stdenv.mkDerivation rec {
       name = "webpackColEx";
-      src = ./content;
+      src = ./content/js;
       phases = [ "unpackPhase" "buildPhase" ];
       nativeBuildInputs = [ pkgs.nodejs nodeEnv.shell ];
       NODE_DEPENDENCIES = nodeEnv.shell.nodeDependencies;

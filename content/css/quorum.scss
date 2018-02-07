@@ -1,5 +1,5 @@
-@import 'default/colors';
-@import 'default/flex-box';
+@import 'libs/colors';
+@import 'libs/flex-box';
 
 $describes-color: nth(map-get($colors, hue), 6);
 

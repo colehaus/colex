@@ -1,4 +1,4 @@
-@import 'default/colors';
+@import 'libs/colors';
 
 $supertype-color: nth(map-get($colors, hue), 6);
 $motivates-color: nth(map-get($colors, hue), 2);

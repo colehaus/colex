@@ -45,14 +45,14 @@ module.exports = {
     })
   ].concat(uglify),
   entry: {
-    scratch: './js/scratch.wp.es.js',
-    quorum: './js/quorum.wp.es.js',
-    'quorum-map': './js/quorum-map.wp.es.js',
-    cooperatives: './js/cooperatives.wp.es.js',
-    'graph-contents': './js/graph-contents.wp.es.js',
-    'bibliometric-map': './js/bibliometric-map.wp.es.js',
-    futurism: './js/futurism.wp.es.js',
-    'custom-elements': './js/custom-elements.wp.es.js'
+    scratch: './scratch.wp.es.js',
+    quorum: './quorum.wp.es.js',
+    'quorum-map': './quorum-map.wp.es.js',
+    cooperatives: './cooperatives.wp.es.js',
+    'graph-contents': './graph-contents.wp.es.js',
+    'bibliometric-map': './bibliometric-map.wp.es.js',
+    futurism: './futurism.wp.es.js',
+    'custom-elements': './custom-elements.wp.es.js'
   },
   output: {
     filename: '[name].js',

@@ -1,4 +1,4 @@
-@import 'default/colors';
+@import 'libs/colors';
 
 $describes-color: nth(map-get($colors, hue), 6);
 $illustrates-color: nth(map-get($colors, hue), 2);
