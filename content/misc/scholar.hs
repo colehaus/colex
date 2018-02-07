@@ -46,7 +46,7 @@ runJournal m journal = (,) <$> pages True 0 [] <*> pages False 0 [] where
 summarize :: [Journal] -> [(Float, Float)]
 summarize = map sumJournal where
   avg xs = fromIntegral (sum xs) / (fromIntegral $ length xs)
-  sumJournal (rep, noRep) = (avg $ map snd rep, avg $ map snd noRep) 
+  sumJournal (rep, noRep) = (avg $ map snd rep, avg $ map snd noRep)
 
 main :: IO ()
 main = withManager defaultManagerSettings $ \m ->

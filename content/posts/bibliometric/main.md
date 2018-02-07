@@ -142,10 +142,10 @@ isolation, is $H(A,B) - \cond{H}{A,B}{\beta} \approx 0.266$.
 </figure>
 
 But what if we don't consider it in isolation? First, we look for the total
-entropy reduction from both studies and find 
+entropy reduction from both studies and find
 $H(A,B) - \cond{H}{A,B}{\alpha,\beta} \approx 0.703$.
 [Note that this is not simply the sum of the isolated
-reductions.]{.noted}[^sum] 
+reductions.]{.noted}[^sum]
 
 <figure>
   <img src="/images/bibliometric/bronchitis-both.svg"
@@ -184,7 +184,7 @@ externalities it generates in $B$.
 
 We'll now jump to [a fourth study](#arg-map){#four} so we can
 examine a fuller set of interactions (i.e. multiples studies citing one study,
-one study citing multiple studies). 
+one study citing multiple studies).
 
 <figure>
   <img src="/images/bibliometric/four.svg"

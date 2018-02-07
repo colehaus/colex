@@ -25,7 +25,7 @@ main = do
   example fourStudies
 
 example = print <<< netScores (\n -> fromJust <<< comboProb n) <<< parse
-  
+
 parse :: String -> Network Variable State [Variable] [State]
 parse s = fromRight <<< fromRight $ e where
   -- Type-checking aid

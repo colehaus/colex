@@ -39,7 +39,7 @@ const nodeData = {
     label: ['Single study'],
     type: 'example',
     x: w =>  w / 8 + 5,
-    y: h => - h / 8 - 10 
+    y: h => - h / 8 - 10
   }, four: {
     label: ['Four studies'],
     type: 'example',
@@ -54,7 +54,7 @@ const nodeData = {
     label: ['Accounts for', 'study design'],
     type: 'benefit',
     x: w =>  w / 8 + 30,
-    y: h => - h / 8 - 30 
+    y: h => - h / 8 - 30
   }, 'repli-beni': {
     label: ['Handles replications'],
     type: 'benefit',
@@ -74,13 +74,13 @@ const nodeData = {
     label: ['Relies on', 'degree of dependence'],
     type: 'problem',
     x: w =>  w / 8 + 50,
-    y: h => - h / 8 - 50 
+    y: h => - h / 8 - 50
   }, incentive: {
     label: ['Not incentive-compatible'],
     type: 'problem',
     x: w =>  w / 8 + 55,
     y: h => - h / 8 - 55
-  } 
+  }
 };
 
 const linkData = [

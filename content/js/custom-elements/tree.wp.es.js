@@ -39,16 +39,16 @@ const transition = (from, to, finalCb) => {
       parent.css('height', pho + (phn - pho) * prog);
       requestAnimationFrame(stage2);
     } else {
-      parent.removeAttr('style'); 
-      from.removeAttr('style'); 
-      to.removeAttr('style'); 
+      parent.removeAttr('style');
+      from.removeAttr('style');
+      to.removeAttr('style');
       finalCb();
     }
     return;
   };
   requestAnimationFrame(stage1);
 };
-    
+
 const choose = ev => {
   ev.stopPropagation();
   const el = $(ev.target);

@@ -9,7 +9,7 @@ const nodeData = {
     label: ['CMF predominate'],
     type: 'background',
     x: w => 0,
-    y: h => h / 4 
+    y: h => h / 4
   }, efficient: {
     label: ['WC at least',  'as efficient'],
     type: 'background',

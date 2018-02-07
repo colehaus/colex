@@ -11,15 +11,15 @@ const translations = (top, bottom) => {
   return {bottomToTop, between, topToBottom};
 };
 
-const distance = (coord1, coord2) => 
+const distance = (coord1, coord2) =>
   Math.sqrt(Math.pow(coord1.x - coord2.x, 2) +
             Math.pow(coord1.y - coord2.y, 2));
 
 const circleFromChord = (startRads, stopRads, startCoord, stopCoord) => {
   const radius = distance(startCoord, stopCoord) /
     Math.sin(Math.abs(stopRads - startRads) / 2) / 2;
-  const center = { 
-    x: startCoord.x - Math.cos(startRads) * radius, 
+  const center = {
+    x: startCoord.x - Math.cos(startRads) * radius,
     y: startCoord.y - Math.sin(startRads) * radius
   };
   return {radius, center};
@@ -33,7 +33,7 @@ const pointOnCircle = ({x, y}, radius, angle) => ({
 const swapTranslate = (topEl, bottomEl, cb) => {
   const betweenEls = topEl.nextUntil(bottomEl);
   const {bottomToTop, between, topToBottom} = translations(topEl, bottomEl);
-  
+
   const angle = Math.PI/4;
   const mkTranslator = trans => {
     let startAngle;
@@ -55,7 +55,7 @@ const swapTranslate = (topEl, bottomEl, cb) => {
   const topTranslator = mkTranslator(topToBottom);
   const bottomTranslator = mkTranslator(bottomToTop);
   const betweenTranslator = mkTranslator(between);
-  
+
   let start, prog;
   const dur = 300;
   const step = timestamp => {
@@ -95,7 +95,7 @@ const swap = function () {
   });
 };
 
-const swapDom = (a, b) => {  
+const swapDom = (a, b) => {
   const aNext = a.next();
   const aSib = aNext[0] === b[0] ? a : aNext;
   b.before(a);
@@ -114,7 +114,7 @@ const groupBy = (fn, ar) => {
       accIndex += 1;
       acc[accIndex] = [ar[i]];
     }
-  } 
+  }
   return acc;
 };
 

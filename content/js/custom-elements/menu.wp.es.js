@@ -1,7 +1,7 @@
 import $ from 'jquery'
 
 const defaultHandlers = el => {
-  if (el.attr('type') === 'radio') { 
+  if (el.attr('type') === 'radio') {
     const gp = el.attr('radiogroup');
     const mn = el.closest('menu');
     const sel = gp ? 'menuitem[radiogroup="'+gp+'"]' : 'menuitem:not([radiogroup])';
@@ -75,18 +75,18 @@ const toggleMenu = ev => {
     'A'
   ].some(tg => ev.target.nodeName == tg);
   if (isInter) {return;}
-  
+
   ev.stopPropagation();
   const isPopup = function () {
     const el = $(this);
     const pe = el.parent().get(0);
-    
+
     const isMenu = this.nodeName === 'MENU';
     const isSelfPop = el.attr('type') === 'popup';
-    
+
     return isMenu && (isSelfPop || typeof pe !== 'undefined' && isPopup(pe));
   };
-  
+
   const mn = getMenu(ev.target).filter(isPopup);
   let ul = mn.children('ul.menu');
   $('ul.menu').remove();

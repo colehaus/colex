@@ -170,7 +170,7 @@ const best = ds => {
   const progress = x => {
     $('progress').attr('value', x);
   };
-  
+
   $(".analyze").html('Re-analyze');
   mcmc.run_BEST(ds, 20000, 20000, progress, showResult);
 };

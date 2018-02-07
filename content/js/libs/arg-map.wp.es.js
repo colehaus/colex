@@ -26,14 +26,14 @@ if (!Array.prototype.find) {
 
 const uniq = a => {
   let seen = {};
-  return a.filter(item => 
+  return a.filter(item =>
     seen.hasOwnProperty(item) ? false : (seen[item] = true)
   );
 };
 
 const shape = as =>
   r => as.map(a => Math.cos(a) * r + ' ' + Math.sin(a) * r).join(', ');
-  
+
 const triangle = shape([3 / 6 * Math.PI, 7 / 6 * Math.PI, 11 / 6 * Math.PI]);
 const square = shape([
   1 / 4 * Math.PI,
@@ -146,7 +146,7 @@ const mkMap = (canvasId, nodeData, linkData, nodeTypeData, linkTypeData) => {
         nodeData[prop].url = '#' + prop;
       }
     }
-  
+
     const tick = () => {
       const transform = ({x, y}) => 'translate(' + x + ',' + y + ')';
 
@@ -176,7 +176,7 @@ const mkMap = (canvasId, nodeData, linkData, nodeTypeData, linkTypeData) => {
         .attr('orient', 'auto')
       .append('path')
         .attr('d', 'M0,-5L10,0L0,5');
-   
+
     const force = d3.layout.force()
         .nodes(d3.values(nodeData))
         .links(linkData)
