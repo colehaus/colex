@@ -145,7 +145,7 @@ buildPosts tags dir = do
         csl <- load "misc/biblio.csl"
         getResourceBody >>=
           readPandocBiblio readerOpt csl bib >>=
-          saveSnapshot "teaser" . (stripVerbatim . demoteHeaders . demoteHeaders <$>) .
+          saveSnapshot "teaser" . (demoteHeaders . demoteHeaders <$>) .
             writePandocWith writerOpt >>=
           loadAndApplyTemplate "templates/post.html" ctx >>=
           finish ctx
@@ -218,15 +218,6 @@ tagsCtx tags =
     tagCtx = field "tag-name" (return . itemBody) <>
              field "tag-url" (return . toUrl . toFilePath .
                               tagsMakeId tags . itemBody)
-
-
--- Special tag that (in combination with code block) isn't interpolated by pandoc
-stripVerbatim :: String -> String
-stripVerbatim =
-  flip (subRegex (mkRegexWithOpts
-            ("<p><verbatim></p>\n<pre><code>" <>
-             "(.*)" <> "</code></pre>\n</verbatim>") False True))
-  "\\1"
 
 extensions :: Extensions
 extensions =

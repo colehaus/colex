@@ -216,42 +216,41 @@ You can try it out below. Maybe look for:
 <form class="net">
 <div>
 <textarea>
-<verbatim>
+```{=html}
+----
+| A P
+----
+| t 0.8
+| f 0.2
 
-    ----
-    | A P
-    ----
-    | t 0.8
+----
+A | B P
+----
+t | t 0.9
+  | f 0.1
+f | t 0.5
+  | f 0.5
+
+----
+A | C P
+----
+t | t 0.7
+  | f 0.3
+f | t 0.6
+  | f 0.4
+
+----
+B C | D P
+----
+t t | t 0.99
+    | f 0.01
+t f | t 0.9
+    | f 0.1
+f t | t 0.8
     | f 0.2
-
-    ----
-    A | B P
-    ----
-    t | t 0.9
-      | f 0.1
-    f | t 0.5
-      | f 0.5
-
-    ----
-    A | C P
-    ----
-    t | t 0.7
-      | f 0.3
-    f | t 0.6
-      | f 0.4
-
-    ----
-    B C | D P
-    ----
-    t t | t 0.99
-        | f 0.01
-    t f | t 0.9
-        | f 0.1
-    f t | t 0.8
-        | f 0.2
-    f f | t 0.55
-        | f 0.45
-</verbatim>
+f f | t 0.55
+    | f 0.45
+```
 </textarea>
 </div>
 <button type="button">Calculate scores</button>
