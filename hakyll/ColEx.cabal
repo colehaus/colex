@@ -6,11 +6,12 @@ license:            AGPL-3
 
 executable site
   main-is:          site.hs
+  other-modules:    HakyllExtension
   build-depends:    base
-                  , hakyll
-                  , pandoc
+                  , binary
                   , containers
                   , filepath
-                  , regex-compat-tdfa
+                  , hakyll
+                  , pandoc
   ghc-options:      -threaded -Wall
   default-language: Haskell2010
