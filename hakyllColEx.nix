@@ -12,10 +12,14 @@
       src = ./content;
       phases = [ "unpackPhase" "patchPhase" "buildPhase" "installPhase" ];
       nativeBuildInputs = [
+        # TODO remove once we create separate shell nix
+        pkgs.purescript
+        pkgs.nodePackages.pulp
+        pkgs.stack
         generator
         pkgs.sass
       ];
-      # Useful for `nix-shell`
+      # TODO remove once we create separate shell nix
       NODE_DEPENDENCIES = webpackColEx.NODE_DEPENDENCIES;
       inherit webpackColEx;
       inherit bibliometric;

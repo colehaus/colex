@@ -6,35 +6,35 @@ js: /js/bibliometric.js, /js/bibliometric-map.js
 css: bibliometric
 ---
 
-<div id="graph-of-contents"><a href="#arg-map">Contents</a></div>
+<div id="graph-of-contents">[Contents](#arg-map)</div>
 
-<div class="abstract">
+::: abstract
 Impact factor isn't great. A bibliometric based on entropy reduction may be
 promising.
-</div>
+:::
 
-<div class="macros">
+::: macros
 $$
 \newcommand{cond}[3] {
   #1\mathopen{}\left(#2\mathbin{\big|}#3\right)\mathclose{}
 }
 $$
-</div>
+:::
 
 # Impact factor
 
 There are a variety of citation-based
 [bibliometrics](https://en.wikipedia.org/wiki/Bibliometrics). The current
-<a href="#arg-map" id="impact">dominant metric</a> is
+[dominant metric](#arg-map){#impact} is
 [impact factor](https://en.wikipedia.org/wiki/Impact_factor). It is highly
 influential, factoring into decisions on promotion, hiring, tenure, grants and
 departmental funding [@plos06] [@agrawal05] [@moustafa14]. Editors
-<a href="#arg-map" id="review">preferentially publish review articles</a>, and
+[preferentially publish review articles](#arg-map){#review}, and
 <a href="#arg-map" id="self-cite">push authors to
 [self-cite](https://en.wikipedia.org/wiki/Coercive_citation)</a> in pursuit of
 increased impact factor [@plos06] [@agrawal05] [@wilhite12]. It may be
-responsible for editorial <a href="#arg-map" id="replication">bias against
-replications</a> [@neuliep90] [@brembs13]. Consequently, academics take impact
+responsible for editorial [bias against
+replications](#arg-map){#replication} [@neuliep90] [@brembs13]. Consequently, academics take impact
 factor into account throughout the planning, execution and reporting of a study
 [@plos06].
 
@@ -49,7 +49,7 @@ of the [research graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
 
 # Entropy
 
-Claude Shannon <a href="#arg-map" id="entropy">codified entropy</a> as
+Claude Shannon [codified entropy](#arg-map){#entropy} as
 $H(X) = -\sum\limits_{i} P(x_i) \log_2 P(x_i)$
 where $x_i$ are the possible values of a discrete random variable $X$
 [@shannon48][@cover12]. For example, the entropy of a 6-sided die is
@@ -71,8 +71,8 @@ H(D|\epsilon) &= - P(⚁) \log_2 P(⚁) -
      &= \log_2 3
 \end{align}$$
 
-<span class="noted">So the reduction in uncertainty is
-$H(D) - H(D|\epsilon) = \log_2 6 - \log_2 3 = 1$.</span>[^intuition]
+[So the reduction in uncertainty is
+$H(D) - H(D|\epsilon) = \log_2 6 - \log_2 3 = 1$.]{.noted}[^intuition]
 
 # Example
 
@@ -82,7 +82,7 @@ example about cigarette smoking.
 
 ## First study
 
-Suppose <a href="#arg-map" id="single">we do a study</a> on whether, in the
+Suppose [we do a study](#arg-map){#single} on whether, in the
 normal course of smoking, cigarette smoke is inhaled into the lungs (we'll call
 this proposition $A$). Prior to the study we use the (extremely) uninformative
 prior $\cond{P}{A=t}{} = 0.5$. After the study (which we'll call $\alpha$) we
@@ -144,8 +144,8 @@ isolation, is $H(A,B) - \cond{H}{A,B}{\beta} \approx 0.266$.
 But what if we don't consider it in isolation? First, we look for the total
 entropy reduction from both studies and find 
 $H(A,B) - \cond{H}{A,B}{\alpha,\beta} \approx 0.703$.
-<span class="noted">Note that this is not simply the sum of the isolated
-reductions.</span>[^sum] 
+[Note that this is not simply the sum of the isolated
+reductions.]{.noted}[^sum] 
 
 <figure>
   <img src="/images/bibliometric/bronchitis-both.svg"
@@ -182,7 +182,7 @@ externalities it generates in $B$.
 
 ## Fourth study
 
-We'll now jump to <a href="#arg-map" id="four">a fourth study</a> so we can
+We'll now jump to [a fourth study](#arg-map){#four} so we can
 examine a fuller set of interactions (i.e. multiples studies citing one study,
 one study citing multiple studies). 
 
@@ -214,7 +214,6 @@ You can try it out below. Maybe look for:
 - Two networks with the same topology but different scores
 
 <form class="net">
-<div>
 <textarea>
 ```{=html}
 ----
@@ -252,34 +251,31 @@ f f | t 0.55
     | f 0.45
 ```
 </textarea>
-</div>
 <button type="button">Calculate scores</button>
-<div>
 <output>
 </output>
-</div>
 </form>
 
 # Discussion
 
 ## Desirable properties
 
-<a href="#arg-map" id="design">Score depends on study design</a>
+[Score depends on study design](#arg-map){#design}
   :  Tends to encourage
      [Bayesian optimal designs](https://en.wikipedia.org/wiki/Bayesian_experimental_design)
-<a href="#arg-map" id="aggregates">Aggregates sensibly</a>
+[Aggregates sensibly](#arg-map){#aggregates}
   :  The impact factor is often used in inappropriate circumstances [@plos06]
      [@agrawal05] [@moustafa14]. That is, the warning that impact factor is a
      metric for journals, not authors or departments, is seldom heeded. The
      proposed metric can used in such cases trivially. For example, if an author
      has published studies $\eta$ and $\theta$, their score is simply
      $I(\eta) + I(\theta)$, the total reduction in entropy they contribute.
-<a href="#arg-map" id="repli-beni">Handles replications appropriately</a>
+[Handles replications appropriately](#arg-map){#repli-beni}
   :  Impact factor tends to undervalue replications [@neuliep90] [@brembs13].
      With a simple extension of the proposed metric, if $\iota$ is a replication
      of $\eta$ about proposition $E$ it shares the "citation bonus" in
      proportion to how much it increases our certainty in $E$.
-<a href="#arg-map" id="gradated">Gradated citations</a>
+[Gradated citations](#arg-map){#gradated}
   :  With impact factor, a citation to study $\alpha$ essential to the validity
      of study $\gamma$ is given the same weight as a citation to study $\beta$
      providing some minor context for $\gamma$. With the proposed metric, if
@@ -329,11 +325,11 @@ f f | t 0.55
      boosting the impact factor of someone that might compete against you come
      hiring time). This problem does not seem to be devastating
      [@liu93].
-<a href="#arg-map" id="complicated">Complicated</a>
+[Complicated](#arg-map){#complicated}
   :  The proposed metric is more calculationally complicated than impact factor.
      (Though the actual impact factor calculation procedure is more complicated
      than one would suppose.)
-<a href="#arg-map" id="dependence">Requires assessment of degree of dependence</a>
+[Requires assessment of degree of dependence](#arg-map){#dependence}
   :  The "degree of dependence" (e.g. $\cond{P}{B}{A=t}$ vs. $\cond{P}{B}{A=f}$)
      occupies an important role in the procedure. It's not obvious to me how
      this should be determined other than by discussion between authors, editors

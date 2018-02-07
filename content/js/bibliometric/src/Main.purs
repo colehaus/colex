@@ -68,10 +68,10 @@ runParserT' = runParserT
 
 process :: forall eff. Eff (dom :: DOM, exception :: EXCEPTION | eff) Unit
 process = do
-  input <- J.select ".net > div > textarea"
+  input <- J.select ".net textarea"
   s <- either (throw <<< show) pure =<< unwrap <<< runExceptT <<< readString <$> J.getValue input
   let n = runParserT' s networkP
-  output <- J.select ".net > div > output"
+  output <- J.select ".net output"
   J.clear output
   case n of
     Left e -> show e `J.appendText` output
@@ -82,6 +82,5 @@ process = do
 main :: Eff (dom :: DOM, exception :: EXCEPTION) Unit
 main = J.ready $ do
   button <- J.select ".net > button"
-  -- trace "hello"
   process
   J.on "click" (\_ _ -> process) button

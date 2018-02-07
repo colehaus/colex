@@ -15,6 +15,8 @@
       ];
       phases = [ "unpackPhase" "configurePhase" "buildPhase"];
       configurePhase = ''
+        # TODO Get rid of this once I have a better spot for output
+        rm -r bower_components
         mkdir -p bower_components
         for hash in "$bowerDeps"/packages/*; do
           for version in "$hash"/*; do

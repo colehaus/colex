@@ -6,12 +6,12 @@ js: /js/futurism.js
 css: futurism
 ---
 
-<div id="graph-of-contents"><a href="#arg-map">Contents</a></div>
+<div id="graph-of-contents">[Contents](#arg-map)</div>
 
-<div class="abstract">
+::: abstract
 Predicting the future is hard. Research on forecasting techniques is
 inconclusive, but scenario planning might be the least bad approach.
-</div>
+:::
 
 <blockquote>
 The human race, to which so many of my readers belong, has been playing at
@@ -23,7 +23,7 @@ and bury them nicely. They then go and do something else. That is all. For a
 race of simple tastes, however, it is great fun. [@chesterton04]
 </blockquote>
 
-<div class="conversation">
+::: conversation
 
 "How likely are we to have [holophonors](https://theinfosphere.org/Holophonor)
 by 3002?"
@@ -37,20 +37,20 @@ oboes, right? 80% chance?</a>"
 "Alright, 70% chance."
 
 "Also, note that people are pretty bad at predictions. A study by George Wise
-found that <span class="noted"><a href="#arg-map" id="mediocre">out of
+found that [<a href="#arg-map" id="mediocre">out of
 1556 naive medium-term predictions made publicly by Americans between 1890 and
 1940, just under 40% had been fulfilled or were in progress by
-1976</a></span>[^feedback] [@wise76]."
+1976</a>]{.noted}[^feedback] [@wise76]."
 
 "Fine. Then I won't just make a reflexive prediction. I'll give the matter
-serious thought... Well, <a href="#arg-map" id="single">people in the future
+serious thought... Well, [people in the future
 will probably be really into opera and the arts because shiny, metal robots will
 do all the real work. So they'll be sitting on their hover chairs in their
 spandex togas. And they'll want to listen to something---but see something at
 the same time---just like laser light shows. But lasers will be pretty blasé in
 the future (what with the ubiquitous laser pocket knifes, laser watches, and
 laser pointers). So holophonors will be the perfect thing. So, I guess a 90%
-chance of holophonors?</a>"
+chance of holophonors?](#arg-map){#single}"
 
 "Ah ha ha. You fell right into my trap! Your casual futurism betrays you! Just
 by imagining that scenario, you think it's more likely."
@@ -62,9 +62,9 @@ by imagining that scenario, you think it's more likely."
 "John Carroll, that's who. He asked some college students to imagine themselves
 on election day for the
 [1976 U.S. presidential election](https://en.wikipedia.org/wiki/United_States_presidential_election,_1976)
-[@carroll78]. <a href="#arg-map" id="moreLikely">Some were told to imagine
+[@carroll78]. [Some were told to imagine
 Carter winning. They were significantly more certain that Carter would win than
-those that didn't imagine anything.</a>"
+those that didn't imagine anything.](#arg-map){#moreLikely}"
 
 "Well, maybe it was a persuasively coherent reverie. My holophonor scenario was
 pretty airtight. That doesn't sound so bad to be convinced by an exceptionally
@@ -82,9 +82,9 @@ a problem or asking a question could itself change the beliefs of subjects.'"
 "It could be worse. I could believe in something absurd---like a future with no
 holophonors. Out of all possible scenarios, I described the most plausible."
 
-"Nope. <a href="#arg-map" id="optimistic">People's default, 'realistic'
+"Nope. [People's default, 'realistic'
 predictions are pretty much just their most optimistic predictions [@buehler94]
-[@newby00].</a>"
+[@newby00].](#arg-map){#optimistic}"
 
 "But how common is this problem? It seems like you just tricked me into a vivid
 visualization."
@@ -113,8 +113,8 @@ the best general-purpose technique might be
 "I thought you just got done scolding me for scenarios!"
 
 "I did. But the distinguishing feature of scenario planning (a term of art) is a
-semi-rigorized approach to <a href="#arg-map" id="multiple">generating
-fundamentally divergent, coherent narratives of the future.</a> Proponents
+semi-rigorized approach to [generating
+fundamentally divergent, coherent narratives of the future.](#arg-map){#multiple} Proponents
 suggest the consideration of multiple scenarios is salubrious."
 
 "Are they right?"
@@ -136,9 +136,8 @@ satisfactory..."
 "The most direct evidence of outcome efficacy comes from three researchers at
 the University of Surrey [@phelps01]. They performed an observational study of
 information technology companies in the UK. After sampling, they looked at 50
-companies using scenario planning and 50 that didn't. <a href="#arg-map"
-id="outcomes">The companies using scenario planning showed significantly greater
-growth in profits and return on capital employed,</a> though they did not show
+companies using scenario planning and 50 that didn't. [The companies using scenario planning showed significantly greater
+growth in profits and return on capital employed,](#arg-map){#outcomes} though they did not show
 significantly greater growth in clients. They did a similar study with 22 water
 companies. Here, there was no significant relationship between scenario planning
 and the performance variables."
@@ -147,11 +146,10 @@ and the performance variables."
 
 "In a
 [repeated measures study](https://en.wikipedia.org/wiki/Repeated_measures_design),
-researchers found that <a href="#arg-map" id="widened">scenario planning widened
-50% and 90% confidence intervals on personally important strategic measures</a>
-by 56% and 44% respectively [@schoemaker93]. However, they also found that <a
-href="#arg-map" id="narrowed">when asked to construct extreme scenarios (judged
-as implausible), ranges actually contracted.</a>"
+researchers found that [scenario planning widened
+50% and 90% confidence intervals on personally important strategic measures](#arg-map){#widened}
+by 56% and 44% respectively [@schoemaker93]. However, they also found that [when asked to construct extreme scenarios (judged
+as implausible), ranges actually contracted.](#arg-map){#narrowed}"
 
 "So whether scenario planning increases or decreases confidence intervals
 depends on which scenarios are constructed."
@@ -162,8 +160,7 @@ scenario planning process showed no evidence of the
 [framing bias](https://en.wikipedia.org/wiki/Framing_effect_(psychology))</a>
 [@meissner13]. Students that went through only the initial part of the scenario
 process, but didn't actually generate scenarios, still showed susceptibility to
-the framing bias. However, students that used <a href="#arg-map"
-id="other">traditional strategic planning tools</a> (like
+the framing bias. However, students that used [traditional strategic planning tools](#arg-map){#other} (like
 [SWOT](https://en.wikipedia.org/wiki/SWOT_analysis) and
 [Porter's five forces](https://en.wikipedia.org/wiki/Porter_five_forces_analysis))
 were also effectively debiased. Other researchers even suggest that directions
@@ -177,17 +174,16 @@ scenarios doesn't alter point predictions. Researchers did a study in which they
 asked university students to estimate when they'd complete school assignments
 and then followed-up to determine the actual completion times
 [@newby00]. Through a variety of experimental permutations, they concluded that,
-'<a href="#arg-map" id="pessimistic">Participants' final task completion time
+'[Participants' final task completion time
 estimates were not affected when they generated pessimistic scenarios ... in
-combination with more optimistic scenarios.</a> ... [R]egardless of
+combination with more optimistic scenarios.](#arg-map){#pessimistic} ... [R]egardless of
 plausibility, predictors did not attend to pessimistic scenarios.' Similar
 results were found by Paul Schoemaker [@schoemaker92]."
 
 "Any more?"
 
-"Yes. A quasi-experimental study of managers found that <a href="#arg-map"
-id="rational">scenario planning decreased rational decision-making and increased
-intuitive decision-making</a> as measured by the General Decision-Making Style
+"Yes. A quasi-experimental study of managers found that [scenario planning decreased rational decision-making and increased
+intuitive decision-making](#arg-map){#rational} as measured by the General Decision-Making Style
 Survey [@chermack08]."
 
 "That sounds like it could be conducive to biases."
@@ -217,7 +213,7 @@ to overcome another set, namely overconfidence, anchoring and availability
 biases.' [@schoemaker93]. Ultimately, scenario planning may be one of the less
 bad prediction methods."
 
-</div>
+:::
 
 [^feedback]: I expected to find that one of the major difficulties in making
 forecasts is the limited opportunity for confirmation or rejection, due to the

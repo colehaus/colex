@@ -67,7 +67,7 @@ main =
       route idRoute
       compile copyFileCompiler
     -- Copy output from webpack, purescript, &c.
-    _ <- match "dist/*" $ do
+    _ <- match "js/dist/*" $ do
       fileInDirectoryRoute "js"
       compile copyFileCompiler
     _ <- match "js/cooperatives/vendoredOut/*.js" $ do
@@ -328,8 +328,6 @@ extensions =
     , Ext_link_attributes
     , Ext_markdown_in_html_blocks
     , Ext_multiline_tables
-    , Ext_native_divs
-    , Ext_native_spans
     , Ext_pandoc_title_block
     , Ext_pipe_tables
     , Ext_raw_attribute

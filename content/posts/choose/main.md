@@ -5,10 +5,10 @@ tags: meta, text, structure
 css: choose
 ---
 
-<div class="abstract">
+::: abstract
 We can use interactivity to augment traditional text. In particular, we allow
-for choice of ordering and between alternatives. 
-</div>
+for choice of ordering and between alternatives.
+:::
 
 # Ordering
 
@@ -85,7 +85,7 @@ subsequent sections to congrue with early choices).
 
 # Sidenote
 
-This site also uses <span class="noted">sidenotes.</span>[^example]
+This site also uses [sidenotes.]{.noted}[^example]
 By highlighting the noted text, we can provide a little extra clarity about the
 referent of the note.
 
@@ -104,29 +104,16 @@ both parsimony and efficacy. Viewing the structure of an argument as a
 [directed graph](https://en.wikipedia.org/wiki/Directed_graph) permits a
 visualization of the tools described above:
 
-<figure>
-  <img src="/images/choose/and.svg" alt="'Additive' graph">
-  <figcaption>
-  A graph in which each of B, C, and D are necessary to establish E. (In the
-  language of [@kelley88], an additive argument.) However, they have no
-  dependence relation amongst themselves so may be reordered freely in the text. 
-  </figcaption>
-</figure>
+![A graph in which each of B, C, and D are necessary to establish E. (In the
+language of [@kelley88], an additive argument.) However, they have no
+dependence relation amongst themselves so may be reordered freely in the text.](/images/choose/and.svg)
 
-<figure>
-  <img src="/images/choose/or.svg" alt="'Disjunct' graph">
-  <figcaption>
-  A graph in which any of B, C, or D suffices to establish E. (In the language
-  of [@kelley88], a disjunct argument.) Any one of them may be presented in the
-  text. 
-  </figcaption>
-</figure>
+![A graph in which any of B, C, or D suffices to establish E. (In the language of [@kelley88], a disjunct argument.) Any one of them may be presented in the
+text.](/images/choose/or.svg)
 
 <figure>
   <img id="sidenote-img" src="/images/choose/sidenote.svg" alt="Sidenote graph">
   <figcaption>
-  A graph in which C is a sidenote on B. It is not necessary to establish D and
-  so could be omitted.
   </figcaption>
 </figure>
 

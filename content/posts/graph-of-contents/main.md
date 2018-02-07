@@ -6,9 +6,9 @@ js: /js/graph-contents.js
 css: graph-contents
 ---
 
-<div class="abstract">
+::: abstract
 A graph of contents is a more structured alternative to a table of contents.
-</div>
+:::
 
 A [table of contents](https://en.wikipedia.org/wiki/Table_of_contents) can
 provide a useful overview of a document's content. However, because of its
@@ -25,11 +25,11 @@ effect, we combine the table of contents with an
 
 For example:
 
-<a href="#arg-map" id="major">All men are mortal</a>
+[All men are mortal](#arg-map){#major}
 
-<a href="#arg-map" id="minor">Socrates is a man</a>
+[Socrates is a man](#arg-map){#minor}
 
-<a href="#arg-map" id="conclusion">Therefore, Socrates is mortal</a>
+[Therefore, Socrates is mortal](#arg-map){#conclusion}
 
 Clicking on a dotted link brings up the graph. The label for the current section
 (as identified by the link used to bring up the graph) is bolded in the graph.

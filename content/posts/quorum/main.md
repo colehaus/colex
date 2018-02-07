@@ -6,25 +6,25 @@ css: quorum
 js: /js/quorum.js, /js/quorum-map.js
 ---
 
-<div id="graph-of-contents"><a href="#arg-map">Contents</a></div>
+<div id="graph-of-contents">[Contents](#arg-map)</div>
 
-<div class="abstract">
+::: abstract
 Voting procedures can replace traditional quorum with the use of statistical
 techniques. If aggregate opinion on the alternatives is "similar", according to
 those techniques, we declare a failure of quorum.
-</div>
+:::
 
 # Motivating examples
 
 <ol><li id="example1">Pie Club is voting on which pie will be featured at
-their first August meeting. <span class="noted">After tallying the votes,
+their first August meeting. [After tallying the votes,
 [buko pie](https://en.wikipedia.org/wiki/Buko_pie) receives a mean score of
 $0.69$ and [fish pie](https://en.wikipedia.org/wiki/Fish_pie) receives a mean
-score of $0.18$.</span>[^range]
+score of $0.18$.]{.noted}[^range]
 
 Before the decision is finalized, however, an observant member notices that the
-meeting is <a href="#arg-map" id="restrictive">two members short of the 25
-required for quorum</a>. Because Pie Club is scrupulously democratic, the vote
+meeting is [two members short of the 25
+required for quorum](#arg-map){#restrictive}. Because Pie Club is scrupulously democratic, the vote
 is annulled. Some members grumble their doubt that the landslide will reverse
 with two more votes.</li>
 
@@ -34,8 +34,8 @@ of the Decade". Will it be
 [Tarta de Santiago](https://en.wikipedia.org/wiki/Tarta_de_Santiago)? The
 results are in---quorum checked in advance this time---and they are... $0.49$
 for meringue and $0.48$ for Tarta. While meringue's devotees celebrate, Tarta's
-die-hards feel something has gone wrong. <a href="#arg-map" id="permissive">Can
-such a close result really give them confidence</a> that meringue is the
+die-hards feel something has gone wrong. [Can
+such a close result really give them confidence](#arg-map){#permissive} that meringue is the
 preference of the whole club, including the 12 members who couldn't make it to
 meeting? If just one of them had attended and cast a vote favoring Tarta,
 wouldn't that have swung the outcome?</li></ol>
@@ -45,8 +45,8 @@ wouldn't that have swung the outcome?</li></ol>
 # Quorum
 
 <blockquote>
-<a href="#arg-map" id="quorum-def">The minimum number of members who must be
-present at the meetings</a> of a deliberative assembly for business to be
+[The minimum number of members who must be
+present at the meetings](#arg-map){#quorum-def} of a deliberative assembly for business to be
 validly transacted is the *quorum* of the assembly. The requirement of a quorum
 is a protection against totally unrepresentative action in the name of the body
 by an unduly small number of persons. [@ronr]
@@ -59,7 +59,7 @@ other occasions (as in the [second example](#example2)), quorum is too lax---it
 declares representativeness when there can be no certainty of it.
 
 Is there an alternative then? How do we determine if a vote is representative?
-Statistics! 
+Statistics!
 
 # Statistics
 
@@ -105,16 +105,16 @@ $\mu_1 - \mu_2$).
 If we reject $\mu_2 \gg \mu_1$ and $\mu_1 \gg \mu_2$, we must accept
 $\mu_2 \approx \mu_1$ and declare a failure of quorum.
 
-For example, we'd like to <a href="#arg-map" id="bayes">determine if the
+For example, we'd like to [determine if the
 <span class="inline switch" type="menu" data-menu="stat-type">
 <span class="open">credible</span>
-<span>confidence</span> 
+<span>confidence</span>
 </span>
-bounds support the conclusion</a> that buko pie really is preferred to fish pie.
+bounds support the conclusion](#arg-map){#bayes} that buko pie really is preferred to fish pie.
 If Pie Club bylaws specified a $95\%$
 <span class="inline switch" type="menu" data-menu="stat-type">
 <span class="open">credible</span>
-<span>confidence</span> 
+<span>confidence</span>
 </span>
 bound and the lower bound for $\mu_{buko} - \mu_{fish}$ stretched to $0.359$
 while the upper bound stretched to $0.58$, we'd declare that quorum had been
@@ -129,13 +129,13 @@ failure of quorum.
 How do we construct these credible bounds? We derive them from the
 [posterior probability distribution](https://en.wikipedia.org/wiki/Posterior_probability)
 created using Bayesian parameter estimation [@kruschke13]. To construct this
-posterior, we start by specifying <span class="noted">a model for the
-distribution of paired differences</span>[^difference]. Because the
+posterior, we start by specifying [a model for the
+distribution of paired differences]{.noted}[^difference]. Because the
 difference can only take on values in the interval $\left(-1, 1\right)$, the
 ([transformed](https://en.wikipedia.org/wiki/Location-scale_family) from
 $(0, 1)$ to $(-1, 1)$)
-<span class="noted">[beta distribution](https://en.wikipedia.org/wiki/Beta_distribution)
-is a sensible choice</span>[^beta]. To get a sense of the beta distribution, you
+[[beta distribution](https://en.wikipedia.org/wiki/Beta_distribution)
+is a sensible choice]{.noted}[^beta]. To get a sense of the beta distribution, you
 can look at the calculator
 [here](http://keisan.casio.com/has10/SpecExec.cgi?id=system/2006/1180573226).
 
@@ -177,14 +177,14 @@ How do we construct these confidence bounds? That depends.
 If the number of votes is "large" (say, more than 30) (and the distribution of
 votes satisfies some other
 [conditions](https://en.wikipedia.org/wiki/Central_limit_theorem)), we can do
-<span class="noted">a $t$-test on the paired differences of the
-votes.</span>[^difference]
+[a $t$-test on the paired differences of the
+votes.]{.noted}[^difference]
 </li>
 <li>
 If the number of votes is "small" (say, 30 or fewer), we have a problem. We
 cannot assume that the underlying distribution of votes is
 [normal](https://en.wikipedia.org/wiki/Normal_distribution). Voters could be
-polarized <span class="spark" id="non-norm"></span>, for example. And because
+polarized []{.spark #non-norm}, for example. And because
 the number of votes is small, we can't rely on the
 [central limit theorem](https://en.wikipedia.org/wiki/Central_limit_theorem) to
 approximate normality. So we must use a
@@ -194,8 +194,8 @@ approximate normality. So we must use a
 The distribution-free test for paired data is the
 [Wilcoxon signed-rank test](https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test)
 [@wilcoxon45]. However, this test requires the symmetrical distribution of
-paired differences. Again, we cannot <span class="spark" id="sym1"></span>
-assume <span class="spark" id="sym2"></span> that.
+paired differences. Again, we cannot []{.spark #sym1}
+assume []{.spark #sym2} that.
 
 So, as far as I know, there's no simple frequentist procedure which is
 applicable in the small sample case.
@@ -204,7 +204,7 @@ applicable in the small sample case.
 </li>
 </ul>
 
-<span class="noted">You can try it out below</span>[^single-bound].
+[You can try it out below]{.noted}[^single-bound].
 Maybe look for:
 
 - A scenario in which the quorum status (achieved or failed) depends on the
@@ -254,8 +254,8 @@ Maybe look for:
 
 # Problems
 
-We've tacitly <a href="#arg-map" id="random">assumed that our actual voters are
-a random sample</a> of the population of potential voters. This is false (Though
+We've tacitly [assumed that our actual voters are
+a random sample](#arg-map){#random} of the population of potential voters. This is false (Though
 one could make it true through adoption of appropriate
 [voting procedures](https://en.wikipedia.org/wiki/Sortition)).
 [Self-selection bias](https://en.wikipedia.org/wiki/Self-selection_bias),
@@ -269,8 +269,8 @@ exogenous and characterizes only the resulting information. But one could
 support quorum for its deliberative, community-building, or even obstructive
 effects.
 
-Also, <a href="#arg-map" id="complicated">isn't all this math a bit
-forbidding?</a>
+Also, [isn't all this math a bit
+forbidding?](#arg-map){#complicated}
 
 <ul class="switch" type="menu" data-menu="stat-type"><li class="open">
 The conclusions have a rather intuitive interpretation in terms of likelihood,
@@ -282,7 +282,7 @@ math.
 The math itself may be familiar to some, but there are still the
 perennial problems of frequentist interpretation [@goodman08]:
 
-<div class="conversation">
+::: conversation
 "Neat. The test showed it's highly likely that buko pie is the preferred pie?"
 
 "No, it either is or isn't the preferred pie. There's no probability involved."
@@ -293,7 +293,7 @@ perennial problems of frequentist interpretation [@goodman08]:
 contain the true population difference."
 
 "Uhh..."
-</div>
+:::
 </li></ul>
 
 So this procedure is less accessible than traditional quorum. How much less
@@ -307,8 +307,8 @@ exploratory data analysis. The more degrees of freedom we give the analyst, the
 more power we give them to influence results
 [@simmons11].
 
-Finally, this procedure <a href="#arg-map" id="post-hoc">admits only post-hoc
-declarations of quorum</a>. With the traditional procedure, we can just take
+Finally, this procedure [admits only post-hoc
+declarations of quorum](#arg-map){#post-hoc}. With the traditional procedure, we can just take
 attendance at a meeting and determine the quorum status for every referendum
 therein. With the new procedure, after tallying the votes on an issue, we have
 to run the quorum calculation to retroactively determine quorum if we achieved

@@ -6,28 +6,27 @@ js: /js/elm-runtime.js, /js/Automaton.js, /js/cooperatives.js
 css: cooperatives
 ---
 
-<div id="graph-of-contents"><a href="#arg-map">Contents</a></div>
+<div id="graph-of-contents">[Contents](#arg-map)</div>
 
-<div class="abstract">
+::: abstract
 Why do capital-managed firms predominate over worker cooperatives? Perhaps it's
 because worker cooperatives have less incentive to expand.
-</div>
+:::
 
 # Introduction
-
-The <a href="#arg-map" id="predominate">predominance of capital-managed firms
-(CMF) over worker cooperatives (WC)</a> remains an open question in economics.
+The [predominance of capital-managed firms
+(CMF) over worker cooperatives (WC)](#arg-map){#predominate} remains an open question in economics.
 Early explanations relied on a hypothesized comparative inefficiency of
 cooperatives. Subsequent empirical study has shown that
-<a href="#arg-map" id="efficient">cooperatives are at least as efficient
-as capital-managed firms</a> [@doucouliagos95] [@estrin87] [@craig95]
+[cooperatives are at least as efficient
+as capital-managed firms](#arg-map){#efficient} [@doucouliagos95] [@estrin87] [@craig95]
 [@levine90].
 
 A profusion of hypotheses has since arisen. [@dow99] offers a good summary
 (though the term must be used loosely for a 126-page paper). One that I have not
-seen presented is: <a href="#arg-map" id="hypothesis">capital-managed firms
+seen presented is: [capital-managed firms
 predominate because capitalists have a greater incentive to expand than
-worker-owners in worker cooperatives</a>. Roughly, for each market segment a
+worker-owners in worker cooperatives](#arg-map){#hypothesis}. Roughly, for each market segment a
 capitalist expands into, their income increases by capital's share of the new
 segment's profit. For each market segment a cooperative expands into, the
 expanders receive no direct remuneration (supposing that the new market segment
@@ -39,18 +38,19 @@ is also a cooperative). Any new profit goes to worker-owners in the new segment.
 
 We can make this hypothesis more tangible by representing it as a
 [cellular automaton](https://en.wikipedia.org/wiki/Cellular_automaton).
-<span class="noted"><a href="#arg-map" id="automaton-link">In this
-automaton</a></span>[^elm], <a href="#arg-map" id="segment">each cell represents
-a market segment requiring a fixed quantity of labor and capital</a>. Adjacent
+[[In this
+automaton](#arg-map){#automaton-link}]{.noted}[^elm], [each cell represents
+a market segment requiring a fixed quantity of labor and capital](#arg-map){#segment}. Adjacent
 cells represent similar market segments.
 
-<div id="automaton" />
+:::{#automation}
+:::
 
 ## Initial conditions
 
-In the beginning, the market is filled with <a href="#arg-map" id="empty">empty
-market segments which have a random cost</a> (represented in the automaton by
-the opacity of the <span class="empty">red cell interiors</span>) for a firm to
+In the beginning, the market is filled with [empty
+market segments which have a random cost](#arg-map){#empty} (represented in the automaton by
+the opacity of the [red cell interiors]{.empty}) for a firm to
 expand into.
 
 ## Step
@@ -61,30 +61,30 @@ In each step, an existing firm may go bankrupt (or exit the market
 segment in some other way) with fixed probability $B = 0.1$. If a firm goes
 bankrupt, its market segment becomes empty once again.
 
-If it does not go bankrupt, <a href="#arg-map" id="accum">the profits generated
-during that step are distributed</a>. For worker cooperatives, all profits
+If it does not go bankrupt, [the profits generated
+during that step are distributed](#arg-map){#accum}. For worker cooperatives, all profits
 accrue to the worker-owners within the cooperative. For capital-managed
 segments, labor's share of income (estimated at 70% [@karabarbounis13]
 [@gomme04]) accrues to the segment's workers and capital's share of income
 accrues to the capitalists of the segment's firm.
 
 The accumulated income of workers in a capital-managed segment is represented in
-the automaton by opacity of the <span class="capital">purple cell
-interior</span>. The accumulated income of the capitalists (of a given firm) is
-represented by the opacity of the <span class="capital">purple cell
-border</span> enclosing all segments owned by the firm. The accumulated income
+the automaton by opacity of the [purple cell
+interior]{.capital}. The accumulated income of the capitalists (of a given firm) is
+represented by the opacity of the [purple cell
+border]{.capital} enclosing all segments owned by the firm. The accumulated income
 of worker-owners in a worker cooperative is represented in the automaton by the
-opacity of the <span class="labor">green cell interior</span>. Worker
+opacity of the [green cell interior]{.labor}. Worker
 cooperatives sharing an ancestor (e.g. cooperative B and C were both founded by
 cooperative A) are enclosed by a single border.
 
 ### Empty market segments
 
 In each step, an empty market segment may be occupied by
-<a href="#arg-map" id="firm">a newly formed firm</a> with chance $N = 0.001$.
+[a newly formed firm](#arg-map){#firm} with chance $N = 0.001$.
 
-Also, in each step, <a href="#arg-map" id="expand">an empty market segment may
-be subject to expansion</a> from
+Also, in each step, [an empty market segment may
+be subject to expansion](#arg-map){#expand} from
 [adjacent firms](https://en.wikipedia.org/wiki/Von_Neumann_neighborhood).
 Each adjacent firm has a 20% chance of attempting expansion (representing market
 conditions, firm conditions, &c.). The cost of expansion into the market segment
@@ -112,9 +112,9 @@ Worker cooperative
      LP$, where $G$ is the productivity advantage of worker cooperatives (set
      to 1.1 in the automaton) and $L$ is labor's share of income, represents the
      comparative benefit for worker-owners in a worker cooperative over being
-     laborers in a capital-managed firm. <a href="#arg-map" id="altruism">
+     laborers in a capital-managed firm. [
      $A$ ("altruism") represents the extent to which the expanding worker
-     cooperative cares about these potential gains.</a>
+     cooperative cares about these potential gains.](#arg-map){#altruism}
 
 A quick consequence of this model is that worker cooperatives and
 capital-managed firms will value expansions equally (assuming equal discount and

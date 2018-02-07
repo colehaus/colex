@@ -38,7 +38,6 @@ module.exports = {
     ],
   },
   plugins: [
-    new CleanWebpackPlugin([outDir]),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'common',
       minChunks: 2
