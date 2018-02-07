@@ -1,4 +1,6 @@
+{-# LANGUAGE DataKinds #-}
 {-# LANGUAGE OverloadedStrings #-}
+{-# LANGUAGE TypeApplications #-}
 
 module Main where
 
@@ -17,10 +19,10 @@ import HakyllExtension
 main :: IO ()
 main =
   hakyll $ do
-    templates <- match "templates/*" $ compile templateCompiler
+    templates <- match @"template" "templates/*" $ compile templateCompiler
     let defaultTemplate = narrowEx templates "templates/default.html"
-    csl <- matchIdentifier "misc/biblio.csl" $ compile cslCompiler
-    bib <- matchIdentifier "misc/biblio.bib" $ compile biblioCompiler
+    csl <- matchIdentifier @"csl" "misc/biblio.csl" $ compile cslCompiler
+    bib <- matchIdentifier @"bib" "misc/biblio.bib" $ compile biblioCompiler
     tags <- buildTags (mkPostPat "posts") (fromCapture "posts/tag/*/index.html")
     postPat <-
       buildPosts
@@ -64,18 +66,19 @@ main =
     _ <- match "images/**" $ do
       route idRoute
       compile copyFileCompiler
-  -- Copy output from webpack, purescript, &c.
+    -- Copy output from webpack, purescript, &c.
     _ <- match "dist/*" $ do
       fileInDirectoryRoute "js"
       compile copyFileCompiler
-    match "js/cooperatives/vendoredOut/*.js" $ do
+    _ <- match "js/cooperatives/vendoredOut/*.js" $ do
       fileInDirectoryRoute "js"
       compile copyFileCompiler
+    pure ()
 
 buildPages
-  :: Blessed Identifier
-  -> Blessed Identifier
-  -> Blessed Identifier
+  :: Blessed "template" Identifier
+  -> Blessed "template" Identifier
+  -> Blessed "template" Identifier
   -> Tags
   -> Paginate
   -> Rules ()
@@ -98,7 +101,11 @@ buildPages defaultTemplate indexTemplate indexContentTemplate tags pages =
          loadAndApplyTemplate indexTemplate ctx >>=
          finish defaultTemplate ctx
 
-buildTagPages :: Blessed Identifier -> Blessed Identifier -> Tags -> Rules ()
+buildTagPages
+  :: Blessed "template" Identifier
+  -> Blessed "template" Identifier
+  -> Tags
+  -> Rules ()
 buildTagPages defaultTemplate tagTemplate tags =
   tagsRules tags $ \tag pat -> do
     route idRoute
@@ -114,7 +121,11 @@ buildTagPages defaultTemplate tagTemplate tags =
       in makeItem mempty >>= loadAndApplyTemplate tagTemplate ctx >>=
          finish defaultTemplate ctx
 
-buildTagIndex :: Blessed Identifier -> Blessed Identifier -> Tags -> Rules ()
+buildTagIndex
+  :: Blessed "template" Identifier
+  -> Blessed "template" Identifier
+  -> Tags
+  -> Rules ()
 buildTagIndex defaultTemplate tagIndexTemplate tags =
   create ["tags/index.html"] $ do
     route idRoute
@@ -126,7 +137,11 @@ buildTagIndex defaultTemplate tagIndexTemplate tags =
       makeItem mempty >>= loadAndApplyTemplate tagIndexTemplate ctx >>=
         finish defaultTemplate ctx
 
-buildIndex :: Blessed Identifier -> Blessed Identifier -> Paginate -> Rules ()
+buildIndex
+  :: Blessed "template" Identifier
+  -> Blessed "template" Identifier
+  -> Paginate
+  -> Rules ()
 buildIndex defaultTemplate indexTemplate pages =
   create ["index.html"] $ do
     route idRoute
@@ -138,9 +153,9 @@ buildIndex defaultTemplate indexTemplate pages =
          loadAndApplyTemplate indexTemplate ctx >>=
          finish defaultTemplate ctx
 
-buildArchive :: Blessed Pattern
-             -> Blessed Identifier
-             -> Blessed Identifier
+buildArchive :: Blessed "post" Pattern
+             -> Blessed "template" Identifier
+             -> Blessed "template" Identifier
              -> Tags
              -> Rules ()
 buildArchive postPat defaultTemplate archiveTemplate tags =
@@ -158,7 +173,7 @@ buildArchive postPat defaultTemplate archiveTemplate tags =
       in makeItem mempty >>= loadAndApplyTemplate archiveTemplate ctx >>=
          finish defaultTemplate ctx
 
-buildCss :: Rules (Blessed Pattern)
+buildCss :: Rules (Blessed "css" Pattern)
 buildCss = do
   includes <- makePatternDependency "css/default/_*.scss"
   rulesExtraDependencies [includes] $
@@ -171,13 +186,13 @@ fileInDirectoryRoute dir = route . customRoute $ \ident ->
   dir <> "/" <> (takeFileName . toFilePath) ident
 
 buildPosts
-  :: Blessed Identifier
-  -> Blessed Identifier
-  -> Blessed Identifier
-  -> Blessed Identifier
+  :: Blessed "template" Identifier
+  -> Blessed "template" Identifier
+  -> Blessed "bib" Identifier
+  -> Blessed "csl" Identifier
   -> Tags
   -> String
-  -> Rules (Blessed Pattern)
+  -> Rules (Blessed "post" Pattern)
 buildPosts defaultTemplate postTemplate bibIdent cslIdent tags dir = do
   overlayPat <-
     match (fromGlob $ dir <> "/*/overlay.md") . compile $
@@ -216,7 +231,11 @@ compileScss = do
 mkPostPat :: String -> Pattern
 mkPostPat postDir = fromGlob $ postDir <> "/*/main.*"
 
-finish :: Blessed Identifier -> Context String -> Item String -> Compiler (Item String)
+finish
+  :: Blessed "template" Identifier
+  -> Context String
+  -> Item String
+  -> Compiler (Item String)
 finish defaultTemplate ctx i =
   loadAndApplyTemplate defaultTemplate ctx i >>=
   ((replaceAll "index.html" (const mempty) <$>) <$>) . relativizeUrls
@@ -243,14 +262,14 @@ listFieldWith' k ctx f =
 postCtx :: Context String
 postCtx =
   dateField "date" "%B %e, %Y" <> dateField "num-date" "%F" <> defaultContext
-overCtx :: Blessed Pattern -> Context String
+overCtx :: Blessed "overlay" Pattern -> Context String
 overCtx overPat =
   field "overlay" $
   loadBody .
   narrowEx overPat .
   fromFilePath .
   (<> "/overlay.md") . takeDirectory . toFilePath . itemIdentifier
-warnCtx :: Blessed Pattern -> Context String
+warnCtx :: Blessed "warning" Pattern -> Context String
 warnCtx warnPat =
   listFieldWith'
     "warnings"
