@@ -4,86 +4,84 @@ import menu from 'custom-elements/menu'
 import sidenote from 'custom-elements/sidenote'
 
 const transition = (from, to, finalCb) => {
-  if (typeof from[0] === 'undefined') { return; }
-  const parent = to.parent();
+  if (typeof from[0] === 'undefined') { return }
+  const parent = to.parent()
   if (!parent.is(':visible')) {
-    from.removeClass('open');
-    to.addClass('open');
-    return;
+    from.removeClass('open')
+    to.addClass('open')
+    return
   }
-  let start, prog, pho, phn;
-  const dur1 = 300;
+  let start, prog, pho, phn
+  const dur1 = 300
   const stage1 = timestamp => {
-    start = start || timestamp;
-    prog = (timestamp - start) / dur1;
+    start = start || timestamp
+    prog = (timestamp - start) / dur1
     if (prog <= 1) {
-      from.css('opacity', 1 - prog);
-      requestAnimationFrame(stage1);
+      from.css('opacity', 1 - prog)
+      requestAnimationFrame(stage1)
     } else {
-      pho = parent.height();
-      from.css('opacity', 0);
-      to.css('opacity', 0);
-      from.removeClass('open');
-      to.addClass('open');
-      phn = parent.height();
-      start = timestamp;
-      requestAnimationFrame(stage2);
+      pho = parent.height()
+      from.css('opacity', 0)
+      to.css('opacity', 0)
+      from.removeClass('open')
+      to.addClass('open')
+      phn = parent.height()
+      start = timestamp
+      requestAnimationFrame(stage2)
     }
-    return;
-  };
-  const dur2 = 300;
+  }
+  const dur2 = 300
   const stage2 = timestamp => {
-    prog = (timestamp - start) / dur2;
+    prog = (timestamp - start) / dur2
     if (prog <= 1) {
-      to.css('opacity', prog);
-      parent.css('height', pho + (phn - pho) * prog);
-      requestAnimationFrame(stage2);
+      to.css('opacity', prog)
+      parent.css('height', pho + (phn - pho) * prog)
+      requestAnimationFrame(stage2)
     } else {
-      parent.removeAttr('style');
-      from.removeAttr('style');
-      to.removeAttr('style');
-      finalCb();
+      parent.removeAttr('style')
+      from.removeAttr('style')
+      to.removeAttr('style')
+      finalCb()
     }
-    return;
-  };
-  requestAnimationFrame(stage1);
-};
+  }
+  requestAnimationFrame(stage1)
+}
 
 const choose = ev => {
-  ev.stopPropagation();
-  const el = $(ev.target);
-  const trs = $('[data-menu="' + $(ev.target).closest('menu').attr('id') + '"]');
+  ev.stopPropagation()
+  const el = $(ev.target)
+  const trs = $('[data-menu="' + $(ev.target).closest('menu').attr('id') + '"]')
   trs.each((_, tr) => {
-    const ch = $($(tr).children()[el.index()]);
+    const ch = $($(tr).children()[el.index()])
     transition(ch.siblings('.open'), ch, () => {
-      sidenote.setNotes();
-      sidenote.fixNotes();
-    });
-  });
-  menu.defaultHandlers(el);
-};
+      sidenote.setNotes()
+      sidenote.fixNotes()
+    })
+  })
+  menu.defaultHandlers(el)
+}
 
 $(() => {
   $('[type="menu"]').each((_, el_) => {
     const position = ({pageY, pageX, target}) => {
-      const mn = menu.getMenu(target);
-      mn.offset({top: pageY, left: pageX});
-    };
+      const mn = menu.getMenu(target)
+      mn.offset({top: pageY, left: pageX})
+    }
     const addMenuHandlers = ({target}) => {
-      menu.getMenu(target).children('.menu').children().off().click(choose);
-    };
-    $(el_).click(e => {position(e); addMenuHandlers(e);});
-  });
+      menu.getMenu(target).children('.menu').children().off().click(choose)
+    }
+    $(el_).click(e => { position(e); addMenuHandlers(e) })
+  })
 
   MathJax.Hub.Queue(() => {
     // Messes up rendering if we add to stylesheet
-    $('.MathJax_MathContainer').css('display', 'inline');
-    $('.MathJax_MathContainer > span').css('display', 'inline');
+    $('.MathJax_MathContainer').css('display', 'inline')
+    $('.MathJax_MathContainer > span').css('display', 'inline')
     // Re-inline fix rendering problem
-    const inlines = $('.switch.inline > li.open');
-    inlines.css('display', 'inline-block');
-    inlines.offset(); // Trigger reflow
-    inlines.css('display', 'inline');
-    inlines.removeAttr('style');
-  });
-});
+    const inlines = $('.switch.inline > li.open')
+    inlines.css('display', 'inline-block')
+    inlines.offset() // Trigger reflow
+    inlines.css('display', 'inline')
+    inlines.removeAttr('style')
+  })
+})

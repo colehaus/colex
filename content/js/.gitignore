@@ -1,0 +1,4 @@
+**/dist/
+# **/vendoredOut/
+**/elm_dependencies/
+**/bower_components/

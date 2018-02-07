@@ -1,20 +1,19 @@
 const path = require('path')
-const webpack = require('webpack');
-const CleanWebpackPlugin = require('clean-webpack-plugin')
-const UglifyJSPlugin = require('uglifyjs-webpack-plugin');
+const webpack = require('webpack')
+const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 const forProd = process.env.NODE_ENV === 'production'
 
 const outDir = path.resolve(__dirname, process.env.OUT_DIR || 'dist')
 const sourceMap = forProd ? 'source-map' : 'cheap-module-source-map'
 const uglify = forProd ? [new UglifyJSPlugin({ sourceMap: true })] : []
-const watch = forProd ? false : true
+const watch = !forProd
 
 module.exports = {
   devtool: sourceMap,
   watch,
   resolve: {
-    extensions: [".wp.es.js", ".es", ".js"],
+    extensions: ['.wp.es.js', '.es', '.js'],
     modules: process.env.NODE_PATH.split(':').concat(['js/'])
   },
   resolveLoader: {
@@ -24,8 +23,8 @@ module.exports = {
     rules: [
       { test: /\.js$|\.es$|\.ws$/, exclude: /node_modules/, loader: 'babel-loader' },
       { test: [
-          require.resolve('jquery-flot')
-        ],
+        require.resolve('jquery-flot')
+      ],
         use: 'imports-loader?$=jquery,jQuery=jquery'
       },
       {
@@ -35,7 +34,7 @@ module.exports = {
           options: 'jQuery'
         }]
       }
-    ],
+    ]
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({

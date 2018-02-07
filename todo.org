@@ -5,7 +5,8 @@
 * TODO Reconfigure and apply linter
 * TODO Style improvements
 ** TODO Autoformatter
-** TODO whitespace fixup
+** DONE whitespace fixup
+   CLOSED: [2018-02-07 Wed 01:15]
 * TODO Switch to new version of d3
 * TODO Introduce flow
 * TODO Sourcemaps and uglify for ps and elm
