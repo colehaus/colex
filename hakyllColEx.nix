@@ -15,6 +15,8 @@
         generator
         pkgs.sass
       ];
+      # Useful for `nix-shell`
+      NODE_DEPENDENCIES = webpackColEx.NODE_DEPENDENCIES;
       inherit webpackColEx;
       inherit bibliometric;
       LC_ALL = "en_US.UTF-8";

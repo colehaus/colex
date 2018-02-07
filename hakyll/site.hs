@@ -13,35 +13,31 @@ import           Text.Regex
 main :: IO ()
 main = hakyll $ do
   tags <- buildTags postPat (fromCapture "posts/tag/*/index.html")
-  tagsRules tags $ \tag pat -> do
-    route idRoute
-    compile $ let
-      ctx =
-        constField "title" ("Tagged " <> tag) <>
-        boolField (tag <> "-page") (const True) <>
-        listField "posts"
-                  (tagsCtx tags <> postCtx)
-                  (recentFirst =<< loadAll pat) <>
-                  defaultContext in
-      makeItem mempty >>=
-      loadAndApplyTemplate "templates/tag.html" ctx >>=
-      finish ctx
-  create ["tags/index.html"] $ do
-    route idRoute
-    compile $ do
-      let ctx =
-            tagCloudField "tag-cloud" 50 180 tags <>
-            constField "title" "Tags" <>
-            boolField "tags-page" (const True) <>
-            defaultContext
-      makeItem mempty >>=
-        loadAndApplyTemplate "templates/tags.html" ctx >>=
-        finish ctx
+  buildTagPages tags
+  pages <- buildPaginateWith ((paginateOverflow perPage <$>) . sortChronological) postPat (fromCapture "posts/page/*/index.html" . show)
+  buildPages tags pages
+  buildTagIndex tags
+  buildIndex pages
+  buildArchive tags
+  buildCss
+  buildPosts tags "posts"
+  buildPosts tags "drafts"
+  match "misc/biblio.csl" $ compile cslCompiler
+  match "misc/biblio.bib" $ compile biblioCompiler
+  match "templates/*" $ compile templateCompiler
+  match "images/**" $ do
+      route idRoute
+      compile copyFileCompiler
+  -- Copy output from webpack, purescript, &c.
+  match "dist/*" $ do
+    fileInDirectoryRoute "js"
+    compile copyFileCompiler
+  match "js/cooperatives/vendoredOut/*.js" $ do
+    fileInDirectoryRoute "js"
+    compile copyFileCompiler
 
-  pages <- buildPaginateWith
-           ((paginateOverflow perPage <$>) . sortChronological)
-           postPat
-           (fromCapture "posts/page/*/index.html" . show)
+buildPages :: Tags -> Paginate -> Rules ()
+buildPages tags pages =
   paginateRules pages $ \n pat -> do
     route idRoute
     compile $ let
@@ -61,6 +57,39 @@ main = hakyll $ do
       saveSnapshot "page" >>=
       loadAndApplyTemplate "templates/index.html" ctx >>=
       finish ctx
+
+buildTagPages :: Tags -> Rules ()
+buildTagPages tags =
+ tagsRules tags $ \tag pat -> do
+    route idRoute
+    compile $ let
+      ctx =
+        constField "title" ("Tagged " <> tag) <>
+        boolField (tag <> "-page") (const True) <>
+        listField "posts"
+                  (tagsCtx tags <> postCtx)
+                  (recentFirst =<< loadAll pat) <>
+                  defaultContext in
+      makeItem mempty >>=
+      loadAndApplyTemplate "templates/tag.html" ctx >>=
+      finish ctx
+
+buildTagIndex :: Tags -> Rules ()
+buildTagIndex tags =
+  create ["tags/index.html"] $ do
+    route idRoute
+    compile $ do
+      let ctx =
+            tagCloudField "tag-cloud" 50 180 tags <>
+            constField "title" "Tags" <>
+            boolField "tags-page" (const True) <>
+            defaultContext
+      makeItem mempty >>=
+        loadAndApplyTemplate "templates/tags.html" ctx >>=
+        finish ctx
+
+buildIndex :: Paginate -> Rules ()
+buildIndex pages =
   create ["index.html"] $ do
     route idRoute
     compile $ let
@@ -72,9 +101,8 @@ main = hakyll $ do
       loadAndApplyTemplate "templates/index.html" ctx >>=
       finish ctx
 
-  buildPosts tags "posts"
-  buildPosts tags "drafts"
-
+buildArchive :: Tags -> Rules ()
+buildArchive tags =
   create ["archive"] $ do
       route $ constRoute "posts/index.html"
       compile $ let
@@ -88,37 +116,20 @@ main = hakyll $ do
         loadAndApplyTemplate "templates/archive.html" ctx >>=
         finish ctx
 
-  match "misc/biblio.csl" $ compile cslCompiler
-  match "misc/biblio.bib" $ compile biblioCompiler
-  match "templates/*" $ compile templateCompiler
-  match "images/**" $ do
-      route idRoute
-      compile copyFileCompiler
-  match "css/*.scss" $ do
-    route $ setExtension "css"
-    compile compileScss
+buildCss :: Rules ()
+buildCss = do
   includes <- makePatternDependency "css/default/_*.scss"
-  rulesExtraDependencies [includes] $ match "css/default/site.scss" $ do
-      route $ constRoute "css/default.css"
+  rulesExtraDependencies [includes] $ match "css/*.scss" $ do
+      route $ setExtension "css"
       compile compileScss
-  match "dist/*.js" $ do
-    route . customRoute $ \ident ->
-      "js/" <> (takeFileName . toFilePath) ident
-    compile copyFileCompiler
-  match "dist/*.js.map" $ do
-    route . customRoute $ \ident ->
-      "js/" <> (takeFileName . toFilePath) ident
-    compile copyFileCompiler
-  match (
-    "js/**.js" .&&.
-    complement "js/**.wp.es.js" .&&.
-    complement "js/**/elm_dependencies/**.js") $ do
-    route idRoute
-    compile copyFileCompiler
+
+fileInDirectoryRoute :: FilePath -> Rules ()
+fileInDirectoryRoute dir = route . customRoute $ \ident ->
+  dir <> "/" <> (takeFileName . toFilePath) ident
 
 buildPosts :: Tags -> String -> Rules ()
 buildPosts tags dir = do
-  match (fromGlob $ dir <> "/*/overlay.md") $ compile pandocCompiler
+  match (fromGlob $ dir <> "/*/overlay.md") . compile $ pandocCompilerWith readerOpt writerOpt
   overlays <- makePatternDependency (fromGlob $ dir <> "/*/overlay.md")
   match (fromGlob $ dir <> "/*/warnings.md") $ compile getResourceBody
   warnings <- makePatternDependency (fromGlob $ dir <> "/*/warnings.md")
@@ -149,7 +160,6 @@ compileScss = do
 
 mkPostPat :: String -> Pattern
 mkPostPat postDir = fromGlob $ postDir <> "/*/main.*"
-
 postPat :: Pattern
 postPat = mkPostPat "posts"
 
@@ -157,12 +167,6 @@ finish :: Context String -> Item String -> Compiler (Item String)
 finish ctx i =
   loadAndApplyTemplate "templates/default.html" ctx i >>=
   ((replaceAll "index.html" (const mempty) <$>) <$>) . relativizeUrls
-
-postCtx :: Context String
-postCtx =
-  dateField "date" "%B %e, %Y" <>
-  dateField "num-date" "%F" <>
-  defaultContext
 
 paginateOverflow :: Int -> [a] -> [[a]]
 paginateOverflow low xs =
@@ -181,6 +185,11 @@ listFieldWith' :: String -> Context a -> (Identifier -> Compiler [a]) ->
 listFieldWith' k ctx f =
   listFieldWith k ctx $ (mapM makeItem =<<) . f . itemIdentifier
 
+postCtx :: Context String
+postCtx =
+  dateField "date" "%B %e, %Y" <>
+  dateField "num-date" "%F" <>
+  defaultContext
 overCtx :: Context String
 overCtx =
   field "overlay" $ loadBody . fromFilePath . (<> "/overlay.md") .
@@ -194,7 +203,6 @@ warnCtx =
     split g = return . g . break (== '|') . itemBody
     details = field "details" $ split (tail . snd)
     summary = field "summary" $ split fst
-
 jsCtx :: Context String
 jsCtx = listFieldWith' "jses" fileNameCtx $ getListMeta "js"
 cssCtx :: Context String
@@ -204,7 +212,6 @@ fileNameCtx = field "filename" $ return . itemBody
 getListMeta :: MonadMetadata m => String -> Identifier -> m [String]
 getListMeta k ident =
   maybe [] (map trim . splitAll ",") . lookupString k <$> getMetadata ident
-
 tagsCtx :: Tags -> Context String
 tagsCtx tags =
   listFieldWith' "tags" tagCtx getTags where
@@ -222,17 +229,54 @@ stripVerbatim =
   "\\1"
 
 extensions :: Extensions
-extensions = enableExtension Ext_compact_definition_lists $
-             enableExtension Ext_latex_macros $
-             enableExtension Ext_raw_html $
-             enableExtension Ext_citations $
-             enableExtension Ext_footnotes $
-             enableExtension Ext_intraword_underscores $
-             enableExtension Ext_markdown_in_html_blocks $
-             enableExtension Ext_fenced_divs $
-             enableExtension Ext_native_divs $
-             disableExtension Ext_escaped_line_breaks
-             pandocExtensions
+extensions =
+  extensionsFromList
+  [ Ext_all_symbols_escapable
+  , Ext_auto_identifiers
+  , Ext_backtick_code_blocks
+  , Ext_blank_before_blockquote
+  , Ext_blank_before_header
+  , Ext_bracketed_spans
+  , Ext_citations
+  , Ext_compact_definition_lists
+  , Ext_definition_lists
+  , Ext_example_lists
+  , Ext_fancy_lists
+  , Ext_fenced_code_attributes
+  , Ext_fenced_code_blocks
+  , Ext_fenced_divs
+  , Ext_footnotes
+  , Ext_grid_tables
+  , Ext_header_attributes
+  , Ext_implicit_figures
+  , Ext_implicit_header_references
+  , Ext_inline_code_attributes
+  , Ext_inline_notes
+  , Ext_intraword_underscores
+  , Ext_latex_macros
+  , Ext_line_blocks
+  , Ext_link_attributes
+  , Ext_markdown_in_html_blocks
+  , Ext_multiline_tables
+  , Ext_native_divs
+  , Ext_native_spans
+  , Ext_pandoc_title_block
+  , Ext_pipe_tables
+  , Ext_raw_attribute
+  , Ext_raw_html
+  , Ext_raw_tex
+  , Ext_shortcut_reference_links
+  , Ext_simple_tables
+  , Ext_smart
+  , Ext_space_in_atx_header
+  , Ext_startnum
+  , Ext_strikeout
+  , Ext_subscript
+  , Ext_superscript
+  , Ext_table_captions
+  , Ext_tex_math_dollars
+  , Ext_yaml_metadata_block
+  ]
 
 readerOpt :: ReaderOptions
 readerOpt =
@@ -242,12 +286,10 @@ writerOpt :: WriterOptions
 writerOpt =
   defaultHakyllWriterOptions {
     writerHtmlQTags = True,
+    -- TODO Check if this is actually true
     -- Hakyll + Pandoc don't insert <script> correctly,
     -- so we add dummy URL and do it manually
     writerHTMLMathMethod = MathJax "",
-    -- writerTableOfContents = True
-    -- writerStandalone = True
-    -- writerTemplate = unlines ["$toc$", "$body$"]
     writerExtensions = extensions
     }
 

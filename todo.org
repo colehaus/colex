@@ -1,34 +1,29 @@
-* DONE Eliminate jquery manual load from bibliometric
-  CLOSED: [2018-02-05 Mon 17:35]
-* TODO Reorganize source files
-* TODO Make hakyll work relative to specified root
-* TODO [#A] Set up purescript and elm builds
-** DONE Modernize purescript
-   CLOSED: [2018-02-05 Mon 17:35]
-** TODO Set up purescript build
-** TODO Set up elm build
 * TODO [#A] Rewrite components as web components
-* TODO [#C] Derive derivable things in purescript
 * TODO [#A] Write fallbacks for each component
 * TODO Clean up markdown
-* TODO Clean up site.hs
-* TODO [#C] Autogenerate chunk per post
-* TODO [#C] Add shell mode to overall build that just prepares env
+* DONE Clean up site.hs
+  CLOSED: [2018-02-06 Tue 18:16]
 * TODO Clean up arg-map on indices
-* TODO Introduce linter
-* TODO [#C] Eliminate node package duplication in nix expressions
+* TODO Reconfigure and apply linter
 * TODO Style improvements
 ** TODO Autoformatter
 ** TODO whitespace fixup
-* TODO [#C] Fix spurious rebuilds in hakyll (site.scss)
 * TODO Switch to new version of d3
 * TODO Eliminate mathjax overlap
 * TODO Introduce flow
+* TODO Sourcemaps and uglify for ps and elm
+* TODO Mobilize
+* DONE MathJax in pandoc
+  CLOSED: [2018-02-06 Tue 18:16]
 * Cleanup nix
 ** DONE Use `runCommand`
    CLOSED: [2018-02-05 Mon 01:20]
 ** DONE Clean up nativeBuildInputs
    CLOSED: [2018-02-05 Mon 01:20]
+* DONE Eliminate jquery manual load from bibliometric
+  CLOSED: [2018-02-05 Mon 17:35]
+* DONE Reorganize source files
+  CLOSED: [2018-02-06 Tue 12:50]
 * DONE Fix spurious rebuilds in nix
   CLOSED: [2018-02-05 Mon 05:26]
 ** DONE npm rebuilds on any change to `content`
@@ -64,3 +59,15 @@
   CLOSED: [2018-02-04 Sun 21:04]
 * DONE Set up webpack watch togglability
   CLOSED: [2018-02-04 Sun 21:04]
+* TODO [#C] Make hakyll work relative to specified root
+* TODO [#C] Set up purescript and elm builds
+** DONE Modernize purescript
+   CLOSED: [2018-02-05 Mon 17:35]
+** DONE Set up purescript build
+   CLOSED: [2018-02-06 Tue 12:25]
+** TODO Set up elm build
+* TODO [#C] Derive derivable things in purescript
+* TODO [#C] Autogenerate chunk per post
+* TODO [#C] Add shell mode to overall build that just prepares env
+* TODO [#C] Eliminate node package duplication in nix expressions
+* TODO [#C] Fix spurious rebuilds in hakyll (site.scss)

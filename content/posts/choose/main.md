@@ -45,7 +45,7 @@ to choose, we can make that choice explicit.
 For example (Click the highlighted region to bring up a menu. Click one of the
 options in the menu to activate that choice.):
 
-<ul class="switch" type="menu" menu="state">
+<ul class="switch" type="menu" data-menu="state">
 <li class="open">
 The state is a "framework ... needed to simplify the application of the two
 principles of justice":
