@@ -2,18 +2,11 @@
 * TODO [#A] Write fallbacks for each component
 * TODO Contain output
 * TODO Clean up arg-map on indices
-* TODO Reconfigure and apply linter
-* TODO Style improvements
-** TODO Autoformatter
-** DONE whitespace fixup
-   CLOSED: [2018-02-07 Wed 01:15]
 * TODO Switch to new version of d3
 * TODO Introduce flow
 * TODO Sourcemaps and uglify for ps and elm
 * TODO Mobilize
 ** TODO Take tufte sidenotes
-* DONE Clean up graph of contents para spacing
-  CLOSED: [2018-02-07 Wed 01:02]
 * TODO [#B] Add shell mode to overall build that just prepares env
 * TODO [#C] Make hakyll work relative to specified root
 * TODO [#C] Set up purescript and elm builds
@@ -31,6 +24,16 @@
    CLOSED: [2018-02-05 Mon 01:20]
 ** DONE Clean up nativeBuildInputs
    CLOSED: [2018-02-05 Mon 01:20]
+* DONE Reconfigure and apply linter
+  CLOSED: [2018-02-07 Wed 18:30]
+* DONE Style improvements
+  CLOSED: [2018-02-07 Wed 18:30]
+** DONE Autoformatter
+   CLOSED: [2018-02-07 Wed 18:30]
+** DONE whitespace fixup
+   CLOSED: [2018-02-07 Wed 01:15]
+* DONE Clean up graph of contents para spacing
+  CLOSED: [2018-02-07 Wed 01:02]
 * DONE Clean up markdown
   CLOSED: [2018-02-07 Wed 00:51]
 * DONE Clean up site.hs

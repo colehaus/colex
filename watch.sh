@@ -2,7 +2,7 @@
 #! nix-shell -i bash default.nix
 set -euxo pipefail
 cd content
-site watch --verbose &
+site watch &
 cd js
 NODE_PATH="$NODE_DEPENDENCIES"/lib/node_modules "$NODE_DEPENDENCIES"/bin/webpack &
 cd bibliometric
