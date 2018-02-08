@@ -24,7 +24,7 @@ main =
     csl <- matchIdentifier @"csl" "misc/biblio.csl" $ compile cslCompiler
     bib <- matchIdentifier @"bib" "misc/biblio.bib" $ compile biblioCompiler
     tags <- buildTags (mkPostPat "posts") (fromCapture "posts/tag/*/index.html")
-    postPat <-
+    (postPat, warningsPat, overlayPat, abstractPat) <-
       buildPosts
         defaultTemplate
         (narrowEx templates "templates/post.html")
@@ -50,6 +50,7 @@ main =
       defaultTemplate
       (narrowEx templates "templates/index.html")
       (narrowEx templates "templates/index-content.html")
+      abstractPat
       tags
       pages
     buildTagIndex
@@ -82,10 +83,11 @@ buildPages
   :: Blessed "template" Identifier
   -> Blessed "template" Identifier
   -> Blessed "template" Identifier
+  -> Blessed "abstract" Pattern
   -> Tags
   -> Paginate
   -> Rules ()
-buildPages defaultTemplate indexTemplate indexContentTemplate tags pages =
+buildPages defaultTemplate indexTemplate indexContentTemplate abstractPat tags pages =
   paginateRules pages $ \n pat -> do
     route idRoute
     compile $
@@ -95,7 +97,7 @@ buildPages defaultTemplate indexTemplate indexContentTemplate tags pages =
             listField
               "posts"
               (teaserField "teaser" "teaser" <> tagsCtx tags <> pageCtx <>
-               postCtx)
+               abstractCtx abstractPat <> postCtx)
               (recentFirst =<< Hakyll.loadAll pat) <>
             pageCtx <>
             defaultContext
@@ -197,23 +199,30 @@ buildPosts
   -> Blessed "csl" Identifier
   -> Tags
   -> String
-  -> Rules (Blessed "post" Pattern)
+  -> Rules (Blessed "post" Pattern, Blessed "warnings" Pattern, Blessed "overlay" Pattern, Blessed "abstract" Pattern)
 buildPosts defaultTemplate postTemplate bibIdent cslIdent tags dir = do
   overlayPat <-
     match (fromGlob $ dir <> "/*/overlay.md") . compile $
     pandocCompilerWith readerOpt writerOpt
   overlays <- makePatternDependency (fromGlob $ dir <> "/*/overlay.md")
+  abstractPat <-
+    match (fromGlob $ dir <> "/*/abstract.md") . compile $
+    pandocCompilerWith readerOpt writerOpt
+  abstracts <- makePatternDependency (fromGlob $ dir <> "/*/abstract.md")
   warningsPat <-
     match (fromGlob $ dir <> "/*/warnings.md") $ compile getResourceBody
   warnings <- makePatternDependency (fromGlob $ dir <> "/*/warnings.md")
-  rulesExtraDependencies [overlays, warnings] $
+  postPat <- rulesExtraDependencies [overlays, warnings, abstracts] $
     match (mkPostPat dir) $ do
       route . customRoute $ \ident ->
         dir <> "/" <> (takeBaseName . takeDirectory . toFilePath) ident <>
         "/index.html"
       compile $
         let ctx =
-              warnCtx warningsPat <> overCtx overlayPat <> jsCtx <> cssCtx <>
+              warnCtx warningsPat <> overCtx overlayPat <>
+              abstractCtx abstractPat <>
+              jsCtx <>
+              cssCtx <>
               tagsCtx tags <>
               postCtx
         in do bib <- load bibIdent
@@ -223,6 +232,7 @@ buildPosts defaultTemplate postTemplate bibIdent cslIdent tags dir = do
                 (demoteHeaders . demoteHeaders <$>) . writePandocWith writerOpt >>=
                 loadAndApplyTemplate postTemplate ctx >>=
                 finish defaultTemplate ctx
+  pure (postPat, warningsPat, overlayPat, abstractPat)
 
 compileScss :: Compiler (Item String)
 compileScss = do
@@ -276,7 +286,15 @@ overCtx overPat =
   fromFilePath .
   (<> "/overlay.md") . takeDirectory . toFilePath . itemIdentifier
 
-warnCtx :: Blessed "warning" Pattern -> Context String
+abstractCtx :: Blessed "abstract" Pattern -> Context String
+abstractCtx abstractPat =
+  field "abstract" $
+  loadBody .
+  narrowEx abstractPat .
+  fromFilePath .
+  (<> "/abstract.md") . takeDirectory . toFilePath . itemIdentifier
+
+warnCtx :: Blessed "warnings" Pattern -> Context String
 warnCtx warnPat =
   listFieldWith'
     "warnings"

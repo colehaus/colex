@@ -2,13 +2,9 @@
 title: Graph of contents
 published: 2015-03-28
 tags: meta, structure
-js: /js/graph-contents.js
+js: graph-contents
 css: graph-contents
 ---
-
-::: abstract
-A graph of contents is a more structured alternative to a table of contents.
-:::
 
 A [table of contents](https://en.wikipedia.org/wiki/Table_of_contents) can
 provide a useful overview of a document's content. However, because of its

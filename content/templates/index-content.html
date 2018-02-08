@@ -18,6 +18,10 @@ if (/Trident/.test(navigator.userAgent)) {
         <span class="date">Published on <time datetime="$date$">$date$</time>.</span>
        </div>
 
+       $if(abstract)$
+         <div class="abstract">$abstract$</div>
+       $endif$
+
         $teaser$
 
     </article></li>

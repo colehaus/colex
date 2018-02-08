@@ -2,16 +2,10 @@
 title: On casual futurism
 published: 2015-02-17
 tags: future, bias, review
-js: /js/futurism.js
+js: futurism
 css: futurism
+graph-of-contents: true
 ---
-
-<div id="graph-of-contents">[Contents](#arg-map)</div>
-
-::: abstract
-Predicting the future is hard. Research on forecasting techniques is
-inconclusive, but scenario planning might be the least bad approach.
-:::
 
 <blockquote>
 The human race, to which so many of my readers belong, has been playing at

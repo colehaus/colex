@@ -15,6 +15,7 @@
 $overlay-dur: 1s;
 $min-width: 45ex;
 $max-width: 65ex;
+$big-enough-for-marginalia: 850px;
 
 html,
 button,
@@ -82,6 +83,7 @@ body {
     font-size: 1.2em;
 
     padding-left: 5vw;
+    padding-right: 5vw;
     color: $body-text-color;
     background-color: $body-back-color;
 }
@@ -110,7 +112,6 @@ body {
 }
 main {
     position: relative;
-    min-width: $min-width;
     max-width: $max-width;
     padding-right: 5vw;
     margin: 2ex 0;
@@ -125,7 +126,6 @@ main {
 header {
     @include order(-3);
 
-    min-width: $min-width;
     max-width: $max-width;
 
     > hr {
@@ -134,6 +134,7 @@ header {
     > h1 {
         margin: 0.5ex 0ex;
         display: inline;
+        hyphens: none;
     }
     > span {
         margin: 1ex;
@@ -186,6 +187,18 @@ dl.posts > dd {
 /*  Warnings   */
 /* ========== */
 
+@media (max-width: $big-enough-for-marginalia) {
+    #warnings {
+      position: unset;
+      width: unset;
+      > ul > li {
+          display: inline-block;
+          padding: 0 0.5em;
+      }
+    }
+}
+
+
 #warnings {
    top: 10ex;
    &::first-letter {
@@ -197,6 +210,7 @@ dl.posts > dd {
        list-style-type: none;
    }
 }
+
 details > p {
     margin: 0;
     padding-left: 1ex;
@@ -246,6 +260,11 @@ nav > ul {
 }
 .tags > ul {
     margin: 0;
+    display: inherit;
+    li {
+        margin: -2px;
+        display: inline-block;
+    }
     > li~li::before {
         content: "—";
         color: $light-text-color;
@@ -267,7 +286,6 @@ nav > ul {
     }
 }
 .main-menu {
-    min-width: $min-width;
     max-width: $max-width;
 }
 .main-menu.top {

@@ -2,16 +2,10 @@
 title: Toward an alternative bibliometric
 published: 2015-03-10
 tags: bibliometrics, science, publishing, bayes, information-theory
-js: /js/bibliometric.js, /js/bibliometric-map.js
+js: bibliometric, bibliometric-map
 css: bibliometric
+graph-of-contents: true
 ---
-
-<div id="graph-of-contents">[Contents](#arg-map)</div>
-
-::: abstract
-Impact factor isn't great. A bibliometric based on entropy reduction may be
-promising.
-:::
 
 ::: macros
 $$

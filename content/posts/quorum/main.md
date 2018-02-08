@@ -3,16 +3,9 @@ title: A quorum alternative
 published: 2015-01-28
 tags: voting, bayes, frequentist, statistics
 css: quorum
-js: /js/quorum.js, /js/quorum-map.js
+js: quorum, quorum-map
+graph-of-contents: true
 ---
-
-<div id="graph-of-contents">[Contents](#arg-map)</div>
-
-::: abstract
-Voting procedures can replace traditional quorum with the use of statistical
-techniques. If aggregate opinion on the alternatives is "similar", according to
-those techniques, we declare a failure of quorum.
-:::
 
 # Motivating examples
 

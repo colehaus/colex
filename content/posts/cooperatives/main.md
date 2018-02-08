@@ -2,16 +2,10 @@
 title: The scarcity of cooperatives
 published: 2015-04-05
 tags: automaton, cooperatives, economics
-js: /js/elm-runtime.js, /js/Automaton.js, /js/cooperatives.js
+js: elm-runtime, Automaton, cooperatives
 css: cooperatives
+graph-of-contents: true
 ---
-
-<div id="graph-of-contents">[Contents](#arg-map)</div>
-
-::: abstract
-Why do capital-managed firms predominate over worker cooperatives? Perhaps it's
-because worker cooperatives have less incentive to expand.
-:::
 
 # Introduction
 The [predominance of capital-managed firms
@@ -43,8 +37,7 @@ automaton](#arg-map){#automaton-link}]{.noted}[^elm], [each cell represents
 a market segment requiring a fixed quantity of labor and capital](#arg-map){#segment}. Adjacent
 cells represent similar market segments.
 
-:::{#automation}
-:::
+<div id="automaton" />
 
 ## Initial conditions
 

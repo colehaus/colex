@@ -14,7 +14,14 @@ $endfor$
     <br><span class="date">Last edited on <time datetime="$date$">$date$</time>.</span>
   $endif$
   </div>
-  $body$
+  $if(graph-of-contents)$
+    <div id="graph-of-contents"><a href="#arg-map">Contents</a></div>
+  $endif$
+  $if(abstract)$
+    <div class="abstract">
+      $abstract$
+    </div>
+  $endif$
 
   $if(warnings)$
     <aside class="sidenote" id="warnings">Warnings: <ul>
@@ -23,6 +30,8 @@ $endfor$
       $endfor$
     </ul></aside>
   $endif$
+
+  $body$
 </article></main>
 
 </div>
@@ -33,5 +42,5 @@ $endif$
 <script defer type="text/javascript" src="/js/common.js"></script>
 <script defer type="text/javascript" src="/js/custom-elements.js"></script>
 $for(jses)$
-<script defer type="text/javascript" src="$filename$"></script>
+<script defer type="text/javascript" src="/js/$filename$.js"></script>
 $endfor$

@@ -22,7 +22,7 @@ const fixNotes = () => {
         top = prevBot
       }
       prevBot = top + el.outerHeight(true)
-      return {top: top, left: left}
+      return {top, left}
     })
   }
 
@@ -57,15 +57,17 @@ const setNotes = n => {
 }
 
 $(() => {
-  $('.footnotes').hide()
-  setNotes()
-  $('details').each((_, el) => {
-    (new MutationObserver(fixNotes)).observe(el, {attributes: true})
-  })
-  document.fonts.ready.then(fixNotes)
-  MathJax.Hub.Queue(() => {
-    fixNotes()
-  })
+  if ($(window).width() > 850) {
+    $('.footnotes').hide()
+    setNotes()
+    $('details').each((_, el) => {
+      (new MutationObserver(fixNotes)).observe(el, {attributes: true})
+    })
+    document.fonts.ready.then(fixNotes)
+    MathJax.Hub.Queue(() => {
+      fixNotes()
+    })
+  }
 })
 
 export default {setNotes, fixNotes}

@@ -6,7 +6,8 @@
 * TODO Switch to new version of d3
 * TODO Introduce flow
 * TODO Sourcemaps and uglify for ps and elm
-* TODO Mobilize
+* DONE Mobilize
+  CLOSED: [2018-02-07 Wed 23:19]
 ** TODO Take tufte sidenotes
 * TODO [#B] Add shell mode to overall build that just prepares env
 * TODO [#C] Make hakyll work relative to specified root
