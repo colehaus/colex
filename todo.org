@@ -1,7 +1,8 @@
 * TODO [#A] Rewrite components as web components
 * TODO [#A] Write fallbacks for each component
 * TODO Contain output
-* TODO Clean up arg-map on indices
+* DONE Clean up arg-map on indices
+  CLOSED: [2018-02-07 Wed 19:32]
 * TODO Switch to new version of d3
 * TODO Introduce flow
 * TODO Sourcemaps and uglify for ps and elm

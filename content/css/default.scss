@@ -153,6 +153,10 @@ header {
     }
 }
 .teaser {
+    a[href^="#"] {
+        border-bottom: none;
+        cursor: inherit;
+    }
     #graph-of-contents {
         display: none;
     }
