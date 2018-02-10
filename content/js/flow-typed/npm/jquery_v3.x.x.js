@@ -596,7 +596,7 @@ declare class JQueryEventConstructor {
 /**
  * The class used to specify coordinates.
  */
-declare class JQueryCoordinates {
+type JQueryCoordinates = {
   left: number;
   top: number;
 }
@@ -675,6 +675,7 @@ declare class JQueryStatic {
    *
    * @param settings A set of key/value pairs that configure the Ajax request. All settings are optional. A default can be set for any option with $.ajaxSetup().
    */
+  plot(jq: JQuery, data: Array<{ bars: Object, data: Array<[number, number]> }>, config: Object): void;
   ajax(settings: JQueryAjaxSettings): JQueryXHR;
   /**
    * Perform an asynchronous HTTP (Ajax: any) request.
@@ -3264,7 +3265,7 @@ declare class JQuery {
 }
 
 declare module 'jquery' {
-  declare var exports: JQueryStatic;
+  declare module.exports: JQueryStatic;
 }
 declare var jQuery: JQueryStatic;
 declare var $: JQueryStatic;
