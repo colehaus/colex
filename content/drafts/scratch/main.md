@@ -2,13 +2,10 @@
 title: Scratch
 published: 2018-01-29
 tags: scratch
-js: /js/scratch.js
+js: scratch
 ---
 
-<with-preact name="Boo"></with-preact>
-
-<!--more-->
-
-<script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.1.0/custom-elements-es5-adapter.js"></script>
-<script defer type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/webcomponentsjs/1.1.0/webcomponents-loader.js"></script>
-
+<p class="swap foo">1<br/><br/></p>
+<p>4</p>
+<p class="swap foo">2</p>
+<p class="swap foo">3</p>
