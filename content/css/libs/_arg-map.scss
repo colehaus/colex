@@ -1,3 +1,5 @@
+@import 'colors';
+
 path.link {
   fill: none;
   stroke-width: 3px;
@@ -27,4 +29,8 @@ text {
   &.link {
     fill: nth(map-get($colors, value), 3);
   }
+}
+
+svg a {
+  cursor: pointer;
 }

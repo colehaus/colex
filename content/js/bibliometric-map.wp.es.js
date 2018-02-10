@@ -126,5 +126,5 @@ $(() => {
     {type: 'describes', label: ['Describes']}
   ]
 
-  handler(mkMap('#arg-map', nodeData, linkData, nodeTypeData, linkTypeData))
+  handler.apply(null, mkMap('#arg-map', nodeData, linkData, nodeTypeData, linkTypeData))
 })

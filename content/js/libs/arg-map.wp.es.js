@@ -225,40 +225,54 @@ const mkMap = <LTy, NTy>(
     .attr('height', canvas.height)
 
   mkLegend(canvasId, svg, nodeTypeData, linkTypeData)
-  return mkForce(canvas, svg, nodeDataPrepped, linkDataPrepped, nodeTypeData)
+  const force = mkForce(canvas, svg, nodeDataPrepped, linkDataPrepped, nodeTypeData)
+  return [force, svg, canvasId]
 }
 
-const handler = (map: D3) => {
-  let first = true
+const activate = (map: D3) => (e: ?JQueryEventObject) => {
   const close = () => {
     $('#arg-map a').removeAttr('style')
     $('#underlay').removeClass('inactive')
     $('#overlay').addClass('inactive')
+    location.hash = ''
     map.stop()
   }
 
-  $('a[href="#arg-map"]').click(e => {
-    $('#underlay').addClass('inactive')
-    $('#overlay').removeClass('inactive')
-    if (first) {
-      map.start()
-      $('#arg-map a').click(close)
-      $('#arg-map > svg, #overlay').click(function (e) {
-        if (e.target === this) { close() }
-      })
-      first = false
-    } else {
-      map.resume()
-    }
+  let first = true
+  $('#underlay').addClass('inactive')
+  $('#overlay').removeClass('inactive')
+  if (first) {
+    map.start()
+    $('#arg-map a').click(close)
+    $('#arg-map > svg, #overlay').click(function (e) {
+      if (e.target === this) { close() }
+    })
+    first = false
+  } else {
+    map.resume()
+  }
+  if (e != null) {
     // SVG requires that we not quote id here?
     const id = $(e.target).attr('id')
     if (id !== undefined) {
       $('g a').filter((_, a) =>
                       // $FlowFixMe Doesn't know about SVG anchors
                       a.href.baseVal === '#' + id
-      ).css('font-weight', 'bold')
+                     ).css('font-weight', 'bold')
     }
+  }
+}
+
+const handler = (map: D3, svg: D3, canvasId: string) => {
+  $(window).resize(() => {
+    svg.attr('width', $(canvasId).width())
+    svg.attr('height', $(canvasId).height())
   })
+  console.log(location.hash)
+  if (location.hash === '#arg-map') {
+    activate(map)()
+  }
+  $('a[href="#arg-map"]').click(activate(map))
 }
 
 const shapes = {

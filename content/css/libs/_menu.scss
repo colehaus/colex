@@ -1,3 +1,5 @@
+@import 'colors';
+
 menu[type="popup"] {
     visibility: hidden;
     margin: 0;
@@ -8,11 +10,16 @@ menu[type="popup"] {
 }
 
 .menu {
+    border-radius: 3px;
+    background: $body-back-alt-color;
     margin: 0;
     padding: 1ex;
     visibility: visible;
     list-style-type: none;
     position: absolute;
+    & > li {
+        cursor: pointer;
+    }
     & > li[checked=checked] {
         font-weight: 700;
     }

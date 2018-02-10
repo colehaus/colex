@@ -1,6 +1,11 @@
+@import 'colors';
+
 .swap {
   position: relative;
   background-color: $swap-back-color;
+  padding-left: 0.2em;
+  padding-right: 0.2em;
+  border-radius: 3px;
 }
 .swap-down, .swap-up {
   position: absolute;
@@ -12,7 +17,7 @@
 }
 .swap-down {
   right: -2ex;
-}  
+}
 .swap-up {
   left: -2ex;
   transform: rotate(180deg);

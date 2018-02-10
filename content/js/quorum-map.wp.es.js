@@ -41,25 +41,25 @@ $(() => {
   }
 
   const linkData = [
-  {source: 'permissive', target: 'quorum-def', type: 'describes'},
-  {source: 'restrictive', target: 'quorum-def', type: 'describes'},
-  {source: 'random', target: 'quorum-def', type: 'describes'},
-  {source: 'random', target: 'freq-bounds', type: 'describes'},
-  {source: 'random', target: 'bayes', type: 'describes'},
-  {source: 'post-hoc', target: 'freq-bounds', type: 'describes'},
-  {source: 'post-hoc', target: 'bayes', type: 'describes'},
-  {source: 'complicated', target: 'freq-bounds', type: 'describes'},
-  {source: 'complicated', target: 'bayes', type: 'describes'}
+    {source: 'permissive', target: 'quorum-def', type: 'describes'},
+    {source: 'restrictive', target: 'quorum-def', type: 'describes'},
+    {source: 'random', target: 'quorum-def', type: 'describes'},
+    {source: 'random', target: 'freq-bounds', type: 'describes'},
+    {source: 'random', target: 'bayes', type: 'describes'},
+    {source: 'post-hoc', target: 'freq-bounds', type: 'describes'},
+    {source: 'post-hoc', target: 'bayes', type: 'describes'},
+    {source: 'complicated', target: 'freq-bounds', type: 'describes'},
+    {source: 'complicated', target: 'bayes', type: 'describes'}
   ]
 
   const nodeTypeData = [
-  {type: 'technique', label: ['Technique'], shape: shapes.circle},
-  {type: 'problem', label: ['Problem'], shape: shapes.square}
+    {type: 'technique', label: ['Technique'], shape: shapes.circle},
+    {type: 'problem', label: ['Problem'], shape: shapes.square}
   ]
 
   const linkTypeData = [
-  {type: 'describes', label: ['Describes']}
+    {type: 'describes', label: ['Describes']}
   ]
 
-  handler(mkMap('#arg-map', nodeData, linkData, nodeTypeData, linkTypeData))
+  handler.apply(null, mkMap('#arg-map', nodeData, linkData, nodeTypeData, linkTypeData))
 })

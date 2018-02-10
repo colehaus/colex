@@ -100,8 +100,3 @@ $(() => {
     inlines.removeAttr('style')
   })
 })
-
-// const x: Array<string> = ["ab", "bc"]
-// const y: Array<number> = S.map(q => q.length)(x)
-// const z: Maybe<number> = S.toMaybe(1)
-// const w: Maybe<number> = S.map(q => q)(z)

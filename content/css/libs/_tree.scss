@@ -1,16 +1,21 @@
 @import 'colors';
+
 .switch {
     cursor: pointer;
     margin: 0;
     padding: 1ex 1ex;
+    overflow: hidden;
     > * {
-        width: calc(100% - 10px);
+        height: 100%;
         border-left: 10px solid $menu-back-color;
         background-color: rgba($menu-back-color, 0.3);
+        width: calc(100% - 2ex);
         display: none;
         &.open {
-            padding: 0 1ex;
+            padding-right: 1ex;
+            padding-left: 1ex;
             display: inline-block;
+            border-radius: 3px 5px 5px 3px;
         }
     }
     &.inline {
@@ -19,13 +24,11 @@
             &.open {
                 padding: 0 0.5ex;
                 display: inline;
+                border-radius: 3px;
             }
         }
     }
     ul {
         list-style-type: disc;
     }
-}
-.menu {
-    background: $body-back-alt-color;
 }

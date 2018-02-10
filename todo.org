@@ -1,10 +1,12 @@
-* TODO [#A] Rewrite components as web components
+* DONE [#A] Rewrite components as web components
+  CLOSED: [2018-02-09 Fri 20:11]
 * TODO [#A] Write fallbacks for each component
 * TODO Contain output
 * DONE Clean up arg-map on indices
   CLOSED: [2018-02-07 Wed 19:32]
 * TODO Switch to new version of d3
-* TODO Introduce flow
+* DONE Introduce flow
+  CLOSED: [2018-02-09 Fri 20:11]
 * TODO Sourcemaps and uglify for ps and elm
 * DONE Mobilize
   CLOSED: [2018-02-07 Wed 23:19]
@@ -21,6 +23,8 @@
 * TODO [#C] Autogenerate chunk per post
 * TODO [#C] Eliminate node package duplication in nix expressions
 * TODO [#C] Fix spurious rebuilds in hakyll (site.scss)
+* DONE Add mouseover on argmap links
+  CLOSED: [2018-02-09 Fri 20:11]
 * Cleanup nix
 ** DONE Use `runCommand`
    CLOSED: [2018-02-05 Mon 01:20]
