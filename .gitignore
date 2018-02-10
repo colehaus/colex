@@ -5,3 +5,8 @@ _site
 **/.sass-cache/
 .stack-work
 **-result
+rollbar-access-token.txt
+**/bower_components
+**/output
+**/TAGS
+**/dist
