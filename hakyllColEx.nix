@@ -28,7 +28,7 @@
       LC_ALL = "en_US.UTF-8";
       # TODO Remove `rm` once we reorganize source directory
       patchPhase = ''
-        rm -r dist
+        rm -rf dist
         mkdir dist
         cp "$webpackColEx"/* dist
         cp "$bibliometric"/* dist

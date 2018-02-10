@@ -268,7 +268,6 @@ const handler = (map: D3, svg: D3, canvasId: string) => {
     svg.attr('width', $(canvasId).width())
     svg.attr('height', $(canvasId).height())
   })
-  console.log(location.hash)
   if (location.hash === '#arg-map') {
     activate(map)()
   }
