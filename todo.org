@@ -5,6 +5,7 @@
 * DONE Clean up arg-map on indices
   CLOSED: [2018-02-07 Wed 19:32]
 * TODO Switch to new version of d3
+* TODO Add pre-commit hooks
 * DONE Introduce flow
   CLOSED: [2018-02-09 Fri 20:11]
 * TODO Sourcemaps and uglify for ps and elm

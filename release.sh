@@ -18,3 +18,4 @@ curl https://api.rollbar.com/api/1/deploy/ \
      -F environment=$environment \
      -F revision=$revision \
      -F comment="$comment"
+git checkout master
