@@ -116,7 +116,7 @@ Elm.Native.Text.make = function(elm) {
     function makeSpaces(s) {
         if (s.length == 0) { return s; }
         var arr = s.split('');
-        if (arr[0] == ' ') { arr[0] = "&nbsp;" }      
+        if (arr[0] == ' ') { arr[0] = "&nbsp;" }
         for (var i = arr.length; --i; ) {
             if (arr[i][0] == ' ' && arr[i-1] == ' ') {
                 arr[i-1] = arr[i-1] + arr[i];
@@ -409,7 +409,7 @@ Elm.Native.Date.make = function(elm) {
 
  var dayTable = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
  var monthTable = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
-		   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]; 
+		   "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
 
  return elm.Native.Date.values = {
      read    : readDate,
@@ -448,7 +448,7 @@ Elm.Native.Bitwise.make = function(elm) {
         shiftRightArithmatic: F2(sra),
         shiftRightLogical   : F2(srl)
     };
-    
+
 };
 Elm.Native.List = {};
 Elm.Native.List.make = function(elm) {
@@ -1570,13 +1570,13 @@ Elm.Native.Error.make = function(elm) {
         return msg;
     }
 
-    function Case(moduleName, span) { 
+    function Case(moduleName, span) {
 	var msg = indent(['Non-exhaustive pattern match in case-expression.',
                           'Make sure your patterns cover every case!']);
 	throw new Error('Runtime error in module ' + moduleName + ' (' + span + '):' + msg);
     }
 
-    function If(moduleName, span) { 
+    function If(moduleName, span) {
 	var msg = indent(['Non-exhaustive pattern match in multi-way-if expression.',
                           'It is best to use \'otherwise\' as the last branch of multi-way-if.']);
 	throw new Error('Runtime error in module ' + moduleName + ' (' + span + '):' + msg);
@@ -2085,7 +2085,7 @@ Elm.Native.Array.make = function(elm) {
     //         "lengths" is an array of accumulated lengths of the child nodes
 
     // M is the maximal table size. 32 seems fast. E is the allowed increase
-    // of search steps when concatting to find an index. Lower values will 
+    // of search steps when concatting to find an index. Lower values will
     // decrease balancing, but will increase search steps.
     var M = 32;
     var E = 2;
@@ -2940,7 +2940,7 @@ Elm.Native.Graphics.Input.make = function(elm) {
         btn.elm_up.style.display = 'block';
         btn.elm_hover.style.display = 'none';
         btn.elm_down.style.display = 'none';
-  
+
         btn.appendChild(btn.elm_up);
         btn.appendChild(btn.elm_hover);
         btn.appendChild(btn.elm_down);
@@ -3484,7 +3484,7 @@ Elm.Native.WebSocket.make = function(elm) {
 
     var pending = [];
     var ready = false;
-    
+
     ws.onopen = function(e) {
       var len = pending.length;
       for (var i = 0; i < len; ++i) { ws.send(pending[i]); }
@@ -3493,11 +3493,11 @@ Elm.Native.WebSocket.make = function(elm) {
     ws.onmessage = function(event) {
       elm.notify(incoming.id, event.data);
     };
-    
+
     function send(msg) {
       ready ? ws.send(msg) : pending.push(msg);
     }
-    
+
     function take1(x,y) { return x }
     return A3(Signal.lift2, F2(take1), incoming, A2(Signal.lift, send, outgoing));
   }
@@ -3816,7 +3816,7 @@ Elm.Native.Touch.make = function(elm) {
             this.values = [];
         };
     }
-    
+
     var root = Signal.constant([]),
     tapTime = 500,
     hasTap = false,
@@ -3982,14 +3982,14 @@ Elm.Native.Keyboard.make = function(elm) {
         // Ignore starting values here
         this.value = emptyState;
         this.kids = [];
-        
+
         var n = args.length;
         var count = 0;
         var isChanged = false;
 
         this.recv = function(timestep, changed, parentID) {
             ++count;
-            if (changed) { 
+            if (changed) {
                 // We know this a change must only be one of the following cases
                 if (parentID === down.id && !A2(NList.member, down.value.keyCode, this.value.keyCodes)) {
                     isChanged = true;
@@ -8647,7 +8647,7 @@ function checkPorts(elm) {
         }
     }
 }
-    
+
 function filterListeners(inputs, listeners) {
     loop:
     for (var i = listeners.length; i--; ) {
@@ -10235,7 +10235,7 @@ function updateProps(node, curr, next) {
         }
     }
 
-    // stop capturing clicks if 
+    // stop capturing clicks if
     if (removed
         && nextProps.hover.ctor === '_Tuple0'
         && nextProps.click.ctor === '_Tuple0')

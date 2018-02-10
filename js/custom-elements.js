@@ -1,2 +1,413 @@
-webpackJsonp([2],{14:function(t,e,a){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n,o=a(0),r=(n=o)&&n.__esModule?n:{default:n};var u=function(t){if("radio"===t.attr("type")){var e=t.attr("radiogroup"),a=t.closest("menu"),n=e?'menuitem[radiogroup="'+e+'"]':"menuitem:not([radiogroup])";a.children(n).removeAttr("checked"),(0,r.default)(a.children()[t.index()]).attr("checked","checked")}t.parent().remove()},i=function(t){return(0,r.default)("#"+(0,r.default)(t).closest('[type="menu"]').attr("data-menu"))},f=function t(e){var a=(0,r.default)(e).children("menuitem, hr, menu").map(function(e,a){switch(a.nodeName){case"MENUITEM":return function(t){var e=(0,r.default)(t),a=e.attr("label");if(null!==a){var n=(0,r.default)("<li/>").text(a);return(0,r.default)(["onclick","checked","type","radiogroup"]).each(function(t,a){n.attr(a,e.attr(a))}),[n]}return[]}(a);case"HR":return[a];case"MENU":return function(e){var a=(0,r.default)(e),n=a.attr("label");return null!==n?[(0,r.default)("<li>"+n+"</li>").get()]:[(0,r.default)("<hr/>").get()].concat(t(a),[(0,r.default)("<hr/>").get()])}(a)}}),n=Array.prototype.concat.apply([],a),o=n.length,u=n.reduce(function(t,e,a){var n=0===a||a===o-1,u=void 0!==t[a-1]&&"HR"===t[a-1].nodeName,i="LI"===e.nodeName&&""===(0,r.default)(e).text();return(n||u)&&"HR"===e.nodeName||i?t:(t.push(e),t)},[]);return(0,r.default)('<ul class="menu"></ul>').append(u)},l=function(t){if(!["TEXTAREA","BUTTON","INPUT","OPTION","SELECT","DETAILS","SUMMARY","A"].some(function(e){return t.target.nodeName==e})){t.stopPropagation();var e=i(t.target).filter(function t(){var e=(0,r.default)(this),a=e.parent().get(0),n="MENU"===this.nodeName,o="popup"===e.attr("type");return n&&(o||void 0!==a&&t())}),a=e.children("ul.menu");(0,r.default)("ul.menu").remove(),0===a.length&&((a=f(e)).children().click(function(t){u((0,r.default)(t.target))}),e.append(a))}};(0,r.default)(function(){(0,r.default)('[type="menu"]').each(function(t,e){(0,r.default)(e).click(l)})}),e.default={getMenu:i,defaultHandlers:u}},33:function(t,e,a){"use strict";a(34),a(35),a(4),a(14)},34:function(t,e,a){"use strict";var n=u(a(0)),o=u(a(14)),r=u(a(4));function u(t){return t&&t.__esModule?t:{default:t}}var i=function(t){t.stopPropagation();var e=(0,n.default)(t.target);(0,n.default)('[data-menu="'+(0,n.default)(t.target).closest("menu").attr("id")+'"]').each(function(t,a){var o=(0,n.default)((0,n.default)(a).children()[e.index()]);!function(t,e,a){if(void 0!==t[0]){var n=e.parent();if(!n.is(":visible"))return t.removeClass("open"),void e.addClass("open");var o=void 0,r=void 0,u=void 0,i=void 0,f=function f(l){(r=(l-o)/300)<=1?(e.css("opacity",r),n.css("height",u+(i-u)*r),requestAnimationFrame(f)):(n.removeAttr("style"),t.removeAttr("style"),e.removeAttr("style"),a())};requestAnimationFrame(function a(l){(r=(l-(o=o||l))/300)<=1?(t.css("opacity",1-r),requestAnimationFrame(a)):(u=n.height(),t.css("opacity",0),e.css("opacity",0),t.removeClass("open"),e.addClass("open"),i=n.height(),o=l,requestAnimationFrame(f))})}}(o.siblings(".open"),o,function(){r.default.setNotes(),r.default.fixNotes()})}),o.default.defaultHandlers(e)};(0,n.default)(function(){(0,n.default)('[type="menu"]').each(function(t,e){(0,n.default)(e).click(function(t){var e,a,n,r;a=(e=t).pageY,n=e.pageX,r=e.target,o.default.getMenu(r).offset({top:a,left:n}),function(t){var e=t.target;o.default.getMenu(e).children(".menu").children().off().click(i)}(t)})}),MathJax.Hub.Queue(function(){(0,n.default)(".MathJax_MathContainer").css("display","inline"),(0,n.default)(".MathJax_MathContainer > span").css("display","inline");var t=(0,n.default)(".switch.inline > li.open");t.css("display","inline-block"),t.offset(),t.css("display","inline"),t.removeAttr("style")})})},35:function(t,e,a){"use strict";var n=r(a(0)),o=r(a(4));function r(t){return t&&t.__esModule?t:{default:t}}var u=function(t,e,a,n){var o,r,u=(o=a,r=n,Math.sqrt(Math.pow(o.x-r.x,2)+Math.pow(o.y-r.y,2))/Math.sin(Math.abs(e-t)/2)/2);return{radius:u,center:{x:a.x-Math.cos(t)*u,y:a.y-Math.sin(t)*u}}},i=function(t,e,a){var n,o,r=t.nextUntil(e),i=(o=e,{bottomToTop:(n=t).offset().top-o.offset().top,between:o.height()-n.height(),topToBottom:o.offset().top-n.offset().top+(o.height()-n.height())}),f=i.bottomToTop,l=i.between,s=i.topToBottom,d=Math.PI/4,c=function(t){var e=void 0;e=t<=0?Math.PI+d:d;var a=u(e,e-2*d,{x:0,y:0},{x:0,y:t}),n=a.center,o=a.radius;return function(t){var a=function(t,e,a){var n=t.x,o=t.y;return{x:n+Math.cos(a)*e,y:o+Math.sin(a)*e}}(n,o,e-2*d*t);return"translate("+a.x+"px, "+-a.y+"px)"}},p=c(s),v=c(f),h=c(l),m=void 0,g=void 0;requestAnimationFrame(function n(o){(g=(o-(m=m||o))/300)<=1?(t.css("transform",p(g)),e.css("transform",v(g)),r.css("transform",h(g)),requestAnimationFrame(n)):(t.removeAttr("style"),e.removeAttr("style"),r.removeAttr("style"),a())})},f=function(){var t=void 0,e=void 0,a=(0,n.default)(this),r=a.parent(),u="."+r.attr("class").replace(" ",".");"swap-down"===a.attr("class")?(t=r,e=r.nextAll(u+":first")):(e=r,t=r.prevAll(u+":first")),i(t,e,function(){l(t,e),o.default.fixNotes(),s()})},l=function(t,e){var a=t.next(),n=a[0]===e[0]?t:a;e.before(t),n.before(e)},s=function(){var t=(0,n.default)('<span class="swap-up"></span>'),e=(0,n.default)('<span class="swap-down"></span>'),a=function(t,e){for(var a=e.length,n=[[e[0]]],o=0,r=1;r<a;r++)t(e[r-1],e[r])?n[o].push(e[r]):n[o+=1]=[e[r]];return n}(function(t,e){return(0,n.default)(t).attr("class")===(0,n.default)(e).attr("class")},(0,n.default)(".swap").toArray());(0,n.default)(".swap-up, .swap-down").remove(),a.forEach(function(a){var o=a.length;a.forEach(function(a,r){var u=(0,n.default)(a);0!==r&&u.prepend(t.clone()),r!==o-1&&u.append(e.clone())})}),(0,n.default)(".swap-up, .swap-down").click(f)};(0,n.default)(function(){s()})},4:function(t,e,a){"use strict";Object.defineProperty(e,"__esModule",{value:!0});var n,o=a(0),r=(n=o)&&n.__esModule?n:{default:n};var u=function(t){var e=(0,r.default)(t).find("a").last().attr("href");return void 0===e?[]:(0,r.default)('[id="'+e.slice(1)+'"]')},i=function(){var t=0;(0,r.default)(".sidenote").each(function(e,a){var n=(0,r.default)(a);n.offset(function(e,a){var o=a.top,r=a.left,i=u(n);return 0!==i.length&&(o=i.prev().offset().top),o<t&&(o=t),t=o+n.outerHeight(!0),{top:o,left:r}})})},f=function(t){(0,r.default)(".sidenote").not("#warnings").remove(),(0,r.default)("#article-title").before((0,r.default)("#warnings")),(0,r.default)(".footnotes > ol > li").each(function(t,e){!function(t){var e=u(t).prev();if(e.is(":visible")){var a=e.closest("p");0!==a.length&&(e=a),e.before('<aside class="sidenote">'+(0,r.default)(t).html()+"</aside>")}}(e)}),(0,r.default)(".noted").next().hide(),(0,r.default)(".sidenote").each(function(t,e){(0,r.default)(e).find("a").last().hide()})};(0,r.default)(function(){(0,r.default)(".footnotes").hide(),f(),(0,r.default)("details").each(function(t,e){new MutationObserver(i).observe(e,{attributes:!0})}),document.fonts.ready.then(i),MathJax.Hub.Queue(function(){i()})}),e.default={setNotes:f,fixNotes:i}}},[33]);
+webpackJsonp([1],{
+
+/***/ 11:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sanctuary__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sanctuary___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sanctuary__);
+
+/* eslint no-undef: "off" */
+
+
+
+const S = Object(__WEBPACK_IMPORTED_MODULE_1_sanctuary__["create"])({ checkTypes: false, env: __WEBPACK_IMPORTED_MODULE_1_sanctuary__["env"] });
+
+const defaultHandlers = el => {
+  if (el.attr('type') === 'radio') {
+    const menu = el.closest('menu');
+    const item = menu.find(`[label="${el.text()}"]`);
+    handleEvent({ tag: 'ITEMSELECT', menu, item });
+  }
+};
+
+const getMenu = el => __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).closest('[type="menu"]').attr('data-menu'));
+
+const renderMenuItem = menuItem => {
+  switch (menuItem.tag) {
+    case 'HR':
+      return __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<hr/>');
+    case 'MENUITEM':
+      const li = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<li/>').text(menuItem.label).attr('type', menuItem.type);
+      if (menuItem.active) {
+        li.attr('checked', 'checked');
+      } else {
+        li.removeAttr('checked');
+      }
+      return li;
+    default:
+      throw Error(menuItem.toString());
+  }
+};
+
+const renderMenu = menu => {
+  switch (menu.tag) {
+    case 'CLOSED':
+      return null;
+    case 'OPEN':
+      return __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<ul class="menu"></ul>').append(S.map(renderMenuItem)(menu.items));
+  }
+};
+
+// The JQuery declaration seems to be wrong
+const fixTarget = target => HTMLElement = target; // eslint-disable-line no-return-assign
+
+const parseMenuItem = menuItem => {
+  switch (menuItem.get(0).nodeName) {
+    case 'HR':
+      return { tag: 'HR' };
+    case 'MENUITEM':
+      return { tag: 'MENUITEM',
+        label: menuItem.attr('label'),
+        type: menuItem.attr('type'),
+        active: menuItem.attr('checked') === 'checked'
+      };
+    default:
+      throw Error(menuItem.toString());
+  }
+};
+
+const parseMenu = menu => menu.data('active') ? { tag: 'CLOSED' } : { tag: 'OPEN',
+  items: S.map(el => parseMenuItem(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(el)))(menu.children('menuitem, hr').toArray())
+};
+
+const handleEvent = event => {
+  switch (event.tag) {
+    case 'MENUCLICK':
+      S.pipe([parseMenu, renderMenu, S.toMaybe, S.maybe_(() => {
+        __WEBPACK_IMPORTED_MODULE_0_jquery___default()('ul.menu').remove();
+        event.menu.data('active', false);
+      })(menuDom => {
+        event.menu.append(menuDom);
+        event.menu.data('active', true);
+      })])(event.menu);
+      break;
+    case 'ITEMSELECT':
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()('ul.menu').remove();
+      event.menu.data('active', false);
+      S.map(el => __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).removeAttr('checked'))(event.menu.children().toArray());
+      event.item.attr('checked', 'checked');
+      break;
+  }
+};
+
+const toggleMenu = ev => {
+  // Menu shouldn't popup when clicking on interactive element
+  const isInter = ['TEXTAREA', 'BUTTON', 'INPUT', 'OPTION', 'SELECT', 'DETAILS', 'SUMMARY', 'A'].some(tg => fixTarget(ev.target).nodeName === tg);
+  if (isInter) {
+    return;
+  }
+  const isPopup = el => __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).get(0).nodeName === 'MENU' && __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).attr('type') === 'popup';
+  const menu = getMenu(fixTarget(ev.target)).filter((_, el) => isPopup(el));
+  if (menu != null) {
+    handleEvent({ tag: 'MENUCLICK', menu: __WEBPACK_IMPORTED_MODULE_0_jquery___default()(menu) });
+  }
+};
+
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(() => {
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('[type="menu"]').each((_, el) => {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).click(toggleMenu);
+  });
+});
+
+/* harmony default export */ __webpack_exports__["a"] = ({ getMenu, defaultHandlers });
+
+/***/ }),
+
+/***/ 26:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_custom_elements_tree__ = __webpack_require__(27);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_custom_elements_swap__ = __webpack_require__(28);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_custom_elements_sidenote__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_custom_elements_menu__ = __webpack_require__(11);
+
+
+
+
+
+/***/ }),
+
+/***/ 27:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sanctuary__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sanctuary___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sanctuary__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_custom_elements_menu__ = __webpack_require__(11);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_custom_elements_sidenote__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_libs_util__ = __webpack_require__(7);
+
+/* eslint no-undef: "off" */
+
+
+
+
+
+
+
+
+const S = Object(__WEBPACK_IMPORTED_MODULE_1_sanctuary__["create"])({ checkTypes: false, env: __WEBPACK_IMPORTED_MODULE_1_sanctuary__["env"] });
+
+const handleEvent = event => (resolve, reject) => {
+  switch (event.tag) {
+    case 'INVISIBLEPARENT':
+      event.from.removeClass('open');
+      event.to.addClass('open');
+      resolve();
+      break;
+    case 'SELECTEDOPEN':
+      resolve();
+      break;
+    case 'SELECTEDNEWVISIBLE':
+      // Flow behaving badly
+      const event_ = event;
+      Object(__WEBPACK_IMPORTED_MODULE_4_libs_util__["a" /* makeAnimationPromise */])(300, prog => event_.from.css('opacity', 1 - prog)).then(() => {
+        const pho = event_.parent.height();
+        event_.from.css('opacity', 0);
+        event_.to.css('opacity', 0);
+        event_.from.removeClass('open');
+        event_.to.addClass('open');
+        const phn = event_.parent.height();
+        return [pho, phn];
+      }).then(([pho, phn]) => Object(__WEBPACK_IMPORTED_MODULE_4_libs_util__["a" /* makeAnimationPromise */])(300, prog => {
+        event_.to.css('opacity', prog);
+        event_.parent.css('height', pho + (phn - pho) * prog);
+      })).then(() => {
+        event_.parent.removeAttr('style');
+        event_.from.removeAttr('style');
+        event_.to.removeAttr('style');
+      }).then(resolve);
+      break;
+  }
+};
+
+const choose = ev => {
+  ev.stopPropagation();
+  const el = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(ev.target);
+  S.map(contentTree => {
+    const contentBranch = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(contentTree).children().get(el.index()));
+    const event = contentBranch.hasClass('open') ? { tag: 'SELECTEDOPEN' } : contentBranch.parent().is(':visible') ? { tag: 'SELECTEDNEWVISIBLE', from: contentBranch.siblings('.open'), to: contentBranch, parent: contentBranch.parent() } : { tag: 'INVISIBLEPARENT', from: contentBranch.siblings('.open'), to: contentBranch };
+    new Promise(handleEvent(event)).then(() => {
+      __WEBPACK_IMPORTED_MODULE_3_custom_elements_sidenote__["a" /* default */].setNotes();
+      __WEBPACK_IMPORTED_MODULE_3_custom_elements_sidenote__["a" /* default */].fixNotes();
+    });
+  })(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(`[data-menu="${el.closest('menu').attr('id')}"]`).toArray());
+  __WEBPACK_IMPORTED_MODULE_2_custom_elements_menu__["a" /* default */].defaultHandlers(el);
+};
+
+const fixTarget = target => HTMLElement = target; // eslint-disable-line no-return-assign
+
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(() => {
+  S.map(el => __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).click(({ pageY, pageX, target }) => __WEBPACK_IMPORTED_MODULE_2_custom_elements_menu__["a" /* default */].getMenu(fixTarget(target)).offset({ top: pageY, left: pageX }).children('ul.menu').children().off().click(choose)))(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('[type="menu"]').toArray());
+
+  MathJax.Hub.Queue(() => {
+    // Messes up rendering if we add to stylesheet
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.MathJax_MathContainer').css('display', 'inline');
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.MathJax_MathContainer > span').css('display', 'inline');
+    // Re-inline fix rendering problem
+    const inlines = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.switch.inline > li.open');
+    inlines.css('display', 'inline-block');
+    inlines.offset(); // Trigger reflow
+    inlines.css('display', 'inline');
+    inlines.removeAttr('style');
+  });
+});
+
+/***/ }),
+
+/***/ 28:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sanctuary__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sanctuary___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sanctuary__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_custom_elements_sidenote__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_libs_util__ = __webpack_require__(7);
+
+/* eslint no-undef: "off" */
+
+// Doesn't currently handle nested swaps
+
+
+
+
+
+
+
+const S = Object(__WEBPACK_IMPORTED_MODULE_1_sanctuary__["create"])({ checkTypes: false, env: __WEBPACK_IMPORTED_MODULE_1_sanctuary__["env"] });
+
+const translations = (top, bottom) => {
+  const bottomToTop = top.offset().top - bottom.offset().top;
+  const between = bottom.height() - top.height();
+  const topToBottom = bottom.offset().top - top.offset().top + between;
+  return { bottomToTop, between, topToBottom };
+};
+
+const distance = (coord1, coord2) => Math.hypot(coord1.x - coord2.x, coord1.y - coord2.y);
+
+const circleFromChord = (startRads, stopRads, startCoord, stopCoord) => {
+  const radius = distance(startCoord, stopCoord) / Math.sin(Math.abs(stopRads - startRads) / 2) / 2;
+  const center = pointOnCircle(startCoord, radius, startRads + Math.PI);
+  return { radius, center };
+};
+
+const pointOnCircle = ({ x, y }, radius, angle) => ({
+  x: x + Math.cos(angle) * radius,
+  y: y + Math.sin(angle) * radius
+});
+
+const swapTranslate = (topEl, bottomEl) => (resolve, reject) => {
+  const betweenEls = topEl.nextUntil(bottomEl);
+  const { bottomToTop, between, topToBottom } = translations(topEl, bottomEl);
+
+  const angle = Math.PI / 4;
+  const mkTranslator = trans => {
+    const startAngle = trans <= 0 ? Math.PI + angle : angle;
+    const { center, radius } = circleFromChord(startAngle, startAngle - 2 * angle, { x: 0, y: 0 }, { x: 0, y: trans });
+    return prog => {
+      const { x, y } = pointOnCircle(center, radius, startAngle - angle * 2 * prog);
+      return `translate(${x}px, ${-y}px)`;
+    };
+  };
+  const topTranslator = mkTranslator(topToBottom);
+  const bottomTranslator = mkTranslator(bottomToTop);
+  const betweenTranslator = mkTranslator(between);
+
+  Object(__WEBPACK_IMPORTED_MODULE_3_libs_util__["a" /* makeAnimationPromise */])(300, prog => {
+    topEl.css('transform', topTranslator(prog));
+    bottomEl.css('transform', bottomTranslator(prog));
+    betweenEls.css('transform', betweenTranslator(prog));
+  }).then(() => {
+    topEl.removeAttr('style');
+    bottomEl.removeAttr('style');
+    betweenEls.removeAttr('style');
+  }).then(resolve);
+};
+
+const swap = function () {
+  const arrow = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(this);
+  const p = arrow.parent();
+  const selector = '.' + p.attr('class').replace(' ', '.');
+  const [top, bottom] = arrow.attr('class') === 'swap-down' ? [p, p.nextAll(selector + ':first')] : [p.prevAll(selector + ':first'), p];
+  new Promise(swapTranslate(top, bottom)).then(() => {
+    swapDom(top, bottom);
+    __WEBPACK_IMPORTED_MODULE_2_custom_elements_sidenote__["a" /* default */].fixNotes();
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.swap-up, .swap-down').remove();
+    decorate();
+  });
+};
+
+const swapDom = (top, bot) => {
+  const topNext = top.next();
+  if (topNext[0] === bot[0]) {
+    bot.before(top);
+    top.before(bot);
+  } else {
+    bot.before(top);
+    topNext.before(bot);
+  }
+};
+
+const decorate = () => {
+  const up = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<span class="swap-up"></span>');
+  const down = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('<span class="swap-down"></span>');
+  const swaps = __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.swap');
+  const swapGroups = S.groupBy(S.on(S.equals)(el => __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).attr('class')))(swaps.toArray());
+  const decorateGroup = group => {
+    S.pipe([S.tail, S.map(S.map(el => __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).prepend(up.clone())))])(group);
+    S.pipe([S.init, S.map(S.map(el => __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).append(down.clone())))])(group);
+  };
+  swapGroups.forEach(decorateGroup);
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.swap-up, .swap-down').click(swap);
+};
+
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(decorate);
+
+/***/ }),
+
+/***/ 8:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery__ = __webpack_require__(0);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_jquery___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_jquery__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sanctuary__ = __webpack_require__(1);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sanctuary___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sanctuary__);
+
+/* eslint no-undef: "off" */
+
+
+
+const S = Object(__WEBPACK_IMPORTED_MODULE_1_sanctuary__["create"])({ checkTypes: false, env: __WEBPACK_IMPORTED_MODULE_1_sanctuary__["env"] });
+
+const getReferrer = el => S.pipe([S.toMaybe, S.map(id => __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#' + id.slice(1))), S.maybeToNullable])(el.find('a').last().attr('href'));
+
+const fixNotes = () => {
+  S.reduce(prevBot => _el => {
+    const el = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(_el);
+    el.offset((_1, { top, left }) => S.pipe([S.toMaybe, S.maybe({ top, left })(ref => {
+      const top = S.max(ref.prev().offset().top)(prevBot);
+      prevBot = top + el.outerHeight(true);
+      return { top, left };
+    })])(getReferrer(el)));
+    return prevBot;
+  })(0)(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('.sidenote').toArray());
+};
+
+const setNotes = () => {
+  const addSidenote = el => {
+    // Putting block elements in a <p> auto-closes it so we put it immediately outside
+    const referrer = getReferrer(el);
+    if (referrer != null) {
+      const noted = referrer.prev();
+      if (noted.is(':visible')) {
+        const p = noted.closest('p');
+        (p.length === 0 ? noted : p).before('<aside class="sidenote">' + __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).html() + '</aside>');
+      }
+    }
+  };
+  const delink = () => {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.noted').next().hide();
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.sidenote').each((_, el) => {
+      __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).find('a').last().hide();
+    });
+  };
+
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.sidenote').not('#warnings').remove();
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#article-title').before(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#warnings'));
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.footnotes > ol > li').each((_, el) => {
+    addSidenote(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(el));
+  });
+  delink();
+};
+
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(() => {
+  if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).width() > 850) {
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.footnotes').hide();
+    setNotes();
+    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('details').each((_, el) => {
+      new MutationObserver(fixNotes).observe(el, { attributes: true });
+    });
+    // $FlowFixMe
+    document.fonts.ready.then(fixNotes);
+    MathJax.Hub.Queue(() => {
+      fixNotes();
+    });
+  }
+});
+
+/* harmony default export */ __webpack_exports__["a"] = ({ setNotes, fixNotes });
+
+/***/ })
+
+},[26]);
 //# sourceMappingURL=custom-elements.js.map
