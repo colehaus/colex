@@ -24,7 +24,7 @@ main =
     csl <- matchIdentifier @"csl" "misc/biblio.csl" $ compile cslCompiler
     bib <- matchIdentifier @"bib" "misc/biblio.bib" $ compile biblioCompiler
     tags <- buildTags (mkPostPat "posts") (fromCapture "posts/tag/*/index.html")
-    (postPat, warningsPat, overlayPat, abstractPat) <-
+    (postPat, _, _, abstractPat) <-
       buildPosts
         defaultTemplate
         (narrowEx templates "templates/post.html")
@@ -181,7 +181,7 @@ buildArchive postPat defaultTemplate archiveTemplate tags =
 
 buildCss :: Rules (Blessed "css" Pattern)
 buildCss = do
-  includes <- makePatternDependency "css/default/_*.scss"
+  includes <- makePatternDependency "css/libs/_*.scss"
   rulesExtraDependencies [includes] $
     match "css/*.scss" $ do
       route $ setExtension "css"
