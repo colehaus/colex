@@ -1,3 +1,5 @@
+/* eslint no-undef: "off" */
+
 import 'jquery-flot'
 import $ from 'jquery'
 import jStat from 'jStat'
@@ -228,7 +230,7 @@ const getData = check => {
     return jStat.map(s.split(/[^-1234567890.]+/), x => {
       const f = parseFloat(x)
       if (isNaN(f)) {
-        throw 'NaN'
+        throw Error('NaN')
       }
       // If we let in 0 or 1, we end up taking log(0) later
       const eps = 0.001

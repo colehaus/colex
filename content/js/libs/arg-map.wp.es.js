@@ -1,277 +1,245 @@
+// @flow
+/* eslint no-undef: "off" */
+
 import $ from 'jquery'
 import * as d3 from 'd3'
+import {create, env} from 'sanctuary'
 
-if (!Array.prototype.find) {
-  Array.prototype.find = function (predicate) {
-    if (this === null) {
-      throw new TypeError('Array.prototype.find called on null or undefined')
-    }
-    if (typeof predicate !== 'function') {
-      throw new TypeError('predicate must be a function')
-    }
-    const list = Object(this)
-    const length = list.length >>> 0
-    const thisArg = arguments[1]
-    let value
+import { uniquify } from 'libs/util'
+import * as shapesImport from 'libs/shapes'
 
-    for (let i = 0; i < length; i++) {
-      value = list[i]
-      if (predicate.call(thisArg, value, i, list)) {
-        return value
-      }
-    }
-    return undefined
-  }
-}
+const S = create({checkTypes: false, env})
 
-const uniq = a => {
-  let seen = {}
-  return a.filter(item =>
-    seen.hasOwnProperty(item) ? false : (seen[item] = true)
-  )
-}
-
-const shape = as =>
-  r => as.map(a => Math.cos(a) * r + ' ' + Math.sin(a) * r).join(', ')
-
-const triangle = shape([3 / 6 * Math.PI, 7 / 6 * Math.PI, 11 / 6 * Math.PI])
-const square = shape([
-  1 / 4 * Math.PI,
-  3 / 4 * Math.PI,
-  5 / 4 * Math.PI,
-  7 / 4 * Math.PI
-])
-const diamond = shape([
-  0 / 2 * Math.PI,
-  1 / 2 * Math.PI,
-  2 / 2 * Math.PI,
-  3 / 2 * Math.PI
-])
-const pentagon = shape([
-  3 / 10 * Math.PI,
-  7 / 10 * Math.PI,
-  11 / 10 * Math.PI,
-  15 / 10 * Math.PI,
-  19 / 10 * Math.PI
-])
-const hexagon = shape([
-  1 / 6 * Math.PI,
-  3 / 6 * Math.PI,
-  5 / 6 * Math.PI,
-  7 / 6 * Math.PI,
-  9 / 6 * Math.PI,
-  11 / 6 * Math.PI
-])
-const circle = r => {
-  const sides = 16
-  let angles = []
-  for (let i = 0; i < sides; i++) {
-    angles.push(2 * Math.PI / sides * i)
-  }
-  return shape(angles)(r)
-}
 const linkArc = ({target, source}) => {
   const dx = target.x - source.x
   const dy = target.y - source.y
-  const dr = Math.sqrt(dx * dx + dy * dy)
-  return 'M' + source.x + ',' + source.y +
-    'A' + dr + ',' + dr + ' 0 0,1 ' +
-    target.x + ',' + target.y
+  const dr = Math.hypot(dx, dy)
+  return `M${source.x},${source.y}A${dr},${dr} 0 0,1 ${target.x},${target.y}`
 }
 
-// Purifying is non-trivial since building svg in memory doesn't seem to work
-const mkMap = (canvasId, nodeData, linkData, nodeTypeData, linkTypeData) => {
-  const canvas = $(canvasId)
-  const width = canvas.width()
-  const height = canvas.height()
-  const defLength = width / 5
-  const xCenter = width / 2
-  const yCenter = height / 2
-  const defStrength = 0.2
-  const radius = 13
+export type NodeText<Ty> = {| label: Array<string>, type: Ty |}
+type NodeLayoutConfig = {| x: number => number, y: number => number |}
+// Flow is kinda dumb so we can't construct these out of the intersections
+export type NodeConfigWithLayout<Ty> = {| label: Array<string>, type: Ty, x: number => number, y: number => number |}
+type NodeConfig<Ty> = NodeConfigWithLayout<Ty> | NodeText<Ty>
+type NodeWithLayout<Ty> = {| label: Array<string>, type: Ty, x: number, y: number, url: string |}
+type NodeWithoutLayout<Ty> = {| label: Array<string>, type: Ty, url: string |}
+type Node<Ty> = NodeWithLayout<Ty> | NodeWithoutLayout<Ty>
+type Link<Ty> = { source: string, target: string, type: Ty }
+type LinkN<LTy, NTy> = { source: Node<NTy>, target: Node<NTy>, type: LTy }
+type NodeType<Ty> = { type: Ty, label: Array<string>, shape: number => string }
+type LinkType<Ty> = { type: Ty, label: Array<string> }
+type D3 = any
+type CanvasDimensions = { width: number, height: number }
 
-  const mkLegend = (nodeTypeData, linkTypeData) => {
-    svg.append('g')
-      .attr('transform', 'translate(20, 50)')
-      .classed('legend', true)
-      .selectAll('.legend')
-      .data(nodeTypeData)
-      .enter().append('g')
-        .attr('transform', (_, i) => 'translate(0, ' + i * 30 + ')')
-        .each(function (d) {
-          const nodeType = nodeTypeData.find(t => t.type === d.type)
-          d3.select(this).append('polygon').attr('points', nodeType.shape(radius))
-          d.label = d.label || []
-          const text = d3.select(this).append('text')
-            .attr('x', radius + 5)
-          d.label.forEach((t, i) => {
-            text.append('tspan')
-              .attr('y', 0.5 + 1.6 * i + 'ex')
-              .classed('node', true)
-              .text(t)
-          })
-        })
+const RADIUS = 13
+const DEFAULT_STRENGTH = 0.2
 
-    svg.append('g')
-      .attr('transform', 'translate(20, 180)')
-      .classed('legend', true)
-      .selectAll('.legend')
-      .data(linkTypeData)
-      .enter().append('g')
-        .attr('transform', (_, i) => 'translate(0, ' + i * 30 + ')')
-        .each(function (d) {
-          d3.select(this).append('path')
-            .attr('d', linkArc({source: {x: -radius, y: radius},
-              target: {x: radius, y: -radius}}))
-            .classed(d.type, true)
-            .classed('link', true)
-          d.label = d.label || []
-          const text = d3.select(this).append('text')
-            .attr('x', radius + 5)
-          d.label.forEach((t, i) => {
-            text.append('tspan')
-              .attr('y', 0.5 + 1.6 * i + 'ex')
-              .classed('node', true)
-              .text(t)
-          })
-        })
-  }
-
-  const mkForce = (nodeData, linkData) => {
-    for (let prop in nodeData) {
-      if (nodeData.hasOwnProperty(prop) && nodeData[prop].url === undefined) {
-        nodeData[prop].url = '#' + prop
-      }
-    }
-
-    const tick = () => {
-      const transform = ({x, y}) => 'translate(' + x + ',' + y + ')'
-
-      const linkCenter = ({target, source}) => {
-        const xAvg = (target.x + source.x) / 2
-        const yAvg = (target.y + source.y) / 2
-        return 'translate(' + xAvg + ',' + yAvg + ')'
-      }
-
-      links.attr('d', linkArc)
-      nodes.attr('transform', transform)
-      nodeTexts.attr('transform', transform)
-      linkTexts.attr('transform', linkCenter)
-    }
-
-    const linkTypes = uniq(linkData.map(({type}) => type))
-    // Per-type markers, as they don't inherit styles.
-    svg.append('defs').selectAll('marker')
-        .data(linkTypes)
-      .enter().append('marker')
-        .attr('id', d => d)
-        .attr('viewBox', '0 -5 10 10')
-        .attr('refX', 15)
-        .attr('refY', -1.5)
-        .attr('markerWidth', 6)
-        .attr('markerHeight', 6)
-        .attr('orient', 'auto')
-      .append('path')
-        .attr('d', 'M0,-5L10,0L0,5')
-
-    const force = d3.layout.force()
-        .nodes(d3.values(nodeData))
-        .links(linkData)
-        .size([width, height])
-        .linkDistance(({length}) => length || defLength)
-        .linkStrength(({strength}) => strength || defStrength)
-        .gravity(0.05)
-        .charge(-300)
-        .on('tick', tick)
-
-    const links = svg.append('g').selectAll('path')
-        .data(force.links())
-      .enter().append('path')
-        .attr('class', ({type}) => 'link ' + type)
-        .attr('marker-end', ({type}) => 'url(#' + type + ')')
-
-    const linkTexts = svg.append('g').selectAll('text')
-        .data(force.links())
-      .enter().append('text')
+const mkLegend = <NTy, LTy>(canvasId: string, svg: D3, nodeTypeData: Array<NodeType<NTy>>, linkTypeData: Array<LinkType<LTy>>) => {
+  svg.append('g')
+    .attr('transform', 'translate(20, 50)')
+    .classed('legend', true)
+    .selectAll('.legend')
+    .data(nodeTypeData)
+    .enter().append('g')
+      .attr('transform', (_, i) => 'translate(0, ' + i * 30 + ')')
       .each(function (d) {
+        const nodeType = nodeTypeData.find(t => t.type === d.type)
+        if (nodeType == null) {
+          throw Error(`Couldn't find node type ${d.type} in ${nodeTypeData.toString()}`)
+        }
+        d3.select(this).append('polygon').attr('points', nodeType.shape(RADIUS))
         d.label = d.label || []
+        const text = d3.select(this).append('text')
+          .attr('x', RADIUS + 5)
         d.label.forEach((t, i) => {
-          d3.select(this).append('tspan')
-            .classed('link', true)
+          text.append('tspan')
+            .attr('y', 0.5 + 1.6 * i + 'ex')
+            .classed('node', true)
             .text(t)
         })
       })
 
-    const nodes = svg.append('g').selectAll('polygon')
-        .data(force.nodes())
-      .enter().append('polygon')
-        .attr('class', ({type}) => type)
-        .attr('points', d =>
-          nodeTypeData.find(t => t.type === d.type).shape(radius)
-        ).on('dblclick', function (d) {
-          d3.select(this).classed('fixed', d.fixed = false)
-        }).call(force.drag().on('dragend', function (d) {
-          d3.select(this).classed('fixed', d.fixed = true)
-        }))
-
-    const nodeTexts = svg.append('g').selectAll('a')
-        .data(force.nodes())
-      .enter().append('a')
-        .attr('xlink:href', ({url}) => url)
-      .append('text')
+  svg.append('g')
+    .attr('transform', 'translate(20, 180)')
+    .classed('legend', true)
+    .selectAll('.legend')
+    .data(linkTypeData)
+    .enter().append('g')
+      .attr('transform', (_, i) => 'translate(0, ' + i * 30 + ')')
       .each(function (d) {
+        d3.select(this).append('path')
+          .attr('d', linkArc({source: {x: -RADIUS, y: RADIUS},
+            target: {x: RADIUS, y: -RADIUS}}))
+          .classed(d.type, true)
+          .classed('link', true)
         d.label = d.label || []
+        const text = d3.select(this).append('text')
+          .attr('x', RADIUS + 5)
         d.label.forEach((t, i) => {
-          d3.select(this).append('tspan')
-             .attr('x', 10)
-             .attr('y', 1.6 * i + 'ex')
-             .classed('node', true)
-             .text(t)
+          text.append('tspan')
+            .attr('y', 0.5 + 1.6 * i + 'ex')
+            .classed('node', true)
+            .text(t)
         })
       })
-    return force
-  }
-
-  linkData.forEach(link => {
-    if (typeof nodeData[link.source] === 'undefined' ||
-        typeof nodeData[link.target] === 'undefined') {
-      throw 'Linking to non-existent node'
-    }
-    link.source = nodeData[link.source]
-    link.target = nodeData[link.target]
-  })
-
-  for (let prop in nodeData) {
-    if (nodeData.hasOwnProperty(prop)) {
-      if (typeof nodeData[prop].x !== 'undefined') {
-        nodeData[prop].x = nodeData[prop].x(width) + xCenter
-      }
-      if (typeof nodeData[prop].y !== 'undefined') {
-        nodeData[prop].y = nodeData[prop].y(height) + yCenter
-      }
-    }
-  }
-
-  const svg = d3.select(canvasId).append('svg')
-    .attr('width', width)
-    .attr('height', height)
-
-  mkLegend(nodeTypeData, linkTypeData)
-  return mkForce(nodeData, linkData)
 }
 
-const handler = map => {
+const mkForce = <NTy, LTy>(canvas: CanvasDimensions, svg: D3, nodeData: { [string] : Node<NTy> }, linkData: Array<LinkN<LTy, NTy>>, nodeTypeData: Array<NodeType<NTy>>) => {
+  const defaultLength = canvas.width / 5
+
+  const tick = () => {
+    const transform = ({x, y}) => `translate(${x},${y})`
+
+    const linkCenter = ({target, source}) => {
+      const xAvg = (target.x + source.x) / 2
+      const yAvg = (target.y + source.y) / 2
+      return `translate(${xAvg},${yAvg})`
+    }
+
+    links.attr('d', linkArc)
+    nodes.attr('transform', transform)
+    nodeTexts.attr('transform', transform)
+    linkTexts.attr('transform', linkCenter)
+  }
+
+  const force = d3.layout.force()
+    .nodes(d3.values(nodeData))
+    .links(linkData)
+    .size([canvas.width, canvas.height])
+    .linkDistance(({length}) => length || defaultLength)
+    .linkStrength(({strength}) => strength || DEFAULT_STRENGTH)
+    .gravity(0.05)
+    .charge(-300)
+    .on('tick', tick)
+
+  const linkTypes = uniquify(linkData.map(({type}) => type))
+  // Per-type markers, as they don't inherit styles.
+  svg.append('defs').selectAll('marker')
+      .data(linkTypes)
+    .enter().append('marker')
+      .attr('id', d => d)
+      .attr('viewBox', '0 -5 10 10')
+      .attr('refX', 15)
+      .attr('refY', -1.5)
+      .attr('markerWidth', 6)
+      .attr('markerHeight', 6)
+      .attr('orient', 'auto')
+    .append('path')
+      .attr('d', 'M0,-5L10,0L0,5')
+
+  const links = svg.append('g').selectAll('path')
+      .data(force.links())
+    .enter().append('path')
+      .attr('class', ({type}) => 'link ' + type)
+      .attr('marker-end', ({type}) => 'url(#' + type + ')')
+
+  const linkTexts = svg.append('g').selectAll('text')
+      .data(force.links())
+    .enter().append('text')
+    .each(function (d) {
+      d.label = d.label || []
+      d.label.forEach((t, i) => {
+        d3.select(this).append('tspan')
+          .classed('link', true)
+          .text(t)
+      })
+    })
+
+  const nodes = svg.append('g').selectAll('polygon')
+      .data(force.nodes())
+    .enter().append('polygon')
+      .attr('class', ({type}) => type)
+      .attr('points', d => {
+        const type = nodeTypeData.find(t => t.type === d.type)
+        if (type == null) {
+          throw Error(`Couldn't find node type ${d.type} in ${nodeTypeData.toString()}`)
+        } else {
+          return type.shape(RADIUS)
+        }
+      }).on('dblclick', function (d) {
+        d3.select(this).classed('fixed', d.fixed = false)
+      }).call(force.drag().on('dragend', function (d) {
+        d3.select(this).classed('fixed', d.fixed = true)
+      }))
+
+  const nodeTexts = svg.append('g').selectAll('a')
+      .data(force.nodes())
+    .enter().append('a')
+      .attr('xlink:href', ({url}) => url)
+    .append('text')
+    .each(function (d) {
+      d.label = d.label || []
+      d.label.forEach((t, i) => {
+        d3.select(this).append('tspan')
+           .attr('x', 10)
+           .attr('y', 1.6 * i + 'ex')
+           .classed('node', true)
+           .text(t)
+      })
+    })
+  return force
+}
+
+const prepData = <LTy, NTy>(canvas: CanvasDimensions, linkData: Array<Link<LTy>>, nodeData: { [string]: NodeConfig<NTy> }): [Array<LinkN<LTy, NTy>>, { [string]: Node<NTy> }] => {
+  const xCenter = canvas.width / 2
+  const yCenter = canvas.height / 2
+
+  const nodeDataPrepped =
+    S.pipe([
+      S.keys,
+      S.map(key => {
+        const node = nodeData[key]
+        const { label, type } = nodeData[key]
+        if (node.x && node.y) {
+          return [key, { url: '#' + key, label, type, x: node.x(canvas.width) + xCenter, y: node.y(canvas.height) + yCenter }]
+        } else {
+          return [key, { url: '#' + key, label, type }]
+        }
+      }),
+      S.fromPairs
+    ])(
+      nodeData
+    )
+  const linkDataPrepped = S.map(link => {
+    const { source, target, type } = link
+    return { type, source: nodeDataPrepped[source], target: nodeDataPrepped[target] }
+  })(
+    linkData
+  )
+  return [linkDataPrepped, nodeDataPrepped]
+}
+
+const mkMap = <LTy, NTy>(
+  canvasId: string,
+  nodeData: { [string]: NodeConfig<NTy> },
+  linkData: Array<Link<LTy>>,
+  nodeTypeData: Array<NodeType<NTy>>,
+  linkTypeData: Array<LinkType<LTy>>) => {
+  const canvas = { width: $(canvasId).width(), height: $(canvasId).height() }
+
+  const [linkDataPrepped, nodeDataPrepped] = prepData(canvas, linkData, nodeData)
+
+  const svg = d3.select(canvasId).append('svg')
+    .attr('width', canvas.width)
+    .attr('height', canvas.height)
+
+  mkLegend(canvasId, svg, nodeTypeData, linkTypeData)
+  return mkForce(canvas, svg, nodeDataPrepped, linkDataPrepped, nodeTypeData)
+}
+
+const handler = (map: D3) => {
   let first = true
   const close = () => {
     $('#arg-map a').removeAttr('style')
-    $('#underlay').toggleClass('inactive')
-    $('#overlay').toggleClass('inactive')
+    $('#underlay').removeClass('inactive')
+    $('#overlay').addClass('inactive')
     map.stop()
   }
 
   $('a[href="#arg-map"]').click(e => {
-    $('#underlay').toggleClass('inactive')
-    $('#overlay').toggleClass('inactive')
+    $('#underlay').addClass('inactive')
+    $('#overlay').removeClass('inactive')
     if (first) {
       map.start()
       $('#arg-map a').click(close)
@@ -285,13 +253,25 @@ const handler = map => {
     // SVG requires that we not quote id here?
     const id = $(e.target).attr('id')
     if (id !== undefined) {
-      $('g a').filter((_, a) => a.href.baseVal === '#' + id).css('font-weight', 'bold')
+      $('g a').filter((_, a) =>
+                      // $FlowFixMe Doesn't know about SVG anchors
+                      a.href.baseVal === '#' + id
+      ).css('font-weight', 'bold')
     }
   })
 }
 
-export default {
-  shapes: {square, circle, diamond, triangle, hexagon, pentagon},
+const shapes = {
+  square: shapesImport.toSvgPolygon(shapesImport.square),
+  circle: shapesImport.toSvgPolygon(shapesImport.circle),
+  diamond: shapesImport.toSvgPolygon(shapesImport.diamond),
+  triangle: shapesImport.toSvgPolygon(shapesImport.triangle),
+  hexagon: shapesImport.toSvgPolygon(shapesImport.hexagon),
+  pentagon: shapesImport.toSvgPolygon(shapesImport.pentagon)
+}
+
+export {
+  shapes,
   mkMap,
   handler
 }

@@ -1,6 +1,8 @@
+// @flow
+
 import $ from 'jquery'
 
-import argMap from 'libs/arg-map'
+import { shapes, mkMap, handler } from 'libs/arg-map'
 
 $(() => {
   const nodeData = {
@@ -67,35 +69,31 @@ $(() => {
   }
 
   const linkData = [
-  {source: 'predominate', target: 'hypothesis', type: 'reconciled'},
-  {source: 'efficient', target: 'hypothesis', type: 'reconciled'},
-  {source: 'automaton-link', target: 'hypothesis', type: 'models'},
-  {source: 'segment', target: 'automaton-link', type: 'describes'},
-  {source: 'empty', target: 'segment', type: 'describes'},
-  {source: 'firm', target: 'segment', type: 'describes'},
-  {source: 'expand', target: 'empty', type: 'describes'},
-  {source: 'expand', target: 'firm', type: 'describes'},
-  {source: 'accum', target: 'firm', type: 'describes'},
-  {source: 'altruism', target: 'expand', type: 'describes'},
-  {source: 'altruism', target: 'hypothesis', type: 'describes'}
+    {source: 'predominate', target: 'hypothesis', type: 'reconciled'},
+    {source: 'efficient', target: 'hypothesis', type: 'reconciled'},
+    {source: 'automaton-link', target: 'hypothesis', type: 'models'},
+    {source: 'segment', target: 'automaton-link', type: 'describes'},
+    {source: 'empty', target: 'segment', type: 'describes'},
+    {source: 'firm', target: 'segment', type: 'describes'},
+    {source: 'expand', target: 'empty', type: 'describes'},
+    {source: 'expand', target: 'firm', type: 'describes'},
+    {source: 'accum', target: 'firm', type: 'describes'},
+    {source: 'altruism', target: 'expand', type: 'describes'},
+    {source: 'altruism', target: 'hypothesis', type: 'describes'}
   ]
 
   const nodeTypeData = [
-  {type: 'background', label: ['Background'], shape: argMap.shapes.square},
-  {type: 'hypothesis', label: ['Hypothesis'], shape: argMap.shapes.diamond},
-  {type: 'model', label: ['Model'], shape: argMap.shapes.circle},
-  {type: 'attribute', label: ['Attribute'], shape: argMap.shapes.pentagon}
+    {type: 'background', label: ['Background'], shape: shapes.square},
+    {type: 'hypothesis', label: ['Hypothesis'], shape: shapes.diamond},
+    {type: 'model', label: ['Model'], shape: shapes.circle},
+    {type: 'attribute', label: ['Attribute'], shape: shapes.pentagon}
   ]
 
   const linkTypeData = [
-  {type: 'reconciled', label: ['Reconciled by']},
-  {type: 'models', label: ['Models']},
-  {type: 'describes', label: ['Describes']}
+    {type: 'reconciled', label: ['Reconciled by']},
+    {type: 'models', label: ['Models']},
+    {type: 'describes', label: ['Describes']}
   ]
 
-  argMap.handler(argMap.mkMap('#arg-map',
-                            nodeData,
-                            linkData,
-                            nodeTypeData,
-                            linkTypeData))
+  handler(mkMap('#arg-map', nodeData, linkData, nodeTypeData, linkTypeData))
 })

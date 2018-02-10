@@ -1,0 +1,15 @@
+[ignore]
+
+[include]
+
+[libs]
+flow-typed
+
+[lints]
+
+[options]
+module.file_ext=.wp.es.js
+module.file_ext=.js
+module.name_mapper='^\(.*\)$' -> '<PROJECT_ROOT>/\1'
+
+[strict]

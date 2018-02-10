@@ -1,6 +1,8 @@
+// @flow
+
 import $ from 'jquery'
 
-import argMap from 'libs/arg-map'
+import { shapes, mkMap, handler } from 'libs/arg-map'
 
 $(() => {
   const nodeData = {
@@ -51,17 +53,13 @@ $(() => {
   ]
 
   const nodeTypeData = [
-  {type: 'technique', label: ['Technique'], shape: argMap.shapes.circle},
-  {type: 'problem', label: ['Problem'], shape: argMap.shapes.square}
+  {type: 'technique', label: ['Technique'], shape: shapes.circle},
+  {type: 'problem', label: ['Problem'], shape: shapes.square}
   ]
 
   const linkTypeData = [
   {type: 'describes', label: ['Describes']}
   ]
 
-  argMap.handler(argMap.mkMap('#arg-map',
-                            nodeData,
-                            linkData,
-                            nodeTypeData,
-                            linkTypeData))
+  handler(mkMap('#arg-map', nodeData, linkData, nodeTypeData, linkTypeData))
 })

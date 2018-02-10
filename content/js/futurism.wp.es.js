@@ -1,6 +1,8 @@
+// @flow
+
 import $ from 'jquery'
 
-import argMap from 'libs/arg-map'
+import { shapes, mkMap, handler } from 'libs/arg-map'
 
 $(() => {
   const nodeData = {
@@ -91,41 +93,37 @@ $(() => {
   }
 
   const linkData = [
-  {source: 'mediocre', target: 'other', type: 'motivates'},
-  {source: 'mediocre', target: 'multiple', type: 'motivates'},
-  {source: 'optimistic', target: 'other', type: 'motivates'},
-  {source: 'optimistic', target: 'multiple', type: 'motivates'},
-  {source: 'overconfident', target: 'other', type: 'motivates'},
-  {source: 'overconfident', target: 'multiple', type: 'motivates'},
-  {source: 'naive', target: 'single', type: 'supertype'},
-  {source: 'pessimistic', target: 'multiple', type: 'contradicts'},
-  {target: 'single', source: 'moreLikely', type: 'describes'},
-  {target: 'naive', source: 'overconfident', type: 'describes'},
-  {target: 'naive', source: 'mediocre', type: 'describes'},
-  {target: 'naive', source: 'optimistic', type: 'describes'},
-  {target: 'multiple', source: 'outcomes', type: 'describes'},
-  {target: 'multiple', source: 'widened', type: 'describes'},
-  {target: 'multiple', source: 'narrowed', type: 'describes'},
-  {target: 'multiple', source: 'framing', type: 'describes'},
-  {target: 'other', source: 'framing', type: 'describes'},
-  {target: 'multiple', source: 'rational', type: 'describes'}
+    {source: 'mediocre', target: 'other', type: 'motivates'},
+    {source: 'mediocre', target: 'multiple', type: 'motivates'},
+    {source: 'optimistic', target: 'other', type: 'motivates'},
+    {source: 'optimistic', target: 'multiple', type: 'motivates'},
+    {source: 'overconfident', target: 'other', type: 'motivates'},
+    {source: 'overconfident', target: 'multiple', type: 'motivates'},
+    {source: 'naive', target: 'single', type: 'supertype'},
+    {source: 'pessimistic', target: 'multiple', type: 'contradicts'},
+    {target: 'single', source: 'moreLikely', type: 'describes'},
+    {target: 'naive', source: 'overconfident', type: 'describes'},
+    {target: 'naive', source: 'mediocre', type: 'describes'},
+    {target: 'naive', source: 'optimistic', type: 'describes'},
+    {target: 'multiple', source: 'outcomes', type: 'describes'},
+    {target: 'multiple', source: 'widened', type: 'describes'},
+    {target: 'multiple', source: 'narrowed', type: 'describes'},
+    {target: 'multiple', source: 'framing', type: 'describes'},
+    {target: 'other', source: 'framing', type: 'describes'},
+    {target: 'multiple', source: 'rational', type: 'describes'}
   ]
 
   const nodeTypeData = [
-  {type: 'attribute', label: ['Attribute'], shape: argMap.shapes.circle},
-  {type: 'method', label: ['Prediction method'], shape: argMap.shapes.square}
+    {type: 'attribute', label: ['Attribute'], shape: shapes.circle},
+    {type: 'method', label: ['Prediction method'], shape: shapes.square}
   ]
 
   const linkTypeData = [
-  {type: 'describes', label: ['Describes']},
-  {type: 'supertype', label: ['Supertype of']},
-  {type: 'contradicts', label: ['Contradicts']},
-  {type: 'motivates', label: ['Motivates']}
+    {type: 'describes', label: ['Describes']},
+    {type: 'supertype', label: ['Supertype of']},
+    {type: 'contradicts', label: ['Contradicts']},
+    {type: 'motivates', label: ['Motivates']}
   ]
 
-  argMap.handler(argMap.mkMap('#arg-map',
-                            nodeData,
-                            linkData,
-                            nodeTypeData,
-                            linkTypeData))
+  handler(mkMap('#arg-map', nodeData, linkData, nodeTypeData, linkTypeData))
 })

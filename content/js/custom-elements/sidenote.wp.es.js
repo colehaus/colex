@@ -1,44 +1,54 @@
-import $ from 'jquery'
+// @flow
+/* eslint no-undef: "off" */
 
-const referrer = el => {
-  const id = $(el).find('a').last().attr('href')
-  if (id === undefined) {
-    return []
-  } else {
-    return $('[id="' + id.slice(1) + '"]')
-  }
-}
+import $ from 'jquery'
+import {create, env} from 'sanctuary'
+const S = create({checkTypes: false, env})
+
+const getReferrer = (el: JQuery): ?JQuery =>
+  S.pipe([
+    S.toMaybe,
+    S.map(id => $('#' + id.slice(1))),
+    S.maybeToNullable
+  ])(
+    el.find('a').last().attr('href')
+  )
 
 const fixNotes = () => {
-  let prevBot = 0
-  const budge = (_, el_) => {
-    const el = $(el_)
-    el.offset((_, {top, left}) => {
-      const pofs = referrer(el)
-      if (pofs.length !== 0) {
-        top = pofs.prev().offset().top
-      }
-      if (top < prevBot) {
-        top = prevBot
-      }
-      prevBot = top + el.outerHeight(true)
-      return {top, left}
-    })
-  }
-
-  $('.sidenote').each(budge)
+  S.reduce(
+    prevBot => _el => {
+      const el = $(_el)
+      el.offset((_1, {top, left}) =>
+        S.pipe([
+          S.toMaybe,
+          S.maybe(
+            {top, left})(
+            ref => {
+              const top = S.max(ref.prev().offset().top)(prevBot)
+              prevBot = top + el.outerHeight(true)
+              return {top, left}
+            }
+          )
+        ])(
+          getReferrer(el)
+        )
+      )
+      return prevBot
+    })(
+    0)(
+    $('.sidenote').toArray())
 }
 
-const setNotes = n => {
+const setNotes = () => {
   const addSidenote = el => {
-    // Putting block elements in a <p> auto-closes it
-    let noted = referrer(el).prev()
-    if (noted.is(':visible')) {
-      const p = noted.closest('p')
-      if (p.length !== 0) {
-        noted = p
+    // Putting block elements in a <p> auto-closes it so we put it immediately outside
+    const referrer = getReferrer(el)
+    if (referrer != null) {
+      const noted = referrer.prev()
+      if (noted.is(':visible')) {
+        const p = noted.closest('p');
+        (p.length === 0 ? noted : p).before('<aside class="sidenote">' + $(el).html() + '</aside>')
       }
-      noted.before('<aside class="sidenote">' + $(el).html() + '</aside>')
     }
   }
   const delink = () => {
@@ -51,7 +61,7 @@ const setNotes = n => {
   $('.sidenote').not('#warnings').remove()
   $('#article-title').before($('#warnings'))
   $('.footnotes > ol > li').each((_, el) => {
-    addSidenote(el)
+    addSidenote($(el))
   })
   delink()
 }
@@ -63,6 +73,7 @@ $(() => {
     $('details').each((_, el) => {
       (new MutationObserver(fixNotes)).observe(el, {attributes: true})
     })
+    // $FlowFixMe
     document.fonts.ready.then(fixNotes)
     MathJax.Hub.Queue(() => {
       fixNotes()

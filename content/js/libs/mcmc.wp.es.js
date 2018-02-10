@@ -1,3 +1,5 @@
+/* eslint camelcase: "off" */
+
 import jStat from 'jStat'
 import plot from 'libs/plot'
 

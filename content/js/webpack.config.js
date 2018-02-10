@@ -1,5 +1,6 @@
 const path = require('path')
 const webpack = require('webpack')
+const FlowWebpackPlugin = require('flow-webpack-plugin')
 const UglifyJSPlugin = require('uglifyjs-webpack-plugin')
 
 const forProd = process.env.NODE_ENV === 'production'
@@ -37,6 +38,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new FlowWebpackPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: 'common',
       minChunks: 2

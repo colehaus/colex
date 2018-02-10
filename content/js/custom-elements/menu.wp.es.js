@@ -1,68 +1,116 @@
+// @flow
+/* eslint no-undef: "off" */
+
 import $ from 'jquery'
+import {create, env} from 'sanctuary'
+const S = create({checkTypes: false, env})
 
-const defaultHandlers = el => {
+const defaultHandlers = (el: JQuery) => {
   if (el.attr('type') === 'radio') {
-    const gp = el.attr('radiogroup')
-    const mn = el.closest('menu')
-    const sel = gp ? 'menuitem[radiogroup="' + gp + '"]' : 'menuitem:not([radiogroup])'
-    mn.children(sel).removeAttr('checked')
-    $(mn.children()[el.index()]).attr('checked', 'checked')
+    const menu = el.closest('menu')
+    const item = menu.find(`[label="${el.text()}"]`)
+    handleEvent({ tag: 'ITEMSELECT', menu, item })
   }
-  el.parent().remove()
-}
-const getMenu = el => $('#' + $(el).closest('[type="menu"]').attr('data-menu'))
-
-const buildMenu = el => {
-  const menuItem = el_ => {
-    const el = $(el_)
-    const lb = el.attr('label')
-    if (lb !== null) {
-      const li = $('<li/>').text(lb)
-      $(['onclick', 'checked', 'type', 'radiogroup']).each((_, at) => {
-        li.attr(at, el.attr(at))
-      })
-      return [li]
-    } else {
-      return []
-    }
-  }
-  const menu = (el_) => {
-    const el = $(el_)
-    const lb = el.attr('label')
-    if (lb !== null) {
-      return [$('<li>' + lb + '</li>').get()]
-    } else {
-      return [$('<hr/>').get()].concat(buildMenu(el), [$('<hr/>').get()])
-    }
-  }
-
-  const contents = $(el).children('menuitem, hr, menu').map((_, el) => {
-    switch (el.nodeName) {
-      case 'MENUITEM':
-        return menuItem(el)
-      case 'HR':
-        return [el]
-      case 'MENU':
-        return menu(el)
-    }
-  })
-  const flattened = Array.prototype.concat.apply([], contents)
-  const l = flattened.length
-  const finalContents = flattened.reduce((pv, cv, i) => {
-    const onEnd = i === 0 || i === (l - 1)
-    const prevHr = typeof pv[i - 1] !== 'undefined' && pv[i - 1].nodeName === 'HR'
-    const isEmpty = cv.nodeName === 'LI' && $(cv).text() === ''
-    if ((onEnd || prevHr) && (cv.nodeName === 'HR' || isEmpty)) {
-      return pv
-    } else {
-      pv.push(cv)
-      return pv
-    }
-  }, [])
-  return $('<ul class="menu"></ul>').append(finalContents)
 }
 
-const toggleMenu = ev => {
+const getMenu = (el: HTMLElement) => $('#' + $(el).closest('[type="menu"]').attr('data-menu'))
+
+const renderMenuItem = (menuItem: MenuItem): JQuery => {
+  switch (menuItem.tag) {
+    case 'HR':
+      return $('<hr/>')
+    case 'MENUITEM':
+      const li = $('<li/>').text(menuItem.label).attr('type', menuItem.type)
+      if (menuItem.active) {
+        li.attr('checked', 'checked')
+      } else {
+        li.removeAttr('checked')
+      }
+      return li
+    default:
+      throw Error(menuItem.toString())
+  }
+}
+
+const renderMenu = (menu: Menu): ?JQuery => {
+  switch (menu.tag) {
+    case 'CLOSED':
+      return null
+    case 'OPEN':
+      return $('<ul class="menu"></ul>').append(S.map(renderMenuItem)(menu.items))
+  }
+}
+
+type MenuItemType = 'radio' | string
+
+type MenuItem
+  = { tag: 'HR' }
+  | { tag: 'MENUITEM', label: string, type: MenuItemType, active: boolean }
+
+type Menu
+  = { tag: 'OPEN', items: Array<MenuItem> }
+  | { tag: 'CLOSED' }
+
+// The JQuery declaration seems to be wrong
+const fixTarget = (target: EventTarget) => HTMLElement = (target: any) // eslint-disable-line no-return-assign
+
+const parseMenuItem = (menuItem: JQuery): MenuItem => {
+  switch (menuItem.get(0).nodeName) {
+    case 'HR':
+      return { tag: 'HR' }
+    case 'MENUITEM':
+      return { tag: 'MENUITEM',
+        label: menuItem.attr('label'),
+        type: menuItem.attr('type'),
+        active: menuItem.attr('checked') === 'checked'
+      }
+    default:
+      throw Error(menuItem.toString())
+  }
+}
+
+const parseMenu = (menu: JQuery): Menu =>
+  menu.data('active')
+  ? { tag: 'CLOSED' }
+  : { tag: 'OPEN',
+    items: S.map((el) => parseMenuItem($(el)))(menu.children('menuitem, hr').toArray())
+  }
+
+type Event
+  = { tag: 'MENUCLICK', menu: JQuery }
+  | { tag: 'ITEMSELECT', item: JQuery, menu: JQuery }
+
+const handleEvent = (event: Event) => {
+  switch (event.tag) {
+    case 'MENUCLICK':
+      S.pipe([
+        parseMenu,
+        renderMenu,
+        S.toMaybe,
+        S.maybe_(
+          () => {
+            $('ul.menu').remove()
+            event.menu.data('active', false)
+          })(
+          menuDom => {
+            event.menu.append(menuDom)
+            event.menu.data('active', true)
+          }
+        )
+      ])(
+        event.menu
+      )
+      break
+    case 'ITEMSELECT':
+      $('ul.menu').remove()
+      event.menu.data('active', false)
+      S.map(el => $(el).removeAttr('checked'))(event.menu.children().toArray())
+      event.item.attr('checked', 'checked')
+      break
+  }
+}
+
+const toggleMenu = (ev: JQueryEventObject) => {
   // Menu shouldn't popup when clicking on interactive element
   const isInter = [
     'TEXTAREA',
@@ -73,29 +121,13 @@ const toggleMenu = ev => {
     'DETAILS',
     'SUMMARY',
     'A'
-  ].some(tg => ev.target.nodeName === tg)
+  ].some(tg => fixTarget(ev.target).nodeName === tg)
   if (isInter) { return }
-
-  ev.stopPropagation()
-  const isPopup = function () {
-    const el = $(this)
-    const pe = el.parent().get(0)
-
-    const isMenu = this.nodeName === 'MENU'
-    const isSelfPop = el.attr('type') === 'popup'
-
-    return isMenu && (isSelfPop || (typeof pe !== 'undefined' && isPopup(pe)))
-  }
-
-  const mn = getMenu(ev.target).filter(isPopup)
-  let ul = mn.children('ul.menu')
-  $('ul.menu').remove()
-  if (ul.length === 0) {
-    ul = buildMenu(mn)
-    ul.children().click(ev => {
-      defaultHandlers($(ev.target))
-    })
-    mn.append(ul)
+  const isPopup = el =>
+    $(el).get(0).nodeName === 'MENU' && $(el).attr('type') === 'popup'
+  const menu = getMenu(fixTarget(ev.target)).filter((_, el) => isPopup(el))
+  if (menu != null) {
+    handleEvent({ tag: 'MENUCLICK', menu: $(menu) })
   }
 }
 

@@ -13,6 +13,8 @@
       phases = [ "unpackPhase" "patchPhase" "buildPhase" "installPhase" ];
       nativeBuildInputs = [
         # TODO remove once we create separate shell nix
+        pkgs.git
+        pkgs.nodejs
         pkgs.purescript
         pkgs.nodePackages.pulp
         pkgs.stack

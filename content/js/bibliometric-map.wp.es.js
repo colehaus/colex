@@ -1,6 +1,8 @@
+// @flow
+
 import $ from 'jquery'
 
-import argMap from 'libs/arg-map'
+import { shapes, mkMap, handler } from 'libs/arg-map'
 
 $(() => {
   const nodeData = {
@@ -97,36 +99,32 @@ $(() => {
   }
 
   const linkData = [
-  {source: 'review', target: 'impact', type: 'describes'},
-  {source: 'self-cite', target: 'impact', type: 'describes'},
-  {source: 'replication', target: 'impact', type: 'describes'},
-  {source: 'etc', target: 'impact', type: 'describes'},
-  {source: 'single', target: 'entropy', type: 'illustrates'},
-  {source: 'four', target: 'entropy', type: 'illustrates'},
-  {source: 'aggregates', target: 'entropy', type: 'describes'},
-  {source: 'design', target: 'entropy', type: 'describes'},
-  {source: 'repli-beni', target: 'entropy', type: 'describes'},
-  {source: 'gradated', target: 'entropy', type: 'describes'},
-  {source: 'complicated', target: 'entropy', type: 'describes'},
-  {source: 'dependence', target: 'entropy', type: 'describes'},
-  {source: 'incentive', target: 'entropy', type: 'describes'}
+    {source: 'review', target: 'impact', type: 'describes'},
+    {source: 'self-cite', target: 'impact', type: 'describes'},
+    {source: 'replication', target: 'impact', type: 'describes'},
+    {source: 'etc', target: 'impact', type: 'describes'},
+    {source: 'single', target: 'entropy', type: 'illustrates'},
+    {source: 'four', target: 'entropy', type: 'illustrates'},
+    {source: 'aggregates', target: 'entropy', type: 'describes'},
+    {source: 'design', target: 'entropy', type: 'describes'},
+    {source: 'repli-beni', target: 'entropy', type: 'describes'},
+    {source: 'gradated', target: 'entropy', type: 'describes'},
+    {source: 'complicated', target: 'entropy', type: 'describes'},
+    {source: 'dependence', target: 'entropy', type: 'describes'},
+    {source: 'incentive', target: 'entropy', type: 'describes'}
   ]
 
   const nodeTypeData = [
-  {type: 'problem', label: ['Problem'], shape: argMap.shapes.square},
-  {type: 'benefit', label: ['Benefit'], shape: argMap.shapes.diamond},
-  {type: 'bibliometric', label: ['Bibliometric'], shape: argMap.shapes.circle},
-  {type: 'example', label: ['Example'], shape: argMap.shapes.pentagon}
+    {type: 'problem', label: ['Problem'], shape: shapes.square},
+    {type: 'benefit', label: ['Benefit'], shape: shapes.diamond},
+    {type: 'bibliometric', label: ['Bibliometric'], shape: shapes.circle},
+    {type: 'example', label: ['Example'], shape: shapes.pentagon}
   ]
 
   const linkTypeData = [
-  {type: 'illustrates', label: ['Illustrates']},
-  {type: 'describes', label: ['Describes']}
+    {type: 'illustrates', label: ['Illustrates']},
+    {type: 'describes', label: ['Describes']}
   ]
 
-  argMap.handler(argMap.mkMap('#arg-map',
-                            nodeData,
-                            linkData,
-                            nodeTypeData,
-                            linkTypeData))
+  handler(mkMap('#arg-map', nodeData, linkData, nodeTypeData, linkTypeData))
 })

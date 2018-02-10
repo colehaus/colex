@@ -1,6 +1,8 @@
+// @flow
+
 import $ from 'jquery'
 
-import argMap from 'libs/arg-map'
+import { shapes, mkMap, handler } from 'libs/arg-map'
 
 $(() => {
   const nodeData = {
@@ -19,21 +21,17 @@ $(() => {
   }
 
   const linkData = [
-  {source: 'major', target: 'conclusion', type: 'imply'},
-  {source: 'minor', target: 'conclusion', type: 'imply'}
+    {source: 'major', target: 'conclusion', type: 'imply'},
+    {source: 'minor', target: 'conclusion', type: 'imply'}
   ]
 
   const nodeTypeData = [
-  {type: 'major', label: ['Major premise'], shape: argMap.shapes.square},
-  {type: 'minor', label: ['Minor premise'], shape: argMap.shapes.diamond},
-  {type: 'conclusion', label: ['Conclusion'], shape: argMap.shapes.circle}
+    {type: 'major', label: ['Major premise'], shape: shapes.square},
+    {type: 'minor', label: ['Minor premise'], shape: shapes.diamond},
+    {type: 'conclusion', label: ['Conclusion'], shape: shapes.circle}
   ]
 
   const linkTypeData = [{type: 'imply', label: ['Jointly implies']}]
 
-  argMap.handler(argMap.mkMap('#arg-map',
-                            nodeData,
-                            linkData,
-                            nodeTypeData,
-                            linkTypeData))
+  handler(mkMap('#arg-map', nodeData, linkData, nodeTypeData, linkTypeData))
 })
