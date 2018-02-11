@@ -5,14 +5,16 @@
 * DONE Clean up arg-map on indices
   CLOSED: [2018-02-07 Wed 19:32]
 * TODO Switch to new version of d3
-* TODO Add pre-commit hooks
+* DONE Add pre-commit hooks
+  CLOSED: [2018-02-11 Sun 00:13]
 * DONE Introduce flow
   CLOSED: [2018-02-09 Fri 20:11]
 * TODO Sourcemaps and uglify for ps and elm
 * DONE Mobilize
   CLOSED: [2018-02-07 Wed 23:19]
 ** TODO Take tufte sidenotes
-* TODO [#B] Add shell mode to overall build that just prepares env
+* DONE [#B] Add shell mode to overall build that just prepares env
+  CLOSED: [2018-02-10 Sat 22:36]
 * TODO [#C] Make hakyll work relative to specified root
 * TODO [#C] Set up purescript and elm builds
 ** DONE Modernize purescript

@@ -1,4 +1,5 @@
 // @flow
+/* eslint no-undef: "off" */
 
 export type Coordinate = {x: number, y: number}
 

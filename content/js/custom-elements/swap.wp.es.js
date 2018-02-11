@@ -8,8 +8,7 @@ import {create, env} from 'sanctuary'
 
 import sidenote from 'custom-elements/sidenote'
 import { makeAnimationPromise } from 'libs/util'
-import { distance, circleFromChord, pointOnCircle } from 'libs/geometry'
-import type { Coordinate } from 'libs/geometry'
+import { circleFromChord, pointOnCircle } from 'libs/geometry'
 
 const S = create({checkTypes: false, env})
 
