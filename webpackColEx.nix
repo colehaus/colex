@@ -9,7 +9,7 @@
       name = "webpackColEx";
       src = ./content/js;
       phases = [ "unpackPhase" "buildPhase" ];
-      nativeBuildInputs = [ pkgs.nodejs nodeEnv.shell ];
+      nativeBuildInputs = [ pkgs.nodejs ];
       NODE_DEPENDENCIES = nodeEnv.shell.nodeDependencies;
       NODE_PATH = "${NODE_DEPENDENCIES}/lib/node_modules";
       NODE_ENV = "production";

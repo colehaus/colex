@@ -12,17 +12,9 @@
       src = ./content;
       phases = [ "unpackPhase" "patchPhase" "buildPhase" "installPhase" ];
       nativeBuildInputs = [
-        # TODO remove once we create separate shell nix
-        pkgs.git
-        pkgs.nodejs
-        pkgs.purescript
-        pkgs.nodePackages.pulp
-        pkgs.stack
         generator
         pkgs.sass
       ];
-      # TODO remove once we create separate shell nix
-      NODE_DEPENDENCIES = webpackColEx.NODE_DEPENDENCIES;
       inherit webpackColEx;
       inherit bibliometric;
       LC_ALL = "en_US.UTF-8";
