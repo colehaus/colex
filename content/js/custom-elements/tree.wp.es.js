@@ -53,7 +53,6 @@ const handleEvent = (event: Event) => (resolve: Function, reject: Function) => {
 }
 
 const choose = (ev: JQueryEventObject) => {
-  ev.stopPropagation()
   const el = $(ev.target)
   S.map(
     contentTree => {
@@ -73,17 +72,20 @@ const choose = (ev: JQueryEventObject) => {
     $(`[data-menu="${el.closest('menu').attr('id')}"]`).toArray()
   )
   menu.defaultHandlers(el)
+  return false
 }
 
 const fixTarget = (target: EventTarget) => HTMLElement = (target: any) // eslint-disable-line no-return-assign
 
 $(() => {
   S.map(el =>
-    $(el).click(({pageY, pageX, target}) =>
+    $(el).click(({pageY, pageX, target}) => {
       menu.getMenu(fixTarget(target))
       .offset({top: pageY, left: pageX})
       .children('ul.menu').children()
-      .off().click(choose))
+      .off().click(choose)
+      return false
+    })
   )(
     $('[type="menu"]').toArray()
   )

@@ -21,8 +21,10 @@ const fixNotes = () => {
       el.offset((_1, {top, left}) =>
         S.pipe([
           S.toMaybe,
-          S.maybe(
-            {top, left})(
+          S.maybe_(() => {
+            prevBot = top + el.outerHeight(true)
+            return {top, left}
+          })(
             ref => {
               const top = S.max(ref.prev().offset().top)(prevBot)
               prevBot = top + el.outerHeight(true)
@@ -58,27 +60,43 @@ const setNotes = () => {
     })
   }
 
+  $('.footnotes').hide()
+  $('details').each((_, el) => {
+    observer.observe(el, {attributes: true})
+  })
   $('.sidenote').not('#warnings').remove()
-  $('#article-title').before($('#warnings'))
   $('.footnotes > ol > li').each((_, el) => {
     addSidenote($(el))
   })
   delink()
 }
 
-$(() => {
-  if ($(window).width() > 850) {
-    $('.footnotes').hide()
+const observer = new MutationObserver(fixNotes)
+
+const removeNotes = () => {
+  observer.disconnect()
+  $('.sidenote').not('#warnings').remove()
+  $('.noted').next().show()
+  $('.footnotes').show()
+}
+
+const addOrRemoveNotes = () => {
+  const emWidth = $(window).width() / parseFloat($("html").css("font-size"))
+  if (emWidth > 60) {
     setNotes()
-    $('details').each((_, el) => {
-      (new MutationObserver(fixNotes)).observe(el, {attributes: true})
-    })
     // $FlowFixMe
     document.fonts.ready.then(fixNotes)
     MathJax.Hub.Queue(() => {
       fixNotes()
     })
+  } else {
+    removeNotes()
   }
+}
+
+$(() => {
+  addOrRemoveNotes()
+  $(window).resize(addOrRemoveNotes)
 })
 
 export default {setNotes, fixNotes}

@@ -2,6 +2,10 @@
   CLOSED: [2018-02-09 Fri 20:11]
 * TODO [#A] Write fallbacks for each component
 * TODO Contain output
+* DONE Fix quorum plot and tree interaction
+  CLOSED: [2018-02-12 Mon 05:16]
+* DONE Fix nested tree interaction
+  CLOSED: [2018-02-12 Mon 05:16]
 * DONE Clean up arg-map on indices
   CLOSED: [2018-02-07 Wed 19:32]
 * TODO Switch to new version of d3

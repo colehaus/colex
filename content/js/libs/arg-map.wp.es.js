@@ -35,7 +35,7 @@ type CanvasDimensions = { width: number, height: number }
 const RADIUS = 13
 const DEFAULT_STRENGTH = 0.2
 
-const mkLegend = <NTy, LTy>(canvasId: string, svg: D3, nodeTypeData: Array<NodeType<NTy>>, linkTypeData: Array<LinkType<LTy>>) => {
+const mkLegend = <NTy, LTy>(svg: D3, nodeTypeData: Array<NodeType<NTy>>, linkTypeData: Array<LinkType<LTy>>) => {
   svg.append('g')
     .attr('transform', 'translate(20, 50)')
     .classed('legend', true)
@@ -224,7 +224,7 @@ const mkMap = <LTy, NTy>(
     .attr('width', canvas.width)
     .attr('height', canvas.height)
 
-  mkLegend(canvasId, svg, nodeTypeData, linkTypeData)
+  mkLegend(svg, nodeTypeData, linkTypeData)
   const force = mkForce(canvas, svg, nodeDataPrepped, linkDataPrepped, nodeTypeData)
   return [force, svg, canvasId]
 }
