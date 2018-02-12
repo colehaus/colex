@@ -154,7 +154,7 @@ if (/Trident/.test(navigator.userAgent)) {
          <div class="abstract"><p>Predicting the future is hard. Research on forecasting techniques is inconclusive, but scenario planning might be the least bad approach.</p></div>
        
 
-        <blockquote>
+        <blockquote class="epigraph">
 The human race, to which so many of my readers belong, has been playing at children’s games from the beginning…. And one of the games to which it is most attached is called <q>Keep to-morrow dark,</q> …. The players listen very carefully and respectfully to all that the clever men have to say about what is to happen in the next generation. The players then wait until all the clever men are dead, and bury them nicely. They then go and do something else. That is all. For a race of simple tastes, however, it is great fun. <span class="citation" data-cites="chesterton04">(Chesterton 1904)</span>
 </blockquote>
 <div class="conversation">
@@ -190,7 +190,10 @@ The human race, to which so many of my readers belong, has been playing at child
          <div class="abstract"><p>We can use interactivity to augment traditional text. In particular, we allow for choice of ordering and between alternatives.</p></div>
        
 
-        <h3 id="ordering">Ordering</h3>
+        <menu id="state" type="popup">
+<menuitem label="A Theory of Justice" type="radio" checked="checked"></menuitem> <menuitem label="Anarchy, State and Utopia" type="radio"></menuitem>
+</menu>
+<h3 id="ordering">Ordering</h3>
 <p>When teaching something, is it best to start with concrete and move to the abstract? Or is it best to emphasize the abstract and introduce concrete applications later? Research on this topic is ambivalent <span class="citation" data-cites="flores09">(Flores 2009)</span> <span class="citation" data-cites="debock11">(De Bock et al. 2011)</span> <span class="citation" data-cites="kaminski08">(Kaminski, Sloutsky, and Heckler 2008)</span> <span class="citation" data-cites="peterson88">(Peterson, Mercer, and O’Shea 1988)</span>. It’s conceivable that the superior approach depends on the student. With one-on-one in-person instruction, this sort of adaptation is possible. With traditional, static text, it’s not. On the web (with computers generally), it is.</p>
 
 
@@ -219,7 +222,13 @@ The human race, to which so many of my readers belong, has been playing at child
          <div class="abstract"><p>Voting procedures can replace traditional quorum with the use of statistical techniques. If aggregate opinion on the alternatives is <q>similar</q>, according to those techniques, we declare a failure of quorum.</p></div>
        
 
-        <h3 id="motivating-examples">Motivating examples</h3>
+        <menu id="sample-size" type="popup">
+<menuitem label="Many votes" type="radio" checked="checked"></menuitem> <menuitem label="Few votes" type="radio"></menuitem>
+</menu>
+<menu id="stat-type" type="popup">
+<menuitem label="Bayesian" type="radio" checked="checked"></menuitem> <menuitem label="Frequentist" type="radio"></menuitem>
+</menu>
+<h3 id="motivating-examples">Motivating examples</h3>
 <ol>
 <li id="example1">
 <p>Pie Club is voting on which pie will be featured at their first August meeting. <span class="noted">After tallying the votes, <a href="https://en.wikipedia.org/wiki/Buko_pie">buko pie</a> receives a mean score of <span class="math inline">\(0.69\)</span> and <a href="https://en.wikipedia.org/wiki/Fish_pie">fish pie</a> receives a mean score of <span class="math inline">\(0.18\)</span>.</span><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
@@ -337,6 +346,8 @@ Pie Club is voting on which pie will take home the title <q>Pie of the Decade</q
 </div>
 
 
+<script defer type="text/javascript" src="../../../js/common.js"></script>
+<script defer type="text/javascript" src="../../../js/custom-elements.js"></script>
 </div>
 
   </body>

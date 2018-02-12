@@ -189,7 +189,6 @@ const handleEvent = event => (resolve, reject) => {
 };
 
 const choose = ev => {
-  ev.stopPropagation();
   const el = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(ev.target);
   S.map(contentTree => {
     const contentBranch = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(contentTree).children().get(el.index()));
@@ -200,12 +199,16 @@ const choose = ev => {
     });
   })(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(`[data-menu="${el.closest('menu').attr('id')}"]`).toArray());
   __WEBPACK_IMPORTED_MODULE_2_custom_elements_menu__["a" /* default */].defaultHandlers(el);
+  return false;
 };
 
 const fixTarget = target => HTMLElement = target; // eslint-disable-line no-return-assign
 
 __WEBPACK_IMPORTED_MODULE_0_jquery___default()(() => {
-  S.map(el => __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).click(({ pageY, pageX, target }) => __WEBPACK_IMPORTED_MODULE_2_custom_elements_menu__["a" /* default */].getMenu(fixTarget(target)).offset({ top: pageY, left: pageX }).children('ul.menu').children().off().click(choose)))(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('[type="menu"]').toArray());
+  S.map(el => __WEBPACK_IMPORTED_MODULE_0_jquery___default()(el).click(({ pageY, pageX, target }) => {
+    __WEBPACK_IMPORTED_MODULE_2_custom_elements_menu__["a" /* default */].getMenu(fixTarget(target)).offset({ top: pageY, left: pageX }).children('ul.menu').children().off().click(choose);
+    return false;
+  }))(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('[type="menu"]').toArray());
 
   MathJax.Hub.Queue(() => {
     // Messes up rendering if we add to stylesheet
@@ -232,10 +235,12 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(() => {
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_sanctuary___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_sanctuary__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_custom_elements_sidenote__ = __webpack_require__(8);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3_libs_util__ = __webpack_require__(7);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4_libs_geometry__ = __webpack_require__(29);
 
 /* eslint no-undef: "off" */
 
 // Doesn't currently handle nested swaps
+
 
 
 
@@ -252,19 +257,6 @@ const translations = (top, bottom) => {
   return { bottomToTop, between, topToBottom };
 };
 
-const distance = (coord1, coord2) => Math.hypot(coord1.x - coord2.x, coord1.y - coord2.y);
-
-const circleFromChord = (startRads, stopRads, startCoord, stopCoord) => {
-  const radius = distance(startCoord, stopCoord) / Math.sin(Math.abs(stopRads - startRads) / 2) / 2;
-  const center = pointOnCircle(startCoord, radius, startRads + Math.PI);
-  return { radius, center };
-};
-
-const pointOnCircle = ({ x, y }, radius, angle) => ({
-  x: x + Math.cos(angle) * radius,
-  y: y + Math.sin(angle) * radius
-});
-
 const swapTranslate = (topEl, bottomEl) => (resolve, reject) => {
   const betweenEls = topEl.nextUntil(bottomEl);
   const { bottomToTop, between, topToBottom } = translations(topEl, bottomEl);
@@ -272,9 +264,9 @@ const swapTranslate = (topEl, bottomEl) => (resolve, reject) => {
   const angle = Math.PI / 4;
   const mkTranslator = trans => {
     const startAngle = trans <= 0 ? Math.PI + angle : angle;
-    const { center, radius } = circleFromChord(startAngle, startAngle - 2 * angle, { x: 0, y: 0 }, { x: 0, y: trans });
+    const { center, radius } = Object(__WEBPACK_IMPORTED_MODULE_4_libs_geometry__["a" /* circleFromChord */])(startAngle, startAngle - 2 * angle, { x: 0, y: 0 }, { x: 0, y: trans });
     return prog => {
-      const { x, y } = pointOnCircle(center, radius, startAngle - angle * 2 * prog);
+      const { x, y } = Object(__WEBPACK_IMPORTED_MODULE_4_libs_geometry__["b" /* pointOnCircle */])(center, radius, startAngle - angle * 2 * prog);
       return `translate(${x}px, ${-y}px)`;
     };
   };
@@ -334,6 +326,33 @@ __WEBPACK_IMPORTED_MODULE_0_jquery___default()(decorate);
 
 /***/ }),
 
+/***/ 29:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* unused harmony export distance */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return circleFromChord; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return pointOnCircle; });
+
+
+const distance = (coord1, coord2) => Math.hypot(coord1.x - coord2.x, coord1.y - coord2.y);
+/* eslint no-undef: "off" */
+
+const circleFromChord = (startRads, stopRads, startCoord, stopCoord) => {
+  const radius = distance(startCoord, stopCoord) / Math.sin(Math.abs(stopRads - startRads) / 2) / 2;
+  const center = pointOnCircle(startCoord, radius, startRads + Math.PI);
+  return { radius, center };
+};
+
+const pointOnCircle = ({ x, y }, radius, angle) => ({
+  x: x + Math.cos(angle) * radius,
+  y: y + Math.sin(angle) * radius
+});
+
+
+
+/***/ }),
+
 /***/ 8:
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -354,7 +373,10 @@ const getReferrer = el => S.pipe([S.toMaybe, S.map(id => __WEBPACK_IMPORTED_MODU
 const fixNotes = () => {
   S.reduce(prevBot => _el => {
     const el = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(_el);
-    el.offset((_1, { top, left }) => S.pipe([S.toMaybe, S.maybe({ top, left })(ref => {
+    el.offset((_1, { top, left }) => S.pipe([S.toMaybe, S.maybe_(() => {
+      prevBot = top + el.outerHeight(true);
+      return { top, left };
+    })(ref => {
       const top = S.max(ref.prev().offset().top)(prevBot);
       prevBot = top + el.outerHeight(true);
       return { top, left };
@@ -382,27 +404,43 @@ const setNotes = () => {
     });
   };
 
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.footnotes').hide();
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('details').each((_, el) => {
+    observer.observe(el, { attributes: true });
+  });
   __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.sidenote').not('#warnings').remove();
-  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#article-title').before(__WEBPACK_IMPORTED_MODULE_0_jquery___default()('#warnings'));
   __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.footnotes > ol > li').each((_, el) => {
     addSidenote(__WEBPACK_IMPORTED_MODULE_0_jquery___default()(el));
   });
   delink();
 };
 
-__WEBPACK_IMPORTED_MODULE_0_jquery___default()(() => {
-  if (__WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).width() > 850) {
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.footnotes').hide();
+const observer = new MutationObserver(fixNotes);
+
+const removeNotes = () => {
+  observer.disconnect();
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.sidenote').not('#warnings').remove();
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.noted').next().show();
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()('.footnotes').show();
+};
+
+const addOrRemoveNotes = () => {
+  const emWidth = __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).width() / parseFloat(__WEBPACK_IMPORTED_MODULE_0_jquery___default()("html").css("font-size"));
+  if (emWidth > 60) {
     setNotes();
-    __WEBPACK_IMPORTED_MODULE_0_jquery___default()('details').each((_, el) => {
-      new MutationObserver(fixNotes).observe(el, { attributes: true });
-    });
     // $FlowFixMe
     document.fonts.ready.then(fixNotes);
     MathJax.Hub.Queue(() => {
       fixNotes();
     });
+  } else {
+    removeNotes();
   }
+};
+
+__WEBPACK_IMPORTED_MODULE_0_jquery___default()(() => {
+  addOrRemoveNotes();
+  __WEBPACK_IMPORTED_MODULE_0_jquery___default()(window).resize(addOrRemoveNotes);
 });
 
 /* harmony default export */ __webpack_exports__["a"] = ({ setNotes, fixNotes });

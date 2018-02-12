@@ -5104,7 +5104,7 @@ const linkArc = ({ target, source }) => {
 const RADIUS = 13;
 const DEFAULT_STRENGTH = 0.2;
 
-const mkLegend = (canvasId, svg, nodeTypeData, linkTypeData) => {
+const mkLegend = (svg, nodeTypeData, linkTypeData) => {
   svg.append('g').attr('transform', 'translate(20, 50)').classed('legend', true).selectAll('.legend').data(nodeTypeData).enter().append('g').attr('transform', (_, i) => 'translate(0, ' + i * 30 + ')').each(function (d) {
     const nodeType = nodeTypeData.find(t => t.type === d.type);
     if (nodeType == null) {
@@ -5211,7 +5211,7 @@ const mkMap = (canvasId, nodeData, linkData, nodeTypeData, linkTypeData) => {
 
   const svg = __WEBPACK_IMPORTED_MODULE_1_d3__["select"](canvasId).append('svg').attr('width', canvas.width).attr('height', canvas.height);
 
-  mkLegend(canvasId, svg, nodeTypeData, linkTypeData);
+  mkLegend(svg, nodeTypeData, linkTypeData);
   const force = mkForce(canvas, svg, nodeDataPrepped, linkDataPrepped, nodeTypeData);
   return [force, svg, canvasId];
 };

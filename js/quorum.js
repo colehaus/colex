@@ -5083,7 +5083,7 @@ __WEBPACK_IMPORTED_MODULE_1_jquery___default()(() => {
     if (typeof d === 'undefined') {
       return;
     }
-    if (__WEBPACK_IMPORTED_MODULE_1_jquery___default()('#best').closest('li').hasClass('open')) {
+    if (__WEBPACK_IMPORTED_MODULE_1_jquery___default()('#best').parent().hasClass('open')) {
       best(d[2]);
     } else {
       freq(d[2]);
