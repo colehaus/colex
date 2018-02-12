@@ -5,27 +5,26 @@
 
 .switch {
     cursor: pointer;
-    > * {
-        @include width-full;
-        box-sizing: border-box;
+    > *:not(.open) {
+        display: none;
+    }
+    > *.open {
         @include border-left-big($menu-back-color);
         @include menu-color-translucent;
-        display: none;
-        &.open {
-            @include padding-horizontal-1ex;
-            @include padding-bottom-1ex;
-            display: inline-block;
-            @include border-radius-bigger-right;
-        }
     }
-    &.inline {
-        > * {
-            &.open {
-                @include padding-horizontal-quarterem;
-                @include padding-vertical-none;
-                display: inline;
-                @include border-radius;
-            }
-        }
-    }
+}
+
+.switch:not(.inline) > *.open {
+    @include width-full;
+    box-sizing: border-box;
+    @include padding-horizontal-1ex;
+    @include padding-bottom-1ex;
+    display: inline-block;
+    @include border-radius-bigger-right;
+}
+.switch.inline > *.open {
+    @include padding-horizontal-quarterem;
+    @include padding-vertical-none;
+    display: inline;
+    @include border-radius;
 }

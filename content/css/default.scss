@@ -7,12 +7,17 @@
 @import 'libs/primitives/borders';
 @import 'libs/normalize';
 @import 'libs/colors';
-@import 'libs/details';
+@import 'libs/detail-list';
 @import 'libs/sidenote';
 @import 'libs/menu';
 @import 'libs/tree';
 @import 'libs/swap';
 @import 'libs/arg-map';
+@import 'libs/warnings';
+@import 'libs/silence';
+@import 'libs/horizontal-list';
+@import 'libs/color-link';
+@import 'libs/overlay';
 
 /* ========== */
 /*  General   */
@@ -32,13 +37,13 @@ a {
     color: unset;
 }
 a:hover {
-    @include border-solid;
+    @include border-bottom-solid;
 }
 article a {
     &[href^="#"] {
-        @include border-dotted;
+        @include border-bottom-dotted;
     }
-    @include border-dashed;
+    @include border-bottom-dashed;
 }
 h1, h2, h3, h4, h5, h6 {
     > a {
@@ -59,215 +64,6 @@ hr {
 .macros {
     display: none;
 }
-
-/* ========== */
-/*  Body      */
-/* ========== */
-
-body {
-    @include font-default-size;
-    @include padding-horizontal-view;
-    @include dark-color-text;
-    @include background-color;
-}
-#underlay {
-    @include height-full-view;
-    display: flex;
-    flex-direction: column;
-    transition: filter $transition-dur;
-}
-#underlay.inactive {
-    filter: blur(5px);
-}
-#overlay {
-    @include height-full-view;
-    @include width-full-view;
-    @include padding-horizontal-view;
-    @include top-left;
-    @include background-color-translucent;
-}
-#overlay.inactive {
-    display: none;
-}
-main {
-    position: relative;
-    flex: 1;
-    @include max-width-medium;
-    @include padding-right-5vw;
-}
-
-/* ========== */
-/*  Header    */
-/* ========== */
-
-header {
-    order: -3;
-
-    @include max-width-medium;
-
-    > hr {
-        @include margin-bottom-none;
-    }
-    > h1 {
-        @include margin-right-quarterem;
-        display: inline-block;
-        hyphens: none;
-    }
-}
-
-/* ========== */
-/*  Home      */
-/* ========== */
-
-ul.teasers {
-    @include padding-none;
-    list-style-type: none;
-    > hr {
-        @include width-60;
-    }
-}
-.teaser {
-    a[href^="#"] {
-        border-bottom: none;
-        cursor: unset;
-    }
-    #graph-of-contents {
-        display: none;
-    }
-    .noted {
-        background-color: unset;
-        &::after {
-            content: "";
-        }
-    }
-    .sidenote {
-        display: none;
-    }
-}
-
-/* ========== */
-/*  Archive   */
-/* ========== */
-
-dl.posts > dd {
-    @include margin-left-1em;
-    @include font-smaller;
-}
-dl.posts > dt {
-    @include margin-vertical-1ex;
-}
-
-/* ========== */
-/*  Warnings   */
-/* ========== */
-
-@media (max-width: $big-enough-for-marginalia) {
-    #warnings {
-        position: unset;
-        width: unset;
-        > ul > li {
-            display: inline-block;
-            @include margin-horizontal-1em;
-        }
-    }
-}
-
-
-#warnings {
-    @include top-10;
-    > ul {
-        margin-left: -2ex;
-        list-style-type: none;
-        > li > details > p {
-            @include margin-left-1em;
-        }
-    }
-}
-
-
-/* ========== */
-/*  Nav       */
-/* ========== */
-
-#graph-of-contents {
-    @include font-smaller;
-    @include light-color-text;
-}
-
-#graph-of-contents::before {
-    @include diamond;
-}
-
-.metadata {
-    @include font-smaller;
-}
-
-.main-menu > nav > ul,
-.pagination > ul {
-    list-style-type: none;
-    @include padding-none;
-    display: flex;
-}
-.main-menu > nav > ul {
-    @include margin-vertical-1ex;
-    justify-content: space-between;
-    > li > a {
-        transition: color $transition-dur;
-        &:hover {
-            @include border-none;
-            @include inactive-color;
-        }
-    }
-}
-.pagination > ul {
-    @include font-larger;
-    @include margin-vertical-1ex;
-    > li {
-        @include margin-horizontal-1em;
-        &:last-child {
-            @include margin-right-none;
-        }
-        &:first-child {
-            @include margin-left-none;
-        }
-    }
-}
-.tags > ul {
-    @include padding-none;
-    > li {
-        display: inline-block;
-        &~li::before {
-            margin-left: -4px;
-            @include em-dash;
-            @include light-color-text;
-        }
-    }
-}
-nav > ul > li.inactive {
-    @include inactive-color;
-}
-.pagination > ul > li > a,
-.tags > ul > li > a,
-#tag-cloud > a {
-    @include border-none;
-    @include light-color-text;
-    transition: color $transition-dur;
-    &:hover {
-        @include dark-color-text;
-    }
-}
-.main-menu {
-    @include max-width-medium;
-}
-.main-menu.top {
-    order: -2;
-}
-.pagination.top {
-    order: -1;
-}
-.main-menu.bottom {
-    order: 1;
-}
 blockquote {
     @include margin-left-1em;
     quotes: "“" "”" "‘" "’";
@@ -283,16 +79,14 @@ blockquote::after {
     content: close-quote;
     visibility: hidden;
 }
-.conversation {
-    > p {
-        @include border-radius;
-        @include padding-horizontal-quarterem;
-        &:nth-of-type(odd) {
-            background-color: $convo-1;
-        }
-        &:nth-of-type(even) {
-            background-color: $convo-2;
-        }
+.conversation > p {
+    @include border-radius;
+    @include padding-horizontal-quarterem;
+    &:nth-of-type(odd) {
+        background-color: $convo-1;
+    }
+    &:nth-of-type(even) {
+        background-color: $convo-2;
     }
 }
 .epigraph, .abstract {
@@ -320,4 +114,129 @@ figure {
         @include margin-horizontal-2em;
         @include font-smaller;
     }
+}
+
+/* ========== */
+/*  Body      */
+/* ========== */
+
+body {
+    @include font-default-size;
+    @include padding-horizontal-view;
+    @include dark-color-text;
+    @include background-color;
+}
+#underlay {
+    @include height-full-view;
+    display: flex;
+    flex-direction: column;
+    @include overlay-underlay;
+}
+#overlay {
+    @include overlay-overlay;
+}
+main {
+    position: relative;
+    flex: 1;
+    @include max-width-medium;
+    @include padding-right-5vw;
+}
+
+/* ========== */
+/*  Header    */
+/* ========== */
+
+header {
+    order: -3;
+    @include max-width-medium;
+    > hr {
+        @include margin-bottom-none;
+    }
+    > h1 {
+        @include margin-right-quarterem;
+        display: inline-block;
+        hyphens: none;
+    }
+}
+
+/* ========== */
+/*  Home      */
+/* ========== */
+
+ul.teasers {
+    @include padding-none;
+    list-style-type: none;
+    > hr {
+        @include width-60;
+    }
+}
+.teaser {
+    @include silence-special;
+}
+
+/* ========== */
+/*  Archive   */
+/* ========== */
+
+dl.posts > dd {
+    @include margin-left-1em;
+    @include font-smaller;
+}
+dl.posts > dt {
+    @include margin-vertical-1ex;
+}
+
+/* ========== */
+/*  Nav       */
+/* ========== */
+
+#graph-of-contents {
+    @include font-smaller;
+    @include light-color-text;
+}
+#graph-of-contents::before {
+    @include diamond;
+}
+.metadata {
+    @include font-smaller;
+}
+.main-menu > nav > ul,
+.pagination > ul {
+    @include horizontal-list;
+    justify-content: space-between;
+    @include margin-vertical-1ex;
+}
+.main-menu > nav > ul > li > a {
+    @include lighten-link;
+}
+.pagination > ul {
+    @include font-larger;
+    @include width-small;
+}
+.tags > ul {
+    @include horizontal-list;
+    > li~li::before {
+        @include em-dash;
+        @include light-color-text;
+    }
+}
+.pagination ul > li.inactive, .main-menu ul > li.inactive {
+    @include inactive-color;
+}
+.pagination > ul > li > a,
+.tags > ul > li > a,
+#tag-cloud > a {
+    @include darken-link;
+}
+.main-menu {
+    @include max-width-medium;
+}
+.main-menu.top {
+    order: -2;
+}
+.pagination.top {
+    order: -1;
+}
+.main-menu.bottom {
+    order: 1;
 }

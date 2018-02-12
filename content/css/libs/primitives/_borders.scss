@@ -1,13 +1,16 @@
 @import '../colors';
 
-@mixin border-dotted {
+@mixin border-bottom-dotted {
     border-bottom: 1px dotted;
 }
-@mixin border-dashed {
+@mixin border-bottom-dashed {
     border-bottom: 1px dashed;
 }
-@mixin border-solid {
+@mixin border-bottom-solid {
     border-bottom: 1px solid;
+}
+@mixin border-solid {
+    border: 1px solid;
 }
 @mixin border-none {
     border: none;

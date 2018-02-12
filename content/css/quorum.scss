@@ -1,5 +1,4 @@
 @import 'libs/colors';
-@import 'libs/flex-box';
 
 $describes-color: nth(map-get($colors, hue), 6);
 
@@ -41,13 +40,13 @@ form {
     }
 }
 #kuwa-parms {
-    @include display(flex);
+    display: flex;
     > figure {
         flex: 1 1 0;
     }
 }
 .data-input {
-    @include display(flex);
+    display: flex;
     > div {
         padding: 0 1ex;
         flex: 1 1 0;

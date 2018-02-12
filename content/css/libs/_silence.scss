@@ -1,0 +1,18 @@
+@mixin silence-special {
+    a[href^="#"] {
+        border-bottom: none;
+        cursor: unset;
+    }
+    #graph-of-contents {
+        display: none;
+    }
+    .noted {
+        background-color: unset;
+        &::after {
+            content: "";
+        }
+    }
+    .sidenote {
+        display: none;
+    }
+}

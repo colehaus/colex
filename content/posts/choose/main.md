@@ -5,6 +5,11 @@ tags: meta, text, structure
 css: choose
 ---
 
+<menu id="state" type="popup">
+  <menuitem label="A Theory of Justice" type="radio" checked="checked"></menuitem>
+  <menuitem label="Anarchy, State and Utopia" type="radio"></menuitem>
+</menu>
+
 # Ordering
 
 When teaching something, is it best to start with concrete and move to the
@@ -123,10 +128,5 @@ start with the concrete explanation, default to that order.)
 actually benefit from these tools?)
 
 [^example]: They look like this.
-
-<menu id="state" type="popup">
-  <menuitem label="A Theory of Justice" type="radio" checked="checked"></menuitem>
-  <menuitem label="Anarchy, State and Utopia" type="radio"></menuitem>
-</menu>
 
 <hr class="references">

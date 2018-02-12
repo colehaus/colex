@@ -1,0 +1,9 @@
+@mixin detail-list {
+  ul {
+      margin-left: -2ex;
+      list-style-type: none;
+      > li > details > p {
+          @include margin-left-1em;
+      }
+  }
+}

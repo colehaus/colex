@@ -1,6 +1,0 @@
-.poly-details > summary:before {
-    @include right-triangle;
-}
-.poly-details.open > summary:before {
-    @include down-triangle;
-}

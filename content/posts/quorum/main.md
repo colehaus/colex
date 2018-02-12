@@ -7,6 +7,16 @@ js: quorum, quorum-map
 graph-of-contents: true
 ---
 
+<menu id="sample-size" type="popup">
+  <menuitem label="Many votes" type="radio" checked="checked"></menuitem>
+  <menuitem label="Few votes" type="radio"></menuitem>
+</menu>
+
+<menu id="stat-type" type="popup">
+  <menuitem label="Bayesian" type="radio" checked="checked"></menuitem>
+  <menuitem label="Frequentist" type="radio"></menuitem>
+</menu>
+
 # Motivating examples
 
 <ol><li id="example1">Pie Club is voting on which pie will be featured at
@@ -415,15 +425,5 @@ the moment, the beta distribution gives passable results, for its simplicity.
 [^single-bound]: For visual clarity, the plots below show only the bound which
 "crosses $0$ the least". If and only if this bounded region includes $0$, quorum
 has failed.
-
-<menu id="sample-size" type="popup">
-  <menuitem label="Many votes" type="radio" checked="checked"></menuitem>
-  <menuitem label="Few votes" type="radio"></menuitem>
-</menu>
-
-<menu id="stat-type" type="popup">
-  <menuitem label="Bayesian" type="radio" checked="checked"></menuitem>
-  <menuitem label="Frequentist" type="radio"></menuitem>
-</menu>
 
 <hr class="references">

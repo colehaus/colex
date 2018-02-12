@@ -1,0 +1,5 @@
+@mixin horizontal-list {
+    list-style-type: none;
+    @include padding-none;
+    display: flex;
+}
