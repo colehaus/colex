@@ -283,7 +283,7 @@ $(() => {
   $('.act > .analyze').click(() => {
     const d = getData(true)
     if (typeof d === 'undefined') { return }
-    if ($('#best').closest('li').hasClass('open')) {
+    if ($('#best').parent().hasClass('open')) {
       best(d[2])
     } else {
       freq(d[2])

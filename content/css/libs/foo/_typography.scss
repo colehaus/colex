@@ -1,0 +1,24 @@
+@mixin typographic-features {
+    hyphens: auto;
+    text-rendering: optimizeLegibility;
+    font-variant-ligatures: common-ligatures;
+    font-kerning: normal;
+}
+@mixin font-default-size {
+    font-size: 1.2em;
+}
+@mixin font-smaller {
+    font-size: smaller;
+}
+@mixin font-larger {
+    font-size: larger;
+}
+@mixin font-default {
+    font-family: 'Open Sans', sans-serif;
+}
+@mixin weight-bold {
+    font-weight: 700;
+}
+@mixin weight-light {
+    font-weight: 300;
+}

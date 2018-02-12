@@ -1,0 +1,62 @@
+@mixin margin-none {
+    margin: 0;
+}
+@mixin margin-left-none {
+    margin-left: 0;
+}
+@mixin margin-right-none {
+    margin-right: 0;
+}
+@mixin margin-left-1em {
+    margin-left: 1em;
+}
+@mixin margin-right-quarterem {
+    margin-right: 0.25em;
+}
+@mixin margin-horizontal-1em {
+    margin-left: 1em;
+    margin-right: 1em;
+}
+@mixin margin-horizontal-2em {
+    margin-left: 2em;
+    margin-right: 2em;
+}
+@mixin margin-horizontal-3em {
+    margin-left: 3em;
+    margin-right: 3em;
+}
+@mixin margin-bottom-none {
+    margin-bottom: 0;
+}
+@mixin margin-vertical-1ex {
+    margin-top: 1ex;
+    margin-bottom: 1ex;
+}
+@mixin padding-none {
+    padding: 0;
+}
+@mixin padding-vertical-none {
+    padding-top: 0;
+    padding-bottom: 0;
+}
+@mixin padding-1ex {
+    padding: 1ex;
+}
+@mixin padding-horizontal-1ex {
+    padding-left: 1ex;
+    padding-right: 1ex;
+}
+@mixin padding-bottom-1ex {
+    padding-bottom: 1ex;
+}
+@mixin padding-horizontal-view {
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+@mixin padding-right-5vw {
+    padding-right: 5vw;
+}
+@mixin padding-horizontal-quarterem {
+    padding-left: 0.25em;
+    padding-right: 0.25em;
+}

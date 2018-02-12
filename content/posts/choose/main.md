@@ -40,8 +40,8 @@ to choose, we can make that choice explicit.
 For example (Click the highlighted region to bring up a menu. Click one of the
 options in the menu to activate that choice.):
 
-<ul class="switch" type="menu" data-menu="state">
-<li class="open">
+::: {.switch type=menu data-menu=state}
+::: open
 The state is a "framework ... needed to simplify the application of the two
 principles of justice":
 
@@ -57,9 +57,9 @@ positions and offices open to all. [@rawls09]
 (these principles justified by the
 [original position](http://plato.stanford.edu/entries/original-position/).)
 
-</li>
+:::
 
-<li>
+::: {}
 <blockquote>
 In a state of nature, ... [g]roups of individuals may form mutual-protection
 associations: all will answer the call of any member for defense or for the
@@ -72,7 +72,8 @@ selling protective services. [@nozick74]
 Nozick then goes on to suggest that these protective agencies would form virtual
 monopolies, approximating a state.
 
-</li></ul>
+:::
+:::
 
 This technique can be found *in vivo* in [the post on quorum](../quorum/) (which
 also demonstrates synchronized choice i.e. changing what needs to be changed in

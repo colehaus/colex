@@ -1,0 +1,18 @@
+@mixin diamond {
+    content: '◈ ';
+}
+@mixin hook-right {
+    content: " ↪";
+}
+@mixin em-dash {
+    content: "—";
+}
+@mixin right-triangle {
+    content: '► ';
+}
+@mixin down-triangle {
+    content: '▼ ';
+}
+@mixin right-curve {
+    content: '⤸';
+}

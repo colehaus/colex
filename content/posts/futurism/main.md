@@ -7,7 +7,7 @@ css: futurism
 graph-of-contents: true
 ---
 
-<blockquote>
+<blockquote class="epigraph">
 The human race, to which so many of my readers belong, has been playing at
 children's games from the beginning.... And one of the games to which it is most
 attached is called "Keep to-morrow dark," .... The players listen very carefully

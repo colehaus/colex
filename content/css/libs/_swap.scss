@@ -1,24 +1,27 @@
 @import 'colors';
+@import 'foo/spacing';
+@import 'foo/borders';
+@import 'foo/positioning';
+@import 'foo/content';
 
 .swap {
   position: relative;
-  background-color: $swap-back-color;
-  padding-left: 0.2em;
-  padding-right: 0.2em;
-  border-radius: 3px;
+  @include swap-back-color;
+  @include padding-horizontal-quarterem;
+  @include border-radius;
 }
 .swap-down, .swap-up {
   position: absolute;
-  display: inline-block;
   &::before {
     cursor: pointer;
-    content: '⤸';
+    @include right-curve;
   }
 }
 .swap-down {
-  right: -2ex;
+  @include right-small-negative;
 }
 .swap-up {
-  left: -2ex;
+  @include left-small-negative;
+  // There is apparently no unicode character for this
   transform: rotate(180deg);
 }

@@ -1,4 +1,10 @@
 @import 'colors';
+@import 'foo/dimensions';
+
+#arg-map {
+    @include height-full-view;
+    @include width-full-view;
+}
 
 path.link {
   fill: none;
@@ -13,10 +19,6 @@ polygon {
 .fixed {
   stroke-width: 2px;
 }
-#arg-map {
-  width: 100vw;
-  height: 100vh;
-}
 text {
   font-size: smaller;
   text-shadow: 0 1px 0 $body-back-color,
@@ -30,7 +32,6 @@ text {
     fill: nth(map-get($colors, value), 3);
   }
 }
-
 svg a {
   cursor: pointer;
 }

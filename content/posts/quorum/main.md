@@ -56,12 +56,14 @@ Statistics!
 
 # Statistics
 
-<ul class="switch" type="menu" data-menu="stat-type">
-<li class="open">
+::: {.switch type=menu data-menu=stat-type}
+::: open
 ## Bayesian
-</li><li>
+:::
+::: {}
 ## Frequentist
-</li></ul>
+:::
+:::
 
 For each pair of alternatives, we'd like to find which of these three is true:
 
@@ -117,8 +119,8 @@ because it's bounded region excludes $0$.) Alternately, if the lower bound
 stretched to $-0.1$ and the upper bound stretched to $0.58$, we'd declare a
 failure of quorum.
 
-<ul class="switch" type="menu" data-menu="stat-type">
-<li class="open">
+::: {.switch type=menu data-menu=stat-type}
+::: open
 How do we construct these credible bounds? We derive them from the
 [posterior probability distribution](https://en.wikipedia.org/wiki/Posterior_probability)
 created using Bayesian parameter estimation [@kruschke13]. To construct this
@@ -161,19 +163,19 @@ adaptive Metropolis-within-Gibbs [@roberts09] [@sumsar-best]. These posteriors
 on the parameters of beta allow us to straightforwardly calculate the posterior
 on the mean of the difference using the formula for the mean of a beta
 distribution.
-</li>
-<li>
+:::
+::: {}
 How do we construct these confidence bounds? That depends.
 
-<ul class="switch" type="menu" data-menu="sample-size">
-<li class="open">
+::: {.switch type=menu data-menu=sample-size}
+::: open
 If the number of votes is "large" (say, more than 30) (and the distribution of
 votes satisfies some other
 [conditions](https://en.wikipedia.org/wiki/Central_limit_theorem)), we can do
 [a $t$-test on the paired differences of the
 votes.]{.noted}[^difference]
-</li>
-<li>
+:::
+::: {}
 If the number of votes is "small" (say, 30 or fewer), we have a problem. We
 cannot assume that the underlying distribution of votes is
 [normal](https://en.wikipedia.org/wiki/Normal_distribution). Voters could be
@@ -192,10 +194,10 @@ assume []{.spark #sym2} that.
 
 So, as far as I know, there's no simple frequentist procedure which is
 applicable in the small sample case.
-</li>
-</ul>
-</li>
-</ul>
+:::
+:::
+:::
+:::
 
 [You can try it out below]{.noted}[^single-bound].
 Maybe look for:
@@ -227,8 +229,8 @@ Maybe look for:
   <progress value="0"></progress>
   </div>
   <output id="stat-out">
-  <ul class="switch" type="menu" data-menu="stat-type">
-  <li class="open">
+  <div class="switch" type="menu" data-menu="stat-type">
+  <div class="open">
   <div id="best">
   <figure id="mean"><figcaption>Mean of differences</figcaption><div></div></figure>
   <div id="kuwa-parms">
@@ -236,14 +238,13 @@ Maybe look for:
   <figure id="beta"><figcaption>Beta</figcaption><div></div></figure>
   </div>
   </div>
-  </li>
-  <li>
+  </div>
+  <div>
   <figure id="freq"><figcaption>Mean of differences</figcaption><div></div></figure>
-  </li>
-  </ul>
+  </div>
+  </div>
   </output>
 </form>
-</li>
 
 # Problems
 
@@ -265,13 +266,15 @@ effects.
 Also, [isn't all this math a bit
 forbidding?](#arg-map){#complicated}
 
-<ul class="switch" type="menu" data-menu="stat-type"><li class="open">
+::: {.switch type=menu data-menu=stat-type}
+::: open
 The conclusions have a rather intuitive interpretation in terms of likelihood,
 maybe even more intuitive than the traditional quorum interpretation ("We ensure
 that our decisions are representative by requiring 25% of our members to
 attend."). But getting to the conclusions requires a computer and uncommon
 math.
-</li><li>
+:::
+::: {}
 The math itself may be familiar to some, but there are still the
 perennial problems of frequentist interpretation [@goodman08]:
 
@@ -287,7 +290,8 @@ contain the true population difference."
 
 "Uhh..."
 :::
-</li></ul>
+:::
+:::
 
 So this procedure is less accessible than traditional quorum. How much less
 depends on the relative importances placed on accessible conclusions and
@@ -309,8 +313,8 @@ quorum.
 
 # Extended procedures
 
-<ul class="switch" type="menu" data-menu="stat-type">
-<li class="open">
+::: {.switch type=menu data-menu=stat-type}
+::: open
 ## Non-parametric
 
 As mentioned, the procedure specified above assumes that the paired differences
@@ -349,8 +353,8 @@ deal with the
 better solution would be to perform a Bayesian
 [ANOVA](https://en.wikipedia.org/wiki/Analysis_of_variance) analogue with
 follow-up tests [@wetzels12].
-</li>
-<li>
+:::
+::: {}
 ## Multiple alternatives
 
 For simplicity, we looked at referenda with only two alternatives. We can extend
@@ -363,8 +367,8 @@ deal with the
 better solution would be to perform
 [ANOVA](https://en.wikipedia.org/wiki/Analysis_of_variance) with follow-up
 tests.
-</li>
-</ul>
+:::
+:::
 
 ## Non-ordinal outcomes
 

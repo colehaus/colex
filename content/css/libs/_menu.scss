@@ -1,26 +1,18 @@
 @import 'colors';
-
-menu[type="popup"] {
-    visibility: hidden;
-    margin: 0;
-    padding: 0;
-    & > hr, & > menuitem {
-        display: none;
-    }
-}
+@import 'foo/spacing';
+@import 'foo/borders';
+@import 'foo/typography';
 
 .menu {
-    border-radius: 3px;
-    background: $body-back-alt-color;
-    margin: 0;
-    padding: 1ex;
-    visibility: visible;
+    @include border-radius;
+    @include background-alt-color;
+    @include padding-1ex;
     list-style-type: none;
     position: absolute;
     & > li {
         cursor: pointer;
     }
     & > li[checked=checked] {
-        font-weight: 700;
+        @include weight-bold;
     }
 }

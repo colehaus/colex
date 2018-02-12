@@ -1,28 +1,32 @@
 @import 'colors';
+@import 'foo/spacing';
+@import 'foo/borders';
+@import 'foo/positioning';
+@import 'foo/dimensions';
+@import 'foo/typography';
+@import 'foo/content';
 
 .noted {
-    box-shadow: inset 0px 0px 5px #eee;
-    border-radius: 4px;
-    padding: 0px 5px;
-    background-color: $note-back-color;
+    @include border-radius;
+    @include padding-horizontal-quarterem;
+    @include note-back-color;
     &::after {
-      content: " ↪";
+        @include hook-right;
     }
 }
 .sidenote {
     position: absolute;
-    right: -25ex;
-    margin-bottom: 2ex;
-    width: 30ex;
-    font-weight: 300;
-    font-size: smaller;
+    @include right-negative;
+    @include width-small;
+    @include margin-vertical-1ex;
+    @include weight-light;
+    @include font-smaller;
     & > p {
-        margin: 0;
-        padding: 0;
+        @include margin-none;
+        @include padding-none;
     }
     & > *:first-child::first-letter {
-        background-color: $note-back-color;
-        box-shadow: inset 0px 0px 5px #eee;
+        @include note-back-color;
     }
 }
 .footnoteRef {

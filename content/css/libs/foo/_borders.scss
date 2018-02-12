@@ -1,0 +1,23 @@
+@import '../colors';
+
+@mixin border-dotted {
+    border-bottom: 1px dotted;
+}
+@mixin border-dashed {
+    border-bottom: 1px dashed;
+}
+@mixin border-solid {
+    border-bottom: 1px solid;
+}
+@mixin border-none {
+    border: none;
+}
+@mixin border-left-big($color) {
+    border-left: 10px solid $color;
+}
+@mixin border-radius {
+    border-radius: 4px;
+}
+@mixin border-radius-bigger-right {
+    border-radius: 3px 5px 5px 3px;
+}
