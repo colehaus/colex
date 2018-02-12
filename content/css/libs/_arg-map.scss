@@ -1,5 +1,5 @@
 @import 'colors';
-@import 'foo/dimensions';
+@import 'primitives/dimensions';
 
 #arg-map {
     @include height-full-view;

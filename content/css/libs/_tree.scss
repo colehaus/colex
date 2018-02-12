@@ -1,7 +1,7 @@
 @import 'colors';
-@import 'foo/spacing';
-@import 'foo/dimensions';
-@import 'foo/borders';
+@import 'primitives/spacing';
+@import 'primitives/dimensions';
+@import 'primitives/borders';
 
 .switch {
     cursor: pointer;

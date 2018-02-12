@@ -1,10 +1,10 @@
 @import 'colors';
-@import 'foo/spacing';
-@import 'foo/borders';
-@import 'foo/positioning';
-@import 'foo/dimensions';
-@import 'foo/typography';
-@import 'foo/content';
+@import 'primitives/spacing';
+@import 'primitives/borders';
+@import 'primitives/positioning';
+@import 'primitives/dimensions';
+@import 'primitives/typography';
+@import 'primitives/content';
 
 .noted {
     @include border-radius;

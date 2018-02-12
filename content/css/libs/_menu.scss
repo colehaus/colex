@@ -1,7 +1,7 @@
 @import 'colors';
-@import 'foo/spacing';
-@import 'foo/borders';
-@import 'foo/typography';
+@import 'primitives/spacing';
+@import 'primitives/borders';
+@import 'primitives/typography';
 
 .menu {
     @include border-radius;

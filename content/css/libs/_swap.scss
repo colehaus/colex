@@ -1,8 +1,8 @@
 @import 'colors';
-@import 'foo/spacing';
-@import 'foo/borders';
-@import 'foo/positioning';
-@import 'foo/content';
+@import 'primitives/spacing';
+@import 'primitives/borders';
+@import 'primitives/positioning';
+@import 'primitives/content';
 
 .swap {
   position: relative;
