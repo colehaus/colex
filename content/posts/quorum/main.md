@@ -87,22 +87,16 @@ believing that $x > y$ or that $y > x$.". The first two correspond to quorum and
 the third corresponds to a failure of quorum.
 
 To establish $\mu_2 \gg \mu_1$, we construct a lower
-<span class="inline switch" type="menu" data-menu="stat-type">
-<span class="open">credible bound (a one-sided
-[credible interval](https://en.wikipedia.org/wiki/Credible_interval))</span>
-<span>confidence bound (a one-sided
-[confidence interval](https://en.wikipedia.org/wiki/Confidence_interval))</span>
-</span>
+[[credible bound (a one-sided
+[credible interval](https://en.wikipedia.org/wiki/Credible_interval))]{.open}
+[confidence bound (a one-sided
+[confidence interval](https://en.wikipedia.org/wiki/Confidence_interval))]{}
+]{.inline .switch type=menu data-menu=stat-type}
 on $\mu_2 - \mu_1$ base on our votes. The lower bound delimits the region where
 $\mu_2 - \mu_1$ is largest. If the delimited region includes $0$, we must reject
 $\mu_2 \gg \mu_1$ (i.e. if the region most favorable to $\mu_2$ still
 doesn't exclude $0$, we aren't justified in believing $\mu_2 > \mu_1$ (at the
-chosen
-<span class="inline switch" type="menu" data-menu="stat-type">
-<span class="open">credibility</span>
-<span>confidence</span>
-</span>
-level)).
+chosen [[credibility]{.open} [confidence]{}]{.inline .switch type=menu data-menu=stat-type} level)).
 
 The approach for $\mu_1 \gg \mu_2$ is similar (simply swap in an upper bound or
 $\mu_1 - \mu_2$).
@@ -111,16 +105,10 @@ If we reject $\mu_2 \gg \mu_1$ and $\mu_1 \gg \mu_2$, we must accept
 $\mu_2 \approx \mu_1$ and declare a failure of quorum.
 
 For example, we'd like to [determine if the
-<span class="inline switch" type="menu" data-menu="stat-type">
-<span class="open">credible</span>
-<span>confidence</span>
-</span>
+[[credible]{.open} [confidence]{}]{.inline .switch type=menu data-menu=stat-type}
 bounds support the conclusion](#arg-map){#bayes} that buko pie really is preferred to fish pie.
 If Pie Club bylaws specified a $95\%$
-<span class="inline switch" type="menu" data-menu="stat-type">
-<span class="open">credible</span>
-<span>confidence</span>
-</span>
+[[credible]{.open} [confidence]{}]{.inline .switch type=menu data-menu=stat-type}
 bound and the lower bound for $\mu_{buko} - \mu_{fish}$ stretched to $0.359$
 while the upper bound stretched to $0.58$, we'd declare that quorum had been
 reached in favor of buko pie. (We reject $\mu_{fish} \gg \mu_{buko}$ because
@@ -219,6 +207,7 @@ Maybe look for:
 - Two scenarios in which the number of voters remains the same, but the quorum
   status changes
 
+<div class="form">
 <form>
   <div class="data-input">
   <div>
@@ -255,6 +244,7 @@ Maybe look for:
   </div>
   </output>
 </form>
+</div>
 
 # Problems
 

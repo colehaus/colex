@@ -22,8 +22,7 @@ race of simple tastes, however, it is great fun. [@chesterton04]
 "How likely are we to have [holophonors](https://theinfosphere.org/Holophonor)
 by 3002?"
 
-"Pretty likely. They're pretty much <a href="#arg-map" id="naive">just better
-oboes, right? 80% chance?</a>"
+"Pretty likely. They're pretty much [just better oboes, right? 80% chance?](#arg-map){#naive}"
 
 "<a href="#arg-map" id="overconfident">Keep in mind the
 [overconfidence bias](https://en.wikipedia.org/wiki/Overconfidence_effect).</a>"
@@ -31,10 +30,10 @@ oboes, right? 80% chance?</a>"
 "Alright, 70% chance."
 
 "Also, note that people are pretty bad at predictions. A study by George Wise
-found that [<a href="#arg-map" id="mediocre">out of
+found that [[out of
 1556 naive medium-term predictions made publicly by Americans between 1890 and
 1940, just under 40% had been fulfilled or were in progress by
-1976</a>]{.noted}[^feedback] [@wise76]."
+1976](#arg-map){#mediocre}]{.noted}[^feedback] [@wise76]."
 
 "Fine. Then I won't just make a reflexive prediction. I'll give the matter
 serious thought... Well, [people in the future

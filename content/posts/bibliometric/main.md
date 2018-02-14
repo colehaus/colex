@@ -114,10 +114,11 @@ will cite it.
 
   (In this and subsequent graphs, we follow the
   conventions of
-  <a href="https://en.wikipedia.org/wiki/Bayesian_network">Bayesian networks</a>
+
+  [Bayesian networks](https://en.wikipedia.org/wiki/Bayesian_network)
   (i.e. a cited paper is the parent rather than the child---the arrow runs from
   rather than to the cited paper) rather than the conventions of
-  <a href="https://en.wikipedia.org/wiki/Citation_graph">citation graphs</a>.)
+  [citation graphs](https://en.wikipedia.org/wiki/Citation_graph).)
   </figcaption>
 </figure>
 
