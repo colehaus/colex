@@ -1,4 +1,5 @@
-* TODO Sourcemaps and uglify for ps and elm
+* DONE Sourcemaps and uglify for ps and elm
+  CLOSED: [2018-02-14 Wed 11:41]
 * TODO Switch to new version of d3
 ** TODO Also, make arg-map into proper custom element
 ** TODO Load data from CSV file

@@ -106,14 +106,19 @@ main =
         compile copyFileCompiler
     -- Copy output from webpack, purescript, &c.
     _ <-
-      match "js/dist/*" $ do
+      match ("js/dist/*" .&&. complement "js/dist/bibliometric.js") $ do
         fileInDirectoryRoute "js"
         compile copyFileCompiler
     _ <-
-      match "js/cooperatives/vendoredOut/*.js" $ do
+      match ("js/cooperatives/vendoredOut/*.js" .||. "js/dist/bibliometric.js") $ do
         fileInDirectoryRoute "js"
-        compile copyFileCompiler
+        compile uglifyCompiler
     pure ()
+
+uglifyCompiler :: Compiler (Item String)
+uglifyCompiler =
+  withItemBody (unixFilter "uglifyjs" ["--compress", "--mangle"]) =<<
+  getResourceBody
 
 buildPages
   :: Blessed "template" Identifier

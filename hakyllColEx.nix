@@ -8,7 +8,10 @@
     };
     npmDependencies = pkgs.callPackage ./callNpm2nix.nix {
       name = "mathjax-node-cli";
-      npmPkgs = [ { mathjax-node-cli = "^1.0.0"; } ];
+      npmPkgs = [
+        { mathjax-node-cli = "^1.0.0"; }
+        { uglify-js = "^3.3.10"; }
+      ];
     };
   in
     pkgs.stdenv.mkDerivation {
@@ -19,6 +22,7 @@
         hakyll
         pkgs.sass
         npmDependencies."mathjax-node-cli-^1.0.0"
+        npmDependencies."uglify-js-^3.3.10"
       ];
       inherit webpackColEx;
       inherit bibliometric;
