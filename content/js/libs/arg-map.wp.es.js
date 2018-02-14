@@ -234,7 +234,7 @@ const activate = (map: D3) => (e: ?JQueryEventObject) => {
     $('#arg-map a').removeAttr('style')
     $('#underlay').removeClass('inactive')
     $('#overlay').addClass('inactive')
-    location.hash = ''
+    history.replaceState(null, '', '')
     map.stop()
   }
 
