@@ -546,10 +546,9 @@ readerOpt = defaultHakyllReaderOptions {readerExtensions = extensions}
 writerOpt :: WriterOptions
 writerOpt =
   defaultHakyllWriterOptions
-  { writerHtmlQTags = True
-    -- Hakyll + Pandoc don't insert <script> correctly,
+  { -- Hakyll + Pandoc don't insert <script> correctly,
     -- so we add dummy URL and do it manually
-  , writerHTMLMathMethod = MathJax mempty
+    writerHTMLMathMethod = MathJax mempty
   , writerExtensions = extensions
   }
 
