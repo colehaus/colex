@@ -112,10 +112,10 @@ Pie Club is voting on which pie will take home the title <q>Pie of the Decade</q
 <li><span class="math inline">\(\mu_2 \approx \mu_1\)</span></li>
 </ul>
 <p>where <span class="math inline">\(x \gg y\)</span> means something like <q>We are justified in believing that <span class="math inline">\(x &gt; y\)</span>.</q> and <span class="math inline">\(x \approx y\)</span> means something like <q>We aren’t justified in believing that <span class="math inline">\(x &gt; y\)</span> or that <span class="math inline">\(y &gt; x\)</span>.</q>. The first two correspond to quorum and the third corresponds to a failure of quorum.</p>
-<p>To establish <span class="math inline">\(\mu_2 \gg \mu_1\)</span>, we construct a lower <span class="inline switch" type="menu" data-menu="stat-type"> <span class="open">credible bound (a one-sided <a href="https://en.wikipedia.org/wiki/Credible_interval">credible interval</a>)</span> <span>confidence bound (a one-sided <a href="https://en.wikipedia.org/wiki/Confidence_interval">confidence interval</a>)</span> </span> on <span class="math inline">\(\mu_2 - \mu_1\)</span> base on our votes. The lower bound delimits the region where <span class="math inline">\(\mu_2 - \mu_1\)</span> is largest. If the delimited region includes <span class="math inline">\(0\)</span>, we must reject <span class="math inline">\(\mu_2 \gg \mu_1\)</span> (i.e. if the region most favorable to <span class="math inline">\(\mu_2\)</span> still doesn’t exclude <span class="math inline">\(0\)</span>, we aren’t justified in believing <span class="math inline">\(\mu_2 &gt; \mu_1\)</span> (at the chosen <span class="inline switch" type="menu" data-menu="stat-type"> <span class="open">credibility</span> <span>confidence</span> </span> level)).</p>
+<p>To establish <span class="math inline">\(\mu_2 \gg \mu_1\)</span>, we construct a lower <span class="inline switch" type="menu" data-menu="stat-type"><span class="open">credible bound (a one-sided <a href="https://en.wikipedia.org/wiki/Credible_interval">credible interval</a>)</span> <span>confidence bound (a one-sided <a href="https://en.wikipedia.org/wiki/Confidence_interval">confidence interval</a>)</span></span> on <span class="math inline">\(\mu_2 - \mu_1\)</span> base on our votes. The lower bound delimits the region where <span class="math inline">\(\mu_2 - \mu_1\)</span> is largest. If the delimited region includes <span class="math inline">\(0\)</span>, we must reject <span class="math inline">\(\mu_2 \gg \mu_1\)</span> (i.e. if the region most favorable to <span class="math inline">\(\mu_2\)</span> still doesn’t exclude <span class="math inline">\(0\)</span>, we aren’t justified in believing <span class="math inline">\(\mu_2 &gt; \mu_1\)</span> (at the chosen <span class="inline switch" type="menu" data-menu="stat-type"><span class="open">credibility</span> <span>confidence</span></span> level)).</p>
 <p>The approach for <span class="math inline">\(\mu_1 \gg \mu_2\)</span> is similar (simply swap in an upper bound or <span class="math inline">\(\mu_1 - \mu_2\)</span>).</p>
 <p>If we reject <span class="math inline">\(\mu_2 \gg \mu_1\)</span> and <span class="math inline">\(\mu_1 \gg \mu_2\)</span>, we must accept <span class="math inline">\(\mu_2 \approx \mu_1\)</span> and declare a failure of quorum.</p>
-<p>For example, we’d like to <a href="#arg-map" id="bayes">determine if the <span class="inline switch" type="menu" data-menu="stat-type"> <span class="open">credible</span> <span>confidence</span> </span> bounds support the conclusion</a> that buko pie really is preferred to fish pie. If Pie Club bylaws specified a <span class="math inline">\(95\%\)</span> <span class="inline switch" type="menu" data-menu="stat-type"> <span class="open">credible</span> <span>confidence</span> </span> bound and the lower bound for <span class="math inline">\(\mu_{buko} - \mu_{fish}\)</span> stretched to <span class="math inline">\(0.359\)</span> while the upper bound stretched to <span class="math inline">\(0.58\)</span>, we’d declare that quorum had been reached in favor of buko pie. (We reject <span class="math inline">\(\mu_{fish} \gg \mu_{buko}\)</span> because it’s bounded region includes <span class="math inline">\(0\)</span>. We can’t reject <span class="math inline">\(\mu_{buko} \gg \mu_{fish}\)</span> because it’s bounded region excludes <span class="math inline">\(0\)</span>.) Alternately, if the lower bound stretched to <span class="math inline">\(-0.1\)</span> and the upper bound stretched to <span class="math inline">\(0.58\)</span>, we’d declare a failure of quorum.</p>
+<p>For example, we’d like to <a href="#arg-map" id="bayes">determine if the <span class="inline switch" type="menu" data-menu="stat-type"><span class="open">credible</span> <span>confidence</span></span> bounds support the conclusion</a> that buko pie really is preferred to fish pie. If Pie Club bylaws specified a <span class="math inline">\(95\%\)</span> <span class="inline switch" type="menu" data-menu="stat-type"><span class="open">credible</span> <span>confidence</span></span> bound and the lower bound for <span class="math inline">\(\mu_{buko} - \mu_{fish}\)</span> stretched to <span class="math inline">\(0.359\)</span> while the upper bound stretched to <span class="math inline">\(0.58\)</span>, we’d declare that quorum had been reached in favor of buko pie. (We reject <span class="math inline">\(\mu_{fish} \gg \mu_{buko}\)</span> because it’s bounded region includes <span class="math inline">\(0\)</span>. We can’t reject <span class="math inline">\(\mu_{buko} \gg \mu_{fish}\)</span> because it’s bounded region excludes <span class="math inline">\(0\)</span>.) Alternately, if the lower bound stretched to <span class="math inline">\(-0.1\)</span> and the upper bound stretched to <span class="math inline">\(0.58\)</span>, we’d declare a failure of quorum.</p>
 <div class="switch" type="menu" data-menu="stat-type">
 <div class="open">
 <p>How do we construct these credible bounds? We derive them from the <a href="https://en.wikipedia.org/wiki/Posterior_probability">posterior probability distribution</a> created using Bayesian parameter estimation <span class="citation" data-cites="kruschke13">(Kruschke 2013)</span>. To construct this posterior, we start by specifying <span class="noted">a model for the distribution of paired differences</span><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. Because the difference can only take on values in the interval <span class="math inline">\(\left(-1, 1\right)\)</span>, the (<a href="https://en.wikipedia.org/wiki/Location-scale_family">transformed</a> from <span class="math inline">\((0, 1)\)</span> to <span class="math inline">\((-1, 1)\)</span>) <span class="noted"><a href="https://en.wikipedia.org/wiki/Beta_distribution">beta distribution</a> is a sensible choice</span><a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. To get a sense of the beta distribution, you can look at the calculator <a href="http://keisan.casio.com/has10/SpecExec.cgi?id=system/2006/1180573226">here</a>.</p>
@@ -149,6 +149,7 @@ We model the vote differences with a beta distribution. That beta distribution�
 <li>Two scenarios in which each alternative retains its mean score, but the quorum status changes</li>
 <li>Two scenarios in which the number of voters remains the same, but the quorum status changes</li>
 </ul>
+<div class="form">
 <form>
 <div class="data-input">
 <div>
@@ -159,6 +160,7 @@ We model the vote differences with a beta distribution. That beta distribution�
 <output>
 <figure id="preview1">
 <div>
+
 </div>
 </figure>
 </output>
@@ -171,6 +173,7 @@ We model the vote differences with a beta distribution. That beta distribution�
 <output>
 <figure id="preview2">
 <div>
+
 </div>
 </figure>
 </output>
@@ -182,18 +185,12 @@ We model the vote differences with a beta distribution. That beta distribution�
 Differences (Prop 2 - Prop 1)
 </figcaption>
 <div>
+
 </div>
 </figure>
 </output>
 <div class="act">
-<button class="preview" type="button">
-Update Preview
-</button>
-<button class="analyze" type="button">
-Analyze
-</button>
-<progress value="0">
-</progress>
+<button class="preview" type="button">Update Preview</button> <button class="analyze" type="button">Analyze</button> <progress value="0"></progress>
 </div>
 <output id="stat-out">
 <div class="switch" type="menu" data-menu="stat-type">
@@ -204,6 +201,7 @@ Analyze
 Mean of differences
 </figcaption>
 <div>
+
 </div>
 </figure>
 <div id="kuwa-parms">
@@ -212,6 +210,7 @@ Mean of differences
 Alpha
 </figcaption>
 <div>
+
 </div>
 </figure>
 <figure id="beta">
@@ -219,6 +218,7 @@ Alpha
 Beta
 </figcaption>
 <div>
+
 </div>
 </figure>
 </div>
@@ -230,12 +230,14 @@ Beta
 Mean of differences
 </figcaption>
 <div>
+
 </div>
 </figure>
 </div>
 </div>
 </output>
 </form>
+</div>
 <h3 id="problems">Problems</h3>
 <p>We’ve tacitly <a href="#arg-map" id="random">assumed that our actual voters are a random sample</a> of the population of potential voters. This is false (Though one could make it true through adoption of appropriate <a href="https://en.wikipedia.org/wiki/Sortition">voting procedures</a>). <a href="https://en.wikipedia.org/wiki/Self-selection_bias">Self-selection bias</a>, whether due to differential interest, availability, transportation, &amp;c., means that the sample is non-representative. However, the problem of non-random samples also applies to traditional quorum’s assurances of representativeness.</p>
 <p>The procedure also accepts the claim of <span class="citation" data-cites="ronr">(Robert, Honemann, and Balch 2011)</span> that the purpose of quorum is to ensure representativeness. In consequence, the procedure takes votes as exogenous and characterizes only the resulting information. But one could support quorum for its deliberative, community-building, or even obstructive effects.</p>
@@ -349,6 +351,7 @@ Mean of differences
 </div>
 
 <div id="overlay" class="inactive"><div id="arg-map">
+
 </div></div>
 
 
