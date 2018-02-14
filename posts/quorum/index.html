@@ -59,7 +59,7 @@
   
   
     <div class="abstract">
-      <p>Voting procedures can replace traditional quorum with the use of statistical techniques. If aggregate opinion on the alternatives is <q>similar</q>, according to those techniques, we declare a failure of quorum.</p>
+      <p>Voting procedures can replace traditional quorum with the use of statistical techniques. If aggregate opinion on the alternatives is “similar”, according to those techniques, we declare a failure of quorum.</p>
     </div>
   
 
@@ -86,7 +86,7 @@
 Before the decision is finalized, however, an observant member notices that the meeting is <a href="#arg-map" id="restrictive">two members short of the 25 required for quorum</a>. Because Pie Club is scrupulously democratic, the vote is annulled. Some members grumble their doubt that the landslide will reverse with two more votes.
 </li>
 <li id="example2">
-Pie Club is voting on which pie will take home the title <q>Pie of the Decade</q>. Will it be <a href="https://en.wikipedia.org/wiki/Lemon_meringue_pie">lemon meringue pie</a> or <a href="https://en.wikipedia.org/wiki/Tarta_de_Santiago">Tarta de Santiago</a>? The results are in—quorum checked in advance this time—and they are… <span class="math inline">\(0.49\)</span> for meringue and <span class="math inline">\(0.48\)</span> for Tarta. While meringue’s devotees celebrate, Tarta’s die-hards feel something has gone wrong. <a href="#arg-map" id="permissive">Can such a close result really give them confidence</a> that meringue is the preference of the whole club, including the 12 members who couldn’t make it to meeting? If just one of them had attended and cast a vote favoring Tarta, wouldn’t that have swung the outcome?
+Pie Club is voting on which pie will take home the title “Pie of the Decade”. Will it be <a href="https://en.wikipedia.org/wiki/Lemon_meringue_pie">lemon meringue pie</a> or <a href="https://en.wikipedia.org/wiki/Tarta_de_Santiago">Tarta de Santiago</a>? The results are in—quorum checked in advance this time—and they are… <span class="math inline">\(0.49\)</span> for meringue and <span class="math inline">\(0.48\)</span> for Tarta. While meringue’s devotees celebrate, Tarta’s die-hards feel something has gone wrong. <a href="#arg-map" id="permissive">Can such a close result really give them confidence</a> that meringue is the preference of the whole club, including the 12 members who couldn’t make it to meeting? If just one of them had attended and cast a vote favoring Tarta, wouldn’t that have swung the outcome?
 </li>
 </ol>
 <!--more-->
@@ -111,7 +111,7 @@ Pie Club is voting on which pie will take home the title <q>Pie of the Decade</q
 <li><span class="math inline">\(\mu_1 \gg \mu_2\)</span></li>
 <li><span class="math inline">\(\mu_2 \approx \mu_1\)</span></li>
 </ul>
-<p>where <span class="math inline">\(x \gg y\)</span> means something like <q>We are justified in believing that <span class="math inline">\(x &gt; y\)</span>.</q> and <span class="math inline">\(x \approx y\)</span> means something like <q>We aren’t justified in believing that <span class="math inline">\(x &gt; y\)</span> or that <span class="math inline">\(y &gt; x\)</span>.</q>. The first two correspond to quorum and the third corresponds to a failure of quorum.</p>
+<p>where <span class="math inline">\(x \gg y\)</span> means something like “We are justified in believing that <span class="math inline">\(x &gt; y\)</span>.” and <span class="math inline">\(x \approx y\)</span> means something like “We aren’t justified in believing that <span class="math inline">\(x &gt; y\)</span> or that <span class="math inline">\(y &gt; x\)</span>.”. The first two correspond to quorum and the third corresponds to a failure of quorum.</p>
 <p>To establish <span class="math inline">\(\mu_2 \gg \mu_1\)</span>, we construct a lower <span class="inline switch" type="menu" data-menu="stat-type"><span class="open">credible bound (a one-sided <a href="https://en.wikipedia.org/wiki/Credible_interval">credible interval</a>)</span> <span>confidence bound (a one-sided <a href="https://en.wikipedia.org/wiki/Confidence_interval">confidence interval</a>)</span></span> on <span class="math inline">\(\mu_2 - \mu_1\)</span> base on our votes. The lower bound delimits the region where <span class="math inline">\(\mu_2 - \mu_1\)</span> is largest. If the delimited region includes <span class="math inline">\(0\)</span>, we must reject <span class="math inline">\(\mu_2 \gg \mu_1\)</span> (i.e. if the region most favorable to <span class="math inline">\(\mu_2\)</span> still doesn’t exclude <span class="math inline">\(0\)</span>, we aren’t justified in believing <span class="math inline">\(\mu_2 &gt; \mu_1\)</span> (at the chosen <span class="inline switch" type="menu" data-menu="stat-type"><span class="open">credibility</span> <span>confidence</span></span> level)).</p>
 <p>The approach for <span class="math inline">\(\mu_1 \gg \mu_2\)</span> is similar (simply swap in an upper bound or <span class="math inline">\(\mu_1 - \mu_2\)</span>).</p>
 <p>If we reject <span class="math inline">\(\mu_2 \gg \mu_1\)</span> and <span class="math inline">\(\mu_1 \gg \mu_2\)</span>, we must accept <span class="math inline">\(\mu_2 \approx \mu_1\)</span> and declare a failure of quorum.</p>
@@ -133,10 +133,10 @@ We model the vote differences with a beta distribution. That beta distribution�
 <p>How do we construct these confidence bounds? That depends.</p>
 <div class="switch" type="menu" data-menu="sample-size">
 <div class="open">
-<p>If the number of votes is <q>large</q> (say, more than 30) (and the distribution of votes satisfies some other <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">conditions</a>), we can do <span class="noted">a <span class="math inline">\(t\)</span>-test on the paired differences of the votes.</span><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
+<p>If the number of votes is “large” (say, more than 30) (and the distribution of votes satisfies some other <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">conditions</a>), we can do <span class="noted">a <span class="math inline">\(t\)</span>-test on the paired differences of the votes.</span><a href="#fn4" class="footnote-ref" id="fnref4"><sup>4</sup></a></p>
 </div>
 <div>
-<p>If the number of votes is <q>small</q> (say, 30 or fewer), we have a problem. We cannot assume that the underlying distribution of votes is <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal</a>. Voters could be polarized <span id="non-norm" class="spark"></span>, for example. And because the number of votes is small, we can’t rely on the <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">central limit theorem</a> to approximate normality. So we must use a <a href="https://en.wikipedia.org/wiki/Nonparametric_statistics">distribution-free</a> (sometimes called non-parametric) method.</p>
+<p>If the number of votes is “small” (say, 30 or fewer), we have a problem. We cannot assume that the underlying distribution of votes is <a href="https://en.wikipedia.org/wiki/Normal_distribution">normal</a>. Voters could be polarized <span id="non-norm" class="spark"></span>, for example. And because the number of votes is small, we can’t rely on the <a href="https://en.wikipedia.org/wiki/Central_limit_theorem">central limit theorem</a> to approximate normality. So we must use a <a href="https://en.wikipedia.org/wiki/Nonparametric_statistics">distribution-free</a> (sometimes called non-parametric) method.</p>
 <p>The distribution-free test for paired data is the <a href="https://en.wikipedia.org/wiki/Wilcoxon_signed-rank_test">Wilcoxon signed-rank test</a> <span class="citation" data-cites="wilcoxon45">(Wilcoxon 1945)</span>. However, this test requires the symmetrical distribution of paired differences. Again, we cannot <span id="sym1" class="spark"></span> assume <span id="sym2" class="spark"></span> that.</p>
 <p>So, as far as I know, there’s no simple frequentist procedure which is applicable in the small sample case.</p>
 </div>
@@ -244,16 +244,16 @@ Mean of differences
 <p>Also, <a href="#arg-map" id="complicated">isn’t all this math a bit forbidding?</a></p>
 <div class="switch" type="menu" data-menu="stat-type">
 <div class="open">
-<p>The conclusions have a rather intuitive interpretation in terms of likelihood, maybe even more intuitive than the traditional quorum interpretation (<q>We ensure that our decisions are representative by requiring 25% of our members to attend.</q>). But getting to the conclusions requires a computer and uncommon math.</p>
+<p>The conclusions have a rather intuitive interpretation in terms of likelihood, maybe even more intuitive than the traditional quorum interpretation (“We ensure that our decisions are representative by requiring 25% of our members to attend.”). But getting to the conclusions requires a computer and uncommon math.</p>
 </div>
 <div>
 <p>The math itself may be familiar to some, but there are still the perennial problems of frequentist interpretation <span class="citation" data-cites="goodman08">(Goodman 2008)</span>:</p>
 <div class="conversation">
-<p><q>Neat. The test showed it’s highly likely that buko pie is the preferred pie?</q></p>
-<p><q>No, it either is or isn’t the preferred pie. There’s no probability involved.</q></p>
-<p><q>What was all that <span class="math inline">\(5\%\)</span> talk then?</q></p>
-<p><q>Of all confidence intervals constructed at the <span class="math inline">\(95\%\)</span> level, <span class="math inline">\(95\%\)</span> should contain the true population difference.</q></p>
-<p><q>Uhh…</q></p>
+<p>“Neat. The test showed it’s highly likely that buko pie is the preferred pie?”</p>
+<p>“No, it either is or isn’t the preferred pie. There’s no probability involved.”</p>
+<p>“What was all that <span class="math inline">\(5\%\)</span> talk then?”</p>
+<p>“Of all confidence intervals constructed at the <span class="math inline">\(95\%\)</span> level, <span class="math inline">\(95\%\)</span> should contain the true population difference.”</p>
+<p>“Uhh…”</p>
 </div>
 </div>
 </div>
@@ -267,7 +267,7 @@ Mean of differences
 <p>As mentioned, the procedure specified above assumes that the paired differences are amenable to modelling by a beta distribution. This leads to overconfident inferences <span class="citation" data-cites="hoeting99">(Hoeting et al. 1999)</span>. The assumption can be relaxed through the use of Bayesian <a href="https://en.wikipedia.org/wiki/Nonparametric_statistics">non-parametric</a> methods <span class="citation" data-cites="walker99">(Walker et al. 1999)</span>. The idea is to use a model with an infinite number of parameters and marginalize out surplus dimensions on our finite data.</p>
 <h4 id="tying">Tying</h4>
 <p>We can also modify the procedure to permit tying. Under standing voting procedures, scores of <span class="math inline">\(0.490\)</span> to <span class="math inline">\(0.488\)</span> produce an identical outcome ( i.e. victory for the first option) to scores of <span class="math inline">\(0.82\)</span> to <span class="math inline">\(0.12\)</span>. However, if those values are accurate estimates of the population scores (i.e. the uncertainty is small), one could argue that the former scenario suggests a compromise or synthesis position.</p>
-<p>By defining <q>regions of practical equivalence</q>, parameter estimation allows the possibility of a tie <span class="citation" data-cites="kruschke13">(Kruschke 2013)</span>. For example, Pie Club could decide that a difference of mean scores smaller than 0.01 counts as a tie. If the credible interval on the difference of means is contained entirely in this region, we don’t have a failure of quorum (uncertainy about which option is preferred), but certainty that neither option is substantially preferred.</p>
+<p>By defining “regions of practical equivalence”, parameter estimation allows the possibility of a tie <span class="citation" data-cites="kruschke13">(Kruschke 2013)</span>. For example, Pie Club could decide that a difference of mean scores smaller than 0.01 counts as a tie. If the credible interval on the difference of means is contained entirely in this region, we don’t have a failure of quorum (uncertainy about which option is preferred), but certainty that neither option is substantially preferred.</p>
 <h4 id="multiple-alternatives">Multiple alternatives</h4>
 <p>For simplicity, we looked at referenda with only two alternatives. We can extend the procedure to referenda with more alternatives. The most straightforward method would be to apply the procedure described above pairwise. The credibility level would need to adjusted by something like the <a href="https://en.wikipedia.org/wiki/%C5%A0id%C3%A1k_correction">Šidák correction</a> to deal with the <a href="https://en.wikipedia.org/wiki/Multiple_comparisons_problem">problem of multiple comparisons</a>. A better solution would be to perform a Bayesian <a href="https://en.wikipedia.org/wiki/Analysis_of_variance">ANOVA</a> analogue with follow-up tests <span class="citation" data-cites="wetzels12">(Wetzels, Grasman, and Wagenmakers 2012)</span>.</p>
 </div>
@@ -343,7 +343,7 @@ Mean of differences
 <li id="fn2"><p>When using paired samples (here, we’d like to pair each person’s vote on buko pie to their vote on fish pie), we can transform two samples into a single sample of their differences. We can then use our single sample techniques on <span class="math inline">\(d_i = buko_i - fish_i\)</span> where <span class="math inline">\(y_i\)</span> is the <span class="math inline">\(i\)</span>th person’s vote on proposal <span class="math inline">\(y\)</span>.<a href="#fnref2" class="footnote-back">↩</a></p></li>
 <li id="fn3"><p>This entails the false assumption that our paired differences follow a beta distribution. Later, we’ll discuss possibilities for remedying this. For the moment, the beta distribution gives passable results, for its simplicity.<a href="#fnref3" class="footnote-back">↩</a></p></li>
 <li id="fn4"><p>When using paired samples (here, we’d like to pair each person’s vote on buko pie to their vote on fish pie), we can transform two samples into a single sample of their differences. We can then use our single sample techniques on <span class="math inline">\(d_i = buko_i - fish_i\)</span> where <span class="math inline">\(y_i\)</span> is the <span class="math inline">\(i\)</span>th person’s vote on proposal <span class="math inline">\(y\)</span>.<a href="#fnref4" class="footnote-back">↩</a></p></li>
-<li id="fn5"><p>For visual clarity, the plots below show only the bound which <q>crosses <span class="math inline">\(0\)</span> the least</q>. If and only if this bounded region includes <span class="math inline">\(0\)</span>, quorum has failed.<a href="#fnref5" class="footnote-back">↩</a></p></li>
+<li id="fn5"><p>For visual clarity, the plots below show only the bound which “crosses <span class="math inline">\(0\)</span> the least”. If and only if this bounded region includes <span class="math inline">\(0\)</span>, quorum has failed.<a href="#fnref5" class="footnote-back">↩</a></p></li>
 </ol>
 </section>
 </article></main>

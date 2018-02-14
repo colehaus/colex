@@ -5221,7 +5221,7 @@ const activate = map => e => {
     __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#arg-map a').removeAttr('style');
     __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#underlay').removeClass('inactive');
     __WEBPACK_IMPORTED_MODULE_0_jquery___default()('#overlay').addClass('inactive');
-    location.hash = '';
+    history.replaceState(null, '', '');
     map.stop();
   };
 

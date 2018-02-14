@@ -149,7 +149,7 @@ H(A,B) - \cond{H}{A,B}{\alpha,\beta} &amp;=
 \end{align}\]</span></p>
 <p>where <span class="math inline">\(\cond{H}{A,B}{\beta} - \cond{H}{A,B}{\alpha,\beta} \approx 0.437\)</span> represents <span class="math inline">\(\alpha\)</span>’s score and <span class="math inline">\(H(A,B) - \cond{H}{A,B}{\beta} \approx 0.266\)</span> represents <span class="math inline">\(\beta\)</span>’s score.</p>
 <p>(the general form is <span class="math inline">\(H(S_1,S_2,\cdots,S_n) - \cond{H}{S_1,S_2,\cdots,S_n}{\sigma_1,\sigma_2,\cdots,\sigma_n} = \sum\limits_{i=1}^n I(\sigma_i))\)</span> where <span class="math inline">\(I(\sigma_i) = \cond{H}{S_1,S_2,\cdots,S_i}{\sigma_{i+1},\sigma_{i+2},\cdots,\sigma_n} - \cond{H}{S_1,S_2,\cdots,S_i}{\sigma_i,\sigma_{i+1},\sigma_{i+2},\cdots,\sigma_n}\)</span></p>
-<p>We can see that <span class="math inline">\(\beta\)</span> citing <span class="math inline">\(\alpha\)</span> has increased <span class="math inline">\(\alpha\)</span>’s score (<span class="math inline">\(\alpha\)</span> now reduces our uncertainty not only about <span class="math inline">\(A\)</span>, but also about <span class="math inline">\(B\)</span>), a <q>citation bonus</q>. Or, if you prefer, you can think of it as <span class="math inline">\(\alpha\)</span> capturing the externalities it generates in <span class="math inline">\(B\)</span>.</p>
+<p>We can see that <span class="math inline">\(\beta\)</span> citing <span class="math inline">\(\alpha\)</span> has increased <span class="math inline">\(\alpha\)</span>’s score (<span class="math inline">\(\alpha\)</span> now reduces our uncertainty not only about <span class="math inline">\(A\)</span>, but also about <span class="math inline">\(B\)</span>), a “citation bonus”. Or, if you prefer, you can think of it as <span class="math inline">\(\alpha\)</span> capturing the externalities it generates in <span class="math inline">\(B\)</span>.</p>
 <h4 id="fourth-study">Fourth study</h4>
 <p>We’ll now jump to <a href="#arg-map" id="four">a fourth study</a> so we can examine a fuller set of interactions (i.e. multiples studies citing one study, one study citing multiple studies).</p>
 <figure>
@@ -169,7 +169,7 @@ H(A,B,C,D) - \cond{H}{A,B,C,D}{\alpha,\beta,\kappa,\delta} &amp;=
 <p>You can try it out below. Maybe look for:</p>
 <ul>
 <li>Two studies that, when considered in isolation, have the same score but have different scores when placed in the network context</li>
-<li>A citation that doesn’t give any <q>citation bonus</q></li>
+<li>A citation that doesn’t give any “citation bonus”</li>
 <li>Two networks with the same topology but different scores</li>
 </ul>
 <form class="net">
@@ -224,11 +224,11 @@ Calculate scores
 <dd>The impact factor is often used in inappropriate circumstances <span class="citation" data-cites="plos06">(Editors 2006)</span> <span class="citation" data-cites="agrawal05">(Agrawal 2005)</span> <span class="citation" data-cites="moustafa14">(Moustafa 2014)</span>. That is, the warning that impact factor is a metric for journals, not authors or departments, is seldom heeded. The proposed metric can used in such cases trivially. For example, if an author has published studies <span class="math inline">\(\eta\)</span> and <span class="math inline">\(\theta\)</span>, their score is simply <span class="math inline">\(I(\eta) + I(\theta)\)</span>, the total reduction in entropy they contribute.
 </dd>
 <dt><a href="#arg-map" id="repli-beni">Handles replications appropriately</a></dt>
-<dd>Impact factor tends to undervalue replications <span class="citation" data-cites="neuliep90">(Neuliep and Crandall 1990)</span> <span class="citation" data-cites="brembs13">(Brembs, Button, and Munafò 2013)</span>. With a simple extension of the proposed metric, if <span class="math inline">\(\iota\)</span> is a replication of <span class="math inline">\(\eta\)</span> about proposition <span class="math inline">\(E\)</span> it shares the <q>citation bonus</q> in proportion to how much it increases our certainty in <span class="math inline">\(E\)</span>.
+<dd>Impact factor tends to undervalue replications <span class="citation" data-cites="neuliep90">(Neuliep and Crandall 1990)</span> <span class="citation" data-cites="brembs13">(Brembs, Button, and Munafò 2013)</span>. With a simple extension of the proposed metric, if <span class="math inline">\(\iota\)</span> is a replication of <span class="math inline">\(\eta\)</span> about proposition <span class="math inline">\(E\)</span> it shares the “citation bonus” in proportion to how much it increases our certainty in <span class="math inline">\(E\)</span>.
 </dd>
 <dt><a href="#arg-map" id="gradated">Gradated citations</a></dt>
 <dd><p>With impact factor, a citation to study <span class="math inline">\(\alpha\)</span> essential to the validity of study <span class="math inline">\(\gamma\)</span> is given the same weight as a citation to study <span class="math inline">\(\beta\)</span> providing some minor context for <span class="math inline">\(\gamma\)</span>. With the proposed metric, if <span class="math inline">\(\gamma\)</span> only depends minorly on <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\gamma\)</span> will only boost <span class="math inline">\(\beta\)</span>’s score minorly. This should counteract the inflated value of review articles.</p>
-<p>Additionally, being cited by an <q>important paper</q> (one that provides great certainty or occupies an important position in the research network) provides a larger boost than being cited by a peripheral paper.</p>
+<p>Additionally, being cited by an “important paper” (one that provides great certainty or occupies an important position in the research network) provides a larger boost than being cited by a peripheral paper.</p>
 </dd>
 </dl>
 <h4 id="undesirable-properties">Undesirable properties</h4>
@@ -266,7 +266,7 @@ Calculate scores
 <dd>The proposed metric is more calculationally complicated than impact factor. (Though the actual impact factor calculation procedure is more complicated than one would suppose.)
 </dd>
 <dt><a href="#arg-map" id="dependence">Requires assessment of degree of dependence</a></dt>
-<dd>The <q>degree of dependence</q> (e.g. <span class="math inline">\(\cond{P}{B}{A=t}\)</span> vs. <span class="math inline">\(\cond{P}{B}{A=f}\)</span>) occupies an important role in the procedure. It’s not obvious to me how this should be determined other than by discussion between authors, editors and reviewers.
+<dd>The “degree of dependence” (e.g. <span class="math inline">\(\cond{P}{B}{A=t}\)</span> vs. <span class="math inline">\(\cond{P}{B}{A=f}\)</span>) occupies an important role in the procedure. It’s not obvious to me how this should be determined other than by discussion between authors, editors and reviewers.
 </dd>
 </dl>
 <h3 id="future-work">Future work</h3>
