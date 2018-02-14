@@ -1,21 +1,30 @@
 { pkgs ? import <nixpkgs> {} } :
   let
     webpack = pkgs.callPackage ./webpackColEx.nix {};
+    npmDependencies = pkgs.callPackage ./callNpm2nix.nix {
+      name = "mathjax-node-cli";
+      npmPkgs = [ { mathjax-node-cli = "^1.0.0"; } ];
+    };
   in
     pkgs.stdenv.mkDerivation rec {
       name = "colExEnv";
+      LC_ALL = "en_US.UTF-8";
       buildInputs = [
         pkgs.git
+        pkgs.nodejs
 
         pkgs.purescript
         pkgs.nodePackages.pulp
 
-        pkgs.stack
         pkgs.sass
+        npmDependencies."mathjax-node-cli-^1.0.0"
 
-        pkgs.nodejs
+        pkgs.stack
+        pkgs.gcc
+        pkgs.zlib
+        pkgs.libiconv
+        pkgs.darwin.apple_sdk.frameworks.Cocoa
+
+        webpack.nodeDependencies
       ];
-      # There's probably some way to get these properly on the PATH but I don't yet know it
-      NODE_DEPENDENCIES = webpack.NODE_DEPENDENCIES;
-      NODE_PATH = webpack.NODE_PATH;
     }

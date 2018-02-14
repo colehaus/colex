@@ -9,11 +9,10 @@
       name = "webpackColEx";
       src = ./content/js;
       phases = [ "unpackPhase" "buildPhase" ];
-      nativeBuildInputs = [ pkgs.nodejs ];
-      NODE_DEPENDENCIES = nodeEnv.shell.nodeDependencies;
-      NODE_PATH = "${NODE_DEPENDENCIES}/lib/node_modules";
+      nativeBuildInputs = [ pkgs.nodejs nodeEnv.shell.nodeDependencies ];
+      nodeDependencies = nodeEnv.shell.nodeDependencies;
       NODE_ENV = "production";
       buildPhase = ''
-        OUT_DIR="$out" "$NODE_DEPENDENCIES"/bin/webpack
+        OUT_DIR="$out" webpack
       '';
     }
