@@ -27,10 +27,10 @@
       MATH_RENDER_METHOD = "MathjaxNode";
       # TODO Remove `rm` once we reorganize source directory
       patchPhase = ''
-        rm -rf dist
-        mkdir dist
-        cp "$webpackColEx"/* dist
-        cp "$bibliometric"/* dist
+        rm -rf js/dist
+        mkdir js/dist
+        cp "$webpackColEx"/* js/dist
+        cp "$bibliometric"/* js/dist
       '';
       buildPhase = ''
         site rebuild
