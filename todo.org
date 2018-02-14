@@ -1,11 +1,4 @@
-* DONE [#A] Write fallbacks for each component
-  CLOSED: [2018-02-13 Tue 21:16]
-** TODO Strip all non-open `switch`es
-** TODO Strip all arg-map links
-* TODO Stop scrolling to top on arg-map close
 * TODO Sourcemaps and uglify for ps and elm
-* TODO Contain output
-* TODO Add `rel` link types
 * TODO Switch to new version of d3
 ** TODO Also, make arg-map into proper custom element
 ** TODO Load data from CSV file
@@ -15,16 +8,27 @@
 ** DONE Set up purescript build
    CLOSED: [2018-02-06 Tue 12:25]
 ** TODO Set up elm build
+* TODO [#C] Contain output
 * TODO [#C] Derive derivable things in purescript
 * TODO [#C] Autogenerate chunk per post
-* DONE [#C] Eliminate node package duplication in nix expressions
-  CLOSED: [2018-02-12 Mon 08:42]
 * TODO [#C] Fix spurious rebuilds in hakyll (site.scss)
 * Cleanup nix
 ** DONE Use `runCommand`
    CLOSED: [2018-02-05 Mon 01:20]
 ** DONE Clean up nativeBuildInputs
    CLOSED: [2018-02-05 Mon 01:20]
+* DONE [#A] Write fallbacks for each component
+  CLOSED: [2018-02-13 Tue 21:16]
+** DONE Strip all non-open `switch`es
+   CLOSED: [2018-02-14 Wed 00:14]
+** DONE Strip all arg-map links
+   CLOSED: [2018-02-14 Wed 00:14]
+* DONE Stop scrolling to top on arg-map close
+  CLOSED: [2018-02-13 Tue 23:55]
+* DONE Add `rel` link types
+  CLOSED: [2018-02-13 Tue 23:56]
+* DONE [#C] Eliminate node package duplication in nix expressions
+  CLOSED: [2018-02-12 Mon 08:42]
 * DONE [#A] Rewrite components as web components
   CLOSED: [2018-02-09 Fri 20:11]
 * DONE Fix quorum plot and tree interaction

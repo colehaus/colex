@@ -274,6 +274,7 @@ buildAtom renderMethod destinationDir webhost postPat bibIdent cslIdent =
            toHtmlAndBack bib csl >=>
            traverse htmlTransform >=>
            pure . (relativizeUrlsWith webhost <$>) . writePandocWith writerOpt) >>=
+        fmap (replaceAll "index.html" (const mempty) <$>) .
         renderAtom feedConfig (postCtx <> bodyField "description")
   where
     markdownTransform p =
