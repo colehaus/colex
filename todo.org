@@ -1,25 +1,14 @@
-* DONE [#A] Rewrite components as web components
-  CLOSED: [2018-02-09 Fri 20:11]
-* TODO [#A] Write fallbacks for each component
-* TODO Contain output
-* DONE Fix quorum plot and tree interaction
-  CLOSED: [2018-02-12 Mon 05:16]
-* DONE Fix nested tree interaction
-  CLOSED: [2018-02-12 Mon 05:16]
-* DONE Clean up arg-map on indices
-  CLOSED: [2018-02-07 Wed 19:32]
-* TODO Switch to new version of d3
-* DONE Add pre-commit hooks
-  CLOSED: [2018-02-11 Sun 00:13]
-* DONE Introduce flow
-  CLOSED: [2018-02-09 Fri 20:11]
+* DONE [#A] Write fallbacks for each component
+  CLOSED: [2018-02-13 Tue 21:16]
+** TODO Strip all non-open `switch`es
+** TODO Strip all arg-map links
+* TODO Stop scrolling to top on arg-map close
 * TODO Sourcemaps and uglify for ps and elm
-* DONE Mobilize
-  CLOSED: [2018-02-07 Wed 23:19]
-** TODO Take tufte sidenotes
-* DONE [#B] Add shell mode to overall build that just prepares env
-  CLOSED: [2018-02-10 Sat 22:36]
-* TODO [#C] Make hakyll work relative to specified root
+* TODO Contain output
+* TODO Add `rel` link types
+* TODO Switch to new version of d3
+** TODO Also, make arg-map into proper custom element
+** TODO Load data from CSV file
 * TODO [#C] Set up purescript and elm builds
 ** DONE Modernize purescript
    CLOSED: [2018-02-05 Mon 17:35]
@@ -28,15 +17,34 @@
 ** TODO Set up elm build
 * TODO [#C] Derive derivable things in purescript
 * TODO [#C] Autogenerate chunk per post
-* TODO [#C] Eliminate node package duplication in nix expressions
+* DONE [#C] Eliminate node package duplication in nix expressions
+  CLOSED: [2018-02-12 Mon 08:42]
 * TODO [#C] Fix spurious rebuilds in hakyll (site.scss)
-* DONE Add mouseover on argmap links
-  CLOSED: [2018-02-09 Fri 20:11]
 * Cleanup nix
 ** DONE Use `runCommand`
    CLOSED: [2018-02-05 Mon 01:20]
 ** DONE Clean up nativeBuildInputs
    CLOSED: [2018-02-05 Mon 01:20]
+* DONE [#A] Rewrite components as web components
+  CLOSED: [2018-02-09 Fri 20:11]
+* DONE Fix quorum plot and tree interaction
+  CLOSED: [2018-02-12 Mon 05:16]
+* DONE Fix nested tree interaction
+  CLOSED: [2018-02-12 Mon 05:16]
+* DONE Clean up arg-map on indices
+  CLOSED: [2018-02-07 Wed 19:32]
+* DONE Add pre-commit hooks
+  CLOSED: [2018-02-11 Sun 00:13]
+* DONE Introduce flow
+  CLOSED: [2018-02-09 Fri 20:11]
+* DONE Mobilize
+  CLOSED: [2018-02-07 Wed 23:19]
+** DONE Take tufte sidenotes
+   CLOSED: [2018-02-12 Mon 08:41]
+* DONE [#B] Add shell mode to overall build that just prepares env
+  CLOSED: [2018-02-10 Sat 22:36]
+* DONE Add mouseover on argmap links
+  CLOSED: [2018-02-09 Fri 20:11]
 * DONE Reconfigure and apply linter
   CLOSED: [2018-02-07 Wed 18:30]
 * DONE Style improvements

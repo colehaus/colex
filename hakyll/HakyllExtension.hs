@@ -61,3 +61,8 @@ loadAll
   :: (Typeable a, Binary a)
   => Blessed ty Pattern -> Compiler [Item a]
 loadAll = Hakyll.loadAll . unBlessedPattern
+
+loadAllSnapshots
+  :: (Typeable a, Binary a)
+  => Blessed ty Pattern -> Snapshot -> Compiler [Item a]
+loadAllSnapshots = Hakyll.loadAllSnapshots . unBlessedPattern

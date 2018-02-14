@@ -1,24 +1,53 @@
 {-# LANGUAGE DataKinds #-}
+{-# LANGUAGE FlexibleContexts #-}
+{-# LANGUAGE LambdaCase #-}
 {-# LANGUAGE OverloadedStrings #-}
 {-# LANGUAGE TypeApplications #-}
 
 module Main where
 
 import Control.Arrow (first)
+import Control.Monad (unless, (>=>))
 import Data.Functor ((<$>))
 import qualified Data.Map as M
+import Data.Maybe (fromMaybe)
 import Data.Monoid (mconcat, mempty, (<>))
-import System.FilePath (takeBaseName, takeDirectory, takeFileName)
+import Data.Hashable (hash)
+import System.Directory
+       (doesPathExist, createDirectoryIfMissing, findExecutable)
+import System.Environment (lookupEnv)
+import System.FilePath
+       (takeBaseName, takeDirectory, takeFileName, replaceExtension)
+import System.Process (readProcess)
+import Text.Pandoc.Definition
 import Text.Pandoc.Options
+import Text.Pandoc.Walk (query, walk, walkM)
 
 import Hakyll
-       hiding (load, match, loadAndApplyTemplate, loadAll, loadBody)
+       hiding (load, match, loadAndApplyTemplate, loadAll,
+               loadAllSnapshots, loadBody)
 import qualified Hakyll
+import Hakyll.Core.Compiler.Internal (compilerUnsafeIO)
 import HakyllExtension
+
+hakyllConfig :: Configuration
+hakyllConfig = defaultConfiguration
 
 main :: IO ()
 main =
-  hakyll $ do
+  hakyllWith hakyllConfig $ do
+    preprocess $
+      createDirectoryIfMissing
+        True
+        (destinationDirectory hakyllConfig <> "/images/latex")
+    webHost <-
+      preprocess $
+      fromMaybe
+        ("http://" <> previewHost hakyllConfig <> ":" <>
+         show (previewPort hakyllConfig)) <$>
+      lookupEnv "WEB_HOST"
+    mathRenderMethod <-
+      preprocess $ maybe Mock read <$> lookupEnv "MATH_RENDER_METHOD"
     templates <- match @"template" "templates/*" $ compile templateCompiler
     let defaultTemplate = narrowEx templates "templates/default.html"
     csl <- matchIdentifier @"csl" "misc/biblio.csl" $ compile cslCompiler
@@ -40,6 +69,13 @@ main =
         csl
         tags
         "drafts"
+    buildAtom
+      mathRenderMethod
+      (destinationDirectory hakyllConfig)
+      webHost
+      postPat
+      bib
+      csl
     buildTagPages defaultTemplate (narrowEx templates "templates/tag.html") tags
     pages <-
       buildPaginateWith
@@ -158,6 +194,127 @@ buildIndex defaultTemplate indexTemplate pages =
          loadAndApplyTemplate indexTemplate ctx >>=
          finish defaultTemplate ctx
 
+stripArgMapLink :: Inline -> Inline
+stripArgMapLink (Link _ innerHtml ("#arg-map", _)) = Span mempty innerHtml
+stripArgMapLink i = i
+
+stripClosedSwitchBlocks :: [Block] -> [Block]
+stripClosedSwitchBlocks (d@(Div (_, classes, _) _) : _) | "open" `elem` classes = [d]
+stripClosedSwitchBlocks bs = bs
+
+stripClosedSwitchSpans :: [Inline] -> [Inline]
+stripClosedSwitchSpans (s@(Span (_, classes, _) _) : _) | "open" `elem` classes = [s]
+stripClosedSwitchSpans (Space : s@(Span (_, classes, _) _) : _) | "open" `elem` classes = [s]
+stripClosedSwitchSpans is = is
+
+stripForm :: Block -> Block
+stripForm (Div (_, classes, _) _)
+  | "form" `elem` classes =
+    Para [Emph [Str "On the full site, there's an interactive widget here."]]
+stripForm b = b
+
+collectMacros :: Block -> [String]
+collectMacros (Div (_, classes, _) [Para [Math DisplayMath macros]])
+  | "macros" `elem` classes = [macros]
+collectMacros _ = mempty
+
+data MathRenderMethod
+  = MathjaxNode
+  | Mock
+  deriving (Read)
+
+renderMath :: MathRenderMethod -> FilePath -> String -> Inline -> Compiler Inline
+renderMath MathjaxNode destinationDir macros (Math typ math) = do
+  alreadyRendered <-
+    compilerUnsafeIO . doesPathExist $ destinationDir <> destination
+  unless alreadyRendered $
+    writeAsSvgFile (destinationDir <> destination) macros typ math
+  pure $ Image mempty mempty (destination, math)
+  where
+    destination = "/images/latex/" <> show (hash math) <> ".svg"
+renderMath _ _ _ i = pure i
+
+writeAsSvgFile :: FilePath -> String -> MathType -> String -> Compiler ()
+writeAsSvgFile destination macros typ math =
+  compilerUnsafeIO (findExecutable "tex2svg") >>= \case
+    Nothing -> error "Couldn't find `tex2svg`"
+    Just tex2svg -> do
+      debugCompiler $
+        "Calling " <> tex2svg <> " " <>
+            -- `phantom` is a very hacky way to avoid having the shell interpret an initial `-` as a command line option
+        show (inlineFlag <> [macros <> math])
+      svg <-
+        compilerUnsafeIO $
+        readProcess tex2svg (inlineFlag <> ["\\phantom{}" <> macros <> math]) []
+      compilerUnsafeIO $ writeFile destination svg
+  where
+    inlineFlag =
+      case typ of
+        InlineMath -> ["--inline"]
+        DisplayMath -> mempty
+
+buildAtom
+  :: MathRenderMethod
+  -> FilePath
+  -> String
+  -> Blessed "post" Pattern
+  -> Blessed "bib" Identifier
+  -> Blessed "csl" Identifier
+  -> Rules ()
+buildAtom renderMethod destinationDir webhost postPat bibIdent cslIdent =
+  create ["atom.xml"] $ do
+    route idRoute
+    compile $ do
+      bib <- load bibIdent
+      csl <- load cslIdent
+      loadAllSnapshots postPat "raw" >>= recentFirst >>=
+        traverse
+          (readPandocBiblio readerOpt csl bib >=>
+           traverse markdownTransform >=>
+           toHtmlAndBack bib csl >=>
+           traverse htmlTransform >=>
+           pure . (relativizeUrlsWith webhost <$>) . writePandocWith writerOpt) >>=
+        renderAtom feedConfig (postCtx <> bodyField "description")
+  where
+    markdownTransform p =
+      walkM
+        (renderMath
+           renderMethod
+           destinationDir
+           (unlines . query collectMacros $ p))
+        p
+    htmlTransform =
+      pure .
+      walk stripForm .
+      walk stripArgMapLink .
+      walk stripClosedSwitchBlocks . walk stripClosedSwitchSpans
+
+-- We set the extension to html to force html parsing and then back to md so that we pick up the right metadata
+-- This method is sometimes useful for ensuring that /all/ divs and spans show up in pandoc as native divs and spans
+toHtmlAndBack :: Item Biblio
+              -> Item CSL
+              -> Item Pandoc
+              -> Compiler (Item Pandoc)
+toHtmlAndBack bib csl =
+  fmap (setExtension' ".md") .
+  readPandocBiblio readerOpt csl bib .
+  setExtension' ".html" . writePandocWith writerOpt
+  where
+    setExtension' ext (Item identifier body) =
+      Item
+        (fromFilePath . (`replaceExtension` ext) . toFilePath $ identifier)
+        body
+
+feedConfig :: FeedConfiguration
+feedConfig
+  = FeedConfiguration
+  { feedTitle = "Collectively Exhaustive"
+  , feedDescription = "A weblog"
+  , feedAuthorName = "Cole Haus"
+  , feedAuthorEmail = "colehaus@cryptolab.net"
+  , feedRoot = "https://colehaus.github.io/ColEx/"
+  }
+
 buildArchive
   :: Blessed "post" Pattern
   -> Blessed "template" Identifier
@@ -212,7 +369,8 @@ buildPosts defaultTemplate postTemplate bibIdent cslIdent tags dir = do
   warningsPat <-
     match (fromGlob $ dir <> "/*/warnings.md") $ compile getResourceBody
   warnings <- makePatternDependency (fromGlob $ dir <> "/*/warnings.md")
-  postPat <- rulesExtraDependencies [overlays, warnings, abstracts] $
+  postPat <-
+    rulesExtraDependencies [overlays, warnings, abstracts] $
     match (mkPostPat dir) $ do
       route . customRoute $ \ident ->
         dir <> "/" <> (takeBaseName . takeDirectory . toFilePath) ident <>
@@ -227,9 +385,11 @@ buildPosts defaultTemplate postTemplate bibIdent cslIdent tags dir = do
               postCtx
         in do bib <- load bibIdent
               csl <- load cslIdent
-              getResourceBody >>= readPandocBiblio readerOpt csl bib >>=
+              getResourceBody >>= saveSnapshot "raw" >>=
+                readPandocBiblio readerOpt csl bib >>=
                 saveSnapshot "teaser" .
-                (demoteHeaders . demoteHeaders <$>) . writePandocWith writerOpt >>=
+                (demoteHeaders . demoteHeaders <$>) .
+                writePandocWith writerOpt >>=
                 loadAndApplyTemplate postTemplate ctx >>=
                 finish defaultTemplate ctx
   pure (postPat, warningsPat, overlayPat, abstractPat)
@@ -321,7 +481,7 @@ getListMeta
   :: MonadMetadata m
   => String -> Identifier -> m [String]
 getListMeta k ident =
-  maybe [] (map trim . splitAll ",") . lookupString k <$> getMetadata ident
+  maybe mempty (map trim . splitAll ",") . lookupString k <$> getMetadata ident
 
 tagsCtx :: Tags -> Context String
 tagsCtx tags = listFieldWith' "tags" tagCtx getTags
@@ -360,6 +520,8 @@ extensions =
     , Ext_link_attributes
     , Ext_markdown_in_html_blocks
     , Ext_multiline_tables
+    , Ext_native_divs
+    , Ext_native_spans
     , Ext_pandoc_title_block
     , Ext_pipe_tables
     , Ext_raw_attribute
@@ -385,10 +547,9 @@ writerOpt :: WriterOptions
 writerOpt =
   defaultHakyllWriterOptions
   { writerHtmlQTags = True
-    -- TODO Check if this is actually true
     -- Hakyll + Pandoc don't insert <script> correctly,
     -- so we add dummy URL and do it manually
-  , writerHTMLMathMethod = MathJax ""
+  , writerHTMLMathMethod = MathJax mempty
   , writerExtensions = extensions
   }
 
