@@ -3,6 +3,7 @@
 
 import $ from 'jquery'
 import {create, env} from 'sanctuary'
+import { interpolateNumber } from 'd3'
 
 import menu from 'custom-elements/menu'
 import sidenote from 'custom-elements/sidenote'
@@ -28,25 +29,39 @@ const handleEvent = (event: Event) => (resolve: Function, reject: Function) => {
     case 'SELECTEDNEWVISIBLE':
       // Flow behaving badly
       const event_ = event
-      makeAnimationPromise(300, prog => event_.from.css('opacity', 1 - prog))
-        .then(() => {
-          const pho = event_.parent.height()
-          event_.from.css('opacity', 0)
-          event_.to.css('opacity', 0)
-          event_.from.removeClass('open')
-          event_.to.addClass('open')
-          const phn = event_.parent.height()
-          return [pho, phn]
-        }).then(([pho, phn]) =>
-          makeAnimationPromise(300, prog => {
-            event_.to.css('opacity', prog)
-            event_.parent.css('height', pho + (phn - pho) * prog)
+      const pho = event_.parent.height()
+      const stepDuration = 300 // ms
+      const fadeOut = () =>
+        makeAnimationPromise(stepDuration, prog => event_.from.css('opacity', 1 - prog))
+          .then(() => {
+            event_.from.css('opacity', 0)
+            event_.from.removeClass('open')
           })
-        ).then(() => {
-          event_.parent.removeAttr('style')
-          event_.from.removeAttr('style')
-          event_.to.removeAttr('style')
-        })
+      const stretch = () =>
+        Promise.resolve()
+          .then(() => {
+            const heightFn = interpolateNumber(pho, event_.parent.height())
+            return makeAnimationPromise(stepDuration, prog => {
+              event_.parent.css('height', heightFn(prog))
+            })
+          })
+      const fadeIn = () =>
+        Promise.resolve()
+          .then(() => {
+            event_.to.css('opacity', 0)
+            event_.to.addClass('open')
+            return makeAnimationPromise(stepDuration, prog => {
+              event_.to.css('opacity', prog)
+            })
+          })
+      const cleanUp = () => {
+        event_.parent.removeAttr('style')
+        event_.from.removeAttr('style')
+        event_.to.removeAttr('style')
+      }
+      fadeOut()
+        .then(() => Promise.all([fadeIn(), stretch()]))
+        .then(cleanUp)
         .then(resolve)
       break
   }

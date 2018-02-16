@@ -40,15 +40,22 @@ const swapTranslate = (topEl: JQuery, bottomEl: JQuery) => (resolve: Function, r
   const bottomTranslator = mkTranslator(bottomToTop)
   const betweenTranslator = mkTranslator(between)
 
-  makeAnimationPromise(300, prog => {
-    topEl.css('transform', topTranslator(prog))
-    bottomEl.css('transform', bottomTranslator(prog))
-    betweenEls.css('transform', betweenTranslator(prog))
-  }).then(() => {
-    topEl.removeAttr('style')
-    bottomEl.removeAttr('style')
-    betweenEls.removeAttr('style')
-  }).then(resolve)
+  const stepDuration = 300 // ms
+
+  Promise.all([
+    makeAnimationPromise(
+      stepDuration,
+      prog => topEl.css('transform', topTranslator(prog))
+    ).then(() => topEl.removeAttr('style')),
+    makeAnimationPromise(
+      stepDuration,
+      prog => bottomEl.css('transform', bottomTranslator(prog))
+    ).then(() => bottomEl.removeAttr('style')),
+    makeAnimationPromise(
+      stepDuration,
+      prog => betweenEls.css('transform', betweenTranslator(prog))
+    ).then(() => betweenEls.removeAttr('style'))
+  ]).then(resolve)
 }
 
 const swap = function () {

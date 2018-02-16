@@ -81,7 +81,7 @@ const removeNotes = () => {
 }
 
 const addOrRemoveNotes = () => {
-  const emWidth = $(window).width() / parseFloat($("html").css("font-size"))
+  const emWidth = $(window).width() / parseFloat($('html').css('font-size'))
   if (emWidth > 60) {
     setNotes()
     // $FlowFixMe

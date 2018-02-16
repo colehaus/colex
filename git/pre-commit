@@ -1,10 +1,1 @@
-#! /usr/bin/env nix-shell
-#! nix-shell -i bash ../../shell.nix
-
-set -euxo pipefail
-
-cd content/js
-GIT_DIR=../../.git
-git diff -z --name-only --cached --relative | grep -z '\.js$' | xargs -r -0 -t standard
-# Flow doesn't have a good option for file-by-file checking
-flow
+../.git/hooks/pre-commit
