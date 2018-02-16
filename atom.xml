@@ -11,8 +11,8 @@
     <updated>2015-04-05T00:00:00Z</updated>
     <entry>
     <title>The scarcity of cooperatives</title>
-    <link href="https://colehaus.github.io/ColEx//posts/cooperatives/index.html" />
-    <id>https://colehaus.github.io/ColEx//posts/cooperatives/index.html</id>
+    <link href="https://colehaus.github.io/ColEx//posts/cooperatives/" />
+    <id>https://colehaus.github.io/ColEx//posts/cooperatives/</id>
     <published>2015-04-05T00:00:00Z</published>
     <updated>2015-04-05T00:00:00Z</updated>
     <summary type="html"><![CDATA[<h1 id="introduction">Introduction</h1>
@@ -106,8 +106,8 @@ document.addEventListener("DOMContentLoaded", function() {
 </entry>
 <entry>
     <title>Graph of contents</title>
-    <link href="https://colehaus.github.io/ColEx//posts/graph-of-contents/index.html" />
-    <id>https://colehaus.github.io/ColEx//posts/graph-of-contents/index.html</id>
+    <link href="https://colehaus.github.io/ColEx//posts/graph-of-contents/" />
+    <id>https://colehaus.github.io/ColEx//posts/graph-of-contents/</id>
     <published>2015-03-28T00:00:00Z</published>
     <updated>2015-03-28T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>A <a href="https://en.wikipedia.org/wiki/Table_of_contents">table of contents</a> can provide a useful overview of a document’s content. However, because of its <a href="https://en.wikipedia.org/wiki/Tree_(graph_theory)">limited form</a>, some information about the structure of the document must be omitted.</p>
@@ -123,8 +123,8 @@ document.addEventListener("DOMContentLoaded", function() {
 </entry>
 <entry>
     <title>Toward an alternative bibliometric</title>
-    <link href="https://colehaus.github.io/ColEx//posts/bibliometric/index.html" />
-    <id>https://colehaus.github.io/ColEx//posts/bibliometric/index.html</id>
+    <link href="https://colehaus.github.io/ColEx//posts/bibliometric/" />
+    <id>https://colehaus.github.io/ColEx//posts/bibliometric/</id>
     <published>2015-03-10T00:00:00Z</published>
     <updated>2015-03-10T00:00:00Z</updated>
     <summary type="html"><![CDATA[<div class="macros">
@@ -331,8 +331,8 @@ H(A,B,C,D) - \cond{H}{A,B,C,D}{\alpha,\beta,\kappa,\delta} &amp;=
 </entry>
 <entry>
     <title>On casual futurism</title>
-    <link href="https://colehaus.github.io/ColEx//posts/futurism/index.html" />
-    <id>https://colehaus.github.io/ColEx//posts/futurism/index.html</id>
+    <link href="https://colehaus.github.io/ColEx//posts/futurism/" />
+    <id>https://colehaus.github.io/ColEx//posts/futurism/</id>
     <published>2015-02-17T00:00:00Z</published>
     <updated>2015-02-17T00:00:00Z</updated>
     <summary type="html"><![CDATA[<blockquote>
@@ -447,8 +447,8 @@ The human race, to which so many of my readers belong, has been playing at child
 </entry>
 <entry>
     <title>Choose your own exposition</title>
-    <link href="https://colehaus.github.io/ColEx//posts/choose/index.html" />
-    <id>https://colehaus.github.io/ColEx//posts/choose/index.html</id>
+    <link href="https://colehaus.github.io/ColEx//posts/choose/" />
+    <id>https://colehaus.github.io/ColEx//posts/choose/</id>
     <published>2015-02-01T00:00:00Z</published>
     <updated>2015-02-01T00:00:00Z</updated>
     <summary type="html"><![CDATA[<menu id="state" type="popup">
@@ -529,8 +529,8 @@ First: each person is to have an equal right to the most extensive scheme of equ
 </entry>
 <entry>
     <title>A quorum alternative</title>
-    <link href="https://colehaus.github.io/ColEx//posts/quorum/index.html" />
-    <id>https://colehaus.github.io/ColEx//posts/quorum/index.html</id>
+    <link href="https://colehaus.github.io/ColEx//posts/quorum/" />
+    <id>https://colehaus.github.io/ColEx//posts/quorum/</id>
     <published>2015-01-28T00:00:00Z</published>
     <updated>2015-01-28T00:00:00Z</updated>
     <summary type="html"><![CDATA[<menu id="sample-size" type="popup">
@@ -695,8 +695,8 @@ Before the decision is finalized, however, an observant member notices that the 
 </entry>
 <entry>
     <title>About</title>
-    <link href="https://colehaus.github.io/ColEx//posts/about/index.html" />
-    <id>https://colehaus.github.io/ColEx//posts/about/index.html</id>
+    <link href="https://colehaus.github.io/ColEx//posts/about/" />
+    <id>https://colehaus.github.io/ColEx//posts/about/</id>
     <published>2015-01-18T00:00:00Z</published>
     <updated>2015-01-18T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>This is a single-author, half-heartedly pseudonymous (the pseudonym being Cole) blog.</p>
