@@ -94,7 +94,7 @@ main =
       (narrowEx templates "templates/tags.html")
       tags
     buildIndex defaultTemplate (narrowEx templates "templates/index.html") pages
-    _ <- match "css/libs/_*.scss" . compile $ (error "Dummy to prevent Hakyll from thinking `css/libs` files are always new" :: Compiler (Item String))
+    _ <- match "css/libs/_*.scss" $ compile copyFileCompiler
     _ <- buildCss
     buildArchive
       postPat
