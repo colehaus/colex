@@ -22,6 +22,7 @@
         pkgs.stack
         pkgs.gcc
         pkgs.zlib
+        pkgs.expat
         pkgs.libiconv
         pkgs.darwin.apple_sdk.frameworks.Cocoa
 

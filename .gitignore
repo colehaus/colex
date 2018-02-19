@@ -25,3 +25,4 @@ node_modules/
 **-result
 content/js/bibliometric/output
 rollbar-access-token.txt
+.ipynb_checkpoints/

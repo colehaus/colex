@@ -2,13 +2,13 @@
 
 $colors: (
     hue: (
-        #b5bae6,
-        #d1abe6,
-        #e6abd0,
-        #e6bcb5,
-        #dee2b5,
-        #b5e2b5,
-        #b5e2df
+        #b5bae6, //1
+        #d1abe6, //2
+        #e6abd0, //3
+        #e6bcb5, //4
+        #dee2b5, //5
+        #b5e2b5, //6
+        #b5e2df  //7
     ),
     chroma: (
         #d7d6e6,
@@ -64,4 +64,7 @@ $convo-2: rgba(nth(map-get($colors, hue), 3), 0.15);
 }
 @mixin background-color-translucent {
     background-color: rgba($body-back-color, 0.5);
+}
+@mixin background-color-dark {
+    background-color: nth(map-get($colors, value), 5);
 }

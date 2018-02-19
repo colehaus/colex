@@ -7,6 +7,7 @@ license:            AGPL-3
 executable site
   main-is:          site.hs
   other-modules:    HakyllExtension
+                    HakyllPandoc
   build-depends:    base
                   , binary
                   , containers
@@ -15,7 +16,9 @@ executable site
                   , hakyll
                   , hashable
                   , pandoc
+                  , pandoc-citeproc
                   , pandoc-types
                   , process
+                  , text
   ghc-options:      -threaded -Wall
   default-language: Haskell2010

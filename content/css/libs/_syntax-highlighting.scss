@@ -1,0 +1,71 @@
+@import 'colors';
+@import 'primitives/borders';
+@import 'primitives/spacing';
+@import 'primitives/typography';
+
+$color1: nth(map-get($colors, hue), 1);
+$color2: nth(map-get($colors, hue), 6);
+$color3: nth(map-get($colors, hue), 5);
+$color4: nth(map-get($colors, hue), 7);
+$color5: nth(map-get($colors, hue), 4);
+$color6: nth(map-get($colors, chroma), 1);
+$color7: nth(map-get($colors, hue), 2);
+$color8: nth(map-get($colors, hue), 3);
+
+pre.sourceCode code, pre.example code {
+    color: $color1;
+    span.kw { color: $color2; } /* Keyword */
+    span.dt { color: $color3; } /* DataType */
+    span.dv { color: $color4; } /* DecVal */
+    span.bn { color: $color4; } /* BaseN */
+    span.fl { color: $color4; } /* Float */
+    span.ch { color: $color4; } /* Char */
+    span.st { color: $color4; } /* String */
+    span.co { color: $color6; } /* Comment */
+    span.ot { color: $color7; } /* Other */
+    span.al { color: $color8; } /* Alert */
+    span.fu { color: $color7; } /* Function */
+    span.er { color: $color8; } /* Error */
+    span.wa { color: $color5; } /* Warning */
+    span.cn { color: $color4; } /* Constant */
+    span.sc { color: $color8; } /* SpecialChar */
+    span.vs { color: $color1; } /* VerbatimString */
+    span.ss { color: $color8; } /* SpecialString */
+    span.im { color: $color1; } /* Import */
+    span.va { color: $color7; } /* Variable */
+    span.cf { color: $color2; } /* ControlFlow */
+    span.op { color: $color2; } /* Operator */
+    span.bu { color: $color1; } /* BuiltIn */
+    span.ex { color: $color1; } /* Extension */
+    span.pp { color: $color5; } /* Preprocessor */
+    span.at { color: $color1; } /* Attribute */
+    span.do { color: $color6; } /* Documentation */
+    span.an { color: $color6; } /* Annotation */
+    span.cv { color: $color6; } /* CommentVar */
+    span.in { color: $color6; } /* Information */
+}
+
+.sourceCode > a {
+    @include border-none;
+    &:hover {
+        @include border-none;
+    }
+}
+pre.sourceCode::before, pre.example::before {
+    position: absolute;
+    @include font-x-small;
+    @include weight-light;
+    transform: translate(-7ex, 2ex) rotate(90deg);
+}
+pre.sourceCode::before {
+    content: "Source";
+}
+pre.example::before {
+    content: "Result";
+}
+pre.sourceCode, pre.example {
+    @include background-color-dark;
+    @include font-smaller;
+    @include padding-1ex;
+    @include border-radius;
+}

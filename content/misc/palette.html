@@ -4,34 +4,27 @@
 <script type="text/javascript">
 $(function () {
 
-var colors = {
-    hue: [
-        '#8495cc',
-        '#b778cc',
-        '#c57890',
-        '#b9be8f',
-        '#84bea8'
-    ], chroma: [
-        '#a5aacc',
-        '#8496cc',
-        '#5f81cc',
-        '#376bcc',
-        '#0356cc'
-    ], value: [
-        '#a0bbf1',
-        '#8496cc',
-        '#656fa3',
-        '#454874',
-        '#201e3c'
-    ]
-};
 $('body').css('background-color', '#eee');
-[].concat(colors.hue, colors.chroma, colors.value).forEach(function (c) {
-  $('body').append($('<div>' + c + '</div>').css({ width: '100px'
-                                                 , height: '40px'
-                                                 , 'background-color': c
-                                                 }));
-});
+
+function colorDiv (c) {
+  $('body').append($('<div>' + c + '</div>').css({ width: '100px', height: '40px', 'background-color': c}));
+}
+
+
+var colors = [
+  "#657B83",
+  "#859900",
+  "#B58900",
+  "#2AA198",
+  "#CB4B16",
+  "#93A1A1",
+  "#268BD2",
+  "#DC322F"
+];
+
+colors.forEach(colorDiv)
+$('body').append('<hr>')
+$('body').append('<hr>')
 
 var colors =  {
     hue: [
@@ -59,12 +52,12 @@ var colors =  {
         '#18121e'
     ]
 };
-[].concat(colors.hue, colors.chroma, colors.value).forEach(function (c) {
-  $('body').append($('<div>' + c + '</div>').css({ width: '100px'
-                                                 , height: '40px'
-                                                 , 'background-color': c
-                                                 }));
-});
+
+colors.hue.forEach(colorDiv)
+$('body').append('<hr>')
+colors.chroma.forEach(colorDiv)
+$('body').append('<hr>')
+colors.value.forEach(colorDiv)
 
 });
 </script>

@@ -1,0 +1,7 @@
+{
+  "name": "offline-libs",
+  "version": "0.0.1",
+  "dependencies": {
+    "nerdamer": "^0.7.16"
+  }
+}

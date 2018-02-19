@@ -7,8 +7,9 @@
 module Main where
 
 import Control.Arrow (first)
-import Control.Monad (unless, (>=>))
+import Control.Monad ((<=<), unless, (>=>))
 import Data.Functor ((<$>))
+import Data.List (stripPrefix)
 import qualified Data.Map as M
 import Data.Maybe (fromMaybe)
 import Data.Monoid (mconcat, mempty, (<>))
@@ -26,10 +27,11 @@ import Text.Pandoc.Walk (query, walk, walkM)
 
 import Hakyll
        hiding (load, match, loadAndApplyTemplate, loadAll,
-               loadAllSnapshots, loadBody)
+               loadAllSnapshots, loadBody, readPandocBiblio)
 import qualified Hakyll
 import Hakyll.Core.Compiler.Internal (compilerUnsafeIO)
 import HakyllExtension
+import HakyllPandoc
 
 hakyllConfig :: Configuration
 hakyllConfig = defaultConfiguration
@@ -318,6 +320,20 @@ toHtmlAndBack bib csl =
         (fromFilePath . (`replaceExtension` ext) . toFilePath $ identifier)
         body
 
+swapJsForEin :: String -> String
+swapJsForEin = replaceAll "#\\+BEGIN_SRC ein" (const "#+BEGIN_SRC js")
+
+includeOrgFiles :: FilePath -> String -> String
+includeOrgFiles directory =
+  replaceAll "\\[\\[file:.*\\]\\]" (createInclude . extractFileName)
+  where
+    createInclude fileName =
+      "#+INCLUDE: \"" <> directory <> "/" <> fileName <> "\" export html"
+    extractFileName =
+      reverse .
+      fromMaybe (error "Impossible match") .
+      (stripPrefix "]]" . reverse <=< stripPrefix "[[file:")
+
 feedConfig :: FeedConfiguration
 feedConfig
   = FeedConfiguration
@@ -398,11 +414,12 @@ buildPosts defaultTemplate postTemplate bibIdent cslIdent tags dir = do
               postCtx
         in do bib <- load bibIdent
               csl <- load cslIdent
-              getResourceBody >>= saveSnapshot "raw" >>=
+              directory <- takeDirectory . toFilePath <$> getUnderlying
+              getResourceBody >>=
+                saveSnapshot "raw" . fmap (swapJsForEin . includeOrgFiles directory) >>=
                 readPandocBiblio readerOpt csl bib >>=
                 saveSnapshot "teaser" .
-                (demoteHeaders . demoteHeaders <$>) .
-                writePandocWith writerOpt >>=
+                (demoteHeaders . demoteHeaders <$>) . writePandocWith writerOpt >>=
                 loadAndApplyTemplate postTemplate ctx >>=
                 finish defaultTemplate ctx
   pure (postPat, warningsPat, overlayPat, abstractPat)
