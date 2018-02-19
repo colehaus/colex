@@ -2,9 +2,7 @@
 title: On casual futurism
 published: 2015-02-17
 tags: future, bias, review
-js: futurism
-css: futurism
-graph-of-contents: true
+graph-of-contents: futurism
 ---
 
 <blockquote class="epigraph">
@@ -22,9 +20,9 @@ race of simple tastes, however, it is great fun. [@chesterton04]
 "How likely are we to have [holophonors](https://theinfosphere.org/Holophonor)
 by 3002?"
 
-"Pretty likely. They're pretty much [just better oboes, right? 80% chance?](#arg-map){#naive}"
+"Pretty likely. They're pretty much [just better oboes, right? 80% chance?](#futurism-map){#naive .arg-map}"
 
-"<a href="#arg-map" id="overconfident">Keep in mind the
+"<a href="#futurism-map" id="overconfident" class="arg-map">Keep in mind the
 [overconfidence bias](https://en.wikipedia.org/wiki/Overconfidence_effect).</a>"
 
 "Alright, 70% chance."
@@ -33,7 +31,7 @@ by 3002?"
 found that [[out of
 1556 naive medium-term predictions made publicly by Americans between 1890 and
 1940, just under 40% had been fulfilled or were in progress by
-1976](#arg-map){#mediocre}]{.noted}[^feedback] [@wise76]."
+1976](#futurism-map){#mediocre .arg-map}]{.noted}[^feedback] [@wise76]."
 
 "Fine. Then I won't just make a reflexive prediction. I'll give the matter
 serious thought... Well, [people in the future
@@ -43,7 +41,7 @@ spandex togas. And they'll want to listen to something---but see something at
 the same time---just like laser light shows. But lasers will be pretty blasé in
 the future (what with the ubiquitous laser pocket knifes, laser watches, and
 laser pointers). So holophonors will be the perfect thing. So, I guess a 90%
-chance of holophonors?](#arg-map){#single}"
+chance of holophonors?](#futurism-map){#single .arg-map}"
 
 "Ah ha ha. You fell right into my trap! Your casual futurism betrays you! Just
 by imagining that scenario, you think it's more likely."
@@ -57,7 +55,7 @@ on election day for the
 [1976 U.S. presidential election](https://en.wikipedia.org/wiki/United_States_presidential_election,_1976)
 [@carroll78]. [Some were told to imagine
 Carter winning. They were significantly more certain that Carter would win than
-those that didn't imagine anything.](#arg-map){#moreLikely}"
+those that didn't imagine anything.](#futurism-map){#moreLikely .arg-map}"
 
 "Well, maybe it was a persuasively coherent reverie. My holophonor scenario was
 pretty airtight. That doesn't sound so bad to be convinced by an exceptionally
@@ -77,7 +75,7 @@ holophonors. Out of all possible scenarios, I described the most plausible."
 
 "Nope. [People's default, 'realistic'
 predictions are pretty much just their most optimistic predictions [@buehler94]
-[@newby00].](#arg-map){#optimistic}"
+[@newby00].](#futurism-map){#optimistic .arg-map}"
 
 "But how common is this problem? It seems like you just tricked me into a vivid
 visualization."
@@ -107,7 +105,7 @@ the best general-purpose technique might be
 
 "I did. But the distinguishing feature of scenario planning (a term of art) is a
 semi-rigorized approach to [generating
-fundamentally divergent, coherent narratives of the future.](#arg-map){#multiple} Proponents
+fundamentally divergent, coherent narratives of the future.](#futurism-map){#multiple .arg-map} Proponents
 suggest the consideration of multiple scenarios is salubrious."
 
 "Are they right?"
@@ -130,7 +128,7 @@ satisfactory..."
 the University of Surrey [@phelps01]. They performed an observational study of
 information technology companies in the UK. After sampling, they looked at 50
 companies using scenario planning and 50 that didn't. [The companies using scenario planning showed significantly greater
-growth in profits and return on capital employed,](#arg-map){#outcomes} though they did not show
+growth in profits and return on capital employed,](#futurism-map){#outcomes .arg-map} though they did not show
 significantly greater growth in clients. They did a similar study with 22 water
 companies. Here, there was no significant relationship between scenario planning
 and the performance variables."
@@ -140,20 +138,20 @@ and the performance variables."
 "In a
 [repeated measures study](https://en.wikipedia.org/wiki/Repeated_measures_design),
 researchers found that [scenario planning widened
-50% and 90% confidence intervals on personally important strategic measures](#arg-map){#widened}
+50% and 90% confidence intervals on personally important strategic measures](#futurism-map){#widened .arg-map}
 by 56% and 44% respectively [@schoemaker93]. However, they also found that [when asked to construct extreme scenarios (judged
-as implausible), ranges actually contracted.](#arg-map){#narrowed}"
+as implausible), ranges actually contracted.](#futurism-map){#narrowed .arg-map}"
 
 "So whether scenario planning increases or decreases confidence intervals
 depends on which scenarios are constructed."
 
 "Yep. In an experimental study of graduate management students planning for a
-case company, <a href="#arg-map" id="framing">students who went through a full
+case company, <a href="#futurism-map" id="framing" class="arg-map">students who went through a full
 scenario planning process showed no evidence of the
 [framing bias](https://en.wikipedia.org/wiki/Framing_effect_(psychology))</a>
 [@meissner13]. Students that went through only the initial part of the scenario
 process, but didn't actually generate scenarios, still showed susceptibility to
-the framing bias. However, students that used [traditional strategic planning tools](#arg-map){#other} (like
+the framing bias. However, students that used [traditional strategic planning tools](#futurism-map){#other .arg-map} (like
 [SWOT](https://en.wikipedia.org/wiki/SWOT_analysis) and
 [Porter's five forces](https://en.wikipedia.org/wiki/Porter_five_forces_analysis))
 were also effectively debiased. Other researchers even suggest that directions
@@ -169,14 +167,14 @@ and then followed-up to determine the actual completion times
 [@newby00]. Through a variety of experimental permutations, they concluded that,
 '[Participants' final task completion time
 estimates were not affected when they generated pessimistic scenarios ... in
-combination with more optimistic scenarios.](#arg-map){#pessimistic} ... [R]egardless of
+combination with more optimistic scenarios.](#futurism-map){#pessimistic .arg-map} ... [R]egardless of
 plausibility, predictors did not attend to pessimistic scenarios.' Similar
 results were found by Paul Schoemaker [@schoemaker92]."
 
 "Any more?"
 
 "Yes. A quasi-experimental study of managers found that [scenario planning decreased rational decision-making and increased
-intuitive decision-making](#arg-map){#rational} as measured by the General Decision-Making Style
+intuitive decision-making](#futurism-map){#rational .arg-map} as measured by the General Decision-Making Style
 Survey [@chermack08]."
 
 "That sounds like it could be conducive to biases."

@@ -17,7 +17,8 @@ import System.Directory
        (doesPathExist, createDirectoryIfMissing, findExecutable)
 import System.Environment (lookupEnv)
 import System.FilePath
-       (takeBaseName, takeDirectory, takeFileName, replaceExtension)
+       (joinPath, splitPath, takeBaseName, takeDirectory, takeFileName,
+        replaceExtension)
 import System.Process (readProcess)
 import Text.Pandoc.Definition
 import Text.Pandoc.Options
@@ -104,6 +105,11 @@ main =
     _ <-
       match "images/**" $ do
         route idRoute
+        compile copyFileCompiler
+    _ <-
+      match "data/online/**" $ do
+        route . customRoute $ \ident ->
+          (joinPath . filter ("online/" /=) . splitPath . toFilePath) ident
         compile copyFileCompiler
     -- Copy output from webpack, purescript, &c.
     _ <-

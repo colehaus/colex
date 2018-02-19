@@ -3,8 +3,8 @@ title: A quorum alternative
 published: 2015-01-28
 tags: voting, bayes, frequentist, statistics
 css: quorum
-js: quorum, quorum-map
-graph-of-contents: true
+js: quorum
+graph-of-contents: quorum
 ---
 
 <menu id="sample-size" type="popup">
@@ -27,7 +27,7 @@ score of $0.18$.]{.noted}[^range]
 
 Before the decision is finalized, however, an observant member notices that the
 meeting is [two members short of the 25
-required for quorum](#arg-map){#restrictive}. Because Pie Club is scrupulously democratic, the vote
+required for quorum](#quorum-map){#restrictive .arg-map}. Because Pie Club is scrupulously democratic, the vote
 is annulled. Some members grumble their doubt that the landslide will reverse
 with two more votes.</li>
 
@@ -38,7 +38,7 @@ of the Decade". Will it be
 results are in---quorum checked in advance this time---and they are... $0.49$
 for meringue and $0.48$ for Tarta. While meringue's devotees celebrate, Tarta's
 die-hards feel something has gone wrong. [Can
-such a close result really give them confidence](#arg-map){#permissive} that meringue is the
+such a close result really give them confidence](#quorum-map){#permissive .arg-map} that meringue is the
 preference of the whole club, including the 12 members who couldn't make it to
 meeting? If just one of them had attended and cast a vote favoring Tarta,
 wouldn't that have swung the outcome?</li></ol>
@@ -49,7 +49,7 @@ wouldn't that have swung the outcome?</li></ol>
 
 <blockquote>
 [The minimum number of members who must be
-present at the meetings](#arg-map){#quorum-def} of a deliberative assembly for business to be
+present at the meetings](#quorum-map){#quorum-def .arg-map} of a deliberative assembly for business to be
 validly transacted is the *quorum* of the assembly. The requirement of a quorum
 is a protection against totally unrepresentative action in the name of the body
 by an unduly small number of persons. [@ronr]
@@ -106,7 +106,7 @@ $\mu_2 \approx \mu_1$ and declare a failure of quorum.
 
 For example, we'd like to [determine if the
 [[credible]{.open} [confidence]{}]{.inline .switch type=menu data-menu=stat-type}
-bounds support the conclusion](#arg-map){#bayes} that buko pie really is preferred to fish pie.
+bounds support the conclusion](#quorum-map){#bayes .arg-map} that buko pie really is preferred to fish pie.
 If Pie Club bylaws specified a $95\%$
 [[credible]{.open} [confidence]{}]{.inline .switch type=menu data-menu=stat-type}
 bound and the lower bound for $\mu_{buko} - \mu_{fish}$ stretched to $0.359$
@@ -249,7 +249,7 @@ Maybe look for:
 # Problems
 
 We've tacitly [assumed that our actual voters are
-a random sample](#arg-map){#random} of the population of potential voters. This is false (Though
+a random sample](#quorum-map){#random .arg-map} of the population of potential voters. This is false (Though
 one could make it true through adoption of appropriate
 [voting procedures](https://en.wikipedia.org/wiki/Sortition)).
 [Self-selection bias](https://en.wikipedia.org/wiki/Self-selection_bias),
@@ -264,7 +264,7 @@ support quorum for its deliberative, community-building, or even obstructive
 effects.
 
 Also, [isn't all this math a bit
-forbidding?](#arg-map){#complicated}
+forbidding?](#quorum-map){#complicated .arg-map}
 
 ::: {.switch type=menu data-menu=stat-type}
 ::: open
@@ -305,7 +305,7 @@ more power we give them to influence results
 [@simmons11].
 
 Finally, this procedure [admits only post-hoc
-declarations of quorum](#arg-map){#post-hoc}. With the traditional procedure, we can just take
+declarations of quorum](#quorum-map){#post-hoc .arg-map}. With the traditional procedure, we can just take
 attendance at a meeting and determine the quorum status for every referendum
 therein. With the new procedure, after tallying the votes on an issue, we have
 to run the quorum calculation to retroactively determine quorum if we achieved

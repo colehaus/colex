@@ -9,7 +9,6 @@
 @mixin overlay-overlay {
     @include height-full-view;
     @include width-full-view;
-    @include padding-horizontal-view;
     @include top-left;
     @include background-color-translucent;
     &.inactive {

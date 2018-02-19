@@ -1604,7 +1604,7 @@ declare class JQuery {
    * @param key A string naming the piece of data to set.
    * @param value The new data value; it can be any Javascript type including Array or Object.
    */
-  data(key: string, value: any): JQuery;
+  data(key: string, value: string | number | boolean | Array<*> | Object): JQuery;
   /**
    * Store arbitrary data associated with the matched elements.
    *

@@ -1,0 +1,15 @@
+id,label,type
+naive,Naive prediction,method
+mediocre,Mediocre accuracy,attribute
+overconfident,Overconfident,attribute
+optimistic,Highly optimistic,attribute
+single,Envisioning a single scenario,method
+moreLikely,Believe the scenario more likely,attribute
+multiple,Envisioning multiple scenarios,method
+outcomes,Better outcomes for scenario-planning companies,attribute
+widened,Widened confidence intervals,attribute
+narrowed,Narrowed confidence intervals,attribute
+framing,Reduced framing bias,attribute
+other,Other planning techniques,method
+pessimistic,Pessimistic scenarios don't affect predictions,attribute
+rational,Decreased rational decision-making style,attribute

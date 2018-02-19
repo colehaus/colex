@@ -21,10 +21,11 @@
         "webpack": "^3.10.0"
     },
     "dependencies": {
-        "d3": "^3.5.17",
+        "ascii-string-split": "^1.0.0",
+        "d3": "^5.0.0-rc.3",
+        "jStat": "^1.7.1",
         "jquery": "^3.3.1",
         "jquery-flot": "^0.8.3",
-        "jStat": "^1.7.1",
         "sanctuary": "^0.14.1"
     },
     "scripts": {

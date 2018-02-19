@@ -1,23 +1,3 @@
-@import 'libs/colors';
-
-$describes-color: nth(map-get($colors, hue), 6);
-$illustrates-color: nth(map-get($colors, hue), 2);
-
-#illustrates {
-  fill: $illustrates-color;
-}
-#describes {
-  fill: $describes-color;
-}
-.link {
-  &.describes {
-    stroke: $describes-color;
-  }
-  &.illustrates {
-    stroke: $illustrates-color;
-  }
-}
-
 .net textarea {
     width: 100%;
     height: 70ex;

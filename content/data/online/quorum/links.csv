@@ -1,0 +1,10 @@
+source,target,type
+permissive,quorum-def,describes
+restrictive,quorum-def,describes
+random,quorum-def,describes
+random,freq-bounds,describes
+random,bayes,describes
+post-hoc,freq-bounds,describes
+post-hoc,bayes,describes
+complicated,freq-bounds,describes
+complicated,bayes,describes

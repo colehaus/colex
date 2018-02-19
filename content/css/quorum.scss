@@ -1,16 +1,3 @@
-@import 'libs/colors';
-
-$describes-color: nth(map-get($colors, hue), 6);
-
-#describes {
-  fill: $describes-color;
-}
-.link {
-  &.describes {
-    stroke: $describes-color;
-  }
-}
-
 form {
     figure {
         figcaption {

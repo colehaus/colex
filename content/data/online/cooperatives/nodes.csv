@@ -1,0 +1,11 @@
+id,label,type
+predominate,CMF predominate,background
+efficient,WC at least as efficient,background
+hypothesis,WC have less incentive to expand,hypothesis
+automaton-link,Automaton,model
+segment,Cell represents market segment,attribute
+firm,Occupied by CMF or WC,attribute
+empty,Empty segment has random cost,attribute
+expand,Adjacent firms expand into empty segment,attribute
+accum,Profits distributed each step,attribute
+altruism,WC expansion depends on altruism,attribute

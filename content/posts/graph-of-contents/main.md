@@ -2,8 +2,7 @@
 title: Graph of contents
 published: 2015-03-28
 tags: meta, structure
-js: graph-contents
-css: graph-contents
+graph-of-contents: graph-contents
 ---
 
 A [table of contents](https://en.wikipedia.org/wiki/Table_of_contents) can
@@ -21,11 +20,11 @@ effect, we combine the table of contents with an
 
 For example:
 
-[All men are mortal](#arg-map){#major}
+[All men are mortal](#graph-contents-map){#major .arg-map}
 
-[Socrates is a man](#arg-map){#minor}
+[Socrates is a man](#graph-contents-map){#minor .arg-map}
 
-[Therefore, Socrates is mortal](#arg-map){#conclusion}
+[Therefore, Socrates is mortal](#graph-contents-map){#conclusion .arg-map}
 
 Clicking on a dotted link brings up the graph. The label for the current section
 (as identified by the link used to bring up the graph) is bolded in the graph.

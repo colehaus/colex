@@ -2,9 +2,9 @@
 title: Toward an alternative bibliometric
 published: 2015-03-10
 tags: bibliometrics, science, publishing, bayes, information-theory
-js: bibliometric, bibliometric-map
+js: bibliometric
 css: bibliometric
-graph-of-contents: true
+graph-of-contents: bibliometric
 ---
 
 ::: macros
@@ -19,16 +19,16 @@ $$
 
 There are a variety of citation-based
 [bibliometrics](https://en.wikipedia.org/wiki/Bibliometrics). The current
-[dominant metric](#arg-map){#impact} is
+[dominant metric](#bibliometric-map){#impact .arg-map} is
 [impact factor](https://en.wikipedia.org/wiki/Impact_factor). It is highly
 influential, factoring into decisions on promotion, hiring, tenure, grants and
 departmental funding [@plos06] [@agrawal05] [@moustafa14]. Editors
-[preferentially publish review articles](#arg-map){#review}, and
-<a href="#arg-map" id="self-cite">push authors to
+[preferentially publish review articles](#bibliometric-map){#review .arg-map}, and
+<a href="#bibliometric-map" id="self-cite" class="arg-map">push authors to
 [self-cite](https://en.wikipedia.org/wiki/Coercive_citation)</a> in pursuit of
 increased impact factor [@plos06] [@agrawal05] [@wilhite12]. It may be
 responsible for editorial [bias against
-replications](#arg-map){#replication} [@neuliep90] [@brembs13]. Consequently, academics take impact
+replications](#bibliometric-map){#replication .arg-map} [@neuliep90] [@brembs13]. Consequently, academics take impact
 factor into account throughout the planning, execution and reporting of a study
 [@plos06].
 
@@ -43,7 +43,7 @@ of the [research graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
 
 # Entropy
 
-Claude Shannon [codified entropy](#arg-map){#entropy} as
+Claude Shannon [codified entropy](#bibliometric-map){#entropy .arg-map} as
 $H(X) = -\sum\limits_{i} P(x_i) \log_2 P(x_i)$
 where $x_i$ are the possible values of a discrete random variable $X$
 [@shannon48][@cover12]. For example, the entropy of a 6-sided die is
@@ -76,7 +76,7 @@ example about cigarette smoking.
 
 ## First study
 
-Suppose [we do a study](#arg-map){#single} on whether, in the
+Suppose [we do a study](#bibliometric-map){#single .arg-map} on whether, in the
 normal course of smoking, cigarette smoke is inhaled into the lungs (we'll call
 this proposition $A$). Prior to the study we use the (extremely) uninformative
 prior $\cond{P}{A=t}{} = 0.5$. After the study (which we'll call $\alpha$) we
@@ -177,7 +177,7 @@ externalities it generates in $B$.
 
 ## Fourth study
 
-We'll now jump to [a fourth study](#arg-map){#four} so we can
+We'll now jump to [a fourth study](#bibliometric-map){#four .arg-map} so we can
 examine a fuller set of interactions (i.e. multiples studies citing one study,
 one study citing multiple studies).
 
@@ -255,22 +255,22 @@ f f | t 0.55
 
 ## Desirable properties
 
-[Score depends on study design](#arg-map){#design}
+[Score depends on study design](#bibliometric-map){#design .arg-map}
   :  Tends to encourage
      [Bayesian optimal designs](https://en.wikipedia.org/wiki/Bayesian_experimental_design)
-[Aggregates sensibly](#arg-map){#aggregates}
+[Aggregates sensibly](#bibliometric-map){#aggregates .arg-map}
   :  The impact factor is often used in inappropriate circumstances [@plos06]
      [@agrawal05] [@moustafa14]. That is, the warning that impact factor is a
      metric for journals, not authors or departments, is seldom heeded. The
      proposed metric can used in such cases trivially. For example, if an author
      has published studies $\eta$ and $\theta$, their score is simply
      $I(\eta) + I(\theta)$, the total reduction in entropy they contribute.
-[Handles replications appropriately](#arg-map){#repli-beni}
+[Handles replications appropriately](#bibliometric-map){#repli-beni .arg-map}
   :  Impact factor tends to undervalue replications [@neuliep90] [@brembs13].
      With a simple extension of the proposed metric, if $\iota$ is a replication
      of $\eta$ about proposition $E$ it shares the "citation bonus" in
      proportion to how much it increases our certainty in $E$.
-[Gradated citations](#arg-map){#gradated}
+[Gradated citations](#bibliometric-map){#gradated .arg-map}
   :  With impact factor, a citation to study $\alpha$ essential to the validity
      of study $\gamma$ is given the same weight as a citation to study $\beta$
      providing some minor context for $\gamma$. With the proposed metric, if
@@ -284,7 +284,7 @@ f f | t 0.55
 
 ## Undesirable properties
 
-<a href="#arg-map" id="incentive">Not [incentive compatible](https://en.wikipedia.org/wiki/Incentive_compatibility)</a>
+<a href="#bibliometric-map" id="incentive" class="arg-map">Not [incentive compatible](https://en.wikipedia.org/wiki/Incentive_compatibility)</a>
   :  For example, if study $\beta$ depends on study $\alpha$ it will receive a
      better score by hiding that dependence and marginalizing. $\beta$ receives
      a higher score when presented as
@@ -320,11 +320,11 @@ f f | t 0.55
      boosting the impact factor of someone that might compete against you come
      hiring time). This problem does not seem to be devastating
      [@liu93].
-[Complicated](#arg-map){#complicated}
+[Complicated](#bibliometric-map){#complicated .arg-map}
   :  The proposed metric is more calculationally complicated than impact factor.
      (Though the actual impact factor calculation procedure is more complicated
      than one would suppose.)
-[Requires assessment of degree of dependence](#arg-map){#dependence}
+[Requires assessment of degree of dependence](#bibliometric-map){#dependence .arg-map}
   :  The "degree of dependence" (e.g. $\cond{P}{B}{A=t}$ vs. $\cond{P}{B}{A=f}$)
      occupies an important role in the procedure. It's not obvious to me how
      this should be determined other than by discussion between authors, editors

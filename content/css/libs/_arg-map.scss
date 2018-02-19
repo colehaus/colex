@@ -5,11 +5,9 @@
     @include height-full-view;
     @include width-full-view;
 }
-
 path.link {
   fill: none;
   stroke-width: 3px;
-  stroke: nth(map-get($colors, value), 3);
 }
 polygon {
   stroke: nth(map-get($colors, value), 5);
@@ -21,17 +19,40 @@ polygon {
 }
 text {
   font-size: smaller;
-  text-shadow: 0 1px 0 $body-back-color,
-               1px 0 0 $body-back-color,
-               0 -1px 0 $body-back-color,
-               -1px 0 0 $body-back-color;
-  &.node {
-    fill: nth(map-get($colors, value), 5);
-  }
-  &.link {
-    fill: nth(map-get($colors, value), 3);
-  }
 }
 svg a {
   cursor: pointer;
+}
+defs > g > marker:nth-child(1) {
+    fill: nth(map-get($colors, hue), 6);
+}
+defs > g > marker:nth-child(2) {
+    fill: nth(map-get($colors, hue), 2);
+}
+defs > g > marker:nth-child(3) {
+    fill: nth(map-get($colors, hue), 5);
+}
+defs > g > marker:nth-child(4) {
+    fill: nth(map-get($colors, hue), 3);
+}
+defs > g > marker:nth-child(5) {
+    fill: nth(map-get($colors, hue), 4);
+}
+defs > g > linearGradient:nth-child(1) > stop {
+    stop-color: nth(map-get($colors, hue), 6);
+}
+defs > g > linearGradient:nth-child(2) > stop {
+    stop-color: nth(map-get($colors, hue), 2);
+}
+defs > g > linearGradient:nth-child(3) > stop {
+    stop-color: nth(map-get($colors, hue), 5);
+}
+defs > g > linearGradient:nth-child(4) > stop {
+    stop-color: nth(map-get($colors, hue), 3);
+}
+defs > g > linearGradient:nth-child(5) > stop {
+    stop-color: nth(map-get($colors, hue), 4);
+}
+.entry-point {
+    font-weight: bold;
 }

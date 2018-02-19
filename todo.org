@@ -1,8 +1,13 @@
 * DONE Sourcemaps and uglify for ps and elm
   CLOSED: [2018-02-14 Wed 11:41]
-* TODO Switch to new version of d3
-** TODO Also, make arg-map into proper custom element
-** TODO Load data from CSV file
+* DONE Switch to new version of d3
+  CLOSED: [2018-02-18 Sun 16:29]
+** DONE Also, make arg-map into proper custom element
+   CLOSED: [2018-02-18 Sun 16:29]
+** DONE Load data from CSV file
+   CLOSED: [2018-02-18 Sun 16:29]
+* TODO [#C] Improve arg-map handling of resizing
+** TODO e.g. centering
 * TODO [#C] Set up purescript and elm builds
 ** DONE Modernize purescript
    CLOSED: [2018-02-05 Mon 17:35]
@@ -13,7 +18,8 @@
 * TODO [#C] Derive derivable things in purescript
 * TODO [#C] Autogenerate chunk per post
 * TODO [#C] Fix spurious rebuilds in hakyll (site.scss)
-* Cleanup nix
+* DONE Cleanup nix
+  CLOSED: [2018-02-18 Sun 16:29]
 ** DONE Use `runCommand`
    CLOSED: [2018-02-05 Mon 01:20]
 ** DONE Clean up nativeBuildInputs

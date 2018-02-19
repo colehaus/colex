@@ -1,0 +1,12 @@
+source,target,type
+predominate,hypothesis,reconciled
+efficient,hypothesis,reconciled
+automaton-link,hypothesis,models
+segment,automaton-link,describes
+empty,segment,describes
+firm,segment,describes
+expand,empty,describes
+expand,firm,describes
+accum,firm,describes
+altruism,expand,describes
+altruism,hypothesis,describes

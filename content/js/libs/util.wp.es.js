@@ -1,8 +1,11 @@
 // @flow
 /* eslint no-undef: "off" */
 
+import $ from 'jquery'
 import {create, env} from 'sanctuary'
 const S = create({checkTypes: false, env})
+
+const documentReadyPromise: Promise<*> = new Promise((resolve, reject) => $(() => resolve()))
 
 const makeSleepPromise = (milliseconds: number): Promise<*> =>
   new Promise((resolve, reject) => setTimeout(resolve, milliseconds))
@@ -43,7 +46,8 @@ const parseMatrixToYTranslation = (transformationMatrix: string): number =>
 
 const uniquify = <A>(as: Array<A>): Array<A> => Array.from((new Set(as)).values())
 
-export { makeAnimationPromise,
+export { documentReadyPromise,
+         makeAnimationPromise,
          makeSleepPromise,
          parseMatrixToAngle,
          parseMatrixToYTranslation,
