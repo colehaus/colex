@@ -1,6 +1,5 @@
 var crypto = require('crypto')
 
-var randomInt = () => Math.floor(Math.random() * 1000)
 var mkGraphHtml = (json) => {
   json['$schema'] = 'https://vega.github.io/schema/vega-lite/v2.json'
   json.width = 600
@@ -20,4 +19,9 @@ var mkGraphHtml = (json) => {
   `)
 }
 
-module.exports = mkGraphHtml
+var mkRange = ([low, high], stepSize) => {
+  var numSteps = ((high - low) / stepSize) + 1
+  return Array.from({length: numSteps}, (_, i) => i * stepSize + low)
+}
+
+module.exports = { mkGraphHtml, mkRange }

@@ -9,10 +9,10 @@ published: 2018-02-19
 #+SETUPFILE: ../../default-options.org
 
 #+BEGIN_SRC ein
-var mkGraphHtml = require('./content/data/offline/plot-helper')
+var plot = require('./content/data/offline/plot-helper')
 #+END_SRC
 
-#+RESULTS[e975fdbb29474a015d0436cc1fc5319efb334b1c]:
+#+RESULTS[f81bc466b99cbca9563e4b25028c95a79305e12b]:
 
 #+BEGIN_SRC ein
 var nerdamer = require('nerdamer/all')
@@ -68,8 +68,8 @@ var chart = {
     "y": {"field": "b", "type": "quantitative"}
   }
 }
-$$html$$ = mkGraphHtml(chart)
+$$html$$ = plot.mkGraphHtml(chart)
 #+END_SRC
 
-#+RESULTS[99de04df9d6277cafb185fa1b69901d8bd041b45]:
+#+RESULTS[60e5c570fd0ea69e5317a697ec12d38c418859f3]:
 [[file:demo.html]]

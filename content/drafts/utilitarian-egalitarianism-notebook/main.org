@@ -1,0 +1,234 @@
+---
+title: A visual intuition for the instrumental argument for equality
+tags: notebook, population axiology, economics
+published: 2018-02-19
+---
+# Local Variables:
+# before-save-hook: org-babel-execute-buffer
+# End:
+#+SETUPFILE: ../../default-options.org
+
+#+BEGIN_SRC ein
+var nerd = require('nerdamer/all')
+var tex = require('./content/data/offline/tex-helper')
+var plot = require('./content/data/offline/plot-helper')
+var q = "quantitative"
+#+END_SRC
+
+#+RESULTS[dfa7c02ba03d5be3a4840f886a7eb4f614f95a41]:
+
+#+BEGIN_SRC ein :results html
+var incomeDistribution = nerd('p^2 * 30')
+var percentileDomain = [0, 100]
+$$html$$ = tex(incomeDistribution)
+#+END_SRC
+
+#+RESULTS[d940bf19b4c26dac4ce7f617eb733315e5654c10]:
+#+BEGIN_EXPORT html
+<pre class="example tex2jax_process"><code class="tex2jax_process"><span>\(30 \cdot p^{2}\)</span></code></pre>
+#+END_EXPORT
+
+#+BEGIN_SRC ein :file income.html
+var incomeDistributionFn = incomeDistribution.buildFunction()
+var values = plot.mkRange(percentileDomain, 1)
+  .map(percentile => {
+    return { percentile, income: incomeDistributionFn(percentile) }
+  })
+var chart = {
+  data: { values },
+  mark: 'line',
+  encoding: {
+    x: { field: 'percentile', type: q },
+    y: { field: 'income', type: q }
+  }
+}
+$$html$$ = plot.mkGraphHtml(chart)
+#+END_SRC
+
+#+RESULTS[4133feb6eb12bdc4164cc17d2ddc54f6ebfd9ede]:
+[[file:income.html]]
+
+#+BEGIN_SRC ein :results html
+var minIncome = incomeDistributionFn(percentileDomain[0])
+var maxIncome = incomeDistributionFn(percentileDomain[1])
+var utilityOfMarginalDollar = nerd(`1 - d/${maxIncome}`)
+var incomeDomain = [
+  minIncome,
+  maxIncome
+]
+$$html$$ = tex(utilityOfMarginalDollar)
+#+END_SRC
+
+#+RESULTS[46499a7aacf4713ada1ee8e333c3fa3d11f4acb5]:
+#+BEGIN_EXPORT html
+<pre class="example tex2jax_process"><code class="tex2jax_process"><span>\(-\frac{d}{300000}+1\)</span></code></pre>
+#+END_EXPORT
+
+#+BEGIN_SRC ein :file marginalUtility.html
+var utilityOfMarginalDollarFn = utilityOfMarginalDollar.buildFunction()
+var values = plot.mkRange(incomeDomain, 1000)
+  .map(income => {
+    return { income, marginalUtility: utilityOfMarginalDollarFn(income) }
+  })
+var chart = {
+  data: { values },
+  mark: 'line',
+  encoding: {
+    x: { field: 'income', type: q },
+    y: { field: 'marginalUtility', type: q }
+  }
+}
+$$html$$ = plot.mkGraphHtml(chart)
+#+END_SRC
+
+#+RESULTS[fcea0dfbc2400df6ebda6f498afd19436cdcda2a]:
+[[file:marginalUtility.html]]
+
+#+BEGIN_SRC ein :results html
+var utilityOfIncome = nerd(`integrate(${utilityOfMarginalDollar})`)
+$$html$$ = tex(utilityOfIncome)
+#+END_SRC
+
+#+RESULTS[8a07cb0a0a671e9a886d793bafa1fd3294ccae23]:
+#+BEGIN_EXPORT html
+<pre class="example tex2jax_process"><code class="tex2jax_process"><span>\(-\frac{d^{2}}{600000}+d\)</span></code></pre>
+#+END_EXPORT
+
+#+BEGIN_SRC ein :file utilityIncome.html
+var utilityOfIncomeFn = utilityOfIncome.buildFunction()
+var values = plot.mkRange(incomeDomain, 1000)
+  .map(income => {
+    return { income, utility: utilityOfIncomeFn(income) }
+  })
+var chart = {
+  data: { values },
+  mark: 'line',
+  encoding: {
+    x: { field: 'income', type: q },
+    y: { field: 'utility', type: q }
+  }
+}
+$$html$$ = plot.mkGraphHtml(chart)
+#+END_SRC
+
+#+RESULTS[41cf994899f98b2b2ec521b78628d19ec057ce27]:
+[[file:utilityIncome.html]]
+
+#+BEGIN_SRC ein :results html
+var utilityAtPercentile = utilityOfIncome.sub('d', incomeDistribution)
+$$html$$ = tex(utilityAtPercentile)
+#+END_SRC
+
+#+RESULTS[1691c690e7a31ccfb294be35f553c5528461f135]:
+#+BEGIN_EXPORT html
+<pre class="example tex2jax_process"><code class="tex2jax_process"><span>\(-\frac{3 \cdot p^{4}}{2000}+30 \cdot p^{2}\)</span></code></pre>
+#+END_EXPORT
+
+#+BEGIN_SRC ein :file utilityPercentile.html
+var utilityAtPercentileFn = utilityAtPercentile.buildFunction()
+var inegalitarianValues = plot.mkRange(percentileDomain, 1)
+  .map(percentile => {
+    return {
+      percentile,
+      utility: utilityAtPercentileFn(percentile),
+      series: 'inegalitarian'
+     }
+  })
+var chart = {
+  data: { values: inegalitarianValues },
+  mark: 'line',
+  encoding: {
+    x: { field: 'percentile', type: q },
+    y: { field: 'utility', type: q }
+  }
+}
+$$html$$ = plot.mkGraphHtml(chart)
+#+END_SRC
+
+#+RESULTS[c893ebfbd2be0e3997999e200c38a791bf34a14d]:
+[[file:utilityPercentile.html]]
+
+#+BEGIN_SRC ein :results html
+var averageIncomeExp = `defint((${incomeDistribution}), p, 0, 100)/100`
+var averageIncome = nerd(`defint((${incomeDistribution}), 0, 100)/100`)
+var averageHappinessExp = `defint((${utilityAtPercentile}), p, 0, 100)/100`
+var averageHappiness = nerd(`defint((${utilityAtPercentile}), 0, 100)/100`)
+$$html$$ = tex(
+  averageIncomeExp,
+  averageIncome,
+  averageHappinessExp,
+  averageHappiness)
+#+END_SRC
+
+#+RESULTS[1314fc1a45ba7b0c51406e7b2c0d2b8979412549]:
+#+BEGIN_EXPORT html
+<pre class="example tex2jax_process"><code class="tex2jax_process"><span>\(\frac{\int\limits_{0}^{100} {\left(30 \cdot {p}^{2}\right)}\, dp}{100}\)</span></code></pre><pre class="example tex2jax_process"><code class="tex2jax_process"><span>\(100000\)</span></code></pre><pre class="example tex2jax_process"><code class="tex2jax_process"><span>\(\frac{\int\limits_{0}^{100} {\left(\left(- \frac{3}{2000}\right) \cdot {p}^{4} + 30 \cdot {p}^{2}\right)}\, dp}{100}\)</span></code></pre><pre class="example tex2jax_process"><code class="tex2jax_process"><span>\(70000\)</span></code></pre>
+#+END_EXPORT
+
+#+BEGIN_SRC ein :file final.html
+var egalIncomeDistribution = nerd(averageIncome)
+var egalUtilityAtPercentile = utilityOfIncome.sub('d', egalIncomeDistribution)
+var egalUtilityAtPercentileFn = egalUtilityAtPercentile.buildFunction()
+var egalitarianValues = plot.mkRange(percentileDomain, 1)
+  .map(percentile => {
+    return {
+      percentile,
+      utility: egalUtilityAtPercentileFn(percentile),
+      series: 'egalitarian'
+     }
+  })
+var chart = {
+  config: {
+    rule: {
+      strokeDash: [8, 8],
+      opacity: 0.3
+    }
+  },
+  layer: [{
+    mark: 'line',
+    encoding: {
+      x: { field: 'percentile', type: q },
+      y: { field: 'utility', type: q },
+      color: { field: 'series', type: 'nominal' }
+    }
+  }, {
+    mark: 'rule',
+    encoding: {
+      y: {
+        field: 'utility',
+        type: q,
+        aggregate: 'mean'
+      },
+      size: { value: 4 },
+      color: { field: 'series', type: 'nominal' }
+    }
+  }],
+  data: { values: [].concat(inegalitarianValues, egalitarianValues) }
+}
+$$html$$ = plot.mkGraphHtml(chart)
+#+END_SRC
+
+#+RESULTS[df018253b635372ae1d0f4665f4f40f644a887a3]:
+[[file:final.html]]
+
+#+BEGIN_SRC ein :results html
+var averageIncomeExp = `defint((${incomeDistribution}), p, 0, 100)/100`
+var averageIncome = nerd(`defint((${incomeDistribution}), 0, 100, p)/100`)
+var inegalAverageHappinessExp = `defint((${utilityAtPercentile}), p, 0, 100)/100`
+var inegalAverageHappiness = nerd(`defint((${utilityAtPercentile}), 0, 100, p)/100`)
+var egalAverageHappinessExp = `defint((${egalUtilityAtPercentile}), p, 0, 100)/100`
+var egalAverageHappiness = nerd(`defint((${egalUtilityAtPercentile}), 0, 100, p)/100`)
+$$html$$ = tex(
+  averageIncomeExp,
+  averageIncome,
+  inegalAverageHappinessExp,
+  inegalAverageHappiness,
+  egalAverageHappinessExp,
+  egalAverageHappiness)
+#+END_SRC
+
+#+RESULTS[d8e07a6ecf0062a91a880a04e5e2d6016f63bc65]:
+#+BEGIN_EXPORT html
+<pre class="example tex2jax_process"><code class="tex2jax_process"><span>\(\frac{\int\limits_{0}^{100} {\left(30 \cdot {p}^{2}\right)}\, dp}{100}\)</span></code></pre><pre class="example tex2jax_process"><code class="tex2jax_process"><span>\(100000\)</span></code></pre><pre class="example tex2jax_process"><code class="tex2jax_process"><span>\(\frac{\int\limits_{0}^{100} {\left(\left(- \frac{3}{2000}\right) \cdot {p}^{4} + 30 \cdot {p}^{2}\right)}\, dp}{100}\)</span></code></pre><pre class="example tex2jax_process"><code class="tex2jax_process"><span>\(70000\)</span></code></pre><pre class="example tex2jax_process"><code class="tex2jax_process"><span>\(\frac{\int\limits_{0}^{100} {\left(\frac{250000}{3}\right)}\, dp}{100}\)</span></code></pre><pre class="example tex2jax_process"><code class="tex2jax_process"><span>\(\frac{250000}{3}\)</span></code></pre>
+#+END_EXPORT
+
