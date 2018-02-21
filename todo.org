@@ -7,6 +7,10 @@
 ** DONE Load data from CSV file
    CLOSED: [2018-02-18 Sun 16:29]
 * TODO Set up vega to use colex color schemes
+* TODO Try out algebrite
+* TODO Fix notebook column width
+* DONE Use nix overrides to for updated versions of hakyll and pandoc
+  CLOSED: [2018-02-20 Tue 18:07]
 * TODO [#C] Improve arg-map handling of resizing
 ** TODO e.g. centering
 * TODO [#C] Set up purescript and elm builds
