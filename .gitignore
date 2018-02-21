@@ -10,3 +10,4 @@ rollbar-access-token.txt
 **/output
 **/TAGS
 **/dist
+**/node_modules
