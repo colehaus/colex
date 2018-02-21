@@ -11,6 +11,9 @@
     <link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon" />
     <script>
      var _rollbarConfig = {
+       checkIgnore: function(isUncaught, args, payload) {
+         return location.host.startsWith('localhost')
+       },
        accessToken: "137e3ab64049469ba4a7d5e13a6f5aeb",
        captureUncaught: true,
        payload: {
@@ -30,8 +33,6 @@
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML"></script>
 
     
-  <link rel="stylesheet" type="text/css" href="../../css/graph-contents.css" />
-
 </head>
 <body>
 <div id="underlay">
@@ -51,6 +52,8 @@
   
   </div>
   
+    <div id="graph-of-contents"><a href="#graph-contents-map" class="arg-map" data-data-src="/data/graph-contents">Contents</a></div>
+  
   
     <div class="abstract">
       <p>A graph of contents is a more structured alternative to a table of contents.</p>
@@ -69,9 +72,9 @@
 <p>If, instead, we use a <a href="https://en.wikipedia.org/wiki/Directed_graph">graph</a> of contents, we can convey additional information about the relationships between sections. In effect, we combine the table of contents with an <a href="https://en.wikipedia.org/wiki/Argument_map">argument map</a>.</p>
 <!--more-->
 <p>For example:</p>
-<p><a href="#arg-map" id="major">All men are mortal</a></p>
-<p><a href="#arg-map" id="minor">Socrates is a man</a></p>
-<p><a href="#arg-map" id="conclusion">Therefore, Socrates is mortal</a></p>
+<p><a href="#graph-contents-map" id="major" class="arg-map">All men are mortal</a></p>
+<p><a href="#graph-contents-map" id="minor" class="arg-map">Socrates is a man</a></p>
+<p><a href="#graph-contents-map" id="conclusion" class="arg-map">Therefore, Socrates is mortal</a></p>
 <p>Clicking on a dotted link brings up the graph. The label for the current section (as identified by the link used to bring up the graph) is bolded in the graph. Clicking a label in the graph hides the graph and scrolls to that section in the document. Clicking the background just hides the graph.</p>
 <p>You can reorganize the graph by dragging a node to fix it into a position. For example, if you were skipping around in a large document, you could track which sections you’d read by dragging their nodes to the right margin. Double-clicking releases a node that’s been fixed in place.</p>
 <p>This technique can be found <em>in vivo</em> in <a href="../bibliometric">the post on biblometrics</a>.</p>
@@ -86,8 +89,6 @@
 
 <script defer type="text/javascript" src="../../js/common.js"></script>
 <script defer type="text/javascript" src="../../js/custom-elements.js"></script>
-
-<script defer type="text/javascript" src="../../js/graph-contents.js"></script>
 
 
   </body>

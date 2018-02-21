@@ -1,0 +1,9 @@
+id,label,type
+permissive,Too permissive,problem
+restrictive,Too restrictive,problem
+quorum-def,Traditional quorum,technique
+freq-bounds,Credible bounds,technique
+bayes,Confidence bounds,technique
+random,Assumed randomness,problem
+post-hoc,Only post-hoc declaration of quorum,problem
+complicated,More complicated,problem

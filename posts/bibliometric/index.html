@@ -11,6 +11,9 @@
     <link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon" />
     <script>
      var _rollbarConfig = {
+       checkIgnore: function(isUncaught, args, payload) {
+         return location.host.startsWith('localhost')
+       },
        accessToken: "137e3ab64049469ba4a7d5e13a6f5aeb",
        captureUncaught: true,
        payload: {
@@ -57,7 +60,7 @@
   
   </div>
   
-    <div id="graph-of-contents"><a href="#arg-map">Contents</a></div>
+    <div id="graph-of-contents"><a href="#bibliometric-map" class="arg-map" data-data-src="/data/bibliometric">Contents</a></div>
   
   
     <div class="abstract">
@@ -83,11 +86,11 @@
 \]</span></p>
 </div>
 <h3 id="impact-factor">Impact factor</h3>
-<p>There are a variety of citation-based <a href="https://en.wikipedia.org/wiki/Bibliometrics">bibliometrics</a>. The current <a href="#arg-map" id="impact">dominant metric</a> is <a href="https://en.wikipedia.org/wiki/Impact_factor">impact factor</a>. It is highly influential, factoring into decisions on promotion, hiring, tenure, grants and departmental funding <span class="citation" data-cites="plos06">(Editors 2006)</span> <span class="citation" data-cites="agrawal05">(Agrawal 2005)</span> <span class="citation" data-cites="moustafa14">(Moustafa 2014)</span>. Editors <a href="#arg-map" id="review">preferentially publish review articles</a>, and <a href="#arg-map" id="self-cite">push authors to <a href="https://en.wikipedia.org/wiki/Coercive_citation">self-cite</a></a> in pursuit of increased impact factor <span class="citation" data-cites="plos06">(Editors 2006)</span> <span class="citation" data-cites="agrawal05">(Agrawal 2005)</span> <span class="citation" data-cites="wilhite12">(Wilhite and Fong 2012)</span>. It may be responsible for editorial <a href="#arg-map" id="replication">bias against replications</a> <span class="citation" data-cites="neuliep90">(Neuliep and Crandall 1990)</span> <span class="citation" data-cites="brembs13">(Brembs, Button, and Munafò 2013)</span>. Consequently, academics take impact factor into account throughout the planning, execution and reporting of a study <span class="citation" data-cites="plos06">(Editors 2006)</span>.</p>
+<p>There are a variety of citation-based <a href="https://en.wikipedia.org/wiki/Bibliometrics">bibliometrics</a>. The current <a href="#bibliometric-map" id="impact" class="arg-map">dominant metric</a> is <a href="https://en.wikipedia.org/wiki/Impact_factor">impact factor</a>. It is highly influential, factoring into decisions on promotion, hiring, tenure, grants and departmental funding <span class="citation" data-cites="plos06">(Editors 2006)</span> <span class="citation" data-cites="agrawal05">(Agrawal 2005)</span> <span class="citation" data-cites="moustafa14">(Moustafa 2014)</span>. Editors <a href="#bibliometric-map" id="review" class="arg-map">preferentially publish review articles</a>, and <a href="#bibliometric-map" id="self-cite" class="arg-map">push authors to <a href="https://en.wikipedia.org/wiki/Coercive_citation">self-cite</a></a> in pursuit of increased impact factor <span class="citation" data-cites="plos06">(Editors 2006)</span> <span class="citation" data-cites="agrawal05">(Agrawal 2005)</span> <span class="citation" data-cites="wilhite12">(Wilhite and Fong 2012)</span>. It may be responsible for editorial <a href="#bibliometric-map" id="replication" class="arg-map">bias against replications</a> <span class="citation" data-cites="neuliep90">(Neuliep and Crandall 1990)</span> <span class="citation" data-cites="brembs13">(Brembs, Button, and Munafò 2013)</span>. Consequently, academics take impact factor into account throughout the planning, execution and reporting of a study <span class="citation" data-cites="plos06">(Editors 2006)</span>.</p>
 <p>This is <a href="https://en.wikipedia.org/wiki/Campbell's_law">Campbell’s law</a> in action. Because average citation count isn’t what we actually value, when it becomes the metric by which decisions are made, it distorts academic research. In the rest of this post, I propose a bibliometric that measures the <a href="https://en.wikipedia.org/wiki/Entropy_(information_theory)">entropy reduction</a> of the <a href="https://en.wikipedia.org/wiki/Directed_acyclic_graph">research graph</a>.</p>
 <!--more-->
 <h3 id="entropy">Entropy</h3>
-<p>Claude Shannon <a href="#arg-map" id="entropy">codified entropy</a> as <span class="math inline">\(H(X) = -\sum\limits_{i} P(x_i) \log_2 P(x_i)\)</span> where <span class="math inline">\(x_i\)</span> are the possible values of a discrete random variable <span class="math inline">\(X\)</span> <span class="citation" data-cites="shannon48">(Shannon 1948)</span><span class="citation" data-cites="cover12">(Cover and Thomas 2012)</span>. For example, the entropy of a 6-sided die is <span class="math display">\[\begin{align}
+<p>Claude Shannon <a href="#bibliometric-map" id="entropy" class="arg-map">codified entropy</a> as <span class="math inline">\(H(X) = -\sum\limits_{i} P(x_i) \log_2 P(x_i)\)</span> where <span class="math inline">\(x_i\)</span> are the possible values of a discrete random variable <span class="math inline">\(X\)</span> <span class="citation" data-cites="shannon48">(Shannon 1948)</span><span class="citation" data-cites="cover12">(Cover and Thomas 2012)</span>. For example, the entropy of a 6-sided die is <span class="math display">\[\begin{align}
   H(D) &amp;= - P(⚀) \log_2 P(⚀) - P(⚁) \log_2 P(⚁) - P(⚂) \log_2 P(⚂) \\
        &amp; - P(⚃) \log_2 P(⚃) - P(⚄) \log_2 P(⚄) - P(⚅) \log_2 P(⚅) \\
        &amp;= -\left(6 \left(\frac{1}{6} \log_2 \frac{1}{6}\right)\right) \\
@@ -105,7 +108,7 @@ H(D|\epsilon) &amp;= - P(⚁) \log_2 P(⚁) -
 <h3 id="example">Example</h3>
 <p>We can use these definitions to calculate the information provided by a research paper and assign an Infometric®™ score. We’ll start with a fairly classic example about cigarette smoking.</p>
 <h4 id="first-study">First study</h4>
-<p>Suppose <a href="#arg-map" id="single">we do a study</a> on whether, in the normal course of smoking, cigarette smoke is inhaled into the lungs (we’ll call this proposition <span class="math inline">\(A\)</span>). Prior to the study we use the (extremely) uninformative prior <span class="math inline">\(\cond{P}{A=t}{} = 0.5\)</span>. After the study (which we’ll call <span class="math inline">\(\alpha\)</span>) we perform a <a href="https://en.wikipedia.org/wiki/Bayes'_theorem">Bayesian update</a> and find that <span class="math inline">\(\cond{P}{A=t}{\alpha} = 0.8\)</span>. So our study has provided</p>
+<p>Suppose <a href="#bibliometric-map" id="single" class="arg-map">we do a study</a> on whether, in the normal course of smoking, cigarette smoke is inhaled into the lungs (we’ll call this proposition <span class="math inline">\(A\)</span>). Prior to the study we use the (extremely) uninformative prior <span class="math inline">\(\cond{P}{A=t}{} = 0.5\)</span>. After the study (which we’ll call <span class="math inline">\(\alpha\)</span>) we perform a <a href="https://en.wikipedia.org/wiki/Bayes'_theorem">Bayesian update</a> and find that <span class="math inline">\(\cond{P}{A=t}{\alpha} = 0.8\)</span>. So our study has provided</p>
 <p><span class="math display">\[\begin{align}
 H(A) - \cond{H}{A}{\alpha} &amp;= -P(A=t)\log_2P(A=t) - P(A=f)\log_2P(A=f) \\
   &amp;+ \cond{P}{A=t}{\alpha}\log_2\cond{P}{A=t}{\alpha} \\
@@ -151,7 +154,7 @@ H(A,B) - \cond{H}{A,B}{\alpha,\beta} &amp;=
 <p>(the general form is <span class="math inline">\(H(S_1,S_2,\cdots,S_n) - \cond{H}{S_1,S_2,\cdots,S_n}{\sigma_1,\sigma_2,\cdots,\sigma_n} = \sum\limits_{i=1}^n I(\sigma_i))\)</span> where <span class="math inline">\(I(\sigma_i) = \cond{H}{S_1,S_2,\cdots,S_i}{\sigma_{i+1},\sigma_{i+2},\cdots,\sigma_n} - \cond{H}{S_1,S_2,\cdots,S_i}{\sigma_i,\sigma_{i+1},\sigma_{i+2},\cdots,\sigma_n}\)</span></p>
 <p>We can see that <span class="math inline">\(\beta\)</span> citing <span class="math inline">\(\alpha\)</span> has increased <span class="math inline">\(\alpha\)</span>’s score (<span class="math inline">\(\alpha\)</span> now reduces our uncertainty not only about <span class="math inline">\(A\)</span>, but also about <span class="math inline">\(B\)</span>), a “citation bonus”. Or, if you prefer, you can think of it as <span class="math inline">\(\alpha\)</span> capturing the externalities it generates in <span class="math inline">\(B\)</span>.</p>
 <h4 id="fourth-study">Fourth study</h4>
-<p>We’ll now jump to <a href="#arg-map" id="four">a fourth study</a> so we can examine a fuller set of interactions (i.e. multiples studies citing one study, one study citing multiple studies).</p>
+<p>We’ll now jump to <a href="#bibliometric-map" id="four" class="arg-map">a fourth study</a> so we can examine a fuller set of interactions (i.e. multiples studies citing one study, one study citing multiple studies).</p>
 <figure>
 <img src="../../images/bibliometric/four.svg" alt="Graph depicting conditional dependencies" width="500" height="500">
 </figure>
@@ -217,23 +220,23 @@ Calculate scores
 <h3 id="discussion">Discussion</h3>
 <h4 id="desirable-properties">Desirable properties</h4>
 <dl>
-<dt><a href="#arg-map" id="design">Score depends on study design</a></dt>
+<dt><a href="#bibliometric-map" id="design" class="arg-map">Score depends on study design</a></dt>
 <dd>Tends to encourage <a href="https://en.wikipedia.org/wiki/Bayesian_experimental_design">Bayesian optimal designs</a>
 </dd>
-<dt><a href="#arg-map" id="aggregates">Aggregates sensibly</a></dt>
+<dt><a href="#bibliometric-map" id="aggregates" class="arg-map">Aggregates sensibly</a></dt>
 <dd>The impact factor is often used in inappropriate circumstances <span class="citation" data-cites="plos06">(Editors 2006)</span> <span class="citation" data-cites="agrawal05">(Agrawal 2005)</span> <span class="citation" data-cites="moustafa14">(Moustafa 2014)</span>. That is, the warning that impact factor is a metric for journals, not authors or departments, is seldom heeded. The proposed metric can used in such cases trivially. For example, if an author has published studies <span class="math inline">\(\eta\)</span> and <span class="math inline">\(\theta\)</span>, their score is simply <span class="math inline">\(I(\eta) + I(\theta)\)</span>, the total reduction in entropy they contribute.
 </dd>
-<dt><a href="#arg-map" id="repli-beni">Handles replications appropriately</a></dt>
+<dt><a href="#bibliometric-map" id="repli-beni" class="arg-map">Handles replications appropriately</a></dt>
 <dd>Impact factor tends to undervalue replications <span class="citation" data-cites="neuliep90">(Neuliep and Crandall 1990)</span> <span class="citation" data-cites="brembs13">(Brembs, Button, and Munafò 2013)</span>. With a simple extension of the proposed metric, if <span class="math inline">\(\iota\)</span> is a replication of <span class="math inline">\(\eta\)</span> about proposition <span class="math inline">\(E\)</span> it shares the “citation bonus” in proportion to how much it increases our certainty in <span class="math inline">\(E\)</span>.
 </dd>
-<dt><a href="#arg-map" id="gradated">Gradated citations</a></dt>
+<dt><a href="#bibliometric-map" id="gradated" class="arg-map">Gradated citations</a></dt>
 <dd><p>With impact factor, a citation to study <span class="math inline">\(\alpha\)</span> essential to the validity of study <span class="math inline">\(\gamma\)</span> is given the same weight as a citation to study <span class="math inline">\(\beta\)</span> providing some minor context for <span class="math inline">\(\gamma\)</span>. With the proposed metric, if <span class="math inline">\(\gamma\)</span> only depends minorly on <span class="math inline">\(\beta\)</span>, <span class="math inline">\(\gamma\)</span> will only boost <span class="math inline">\(\beta\)</span>’s score minorly. This should counteract the inflated value of review articles.</p>
 <p>Additionally, being cited by an “important paper” (one that provides great certainty or occupies an important position in the research network) provides a larger boost than being cited by a peripheral paper.</p>
 </dd>
 </dl>
 <h4 id="undesirable-properties">Undesirable properties</h4>
 <dl>
-<dt><a href="#arg-map" id="incentive">Not <a href="https://en.wikipedia.org/wiki/Incentive_compatibility">incentive compatible</a></a></dt>
+<dt><a href="#bibliometric-map" id="incentive" class="arg-map">Not <a href="https://en.wikipedia.org/wiki/Incentive_compatibility">incentive compatible</a></a></dt>
 <dd><p>For example, if study <span class="math inline">\(\beta\)</span> depends on study <span class="math inline">\(\alpha\)</span> it will receive a better score by hiding that dependence and marginalizing. <span class="math inline">\(\beta\)</span> receives a higher score when presented as</p>
 <pre><code> ----
  | A P
@@ -262,10 +265,10 @@ Calculate scores
    | f 0.5</code></pre>
 <p>. However, impact factor also theoretically discourages citation ( e.g. boosting the impact factor of someone that might compete against you come hiring time). This problem does not seem to be devastating <span class="citation" data-cites="liu93">(Liu 1993)</span>.</p>
 </dd>
-<dt><a href="#arg-map" id="complicated">Complicated</a></dt>
+<dt><a href="#bibliometric-map" id="complicated" class="arg-map">Complicated</a></dt>
 <dd>The proposed metric is more calculationally complicated than impact factor. (Though the actual impact factor calculation procedure is more complicated than one would suppose.)
 </dd>
-<dt><a href="#arg-map" id="dependence">Requires assessment of degree of dependence</a></dt>
+<dt><a href="#bibliometric-map" id="dependence" class="arg-map">Requires assessment of degree of dependence</a></dt>
 <dd>The “degree of dependence” (e.g. <span class="math inline">\(\cond{P}{B}{A=t}\)</span> vs. <span class="math inline">\(\cond{P}{B}{A=f}\)</span>) occupies an important role in the procedure. It’s not obvious to me how this should be determined other than by discussion between authors, editors and reviewers.
 </dd>
 </dl>
@@ -328,8 +331,6 @@ Calculate scores
 <script defer type="text/javascript" src="../../js/custom-elements.js"></script>
 
 <script defer type="text/javascript" src="../../js/bibliometric.js"></script>
-
-<script defer type="text/javascript" src="../../js/bibliometric-map.js"></script>
 
 
   </body>

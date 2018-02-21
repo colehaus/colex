@@ -11,6 +11,9 @@
     <link rel="shortcut icon" href="../../images/favicon.ico" type="image/x-icon" />
     <script>
      var _rollbarConfig = {
+       checkIgnore: function(isUncaught, args, payload) {
+         return location.host.startsWith('localhost')
+       },
        accessToken: "137e3ab64049469ba4a7d5e13a6f5aeb",
        captureUncaught: true,
        payload: {
@@ -55,7 +58,7 @@
   
   </div>
   
-    <div id="graph-of-contents"><a href="#arg-map">Contents</a></div>
+    <div id="graph-of-contents"><a href="#quorum-map" class="arg-map" data-data-src="/data/quorum">Contents</a></div>
   
   
     <div class="abstract">
@@ -83,16 +86,16 @@
 <ol>
 <li id="example1">
 <p>Pie Club is voting on which pie will be featured at their first August meeting. <span class="noted">After tallying the votes, <a href="https://en.wikipedia.org/wiki/Buko_pie">buko pie</a> receives a mean score of <span class="math inline">\(0.69\)</span> and <a href="https://en.wikipedia.org/wiki/Fish_pie">fish pie</a> receives a mean score of <span class="math inline">\(0.18\)</span>.</span><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a></p>
-Before the decision is finalized, however, an observant member notices that the meeting is <a href="#arg-map" id="restrictive">two members short of the 25 required for quorum</a>. Because Pie Club is scrupulously democratic, the vote is annulled. Some members grumble their doubt that the landslide will reverse with two more votes.
+Before the decision is finalized, however, an observant member notices that the meeting is <a href="#quorum-map" id="restrictive" class="arg-map">two members short of the 25 required for quorum</a>. Because Pie Club is scrupulously democratic, the vote is annulled. Some members grumble their doubt that the landslide will reverse with two more votes.
 </li>
 <li id="example2">
-Pie Club is voting on which pie will take home the title “Pie of the Decade”. Will it be <a href="https://en.wikipedia.org/wiki/Lemon_meringue_pie">lemon meringue pie</a> or <a href="https://en.wikipedia.org/wiki/Tarta_de_Santiago">Tarta de Santiago</a>? The results are in—quorum checked in advance this time—and they are… <span class="math inline">\(0.49\)</span> for meringue and <span class="math inline">\(0.48\)</span> for Tarta. While meringue’s devotees celebrate, Tarta’s die-hards feel something has gone wrong. <a href="#arg-map" id="permissive">Can such a close result really give them confidence</a> that meringue is the preference of the whole club, including the 12 members who couldn’t make it to meeting? If just one of them had attended and cast a vote favoring Tarta, wouldn’t that have swung the outcome?
+Pie Club is voting on which pie will take home the title “Pie of the Decade”. Will it be <a href="https://en.wikipedia.org/wiki/Lemon_meringue_pie">lemon meringue pie</a> or <a href="https://en.wikipedia.org/wiki/Tarta_de_Santiago">Tarta de Santiago</a>? The results are in—quorum checked in advance this time—and they are… <span class="math inline">\(0.49\)</span> for meringue and <span class="math inline">\(0.48\)</span> for Tarta. While meringue’s devotees celebrate, Tarta’s die-hards feel something has gone wrong. <a href="#quorum-map" id="permissive" class="arg-map">Can such a close result really give them confidence</a> that meringue is the preference of the whole club, including the 12 members who couldn’t make it to meeting? If just one of them had attended and cast a vote favoring Tarta, wouldn’t that have swung the outcome?
 </li>
 </ol>
 <!--more-->
 <h3 id="quorum">Quorum</h3>
 <blockquote>
-<a href="#arg-map" id="quorum-def">The minimum number of members who must be present at the meetings</a> of a deliberative assembly for business to be validly transacted is the <em>quorum</em> of the assembly. The requirement of a quorum is a protection against totally unrepresentative action in the name of the body by an unduly small number of persons. <span class="citation" data-cites="ronr">(Robert, Honemann, and Balch 2011)</span>
+<a href="#quorum-map" id="quorum-def" class="arg-map">The minimum number of members who must be present at the meetings</a> of a deliberative assembly for business to be validly transacted is the <em>quorum</em> of the assembly. The requirement of a quorum is a protection against totally unrepresentative action in the name of the body by an unduly small number of persons. <span class="citation" data-cites="ronr">(Robert, Honemann, and Balch 2011)</span>
 </blockquote>
 <p>So quorum is a proxy for representativeness. But as the examples demonstrate, it’s, at best, a loose proxy. Sometimes (as in the <a href="#example1">first example</a>) quorum is too demanding—it forbids a decision when the votes endorse one. On other occasions (as in the <a href="#example2">second example</a>), quorum is too lax—it declares representativeness when there can be no certainty of it.</p>
 <p>Is there an alternative then? How do we determine if a vote is representative? Statistics!</p>
@@ -115,7 +118,7 @@ Pie Club is voting on which pie will take home the title “Pie of the Decade”
 <p>To establish <span class="math inline">\(\mu_2 \gg \mu_1\)</span>, we construct a lower <span class="inline switch" type="menu" data-menu="stat-type"><span class="open">credible bound (a one-sided <a href="https://en.wikipedia.org/wiki/Credible_interval">credible interval</a>)</span> <span>confidence bound (a one-sided <a href="https://en.wikipedia.org/wiki/Confidence_interval">confidence interval</a>)</span></span> on <span class="math inline">\(\mu_2 - \mu_1\)</span> base on our votes. The lower bound delimits the region where <span class="math inline">\(\mu_2 - \mu_1\)</span> is largest. If the delimited region includes <span class="math inline">\(0\)</span>, we must reject <span class="math inline">\(\mu_2 \gg \mu_1\)</span> (i.e. if the region most favorable to <span class="math inline">\(\mu_2\)</span> still doesn’t exclude <span class="math inline">\(0\)</span>, we aren’t justified in believing <span class="math inline">\(\mu_2 &gt; \mu_1\)</span> (at the chosen <span class="inline switch" type="menu" data-menu="stat-type"><span class="open">credibility</span> <span>confidence</span></span> level)).</p>
 <p>The approach for <span class="math inline">\(\mu_1 \gg \mu_2\)</span> is similar (simply swap in an upper bound or <span class="math inline">\(\mu_1 - \mu_2\)</span>).</p>
 <p>If we reject <span class="math inline">\(\mu_2 \gg \mu_1\)</span> and <span class="math inline">\(\mu_1 \gg \mu_2\)</span>, we must accept <span class="math inline">\(\mu_2 \approx \mu_1\)</span> and declare a failure of quorum.</p>
-<p>For example, we’d like to <a href="#arg-map" id="bayes">determine if the <span class="inline switch" type="menu" data-menu="stat-type"><span class="open">credible</span> <span>confidence</span></span> bounds support the conclusion</a> that buko pie really is preferred to fish pie. If Pie Club bylaws specified a <span class="math inline">\(95\%\)</span> <span class="inline switch" type="menu" data-menu="stat-type"><span class="open">credible</span> <span>confidence</span></span> bound and the lower bound for <span class="math inline">\(\mu_{buko} - \mu_{fish}\)</span> stretched to <span class="math inline">\(0.359\)</span> while the upper bound stretched to <span class="math inline">\(0.58\)</span>, we’d declare that quorum had been reached in favor of buko pie. (We reject <span class="math inline">\(\mu_{fish} \gg \mu_{buko}\)</span> because it’s bounded region includes <span class="math inline">\(0\)</span>. We can’t reject <span class="math inline">\(\mu_{buko} \gg \mu_{fish}\)</span> because it’s bounded region excludes <span class="math inline">\(0\)</span>.) Alternately, if the lower bound stretched to <span class="math inline">\(-0.1\)</span> and the upper bound stretched to <span class="math inline">\(0.58\)</span>, we’d declare a failure of quorum.</p>
+<p>For example, we’d like to <a href="#quorum-map" id="bayes" class="arg-map">determine if the <span class="inline switch" type="menu" data-menu="stat-type"><span class="open">credible</span> <span>confidence</span></span> bounds support the conclusion</a> that buko pie really is preferred to fish pie. If Pie Club bylaws specified a <span class="math inline">\(95\%\)</span> <span class="inline switch" type="menu" data-menu="stat-type"><span class="open">credible</span> <span>confidence</span></span> bound and the lower bound for <span class="math inline">\(\mu_{buko} - \mu_{fish}\)</span> stretched to <span class="math inline">\(0.359\)</span> while the upper bound stretched to <span class="math inline">\(0.58\)</span>, we’d declare that quorum had been reached in favor of buko pie. (We reject <span class="math inline">\(\mu_{fish} \gg \mu_{buko}\)</span> because it’s bounded region includes <span class="math inline">\(0\)</span>. We can’t reject <span class="math inline">\(\mu_{buko} \gg \mu_{fish}\)</span> because it’s bounded region excludes <span class="math inline">\(0\)</span>.) Alternately, if the lower bound stretched to <span class="math inline">\(-0.1\)</span> and the upper bound stretched to <span class="math inline">\(0.58\)</span>, we’d declare a failure of quorum.</p>
 <div class="switch" type="menu" data-menu="stat-type">
 <div class="open">
 <p>How do we construct these credible bounds? We derive them from the <a href="https://en.wikipedia.org/wiki/Posterior_probability">posterior probability distribution</a> created using Bayesian parameter estimation <span class="citation" data-cites="kruschke13">(Kruschke 2013)</span>. To construct this posterior, we start by specifying <span class="noted">a model for the distribution of paired differences</span><a href="#fn2" class="footnote-ref" id="fnref2"><sup>2</sup></a>. Because the difference can only take on values in the interval <span class="math inline">\(\left(-1, 1\right)\)</span>, the (<a href="https://en.wikipedia.org/wiki/Location-scale_family">transformed</a> from <span class="math inline">\((0, 1)\)</span> to <span class="math inline">\((-1, 1)\)</span>) <span class="noted"><a href="https://en.wikipedia.org/wiki/Beta_distribution">beta distribution</a> is a sensible choice</span><a href="#fn3" class="footnote-ref" id="fnref3"><sup>3</sup></a>. To get a sense of the beta distribution, you can look at the calculator <a href="http://keisan.casio.com/has10/SpecExec.cgi?id=system/2006/1180573226">here</a>.</p>
@@ -239,9 +242,9 @@ Mean of differences
 </form>
 </div>
 <h3 id="problems">Problems</h3>
-<p>We’ve tacitly <a href="#arg-map" id="random">assumed that our actual voters are a random sample</a> of the population of potential voters. This is false (Though one could make it true through adoption of appropriate <a href="https://en.wikipedia.org/wiki/Sortition">voting procedures</a>). <a href="https://en.wikipedia.org/wiki/Self-selection_bias">Self-selection bias</a>, whether due to differential interest, availability, transportation, &amp;c., means that the sample is non-representative. However, the problem of non-random samples also applies to traditional quorum’s assurances of representativeness.</p>
+<p>We’ve tacitly <a href="#quorum-map" id="random" class="arg-map">assumed that our actual voters are a random sample</a> of the population of potential voters. This is false (Though one could make it true through adoption of appropriate <a href="https://en.wikipedia.org/wiki/Sortition">voting procedures</a>). <a href="https://en.wikipedia.org/wiki/Self-selection_bias">Self-selection bias</a>, whether due to differential interest, availability, transportation, &amp;c., means that the sample is non-representative. However, the problem of non-random samples also applies to traditional quorum’s assurances of representativeness.</p>
 <p>The procedure also accepts the claim of <span class="citation" data-cites="ronr">(Robert, Honemann, and Balch 2011)</span> that the purpose of quorum is to ensure representativeness. In consequence, the procedure takes votes as exogenous and characterizes only the resulting information. But one could support quorum for its deliberative, community-building, or even obstructive effects.</p>
-<p>Also, <a href="#arg-map" id="complicated">isn’t all this math a bit forbidding?</a></p>
+<p>Also, <a href="#quorum-map" id="complicated" class="arg-map">isn’t all this math a bit forbidding?</a></p>
 <div class="switch" type="menu" data-menu="stat-type">
 <div class="open">
 <p>The conclusions have a rather intuitive interpretation in terms of likelihood, maybe even more intuitive than the traditional quorum interpretation (“We ensure that our decisions are representative by requiring 25% of our members to attend.”). But getting to the conclusions requires a computer and uncommon math.</p>
@@ -259,7 +262,7 @@ Mean of differences
 </div>
 <p>So this procedure is less accessible than traditional quorum. How much less depends on the relative importances placed on accessible conclusions and accessible process.</p>
 <p>Because this calculation is less accessible and will likely be performed by one or a few individuals, it’s import to establish a clear and strict procedure. We should not permit, for example, the choice of modeling distribution after exploratory data analysis. The more degrees of freedom we give the analyst, the more power we give them to influence results <span class="citation" data-cites="simmons11">(Simmons, Nelson, and Simonsohn 2011)</span>.</p>
-<p>Finally, this procedure <a href="#arg-map" id="post-hoc">admits only post-hoc declarations of quorum</a>. With the traditional procedure, we can just take attendance at a meeting and determine the quorum status for every referendum therein. With the new procedure, after tallying the votes on an issue, we have to run the quorum calculation to retroactively determine quorum if we achieved quorum.</p>
+<p>Finally, this procedure <a href="#quorum-map" id="post-hoc" class="arg-map">admits only post-hoc declarations of quorum</a>. With the traditional procedure, we can just take attendance at a meeting and determine the quorum status for every referendum therein. With the new procedure, after tallying the votes on an issue, we have to run the quorum calculation to retroactively determine quorum if we achieved quorum.</p>
 <h3 id="extended-procedures">Extended procedures</h3>
 <div class="switch" type="menu" data-menu="stat-type">
 <div class="open">
@@ -359,8 +362,6 @@ Mean of differences
 <script defer type="text/javascript" src="../../js/custom-elements.js"></script>
 
 <script defer type="text/javascript" src="../../js/quorum.js"></script>
-
-<script defer type="text/javascript" src="../../js/quorum-map.js"></script>
 
 
   </body>

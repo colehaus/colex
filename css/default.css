@@ -124,8 +124,7 @@ th{
 
 path.link{
  fill:none;
- stroke-width:3px;
- stroke:#6b6688}
+ stroke-width:3px}
 
 polygon{
  stroke:#18121e;
@@ -136,15 +135,43 @@ polygon{
  stroke-width:2px}
 
 text{
- font-size:smaller;
- text-shadow:0 1px 0 #eee,1px 0 0 #eee,0 -1px 0 #eee,-1px 0 0 #eee}
- text.node{
- fill:#18121e}
- text.link{
- fill:#6b6688}
+ font-size:smaller}
 
 svg a{
  cursor:pointer}
+
+defs>g>marker:nth-child(1){
+ fill:#b5e2b5}
+
+defs>g>marker:nth-child(2){
+ fill:#d1abe6}
+
+defs>g>marker:nth-child(3){
+ fill:#dee2b5}
+
+defs>g>marker:nth-child(4){
+ fill:#e6abd0}
+
+defs>g>marker:nth-child(5){
+ fill:#e6bcb5}
+
+defs>g>linearGradient:nth-child(1)>stop{
+ stop-color:#b5e2b5}
+
+defs>g>linearGradient:nth-child(2)>stop{
+ stop-color:#d1abe6}
+
+defs>g>linearGradient:nth-child(3)>stop{
+ stop-color:#dee2b5}
+
+defs>g>linearGradient:nth-child(4)>stop{
+ stop-color:#e6abd0}
+
+defs>g>linearGradient:nth-child(5)>stop{
+ stop-color:#e6bcb5}
+
+.entry-point{
+ font-weight:bold}
 
 @media (max-width:60em){
  #warnings{
@@ -161,6 +188,119 @@ svg a{
  list-style-type:none}
  #warnings ul>li>details>p{
  margin-left:1em}
+
+pre.sourceCode code,pre.example code{
+ color:#b5bae6;
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+}
+ pre.sourceCode code span.kw,pre.example code span.kw{
+ color:#b5e2b5}
+ pre.sourceCode code span.dt,pre.example code span.dt{
+ color:#dee2b5}
+ pre.sourceCode code span.dv,pre.example code span.dv{
+ color:#b5e2df}
+ pre.sourceCode code span.bn,pre.example code span.bn{
+ color:#b5e2df}
+ pre.sourceCode code span.fl,pre.example code span.fl{
+ color:#b5e2df}
+ pre.sourceCode code span.ch,pre.example code span.ch{
+ color:#b5e2df}
+ pre.sourceCode code span.st,pre.example code span.st{
+ color:#b5e2df}
+ pre.sourceCode code span.co,pre.example code span.co{
+ color:#d7d6e6}
+ pre.sourceCode code span.ot,pre.example code span.ot{
+ color:#d1abe6}
+ pre.sourceCode code span.al,pre.example code span.al{
+ color:#e6abd0}
+ pre.sourceCode code span.fu,pre.example code span.fu{
+ color:#d1abe6}
+ pre.sourceCode code span.er,pre.example code span.er{
+ color:#e6abd0}
+ pre.sourceCode code span.wa,pre.example code span.wa{
+ color:#e6bcb5}
+ pre.sourceCode code span.cn,pre.example code span.cn{
+ color:#b5e2df}
+ pre.sourceCode code span.sc,pre.example code span.sc{
+ color:#e6abd0}
+ pre.sourceCode code span.vs,pre.example code span.vs{
+ color:#b5bae6}
+ pre.sourceCode code span.ss,pre.example code span.ss{
+ color:#e6abd0}
+ pre.sourceCode code span.im,pre.example code span.im{
+ color:#b5bae6}
+ pre.sourceCode code span.va,pre.example code span.va{
+ color:#d1abe6}
+ pre.sourceCode code span.cf,pre.example code span.cf{
+ color:#b5e2b5}
+ pre.sourceCode code span.op,pre.example code span.op{
+ color:#b5e2b5}
+ pre.sourceCode code span.bu,pre.example code span.bu{
+ color:#b5bae6}
+ pre.sourceCode code span.ex,pre.example code span.ex{
+ color:#b5bae6}
+ pre.sourceCode code span.pp,pre.example code span.pp{
+ color:#e6bcb5}
+ pre.sourceCode code span.at,pre.example code span.at{
+ color:#b5bae6}
+ pre.sourceCode code span.do,pre.example code span.do{
+ color:#d7d6e6}
+ pre.sourceCode code span.an,pre.example code span.an{
+ color:#d7d6e6}
+ pre.sourceCode code span.cv,pre.example code span.cv{
+ color:#d7d6e6}
+ pre.sourceCode code span.in,pre.example code span.in{
+ color:#d7d6e6}
+
+.sourceCode>a{
+ border:none}
+ .sourceCode>a:hover{
+ border:none}
+
+pre.sourceCode::before,pre.example::before{
+ position:absolute;
+ font-size:x-small;
+ font-weight:300;
+ transform:translate(-7ex,2ex) rotate(90deg)}
+
+pre.sourceCode::before{
+ content:"Source"}
+
+pre.example::before{
+ content:"Result"}
+
+pre.sourceCode,pre.example{
+ background-color:#18121e;
+ font-size:smaller;
+ padding:1ex;
+ border-radius:4px}
 
 
 
@@ -274,8 +414,6 @@ body{
 #overlay{
  height:100vh;
  width:100vw;
- padding-left:5vw;
- padding-right:5vw;
  position:fixed;
  top:0;
  left:0;
@@ -400,3 +538,6 @@ dl.posts>dt{
 
 .main-menu.bottom{
  order:1}
+
+.mark-line>path:hover{
+ opacity:1!important}

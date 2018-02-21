@@ -1,0 +1,16 @@
+id,label,type
+impact,Impact factor,bibliometric
+etc,...,problem
+review,Favors review articles,problem
+self-cite,Pressure to self-cite,problem
+replication,Biased against replications,problem
+entropy,Entropic,bibliometric
+single,Single study,example
+four,Four studies,example
+aggregates,Aggregates sensibly,benefit
+design,Accounts for study design,benefit
+repli-beni,Handles replications,benefit
+gradated,Gradated citations,benefit
+complicated,Relatively complicated to calculate,problem
+dependence,Relies on degree of dependence,problem
+incentive,Not incentive-compatible,problem

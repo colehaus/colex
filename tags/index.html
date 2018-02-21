@@ -11,6 +11,9 @@
     <link rel="shortcut icon" href="../images/favicon.ico" type="image/x-icon" />
     <script>
      var _rollbarConfig = {
+       checkIgnore: function(isUncaught, args, payload) {
+         return location.host.startsWith('localhost')
+       },
        accessToken: "137e3ab64049469ba4a7d5e13a6f5aeb",
        captureUncaught: true,
        payload: {
