@@ -1,11 +1,11 @@
 var crypto = require('crypto')
 
-var mkGraphHtml = (json) => {
-  json['$schema'] = 'https://vega.github.io/schema/vega-lite/v2.json'
-  json.width = 600
-  json.height = 400
-  var jsonString = JSON.stringify(json)
-  var randomId = 'graph-' + crypto.createHash('sha256').update(jsonString).digest('hex').slice(0,7)
+var mkGraphHtml = (spec, tooltipOpts) => {
+  spec['$schema'] = 'https://vega.github.io/schema/vega-lite/v2.json'
+  spec.width = 600
+  spec.height = 400
+  var specString = JSON.stringify(spec)
+  var randomId = 'graph-' + crypto.createHash('sha256').update(specString).digest('hex').slice(0,7)
 
   var options = { renderer: 'svg' }
   return (`
@@ -15,7 +15,14 @@ var mkGraphHtml = (json) => {
     <script src="https://cdn.jsdelivr.net/npm/vega@3.0.10"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-lite@2.1.2"></script>
     <script src="https://cdn.jsdelivr.net/npm/vega-embed@3.0.0"></script>
-    <script>vegaEmbed('#${randomId}', ${jsonString}, ${JSON.stringify(options)})</script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-tooltip@0.5.1"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/vega-tooltip@0.5.1/build/vega-tooltip.min.css">
+    <script>
+      var spec = ${specString}
+      vegaEmbed('#${randomId}', spec, ${JSON.stringify(options)}).then(function(result) {
+        vegaTooltip.vegaLite(result.view, spec, ${JSON.stringify(tooltipOpts)})
+      })
+    </script>
   `)
 }
 
