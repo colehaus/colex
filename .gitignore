@@ -11,3 +11,4 @@ rollbar-access-token.txt
 **/TAGS
 **/dist
 **/node_modules
+**/.ipynb_checkpoints/
