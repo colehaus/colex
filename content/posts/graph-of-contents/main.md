@@ -37,4 +37,4 @@ which sections you'd read by dragging their nodes to the right margin.
 Double-clicking releases a node that's been fixed in place.
 
 This technique can be found *in vivo* in
-[the post on biblometrics](../bibliometric).
+[the post on biblometrics](../bibliometric/).
