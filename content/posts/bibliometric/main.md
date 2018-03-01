@@ -41,7 +41,7 @@ of the [research graph](https://en.wikipedia.org/wiki/Directed_acyclic_graph).
 
 <!--more-->
 
-# Entropy
+# Entropy {#entropy-header}
 
 Claude Shannon [codified entropy](#bibliometric-map){#entropy .arg-map} as
 $H(X) = -\sum\limits_{i} P(x_i) \log_2 P(x_i)$
