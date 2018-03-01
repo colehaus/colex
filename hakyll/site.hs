@@ -104,6 +104,9 @@ main =
       defaultTemplate
       (narrowEx templates "templates/archive.html")
       tags
+    _ <- match "robots.txt" $ do
+      route idRoute
+      compile copyFileCompiler
     _ <-
       match "images/**" $ do
         route idRoute
