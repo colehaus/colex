@@ -9,6 +9,13 @@
 * TODO Set up vega to use colex color schemes
 * TODO Try out algebrite
 * TODO Fix notebook column width
+* TODO Add sitemap
+* TODO Minify CSS
+* TODO Archive links
+** TODO http://www.thomaschermack.com/Thomas_Chermack_-_Scenario_Planning/Research_files/Chermack%282008%29EffectsofSPonDM.pdf 404
+** http://www.econ.brown.edu/1996/pdfs/96-21.pdf 301
+* TODO Try pngs on RSS
+* TODO Regularize a la stimulus
 * DONE Use nix overrides to for updated versions of hakyll and pandoc
   CLOSED: [2018-02-20 Tue 18:07]
 * TODO [#C] Improve arg-map handling of resizing
