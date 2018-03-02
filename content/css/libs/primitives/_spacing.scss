@@ -60,3 +60,7 @@
     padding-left: 0.25em;
     padding-right: 0.25em;
 }
+@mixin border-spacing-horizontal-1em {
+    border-collapse: separate;
+    border-spacing: 1em 0;
+}

@@ -22,6 +22,9 @@
 @mixin weight-bold {
     font-weight: 700;
 }
+@mixin weight-normal {
+    font-weight: 400;
+}
 @mixin weight-light {
     font-weight: 300;
 }

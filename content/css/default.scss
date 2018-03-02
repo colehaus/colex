@@ -51,6 +51,10 @@ h1, h2, h3, h4, h5, h6 {
         @include border-none;
     }
 }
+#article-subtitle {
+    font-variant: small-caps;
+    @include weight-normal;
+}
 hr {
     @include margin-left-none;
     @include border-solid;
@@ -243,4 +247,16 @@ dl.posts > dt {
 }
 .mark-line > path:hover {
     opacity: 1 !important;
+}
+.skippable {
+    @include weight-light;
+    @include font-smaller;
+    @include light-color-text;
+}
+table {
+    @include border-spacing-horizontal-1em;
+}
+// Make subheadings smaller
+thead > tr:nth-of-type(2) {
+    @include font-smaller;
 }

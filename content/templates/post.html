@@ -7,6 +7,9 @@ $endfor$
 <nav><a href="/">Home</a></nav>
 <main><article>
   <h2 id="article-title">$title$</h2>
+  $if(subtitle)$
+    <h3 id="article-subtitle">$subtitle$</h3>
+  $endif$
   <div class="metadata">
   $partial("templates/tag-nav.html")$
   <span class="date">Published on <time datetime="$num-date$">$date$</time>.</span>
