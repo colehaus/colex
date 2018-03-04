@@ -23,6 +23,7 @@ declare class Maybe<A> {
 
 type S = {
   init<A>(as: Array<A>): Maybe<Array<A>>,
+  head<A>(as: Array<A>): Maybe<A>,
   tail<A>(as: Array<A>): Maybe<Array<A>>,
   equals<A>(a: A): A => boolean,
   on<A, B, C>(f: (A => A => B)): (C => A) => C => C => B,
@@ -47,4 +48,6 @@ type S = {
   pipe<A, B, C, D>([A => B, B => C, C => D]): A => D
 } & {
   pipe<A, B, C, D, E>([A => B, B => C, C => D, D => E]): A => E
+} & {
+  join<A>(a: Array<Array<A>>): Array<A>
 }

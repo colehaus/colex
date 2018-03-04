@@ -7,7 +7,8 @@
 ** DONE Load data from CSV file
    CLOSED: [2018-02-18 Sun 16:29]
 * TODO Set up vega to use colex color schemes
-* TODO Try out algebrite
+* DONE Try out algebrite
+  CLOSED: [2018-02-26 Mon 09:15]
 * TODO Fix notebook column width
 * TODO Add sitemap
 * TODO Minify CSS

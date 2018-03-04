@@ -1,0 +1,16 @@
+@import 'libs/colors';
+@import 'libs/primitives/borders';
+
+.draw {
+    @include border-none;
+    > svg > path {
+        fill: none;
+        stroke-width: 2;
+        &.draw-input {
+            stroke: nth(map-get($colors, value), 1);
+        }
+        &.interpolated {
+            stroke: nth(map-get($colors, value), 2);
+        }
+    }
+}

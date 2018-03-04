@@ -226,7 +226,7 @@ const close = (map: Simulation<Node<*>, Link<*>>) => () => {
   map.stop()
 }
 
-const open = (map: Simulation<Node<*>, Link<*>>) => (evt: ?JQueryEventObject) => {
+const open = (map: Simulation<Node<*>, Link<*>>) => (evt: ?JQueryMouseEventObject) => {
   $('#underlay').addClass('inactive')
   $('#overlay').removeClass('inactive')
   $('#arg-map a').click(close(map))

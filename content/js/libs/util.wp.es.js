@@ -5,6 +5,9 @@ import $ from 'jquery'
 import {create, env} from 'sanctuary'
 const S = create({checkTypes: false, env})
 
+// For when we know that a thing is provably not null but it's not apparent to flow
+const claimNotNull = <A>(a: ?A): A => (a: any)
+
 const documentReadyPromise: Promise<*> = new Promise((resolve, reject) => $(() => resolve()))
 
 const makeSleepPromise = (milliseconds: number): Promise<*> =>
@@ -46,7 +49,8 @@ const parseMatrixToYTranslation = (transformationMatrix: string): number =>
 
 const uniquify = <A>(as: Array<A>): Array<A> => Array.from((new Set(as)).values())
 
-export { documentReadyPromise,
+export { claimNotNull,
+         documentReadyPromise,
          makeAnimationPromise,
          makeSleepPromise,
          parseMatrixToAngle,

@@ -21,14 +21,19 @@ declare class SelectWithData<D> extends Select<SelectWithData<D>> {
   attr(attr: string, value: (D, number) => string): SelectWithData<D>;
   on(event: string, fn: D => void): SelectWithData<D>;
   data<E>(fn: D => Array<E>): SelectWithData<E>;
-  call(fn: SelectWithData<D> => void): SelectWithData<D>
+  call(fn: SelectWithData<D> => void): SelectWithData<D>;
 }
+declare type EventType = 'mousedown' | 'mouseup' | 'mousemove'
 declare class Select<Self> {
   select(selector: string): Self;
   selectAll(selector: string): Self;
   classed(klass: string, add: boolean): Self;
   append(tag: string): Self;
   id(id: string): Self;
+  style(name: string, value: string): Self;
+  on(eventType: EventType, handler: Function): Self;
+  node(): Element;
+  remove(): Self;
 }
 declare class SelectWithoutData extends Select<SelectWithoutData> {
   attr(attr: string, value: string): SelectWithoutData;
@@ -66,6 +71,8 @@ declare class Simulation<N, L> {
 }
 
 declare module 'd3' {
+  declare export function line(): Array<[number, number]> => string
+  declare export function mouse(container: Element): [number, number]
   declare export function interpolateNumber(low: number, hi: number): number => number
   declare export function csv<A>(string): Promise<A>
   declare export function forceSimulation<N, L>(): Simulation<N, L>
@@ -75,5 +82,6 @@ declare module 'd3' {
   declare export var event: { x: number, y: number }
   declare export function drag(): any
   declare export function select(selector: string): SelectWithoutData
+  declare export function select(element: Element): SelectWithoutData
   declare export function selectAll(selector: string): SelectWithoutData
 }

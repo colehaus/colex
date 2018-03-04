@@ -26,6 +26,7 @@
     "jStat": "^1.7.1",
     "jquery": "^3.3.1",
     "jquery-flot": "^0.8.3",
+    "kernel-smooth": "^0.2.3",
     "sanctuary": "^0.14.1"
   },
   "scripts": {

@@ -67,7 +67,7 @@ const handleEvent = (event: Event) => (resolve: Function, reject: Function) => {
   }
 }
 
-const choose = (ev: JQueryEventObject) => {
+const choose = (ev: JQueryMouseEventObject) => {
   const el = $(ev.target)
   S.map(
     contentTree => {

@@ -45,6 +45,7 @@ module.exports = {
     })
   ].concat(uglify),
   entry: {
+    draw: './custom-elements/draw.wp.es.js',
     quorum: './quorum.wp.es.js',
     'custom-elements': './custom-elements.wp.es.js'
   },

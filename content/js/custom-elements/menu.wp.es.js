@@ -110,7 +110,7 @@ const handleEvent = (event: Event) => {
   }
 }
 
-const toggleMenu = (ev: JQueryEventObject) => {
+const toggleMenu = (ev: JQueryMouseEventObject) => {
   // Menu shouldn't popup when clicking on interactive element
   const isInter = [
     'TEXTAREA',

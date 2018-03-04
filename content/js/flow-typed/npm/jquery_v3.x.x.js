@@ -2016,14 +2016,14 @@ declare class JQuery {
    *
    * @param eventData An object containing data that will be passed to the event handler.
    */
-  click(handler: (eventObject: JQueryEventObject) => any): JQuery;
+  click(handler: (eventObject: JQueryMouseEventObject) => any): JQuery;
   /**
    * Bind an event handler to the "click" JavaScript event
    *
    * @param eventData An object containing data that will be passed to the event handler.
    * @param handler A function to execute each time the event is triggered.
    */
-  click(eventData: any, handler: (eventObject: JQueryEventObject) => any): JQuery;
+  click(eventData: any, handler: (eventObject: JQueryMouseEventObject) => any): JQuery;
 
   /**
    * Trigger the "dblclick" event on an element.
