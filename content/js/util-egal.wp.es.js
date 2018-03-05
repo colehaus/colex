@@ -12,6 +12,7 @@ import vegaEmbed from 'vega-lib-embed'
 import { create, env } from 'sanctuary'
 
 import { documentReadyPromise } from 'libs/util'
+// eslint-disable-next-line no-unused-vars
 import type { Box } from 'custom-elements/draw'
 import { setHandlers } from 'custom-elements/draw'
 
@@ -28,7 +29,6 @@ const maxIncome = defaultIncomeDistributionFn(percentileDomain[1])
 const incomeDomain = [minIncome, maxIncome]
 const defaultUtilityOfMarginalDollar = nerd(`1 - d/${maxIncome}`)
 const defaultUtilityOfMarginalDollarFn = defaultUtilityOfMarginalDollar.buildFunction()
-const minUtility = defaultUtilityOfMarginalDollarFn(maxIncome)
 const maxUtility = defaultUtilityOfMarginalDollarFn(minIncome)
 
 const values = ([minDomain, maxDomain]: [number, number], xKey: string, yKey: string, stepSize: ?number) => (fn: number => number, series: ?string) =>
@@ -36,9 +36,9 @@ const values = ([minDomain, maxDomain]: [number, number], xKey: string, yKey: st
   .map(x => stepSize == null ? x : x * stepSize)
   .map(x => {
     return (
-      series == null ?
-        { [xKey]: x, [yKey]: fn(x) } :
-        { [xKey]: x, [yKey]: fn(x), series }
+      series == null
+        ? { [xKey]: x, [yKey]: fn(x) }
+        : { [xKey]: x, [yKey]: fn(x), series }
     )
   })
 
@@ -97,7 +97,7 @@ const chartSpecBoilerplate = (elWidth: number) => {
 
 const chartOpts = { renderer: 'svg', actions: false }
 
-const mountMarginalUtility= () => {
+const mountMarginalUtility = () => {
   const id = '#marginal-utility'
   const chart = {
     ...chartSpecBoilerplate($(id).width()),
@@ -114,7 +114,7 @@ const mountMarginalUtility= () => {
   return stream
 }
 
-const mountUtilityDistribution= () => {
+const mountUtilityDistribution = () => {
   const id = '#utility-distribution'
   const chart = {
     ...chartSpecBoilerplate($(id).width()),
@@ -128,7 +128,7 @@ const mountUtilityDistribution= () => {
       encoding: {
         x: { field: 'percentile', type: q },
         y: { field: 'utility', type: q, axis: { minExtent: 40 } },
-        color: { field: 'series', type: 'nominal' },
+        color: { field: 'series', type: 'nominal' }
       }
     }, {
       mark: 'rule',
