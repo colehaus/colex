@@ -16,6 +16,9 @@
 @mixin font-x-small {
     font-size: x-small;
 }
+@mixin font-small {
+    font-size: small;
+}
 @mixin font-default {
     font-family: 'Open Sans', sans-serif;
 }

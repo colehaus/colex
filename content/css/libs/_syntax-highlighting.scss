@@ -65,7 +65,7 @@ pre.example::before {
 }
 pre.sourceCode, pre.example {
     @include background-color-dark;
-    @include font-smaller;
+    @include font-small;
     @include padding-1ex;
     @include border-radius;
 }

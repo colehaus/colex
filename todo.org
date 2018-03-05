@@ -11,7 +11,8 @@
   CLOSED: [2018-02-26 Mon 09:15]
 * TODO Query parameter for tree/choose state
 * TODO Remove JS suffix
-* TODO Fix notebook column width
+* DONE Fix notebook column width
+  CLOSED: [2018-03-05 Mon 15:08]
 * TODO Add sitemap
 * TODO Minify CSS
 * TODO Stretchtext
