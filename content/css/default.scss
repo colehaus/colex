@@ -260,6 +260,13 @@ dl.posts > dt {
     @include font-smaller;
     @include light-color-text;
 }
+.skippable::before {
+    content: "Skippable";
+    position: absolute;
+    @include font-x-small;
+    @include weight-light;
+    transform: translate(-3ex, 4ex) rotate(-90deg);
+}
 table {
     @include border-spacing-horizontal-1em;
 }

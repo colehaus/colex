@@ -55,7 +55,7 @@ pre.sourceCode::before, pre.example::before {
     position: absolute;
     @include font-x-small;
     @include weight-light;
-    transform: translate(-7ex, 2ex) rotate(90deg);
+    transform: translate(-7ex, 2ex) rotate(-90deg);
 }
 pre.sourceCode::before {
     content: "Source";
