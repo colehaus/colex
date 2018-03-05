@@ -288,7 +288,7 @@ pre.sourceCode::before,pre.example::before{
  position:absolute;
  font-size:x-small;
  font-weight:300;
- transform:translate(-7ex,2ex) rotate(90deg)}
+ transform:translate(-7ex,2ex) rotate(-90deg)}
 
 pre.sourceCode::before{
  content:"Source"}
@@ -331,6 +331,10 @@ article a{
 
 h1>a,h2>a,h3>a,h4>a,h5>a,h6>a{
  border:none}
+
+#article-subtitle{
+ font-variant:small-caps;
+ font-weight:400}
 
 hr{
  margin-left:0;
@@ -386,12 +390,18 @@ blockquote.epigraph{
 hr.references{
  width:60%}
 
-figure>img{
+figure{
+ margin:0}
+ figure>img{
  width:100%}
-figure>figcaption{
+ figure>figcaption{
  margin-left:2em;
  margin-right:2em;
  font-size:smaller}
+ figure>figcaption:nth-child(1){
+ margin-bottom:1ex}
+ figure>figcaption:nth-child(2){
+ margin-top:1ex}
 
 
 
@@ -541,3 +551,22 @@ dl.posts>dt{
 
 .mark-line>path:hover{
  opacity:1!important}
+
+.skippable{
+ font-weight:300;
+ font-size:smaller;
+ color:#443c56}
+
+.skippable::before{
+ content:"Skippable";
+ position:absolute;
+ font-size:x-small;
+ font-weight:300;
+ transform:translate(-3ex,4ex) rotate(-90deg)}
+
+table{
+ border-collapse:separate;
+ border-spacing:1em 0}
+
+thead>tr:nth-of-type(2){
+ font-size:smaller}
