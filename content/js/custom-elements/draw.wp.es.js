@@ -7,31 +7,48 @@ import kernel from 'kernel-smooth'
 import { create, env } from 'sanctuary'
 const S = create({checkTypes: false, env})
 
-const setHandlers = (_, drawEl) => {
+export type Box = {
+  width: number,
+  left: number,
+  top: number,
+  height: number
+}
+
+const setHandlers = (drawEl: HTMLElement, box: Box, callback: ?((number => number)) => void) => {
   let points = []
-  d3.select(drawEl).select('svg').call(draw(points))
+  d3.select(drawEl).select('svg').call(draw(points, box, callback))
   $(drawEl).children('button').click(clear(points))
 }
 
-const clear = points => evt => {
+const clear = (points: Array<Array<[number, number]>>) => (evt: Event) => {
   points.length = 0
-  const svg = $(evt.currentTarget).parent().children('svg')[0]
+  const svg = $(evt.currentTarget).closest('.draw').find('svg')[0]
   d3.select(svg).selectAll('path').remove()
 }
 
-const interpolate = (selection) => (points) => {
+// `Box` allows us to specify some zone that specifies the domain and range (in pixels) of our interpolated function. i.e. Drawing at the lower left corner of `Box` is (0, 0) instead of some coordinate relative to the SVG origin.
+const interpolate = (selection: SelectWithoutData, box: Box, callback: ?((number => number) => void)) => (points: Array<[number, number]>) => {
   selection
-    .select('.interpolated')
+    .selectAll('path:not(.draw-input)')
     .remove()
-  const func = kernel.regression(S.map(p => p[0])(points), S.map(p => p[1])(points), kernel.fun.gaussian, 10)
-  const interpolatedPoints = S.map(x => [x, func(x)])(S.range(0, selection.node().getBoundingClientRect().width))
-  selection
-    .append('path')
-    .attr('d', d3.line()(interpolatedPoints))
-    .classed('interpolated', true)
+
+  const scaleX = d3.scaleLinear().domain([box.left, box.left + box.width]).range([0, box.width])
+  const scaleY = d3.scaleLinear().domain([box.height + box.top, box.top]).range([0, box.height])
+  const func = kernel.regression(S.map(p => scaleX(p[0]))(points), S.map(p => scaleY(p[1]))(points), kernel.fun.gaussian, 10)
+  const interpolatedPoints = S.map(x => [scaleX.invert(x), scaleY.invert(func(x))])(S.range(0, box.width))
+
+  if (interpolatedPoints.every(([x, y]) => !Number.isNaN(x) && !Number.isNaN(y))) {
+    if (callback != null) {
+      callback(func)
+    }
+    selection
+      .append('path')
+      .attr('d', d3.line()(interpolatedPoints))
+      .classed('interpolated', true)
+  }
 }
 
-const draw = function (points) { return function (selection) {
+const draw = function (points: Array<Array<[number, number]>>, box: Box, callback: ?((number => number) => void)) { return function (selection: SelectWithoutData) {
   let down = false
   let path
   let currentPoints
@@ -48,7 +65,7 @@ const draw = function (points) { return function (selection) {
     .on('mouseup', function(){
       down = false
       points.push(currentPoints)
-      interpolate(selection)(S.join(points))
+      interpolate(selection, box, callback)(S.join(points))
     })
     .on('mousemove', function(){
       if (down) {
@@ -58,5 +75,4 @@ const draw = function (points) { return function (selection) {
     })
 }}
 
-$('.draw').each(setHandlers)
-
+export { setHandlers }

@@ -1,9 +1,14 @@
 @import 'libs/colors';
 @import 'libs/primitives/borders';
+@import 'libs/primitives/spacing';
 
 .draw {
     @include border-none;
-    > svg > path {
+    cursor: crosshair;
+    button {
+        @include margin-horizontal-3em;
+    }
+    svg > path {
         fill: none;
         stroke-width: 2;
         &.draw-input {

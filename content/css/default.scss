@@ -112,12 +112,19 @@ hr.references {
     @include width-60;
 }
 figure {
+    @include margin-none;
     > img {
         @include width-full;
     }
     > figcaption {
         @include margin-horizontal-2em;
         @include font-smaller;
+        &:nth-child(1) {
+            @include margin-bottom-1ex;
+        }
+        &:nth-child(2) {
+            @include margin-top-1ex;
+        }
     }
 }
 

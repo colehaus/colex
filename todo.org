@@ -9,9 +9,12 @@
 * TODO Set up vega to use colex color schemes
 * DONE Try out algebrite
   CLOSED: [2018-02-26 Mon 09:15]
+* TODO Query parameter for tree/choose state
+* TODO Remove JS suffix
 * TODO Fix notebook column width
 * TODO Add sitemap
 * TODO Minify CSS
+* TODO Stretchtext
 * TODO Archive links
 ** TODO http://www.thomaschermack.com/Thomas_Chermack_-_Scenario_Planning/Research_files/Chermack%282008%29EffectsofSPonDM.pdf 404
 ** http://www.econ.brown.edu/1996/pdfs/96-21.pdf 301

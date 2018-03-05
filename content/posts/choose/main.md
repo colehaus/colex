@@ -114,8 +114,6 @@ text.](/images/choose/or.svg)
 
 <figure>
   <img id="sidenote-img" src="/images/choose/sidenote.svg" alt="Sidenote graph">
-  <figcaption>
-  </figcaption>
 </figure>
 
 # Future work

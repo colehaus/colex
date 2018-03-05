@@ -23,11 +23,15 @@
   "dependencies": {
     "ascii-string-split": "^1.0.0",
     "d3": "^5.0.0-rc.3",
+    "flyd": "^0.2.6",
     "jStat": "^1.7.1",
     "jquery": "^3.3.1",
     "jquery-flot": "^0.8.3",
     "kernel-smooth": "^0.2.3",
-    "sanctuary": "^0.14.1"
+    "nerdamer": "^0.7.16",
+    "numbers": "^0.6.0",
+    "sanctuary": "^0.14.1",
+    "vega-lib-embed": "^3.0.1"
   },
   "scripts": {
     "build": "webpack"
