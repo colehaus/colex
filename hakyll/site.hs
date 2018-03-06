@@ -26,8 +26,9 @@ import Text.Pandoc.Options
 import Text.Pandoc.Walk (query, walk, walkM)
 
 import Hakyll
-       hiding (load, match, loadAndApplyTemplate, loadAll,
-               loadAllSnapshots, loadBody, readPandocBiblio)
+       hiding (create, load, match, loadAndApplyTemplate, loadAll,
+               loadAllSnapshots, loadBody, makePatternDependency,
+               readPandocBiblio)
 import qualified Hakyll
 import Hakyll.Core.Compiler.Internal (compilerUnsafeIO)
 import HakyllExtension
@@ -55,7 +56,7 @@ main =
     let defaultTemplate = narrowEx templates "templates/default.html"
     csl <- matchIdentifier @"csl" "misc/biblio.csl" $ compile cslCompiler
     bib <- matchIdentifier @"bib" "misc/biblio.bib" $ compile biblioCompiler
-    tags <- buildTags (mkPostPat "posts") (fromCapture "posts/tag/*/index.html")
+    tags <- buildTags (mkPostPat "posts") (fromCapture "tag/*/index.html")
     (postPat, _, _, abstractPat) <-
       buildPosts
         defaultTemplate
@@ -72,41 +73,49 @@ main =
         csl
         tags
         "drafts"
-    buildAtom
-      mathRenderMethod
-      (destinationDirectory hakyllConfig)
-      webHost
-      postPat
-      bib
-      csl
+    feedIdent <-
+      buildAtom
+        mathRenderMethod
+        (destinationDirectory hakyllConfig)
+        webHost
+        postPat
+        bib
+        csl
     buildTagPages defaultTemplate (narrowEx templates "templates/tag.html") tags
-    pages <-
+    paginate <-
       buildPaginateWith
         ((paginateOverflow perPage <$>) . sortChronological)
         (unBlessedPattern postPat)
-        (fromCapture "posts/page/*/index.html" . show)
+        (fromCapture "page/*/index.html" . show)
     buildPages
       defaultTemplate
       (narrowEx templates "templates/index.html")
       (narrowEx templates "templates/index-content.html")
       abstractPat
       tags
-      pages
-    buildTagIndex
-      defaultTemplate
-      (narrowEx templates "templates/tags.html")
-      tags
-    buildIndex defaultTemplate (narrowEx templates "templates/index.html") pages
-    _ <- match "css/libs/_*.scss" $ compile copyFileCompiler
-    _ <- buildCss
-    buildArchive
-      postPat
-      defaultTemplate
-      (narrowEx templates "templates/archive.html")
-      tags
-    _ <- match "robots.txt" $ do
-      route idRoute
-      compile copyFileCompiler
+      paginate
+    tagIndexIdent <-
+      buildTagIndex
+        defaultTemplate
+        (narrowEx templates "templates/tags.html")
+        tags
+    indexIdent <-
+      buildIndex
+        defaultTemplate
+        (narrowEx templates "templates/index.html")
+        paginate
+    scssPat <- match "css/libs/**_*.scss" $ compile copyFileCompiler
+    _ <- buildCss scssPat
+    archiveIdent <-
+      buildArchive
+        postPat
+        defaultTemplate
+        (narrowEx templates "templates/archive.html")
+        tags
+    _ <-
+      match "robots.txt" $ do
+        route idRoute
+        compile copyFileCompiler
     _ <-
       match "images/**" $ do
         route idRoute
@@ -125,7 +134,48 @@ main =
       match ("js/cooperatives/vendoredOut/*.js" .||. "js/dist/bibliometric.js") $ do
         fileInDirectoryRoute "js"
         compile uglifyCompiler
+    _ <-
+      buildSitemap
+        (narrowEx templates "templates/sitemap.xml")
+        postPat
+        feedIdent
+        tagIndexIdent
+        indexIdent
+        archiveIdent
     pure ()
+
+prodHost :: String
+prodHost = "https://colehaus.github.io/ColEx"
+
+buildSitemap
+  :: Blessed "template" Identifier
+  -> Blessed "post" Pattern
+  -> Blessed "feed" Identifier
+  -> Blessed "index" Identifier
+  -> Blessed "index" Identifier
+  -> Blessed "index" Identifier
+  -> Rules (Blessed "map" Identifier)
+buildSitemap sitemapTemplate postsPat feedIdent tagIndexIdent indexIdent archiveIdent =
+  (head <$>) . create ["sitemap.xml"] $ do
+    route idRoute
+    compile $ do
+      posts <- recentFirst =<< loadAll postsPat
+      feed <- load feedIdent
+      tagIndex <- load tagIndexIdent
+      index <- load indexIdent
+      archive <- load archiveIdent
+      tags <- Hakyll.loadAll "tag/*/index.html"
+      pages <- Hakyll.loadAll "page/*/index.html"
+      makeItem mempty >>=
+        loadAndApplyTemplate
+          sitemapTemplate
+          (mconcat
+             [ listField
+                 "entries"
+                 (postCtx <> constField "host" prodHost)
+                 (pure $ feed : tagIndex : index : archive : posts <> tags <> pages)
+             , defaultContext
+             ])
 
 uglifyCompiler :: Compiler (Item String)
 uglifyCompiler =
@@ -183,9 +233,9 @@ buildTagIndex
   :: Blessed "template" Identifier
   -> Blessed "template" Identifier
   -> Tags
-  -> Rules ()
+  -> Rules (Blessed "index" Identifier)
 buildTagIndex defaultTemplate tagIndexTemplate tags =
-  create ["tags/index.html"] $ do
+  (head <$>) . create ["tags/index.html"] $ do
     route idRoute
     compile $ do
       let ctx =
@@ -199,9 +249,9 @@ buildIndex
   :: Blessed "template" Identifier
   -> Blessed "template" Identifier
   -> Paginate
-  -> Rules ()
+  -> Rules (Blessed "index" Identifier)
 buildIndex defaultTemplate indexTemplate pages =
-  create ["index.html"] $ do
+  (head <$>) . create ["index.html"] $ do
     route idRoute
     compile $
       let ctx =
@@ -277,9 +327,9 @@ buildAtom
   -> Blessed "post" Pattern
   -> Blessed "bib" Identifier
   -> Blessed "csl" Identifier
-  -> Rules ()
+  -> Rules (Blessed "feed" Identifier)
 buildAtom renderMethod destinationDir webhost postPat bibIdent cslIdent =
-  create ["atom.xml"] $ do
+  (head <$>) . create ["atom.xml"] $ do
     route idRoute
     compile $ do
       bib <- load bibIdent
@@ -352,10 +402,10 @@ buildArchive
   -> Blessed "template" Identifier
   -> Blessed "template" Identifier
   -> Tags
-  -> Rules ()
+  -> Rules (Blessed "index" Identifier)
 buildArchive postPat defaultTemplate archiveTemplate tags =
-  create ["archive"] $ do
-    route $ constRoute "posts/index.html"
+  (head <$>) . create ["posts/index.html"] $ do
+    route idRoute
     compile $
       let ctx =
             constField "title" "Archive" <>
@@ -368,9 +418,9 @@ buildArchive postPat defaultTemplate archiveTemplate tags =
       in makeItem mempty >>= loadAndApplyTemplate archiveTemplate ctx >>=
          finish defaultTemplate ctx
 
-buildCss :: Rules (Blessed "css" Pattern)
-buildCss = do
-  includes <- makePatternDependency "css/libs/**_*.scss"
+buildCss :: Blessed "scss" Pattern -> Rules (Blessed "css" Pattern)
+buildCss scssPat = do
+  includes <- makePatternDependency scssPat
   rulesExtraDependencies [includes] $
     match "css/*.scss" $ do
       route $ setExtension "css"
@@ -393,14 +443,14 @@ buildPosts defaultTemplate postTemplate bibIdent cslIdent tags dir = do
   overlayPat <-
     match (fromGlob $ dir <> "/*/overlay.md") . compile $
     pandocCompilerWith readerOpt writerOpt
-  overlays <- makePatternDependency (fromGlob $ dir <> "/*/overlay.md")
+  overlays <- makePatternDependency overlayPat
   abstractPat <-
     match (fromGlob $ dir <> "/*/abstract.md") . compile $
     pandocCompilerWith readerOpt writerOpt
-  abstracts <- makePatternDependency (fromGlob $ dir <> "/*/abstract.md")
+  abstracts <- makePatternDependency abstractPat
   warningsPat <-
     match (fromGlob $ dir <> "/*/warnings.md") $ compile getResourceBody
-  warnings <- makePatternDependency (fromGlob $ dir <> "/*/warnings.md")
+  warnings <- makePatternDependency warningsPat
   postPat <-
     rulesExtraDependencies [overlays, warnings, abstracts] $
     match (mkPostPat dir) $ do

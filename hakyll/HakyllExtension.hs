@@ -38,6 +38,9 @@ matchIdentifier :: Identifier -> Rules () -> Rules (Blessed ty Identifier)
 matchIdentifier ident rules =
   MkBlessedIdentifier ident <$ Hakyll.match (identifierToPattern ident) rules
 
+create :: [Identifier] -> Rules () -> Rules [Blessed ty Identifier]
+create idents rules =  MkBlessedIdentifier <$> idents <$ Hakyll.create idents rules
+
 identifierToPattern :: Identifier -> Pattern
 identifierToPattern = fromGlob . toFilePath
 
@@ -66,3 +69,8 @@ loadAllSnapshots
   :: (Typeable a, Binary a)
   => Blessed ty Pattern -> Snapshot -> Compiler [Item a]
 loadAllSnapshots = Hakyll.loadAllSnapshots . unBlessedPattern
+
+makePatternDependency
+  :: (MonadMetadata m)
+  => Blessed ty Pattern -> m Dependency
+makePatternDependency = Hakyll.makePatternDependency . unBlessedPattern
