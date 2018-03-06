@@ -15,13 +15,12 @@ import Data.Maybe (fromMaybe)
 import Data.Monoid (mconcat, mempty, (<>))
 import Data.Hashable (hash)
 import System.Directory
-       (removeFile, doesPathExist, createDirectoryIfMissing, findExecutable)
+       (doesPathExist, createDirectoryIfMissing, findExecutable)
 import System.Environment (lookupEnv)
-import System.Exit (ExitCode(..))
 import System.FilePath
        (joinPath, splitPath, takeBaseName, takeDirectory, takeFileName,
         replaceExtension)
-import System.Process (readProcessWithExitCode, readProcess)
+import System.Process (readProcess)
 import Text.Pandoc.Definition
 import Text.Pandoc.Options
 import Text.Pandoc.Walk (query, walk, walkM)
@@ -293,35 +292,26 @@ stripMacro b = b
 
 data MathRenderMethod
   = MathjaxNode
+  | FeedlyCompatible
   | Mock
   deriving (Read)
 
 renderMath :: MathRenderMethod -> FilePath -> String -> Inline -> Compiler Inline
 renderMath MathjaxNode destinationDir macros (Math typ math) = do
-  alreadyRendered <-
-    compilerUnsafeIO . doesPathExist $ destPng
-  unless alreadyRendered $ do
-    writeAsSvgFile destSvg macros typ math
-    svg2Png destSvg destPng
-    compilerUnsafeIO $ removeFile destSvg
+  alreadyRendered <- compilerUnsafeIO . doesPathExist $ destSvg
+  unless alreadyRendered $ writeAsSvgFile destSvg macros typ math
   pure $ Image mempty mempty (destination "png", math)
   where
     destSvg = destinationDir <> destination "svg"
-    destPng = destinationDir <> destination "png"
+    destination ext = "/images/latex/" <> show (hash math) <> "." <> ext
+renderMath FeedlyCompatible destinationDir macros (Math DisplayMath math) = do
+  alreadyRendered <- compilerUnsafeIO . doesPathExist $ destSvg
+  unless alreadyRendered $ writeAsSvgFile destSvg macros DisplayMath math
+  pure $ Image mempty mempty (destination "png", math)
+  where
+    destSvg = destinationDir <> destination "svg"
     destination ext = "/images/latex/" <> show (hash math) <> "." <> ext
 renderMath _ _ _ i = pure i
-
-svg2Png :: FilePath -> FilePath -> Compiler ()
-svg2Png svg png =
-  compilerUnsafeIO (findExecutable "rsvg-convert") >>= \case
-    Nothing -> error "Couldn't find `rsvg-convert`"
-    Just convert -> do
-      debugCompiler $
-        "Calling " <> convert <> " " <> svg <> " " <> png
-      (exit, stdout, stderr) <- compilerUnsafeIO $ readProcessWithExitCode convert [svg,"-o", png] mempty
-      case exit of
-        ExitSuccess -> pure ()
-        ExitFailure n -> error $ show (n, stdout, stderr)
 
 writeAsSvgFile :: FilePath -> String -> MathType -> String -> Compiler ()
 writeAsSvgFile destination macros typ math =
