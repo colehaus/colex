@@ -370,7 +370,7 @@ buildArchive postPat defaultTemplate archiveTemplate tags =
 
 buildCss :: Rules (Blessed "css" Pattern)
 buildCss = do
-  includes <- makePatternDependency "css/libs/_*.scss"
+  includes <- makePatternDependency "css/libs/**_*.scss"
   rulesExtraDependencies [includes] $
     match "css/*.scss" $ do
       route $ setExtension "css"
@@ -433,7 +433,7 @@ compileScss = do
   let dir = takeDirectory . toFilePath . itemIdentifier $ i
   fmap compressCss <$>
     withItemBody
-      (unixFilter "scss" ["--sourcemap=none", "--trace", "-I", dir])
+      (unixFilter "scss" ["--sourcemap=none", "--style=compressed", "--trace", "-I", dir])
       i
 
 mkPostPat :: String -> Pattern
