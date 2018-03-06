@@ -16,6 +16,7 @@
         pkgs.purescript
         pkgs.nodePackages.pulp
 
+        pkgs.imagemagick
         pkgs.sass
         npmDependencies."mathjax-node-cli-^1.0.0"
 

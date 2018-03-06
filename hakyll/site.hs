@@ -17,10 +17,11 @@ import Data.Hashable (hash)
 import System.Directory
        (doesPathExist, createDirectoryIfMissing, findExecutable)
 import System.Environment (lookupEnv)
+import System.Exit (ExitCode(..))
 import System.FilePath
        (joinPath, splitPath, takeBaseName, takeDirectory, takeFileName,
         replaceExtension)
-import System.Process (readProcess)
+import System.Process (readProcessWithExitCode, readProcess)
 import Text.Pandoc.Definition
 import Text.Pandoc.Options
 import Text.Pandoc.Walk (query, walk, walkM)
@@ -285,6 +286,11 @@ collectMacros (Div (_, classes, _) [Para [Math DisplayMath macros]])
   | "macros" `elem` classes = [macros]
 collectMacros _ = mempty
 
+stripMacro :: Block -> Block
+stripMacro (Div (_, classes, _) _)
+  | "macros" `elem` classes = Null
+stripMacro b = b
+
 data MathRenderMethod
   = MathjaxNode
   | Mock
@@ -293,13 +299,28 @@ data MathRenderMethod
 renderMath :: MathRenderMethod -> FilePath -> String -> Inline -> Compiler Inline
 renderMath MathjaxNode destinationDir macros (Math typ math) = do
   alreadyRendered <-
-    compilerUnsafeIO . doesPathExist $ destinationDir <> destination
-  unless alreadyRendered $
-    writeAsSvgFile (destinationDir <> destination) macros typ math
-  pure $ Image mempty mempty (destination, math)
+    compilerUnsafeIO . doesPathExist $ destinationDir <> destination "png"
+  unless alreadyRendered $ do
+    writeAsSvgFile destSvg macros typ math
+    svg2Png destSvg destPng
+  pure $ Image mempty mempty (destination "png", math)
   where
-    destination = "/images/latex/" <> show (hash math) <> ".svg"
+    destSvg = destinationDir <> destination "svg"
+    destPng = destinationDir <> destination "png"
+    destination ext = "/images/latex/" <> show (hash math) <> "." <> ext
 renderMath _ _ _ i = pure i
+
+svg2Png :: FilePath -> FilePath -> Compiler ()
+svg2Png svg png =
+  compilerUnsafeIO (findExecutable "convert") >>= \case
+    Nothing -> error "Couldn't find `convert`"
+    Just convert -> do
+      debugCompiler $
+        "Calling " <> convert <> " " <> svg <> " " <> png
+      (exit, stdout, stderr) <- compilerUnsafeIO $ readProcessWithExitCode convert [svg, png] mempty
+      case exit of
+        ExitSuccess -> pure ()
+        ExitFailure n -> error $ show (n, stdout, stderr)
 
 writeAsSvgFile :: FilePath -> String -> MathType -> String -> Compiler ()
 writeAsSvgFile destination macros typ math =
@@ -312,7 +333,7 @@ writeAsSvgFile destination macros typ math =
         show (inlineFlag <> [macros <> math])
       svg <-
         compilerUnsafeIO $
-        readProcess tex2svg (inlineFlag <> ["\\phantom{}" <> macros <> math]) []
+        readProcess tex2svg (inlineFlag <> ["\\phantom{}" <> macros <> math]) mempty
       compilerUnsafeIO $ writeFile destination svg
   where
     inlineFlag =
@@ -349,7 +370,8 @@ buildAtom renderMethod destinationDir webhost postPat bibIdent cslIdent =
         (renderMath
            renderMethod
            destinationDir
-           (unlines . query collectMacros $ p))
+           (unlines . query collectMacros $ p)) .
+      walk stripMacro $
         p
     htmlTransform =
       pure .

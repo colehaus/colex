@@ -23,6 +23,8 @@
 ** TODO http://www.thomaschermack.com/Thomas_Chermack_-_Scenario_Planning/Research_files/Chermack%282008%29EffectsofSPonDM.pdf 404
 ** http://www.econ.brown.edu/1996/pdfs/96-21.pdf 301
 * TODO Try pngs on RSS
+* TODO Add sitemap to robots.txt
+* TODO Delete latex svgs
 * TODO Regularize a la stimulus
 * DONE Use nix overrides to for updated versions of hakyll and pandoc
   CLOSED: [2018-02-20 Tue 18:07]
