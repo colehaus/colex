@@ -21,7 +21,7 @@
       nativeBuildInputs = [
         hakyll
         pkgs.sass
-        pkgs.imagemagick
+        pkgs.librsvg
         npmDependencies."mathjax-node-cli-^1.0.0"
         npmDependencies."uglify-js-^3.3.10"
       ];

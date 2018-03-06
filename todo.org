@@ -24,7 +24,9 @@
 ** http://www.econ.brown.edu/1996/pdfs/96-21.pdf 301
 * TODO Try pngs on RSS
 * TODO Add sitemap to robots.txt
-* TODO Delete latex svgs
+* DONE Delete latex svgs
+  CLOSED: [2018-03-06 Tue 10:15]
+* TODO Clear old files during release
 * TODO Regularize a la stimulus
 * DONE Use nix overrides to for updated versions of hakyll and pandoc
   CLOSED: [2018-02-20 Tue 18:07]

@@ -15,7 +15,7 @@ import Data.Maybe (fromMaybe)
 import Data.Monoid (mconcat, mempty, (<>))
 import Data.Hashable (hash)
 import System.Directory
-       (doesPathExist, createDirectoryIfMissing, findExecutable)
+       (removeFile, doesPathExist, createDirectoryIfMissing, findExecutable)
 import System.Environment (lookupEnv)
 import System.Exit (ExitCode(..))
 import System.FilePath
@@ -299,10 +299,11 @@ data MathRenderMethod
 renderMath :: MathRenderMethod -> FilePath -> String -> Inline -> Compiler Inline
 renderMath MathjaxNode destinationDir macros (Math typ math) = do
   alreadyRendered <-
-    compilerUnsafeIO . doesPathExist $ destinationDir <> destination "png"
+    compilerUnsafeIO . doesPathExist $ destPng
   unless alreadyRendered $ do
     writeAsSvgFile destSvg macros typ math
     svg2Png destSvg destPng
+    compilerUnsafeIO $ removeFile destSvg
   pure $ Image mempty mempty (destination "png", math)
   where
     destSvg = destinationDir <> destination "svg"
@@ -312,12 +313,12 @@ renderMath _ _ _ i = pure i
 
 svg2Png :: FilePath -> FilePath -> Compiler ()
 svg2Png svg png =
-  compilerUnsafeIO (findExecutable "convert") >>= \case
-    Nothing -> error "Couldn't find `convert`"
+  compilerUnsafeIO (findExecutable "rsvg-convert") >>= \case
+    Nothing -> error "Couldn't find `rsvg-convert`"
     Just convert -> do
       debugCompiler $
         "Calling " <> convert <> " " <> svg <> " " <> png
-      (exit, stdout, stderr) <- compilerUnsafeIO $ readProcessWithExitCode convert [svg, png] mempty
+      (exit, stdout, stderr) <- compilerUnsafeIO $ readProcessWithExitCode convert [svg,"-o", png] mempty
       case exit of
         ExitSuccess -> pure ()
         ExitFailure n -> error $ show (n, stdout, stderr)
@@ -416,7 +417,7 @@ feedConfig
   , feedDescription = "A weblog"
   , feedAuthorName = "Cole Haus"
   , feedAuthorEmail = "colehaus@cryptolab.net"
-  , feedRoot = "https://colehaus.github.io/ColEx/"
+  , feedRoot = "https://colehaus.github.io/ColEx"
   }
 
 buildArchive
