@@ -29,7 +29,7 @@
       inherit bibliometric;
       LC_ALL = "en_US.UTF-8";
       WEB_HOST = "https://colehaus.github.io/ColEx";
-      MATH_RENDER_METHOD = "MathjaxNode";
+      MATH_RENDER_METHOD = "FeedlyCompatible";
       # TODO Remove `rm` once we reorganize source directory
       patchPhase = ''
         rm -rf js/dist
