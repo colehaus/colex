@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
     <title>Collectively Exhaustive</title>
-    <link href="https://colehaus.github.io/ColEx//atom.xml" rel="self" />
-    <link href="https://colehaus.github.io/ColEx/" />
-    <id>https://colehaus.github.io/ColEx//atom.xml</id>
+    <link href="https://colehaus.github.io/ColEx/atom.xml" rel="self" />
+    <link href="https://colehaus.github.io/ColEx" />
+    <id>https://colehaus.github.io/ColEx/atom.xml</id>
     <author>
         <name>Cole Haus</name>
         <email>colehaus@cryptolab.net</email>
     </author>
-    <updated>2015-04-05T00:00:00Z</updated>
+    <updated>2015-04-06T00:00:00Z</updated>
     <entry>
     <title>The scarcity of cooperatives</title>
-    <link href="https://colehaus.github.io/ColEx//posts/cooperatives/" />
-    <id>https://colehaus.github.io/ColEx//posts/cooperatives/</id>
-    <published>2015-04-05T00:00:00Z</published>
-    <updated>2015-04-05T00:00:00Z</updated>
+    <link href="https://colehaus.github.io/ColEx/posts/cooperatives/" />
+    <id>https://colehaus.github.io/ColEx/posts/cooperatives/</id>
+    <published>2015-04-06T00:00:00Z</published>
+    <updated>2015-04-06T00:00:00Z</updated>
     <summary type="html"><![CDATA[<h1 id="introduction">Introduction</h1>
 <p>The <a href="#cooperatives-map" id="predominate" class="arg-map">predominance of capital-managed firms (CMF) over worker cooperatives (WC)</a> remains an open question in economics. Early explanations relied on a hypothesized comparative inefficiency of cooperatives. Subsequent empirical study has shown that <a href="#cooperatives-map" id="efficient" class="arg-map">cooperatives are at least as efficient as capital-managed firms</a> <span class="citation" data-cites="doucouliagos95">(Doucouliagos 1995)</span> <span class="citation" data-cites="estrin87">(Estrin, Jones, and Svejnar 1987)</span> <span class="citation" data-cites="craig95">(Craig et al. 1995)</span> <span class="citation" data-cites="levine90">(Levine 1990)</span>.</p>
 <p>A profusion of hypotheses has since arisen. <span class="citation" data-cites="dow99">(Dow and Putterman 1999)</span> offers a good summary (though the term must be used loosely for a 126-page paper). One that I have not seen presented is: <a href="#cooperatives-map" id="hypothesis" class="arg-map">capital-managed firms predominate because capitalists have a greater incentive to expand than worker-owners in worker cooperatives</a>. Roughly, for each market segment a capitalist expands into, their income increases by capital’s share of the new segment’s profit. For each market segment a cooperative expands into, the expanders receive no direct remuneration (supposing that the new market segment is also a cooperative). Any new profit goes to worker-owners in the new segment.</p>
@@ -106,8 +106,8 @@ document.addEventListener("DOMContentLoaded", function() {
 </entry>
 <entry>
     <title>Graph of contents</title>
-    <link href="https://colehaus.github.io/ColEx//posts/graph-of-contents/" />
-    <id>https://colehaus.github.io/ColEx//posts/graph-of-contents/</id>
+    <link href="https://colehaus.github.io/ColEx/posts/graph-of-contents/" />
+    <id>https://colehaus.github.io/ColEx/posts/graph-of-contents/</id>
     <published>2015-03-28T00:00:00Z</published>
     <updated>2015-03-28T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>A <a href="https://en.wikipedia.org/wiki/Table_of_contents">table of contents</a> can provide a useful overview of a document’s content. However, because of its <a href="https://en.wikipedia.org/wiki/Tree_(graph_theory)">limited form</a>, some information about the structure of the document must be omitted.</p>
@@ -123,8 +123,8 @@ document.addEventListener("DOMContentLoaded", function() {
 </entry>
 <entry>
     <title>Toward an alternative bibliometric</title>
-    <link href="https://colehaus.github.io/ColEx//posts/bibliometric/" />
-    <id>https://colehaus.github.io/ColEx//posts/bibliometric/</id>
+    <link href="https://colehaus.github.io/ColEx/posts/bibliometric/" />
+    <id>https://colehaus.github.io/ColEx/posts/bibliometric/</id>
     <published>2015-03-10T00:00:00Z</published>
     <updated>2015-03-10T00:00:00Z</updated>
     <summary type="html"><![CDATA[<h1 id="impact-factor">Impact factor</h1>
@@ -324,8 +324,8 @@ H(A,B,C,D) - \cond{H}{A,B,C,D}{\alpha,\beta,\kappa,\delta} &amp;=
 </entry>
 <entry>
     <title>On casual futurism</title>
-    <link href="https://colehaus.github.io/ColEx//posts/futurism/" />
-    <id>https://colehaus.github.io/ColEx//posts/futurism/</id>
+    <link href="https://colehaus.github.io/ColEx/posts/futurism/" />
+    <id>https://colehaus.github.io/ColEx/posts/futurism/</id>
     <published>2015-02-17T00:00:00Z</published>
     <updated>2015-02-17T00:00:00Z</updated>
     <summary type="html"><![CDATA[<blockquote>
@@ -440,8 +440,8 @@ The human race, to which so many of my readers belong, has been playing at child
 </entry>
 <entry>
     <title>Choose your own exposition</title>
-    <link href="https://colehaus.github.io/ColEx//posts/choose/" />
-    <id>https://colehaus.github.io/ColEx//posts/choose/</id>
+    <link href="https://colehaus.github.io/ColEx/posts/choose/" />
+    <id>https://colehaus.github.io/ColEx/posts/choose/</id>
     <published>2015-02-01T00:00:00Z</published>
     <updated>2015-02-01T00:00:00Z</updated>
     <summary type="html"><![CDATA[<menu id="state" type="popup">
@@ -522,8 +522,8 @@ First: each person is to have an equal right to the most extensive scheme of equ
 </entry>
 <entry>
     <title>A quorum alternative</title>
-    <link href="https://colehaus.github.io/ColEx//posts/quorum/" />
-    <id>https://colehaus.github.io/ColEx//posts/quorum/</id>
+    <link href="https://colehaus.github.io/ColEx/posts/quorum/" />
+    <id>https://colehaus.github.io/ColEx/posts/quorum/</id>
     <published>2015-01-28T00:00:00Z</published>
     <updated>2015-01-28T00:00:00Z</updated>
     <summary type="html"><![CDATA[<menu id="sample-size" type="popup">
@@ -688,8 +688,8 @@ Before the decision is finalized, however, an observant member notices that the 
 </entry>
 <entry>
     <title>About</title>
-    <link href="https://colehaus.github.io/ColEx//posts/about/" />
-    <id>https://colehaus.github.io/ColEx//posts/about/</id>
+    <link href="https://colehaus.github.io/ColEx/posts/about/" />
+    <id>https://colehaus.github.io/ColEx/posts/about/</id>
     <published>2015-01-18T00:00:00Z</published>
     <updated>2015-01-18T00:00:00Z</updated>
     <summary type="html"><![CDATA[<p>This is a single-author, half-heartedly pseudonymous (the pseudonym being Cole) blog.</p>
