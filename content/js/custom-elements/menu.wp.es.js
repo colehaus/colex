@@ -3,6 +3,9 @@
 
 import $ from 'jquery'
 import {create, env} from 'sanctuary'
+
+import { documentReadyPromise } from 'libs/util'
+
 const S = create({checkTypes: false, env})
 
 const defaultHandlers = (el: JQuery) => {
@@ -131,10 +134,20 @@ const toggleMenu = (ev: JQueryMouseEventObject) => {
   }
 }
 
-$(() => {
+documentReadyPromise.then(() => {
+  const params = new URLSearchParams(location.search)
+  $('menu').each((_, menu_) => {
+    const menu = $(menu_)
+    const label = params.get(menu.attr('id'))
+    if (label != null) {
+      const item = menu.find(`[label="${label}"]`)
+      handleEvent({ tag: 'ITEMSELECT', menu, item })
+    }
+  })
+
   $('[type="menu"]').each((_, el) => {
     $(el).click(toggleMenu)
   })
 })
 
-export default {getMenu, defaultHandlers}
+export default { getMenu, defaultHandlers }

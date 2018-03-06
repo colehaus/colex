@@ -7,7 +7,7 @@ import { interpolateNumber } from 'd3'
 
 import menu from 'custom-elements/menu'
 import sidenote from 'custom-elements/sidenote'
-import { makeAnimationPromise } from 'libs/util'
+import { makeAnimationPromise, documentReadyPromise } from 'libs/util'
 
 const S = create({checkTypes: false, env})
 
@@ -92,7 +92,23 @@ const choose = (ev: JQueryMouseEventObject) => {
 
 const fixTarget = (target: EventTarget) => HTMLElement = (target: any) // eslint-disable-line no-return-assign
 
-$(() => {
+documentReadyPromise.then(() => {
+  const params = new URLSearchParams(location.search)
+  $('[type="menu"]').each((_, menu_) => {
+    const menu = $(menu_)
+    const id = menu.data('menu')
+    const label = params.get(id)
+    if (label != null) {
+      const menuItem = $('#' + id).children(`[label="${label}"]`)
+      const from = menu.children('.open')
+      const to = $(menu.children().get(menuItem.index()))
+      new Promise(handleEvent({ tag: 'INVISIBLEPARENT', from, to })).then(() => {
+        sidenote.setNotes()
+        sidenote.fixNotes()
+      })
+    }
+  })
+
   S.map(el =>
     $(el).click(({pageY, pageX, target}) => {
       menu.getMenu(fixTarget(target))
