@@ -10,7 +10,7 @@ environment=production
 nix-build --out-link colex-result
 git checkout gh-pages
 shopt -s extglob
-rm -r !(colex-result|rollbar-access-token.txt)
+sudo rm -r !(colex-result|rollbar-access-token.txt)
 sudo cp -r colex-result/* .
 git add --interactive
 git diff-index --quiet HEAD || git commit --no-verify --message "Bump"
@@ -21,3 +21,4 @@ curl https://api.rollbar.com/api/1/deploy/ \
      -F revision=$revision \
      -F comment="$comment"
 git checkout master
+sudo rm -r data/ drafts/ images/ js/ page/ posts/ tag/
