@@ -9,6 +9,8 @@ access_token=`cat ./rollbar-access-token.txt`
 environment=production
 nix-build --out-link colex-result
 git checkout gh-pages
+shopt -s extglob
+rm -r !(colex-result|rollbar-access-token.txt)
 sudo cp -r colex-result/* .
 git add --interactive
 git diff-index --quiet HEAD || git commit --no-verify --message "Bump"
