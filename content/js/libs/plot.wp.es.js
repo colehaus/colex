@@ -13,7 +13,7 @@ var yHistLims = function (yss) {
   ]
 }
 var xHistLims = function (xss) {
-    // flatten xs_
+  // flatten xs_
   var xs = [].concat.apply([], xss)
   return [
     jStat.min(xs),

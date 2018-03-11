@@ -154,10 +154,11 @@ const best = ds => {
     progress(0.925)
 
     $('#stat-out').show()
-    plotMcmcHist($('#mean > div'),
-                 plot.twoDArrayCol(chain, 2),
-                 {di: 'BI', comp: 0, xlims: [-1, 1]}
-                )
+    plotMcmcHist(
+      $('#mean > div'),
+      plot.twoDArrayCol(chain, 2),
+      {di: 'BI', comp: 0, xlims: [-1, 1]}
+    )
     progress(0.95)
 
     const a = plot.twoDArrayCol(chain, 0)
@@ -291,7 +292,7 @@ $(() => {
   })
   $('.preview').click(() => { inputGraph() })
 
-// For reasons unkown, setTimeout is required
+  // For reasons unkown, setTimeout is required
   setTimeout(function () { inputGraph() })
   const plotOpts = {
     grid: { show: false },

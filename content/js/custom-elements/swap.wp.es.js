@@ -26,13 +26,14 @@ const swapTranslate = (topEl: JQuery, bottomEl: JQuery) => (resolve: Function, r
   const angle = Math.PI / 4
   const mkTranslator = (trans: number): (number => string) => {
     const startAngle = trans <= 0 ? Math.PI + angle : angle
-    const {center, radius} = circleFromChord(startAngle,
-                                             startAngle - 2 * angle,
-                                             {x: 0, y: 0},
-                                             {x: 0, y: trans})
+    const {center, radius} = circleFromChord(
+      startAngle,
+      startAngle - 2 * angle,
+      {x: 0, y: 0},
+      {x: 0, y: trans})
     return (prog: number): string => {
       const {x, y} = pointOnCircle(center, radius,
-                                   startAngle - angle * 2 * prog)
+        startAngle - angle * 2 * prog)
       return `translate(${x}px, ${-y}px)`
     }
   }
@@ -64,8 +65,8 @@ const swap = function () {
   const selector = '.' + p.attr('class').replace(' ', '.')
   const [top, bottom] =
     (arrow.attr('class') === 'swap-down')
-    ? [p, p.nextAll(selector + ':first')]
-    : [p.prevAll(selector + ':first'), p]
+      ? [p, p.nextAll(selector + ':first')]
+      : [p.prevAll(selector + ':first'), p]
   new Promise(swapTranslate(top, bottom)).then(() => {
     swapDom(top, bottom)
     sidenote.fixNotes()

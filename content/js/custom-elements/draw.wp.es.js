@@ -54,26 +54,26 @@ const draw = function (points: Array<Array<[number, number]>>, box: Box, callbac
     let path
     let currentPoints
     selection
-    .on('mousedown', function () {
-      down = true
-      const point = d3.mouse(this)
-      currentPoints = [point]
-      path = selection
-        .append('path')
-        .attr('d', d3.line()([point, point]))
-        .classed('draw-input', true)
-    })
-    .on('mouseup', function () {
-      down = false
-      points.push(currentPoints)
-      interpolate(selection, box, callback)(S.join(points))
-    })
-    .on('mousemove', function () {
-      if (down) {
-        currentPoints.push(d3.mouse(this))
-        path.attr('d', d3.line()(currentPoints))
-      }
-    })
+      .on('mousedown', function () {
+        down = true
+        const point = d3.mouse(this)
+        currentPoints = [point]
+        path = selection
+          .append('path')
+          .attr('d', d3.line()([point, point]))
+          .classed('draw-input', true)
+      })
+      .on('mouseup', function () {
+        down = false
+        points.push(currentPoints)
+        interpolate(selection, box, callback)(S.join(points))
+      })
+      .on('mousemove', function () {
+        if (down) {
+          currentPoints.push(d3.mouse(this))
+          path.attr('d', d3.line()(currentPoints))
+        }
+      })
   }
 }
 

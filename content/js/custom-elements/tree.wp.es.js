@@ -112,9 +112,9 @@ documentReadyPromise.then(() => {
   S.map(el =>
     $(el).click(({pageY, pageX, target}) => {
       menu.getMenu(fixTarget(target))
-      .offset({top: pageY, left: pageX})
-      .children('ul.menu').children()
-      .off().click(choose)
+        .offset({top: pageY, left: pageX})
+        .children('ul.menu').children()
+        .off().click(choose)
       return false
     })
   )(

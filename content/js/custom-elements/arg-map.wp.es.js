@@ -10,6 +10,12 @@ import * as shapesImport from 'libs/shapes'
 import { uniquify, documentReadyPromise } from 'libs/util'
 const S = create({checkTypes: false, env})
 
+type Shape = 'circle' | 'triangle' | 'diamond' | 'square' | 'pentagon' | 'hexagon'
+type Node<Ty: string> = { label: string, type: Ty, id: string }
+type NodeType<Ty: string> = { type: Ty, label: string, shape: Shape }
+type Link<Ty: string> = { source: string, target: string, type: Ty }
+type LinkType<Ty: string> = { type: Ty, label: string }
+
 const RADIUS = 13
 const STRENGTH = 1
 const LABEL_LENGTH = 20
@@ -50,10 +56,10 @@ const ticked = <A: ForceLink, B: ForceNode>(link: SelectWithData<A>, node: Selec
 
 const mkSimulation = ({ width, height }) =>
   d3.forceSimulation()
-  .force('link', d3.forceLink().id(d => d.id).strength(STRENGTH).distance(width / 5))
-  .force('charge', d3.forceManyBody().strength(-250))
-  .force('center', d3.forceCenter(width / 2, height / 2))
-  .alphaDecay(0.015)
+    .force('link', d3.forceLink().id(d => d.id).strength(STRENGTH).distance(width / 5))
+    .force('charge', d3.forceManyBody().strength(-250))
+    .force('center', d3.forceCenter(width / 2, height / 2))
+    .alphaDecay(0.015)
 
 const drawLibrary = <Ty: string>(id: string, svg: SelectWithoutData, linkTypes: Array<LinkType<Ty>>) => {
   const uniqueLinkTypes = uniquify(linkTypes.map(d => d.type))
@@ -62,19 +68,19 @@ const drawLibrary = <Ty: string>(id: string, svg: SelectWithoutData, linkTypes: 
   defs.append('g').selectAll('marker')
     .data(uniqueLinkTypes)
     .enter().append('marker')
-      .attr('id', d => `${id}-marker-${d}`)
-      .attr('viewBox', '0 -5 10 10')
-      .attr('refX', 15)
-      .attr('refY', -1.5)
-      .attr('markerWidth', 6)
-      .attr('markerHeight', 6)
-      .attr('orient', 'auto')
+    .attr('id', d => `${id}-marker-${d}`)
+    .attr('viewBox', '0 -5 10 10')
+    .attr('refX', 15)
+    .attr('refY', -1.5)
+    .attr('markerWidth', 6)
+    .attr('markerHeight', 6)
+    .attr('orient', 'auto')
     .append('path')
-      .attr('d', 'M0,-5L10,0L0,5')
+    .attr('d', 'M0,-5L10,0L0,5')
   defs.append('g').selectAll('linearGradient')
     .data(uniqueLinkTypes)
     .enter().append('linearGradient')
-      .attr('id', d => `${id}-gradient-${d}`)
+    .attr('id', d => `${id}-gradient-${d}`)
     .append('stop')
 }
 
@@ -91,9 +97,9 @@ const drawNode = <Ty: string>(nodeTypes: Array<NodeType<Ty>>): (Ty => string) =>
 const drawLinks = <Ty: string>(id: string, svg: SelectWithoutData, links: Array<Link<Ty>>): SelectWithData<Link<Ty> & ForceLink> =>
   svg.append('g')
     .attr('class', 'links')
-  .selectAll('path')
-  .data(S.map(forceLinkProps)(links))
-  .enter().append('path')
+    .selectAll('path')
+    .data(S.map(forceLinkProps)(links))
+    .enter().append('path')
     .attr('class', d => d.type)
     .classed('link', true)
     .attr('marker-end', d => `url(#${id}-marker-${d.type})`)
@@ -102,16 +108,16 @@ const drawLinks = <Ty: string>(id: string, svg: SelectWithoutData, links: Array<
 const drawNodes = (svg: SelectWithoutData, nodes: Array<Node<*>>, nodeTypes: Array<NodeType<*>>, simulation: Simulation<Node<*>, Link<*>>): SelectWithData<Node<*> & ForceNode> => {
   const node =
     svg.append('g')
-        .classed('nodes', true)
+      .classed('nodes', true)
       .selectAll('g.node')
       .data(S.map(forceNodeProps)(nodes))
       .enter().append('g')
-        .classed('node', true)
-        .on('dblclick', dblClicked)
-        .call(d3.drag()
-          .on('start', dragStarted(simulation))
-          .on('drag', dragged)
-          .on('end', dragEnded(simulation)))
+      .classed('node', true)
+      .on('dblclick', dblClicked)
+      .call(d3.drag()
+        .on('start', dragStarted(simulation))
+        .on('drag', dragged)
+        .on('end', dragEnded(simulation)))
 
   node.append('polygon')
     .attr('class', d => d.type)
@@ -125,9 +131,9 @@ const mkArgMap = (id: string, dataSrc: string, canvasSelector: string): Promise<
   return fetchData(dataSrc).then(([nodes, links, nodeTypes, linkTypes]) => {
     const canvas = { width: $(canvasSelector).width(), height: $(canvasSelector).height() }
     const svg = d3.select(canvasSelector).append('svg')
-        .attr('id', id)
-        .attr('width', canvas.width)
-        .attr('height', canvas.height)
+      .attr('id', id)
+      .attr('width', canvas.width)
+      .attr('height', canvas.height)
 
     const simulation = mkSimulation(canvas)
     drawLibrary(id, svg, linkTypes)
@@ -171,23 +177,17 @@ const dragEnded = function (simulation) {
   }
 }
 
-type Shape = 'circle' | 'triangle' | 'diamond' | 'square' | 'pentagon' | 'hexagon'
-type Node<Ty: string> = { label: string, type: Ty, id: string }
-type NodeType<Ty: string> = { type: Ty, label: string, shape: Shape }
-type Link<Ty: string> = { source: string, target: string, type: Ty }
-type LinkType<Ty: string> = { type: Ty, label: string }
-
 const mkLegend = <NTy: string, LTy: string>(id: string, svg: SelectWithoutData, nodeTypes: Array<NodeType<NTy>>, linkTypes: Array<LinkType<LTy>>) => {
   const legendNode = svg.append('g')
     .attr('transform', 'translate(80, 50)')
     .selectAll('.legend')
     .data(nodeTypes)
     .enter().append('g')
-      .classed('legend', true)
-      .attr('transform', (_, i: number) => 'translate(0, ' + i * 30 + ')')
+    .classed('legend', true)
+    .attr('transform', (_, i: number) => 'translate(0, ' + i * 30 + ')')
 
   legendNode.append('polygon')
-      .attr('points', d => drawNode(nodeTypes)(d.type))
+    .attr('points', d => drawNode(nodeTypes)(d.type))
 
   drawTSpans(d => d.label, RADIUS + 5)(legendNode.append('text'))
 
@@ -196,14 +196,14 @@ const mkLegend = <NTy: string, LTy: string>(id: string, svg: SelectWithoutData, 
     .selectAll('.legend')
     .data(S.map(forceLinkProps)(linkTypes))
     .enter().append('g')
-      .classed('legend', true)
-      .attr('transform', (_, i: number) => 'translate(0, ' + i * 30 + ')')
+    .classed('legend', true)
+    .attr('transform', (_, i: number) => 'translate(0, ' + i * 30 + ')')
 
   legendLink.append('path')
-      .attr('d', linkArc({source: {x: -RADIUS, y: RADIUS}, target: {x: RADIUS, y: -RADIUS}}))
-      .attr('class', d => d.type)
-      .attr('stroke', d => `url(#${id}-gradient-${d.type}`)
-      .classed('link', true)
+    .attr('d', linkArc({source: {x: -RADIUS, y: RADIUS}, target: {x: RADIUS, y: -RADIUS}}))
+    .attr('class', d => d.type)
+    .attr('stroke', d => `url(#${id}-gradient-${d.type}`)
+    .classed('link', true)
 
   drawTSpans(d => d.label, RADIUS + 5)(legendLink.append('text'))
 }
@@ -213,9 +213,9 @@ const drawTSpans = <T>(fn: T => string, x: number): (SelectWithData<T> => any) =
     el.selectAll('tspan')
       .data(d => asciiStringSplit(fn(d), LABEL_LENGTH))
       .enter().append('tspan')
-        .attr('y', (_, i: number) => 0.5 + 1.6 * i + 'ex')
-        .attr('x', x)
-        .text(d => d)
+      .attr('y', (_, i: number) => 0.5 + 1.6 * i + 'ex')
+      .attr('x', x)
+      .text(d => d)
 }
 
 const close = (map: Simulation<Node<*>, Link<*>>) => () => {

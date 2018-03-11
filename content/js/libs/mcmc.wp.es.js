@@ -31,7 +31,7 @@ var generalized_beta = function (x, a, b, interval) {
   return jStat.beta.pdf(normed, a, b)
 }
 var run_BEST = function (ys, n_samples_, n_burnin, progress_cb, final_cb) {
-    // Adaptive metropolis within Gibbs
+  // Adaptive metropolis within Gibbs
   var amwg = function (start_values, posterior) {
     var n_params = start_values.length
     var batch_count = 0
@@ -51,7 +51,7 @@ var run_BEST = function (ys, n_samples_, n_burnin, progress_cb, final_cb) {
       chain = temp_chain
     }
     var derived_params = function (p) {
-            // mean scaled to our interval
+      // mean scaled to our interval
       return interval[0] + jStat.beta.mean(p[0], p[1]) * (interval[1] - interval[0])
     }
     var next_sample = function () {

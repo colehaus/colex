@@ -74,10 +74,10 @@ const parseMenuItem = (menuItem: JQuery): MenuItem => {
 
 const parseMenu = (menu: JQuery): Menu =>
   menu.data('active')
-  ? { tag: 'CLOSED' }
-  : { tag: 'OPEN',
-    items: S.map((el) => parseMenuItem($(el)))(menu.children('menuitem, hr').toArray())
-  }
+    ? { tag: 'CLOSED' }
+    : { tag: 'OPEN',
+      items: S.map((el) => parseMenuItem($(el)))(menu.children('menuitem, hr').toArray())
+    }
 
 type Event
   = { tag: 'MENUCLICK', menu: JQuery }

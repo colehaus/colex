@@ -49,10 +49,11 @@ const parseMatrixToYTranslation = (transformationMatrix: string): number =>
 
 const uniquify = <A>(as: Array<A>): Array<A> => Array.from((new Set(as)).values())
 
-export { claimNotNull,
-         documentReadyPromise,
-         makeAnimationPromise,
-         makeSleepPromise,
-         parseMatrixToAngle,
-         parseMatrixToYTranslation,
-         uniquify }
+export {
+  claimNotNull,
+  documentReadyPromise,
+  makeAnimationPromise,
+  makeSleepPromise,
+  parseMatrixToAngle,
+  parseMatrixToYTranslation,
+  uniquify }

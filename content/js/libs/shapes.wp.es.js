@@ -6,13 +6,13 @@ const S = create({checkTypes: false, env})
 
 const toSvgPolygon =
   (angles: Array<number>) =>
-  (RADIUS: number): string =>
-  S.pipe([
-    S.map(angle => Math.cos(angle) * RADIUS + ' ' + Math.sin(angle) * RADIUS),
-    S.joinWith(', ')
-  ])(
-    angles
-  )
+    (RADIUS: number): string =>
+      S.pipe([
+        S.map(angle => Math.cos(angle) * RADIUS + ' ' + Math.sin(angle) * RADIUS),
+        S.joinWith(', ')
+      ])(
+        angles
+      )
 
 const triangle = [
   3 / 6 * Math.PI,
