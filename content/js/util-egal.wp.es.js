@@ -4,11 +4,9 @@
 import * as d3 from 'd3'
 import flyd from 'flyd'
 import $ from 'jquery'
-import nerd from 'nerdamer'
-import 'nerdamer/Calculus'
 import * as numbers from 'numbers'
 import * as vega from 'vega-lib'
-import vegaEmbed from 'vega-lib-embed'
+import vegaEmbed from 'vega-embed'
 import { create, env } from 'sanctuary'
 
 import { documentReadyPromise } from 'libs/util'
@@ -22,25 +20,23 @@ const q = 'quantitative'
 const schema = 'https://vega.github.io/schema/vega-lite/v2.json'
 
 const percentileDomain = [0, 100]
-const defaultIncomeDistribution = nerd('p^2 * 30')
-const defaultIncomeDistributionFn = defaultIncomeDistribution.buildFunction()
-const minIncome = defaultIncomeDistributionFn(percentileDomain[0])
-const maxIncome = defaultIncomeDistributionFn(percentileDomain[1])
+const defaultIncomeDistribution = p => Math.pow(p, 2) * 30
+const minIncome = defaultIncomeDistribution(percentileDomain[0])
+const maxIncome = defaultIncomeDistribution(percentileDomain[1])
 const incomeDomain = [minIncome, maxIncome]
-const defaultUtilityOfMarginalDollar = nerd(`1 - d/${maxIncome}`)
-const defaultUtilityOfMarginalDollarFn = defaultUtilityOfMarginalDollar.buildFunction()
-const maxUtility = defaultUtilityOfMarginalDollarFn(minIncome)
+const defaultUtilityOfMarginalDollar = d => 1 - d / maxIncome
+const maxUtility = defaultUtilityOfMarginalDollar(minIncome)
 
 const values = ([minDomain, maxDomain]: [number, number], xKey: string, yKey: string, stepSize: ?number) => (fn: number => number, series: ?string) =>
   S.range(minDomain, stepSize == null ? maxDomain : maxDomain / stepSize)
-  .map(x => stepSize == null ? x : x * stepSize)
-  .map(x => {
-    return (
-      series == null
-        ? { [xKey]: x, [yKey]: fn(x) }
-        : { [xKey]: x, [yKey]: fn(x), series }
-    )
-  })
+    .map(x => stepSize == null ? x : x * stepSize)
+    .map(x => {
+      return (
+        series == null
+          ? { [xKey]: x, [yKey]: fn(x) }
+          : { [xKey]: x, [yKey]: fn(x), series }
+      )
+    })
 
 const mountIncomeDistribution = () => {
   const id = '#income-distribution'
@@ -48,13 +44,13 @@ const mountIncomeDistribution = () => {
     ...chartSpecBoilerplate($(id).width()),
     config: { mark: { orient: 'vertical' } },
     mark: 'line',
-    data: { values: values(percentileDomain, 'percentile', 'income')(defaultIncomeDistributionFn) },
+    data: { values: values(percentileDomain, 'percentile', 'income')(defaultIncomeDistribution) },
     encoding: {
       x: { field: 'percentile', type: q },
       y: { field: 'income', type: q }
     }
   }
-  const stream = flyd.stream(defaultIncomeDistributionFn)
+  const stream = flyd.stream(defaultIncomeDistribution)
   vegaEmbed(id, chart, chartOpts).then(addDrawingHandlers(id, stream, percentileDomain[1], maxIncome))
   return stream
 }
@@ -102,14 +98,14 @@ const mountMarginalUtility = () => {
   const chart = {
     ...chartSpecBoilerplate($(id).width()),
     config: { mark: { orient: 'vertical' } },
-    data: { values: values(incomeDomain, 'income', 'marginalUtility', 1000)(defaultUtilityOfMarginalDollarFn) },
+    data: { values: values(incomeDomain, 'income', 'marginalUtility', 1000)(defaultUtilityOfMarginalDollar) },
     mark: 'line',
     encoding: {
       x: { field: 'income', type: q },
       y: { field: 'marginalUtility', type: q }
     }
   }
-  const stream = flyd.stream(defaultUtilityOfMarginalDollarFn)
+  const stream = flyd.stream(defaultUtilityOfMarginalDollar)
   vegaEmbed(id, chart, chartOpts).then(() => addDrawingHandlers(id, stream, maxIncome, maxUtility))
   return stream
 }
