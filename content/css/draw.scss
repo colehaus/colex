@@ -4,18 +4,20 @@
 
 .draw {
     @include border-none;
-    cursor: crosshair;
     button {
         @include margin-horizontal-3em;
     }
-    svg > path {
-        fill: none;
-        stroke-width: 2;
-        &.draw-input {
-            stroke: nth(map-get($colors, value), 1);
-        }
-        &.interpolated {
-            stroke: nth(map-get($colors, value), 2);
+    svg {
+        cursor: crosshair;
+        > path {
+            fill: none;
+            stroke-width: 2;
+            &.draw-input {
+                stroke: nth(map-get($colors, value), 1);
+            }
+            &.interpolated {
+                stroke: nth(map-get($colors, value), 2);
+            }
         }
     }
 }
