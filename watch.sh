@@ -3,7 +3,12 @@
 set -euxo pipefail
 cd hakyll
 stack build
-cd ../content
+cd ../content/js
+rm dist/*
+# Fixes race between hakyll and webpack
+NO_WATCH=no_watch webpack
+cd ..
+stack exec site clean
 stack exec site watch &
 cd js
 webpack &

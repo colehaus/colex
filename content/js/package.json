@@ -3,22 +3,19 @@
   "version": "0.1.0",
   "license": "AGPL-3.0",
   "devDependencies": {
-    "babel-core": "^6.23.0",
-    "babel-eslint": "^8.2.1",
-    "babel-loader": "^7.1.2",
+    "babel-core": "^6.26.0",
+    "babel-eslint": "^8.2.2",
+    "babel-loader": "^7.1.4",
     "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-flow": "^6.23.0",
-    "clean-webpack-plugin": "^0.1.18",
-    "eslint-plugin-flowtype": "^2.43.0",
-    "expose-loader": "^0.7.4",
-    "flow-bin": "^0.65.0",
-    "flow-webpack-plugin": "^1.2.0",
+    "eslint-plugin-flowtype": "^2.46.1",
+    "flow-bin": "^0.67.1",
     "flow-typed": "^2.3.0",
-    "imports-loader": "^0.7.1",
-    "uglifyjs-webpack-plugin": "^1.1.8",
-    "standard": "^10.0.3",
-    "webpack": "^3.10.0"
+    "flow-webpack-plugin": "^1.2.0",
+    "imports-loader": "^0.8.0",
+    "webpack": "^4.1.1",
+    "webpack-cli": "^2.0.11"
   },
   "dependencies": {
     "ascii-string-split": "^1.0.0",
@@ -28,10 +25,9 @@
     "jquery": "^3.3.1",
     "jquery-flot": "^0.8.3",
     "kernel-smooth": "^0.2.3",
-    "nerdamer": "^0.7.16",
     "numbers": "^0.6.0",
     "sanctuary": "^0.14.1",
-    "vega-lib-embed": "^3.0.1"
+    "vega-embed": "^3.1.1"
   },
   "scripts": {
     "build": "webpack"

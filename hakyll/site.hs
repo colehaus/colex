@@ -1,3 +1,4 @@
+{-# LANGUAGE TupleSections #-}
 {-# LANGUAGE DataKinds #-}
 {-# LANGUAGE FlexibleContexts #-}
 {-# LANGUAGE LambdaCase #-}
@@ -8,14 +9,17 @@ module Main where
 
 import Control.Arrow (first)
 import Control.Monad ((<=<), unless, (>=>))
+import Control.Monad.Trans.Class (lift)
 import Data.Functor ((<$>))
 import Data.List (stripPrefix)
-import qualified Data.Map as M
+import Data.List.Split (splitOn)
+import Data.Map (Map)
+import qualified Data.Map as Map
 import Data.Maybe (fromMaybe)
 import Data.Monoid (mconcat, mempty, (<>))
 import Data.Hashable (hash)
 import System.Directory
-       (doesPathExist, createDirectoryIfMissing, findExecutable)
+       (listDirectory, doesPathExist, createDirectoryIfMissing, findExecutable)
 import System.Environment (lookupEnv)
 import System.FilePath
        (joinPath, splitPath, takeBaseName, takeDirectory, takeFileName,
@@ -31,11 +35,15 @@ import Hakyll
                readPandocBiblio)
 import qualified Hakyll
 import Hakyll.Core.Compiler.Internal (compilerUnsafeIO)
+import Hakyll.Core.Rules.Internal (Rules(..))
 import HakyllExtension
 import HakyllPandoc
 
 hakyllConfig :: Configuration
 hakyllConfig = defaultConfiguration
+
+unsafeRules :: IO a -> Rules a
+unsafeRules = Rules . lift
 
 main :: IO ()
 main =
@@ -57,6 +65,7 @@ main =
     csl <- matchIdentifier @"csl" "misc/biblio.csl" $ compile cslCompiler
     bib <- matchIdentifier @"bib" "misc/biblio.bib" $ compile biblioCompiler
     tags <- buildTags (mkPostPat "posts") (fromCapture "tag/*/index.html")
+    chunkMap <- unsafeRules buildChunkMap
     (postPat, _, _, abstractPat) <-
       buildPosts
         defaultTemplate
@@ -64,6 +73,7 @@ main =
         bib
         csl
         tags
+        chunkMap
         "posts"
     _ <-
       buildPosts
@@ -72,6 +82,7 @@ main =
         bib
         csl
         tags
+        chunkMap
         "drafts"
     feedIdent <-
       buildAtom
@@ -94,6 +105,7 @@ main =
       abstractPat
       tags
       paginate
+      chunkMap
     tagIndexIdent <-
       buildTagIndex
         defaultTemplate
@@ -104,6 +116,7 @@ main =
         defaultTemplate
         (narrowEx templates "templates/index.html")
         paginate
+        chunkMap
     scssPat <- match "css/libs/**_*.scss" $ compile copyFileCompiler
     _ <- buildCss scssPat
     archiveIdent <-
@@ -143,6 +156,28 @@ main =
         indexIdent
         archiveIdent
     pure ()
+
+buildChunkMap :: IO (Map String [String])
+buildChunkMap = chunkMapFromStrings <$> listDirectory "js/dist"
+
+chunkMapFromStrings
+  :: (Applicative f, Monoid (f String))
+  => [String] -> Map String (f String)
+chunkMapFromStrings files =
+  Map.fromListWith (<>) $
+  (\file -> (, pure $ stripJsSuffix file) <$> extractChunks file) =<<
+  filter ('~' `elem`) files
+  where
+    stripJsSuffix = fromMaybe (error "Not '.js'") . stripSuffix ".js"
+
+stripSuffix :: Eq a => [a] -> [a] -> Maybe [a]
+stripSuffix suf = fmap reverse . stripPrefix (reverse suf) . reverse
+
+extractChunks :: String -> [String]
+extractChunks fp =
+  case stripSuffix ".js" <=< stripPrefix "vendors~" $ fp of
+    Just chunkString -> splitOn "~" chunkString
+    Nothing -> error "Not just a vendor chunk"
 
 prodHost :: String
 prodHost = "https://colehaus.github.io/ColEx"
@@ -189,8 +224,9 @@ buildPages
   -> Blessed "abstract" Pattern
   -> Tags
   -> Paginate
+  -> Map String [String]
   -> Rules ()
-buildPages defaultTemplate indexTemplate indexContentTemplate abstractPat tags pages =
+buildPages defaultTemplate indexTemplate indexContentTemplate abstractPat tags pages chunkMap =
   paginateRules pages $ \n pat -> do
     route idRoute
     compile $
@@ -203,6 +239,7 @@ buildPages defaultTemplate indexTemplate indexContentTemplate abstractPat tags p
                abstractCtx abstractPat <> postCtx)
               (recentFirst =<< Hakyll.loadAll pat) <>
             pageCtx <>
+            customElementsCtx chunkMap <>
             defaultContext
       in makeItem mempty >>= loadAndApplyTemplate indexContentTemplate ctx >>=
          saveSnapshot "page" >>=
@@ -249,13 +286,15 @@ buildIndex
   :: Blessed "template" Identifier
   -> Blessed "template" Identifier
   -> Paginate
+  -> Map String [String]
   -> Rules (Blessed "index" Identifier)
-buildIndex defaultTemplate indexTemplate pages =
+buildIndex defaultTemplate indexTemplate pages chunkMap =
   (head <$>) . create ["index.html"] $ do
     route idRoute
     compile $
       let ctx =
             boolField "home-page" (const True) <> constField "title" "Home" <>
+            customElementsCtx chunkMap <>
             defaultContext
       in loadSnapshotBody (lastPage pages) "page" >>= makeItem >>=
          loadAndApplyTemplate indexTemplate ctx >>=
@@ -450,9 +489,10 @@ buildPosts
   -> Blessed "bib" Identifier
   -> Blessed "csl" Identifier
   -> Tags
+  -> Map String [String]
   -> String
   -> Rules (Blessed "post" Pattern, Blessed "warnings" Pattern, Blessed "overlay" Pattern, Blessed "abstract" Pattern)
-buildPosts defaultTemplate postTemplate bibIdent cslIdent tags dir = do
+buildPosts defaultTemplate postTemplate bibIdent cslIdent tags chunkMap dir = do
   overlayPat <-
     match (fromGlob $ dir <> "/*/overlay.md") . compile $
     pandocCompilerWith readerOpt writerOpt
@@ -474,9 +514,10 @@ buildPosts defaultTemplate postTemplate bibIdent cslIdent tags dir = do
         let ctx =
               warnCtx warningsPat <> overCtx overlayPat <>
               abstractCtx abstractPat <>
-              jsCtx <>
+              jsCtx chunkMap <>
               cssCtx <>
               tagsCtx tags <>
+              customElementsCtx chunkMap <>
               postCtx
         in do bib <- load bibIdent
               csl <- load cslIdent
@@ -521,14 +562,22 @@ paginateOverflow low xs =
         else pgs
 
 lastPage :: Paginate -> Identifier
-lastPage pg = paginateMakeId pg . M.size . paginateMap $ pg
+lastPage pg = paginateMakeId pg . Map.size . paginateMap $ pg
 
 listFieldWith' :: String
                -> Context a
                -> (Identifier -> Compiler [a])
                -> Context b
 listFieldWith' k ctx f =
-  listFieldWith k ctx $ (mapM makeItem =<<) . f . itemIdentifier
+  listFieldWith k ctx $ (traverse makeItem =<<) . f . itemIdentifier
+
+constListField :: String -> Context a -> [a] -> Context b
+constListField key1 ctx list =
+  listFieldWith key1 ctx $
+  const (traverse makeItem list)
+
+idField :: String -> Context String
+idField key = field key $ pure . itemBody
 
 postCtx :: Context String
 postCtx =
@@ -564,14 +613,21 @@ warnCtx warnPat =
     details = field "details" $ split (tail . snd)
     summary = field "summary" $ split fst
 
-jsCtx :: Context String
-jsCtx = listFieldWith' "jses" fileNameCtx $ getListMeta "js"
+customElementsCtx :: Map String [String] -> Context String
+customElementsCtx chunkMap =
+  constListField "custom-elements" (idField "filename") $
+  "custom-elements" : chunkMap Map.! "custom-elements"
+
+jsCtx :: Map String [String] -> Context String
+jsCtx chunkMap =
+  listFieldWith' "jses" (idField "filename") $
+  fmap (>>= correspondingChunks) . getListMeta "js"
+  where
+    correspondingChunks str =
+      maybe (pure str) (str :) $ str `Map.lookup` chunkMap
 
 cssCtx :: Context String
-cssCtx = listFieldWith' "csses" fileNameCtx $ getListMeta "css"
-
-fileNameCtx :: Context String
-fileNameCtx = field "filename" $ pure . itemBody
+cssCtx = listFieldWith' "csses" (idField "filename") $ getListMeta "css"
 
 getListMeta
   :: MonadMetadata m

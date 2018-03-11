@@ -2,8 +2,13 @@
   let
     webpack = pkgs.callPackage ./webpackColEx.nix {};
     npmDependencies = pkgs.callPackage ./callNpm2nix.nix {
-      name = "mathjax-node-cli";
-      npmPkgs = [ { mathjax-node-cli = "^1.0.0"; } ];
+      name = "npm-dependencies";
+      npmPkgs = [
+        { eslint = "^4.18.2"; }
+        { mathjax-node-cli = "^1.0.0"; }
+        { uglify-js = "^3.3.10"; }
+        { standard = "^11.0.0"; }
+      ];
     };
   in
     pkgs.stdenv.mkDerivation rec {
@@ -19,6 +24,10 @@
         pkgs.librsvg
         pkgs.sass
         npmDependencies."mathjax-node-cli-^1.0.0"
+        npmDependencies."uglify-js-^3.3.10"
+
+        npmDependencies."eslint-^4.18.2"
+        npmDependencies."standard-^11.0.0"
 
         pkgs.stack
         pkgs.gcc

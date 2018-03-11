@@ -9,6 +9,6 @@ type EmbedResult = {
   view: View
 }
 
-declare module 'vega-lib-embed' {
+declare module 'vega-embed' {
   declare module.exports: (selector: string, spec: Object, opts: Object) => Promise<EmbedResult>;
 }
