@@ -3,11 +3,13 @@ const FlowWebpackPlugin = require('flow-webpack-plugin')
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development'
 const noWatch = process.env.NO_WATCH === 'no_watch'
+const devtool = mode === 'production' ? 'source-map' : 'cheap-module-source-map'
 
 const outDir = path.resolve(__dirname, process.env.OUT_DIR || 'dist')
 
 module.exports = {
   optimization: { splitChunks: { chunks: 'all' } },
+  devtool,
   mode,
   watch: mode === 'development' && !noWatch,
   resolve: {

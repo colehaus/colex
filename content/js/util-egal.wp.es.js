@@ -47,7 +47,11 @@ const mountIncomeDistribution = () => {
     data: { values: values(percentileDomain, 'percentile', 'income')(defaultIncomeDistribution) },
     encoding: {
       x: { field: 'percentile', type: q },
-      y: { field: 'income', type: q }
+      y: {
+        axis: { title: 'income, USD' },
+        field: 'income',
+        type: q
+      }
     }
   }
   const stream = flyd.stream(defaultIncomeDistribution)
@@ -101,8 +105,15 @@ const mountMarginalUtility = () => {
     data: { values: values(incomeDomain, 'income', 'marginalUtility', 1000)(defaultUtilityOfMarginalDollar) },
     mark: 'line',
     encoding: {
-      x: { field: 'income', type: q },
-      y: { field: 'marginalUtility', type: q }
+      x: {
+        axis: { title: 'income, USD' },
+        field: 'income',
+        type: q
+      },
+      y: {
+        axis: { title: 'marginal utility' },
+        field: 'marginalUtility',
+        type: q }
     }
   }
   const stream = flyd.stream(defaultUtilityOfMarginalDollar)

@@ -11,7 +11,7 @@ import Control.Arrow (first)
 import Control.Monad ((<=<), unless, (>=>))
 import Control.Monad.Trans.Class (lift)
 import Data.Functor ((<$>))
-import Data.List (stripPrefix)
+import Data.List (stripPrefix, isSuffixOf)
 import Data.List.Split (splitOn)
 import Data.Map (Map)
 import qualified Data.Map as Map
@@ -158,7 +158,8 @@ main =
     pure ()
 
 buildChunkMap :: IO (Map String [String])
-buildChunkMap = chunkMapFromStrings <$> listDirectory "js/dist"
+buildChunkMap =
+  chunkMapFromStrings . filter (".js" `isSuffixOf`) <$> listDirectory "js/dist"
 
 chunkMapFromStrings
   :: (Applicative f, Monoid (f String))
@@ -177,7 +178,7 @@ extractChunks :: String -> [String]
 extractChunks fp =
   case stripSuffix ".js" <=< stripPrefix "vendors~" $ fp of
     Just chunkString -> splitOn "~" chunkString
-    Nothing -> error "Not just a vendor chunk"
+    Nothing -> error $ "Not just a vendor chunk: " <> fp
 
 prodHost :: String
 prodHost = "https://colehaus.github.io/ColEx"

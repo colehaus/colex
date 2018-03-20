@@ -24,10 +24,13 @@ declare class Maybe<A> {
 type S = {
   init<A>(as: Array<A>): Maybe<Array<A>>,
   head<A>(as: Array<A>): Maybe<A>,
+  last<A>(as: Array<A>): Maybe<A>,
   tail<A>(as: Array<A>): Maybe<Array<A>>,
   equals<A>(a: A): A => boolean,
-  on<A, B, C>(f: (A => A => B)): (C => A) => C => C => B,
-  groupBy<A>(f: (A => A => boolean)):  Array<A> => Array<Array<A>>,
+  // on<A, B, C>(f: (A => A => B)): (C => A) => (C => C => B),
+  // TODO: Figure out why Flow doesn't like the precise type
+  on<A, B, C>(f: (A => A => B)): (C => A) => Function,
+  groupBy<A>(f: (A => A => boolean)): Array<A> => Array<Array<A>>,
   max(number): number => number,
   maybe<A, B>(b: B): (A => B) => Maybe<A> => B,
   maybe_<A, B>(b: () => B): (A => B) => Maybe<A> => B,
@@ -37,7 +40,11 @@ type S = {
   joinWith(s: string): Array<string> => string,
   keys<A>(m: { [string]: A }): Array<string>,
   fromPairs<A>(ps: Array<[string, A]>): { [string]: A },
-  range(low: number, high: number): Array<number>
+  range(low: number, high: number): Array<number>,
+  sortBy<A, B>(keyFn: A => B): Array<A> => Array<A>,
+  filter<A>(predicate: A => boolean): Array<A> => Array<A>,
+  insert<O, A>(key: string): A => O => O,
+  chain<A, B>(fn: A => Array<B>): Array<A> => Array<B>
 } & {
   map<A, B>(f: A => B): Array<A> => Array<B>
 } & {
