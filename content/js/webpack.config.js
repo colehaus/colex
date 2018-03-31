@@ -1,10 +1,13 @@
 const path = require('path')
+const which = require('which')
 const FlowWebpackPlugin = require('flow-webpack-plugin')
 
 const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development'
 const noWatch = process.env.NO_WATCH === 'no_watch'
 
 const outDir = path.resolve(__dirname, process.env.OUT_DIR || 'dist')
+// We rely on globally installed `flow` because NixOS doesn't like the way `npm` installs the binary
+const flowPath = which.sync('flow')
 
 module.exports = {
   optimization: { splitChunks: { chunks: 'all' } },
@@ -36,13 +39,13 @@ module.exports = {
     ]
   },
   plugins: [
-    new FlowWebpackPlugin()
+    // Re-enable after https://github.com/happylynx/flow-webpack-plugin/issues/12 is fixed
+    // new FlowWebpackPlugin({ flowPath }),
   ],
   entry: {
     'util-egal': './util-egal.wp.es.js',
     quorum: './quorum.wp.es.js',
     'custom-elements': './custom-elements.wp.es.js',
-    'dist-countries': './dist-countries.wp.es.js'
   },
   output: {
     path: outDir

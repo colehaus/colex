@@ -24,3 +24,4 @@ executable site
                   , transformers
   ghc-options:      -threaded -Wall
   default-language: Haskell2010
+  extra-libraries: z

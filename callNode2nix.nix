@@ -7,7 +7,10 @@
       phases = [ "buildPhase" "installPhase" ];
       src = packageJson;
       preferLocalBuild = true;
+      # We need the temporary directory so that `node2nix`'s relative paths are correct
       buildPhase = ''
+        TMP=$(mktemp -d)
+        cd $TMP
         node2nix --development -6 --input "$src"/package.json
       '';
       installPhase = ''

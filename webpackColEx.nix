@@ -5,11 +5,15 @@
       src = ./content/js/package.json;
     };
   in
-    pkgs.stdenv.mkDerivation rec {
+    pkgs.stdenv.mkDerivation {
       name = "webpackColEx";
       src = ./content/js;
       phases = [ "unpackPhase" "buildPhase" ];
-      nativeBuildInputs = [ pkgs.nodejs nodeEnv.shell.nodeDependencies ];
+      nativeBuildInputs = [
+        pkgs.nodejs
+        nodeEnv.shell.nodeDependencies
+        pkgs.flow
+      ];
       nodeDependencies = nodeEnv.shell.nodeDependencies;
       NODE_ENV = "production";
       buildPhase = ''

@@ -5,3 +5,7 @@ extra-deps:
   - hakyll-4.11.0.0
   - pandoc-2.1.1
   - pandoc-citeproc-0.13.0.1
+nix:
+  packages:
+    - zlib.dev
+    - zlib.out
