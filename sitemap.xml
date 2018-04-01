@@ -29,6 +29,13 @@
     </url>
 
     <url>
+        <loc>https://colehaus.github.io/ColEx/posts/lazy-ai-safety/index.html</loc>
+        <changefreq>weekly</changefreq>
+        
+        <priority>0.8</priority>
+    </url>
+
+    <url>
         <loc>https://colehaus.github.io/ColEx/posts/cooperatives/index.html</loc>
         <changefreq>weekly</changefreq>
         
@@ -148,7 +155,21 @@
     </url>
 
     <url>
+        <loc>https://colehaus.github.io/ColEx/tag/machine%20ethics/index.html</loc>
+        <changefreq>weekly</changefreq>
+        
+        <priority>0.8</priority>
+    </url>
+
+    <url>
         <loc>https://colehaus.github.io/ColEx/tag/meta/index.html</loc>
+        <changefreq>weekly</changefreq>
+        
+        <priority>0.8</priority>
+    </url>
+
+    <url>
+        <loc>https://colehaus.github.io/ColEx/tag/moral%20uncertainty/index.html</loc>
         <changefreq>weekly</changefreq>
         
         <priority>0.8</priority>
