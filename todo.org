@@ -18,6 +18,8 @@
   CLOSED: [2018-03-05 Mon 18:52]
 * DONE Minify CSS
   CLOSED: [2018-03-05 Mon 16:31]
+* TODO Add sitemap to robots.txt
+* TODO Fix old absolute URLs
 * TODO Stretchtext
 * TODO Archive links
 ** TODO http://www.thomaschermack.com/Thomas_Chermack_-_Scenario_Planning/Research_files/Chermack%282008%29EffectsofSPonDM.pdf 404

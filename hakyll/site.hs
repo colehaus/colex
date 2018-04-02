@@ -130,6 +130,10 @@ main =
         route idRoute
         compile copyFileCompiler
     _ <-
+      match "CNAME" $ do
+        route idRoute
+        compile copyFileCompiler
+    _ <-
       match "images/**" $ do
         route idRoute
         compile copyFileCompiler
