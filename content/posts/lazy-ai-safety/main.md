@@ -7,13 +7,13 @@ tags: machine ethics, moral uncertainty
 
 According to most ethical theories, the actions of any AI agent we create have moral import. To accommodate this reality, we guide the agent with a utility function and (implicitly or explicitly) an ethical framework.
 
-One of the key problems of AI safety is that we are uncertain about which ethical theory to encode in the agent because we (philosophers, humans, society) are ourselves unsure of the correct ethical theory. How can we expect our agent to act in accordance with our values when we don't even know what our values are?
+One of the key problems of AI alignment is that we are uncertain about which ethical theory to encode in the agent because we (philosophers, humans, society) are ourselves unsure of the correct ethical theory. How can we expect our agent to act in accordance with our values when we don't even know what our values are?
 
 I propose that we wave the white flag of surrender in the battle to find final, certain answers to the hard problems of ethics. Instead, we should reify our uncertainty and our search procedures in agents we build.
 
 <!--more-->
 
-# Surrender
+# Ethical surrender
 
 Our prior should be that "solving" ethics is hard: Many smart people have worked on it for centuries. We can also take a step back and allude to more [fundamental limitations to knowledge](https://plato.stanford.edu/entries/skepticism/) which suggest a definitive solution to ethics isn't around the corner.
 
@@ -27,25 +27,40 @@ Obviously, this section is brief and handwavey. We've sidestepped big, intricate
 
 Once we accept this uncertainty, we must choose how to respond. If we don't reflect on the idea of moral uncertainty, our approach is likely to approximate ["my favorite theory"](http://johanegustafsson.net/papers/in-defence-of-my-favourite-theory.pdf). In this approach, we weigh the options, find whichever ethical theory fares best, and discard the rest. That is, if, after analysis, we think the categorical imperative is 20% likely to be true and utilitarianism is 80% likely to be true, we act as utilitarians.
 
-A compelling alternative is to [retain our uncertainty and evaluate actions against a weighted parliament of ethical theories](http://www.overcomingbias.com/2009/01/moral-uncertainty-towards-a-solution.html). In our 80-20 scenario above, any action is evaluated against both theories. If utilitarianism is indifferent between actions A and B while the categorical imperative heavily favors A over B, we do A (even though we are "mostly" utilitarian!).
+A compelling alternative is to [retain our uncertainty and evaluate actions against a weighted parliament of ethical theories](http://www.overcomingbias.com/2009/01/moral-uncertainty-towards-a-solution.html). In our 80-20 scenario above, any action is evaluated against both theories. If utilitarianism marginally prefers action B to A while the categorical imperative heavily favors A over B, we do A (even though we are "mostly" utilitarian!).
 
-# Moral uncertainty in machines
+## Moral uncertainty in machines
 
-The impression I have (admittedly, mostly from afar) is that AI safety has mostly (implicitly) revolved around the "my favorite theory" approach. That is, people have been approaching the issue as deciding which single ethical theory they will encode in an agent. I think the parliamentary model is a significant improvement.
+The impression I have (admittedly, mostly from afar) is that AI alignment has mostly (implicitly) revolved around the "my favorite theory" approach. That is, people have been approaching the issue as deciding which single ethical theory they will encode in an agent. Until they're certain they've decided upon the "one true theory" of ethics, all powerful agents are the stuff of nightmares. I think the parliamentary model improves on this situation.
 
-When encoding the parliamentary model in machines, there's good reason to avoid simply transferring our own intuitions and perspectives into the machine. Instead, the parliament's initial distribution should probably be set by a [maximum entropy distribution](https://en.wikipedia.org/wiki/Maximum_entropy_probability_distribution). Of course, we can't leave it there. That would throw away valuable information about the truth of the moral world (i.e. what evidence do we have bearing on the relative likelihood of each moral theory to be correct). An abhorrence for discarding information is precisely what motivated us to choose the parliamentary approach in the first place.
+When encoding the parliamentary model in machines, [there's good reason to avoid simply transferring our own intuitions and perspectives into the machine]{.noted}[^max-ent]. Instead, the parliament's initial distribution should probably be set by a [[maximum entropy distribution](https://en.wikipedia.org/wiki/Maximum_entropy_probability_distribution)]{.noted}[^bootstrap] (i.e. each ethical theory starts with equal likelihood). Of course, we can't leave it there. That would throw away valuable information about the fact of the matter (i.e. what evidence do we have bearing on the relative likelihood of each moral theory to be correct). An abhorrence for discarding information (that is, we objected to "forgetting" our uncertainty and acting as though we're certain of our favored theory) is precisely what motivated us to choose the parliamentary approach in the first place.
 
-Instead, we will allow and expect our agent to perform [Bayesian updates](https://en.wikipedia.org/wiki/Bayes%27_theorem) to reweight the moral parliament. That is, in addition to any actions it can take in the world, the agent also always has the option of performing ethical investigation. This supposes that we have a provisional answer to the question of [moral epistemology](https://plato.stanford.edu/entries/moral-epistemology/) and thus a well-founded way to perform these updates. We'll bracket the question of how exactly this can be done while noting that moral epistemology is at least a different hard problem to solve than the problem which AI safety typically confronts.
+Instead, we will allow and expect our agent to perform [Bayesian updates](https://en.wikipedia.org/wiki/Bayes%27_theorem) to reweight the moral parliament. That is, in addition to any actions it can take in the world (e.g. an autonomous car turning left, a paperclip factory agent reconfiguring its supply chain. For lack of familiarity with a better term, we'll call actions-in-the-world "interventions" henceforth), the agent also always has the option of performing ethical investigation (e.g. ). This supposes that we have a workable answer to the questions of [moral epistemology](https://plato.stanford.edu/entries/moral-epistemology/) and thus a well-founded way to perform these updates. We'll bracket the question of how exactly this can be done while noting that moral epistemology is at least a different hard problem to solve than the problem which AI alignment typically confronts.
 
+### Necessity of agent embedding
 
-# Arbitrating between actions and ethical investigation
+The above sounds like a generic algorithm for ethical investigation. Why embed it in an agent rather than asking it to run "to completion" and using the result, or creating a [tool AI](https://www.lesswrong.com/posts/6SGqkCgHuNr7d4yJm/thoughts-on-the-singularity-institute-si)? Under most plausible moral epistemes, I suspect running "to completion" would be [computationally intractable]{.noted}[^intractable]. On the subject of tool AIs, I'll leave it to [Why tool AIs want to be agent AIs](https://www.gwern.net/Tool-AI) and note that foundational ethical investigation seems like a bad place to skimp on capability.
 
-Now that the agent has an additional action that it must always consider (ethical investigation), we must decide how to value this action so that it can be compared against more standard actions in the world by the agent's utility function. The approach I propose here is to use [value of information calculations](https://en.wikipedia.org/wiki/Value_of_information).
+# Arbitrating between interventions and investigations
 
-Finally, we really begin to see the benefits of this approach. When an agent finds itself doing trivial actions of no moral import, it can remain fairly disinterested in ethics. Broad approximations of ethical truth suffice. On the other hand though, all the moral paradoxes that we humans confront are now moral paradoxes for our agent as well. When it is faced with truly difficult moral decisions, rather than blithely running ahead, our agent will be prompted to pause and refine its ethical views.
+How should ethical investigation be valued in the agent's utility function? We must answer this question before our agent can make appropriate trade-offs between intervention and ethical investigation. Once we see the ethical investigation as an information-gathering task, the solution falls out naturally. We should use [value of information calculations](https://en.wikipedia.org/wiki/Value_of_information) to value ethical investigation.
 
-# Future work
+Briefly, [value of information]{.noted}[^voi] is a well-founded way of quantifying our intuition that uncertainty has a cost. When our actions result in uncertain outcomes, we muddle through as best we can. But information that reduces the uncertainty associated with an action has a tangible value. It may actually cause us to change our actions and obtain better outcomes. If a decision maker would pay up to $X for this information, then we say it has a value of $X.
 
-We already alluded to the fact that this approach requires some serious thinking about moral epistemology.
+In this case, the value in our VoI calculation is determined by our parliament of moral theories. This is circular (and thus a bit confusing), but, I think, can be [made to work]{.noted}[^circular]. So we'd expect our agent to perform ethical investigation only insofar as the information produced by that investigation might affect interventions under consideration (Hence the "lazy" in our title. In particular, we're appealing to the concept of [lazy evaluation](https://en.wikipedia.org/wiki/Lazy_evaluation)---values (both computational and ethical) ought to be computed only on an as needed basis instead of eagerly and preemptively.) and where the value of that information is greater than any currently available intervention.
 
-Furthermore, the bootstrapping process (which theories do we initially include?) is very important and demands further examination.
+# Claimed benefits
+
+## AI arms race
+
+In an [AI arms race](https://www.fhi.ox.ac.uk/wp-content/uploads/Racing-to-the-precipice-a-model-of-artificial-intelligence-development.pdf), the naive approach to alignment (First, solve ethics. Then, develop AGI.) puts the most scrupulous developers at a disadvantage. Because the costs of scrupulosity are so high, we expect most developers to end up in the "unscrupulous" category. The lazy approach may offer a significant advantage here. Because the approach is conceptually straightforward, implementation could be relatively manageable. As such, asking all agent creators to include it is a more plausible request than demanding the cessation of all agent development. Furthermore, when an agent finds itself doing trivial actions of no moral import, it can remain fairly disinterested in ethics. Broad approximations of ethical truth suffice. This means agent creators working in certain fields can be fairly confident that the run time costs (e.g. agent performance overhead, constraints on agent actions, agent predictability) are minimal. Again, this makes ethical consideration cheaper.
+
+## Ambiguity alignment
+
+All the moral conundrums that we humans confront are now moral conundrums for our agent as well. When it is faced with truly difficult and important moral decisions, rather than blithely running ahead, our agent will be prompted to pause and refine its ethical views. We can even imagine moral epistemes in which human intuition is a vital input so our agent would actively seek human advice precisely when we are most afraid of the interventions of alien intelligence.
+
+[^bootstrap]: Beyond just determining the weights of theories, which theories we include at all is crucially important. If we omit the "one true theory" of ethics (thereby implicitly assigning it a credence of 0), tragedy looms. More on this in a later post. <!-- TODO -->
+[^max-ent]: I hope to explore and explain this more later in its own post. <!-- TODO -->
+[^voi]: Again, more to come on this. <!-- TODO -->
+[^intractable]: This demands further defense in some future post. <!-- TODO -->
+[^circular]: Future post. <!-- TODO -->

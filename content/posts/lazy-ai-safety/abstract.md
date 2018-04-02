@@ -1,0 +1,1 @@
+Moral uncertainty is inevitable. We accept this and encode our uncertainty as a weighted parliament of moral theories in an agent. We allow the agent to perform ethical investigation to refine these weights. Value of information calculations determine when to investigate. We claim several benefits arise from this approach.
