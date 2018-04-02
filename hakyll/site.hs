@@ -184,7 +184,7 @@ extractChunks fp =
     Nothing -> error "Not just a vendor chunk"
 
 prodHost :: String
-prodHost = "https://colehaus.github.io/ColEx"
+prodHost = "https://col-ex.org"
 
 buildSitemap
   :: Blessed "template" Identifier
@@ -383,7 +383,7 @@ buildAtom
   -> Blessed "bib" Identifier
   -> Blessed "csl" Identifier
   -> Rules (Blessed "feed" Identifier)
-buildAtom renderMethod destinationDir webhost postPat bibIdent cslIdent =
+buildAtom renderMethod destinationDir webHost postPat bibIdent cslIdent =
   (head <$>) . create ["atom.xml"] $ do
     route idRoute
     compile $ do
@@ -395,7 +395,7 @@ buildAtom renderMethod destinationDir webhost postPat bibIdent cslIdent =
            traverse markdownTransform >=>
            toHtmlAndBack bib csl >=>
            traverse htmlTransform >=>
-           pure . (relativizeUrlsWith webhost <$>) . writePandocWith writerOpt) >>=
+           pure . (relativizeUrlsWith webHost <$>) . writePandocWith writerOpt) >>=
         fmap (replaceAll "index.html" (const mempty) <$>) .
         renderAtom feedConfig (postCtx <> bodyField "description")
   where
@@ -450,7 +450,7 @@ feedConfig
   , feedDescription = "A weblog"
   , feedAuthorName = "Cole Haus"
   , feedAuthorEmail = "colehaus@cryptolab.net"
-  , feedRoot = "https://colehaus.github.io/ColEx"
+  , feedRoot = prodHost
   }
 
 buildArchive

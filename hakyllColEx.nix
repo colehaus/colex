@@ -28,7 +28,7 @@
       inherit webpackColEx;
       inherit bibliometric;
       LC_ALL = "en_US.UTF-8";
-      WEB_HOST = "https://colehaus.github.io/ColEx";
+      WEB_HOST = "https://www.col-ex.org";
       MATH_RENDER_METHOD = "FeedlyCompatible";
       # TODO Remove `rm` once we reorganize source directory
       patchPhase = ''
