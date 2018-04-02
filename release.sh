@@ -8,10 +8,9 @@ comment=`git log --max-count=1 --pretty=format:"%B"`
 access_token=`cat ./rollbar-access-token.txt`
 environment=production
 nix-build --out-link colex-result
-git checkout gh-pages
+cd ../colehaus.github.io
 shopt -s extglob
-sudo rm -r !(colex-result|rollbar-access-token.txt)
-sudo cp -r colex-result/* .
+sudo cp -r ../colex/colex-result/* .
 git add --interactive
 git diff-index --quiet HEAD || git commit --no-verify --message "Bump"
 git push
@@ -20,5 +19,3 @@ curl https://api.rollbar.com/api/1/deploy/ \
      -F environment=$environment \
      -F revision=$revision \
      -F comment="$comment"
-git checkout master
-sudo rm -r data/ drafts/ images/ js/ page/ posts/ tag/
