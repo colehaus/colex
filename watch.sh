@@ -2,7 +2,6 @@
 #! nix-shell -i bash shell.nix
 
 set -euxo pipefail
-export LC_ALL="en_US.UTF-8";
 cd hakyll
 stack build --nix
 cd ../content/js
