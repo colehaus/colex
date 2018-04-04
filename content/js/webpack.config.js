@@ -44,8 +44,7 @@ module.exports = {
     ]
   },
   plugins: [
-    // Re-enable after https://github.com/happylynx/flow-webpack-plugin/issues/12 is fixed
-    // new FlowWebpackPlugin({ flowPath }),
+    new FlowWebpackPlugin({ flowPath }),
   ],
   entry: {
     'util-egal': './util-egal.wp.es.js',

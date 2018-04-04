@@ -16,8 +16,8 @@
       phases = [ "unpackPhase" "buildPhase" ];
       nativeBuildInputs = [
         pkgs.nodejs
-        nodeEnv.shell.nodeDependencies
         pkgs.flow
+        nodeEnv.shell.nodeDependencies
       ];
       nodeDependencies = nodeEnv.shell.nodeDependencies;
       NODE_ENV = "production";

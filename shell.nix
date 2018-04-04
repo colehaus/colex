@@ -11,6 +11,7 @@ in
       [
         pkgs.stack
         pkgs.nodejs
+        pkgs.flow
         webpack.nodeDependencies
       ] ++
       (if pkgs.stdenv.isDarwin then [ pkgs.darwin.apple_sdk.frameworks.Cocoa ] else []) ++
