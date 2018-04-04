@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {}, name, src } :
+{ pkgs ? import <nixpkgs> {}, name, src, postBuild ? "" } :
   let
     packageJson = pkgs.writeTextDir "package.json" (builtins.readFile src);
     node2nix = pkgs.stdenv.mkDerivation {
@@ -12,6 +12,7 @@
         TMP=$(mktemp -d)
         cd $TMP
         node2nix --development -6 --input "$src"/package.json
+        ${postBuild}
       '';
       installPhase = ''
         mkdir -p "$out"

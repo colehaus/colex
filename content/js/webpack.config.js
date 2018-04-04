@@ -22,6 +22,11 @@ module.exports = {
   },
   module: {
     rules: [
+      {
+        enforce: 'pre',
+        test: /\.wp.es.js$/,
+        loader: 'standard-loader',
+      },
       { test: /\.js$|\.es$|\.ws$/, exclude: /node_modules/, loader: 'babel-loader' },
       { test: [
         require.resolve('jquery-flot')

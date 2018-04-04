@@ -21,7 +21,6 @@
       nativeBuildInputs = [
         hakyll
         pkgs.sass
-        pkgs.librsvg
         npmDependencies."mathjax-node-cli-^1.0.0"
         npmDependencies."uglify-js-^3.3.10"
       ] ++ (if pkgs.stdenv.isLinux then [ pkgs.glibcLocales ] else []);
