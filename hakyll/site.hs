@@ -184,7 +184,7 @@ extractChunks fp =
     Nothing -> error "Not just a vendor chunk"
 
 prodHost :: String
-prodHost = "https://col-ex.org"
+prodHost = "https://www.col-ex.org"
 
 buildSitemap
   :: Blessed "template" Identifier
