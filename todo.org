@@ -18,7 +18,8 @@
   CLOSED: [2018-03-05 Mon 18:52]
 * DONE Minify CSS
   CLOSED: [2018-03-05 Mon 16:31]
-* TODO Add sitemap to robots.txt
+* DONE Add sitemap to robots.txt
+  CLOSED: [2018-04-04 Wed 10:29]
 * DONE Fix old absolute URLs
   CLOSED: [2018-04-02 Mon 01:59]
 * TODO Stretchtext
@@ -27,7 +28,6 @@
 ** http://www.econ.brown.edu/1996/pdfs/96-21.pdf 301
 * DONE Try pngs on RSS
   CLOSED: [2018-04-02 Mon 00:36]
-* TODO Add sitemap to robots.txt
 * DONE Delete latex svgs
   CLOSED: [2018-03-06 Tue 10:15]
 * DONE Clear old files during release
@@ -44,9 +44,11 @@
    CLOSED: [2018-02-06 Tue 12:25]
 ** TODO Set up elm build
 * TODO [#C] Contain output
-* TODO [#C] Derive derivable things in purescript
+* DONE [#C] Derive derivable things in purescript
+  CLOSED: [2018-04-04 Wed 16:41]
 * TODO [#C] Autogenerate chunk per post
-* TODO [#C] Fix spurious rebuilds in hakyll (site.scss)
+* DONE [#C] Fix spurious rebuilds in hakyll (site.scss)
+  CLOSED: [2018-04-04 Wed 16:41]
 * DONE Cleanup nix
   CLOSED: [2018-02-18 Sun 16:29]
 ** DONE Use `runCommand`

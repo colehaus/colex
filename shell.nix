@@ -3,7 +3,7 @@ let
   webpack = pkgs.callPackage ./webpackColEx.nix {};
   hakyll = pkgs.callPackage ./hakyllColEx.nix {};
 in
-  pkgs.stdenv.mkDerivation rec {
+  pkgs.stdenv.mkDerivation {
     name = "colExEnv";
     LC_ALL = "en_US.UTF-8";
     buildInputs =
