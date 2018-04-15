@@ -1,6 +1,7 @@
-{ pkgs ? import <nixpkgs> { } } :
+{ pkgs ? import <nixpkgs> {}, extras ? import ./extras.nix } :
   let
-    nodeEnv = pkgs.callPackage ./callNode2nix.nix {
+    nodeEnv = extras.callNode2nix {
+      inherit pkgs;
       name = "webpackColEx";
       src = ./content/js/package.json;
       # TODO: Figure out a less hacky way to do this

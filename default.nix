@@ -1,4 +1,8 @@
 let
-  pkgs = import ./pinned-pkgs.nix ./nixpkgs.json { config = { packageOverrides = import ./package-overrides.nix; }; };
+  extras = import ./extras.nix;
+  pkgs = extras.pinnedPkgs {
+    specFile = ./nixpkgs.json;
+    opts = { config = { packageOverrides = import ./package-overrides.nix; }; };
+  };
 in
-pkgs.callPackage ./hakyllColEx.nix {}
+pkgs.callPackage ./hakyllColEx.nix { inherit pkgs extras; }

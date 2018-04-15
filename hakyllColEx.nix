@@ -1,17 +1,22 @@
-{ pkgs ? import <nixpkgs> {} } :
+{ pkgs ? import <nixpkgs> {}, extras ? import ./extras.nix } :
   let
     hakyll = pkgs.haskellPackages.callCabal2nix "ColEx" ./hakyll {};
     webpackColEx = pkgs.callPackage ./webpackColEx.nix {};
-    bibliometric = pkgs.callPackage ./purescript.nix {
+    bibliometric = extras.callPurescript2nix {
+      inherit pkgs;
       name = "bibliometric";
       src = ./content/js/bibliometric;
+      executable = true;
     };
-    npmDependencies = pkgs.callPackage ./callNpm2nix.nix {
+    mathJaxNodeCli = extras.callNpm {
+      inherit pkgs;
       name = "mathjax-node-cli";
-      npmPkgs = [
-        { mathjax-node-cli = "^1.0.0"; }
-        { uglify-js = "^3.3.10"; }
-      ];
+      versionSpec = "^1.0.0";
+    };
+    uglifyJs = extras.callNpm {
+      inherit pkgs;
+      name = "uglify-js";
+      versionSpec = "^3.3.10";
     };
   in
     pkgs.stdenv.mkDerivation {
@@ -21,8 +26,8 @@
       nativeBuildInputs = [
         hakyll
         pkgs.sass
-        npmDependencies."mathjax-node-cli-^1.0.0"
-        npmDependencies."uglify-js-^3.3.10"
+        mathJaxNodeCli
+        uglifyJs
       ] ++ (if pkgs.stdenv.isLinux then [ pkgs.glibcLocales ] else []);
       inherit webpackColEx;
       inherit bibliometric;

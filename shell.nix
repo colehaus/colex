@@ -1,5 +1,9 @@
 let
-  pkgs = import ./pinned-pkgs.nix ./nixpkgs.json { config = { packageOverrides = import ./package-overrides.nix; }; };
+  extras = import ./extras.nix;
+  pkgs = extras.pinnedPkgs {
+    specFile = ./nixpkgs.json;
+    opts = { config = { packageOverrides = import ./package-overrides.nix; }; };
+  };
   webpack = pkgs.callPackage ./webpackColEx.nix {};
   hakyll = pkgs.callPackage ./hakyllColEx.nix {};
 in
