@@ -23,6 +23,12 @@
       nodeDependencies = nodeEnv.shell.nodeDependencies;
       NODE_ENV = "production";
       buildPhase = ''
+        # Default `NODE_PATH` doesn't work with scoped packages
+        for path in ''${NODE_PATH//:/ }; do
+            if [[ "$path" = *"node-dependencies-ColEx"* ]]; then
+                NODE_PATH="$path/@colehaus":$NODE_PATH
+            fi
+        done
         OUT_DIR="$out" webpack
       '';
     }
