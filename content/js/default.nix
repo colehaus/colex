@@ -1,9 +1,9 @@
-{ pkgs ? import <nixpkgs> {}, extras ? import ./extras.nix } :
+{ pkgs ? import <nixpkgs> {}, extras ? import ../../extras.nix } :
   let
     nodeEnv = extras.callNode2nix {
       inherit pkgs;
       name = "webpackColEx";
-      src = ./content/js/package.json;
+      src = ./package.json;
       # TODO: Figure out a less hacky way to do this
       # (The root issue here is that node2nix has flattened the dependencies badly.)
       postBuild = ''
@@ -20,7 +20,7 @@
         nodeEnv.shell.nodeDependencies
       ];
       # We fetch via git rather than directly including the directory so we can reuse .gitignore
-      src = (extras.fetchGitHashless { args = { inherit name; url = ./.; }; }) + "/content/js";
+      src = (extras.fetchGitHashless { args = { name = "webpackColEx-src"; url = ./../..; }; }) + "/content/js";
       nodeDependencies = nodeEnv.shell.nodeDependencies;
       NODE_ENV = "production";
       buildPhase = ''

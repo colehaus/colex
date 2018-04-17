@@ -7,10 +7,10 @@ revision=`git log --max-count=1 --pretty=format:"%H"`
 comment=`git log --max-count=1 --pretty=format:"%B"`
 access_token=`cat ./rollbar-access-token.txt`
 environment=production
-nix-build --out-link colex-result
+nix-build
 cd ../colehaus.github.io
 shopt -s extglob
-sudo cp -r ../colex/colex-result/* .
+sudo cp -r ../colex/result/* .
 git add --interactive
 git diff-index --quiet HEAD || git commit --no-verify --message "Bump"
 git push

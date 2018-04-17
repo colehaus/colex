@@ -15,7 +15,6 @@ done
 # Fixes race between hakyll and webpack
 NO_WATCH=no_watch webpack
 cd ..
-stack exec site clean --nix
 stack exec site watch --nix &
 cd js
 webpack &

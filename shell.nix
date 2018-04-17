@@ -4,8 +4,8 @@ let
     specFile = ./nixpkgs.json;
     opts = { config = { packageOverrides = import ./package-overrides.nix; }; };
   };
-  webpack = pkgs.callPackage ./webpackColEx.nix {};
-  hakyll = pkgs.callPackage ./hakyllColEx.nix {};
+  webpack = pkgs.callPackage ./content/js {};
+  hakyll = pkgs.callPackage ./content {};
 in
   pkgs.stdenv.mkDerivation {
     name = "colExEnv";

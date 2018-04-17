@@ -4,5 +4,6 @@ let
     specFile = ./nixpkgs.json;
     opts = { config = { packageOverrides = import ./package-overrides.nix; }; };
   };
+  hakyll = pkgs.callPackage ./hakyll { inherit pkgs; };
 in
-pkgs.callPackage ./hakyllColEx.nix { inherit pkgs extras; }
+pkgs.callPackage ./content { inherit pkgs extras hakyll; }
