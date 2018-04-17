@@ -15,7 +15,7 @@ module.exports = {
   watch: mode === 'development' && !noWatch,
   resolve: {
     extensions: ['.wp.es.js', '.es', '.js'],
-    modules: process.env.NODE_PATH.split(':').concat(['js/'])
+    modules: process.env.NODE_PATH.split(':').concat(['js/', './'])
   },
   resolveLoader: {
     modules: process.env.NODE_PATH.split(':')

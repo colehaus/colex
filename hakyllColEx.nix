@@ -19,9 +19,10 @@
       versionSpec = "^3.3.10";
     };
   in
-    pkgs.stdenv.mkDerivation {
+    pkgs.stdenv.mkDerivation rec {
       name = "hakyllColEx";
-      src = ./content;
+      # We fetch via git rather than directly including the directory so we can reuse .gitignore
+      src = (extras.fetchGitHashless { args = { inherit name; url = ./.; }; }) + "/content";
       phases = [ "unpackPhase" "patchPhase" "buildPhase" "installPhase" ];
       nativeBuildInputs = [
         hakyll
@@ -36,13 +37,12 @@
       MATH_RENDER_METHOD = "FeedlyCompatible";
       # TODO Remove `rm` once we reorganize source directory
       patchPhase = ''
-        rm -rf js/dist
         mkdir js/dist
         cp "$webpackColEx"/* js/dist
         cp "$bibliometric"/* js/dist
       '';
       buildPhase = ''
-        site rebuild
+        site build
       '';
       installPhase = ''
         mkdir "$out"

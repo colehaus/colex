@@ -11,15 +11,16 @@
       '';
     };
   in
-    pkgs.stdenv.mkDerivation {
+    pkgs.stdenv.mkDerivation rec {
       name = "webpackColEx";
-      src = ./content/js;
       phases = [ "unpackPhase" "buildPhase" ];
       nativeBuildInputs = [
         pkgs.nodejs
         pkgs.flow
         nodeEnv.shell.nodeDependencies
       ];
+      # We fetch via git rather than directly including the directory so we can reuse .gitignore
+      src = (extras.fetchGitHashless { args = { inherit name; url = ./.; }; }) + "/content/js";
       nodeDependencies = nodeEnv.shell.nodeDependencies;
       NODE_ENV = "production";
       buildPhase = ''
