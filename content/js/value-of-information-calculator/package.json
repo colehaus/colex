@@ -1,0 +1,5 @@
+{
+  "dependencies": {
+    "flyd": "^0.2.6"
+  }
+}

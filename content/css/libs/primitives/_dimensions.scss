@@ -16,4 +16,7 @@
 @mixin width-small {
     width: 15em;
 }
+@mixin height-text-area {
+    height: 60vh;
+}
 $big-enough-for-marginalia: 60em;

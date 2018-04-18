@@ -1,0 +1,16 @@
+@import 'libs/primitives/typography';
+@import 'libs/primitives/dimensions';
+
+.voi-tree {
+    > pre {
+        /* To increase specificity */
+        @include font-smaller;
+        overflow-y: hidden;
+    }
+    overflow-y: scroll;
+    @include line-height-small;
+    @include monospace;
+    @include font-smaller;
+    @include width-full;
+    @include height-text-area;
+}

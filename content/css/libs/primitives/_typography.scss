@@ -31,3 +31,9 @@
 @mixin weight-light {
     font-weight: 300;
 }
+@mixin line-height-small {
+    line-height: 1;
+}
+@mixin monospace {
+    font-family: monospace;
+}
