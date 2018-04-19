@@ -44,6 +44,9 @@ $menu-back-color: nth(map-get($colors, hue), 6);
 $convo-1: rgba(nth(map-get($colors, hue), 2), 0.15);
 $convo-2: rgba(nth(map-get($colors, hue), 3), 0.15);
 
+@mixin background-error-color {
+    background-color: nth(map-get($colors, hue), 3);
+}
 @mixin light-color-text {
     color: $light-text-color;
 }

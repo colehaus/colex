@@ -44,14 +44,14 @@ unwrapOutcome (MkOutcome { finding, choices }) =
   Tuple finding (unwrapChoice <$> List.fromFoldable choices)
 wrapOutcome (Tuple finding choices) = MkOutcome { finding, choices: wrapChoice <$> Array.fromFoldable choices }
 
-newtype Investigation p f c r n =
+newtype Investigation f c r n =
   MkInvestigation (Array (DistEntry (Outcome f c r n) n))
 derive instance genericInvestigation ::
-     (Generic p, Generic f, Generic c, Generic r, Generic n)
-  => Generic (Investigation p f c r n)
+     (Generic f, Generic c, Generic r, Generic n)
+  => Generic (Investigation f c r n)
 instance showInvestigation ::
-     (Generic p, Generic f, Generic c, Generic r, Generic n)
-  => Show (Investigation p f c r n) where
+     (Generic f, Generic c, Generic r, Generic n)
+  => Show (Investigation f c r n) where
   show = gShow
 unwrapInvestigation (MkInvestigation investigation) =
   first unwrapOutcome <<< unwrapDistEntry <$> List.fromFoldable investigation

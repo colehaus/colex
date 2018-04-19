@@ -3,11 +3,9 @@ module Main where
 import Prelude
 
 import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.Console (CONSOLE)
 import Control.Monad.Eff.JQuery (JQuery)
 import Control.Monad.Eff.JQuery as J
 import DOM (DOM)
-import Data (Investigation, Result(..), first, unwrapInvestigation, wrapChoice, wrapInvestigation)
 import Data.Argonaut.Encode as Argonaut
 import Data.Argonaut.Generic.Aeson as Generic
 import Data.Array as Array
@@ -20,8 +18,9 @@ import Data.Map (Map)
 import Data.Map as Map
 import Data.NonEmpty.Indexed (NonEmpty)
 import Data.NonEmpty.Indexed as Indexed
+import Data.Number.Format (fixed, toStringWith)
 import Data.StrMap as StrMap
-import Data.Tuple (Tuple(Tuple), fst, snd)
+import Data.Tuple (Tuple(Tuple), uncurry)
 import Data.Yaml (parseFromYaml, printToYaml)
 import FRP (FRP)
 import FRP.Event (Event)
@@ -37,68 +36,95 @@ import Math.Probability.Information.Value.SimpleDecisionTree as SDT
 import Math.Probability.Information.Value.Utility (unsafeFromRightBecause)
 import Math.Probability.Prob.Number (Prob(..))
 
--- TODO: Move local imports here
+import Data (Result(MkResult), first, unwrapInvestigation, wrapChoice, wrapInvestigation)
 
 
 asList :: forall a. List a -> List a
 asList = id
 
-main :: forall e. Eff (console :: CONSOLE, dom :: DOM, frp :: FRP | e) Unit
-main
-  -- TODO: Remove dollar sign
- =
-  J.ready $ do
-    voiTextEl <- J.select "#voi-text"
-    voiTextEvent <- textAreaEvent voiTextEl
-    initialText <- J.getText voiTextEl
-    let voiTree =
-          latestSuccess
-            parse
-            (unsafeFromRightBecause "Starting text known good" $
-             parse initialText)
-            voiTextEvent
-    forgottenEl <- J.select "#forgotten pre"
-    perfectedEl <- J.select "#perfected pre"
-    forgottenValueEl <- J.select "#forgotten-expected-value"
-    expectedValueEl <- J.select "#expected-value"
-    perfectedValueEl <- J.select "#perfected-expected-value"
-    voiResultEl <- J.select "#voi-result"
-    voiPerfectEl <- J.select "#voi-perfect"
-    errorEl <- J.select "#voi-error"
-    let forgotten = VOI.forget <<< snd <$> voiTree
-    let forgottenText =
-          printToYaml <<<
-          Generic.encodeJson <<<
-          Array.fromFoldable <<< map wrapChoice <<< SDT.elementary <$> forgotten
-    let perfected = VOI.perfect <<< VOI.forget <<< snd <$> voiTree
-    let perfectedText =
-          printToYaml <<<
-          Generic.encodeJson <<<
-          wrapInvestigation <<< IDT.elementary <<< asStrMaps <$> perfected
-    _ <- FRP.subscribe (fst <$> voiTree) (errorTextEl errorEl)
-    _ <-
-      FRP.subscribe
-        (voi <<< snd <$> voiTree)
-        (flip J.setText voiResultEl <<< show <<< untagged)
-    _ <-
-      FRP.subscribe
-        (voi <$> perfected)
-        (flip J.setText voiPerfectEl <<< show <<< untagged)
-    _ <-
-      FRP.subscribe
-        (simpleDecisionTreeValue <$> forgotten)
-        (flip J.setText forgottenValueEl <<< show <<< untagged)
-    _ <-
-      FRP.subscribe
-        (investigationAndDecisionTreeValue <<< snd <$> voiTree)
-        (flip J.setText expectedValueEl <<< show <<< untagged)
-    _ <-
-      FRP.subscribe
-        (investigationAndDecisionTreeValue <$> perfected)
-        (flip J.setText perfectedValueEl <<< show <<< untagged)
-    _ <- FRP.subscribe forgottenText (flip J.setText forgottenEl)
-    _ <- FRP.subscribe perfectedText (flip J.setText perfectedEl)
-    pure unit
+type Elements =
+  { forgotten :: JQuery
+  , perfected :: JQuery
+  , expectedValue :: JQuery
+  , forgottenValue :: JQuery
+  , perfectedValue :: JQuery
+  , expectedVoi :: JQuery
+  , perfectedVoi :: JQuery
+  , error :: JQuery
+  }
+
+type Inputs = { voiText :: Event String, initialVoiText :: String }
+
+collectElements :: forall e. Eff (dom :: DOM | e) Elements
+collectElements = do
+  forgotten <- J.select "#forgotten"
+  perfected <- J.select "#perfected"
+  expectedValue <- J.select "#expected-value"
+  forgottenValue <- J.select "#forgotten-expected-value"
+  perfectedValue <- J.select "#perfected-expected-value"
+  expectedVoi <- J.select "#voi-result"
+  perfectedVoi <- J.select "#voi-perfect"
+  error <- J.select "#voi-error"
+  pure { forgotten, perfected, expectedValue, forgottenValue, perfectedValue, expectedVoi, perfectedVoi, error }
+
+setup :: forall e. Eff (dom :: DOM, frp :: FRP | e) Inputs
+setup = do
+  voiTextEl <- J.select "#voi-text"
+  voiText <- textAreaEvent voiTextEl
+  initialVoiText <- J.getText voiTextEl
+  pure { voiText, initialVoiText }
+
+sink :: forall e. Elements -> Either String Unit -> InvestigationAndDecisionTree Prob String String (Result String Number) -> Eff (dom :: DOM | e) Unit
+sink el error tree = do
+  void $ errorTextEl el.error error
+  void $ J.setText (show' <<< untagged <<< voi $ tree) el.expectedVoi
+  void $ J.setText (show' <<< untagged <<< voi $ perfected) el.perfectedVoi
+  void $ J.setText (show' <<< untagged <<< simpleDecisionTreeValue $ forgotten) el.forgottenValue
+  void $ J.setText (show' <<< untagged <<< investigationAndDecisionTreeValue $ tree) el.expectedValue
+  void $ J.setText (show' <<< untagged <<< investigationAndDecisionTreeValue $ perfected) el.perfectedValue
+  void $ J.setText (printSimpleDecisionTree forgotten) el.forgotten
+  void $ J.setText (printInvestigationAndDecisionTree perfected) el.perfected
+  where
+    show' = toStringWith (fixed 2)
+    forgotten = VOI.forget tree
+    perfected = VOI.perfect <<< VOI.forget $ tree
+
+main :: forall e. Eff (dom :: DOM, frp :: FRP | e) Unit
+main =
+  J.ready do
+    inputs <- setup
+    let initialTree = unsafeFromRightBecause "Starting text known good" $ parse inputs.initialVoiText
+    elements <- collectElements
+    sink elements (Right unit) initialTree
+    FRP.subscribe (latestSuccess parse initialTree inputs.voiText) (uncurry $ sink elements)
+
+printInvestigationAndDecisionTree ::
+     InvestigationAndDecisionTree
+       Prob
+       (NonEmpty Map String (Result String Number))
+       String
+       (Result String Number)
+  -> String
+printInvestigationAndDecisionTree =
+  printToYaml <<<
+  Generic.encodeJson <<< wrapInvestigation <<< IDT.elementary <<< asStrMaps
+  where
+    -- No generic encoder for `Map`s so we convert it to a string first
+    asStrMaps =
+      unsafeFromRightBecause "encode and decode should be isomorphic" <<<
+      IDT.lift
+        (map <<< first $
+         printToYaml <<<
+         Argonaut.encodeJson <<<
+         StrMap.fromFoldable <<<
+         asList <<< Map.toUnfoldable <<< Indexed.fromNonEmpty Map.insert)
+
+printSimpleDecisionTree ::
+     SimpleDecisionTree Prob String (Result String Number) -> String
+printSimpleDecisionTree =
+  printToYaml <<<
+  Generic.encodeJson <<<
+  Array.fromFoldable <<< map wrapChoice <<< SDT.elementary
 
 simpleDecisionTreeValue ::
      SimpleDecisionTree Prob String (Result String Number) -> Tagged Value Number
@@ -135,44 +161,16 @@ voi =
     evMaxDecide
     evMaxValue
 
-asStrMaps ::
-     InvestigationAndDecisionTree
-       Prob
-       (NonEmpty Map String (Result String Number))
-       String
-       (Result String Number)
-  -> InvestigationAndDecisionTree
-       Prob
-       String
-       String
-       (Result String Number)
-asStrMaps =
-  unsafeFromRightBecause "x" <<<
-  IDT.lift
-    (map $
-     first $
-     printToYaml <<<
-     Argonaut.encodeJson <<<
-     StrMap.fromFoldable <<<
-     asList <<< Map.toUnfoldable <<< Indexed.fromNonEmpty Map.insert)
-
-
 parse ::
      String
   -> Either String (InvestigationAndDecisionTree Prob String String (Result String Number))
 parse =
   lmap show <<<
   VOI.fromElementary <<<
-  unwrapInvestigation <<< fixType <=< Generic.decodeJson <=< parseFromYaml
-  where
-    fixType ::
-         forall a.
-         Investigation String String String (Result String Number) Prob
-      -> Investigation String String String (Result String Number) Prob
-    fixType = id
+  unwrapInvestigation <=< Generic.decodeJson <=< parseFromYaml
 
 errorTextEl :: forall a e. JQuery -> Either String a -> Eff ( dom :: DOM | e) Unit
-errorTextEl el = either (flip J.setText el) (\_ -> J.clear el)
+errorTextEl el = either (\t -> J.setText t el *> J.display el) (\_ -> J.hide el)
 
 latestSuccess ::
      forall i o e.

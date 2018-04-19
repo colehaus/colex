@@ -6,6 +6,8 @@ css: voi-calculator
 js: voi-calculator
 ---
 
+# Input
+
 <form id="voi">
 <textarea class="voi-tree" id="voi-text">
 ```{=html}
@@ -44,14 +46,19 @@ js: voi-calculator
 ```
 </textarea>
 </form>
+
+# Results
+
 <output form="voi" for="voi-text">
 <div id="voi-error"></div>
-<span class="label">Expected value of information</span><span id="voi-result"></span><br/>
-<span class="label">Expected value with optimal choices</span><span id="expected-value"></span><br/>
+<div id="result-numbers">
+<span class="label">Expected value with given information</span><span id="expected-value"></span><br/>
 <span class="label">Expected value without information</span><span id="forgotten-expected-value"></span><br/>
-<span class="label">Value of perfect information</span><span id="voi-perfect"></span><br/>
-<span class="label">Expected value of optimal choices with perfect information</span><span id="perfected-expected-value"></span><br/>
-<div class="voi-tree" id="forgotten"><pre></pre></div>
-<div class="voi-tree" id="perfected"><pre></pre></div>
+<span class="label">Expected value of given information</span><span id="voi-result"></span><br/>
+<span class="label">Expected value with perfect information</span><span id="perfected-expected-value"></span><br/>
+<span class="label">Expected value of perfect information</span><span id="voi-perfect"></span><br/>
+</div>
+<figure><figcaption>Scenario without information</figcaption><pre class="voi-tree" id="forgotten"></pre></figure>
+<figure><figcaption>Scenario with perfect information</figcaption><pre class="voi-tree" id="perfected"></pre></figure>
 </textarea>
 </output>

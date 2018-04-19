@@ -1,16 +1,37 @@
-@import 'libs/primitives/typography';
+@import 'libs/primitives/borders';
+@import 'libs/colors';
 @import 'libs/primitives/dimensions';
+@import 'libs/primitives/spacing';
+@import 'libs/primitives/typography';
 
 .voi-tree {
-    > pre {
-        /* To increase specificity */
-        @include font-smaller;
-        overflow-y: hidden;
-    }
-    overflow-y: scroll;
     @include line-height-small;
     @include monospace;
     @include font-smaller;
     @include width-full;
+}
+figure {
+    @include border-radius;
+    @include background-alt-color;
+    @include margin-vertical-1ex;
+    @include padding-1ex;
+}
+pre.voi-tree {
+    /* To increase specificity */
+    @include font-smaller;
+    overflow-y: hidden;
+}
+textarea.voi-tree {
     @include height-text-area;
+}
+.label::after {
+    content: ": ";
+}
+#voi-error::before {
+    content: "Errors: ";
+}
+#voi-error {
+    @include border-radius;
+    @include padding-1ex;
+    @include background-error-color;
 }
