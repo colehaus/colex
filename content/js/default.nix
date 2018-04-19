@@ -20,8 +20,7 @@
         nodeEnv.shell.nodeDependencies
       ];
       # We fetch via git rather than directly including the directory so we can reuse .gitignore
-      src = (extras.fetchGitHashless { args = { name = "webpackColEx-src"; url = ./../..; }; }) + "/content/js";
-      nodeDependencies = nodeEnv.shell.nodeDependencies;
+      src = extras.gitignoreSource ../.. + "/content/js";
       NODE_ENV = "production";
       buildPhase = ''
         # Default `NODE_PATH` doesn't work with scoped packages

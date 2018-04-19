@@ -12,7 +12,8 @@
 * DONE Query parameter for tree/choose state
   CLOSED: [2018-03-05 Mon 16:07]
 * TODO [#C] Remove JS suffix
-* TODO Nix propagated build inputs
+* DONE Nix propagated build inputs
+  CLOSED: [2018-04-19 Thu 02:52]
 * DONE Fix notebook column width
   CLOSED: [2018-03-05 Mon 15:08]
 * DONE Add sitemap

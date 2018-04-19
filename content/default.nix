@@ -16,7 +16,7 @@
     pkgs.stdenv.mkDerivation rec {
       name = "hakyllColEx";
       # We fetch via git rather than directly including the directory so we can reuse .gitignore
-      src = (extras.fetchGitHashless { args = { name = "hakyllColEx-src"; url = ./..; }; }) + "/content";
+      src = extras.gitignoreSource ./.. + "/content";
       phases = [ "unpackPhase" "patchPhase" "buildPhase" "installPhase" ];
       nativeBuildInputs = [
         hakyll

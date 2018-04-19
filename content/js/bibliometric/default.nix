@@ -2,6 +2,6 @@
   extras.callPurescript2nix {
     inherit pkgs;
     name = "bibliometric";
-    src = ./.;
+    src = extras.gitignoreSource ../../.. + "/content/js/bibliometric";
     executable = true;
   }
