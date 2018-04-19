@@ -3,9 +3,12 @@ module Main where
 import Prelude
 
 import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.JQuery (JQuery)
 import Control.Monad.Eff.JQuery as J
+import Control.Monad.Eff.JQuery.Fancy (One)
+import Control.Monad.Eff.JQuery.Fancy as K
 import DOM (DOM)
+import DOM.Event.Types (EventType(..))
+import Data (Result(MkResult), first, unwrapInvestigation, wrapChoice, wrapInvestigation)
 import Data.Argonaut.Encode as Argonaut
 import Data.Argonaut.Generic.Aeson as Generic
 import Data.Array as Array
@@ -20,6 +23,7 @@ import Data.NonEmpty.Indexed (NonEmpty)
 import Data.NonEmpty.Indexed as Indexed
 import Data.Number.Format (fixed, toStringWith)
 import Data.StrMap as StrMap
+import Data.Symbol (class IsSymbol, SProxy(..), reflectSymbol)
 import Data.Tuple (Tuple(Tuple), uncurry)
 import Data.Yaml (parseFromYaml, printToYaml)
 import FRP (FRP)
@@ -36,54 +40,63 @@ import Math.Probability.Information.Value.SimpleDecisionTree as SDT
 import Math.Probability.Information.Value.Utility (unsafeFromRightBecause)
 import Math.Probability.Prob.Number (Prob(..))
 
-import Data (Result(MkResult), first, unwrapInvestigation, wrapChoice, wrapInvestigation)
-
 
 asList :: forall a. List a -> List a
 asList = id
 
 type Elements =
-  { forgotten :: JQuery
-  , perfected :: JQuery
-  , expectedValue :: JQuery
-  , forgottenValue :: JQuery
-  , perfectedValue :: JQuery
-  , expectedVoi :: JQuery
-  , perfectedVoi :: JQuery
-  , error :: JQuery
+  { forgotten :: K.JQuery (One "pre") "#forgotten"
+  , perfected :: K.JQuery (One "pre") "#perfected"
+  , expectedValue :: K.JQuery (One "span") "#expected-value"
+  , forgottenValue :: K.JQuery (One "span") "#forgotten-expected-value"
+  , perfectedValue :: K.JQuery (One "span") "#perfected-expected-value"
+  , expectedVoi :: K.JQuery (One "span") "#voi-result"
+  , perfectedVoi :: K.JQuery (One "span") "#voi-perfect"
+  , error :: K.JQuery (One "div") "#voi-error"
   }
 
 type Inputs = { voiText :: Event String, initialVoiText :: String }
 
 collectElements :: forall e. Eff (dom :: DOM | e) Elements
 collectElements = do
-  forgotten <- J.select "#forgotten"
-  perfected <- J.select "#perfected"
-  expectedValue <- J.select "#expected-value"
-  forgottenValue <- J.select "#forgotten-expected-value"
-  perfectedValue <- J.select "#perfected-expected-value"
-  expectedVoi <- J.select "#voi-result"
-  perfectedVoi <- J.select "#voi-perfect"
-  error <- J.select "#voi-error"
+  forgotten <- sel (SProxy :: SProxy "#forgotten")
+  perfected <- sel (SProxy :: SProxy "#perfected")
+  expectedValue <- sel (SProxy :: SProxy "#expected-value")
+  forgottenValue <- sel (SProxy :: SProxy "#forgotten-expected-value")
+  perfectedValue <- sel (SProxy :: SProxy "#perfected-expected-value")
+  expectedVoi <- sel (SProxy :: SProxy "#voi-result")
+  perfectedVoi <- sel (SProxy :: SProxy "#voi-perfect")
+  error <- sel (SProxy :: SProxy "#voi-error")
   pure { forgotten, perfected, expectedValue, forgottenValue, perfectedValue, expectedVoi, perfectedVoi, error }
+
+sel ::
+     forall e sel tag.
+     IsSymbol sel
+  => SProxy sel
+  -> Eff (dom :: DOM | e) (K.JQuery (One tag) sel)
+sel sym = K.unsafeSelectOneBecause (reflectSymbol sym <> " required") sym
 
 setup :: forall e. Eff (dom :: DOM, frp :: FRP | e) Inputs
 setup = do
-  voiTextEl <- J.select "#voi-text"
+  voiTextEl <- sel (SProxy :: SProxy "#voi-text")
   voiText <- textAreaEvent voiTextEl
-  initialVoiText <- J.getText voiTextEl
+  initialVoiText <- K.getText voiTextEl
   pure { voiText, initialVoiText }
 
-sink :: forall e. Elements -> Either String Unit -> InvestigationAndDecisionTree Prob String String (Result String Number) -> Eff (dom :: DOM | e) Unit
+sink ::
+     forall e. Elements
+  -> Either String Unit
+  -> InvestigationAndDecisionTree Prob String String (Result String Number)
+  -> Eff (dom :: DOM | e) Unit
 sink el error tree = do
   void $ errorTextEl el.error error
-  void $ J.setText (show' <<< untagged <<< voi $ tree) el.expectedVoi
-  void $ J.setText (show' <<< untagged <<< voi $ perfected) el.perfectedVoi
-  void $ J.setText (show' <<< untagged <<< simpleDecisionTreeValue $ forgotten) el.forgottenValue
-  void $ J.setText (show' <<< untagged <<< investigationAndDecisionTreeValue $ tree) el.expectedValue
-  void $ J.setText (show' <<< untagged <<< investigationAndDecisionTreeValue $ perfected) el.perfectedValue
-  void $ J.setText (printSimpleDecisionTree forgotten) el.forgotten
-  void $ J.setText (printInvestigationAndDecisionTree perfected) el.perfected
+  void $ K.setText (show' <<< untagged <<< voi $ tree) el.expectedVoi
+  void $ K.setText (show' <<< untagged <<< voi $ perfected) el.perfectedVoi
+  void $ K.setText (show' <<< untagged <<< simpleDecisionTreeValue $ forgotten) el.forgottenValue
+  void $ K.setText (show' <<< untagged <<< investigationAndDecisionTreeValue $ tree) el.expectedValue
+  void $ K.setText (show' <<< untagged <<< investigationAndDecisionTreeValue $ perfected) el.perfectedValue
+  void $ K.setText (printSimpleDecisionTree forgotten) el.forgotten
+  void $ K.setText (printInvestigationAndDecisionTree perfected) el.perfected
   where
     show' = toStringWith (fixed 2)
     forgotten = VOI.forget tree
@@ -169,8 +182,15 @@ parse =
   VOI.fromElementary <<<
   unwrapInvestigation <=< Generic.decodeJson <=< parseFromYaml
 
-errorTextEl :: forall a e. JQuery -> Either String a -> Eff ( dom :: DOM | e) Unit
-errorTextEl el = either (\t -> J.setText t el *> J.display el) (\_ -> J.hide el)
+errorTextEl ::
+     forall a e sel tag.
+     K.JQuery (One tag) sel
+  -> Either String a
+  -> Eff (dom :: DOM | e) Unit
+errorTextEl el =
+  either
+    (\t -> K.setText t el *> J.display (K.unwrap el))
+    (\_ -> J.hide (K.unwrap el))
 
 latestSuccess ::
      forall i o e.
@@ -186,16 +206,19 @@ latestSuccess g o evt = FRP.fold f evt (Tuple (Right unit) o)
         Left e -> Tuple (Left e) old
 
 jqueryEvent ::
-     forall a e.
-     String
+     forall a e sel tag.
+     EventType
   -> (Unit -> Eff (frp :: FRP, dom :: DOM | e) a)
-  -> JQuery
+  -> K.JQuery (One tag) sel
   -> Eff (dom :: DOM , frp :: FRP | e) (Event a)
 jqueryEvent eventType f el = do
   { event, push } <- FRP.create
-  J.on eventType (\_ _ -> push =<< f unit) el
+  K.on eventType (\_ _ -> push =<< f unit) el
   pure event
 
-textAreaEvent :: forall e. JQuery -> Eff ( dom :: DOM , frp :: FRP | e) (Event String)
+textAreaEvent ::
+     forall e sel.
+     K.JQuery (One "textarea") sel
+  -> Eff (dom :: DOM , frp :: FRP | e) (Event String)
 textAreaEvent el =
-  jqueryEvent "input" (\_ -> unsafeFromForeign <$> J.getValue el) el
+  jqueryEvent (EventType "input") (\_ -> unsafeFromForeign <$> K.getValue el) el
