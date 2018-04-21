@@ -13,13 +13,21 @@ for path in ${NODE_PATH//:/ }; do
     fi
 done
 # Fixes race between hakyll and webpack
-NO_WATCH=no_watch webpack
+# NO_WATCH=no_watch webpack
 cd ..
 stack exec site watch --nix &
 cd js
 webpack &
-cd bibliometric
+# cd bibliometric
+# bower install
+# pulp --watch browserify --to ../dist/bibliometric.js &
+# cd value-of-information-calculator
+# npm install
+# bower install
+# pulp --watch browserify --to ../dist/value-of-information-calculator.js &
+cd construct-vnm-utility-function
+npm install
 bower install
-pulp --watch browserify --to ../dist/bibliometric.js &
+pulp --watch browserify --to ../dist/construct-vnm-utility-function.js &
 trap 'kill $(jobs -p)' EXIT
 sleep infinity
