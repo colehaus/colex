@@ -22,7 +22,7 @@ pre.voi-tree {
     overflow-y: hidden;
 }
 textarea.voi-tree {
-    @include height-text-area;
+    @include height-big-view;
 }
 .label::after {
     content: ": ";

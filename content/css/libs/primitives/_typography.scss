@@ -37,3 +37,6 @@
 @mixin monospace {
     font-family: monospace;
 }
+@mixin small-caps {
+    font-variant: small-caps;
+}

@@ -2,8 +2,8 @@
 title: Value of information calculator
 published: 2018-04-14
 tags: value of information, decision theory
-css: voi-calculator
-js: voi-calculator
+css: value-of-information-calculator
+js: value-of-information-calculator
 ---
 
 # Input

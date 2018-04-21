@@ -1,0 +1,18 @@
+@import 'libs/colors';
+@import 'libs/primitives/borders';
+@import 'libs/primitives/spacing';
+@import 'libs/primitives/typography';
+
+.goods {
+    @include padding-1ex;
+    @include width-full;
+    @include height-small-view;
+}
+.good {
+    @include small-caps;
+}
+.lottery {
+    @include border-radius;
+    @include background-alt-color;
+    @include padding-1ex;
+}
