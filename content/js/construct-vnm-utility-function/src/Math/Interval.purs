@@ -1,5 +1,5 @@
-module Data.Interval
-  ( module Data.Interval
+module Math.Interval
+  ( module Math.Interval
   , module ForReExport
   ) where
 
@@ -131,4 +131,14 @@ width (NonEmpty { lower, upper }) =
     Tuple Bound.NegInf _ -> Infinity
     Tuple _ Bound.PosInf -> Infinity
     Tuple (Bound.Finite l) (Bound.Finite u) -> Finite $ u.bound - l.bound
+    Tuple _ _ -> unsafeCrashWith "width"
+
+-- | Where both exist and are finite, upper bound divided by lower bound
+normalizedWidth :: forall n. EuclideanRing n => Ring n => Interval n -> Infinite n
+normalizedWidth Empty = Finite $ un Additive mempty
+normalizedWidth (NonEmpty { lower, upper }) =
+  case Tuple lower upper of
+    Tuple Bound.NegInf _ -> Infinity
+    Tuple _ Bound.PosInf -> Infinity
+    Tuple (Bound.Finite l) (Bound.Finite u) -> Finite $ u.bound / l.bound
     Tuple _ _ -> unsafeCrashWith "width"

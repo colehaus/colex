@@ -1,9 +1,10 @@
 @import 'libs/colors';
 @import 'libs/primitives/borders';
+@import 'libs/primitives/dimensions';
 @import 'libs/primitives/spacing';
 @import 'libs/primitives/typography';
 
-.goods {
+#goods {
     @include padding-1ex;
     @include width-full;
     @include height-small-view;

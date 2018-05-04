@@ -2,88 +2,28 @@ module Economics.Utility.VNM where
 
 import Prelude hiding (bottom,top)
 
-import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.Console (CONSOLE, log)
 import Data.Foldable (maximumBy)
 import Data.Function (on)
-import Data.Generic (class Generic, gShow)
-import Data.Interval (boundAbove, boundBelow, width)
-import Data.Interval as Interval
 import Data.Interval.Bound (Bound(..))
 import Data.Interval.Internal (Interval(..))
 import Data.Interval.Openness (Openness(..))
-import Data.List (List(..))
-import Data.List.Extras (tails)
-import Data.Map (Map)
-import Data.Map as Map
 import Data.Maybe (Maybe(..))
-import Data.Monoid (mempty)
-import Data.Monoid.Additive (Additive(..))
-import Data.Newtype (class Newtype, un)
 import Data.NonEmpty (NonEmpty, fromNonEmpty, (:|))
-import Data.NonEmpty.Indexed (deindex)
-import Data.NonEmpty.Indexed as Indexed
 import Data.Set (Set)
 import Data.Set as Set
-import Data.Tuple (Tuple(..), fst, snd)
+import Data.Tuple (Tuple(Tuple), fst, snd)
+import Economics.Utility.Ratio (Ratio(MkRatio))
+import Economics.Utility.VNM.Function (UtilityFn, unmake)
+import Economics.Utility.VNM.Function as Function
 import Math (sqrt)
+import Math.Interval (boundAbove, boundBelow, normalizedWidth)
+import Math.Interval as Interval
 import Partial.Unsafe (unsafeCrashWith)
 
-pairs :: forall a. List a -> List (Tuple a a)
-pairs l = do
-  ls <- tails l
-  case ls of
-    Nil -> Nil
-    Cons x ys -> do
-      y <- ys
-      pure $ Tuple x y
-
-newtype Pair a = MkPair { base :: a, quote :: a }
-derive instance newtypePair :: Newtype (Pair a) _
-derive instance genericPair :: Generic a => Generic (Pair a)
-derive instance eqPair :: Eq a => Eq (Pair a)
--- WARNING: Not a semantic instance. Just so we can put it inside a map.
-derive instance ordPair :: Ord a => Ord (Pair a)
-instance showPair :: Generic a => Show (Pair a) where
-  show = gShow
-
-newtype Ratio a n = MkRatio { pair :: Pair a, relativeValue :: n }
-derive instance newtypeRatio :: Newtype (Ratio a n) _
-derive instance genericRatio :: (Generic a, Generic n) => Generic (Ratio a n)
-derive instance eqRatio :: (Eq a, Eq n) => Eq (Ratio a n)
-instance showRatio :: (Generic a, Generic n) => Show (Ratio a n) where
-  show = gShow
-
 foreign import top :: Number
+foreign import smallest :: Number
 bottom :: Number
 bottom = -top
-
-nonEmptyMap ::
-     forall k v.
-     Ord k
-  => Map k v
-  -> Maybe (Indexed.NonEmpty Map k v)
-nonEmptyMap m =
-  (\l -> (Tuple l.key l.value) Indexed.:| (l.key `Map.delete` m)) <$> Map.findMin m
-
-initial ::
-     forall a n.
-     Ord a
-  => Ord (Pair a)
-  => Ord n
-  => Semiring n
-  => NonEmpty Set a
-  -> Indexed.NonEmpty Map (Pair a) (Interval n)
-initial =
-  unsafeFromJustBecause "initial" <<< nonEmptyMap <<< Map.fromFoldable <<<
-  map ((flip Tuple positive) <<< mkPair) <<< pairs <<< Set.toUnfoldable <<< fromNonEmpty Set.insert
-  where
-    positive
-      = NonEmpty
-      { lower: Finite { bound: un Additive mempty, openness: Open }
-      , upper: PosInf
-      }
-    mkPair (Tuple base quote) = MkPair {base, quote}
 
 geometricMean :: Number -> Number -> Number
 geometricMean l r = sqrt l * sqrt r
@@ -98,65 +38,61 @@ geometricMidpoint l NegInf = geometricMidpoint NegInf l
 geometricMidpoint (Finite { bound }) PosInf
   | bound < 1.0 = 1.0
   | otherwise = geometricMean bound top
+geometricMidpoint (Finite { bound: 0.0 }) (Finite r) = smallest
 geometricMidpoint (Finite l) (Finite r)
   | l.bound < 0.0 && r.bound < 0.0 = geometricMean (-l.bound) (-r.bound)
   | otherwise = geometricMean l.bound r.bound
 
 widest ::
      forall a n.
-     Ord n
+     EuclideanRing n
+  =>  Ord a
+  => Ord n
   => Ring n
-  => NonEmpty List (Tuple a (Interval n))
+  => NonEmpty Set (Tuple a (Interval n))
   -> Tuple a (Interval n)
 widest =
-  unsafeFromJustBecause "widest" <<<
-  maximumBy (compare `on` (width <<< snd)) <<< fromNonEmpty Cons
-
-refine :: forall n. Ord n => n -> Ordering -> Interval n -> Interval n
-refine n EQ = const $ Interval.singleton n
-refine n LT = unsafeFromJustBecause "refine LT" <<< boundAbove n Open
-refine n GT = unsafeFromJustBecause "refine GT" <<< boundBelow n Open
+  unsafeFromJustBecause "`NonEmpty`" <<<
+  maximumBy (compare `on` (normalizedWidth <<< snd)) <<< fromNonEmpty Set.insert
 
 unsafeFromJustBecause :: forall a. String -> Maybe a -> a
 unsafeFromJustBecause _ (Just a) = a
 unsafeFromJustBecause str Nothing = unsafeCrashWith str
 
-print ::
-     forall a e n.
-     Show a
-  => Indexed.NonEmpty Map a (Interval Number)
-  -> Eff (console :: CONSOLE | e) (Tuple (Tuple a (Interval Number)) Number)
-print ps = do
-  let w = widest <<< deindex id Map.toUnfoldable $ ps
-  case snd w of
-    Empty -> unsafeCrashWith "empty"
-    (NonEmpty { lower, upper }) -> do
-      log <<< show <<< fst $ w
-      let mid = geometricMidpoint lower upper
-      log <<< show $ mid
-      pure $ Tuple w mid
+unzip :: forall t b a. Functor t => t (Tuple a b) -> Tuple (t a) (t b)
+unzip xs = Tuple (fst <$> xs) (snd <$> xs)
 
-update ::
+pickNextLottery ::
+     forall a.
+     Ord a
+  => UtilityFn a Number
+  -> Ratio a Number
+pickNextLottery fn =
+ case widest <<< unmake $ fn of
+    Tuple _ Empty -> unsafeCrashWith "Our intervals should never be empty"
+    Tuple pair (NonEmpty {lower, upper}) ->
+      MkRatio { pair, relativeValue : geometricMidpoint lower upper }
+
+refine ::
      forall a n.
      Ord a
   => Ord n
-  => Tuple (Tuple a (Interval n)) n
+  => Ratio a n
   -> Ordering
-  -> Indexed.NonEmpty Map a (Interval n)
-  -> Indexed.NonEmpty Map a (Interval n)
-update (Tuple (Tuple k i) n) o =
-  unsafeFromJustBecause "update" <<<
-  nonEmptyMap <<<
-  Map.insert k (refine n o i) <<< Indexed.fromNonEmpty Map.insert
+  -> UtilityFn a n
+  -> UtilityFn a n
+refine (MkRatio ratio) EQ =
+  Function.update ratio.pair (const $ Interval.singleton ratio.relativeValue)
+refine (MkRatio ratio) GT =
+  Function.update
+    ratio.pair
+    (unsafeFromJustBecause "Midpoint guaranteed within interval" <<<
+     boundBelow ratio.relativeValue Open)
+refine (MkRatio ratio) LT =
+  Function.update
+    ratio.pair
+    (unsafeFromJustBecause "Midpoint guaranteed within interval" <<<
+     boundAbove ratio.relativeValue Open)
 
 nonEmptySet :: forall a. Ord a => Set a -> Maybe (NonEmpty Set a)
 nonEmptySet s = (\m -> m :| m `Set.delete` s) <$> Set.findMin s
-
-setup ::
-     forall n.
-     Ord n
-  => Semiring n
-  => Indexed.NonEmpty Map (Pair String) (Interval n)
-setup =
-  initial <<< unsafeFromJustBecause "main" <<< nonEmptySet <<< Set.fromFoldable $
-  ["a", "b", "c"]

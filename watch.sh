@@ -26,7 +26,6 @@ webpack &
 # bower install
 # pulp --watch browserify --to ../dist/value-of-information-calculator.js &
 cd construct-vnm-utility-function
-npm install
 bower install
 pulp --watch browserify --to ../dist/construct-vnm-utility-function.js &
 trap 'kill $(jobs -p)' EXIT

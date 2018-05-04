@@ -12,11 +12,14 @@ import Data.Lattice
   , bottom, join, meet, top
   )
 
+-- TODO: GADTify
 data Interval n
   = NonEmpty { lower :: Bound n, upper :: Bound n }
   | Empty
 derive instance genericInterval :: Generic n => Generic (Interval n)
 derive instance eqInterval :: Eq n => Eq (Interval n)
+-- | WARNING: Not a semantic instance. Just so we can put it inside a map.
+derive instance ordInterval :: Ord n => Ord (Interval n)
 instance showInterval :: Generic n => Show (Interval n) where
   show = gShow
 instance joinInterval :: Ord n => JoinSemilattice (Interval n) where
