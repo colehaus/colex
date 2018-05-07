@@ -1,9 +1,9 @@
-module Data.Interval.Internal where
+module Math.Interval.Internal where
 
 import Prelude hiding (join,top,bottom)
 
 import Data.Generic (class Generic, gShow)
-import Data.Interval.Bound (Bound)
+import Math.Interval.Bound (Bound)
 import Data.Lattice
   ( class BoundedJoinSemilattice
   , class BoundedMeetSemilattice

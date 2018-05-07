@@ -1,4 +1,4 @@
-module Data.Interval.Openness where
+module Math.Interval.Openness where
 
 import Prelude
 

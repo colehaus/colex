@@ -2,13 +2,13 @@ module Economics.Utility.VNM where
 
 import Prelude hiding (bottom,top)
 
-import Data.Foldable (maximumBy)
+import Data.Foldable (class Foldable, maximumBy)
 import Data.Function (on)
-import Data.Interval.Bound (Bound(..))
-import Data.Interval.Internal (Interval(..))
-import Data.Interval.Openness (Openness(..))
+import Data.List (List)
+import Data.Map as Map
 import Data.Maybe (Maybe(..))
-import Data.NonEmpty (NonEmpty, fromNonEmpty, (:|))
+import Data.NonEmpty (NonEmpty, (:|))
+import Data.NonEmpty.Indexed as Indexed
 import Data.Set (Set)
 import Data.Set as Set
 import Data.Tuple (Tuple(Tuple), fst, snd)
@@ -18,12 +18,24 @@ import Economics.Utility.VNM.Function as Function
 import Math (sqrt)
 import Math.Interval (boundAbove, boundBelow, normalizedWidth)
 import Math.Interval as Interval
+import Math.Interval.Bound (Bound(..))
+import Math.Interval.Internal (Interval(..))
+import Math.Interval.Openness (Openness(..))
 import Partial.Unsafe (unsafeCrashWith)
 
-foreign import top :: Number
-foreign import smallest :: Number
+-- foreign import top :: Number
+-- foreign import smallest :: Number
+-- bottom :: Number
+-- bottom = -top
+
+top :: Number
+top = 1e4
+
+smallest :: Number
+smallest = 1e-4
+
 bottom :: Number
-bottom = -top
+bottom = 1e-4
 
 geometricMean :: Number -> Number -> Number
 geometricMean l r = sqrt l * sqrt r
@@ -38,22 +50,24 @@ geometricMidpoint l NegInf = geometricMidpoint NegInf l
 geometricMidpoint (Finite { bound }) PosInf
   | bound < 1.0 = 1.0
   | otherwise = geometricMean bound top
-geometricMidpoint (Finite { bound: 0.0 }) (Finite r) = smallest
+geometricMidpoint (Finite { bound: 0.0, openness }) (Finite r) =
+  geometricMidpoint (Finite { bound: smallest, openness }) (Finite r)
 geometricMidpoint (Finite l) (Finite r)
   | l.bound < 0.0 && r.bound < 0.0 = geometricMean (-l.bound) (-r.bound)
   | otherwise = geometricMean l.bound r.bound
 
 widest ::
-     forall a n.
+     forall a f n.
      EuclideanRing n
-  =>  Ord a
+  => Ord a
   => Ord n
+  => Foldable f
   => Ring n
-  => NonEmpty Set (Tuple a (Interval n))
+  => f (Tuple a (Interval n))
   -> Tuple a (Interval n)
 widest =
   unsafeFromJustBecause "`NonEmpty`" <<<
-  maximumBy (compare `on` (normalizedWidth <<< snd)) <<< fromNonEmpty Set.insert
+  maximumBy (compare `on` (normalizedWidth <<< snd))
 
 unsafeFromJustBecause :: forall a. String -> Maybe a -> a
 unsafeFromJustBecause _ (Just a) = a
@@ -68,10 +82,13 @@ pickNextLottery ::
   => UtilityFn a Number
   -> Ratio a Number
 pickNextLottery fn =
- case widest <<< unmake $ fn of
+ case widest <<< asList <<< Map.toUnfoldable <<< Indexed.fromNonEmpty Map.insert <<< unmake $ fn of
     Tuple _ Empty -> unsafeCrashWith "Our intervals should never be empty"
     Tuple pair (NonEmpty {lower, upper}) ->
       MkRatio { pair, relativeValue : geometricMidpoint lower upper }
+ where
+   asList :: forall b. List b -> List b
+   asList = id
 
 refine ::
      forall a n.

@@ -6,11 +6,6 @@ module Math.Interval
 import Prelude
 
 import Data.Generic (class Generic, gShow)
-import Data.Interval.Bound (Bound)
-import Data.Interval.Bound as Bound
-import Data.Interval.Internal (Interval(..))
-import Data.Interval.Internal (Interval) as ForReExport
-import Data.Interval.Openness (Openness(..))
 import Data.Lattice (meet)
 import Data.Maybe (Maybe(..))
 import Data.Monoid (mempty)
@@ -18,6 +13,11 @@ import Data.Monoid.Additive (Additive(..))
 import Data.Newtype (un)
 import Data.Ord (lessThanOrEq)
 import Data.Tuple (Tuple(..))
+import Math.Interval.Bound (Bound)
+import Math.Interval.Bound as Bound
+import Math.Interval.Internal (Interval(..))
+import Math.Interval.Internal (Interval) as ForReExport
+import Math.Interval.Openness (Openness(..))
 import Partial.Unsafe (unsafeCrashWith)
 
 mkInterval ::

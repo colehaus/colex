@@ -27,6 +27,7 @@ webpack &
 # pulp --watch browserify --to ../dist/value-of-information-calculator.js &
 cd construct-vnm-utility-function
 bower install
+npm install
 pulp --watch browserify --to ../dist/construct-vnm-utility-function.js &
 trap 'kill $(jobs -p)' EXIT
 sleep infinity

@@ -1,10 +1,10 @@
-module Data.Interval.Bound where
+module Math.Interval.Bound where
 
 import Prelude hiding (eq)
 
 import Data.Generic (class Generic, gShow)
-import Data.Interval.Openness (Openness)
 import Data.Lattice (class BoundedJoinSemilattice, class BoundedMeetSemilattice, class JoinSemilattice, class MeetSemilattice)
+import Math.Interval.Openness (Openness)
 import Prelude as Prelude
 
 -- TODO: GADT this so that we can encode our requirement that interval lower bounds not be `PosInf` and upper bounds not be `NegInf`

@@ -2,33 +2,43 @@ module Economics.Utility.VNM.Function where
 
 import Prelude
 
-import Data.Either (Either(..), either, note)
+import Data.Either (Either(Right, Left))
+import Data.Filterable (filter)
 import Data.Foldable (length)
+import Data.Foldable as Foldable
 import Data.Generic (class Generic)
-import Data.Interval.Bound (Bound(..))
-import Data.Interval.Internal (Interval(..))
-import Data.Interval.Openness (Openness(..))
-import Data.List (List(..))
+import Data.List (List(..), (:))
 import Data.List.Extras (tails)
 import Data.Map (Map)
 import Data.Map as Map
 import Data.Maybe (Maybe(..))
 import Data.NonEmpty (NonEmpty, fromNonEmpty, (:|))
-import Data.NonEmpty.Extras as NonEmpty
-import Data.Semigroup.Foldable (fold1)
+import Data.NonEmpty.Indexed as Indexed
 import Data.Set (Set)
 import Data.Set as Set
 import Data.Tuple (Tuple(..))
 import Economics.Utility.Ratio (Pair(..), Ratio(..))
 import Math.Interval ((<=!), (>=!))
 import Math.Interval as Interval
+import Math.Interval.Bound (Bound(..))
+import Math.Interval.Internal (Interval(..))
+import Math.Interval.Openness (Openness(..))
 import Partial.Unsafe (unsafeCrashWith)
 
 newtype UtilityFn a n = MkUtilityFn (Map (Pair a) (Interval n))
 derive newtype instance showUtilityFn :: (Generic a, Generic n) => Show (UtilityFn a n)
 
-pairs :: forall a. List a -> List (Tuple a a)
-pairs l = do
+goods :: forall a n. Ord a => UtilityFn a n -> Set a
+goods (MkUtilityFn fn) =
+  Set.fromFoldable <<<
+  (_ >>= \(MkPair {quote, base}) -> quote : base : Nil) <<< Map.keys $
+  fn
+
+pairs :: forall a n. Ord a => UtilityFn a n -> Set (Pair a)
+pairs (MkUtilityFn m) = Set.fromFoldable $ Map.keys m
+
+pairCombos :: forall a. List a -> List (Tuple a a)
+pairCombos l = do
   ls <- tails l
   case ls of
     Nil -> Nil
@@ -52,7 +62,7 @@ goodsToInitialFn set
     MkUtilityFn <<<
     Map.fromFoldable <<<
     map ((flip Tuple positive) <<< mkPair) <<<
-    pairs <<< Set.toUnfoldable <<< fromNonEmpty Set.insert $
+    pairCombos <<< Set.toUnfoldable <<< fromNonEmpty Set.insert $
     set
       where
         positive
@@ -66,10 +76,10 @@ unmake ::
      forall n a.
      Ord a
   => Ord n
-  => UtilityFn a n -> NonEmpty Set (Tuple (Pair a) (Interval n))
+  => UtilityFn a n -> Indexed.NonEmpty Map (Pair a) (Interval n)
 unmake (MkUtilityFn m) =
   unsafeFromJustBecause "We should never have an empty set of pairs" <<<
-  nonEmptySet <<< Set.fromFoldable <<< asList <<< Map.toUnfoldable $
+  nonEmptyMap $
   m
   where
     asList :: forall b. List b -> List b
@@ -82,19 +92,36 @@ unsafeFromJustBecause str Nothing = unsafeCrashWith str
 nonEmptySet :: forall a. Ord a => Set a -> Maybe (NonEmpty Set a)
 nonEmptySet s = (\m -> m :| m `Set.delete` s) <$> Set.findMin s
 
+nonEmptyMap ::
+     forall k v.
+     Ord k
+  => Map k v
+  -> Maybe (Indexed.NonEmpty Map k v)
+nonEmptyMap m =
+  (\l -> (Tuple l.key l.value) Indexed.:| (l.key `Map.delete` m)) <$> Map.findMin m
+
 best :: forall a n. Ord a => Ord n => Semiring n => UtilityFn a n -> Maybe a
 best =
-  either (const Nothing) extractOnly <<<
-  fold1 <<<
-  NonEmpty.map Set.map (note unit <<< map Set.singleton <<< better <<< mkRatio) <<<
-  unmake
+  extractOnly <<<
+  filter (_ == Set.singleton true) <<<
+  Map.mapWithKey (\good ratios -> Set.map ((_ == Just good) <<< better) ratios) <<<
+  byGood
   where
-    extractOnly s
-      | Set.size s == 1 = Set.findMin s
-      | otherwise = Nothing
-    mkRatio (Tuple pair relativeValue) = MkRatio { pair, relativeValue }
-    asList :: forall b. List b -> List b
-    asList = id
+    extractOnly m
+      | length m > 1 =
+        unsafeCrashWith "There should only ever be one 'best' good"
+      | otherwise = _ . key <$> Map.findMin m
+
+byGood ::
+     forall a n.
+     Ord a
+  => Ord n
+  => UtilityFn a n
+  -> Map a (Set (Ratio a (Interval n)))
+byGood (MkUtilityFn m) = Map.fromFoldableWith (<>) do
+  Tuple (pair@MkPair {quote, base}) relativeValue <- Map.toUnfoldable $ m
+  let ratio = MkRatio { pair, relativeValue }
+  (Tuple quote (Set.singleton ratio) : Tuple base (Set.singleton ratio) : Nil)
 
 better :: forall a n. Ord n => Semiring n => Ratio a (Interval n) -> Maybe a
 better (MkRatio { pair: (MkPair { base, quote }), relativeValue })
@@ -110,3 +137,18 @@ worse (MkRatio { pair: (MkPair { base, quote }), relativeValue })
 
 update :: forall a n. Ord a => Pair a -> (Interval n -> Interval n) -> UtilityFn a n -> UtilityFn a n
 update key f (MkUtilityFn m) = MkUtilityFn $ Map.update (Just <<< f) key m
+
+-- | Prune utility function so all remaining ratios involve chosen item
+keepBase :: forall a n. Ord a => a -> UtilityFn a n -> UtilityFn a n
+keepBase a (MkUtilityFn m) = MkUtilityFn $ Map.filterKeys (contains a) m
+  where
+    contains a (MkPair { quote, base }) = quote == a || base == a
+
+pruned :: forall a n. Ord a => Ord n => Semiring n => UtilityFn a n -> Boolean
+pruned fn =
+  case best fn of
+    Just a ->
+      Foldable.all (\(MkPair {base, quote}) -> quote == a || base == a) <<<
+      pairs $
+      fn
+    Nothing -> false

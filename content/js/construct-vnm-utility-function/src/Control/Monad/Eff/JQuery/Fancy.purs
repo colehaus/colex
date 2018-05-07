@@ -23,6 +23,17 @@ foreign import data Many :: Quantity
 newtype JQuery (q :: Quantity) = MkJQuery J.JQuery
 derive instance newtypeJQuery :: Newtype (JQuery q) _
 
+foreign import widthImpl :: forall e. J.JQuery -> Eff (dom :: DOM | e) Number
+
+width :: forall e tag. JQuery (One tag) -> Eff (dom :: DOM | e) Number
+width = widthImpl <<< unwrap
+
+clearOne :: forall e tag. JQuery (One tag) -> Eff (dom :: DOM | e) Unit
+clearOne = J.clear <<< unwrap
+
+getProp :: forall e tag. String -> JQuery (One tag) -> Eff ( dom :: DOM | e) Foreign
+getProp s = J.getProp s <<< unwrap
+
 selectOne ::
      forall e tag.
      Selector

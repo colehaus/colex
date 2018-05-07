@@ -16,4 +16,8 @@
     @include border-radius;
     @include background-alt-color;
     @include padding-1ex;
+    cursor: pointer;
+}
+#function-visualization {
+    @include width-full;
 }

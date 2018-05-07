@@ -18,6 +18,8 @@ newtype Ratio a n = MkRatio { pair :: Pair a, relativeValue :: n }
 derive instance newtypeRatio :: Newtype (Ratio a n) _
 derive instance genericRatio :: (Generic a, Generic n) => Generic (Ratio a n)
 derive instance eqRatio :: (Eq a, Eq n) => Eq (Ratio a n)
+-- | WARNING: Not a semantic instance. Just so we can put it inside a map.
+derive instance ordRatio :: (Ord a, Ord n) => Ord (Ratio a n)
 instance showRatio :: (Generic a, Generic n) => Show (Ratio a n) where
   show = gShow
 
