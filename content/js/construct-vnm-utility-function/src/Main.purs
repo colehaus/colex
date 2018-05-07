@@ -6,30 +6,12 @@ import Charts.Vega.Primitive as Vega
 import Control.Alt ((<|>))
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.JQuery (preventDefault, ready) as J
-import Control.Monad.Eff.JQuery.Fancy
-  ( clearOne
-  , getProp
-  , getText
-  , getValue
-  , on
-  , selectOne
-  , selectOnes
-  , setText
-  , width
-  ) as J
 import Control.Monad.Eff.JQuery.Fancy (JQuery, One)
+import Control.Monad.Eff.JQuery.Fancy (clearOne, getProp, getText, getValue, on, selectOne, selectOnes, setText, width) as J
 import Control.Monad.Eff.Ref (REF, Ref, newRef, readRef, writeRef)
 import DOM (DOM)
 import DOM.Event.Types (EventType)
-import Data.Argonaut.Core
-  ( JObject
-  , fromArray
-  , fromNumber
-  , fromObject
-  , fromString
-  , jsonFalse
-  , toObject
-  ) as Argo
+import Data.Argonaut.Core (JObject, fromArray, fromNumber, fromObject, fromString, jsonFalse, toObject) as Argo
 import Data.Argonaut.Encode (class EncodeJson, encodeJson) as Argo
 import Data.Argonaut.Generic.Aeson (encodeJson)
 import Data.Either (Either(..), either, hush, note)
@@ -41,7 +23,9 @@ import Data.Map as Map
 import Data.Maybe (Maybe(..), maybe)
 import Data.Monoid (mempty)
 import Data.Newtype (unwrap, wrap)
+import Data.NonEmpty (NonEmpty, (:|))
 import Data.Number.Format (exponential, toStringWith)
+import Data.Set (Set)
 import Data.Set as Set
 import Data.StrMap as StrMap
 import Data.String as String
@@ -51,14 +35,8 @@ import Data.Tuple.Nested ((/\))
 import Data.Unfoldable (class Unfoldable)
 import Economics.Utility.Ratio (Pair(..), Ratio(..))
 import Economics.Utility.Ratio as Ratio
-import Economics.Utility.VNM (nonEmptySet, pickNextLottery, refine, smallest)
-import Economics.Utility.VNM.Function
-  ( UtilityFn
-  , best
-  , byGood
-  , goodsToInitialFn
-  , keepBase
-  )
+import Economics.Utility.VNM (pickNextLottery, refine, smallest)
+import Economics.Utility.VNM.Function (UtilityFn, best, byGood, goodsToInitialFn, prune)
 import FRP (FRP)
 import FRP.Event (Event)
 import FRP.Event as FRP
@@ -86,7 +64,6 @@ chartData intervals =
   where
     obj = Argo.fromObject <<< StrMap.fromFoldable
     str = Argo.fromString
-
 
 chartSpec :: Number -> String -> Argo.JObject
 chartSpec width good =
@@ -130,12 +107,12 @@ main =
   J.ready do
     elements <- collectElements
     ordering <- response elements.decisionInputs
-    utilityFn <- utilityFn elements.initialInputs
+    utilityFn' <- utilityFn elements.initialInputs
     let function =
           FRP.fold
             update
-            ((Left <$> FRP.filterMap hush utilityFn.event) <|> (Right <$> ordering))
-            utilityFn.initial
+            ((Left <$> FRP.filterMap hush utilityFn'.event) <|> (Right <$> ordering))
+            utilityFn'.initial
     void $ FRP.subscribe (pickNextLottery <$> function) (sinkLottery elements . decisionDisplays)
     void <<< FRP.subscribe function <<< sinkFunction elements.visualizationDisplays =<< newRef Nothing
 
@@ -148,7 +125,7 @@ update ::
 update evt oldFn =
   maybePrune $ either id (flip (refine (pickNextLottery oldFn)) oldFn) evt
   where
-    maybePrune f = maybe f (flip keepBase f) <<< best $ f
+    maybePrune f = maybe f (flip prune f) <<< best $ f
 
 collectElements :: forall e. Eff (dom :: DOM | e) Elements
 collectElements = do
@@ -336,3 +313,6 @@ utilityFn els =
 unsafeFromJustBecause :: forall a. String -> Maybe a -> a
 unsafeFromJustBecause _ (Just a) = a
 unsafeFromJustBecause str Nothing = unsafeCrashWith str
+
+nonEmptySet :: forall a. Ord a => Set a -> Maybe (NonEmpty Set a)
+nonEmptySet s = (\m -> m :| m `Set.delete` s) <$> Set.findMin s

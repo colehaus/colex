@@ -22,7 +22,8 @@
     "purescript-sets": "^3.2.0",
     "purescript-these": "^3.1.0",
     "purescript-transformers": "^3.6.0",
-    "purescript-vega": "^0.0.1"
+    "purescript-vega": "^0.0.1",
+    "purescript-vnm-utility": "^0.0.1"
   },
   "devDependencies": {
     "purescript-psci-support": "^3.0.0"
