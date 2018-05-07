@@ -2,16 +2,34 @@ module Main where
 
 import Prelude hiding (bottom,top)
 
-import Charts.Vega as Vega
+import Charts.Vega.Primitive as Vega
 import Control.Alt ((<|>))
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.JQuery (preventDefault, ready) as J
+import Control.Monad.Eff.JQuery.Fancy
+  ( clearOne
+  , getProp
+  , getText
+  , getValue
+  , on
+  , selectOne
+  , selectOnes
+  , setText
+  , width
+  ) as J
 import Control.Monad.Eff.JQuery.Fancy (JQuery, One)
-import Control.Monad.Eff.JQuery.Fancy (clearOne, getProp, getText, getValue, on, selectOne, selectOnes, setText, width) as J
 import Control.Monad.Eff.Ref (REF, Ref, newRef, readRef, writeRef)
 import DOM (DOM)
 import DOM.Event.Types (EventType)
-import Data.Argonaut.Core (JObject, fromArray, fromNumber, fromObject, fromString, jsonFalse, toObject) as Argo
+import Data.Argonaut.Core
+  ( JObject
+  , fromArray
+  , fromNumber
+  , fromObject
+  , fromString
+  , jsonFalse
+  , toObject
+  ) as Argo
 import Data.Argonaut.Encode (class EncodeJson, encodeJson) as Argo
 import Data.Argonaut.Generic.Aeson (encodeJson)
 import Data.Either (Either(..), either, hush, note)
@@ -34,7 +52,13 @@ import Data.Unfoldable (class Unfoldable)
 import Economics.Utility.Ratio (Pair(..), Ratio(..))
 import Economics.Utility.Ratio as Ratio
 import Economics.Utility.VNM (nonEmptySet, pickNextLottery, refine, smallest)
-import Economics.Utility.VNM.Function (UtilityFn, best, byGood, goodsToInitialFn, keepBase)
+import Economics.Utility.VNM.Function
+  ( UtilityFn
+  , best
+  , byGood
+  , goodsToInitialFn
+  , keepBase
+  )
 import FRP (FRP)
 import FRP.Event (Event)
 import FRP.Event as FRP
