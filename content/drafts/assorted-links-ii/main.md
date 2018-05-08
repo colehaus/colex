@@ -36,3 +36,12 @@ tag: links
    <blockquote>
    The annual quota on new H-1B issuances fell from 195,000 to 65,000 for employees of most firms in fiscal year 2004. ... Using a triple difference approach, this paper demonstrates that cap restrictions significantly reduced the employment of new H-1B workers in for-profit firms relative to what would have occurred in an unconstrained environment. Employment of similar natives in for-profit firms did not change, consistent with a low degree of substitutability between H-1B and native workers.
    </blockquote>
+
+4. [Tetris with words](https://research.google.com/semantris/)
+
+   Now you too can feel a visceral frustration at opaque, brittle ML algorithms. Recent lowlights include "von Braun" not matching "rockets" until the third try.
+
+   In related news, [autonomous cars driving into highway barriers](https://www.reddit.com/r/teslamotors/comments/8a0jfh/autopilot_barrier_lust_201812/),
+   <video style="width:100%;margin-top:0.5ex;" controls="true" src="https://v.redd.it/n6iukmpsw3q01/DASH_2_4_M"></video>
+
+5. [The Council on Tall Buildings and Urban Habitat's Featured Tall Buildings](http://www.ctbuh.org/TallBuildings/FeaturedTallBuildings/tabid/1736/language/en-US/Default.aspx)

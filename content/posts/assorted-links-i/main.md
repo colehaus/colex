@@ -15,7 +15,7 @@ tags: links
 2. [Alleviating Global Poverty: Labor Mobility Direct Assistance, and Economic Growth](https://www.cgdev.org/sites/default/files/alleviating-global-poverty-labor-mobility-direct-assistance-and-economic-growth.pdf)
 
    <blockquote>
-   The magnitude of the income gains of the “best you can do” via direct interventions to raise the income of the poor in situ is about 40 times smaller than the income gain from allowing people from those same poor countries to work in a high productivity country like the USA. Simply allowing more labor mobility holds vastly more promise for reducing poverty than anything else on the development agenda.
+   The magnitude of the income gains of the "best you can do" via direct interventions to raise the income of the poor in situ is about 40 times smaller than the income gain from allowing people from those same poor countries to work in a high productivity country like the USA. Simply allowing more labor mobility holds vastly more promise for reducing poverty than anything else on the development agenda.
    </blockquote>
 
 3. [Our treatment of animals is stalling human progress]( https://qz.com/1209936/our-treatment-of-animals-is-stalling-human-progress/)
