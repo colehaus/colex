@@ -6,7 +6,7 @@ import Charts.Vega.Primitive as Vega
 import Control.Alt ((<|>))
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.JQuery (ready) as J
-import Control.Monad.Eff.JQuery.Fancy (clearOne, getProp, getText, setText, width) as J
+import Control.Monad.Eff.JQuery.Fancy (clearOne, displayOne, getProp, getText, hideOne, setText, width) as J
 import Control.Monad.Eff.Ref (REF, Ref, newRef, readRef, writeRef)
 import DOM (DOM)
 import Data.Argonaut.Core (fromObject, toObject) as Argo
@@ -134,13 +134,14 @@ sinkFunction els ref fn = do
       maybe (createViewWithData best' intervals) (flip changeData intervals) =<< readRef ref
   where
     createViewWithData best' intervals = do
-          width <- J.width els.functionVisualization
-          id <- unsafeFromForeign <$> J.getProp "id" els.functionVisualization
-          Vega.embed
-            ("#" <> id)
-            (Argo.fromObject $ StrMap.union (chartSpec width best') (chartData intervals))
-            (Argo.fromObject chartOpts)
-            (writeRef ref <<< Just)
+      J.displayOne els.caption
+      width <- J.width els.functionVisualization
+      id <- unsafeFromForeign <$> J.getProp "id" els.functionVisualization
+      Vega.embed
+        ("#" <> id)
+        (Argo.fromObject $ StrMap.union (chartSpec width best') (chartData intervals))
+        (Argo.fromObject chartOpts)
+        (writeRef ref <<< Just)
 
     changeData view intervals =
       Vega.changeData
@@ -148,6 +149,7 @@ sinkFunction els ref fn = do
             (Both {remove: Vega.ByPredicate $ const true} {insert: encodeAsObject <$> intervals })
             view
     clear = do
+      J.hideOne els.caption
       J.clearOne els.functionVisualization
       writeRef ref Nothing
     encodeAsObject = unsafeFromJustBecause "Static object" <<< Argo.toObject <<< Argo.encodeJson

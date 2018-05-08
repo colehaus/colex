@@ -22,6 +22,9 @@ Receive <span id="first-good" class="lottery"><span class="odds">1.00e+0</span> 
 </div>
 </form>
 <output>
-<div id="function-visualization">
+<figure id="function-visualization">
+<figcaption>Estimated value of goods relative to favorite good</figcaption>
+<div id="function-chart">
 </div>
+</figure>
 </output>

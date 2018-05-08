@@ -18,6 +18,7 @@ type DecisionDisplays =
 
 type VisualizationDisplays =
   { functionVisualization :: JQuery (One "div")
+  , caption :: JQuery (One "figcaption")
   }
 
 type InitialInputs =
@@ -71,5 +72,6 @@ collectVisualizationDisplays ::
   forall e. Eff (dom :: DOM | e) VisualizationDisplays
 collectVisualizationDisplays =
   unsafePartialBecause "We require this element structure to function" do
-    Just functionVisualization <- J.selectOne "#function-visualization"
-    pure {functionVisualization}
+    Just functionVisualization <- J.selectOne "#function-chart"
+    Just caption <- J.selectOne "#function-visualization figcaption"
+    pure { functionVisualization, caption }
