@@ -1,7 +1,7 @@
 {
   "url": "https://github.com/siers/nix-gitignore",
-  "rev": "e274c1046916f7bb5eb594201e85cabfa0f30a3f",
-  "date": "2018-04-15T02:22:09+03:00",
-  "sha256": "0nlrhgfh6cax4h324ijznjhjkj0dqh1hpy614k5d0w3skar5npsj",
+  "rev": "6dd9ece00991003c0f5d3b4da3f29e67956d266e",
+  "date": "2018-04-27T09:52:09+03:00",
+  "sha256": "0jn5yryf511shdp8g9pwrsxgk57p6xhpb79dbi2sf5hzlqm2csy4",
   "fetchSubmodules": true
 }
