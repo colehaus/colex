@@ -1,4 +1,6 @@
 {
+  "name": "construct-vnm-utility-function",
+  "version": "0.0.1",
   "dependencies": {
     "vega-embed": "^3.9.0",
     "vega-lib": "^3.3.1"

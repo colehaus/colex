@@ -1,5 +1,7 @@
 {
+  "name": "value-of-information-calculator",
+  "version": "0.0.1",
   "dependencies": {
-    "flyd": "^0.2.6"
+    "js-yaml": "^3.11.0"
   }
 }

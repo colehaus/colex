@@ -2,6 +2,8 @@
   let
     webpackColEx = pkgs.callPackage ./js { inherit pkgs extras; };
     bibliometric = pkgs.callPackage ./js/bibliometric { inherit pkgs extras; };
+    voi = pkgs.callPackage ./js/value-of-information-calculator { inherit pkgs extras; };
+    vnm = pkgs.callPackage ./js/construct-vnm-utility-function { inherit pkgs extras; };
     mathJaxNodeCli = extras.callNpm {
       inherit pkgs;
       name = "mathjax-node-cli";
@@ -32,6 +34,8 @@
         mkdir js/dist
         cp ${webpackColEx}/* js/dist
         cp ${bibliometric}/* js/dist
+        cp ${voi}/* js/dist
+        cp ${vnm}/* js/dist
       '';
       buildPhase = ''
         site build

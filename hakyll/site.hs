@@ -11,7 +11,7 @@ import Control.Arrow (first)
 import Control.Monad ((<=<), unless, (>=>))
 import Control.Monad.Trans.Class (lift)
 import Data.Functor ((<$>))
-import Data.List (stripPrefix)
+import Data.List (foldl1', stripPrefix)
 import Data.List.Split (splitOn)
 import Data.Map (Map)
 import qualified Data.Map as Map
@@ -144,11 +144,11 @@ main =
         compile copyFileCompiler
     -- Copy output from webpack, purescript, &c.
     _ <-
-      match ("js/dist/*" .&&. complement "js/dist/bibliometric.js") $ do
+      match ("js/dist/*" .&&. foldMap complement purescriptProjects) $ do
         fileInDirectoryRoute "js"
         compile copyFileCompiler
     _ <-
-      match ("js/cooperatives/vendoredOut/*.js" .||. "js/dist/bibliometric.js") $ do
+      match ("js/cooperatives/vendoredOut/*.js" .||. foldl1' (.||.) purescriptProjects) $ do
         fileInDirectoryRoute "js"
         compile uglifyCompiler
     _ <-
@@ -160,6 +160,13 @@ main =
         indexIdent
         archiveIdent
     pure ()
+
+purescriptProjects :: [Pattern]
+purescriptProjects =
+  [ "js/dist/bibliometric.js"
+  , "js/dist/value-of-information-calculator.js"
+  , "js/dist/construct-vnm-utility-function.js"
+  ]
 
 buildChunkMap :: IO (Map String [String])
 buildChunkMap = chunkMapFromStrings <$> listDirectory "js/dist"
