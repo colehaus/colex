@@ -8,6 +8,7 @@ import qualified Text.CSL as CSL
 import Text.CSL.Pandoc
 import Text.Pandoc
 
+-- Run pandoc in IO instead of purely so that we can work with org mode file includes
 readPandocBiblio
   :: ReaderOptions
   -> Item CSL
@@ -27,6 +28,7 @@ readPandocBiblio ropt csl biblio item
   let pandoc' = processCites style refs pandoc
   return $ fmap (const pandoc') item
 
+-- Run pandoc in IO instead of purely so that we can work with org mode file includes
 readPandocWith
   :: ReaderOptions -- ^ Parser options
   -> Item String -- ^ String to read

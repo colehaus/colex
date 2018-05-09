@@ -4,4 +4,4 @@
 #+OPTIONS: date:nil
 #+OPTIONS: toc:nil
 #+BIND: org-html-postamble nil
-#+PROPERTY: header-args:ein :session http://localhost:8888/kernel.ipynb :exports both :cache yes
+#+PROPERTY: header-args:ein :session 8888/kernel.ipynb :exports both :cache yes
