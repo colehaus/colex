@@ -7,7 +7,8 @@
 ** DONE Load data from CSV file
    CLOSED: [2018-02-18 Sun 16:29]
 * TODO Figure out why hakyll always recompiles
-* TODO Prune vnm dependencies
+* DONE Prune vnm dependencies
+  CLOSED: [2018-05-09 Wed 13:21]
 * TODO Bibtexify AI safety post
 * TODO File node writeAsync bug
 * TODO Reorganize nix files in colex root
