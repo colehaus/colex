@@ -10,8 +10,11 @@
   CLOSED: [2018-05-09 Wed 22:19]
 * DONE Prune vnm dependencies
   CLOSED: [2018-05-09 Wed 13:21]
+* TODO Fix arrows
+* TODO Paging
 * TODO Bibtexify AI safety post
 * TODO File node writeAsync bug
+* TODO Linkify citations
 * DONE Reorganize nix files in colex root
   CLOSED: [2018-05-09 Wed 22:19]
 * TODO [#C] Set up vega to use colex color schemes

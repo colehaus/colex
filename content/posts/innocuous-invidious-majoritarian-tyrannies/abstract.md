@@ -1,0 +1,1 @@
+'Tyranny of the majority' is a powerful invocation when discussing trade-offs and policy. If we're not careful, we misuse this power. There are, in fact, a couple different kinds of majoritarian tyrannies---one invidious and one innocuous---and we should avoid tarring the latter with the same broad brush.
