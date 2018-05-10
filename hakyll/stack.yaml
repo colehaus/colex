@@ -11,3 +11,5 @@ nix:
     - zlib.dev
     - zlib.out
   pure: false
+ghc-options:
+  "ColEx": -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints 
