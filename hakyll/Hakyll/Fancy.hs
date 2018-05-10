@@ -3,7 +3,7 @@
 {-# LANGUAGE GADTs #-}
 {-# LANGUAGE StandaloneDeriving #-}
 
-module HakyllExtension where
+module Hakyll.Fancy where
 
 import Data.Binary
 import Data.Maybe

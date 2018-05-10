@@ -6,7 +6,7 @@ license:            AGPL-3
 
 executable site
   main-is:          site.hs
-  other-modules:    HakyllExtension
+  other-modules:    Hakyll.Fancy
                     HakyllPandoc
   build-depends:    base
                   , binary

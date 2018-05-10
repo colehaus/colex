@@ -52,7 +52,7 @@ import Hakyll hiding
 import qualified Hakyll
 import Hakyll.Core.Compiler.Internal (compilerUnsafeIO)
 import Hakyll.Core.Rules.Internal (Rules(..))
-import HakyllExtension
+import Hakyll.Fancy
 import HakyllPandoc
 
 hakyllConfig :: Configuration
