@@ -8,31 +8,47 @@
 module Main where
 
 import Control.Arrow (first)
-import Control.Monad ((<=<), unless, (>=>))
+import Control.Monad ((<=<), (>=>), unless)
 import Control.Monad.Trans.Class (lift)
 import Data.Functor ((<$>))
+import Data.Hashable (hash)
 import Data.List (foldl1', stripPrefix)
 import Data.List.Split (splitOn)
 import Data.Map (Map)
 import qualified Data.Map as Map
 import Data.Maybe (fromMaybe)
-import Data.Monoid (mconcat, mempty, (<>))
-import Data.Hashable (hash)
+import Data.Monoid ((<>), mconcat, mempty)
 import System.Directory
-       (listDirectory, doesPathExist, createDirectoryIfMissing, findExecutable)
+  ( createDirectoryIfMissing
+  , doesPathExist
+  , findExecutable
+  , listDirectory
+  )
 import System.Environment (lookupEnv)
 import System.FilePath
-       (joinPath, splitPath, takeBaseName, takeDirectory, takeFileName,
-        replaceExtension)
+  ( joinPath
+  , replaceExtension
+  , splitPath
+  , takeBaseName
+  , takeDirectory
+  , takeFileName
+  )
 import System.Process (readProcess)
 import Text.Pandoc.Definition
 import Text.Pandoc.Options
 import Text.Pandoc.Walk (query, walk, walkM)
 
-import Hakyll
-       hiding (create, load, match, loadAndApplyTemplate, loadAll,
-               loadAllSnapshots, loadBody, makePatternDependency,
-               readPandocBiblio)
+import Hakyll hiding
+  ( create
+  , load
+  , loadAll
+  , loadAllSnapshots
+  , loadAndApplyTemplate
+  , loadBody
+  , makePatternDependency
+  , match
+  , readPandocBiblio
+  )
 import qualified Hakyll
 import Hakyll.Core.Compiler.Internal (compilerUnsafeIO)
 import Hakyll.Core.Rules.Internal (Rules(..))
@@ -148,7 +164,9 @@ main =
         fileInDirectoryRoute "js"
         compile copyFileCompiler
     _ <-
-      match ("js/cooperatives/vendoredOut/*.js" .||. foldl1' (.||.) purescriptProjects) $ do
+      match
+        ("js/cooperatives/vendoredOut/*.js" .||.
+         foldl1' (.||.) purescriptProjects) $ do
         fileInDirectoryRoute "js"
         compile uglifyCompiler
     _ <-
@@ -171,9 +189,8 @@ purescriptProjects =
 buildChunkMap :: IO (Map String [String])
 buildChunkMap = chunkMapFromStrings <$> listDirectory "js/dist"
 
-chunkMapFromStrings
-  :: (Applicative f, Monoid (f String))
-  => [String] -> Map String (f String)
+chunkMapFromStrings ::
+     (Applicative f, Monoid (f String)) => [String] -> Map String (f String)
 chunkMapFromStrings files =
   Map.fromListWith (<>) $
   (\file -> (, pure $ stripJsSuffix file) <$> extractChunks file) =<<
@@ -193,8 +210,8 @@ extractChunks fp =
 prodHost :: String
 prodHost = "https://www.col-ex.org"
 
-buildSitemap
-  :: Blessed "template" Identifier
+buildSitemap ::
+     Blessed "template" Identifier
   -> Blessed "post" Pattern
   -> Blessed "feed" Identifier
   -> Blessed "index" Identifier
@@ -219,7 +236,8 @@ buildSitemap sitemapTemplate postsPat feedIdent tagIndexIdent indexIdent archive
              [ listField
                  "entries"
                  (postCtx <> constField "host" prodHost)
-                 (pure $ feed : tagIndex : index : archive : posts <> tags <> pages)
+                 (pure $
+                  feed : tagIndex : index : archive : posts <> tags <> pages)
              , defaultContext
              ])
 
@@ -228,8 +246,8 @@ uglifyCompiler =
   withItemBody (unixFilter "uglifyjs" ["--compress", "--mangle"]) =<<
   getResourceBody
 
-buildPages
-  :: Blessed "template" Identifier
+buildPages ::
+     Blessed "template" Identifier
   -> Blessed "template" Identifier
   -> Blessed "template" Identifier
   -> Blessed "abstract" Pattern
@@ -247,18 +265,19 @@ buildPages defaultTemplate indexTemplate indexContentTemplate abstractPat tags p
             listField
               "posts"
               (teaserField "teaser" "teaser" <> tagsCtx tags <> pageCtx <>
-               abstractCtx abstractPat <> postCtx)
+               abstractCtx abstractPat <>
+               postCtx)
               (recentFirst =<< Hakyll.loadAll pat) <>
             pageCtx <>
             customElementsCtx chunkMap <>
             defaultContext
-      in makeItem mempty >>= loadAndApplyTemplate indexContentTemplate ctx >>=
-         saveSnapshot "page" >>=
-         loadAndApplyTemplate indexTemplate ctx >>=
-         finish defaultTemplate ctx
+       in makeItem mempty >>= loadAndApplyTemplate indexContentTemplate ctx >>=
+          saveSnapshot "page" >>=
+          loadAndApplyTemplate indexTemplate ctx >>=
+          finish defaultTemplate ctx
 
-buildTagPages
-  :: Blessed "template" Identifier
+buildTagPages ::
+     Blessed "template" Identifier
   -> Blessed "template" Identifier
   -> Tags
   -> Rules ()
@@ -274,11 +293,11 @@ buildTagPages defaultTemplate tagTemplate tags =
               (tagsCtx tags <> postCtx)
               (recentFirst =<< Hakyll.loadAll pat) <>
             defaultContext
-      in makeItem mempty >>= loadAndApplyTemplate tagTemplate ctx >>=
-         finish defaultTemplate ctx
+       in makeItem mempty >>= loadAndApplyTemplate tagTemplate ctx >>=
+          finish defaultTemplate ctx
 
-buildTagIndex
-  :: Blessed "template" Identifier
+buildTagIndex ::
+     Blessed "template" Identifier
   -> Blessed "template" Identifier
   -> Tags
   -> Rules (Blessed "index" Identifier)
@@ -293,8 +312,8 @@ buildTagIndex defaultTemplate tagIndexTemplate tags =
       makeItem mempty >>= loadAndApplyTemplate tagIndexTemplate ctx >>=
         finish defaultTemplate ctx
 
-buildIndex
-  :: Blessed "template" Identifier
+buildIndex ::
+     Blessed "template" Identifier
   -> Blessed "template" Identifier
   -> Paginate
   -> Map String [String]
@@ -307,21 +326,24 @@ buildIndex defaultTemplate indexTemplate pages chunkMap =
             boolField "home-page" (const True) <> constField "title" "Home" <>
             customElementsCtx chunkMap <>
             defaultContext
-      in loadSnapshotBody (lastPage pages) "page" >>= makeItem >>=
-         loadAndApplyTemplate indexTemplate ctx >>=
-         finish defaultTemplate ctx
+       in loadSnapshotBody (lastPage pages) "page" >>= makeItem >>=
+          loadAndApplyTemplate indexTemplate ctx >>=
+          finish defaultTemplate ctx
 
 stripArgMapLink :: Inline -> Inline
 stripArgMapLink (Link _ innerHtml ("#arg-map", _)) = Span mempty innerHtml
 stripArgMapLink i = i
 
 stripClosedSwitchBlocks :: [Block] -> [Block]
-stripClosedSwitchBlocks (d@(Div (_, classes, _) _) : _) | "open" `elem` classes = [d]
+stripClosedSwitchBlocks (d@(Div (_, classes, _) _):_)
+  | "open" `elem` classes = [d]
 stripClosedSwitchBlocks bs = bs
 
 stripClosedSwitchSpans :: [Inline] -> [Inline]
-stripClosedSwitchSpans (s@(Span (_, classes, _) _) : _) | "open" `elem` classes = [s]
-stripClosedSwitchSpans (Space : s@(Span (_, classes, _) _) : _) | "open" `elem` classes = [s]
+stripClosedSwitchSpans (s@(Span (_, classes, _) _):_)
+  | "open" `elem` classes = [s]
+stripClosedSwitchSpans (Space:s@(Span (_, classes, _) _):_)
+  | "open" `elem` classes = [s]
 stripClosedSwitchSpans is = is
 
 stripForm :: Block -> Block
@@ -346,7 +368,8 @@ data MathRenderMethod
   | Mock
   deriving (Read)
 
-renderMath :: MathRenderMethod -> FilePath -> String -> Inline -> Compiler Inline
+renderMath ::
+     MathRenderMethod -> FilePath -> String -> Inline -> Compiler Inline
 renderMath MathjaxNode destinationDir macros (Math typ math) = do
   alreadyRendered <- compilerUnsafeIO . doesPathExist $ destSvg
   unless alreadyRendered $ writeAsSvgFile destSvg macros typ math
@@ -374,7 +397,10 @@ writeAsSvgFile destination macros typ math =
         show (inlineFlag <> [macros <> math])
       svg <-
         compilerUnsafeIO $
-        readProcess tex2svg (inlineFlag <> ["\\phantom{}" <> macros <> math]) mempty
+        readProcess
+          tex2svg
+          (inlineFlag <> ["\\phantom{}" <> macros <> math])
+          mempty
       compilerUnsafeIO $ writeFile destination svg
   where
     inlineFlag =
@@ -382,8 +408,8 @@ writeAsSvgFile destination macros typ math =
         InlineMath -> ["--inline"]
         DisplayMath -> mempty
 
-buildAtom
-  :: MathRenderMethod
+buildAtom ::
+     MathRenderMethod
   -> FilePath
   -> String
   -> Blessed "post" Pattern
@@ -413,7 +439,7 @@ buildAtom renderMethod destinationDir webHost postPat bibIdent cslIdent =
            destinationDir
            (unlines . query collectMacros $ p)) .
       walk stripMacro $
-        p
+      p
     htmlTransform =
       pure .
       walk stripForm .
@@ -422,10 +448,8 @@ buildAtom renderMethod destinationDir webHost postPat bibIdent cslIdent =
 
 -- We set the extension to html to force html parsing and then back to md so that we pick up the right metadata
 -- This method is sometimes useful for ensuring that /all/ divs and spans show up in pandoc as native divs and spans
-toHtmlAndBack :: Item Biblio
-              -> Item CSL
-              -> Item Pandoc
-              -> Compiler (Item Pandoc)
+toHtmlAndBack ::
+     Item Biblio -> Item CSL -> Item Pandoc -> Compiler (Item Pandoc)
 toHtmlAndBack bib csl =
   fmap (setExtension' ".md") .
   readPandocBiblio readerOpt csl bib .
@@ -451,17 +475,17 @@ includeOrgFiles directory =
       (stripPrefix "]]" . reverse <=< stripPrefix "[[file:")
 
 feedConfig :: FeedConfiguration
-feedConfig
-  = FeedConfiguration
-  { feedTitle = "Collectively Exhaustive"
-  , feedDescription = "A weblog"
-  , feedAuthorName = "Cole Haus"
-  , feedAuthorEmail = "colehaus@cryptolab.net"
-  , feedRoot = prodHost
-  }
+feedConfig =
+  FeedConfiguration
+    { feedTitle = "Collectively Exhaustive"
+    , feedDescription = "A weblog"
+    , feedAuthorName = "Cole Haus"
+    , feedAuthorEmail = "colehaus@cryptolab.net"
+    , feedRoot = prodHost
+    }
 
-buildArchive
-  :: Blessed "post" Pattern
+buildArchive ::
+     Blessed "post" Pattern
   -> Blessed "template" Identifier
   -> Blessed "template" Identifier
   -> Tags
@@ -478,8 +502,8 @@ buildArchive postPat defaultTemplate archiveTemplate tags =
               (tagsCtx tags <> postCtx)
               (recentFirst =<< loadAll postPat) <>
             defaultContext
-      in makeItem mempty >>= loadAndApplyTemplate archiveTemplate ctx >>=
-         finish defaultTemplate ctx
+       in makeItem mempty >>= loadAndApplyTemplate archiveTemplate ctx >>=
+          finish defaultTemplate ctx
 
 buildCss :: Blessed "scss" Pattern -> Rules (Blessed "css" Pattern)
 buildCss scssPat = do
@@ -494,15 +518,18 @@ fileInDirectoryRoute dir =
   route . customRoute $ \ident ->
     dir <> "/" <> (takeFileName . toFilePath) ident
 
-buildPosts
-  :: Blessed "template" Identifier
+buildPosts ::
+     Blessed "template" Identifier
   -> Blessed "template" Identifier
   -> Blessed "bib" Identifier
   -> Blessed "csl" Identifier
   -> Tags
   -> Map String [String]
   -> String
-  -> Rules (Blessed "post" Pattern, Blessed "warnings" Pattern, Blessed "overlay" Pattern, Blessed "abstract" Pattern)
+  -> Rules ( Blessed "post" Pattern
+           , Blessed "warnings" Pattern
+           , Blessed "overlay" Pattern
+           , Blessed "abstract" Pattern)
 buildPosts defaultTemplate postTemplate bibIdent cslIdent tags chunkMap dir = do
   overlayPat <-
     match (fromGlob $ dir <> "/*/overlay.md") . compile $
@@ -530,16 +557,17 @@ buildPosts defaultTemplate postTemplate bibIdent cslIdent tags chunkMap dir = do
               tagsCtx tags <>
               customElementsCtx chunkMap <>
               postCtx
-        in do bib <- load bibIdent
-              csl <- load cslIdent
-              directory <- takeDirectory . toFilePath <$> getUnderlying
-              getResourceBody >>=
-                saveSnapshot "raw" . fmap (swapJsForEin . includeOrgFiles directory) >>=
-                readPandocBiblio readerOpt csl bib >>=
-                saveSnapshot "teaser" .
-                (demoteHeaders . demoteHeaders <$>) . writePandocWith writerOpt >>=
-                loadAndApplyTemplate postTemplate ctx >>=
-                finish defaultTemplate ctx
+         in do bib <- load bibIdent
+               csl <- load cslIdent
+               directory <- takeDirectory . toFilePath <$> getUnderlying
+               getResourceBody >>=
+                 saveSnapshot "raw" .
+                 fmap (swapJsForEin . includeOrgFiles directory) >>=
+                 readPandocBiblio readerOpt csl bib >>=
+                 saveSnapshot "teaser" .
+                 (demoteHeaders . demoteHeaders <$>) . writePandocWith writerOpt >>=
+                 loadAndApplyTemplate postTemplate ctx >>=
+                 finish defaultTemplate ctx
   pure (postPat, warningsPat, overlayPat, abstractPat)
 
 compileScss :: Compiler (Item String)
@@ -548,14 +576,16 @@ compileScss = do
   let dir = takeDirectory . toFilePath . itemIdentifier $ i
   fmap compressCss <$>
     withItemBody
-      (unixFilter "scss" ["--sourcemap=none", "--style=compressed", "--trace", "-I", dir])
+      (unixFilter
+         "scss"
+         ["--sourcemap=none", "--style=compressed", "--trace", "-I", dir])
       i
 
 mkPostPat :: String -> Pattern
 mkPostPat postDir = fromGlob $ postDir <> "/*/main.*"
 
-finish
-  :: Blessed "template" Identifier
+finish ::
+     Blessed "template" Identifier
   -> Context String
   -> Item String
   -> Compiler (Item String)
@@ -575,17 +605,14 @@ paginateOverflow low xs =
 lastPage :: Paginate -> Identifier
 lastPage pg = paginateMakeId pg . Map.size . paginateMap $ pg
 
-listFieldWith' :: String
-               -> Context a
-               -> (Identifier -> Compiler [a])
-               -> Context b
+listFieldWith' ::
+     String -> Context a -> (Identifier -> Compiler [a]) -> Context b
 listFieldWith' k ctx f =
   listFieldWith k ctx $ (traverse makeItem =<<) . f . itemIdentifier
 
 constListField :: String -> Context a -> [a] -> Context b
 constListField key1 ctx list =
-  listFieldWith key1 ctx $
-  const (traverse makeItem list)
+  listFieldWith key1 ctx $ const (traverse makeItem list)
 
 idField :: String -> Context String
 idField key = field key $ pure . itemBody
@@ -640,9 +667,7 @@ jsCtx chunkMap =
 cssCtx :: Context String
 cssCtx = listFieldWith' "csses" (idField "filename") $ getListMeta "css"
 
-getListMeta
-  :: MonadMetadata m
-  => String -> Identifier -> m [String]
+getListMeta :: MonadMetadata m => String -> Identifier -> m [String]
 getListMeta k ident =
   maybe mempty (map trim . splitAll ",") . lookupString k <$> getMetadata ident
 
@@ -709,11 +734,9 @@ readerOpt = defaultHakyllReaderOptions {readerExtensions = extensions}
 writerOpt :: WriterOptions
 writerOpt =
   defaultHakyllWriterOptions
-  { -- Hakyll + Pandoc don't insert <script> correctly,
+    -- Hakyll + Pandoc don't insert <script> correctly,
     -- so we add dummy URL and do it manually
-    writerHTMLMathMethod = MathJax mempty
-  , writerExtensions = extensions
-  }
+    {writerHTMLMathMethod = MathJax mempty, writerExtensions = extensions}
 
 perPage :: Int
 perPage = 5

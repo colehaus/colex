@@ -14,10 +14,10 @@ import Hakyll hiding (load, match)
 import qualified Hakyll
 
 data Blessed (ty :: Symbol) a where
-        MkBlessedIdentifier :: {unBlessedIdentifier :: Identifier} ->
-          Blessed ty Identifier
-        MkBlessedPattern :: {unBlessedPattern :: Pattern} ->
-          Blessed ty Pattern
+  MkBlessedIdentifier
+    :: { unBlessedIdentifier :: Identifier}
+    -> Blessed ty Identifier
+  MkBlessedPattern :: { unBlessedPattern :: Pattern} -> Blessed ty Pattern
 
 deriving instance (Show a) => Show (Blessed ty a)
 
@@ -39,38 +39,34 @@ matchIdentifier ident rules =
   MkBlessedIdentifier ident <$ Hakyll.match (identifierToPattern ident) rules
 
 create :: [Identifier] -> Rules () -> Rules [Blessed ty Identifier]
-create idents rules =  MkBlessedIdentifier <$> idents <$ Hakyll.create idents rules
+create idents rules =
+  MkBlessedIdentifier <$> idents <$ Hakyll.create idents rules
 
 identifierToPattern :: Identifier -> Pattern
 identifierToPattern = fromGlob . toFilePath
 
-load
-  :: (Typeable a, Binary a)
-  => Blessed ty Identifier -> Compiler (Item a)
+load :: (Typeable a, Binary a) => Blessed ty Identifier -> Compiler (Item a)
 load = Hakyll.load . unBlessedIdentifier
 
-loadBody
-  :: (Typeable a, Binary a)
-  => Blessed ty Identifier -> Compiler a
+loadBody :: (Typeable a, Binary a) => Blessed ty Identifier -> Compiler a
 loadBody = Hakyll.loadBody . unBlessedIdentifier
 
-loadAndApplyTemplate :: Blessed "template" Identifier
-                     -> Context a
-                     -> Item a
-                     -> Compiler (Item String)
+loadAndApplyTemplate ::
+     Blessed "template" Identifier
+  -> Context a
+  -> Item a
+  -> Compiler (Item String)
 loadAndApplyTemplate = Hakyll.loadAndApplyTemplate . unBlessedIdentifier
 
-loadAll
-  :: (Typeable a, Binary a)
-  => Blessed ty Pattern -> Compiler [Item a]
+loadAll :: (Typeable a, Binary a) => Blessed ty Pattern -> Compiler [Item a]
 loadAll = Hakyll.loadAll . unBlessedPattern
 
-loadAllSnapshots
-  :: (Typeable a, Binary a)
-  => Blessed ty Pattern -> Snapshot -> Compiler [Item a]
+loadAllSnapshots ::
+     (Typeable a, Binary a)
+  => Blessed ty Pattern
+  -> Snapshot
+  -> Compiler [Item a]
 loadAllSnapshots = Hakyll.loadAllSnapshots . unBlessedPattern
 
-makePatternDependency
-  :: (MonadMetadata m)
-  => Blessed ty Pattern -> m Dependency
+makePatternDependency :: (MonadMetadata m) => Blessed ty Pattern -> m Dependency
 makePatternDependency = Hakyll.makePatternDependency . unBlessedPattern

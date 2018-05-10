@@ -2,21 +2,21 @@
 
 module HakyllPandoc where
 
-import Hakyll hiding (readPandocWith)
 import qualified Data.Text as T
+import Hakyll hiding (readPandocWith)
 import qualified Text.CSL as CSL
 import Text.CSL.Pandoc
 import Text.Pandoc
 
 -- Run pandoc in IO instead of purely so that we can work with org mode file includes
-readPandocBiblio
-  :: ReaderOptions
+readPandocBiblio ::
+     ReaderOptions
   -> Item CSL
   -> Item Biblio
   -> Item String
   -> Compiler (Item Pandoc)
 readPandocBiblio ropt csl biblio item
-    -- Parse CSL file, if given
+  -- Parse CSL file, if given
  = do
   style <-
     unsafeCompiler $ CSL.readCSLFile Nothing . toFilePath . itemIdentifier $ csl
@@ -29,8 +29,8 @@ readPandocBiblio ropt csl biblio item
   return $ fmap (const pandoc') item
 
 -- Run pandoc in IO instead of purely so that we can work with org mode file includes
-readPandocWith
-  :: ReaderOptions -- ^ Parser options
+readPandocWith ::
+     ReaderOptions -- ^ Parser options
   -> Item String -- ^ String to read
   -> Compiler (Item Pandoc) -- ^ Resulting document
 readPandocWith ropt item =
