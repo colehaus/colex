@@ -19,8 +19,7 @@
         pkgs.flow
         nodeEnv.shell.nodeDependencies
       ];
-      # We fetch via git rather than directly including the directory so we can reuse .gitignore
-      src = extras.gitignoreSource ../.. + "/content/js";
+      src = extras.gitignoreSource ./.;
       NODE_ENV = "production";
       buildPhase = ''
         # Default `NODE_PATH` doesn't work with scoped packages

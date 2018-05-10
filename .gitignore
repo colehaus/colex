@@ -1,16 +1,5 @@
-**/_cache
-**/_site
-
-**/.sass-cache
-
-content/js/dist
-**/node_modules
-**/bower_components
-**/.psci
-**/.psci_modules
-**/output
-
-**/.stack-work
+# Symlink to `content/data/offline/node_modules` for notebooks
+node_modules
 
 TAGS
 rollbar-access-token.txt

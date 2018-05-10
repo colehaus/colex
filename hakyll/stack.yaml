@@ -1,6 +1,7 @@
 resolver: lts-10.5
 packages:
-  - hakyll
+  - .
+local-bin-path: .stack-bin/
 extra-deps:
   - hakyll-4.11.0.0
   - pandoc-2.1.1

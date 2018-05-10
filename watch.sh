@@ -3,13 +3,15 @@
 
 set -euxo pipefail
 
+root=$(pwd)
+
 ijsinstall
 jupyter notebook --no-browser &
 
-cd hakyll
-stack build --nix
+cd "${root}/hakyll"
+stack install
 
-cd ../content/js
+cd "${root}/content/js"
 rm -f dist/*
 
 # Default `NODE_PATH` doesn't work with scoped packages
@@ -22,22 +24,22 @@ done
 # Fixes race between hakyll and webpack
 # NO_WATCH=no_watch webpack
 
-cd ..
-stack exec site watch --nix &
+cd "${root}/content"
+"${root}/hakyll/.stack-bin/site" watch &
 
-cd js
+cd "${root}/content/js"
 webpack &
 
-# cd bibliometric
-# bower install
-# pulp --watch browserify --to ../dist/bibliometric.js &
+cd "${root}/content/js/bibliometric"
+bower install
+pulp --watch browserify --to ../dist/bibliometric.js &
 
-# cd value-of-information-calculator
-# npm install
-# bower install
-# pulp --watch browserify --to ../dist/value-of-information-calculator.js &
+cd "${root}/content/js/value-of-information-calculator"
+npm install
+bower install
+pulp --watch browserify --to ../dist/value-of-information-calculator.js &
 
-cd construct-vnm-utility-function
+cd "${root}/content/js/construct-vnm-utility-function"
 bower install
 npm install
 pulp --watch browserify --to ../dist/construct-vnm-utility-function.js &

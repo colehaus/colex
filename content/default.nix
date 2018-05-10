@@ -17,8 +17,7 @@
   in
     pkgs.stdenv.mkDerivation rec {
       name = "hakyllColEx";
-      # We fetch via git rather than directly including the directory so we can reuse .gitignore
-      src = extras.gitignoreSource ./.. + "/content";
+      src = extras.gitignoreSource ./.;
       phases = [ "unpackPhase" "patchPhase" "buildPhase" "installPhase" ];
       nativeBuildInputs = [
         hakyll
