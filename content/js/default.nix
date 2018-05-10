@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {}, extras ? import ../../extras.nix } :
+{ pkgs ? import <nixpkgs> {}, extras ? import ../../nix/extras.nix } :
   let
     nodeEnv = extras.callNode2nix {
       inherit pkgs;

@@ -1,4 +1,6 @@
-{ pkgs ? import <nixpkgs> {}, extras ? import ../extras.nix, hakyll ? pkgs.callPackage ../hakyll { inherit pkgs; }} :
+{ pkgs ? import <nixpkgs> {}
+, extras ? import ../nix/extras.nix
+, hakyll ? pkgs.callPackage ../hakyll { inherit pkgs; }} :
   let
     webpackColEx = pkgs.callPackage ./js { inherit pkgs extras; };
     bibliometric = pkgs.callPackage ./js/bibliometric { inherit pkgs extras; };

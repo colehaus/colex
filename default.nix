@@ -1,10 +1,10 @@
 let
   extras =
-    import ./extras.nix //
-    import ./gitignore.nix { inherit (pkgs) lib; };
+    import ./nix/extras.nix //
+    import ./nix/gitignore.nix { inherit (pkgs) lib; };
   pkgs = extras.pinnedPkgs {
-    specFile = ./nixpkgs.json;
-    opts = { config = { packageOverrides = import ./package-overrides.nix; }; };
+    specFile = ./nix/nixpkgs.json;
+    opts = { config = { packageOverrides = import ./nix/package-overrides.nix; }; };
   };
   hakyll = pkgs.callPackage ./hakyll { inherit pkgs extras; };
 in
