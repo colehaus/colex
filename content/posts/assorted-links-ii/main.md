@@ -1,6 +1,6 @@
 ---
 title: Assorted links II
-published: 2018-04-05
+published: 2018-04-15
 tag: links
 ---
 
@@ -45,3 +45,7 @@ tag: links
    <video style="width:100%;margin-top:0.5ex;" controls="true" src="https://v.redd.it/n6iukmpsw3q01/DASH_2_4_M"></video>
 
 5. [The Council on Tall Buildings and Urban Habitat's Featured Tall Buildings](http://www.ctbuh.org/TallBuildings/FeaturedTallBuildings/tabid/1736/language/en-US/Default.aspx)
+
+   Keep the Internet weird.
+
+<!--more-->
