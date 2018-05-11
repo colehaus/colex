@@ -14,7 +14,7 @@
     "purescript-generics": "^4.0.0",
     "purescript-jquery": "^4.3.0",
     "purescript-jquery-fancy": "^0.1.0",
-    "purescript-intervals": "^0.0.1",
+    "purescript-intervals": "^3.0.0",
     "purescript-lattice": "^0.3.0",
     "purescript-numbers": "^5.0.0",
     "purescript-prelude": "^3.3.0",
@@ -22,7 +22,7 @@
     "purescript-sets": "^3.2.0",
     "purescript-these": "^3.1.0",
     "purescript-vega": "^0.0.1",
-    "purescript-vnm-utility": "^0.0.1"
+    "purescript-vnm-utility": "^1.0.0"
   },
   "devDependencies": {
     "purescript-psci-support": "^3.0.0"

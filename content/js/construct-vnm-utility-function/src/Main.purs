@@ -24,6 +24,7 @@ import Data.StrMap as StrMap
 import Data.String as String
 import Data.These (These(..))
 import Data.Tuple (Tuple(..))
+import Data.Tuple.Nested ((/\))
 import Data.Unfoldable (class Unfoldable)
 import Economics.Utility.Ratio (Pair(..), Ratio(..))
 import Economics.Utility.Ratio as Ratio
@@ -32,14 +33,14 @@ import Economics.Utility.VNM.Function (UtilityFn, best, byGood, goodsToInitialFn
 import FRP (FRP)
 import FRP.Event (Event)
 import FRP.Event as FRP
-import Math.Interval.Bound (Bound(..))
-import Math.Interval.Internal (Interval(..))
+import Math.Interval (unmake)
+import Math.Interval.Bound (Finite(MkFinite), finite)
 import Partial.Unsafe (unsafeCrashWith, unsafePartialBecause)
 
 import Chart (ChartInterval(..), chartData, chartOpts, chartSpec)
-import FRP.JQuery (jqueryEvent, textAreaEvent)
 import Helpers (nonEmptySet, unsafeFromJustBecause)
 import Html (DecisionDisplays, DecisionInputs, VisualizationDisplays, InitialInputs, collectElements)
+import FRP.JQuery (jqueryEvent, textAreaEvent)
 
 main :: forall e. Eff (dom :: DOM, frp :: FRP, ref :: REF | e) Unit
 main =
@@ -156,16 +157,14 @@ sinkFunction els ref fn = do
     toChartInterval best'
       (MkRatio
         { pair: MkPair {base, quote}
-        , relativeValue:
-          NonEmpty
-            { lower: Finite {bound: lowerBound}
-            , upper: Finite {bound: upperBound}
-            }
+        , relativeValue: bounds
         }
       ) =
-       MkChartInterval $
-       if best' == base
-         then {good: quote, lower: 1.0 / upperBound, upper: 1.0 / lowerBound}
-         -- We bump `lower` by smallest because log scale can't handle 0
-         else {good: base, lower: lowerBound + smallest, upper: upperBound}
-    toChartInterval _ _ = unsafeCrashWith "Presence of 'best' implies these properties"
+        case finite (unmake bounds).lower /\ finite (unmake bounds).upper of
+          Just (MkFinite { bound: lowerBound }) /\ Just (MkFinite { bound: upperBound }) ->
+            MkChartInterval $
+            if best' == base
+              then {good: quote, lower: 1.0 / upperBound, upper: 1.0 / lowerBound}
+              -- We bump `lower` by smallest because log scale can't handle 0
+              else {good: base, lower: lowerBound + smallest, upper: upperBound}
+          _ /\ _ -> unsafeCrashWith "Presence of 'best' implies these properties"
