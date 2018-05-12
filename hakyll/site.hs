@@ -7,7 +7,6 @@
 
 module Main where
 
-import Control.Arrow (first)
 import Control.Monad ((<=<), (>=>), unless)
 import Control.Monad.Trans.Class (lift)
 import Data.Functor ((<$>))
@@ -111,7 +110,7 @@ main =
     buildTagPages defaultTemplate (narrowEx templates "templates/tag.html") tags
     paginate <-
       buildPaginateWith
-        ((paginateOverflow perPage <$>) . sortChronological)
+        ((paginateEvery perPage <$>) . sortChronological)
         (unBlessedPattern postPat)
         (fromCapture "page/*/index.html" . show)
     buildPages
@@ -131,6 +130,9 @@ main =
       buildIndex
         defaultTemplate
         (narrowEx templates "templates/index.html")
+        (narrowEx templates "templates/index-content.html")
+        abstractPat
+        tags
         paginate
         chunkMap
     scssPat <- match "css/libs/**_*.scss" $ compile copyFileCompiler
@@ -315,20 +317,48 @@ buildTagIndex defaultTemplate tagIndexTemplate tags =
 buildIndex ::
      Blessed "template" Identifier
   -> Blessed "template" Identifier
+  -> Blessed "template" Identifier
+  -> Blessed "abstract" Pattern
+  -> Tags
   -> Paginate
   -> Map String [String]
   -> Rules (Blessed "index" Identifier)
-buildIndex defaultTemplate indexTemplate pages chunkMap =
+buildIndex defaultTemplate indexTemplate indexContentTemplate abstractPat tags pages chunkMap =
   (head <$>) . create ["index.html"] $ do
     route idRoute
-    compile $
+    compile $ do
+      pageCtx <-
+        case fst ultimatePage of
+          1 -> pure mempty
+          2 -> pure mempty
+          n -> do
+            first <- constField "firstPageUrl" <$> pageUrl 1
+            prev <- constField "previousPageUrl" <$> pageUrl (n - 2)
+            pure $ first <> prev
       let ctx =
             boolField "home-page" (const True) <> constField "title" "Home" <>
             customElementsCtx chunkMap <>
+            listField
+              "posts"
+              (teaserField "teaser" "teaser" <> tagsCtx tags <> pageCtx <>
+               abstractCtx abstractPat <>
+               postCtx)
+              (recentFirst =<< Hakyll.loadAll pat) <>
+            pageCtx <>
+            customElementsCtx chunkMap <>
             defaultContext
-       in loadSnapshotBody (lastPage pages) "page" >>= makeItem >>=
+       in makeItem mempty >>= loadAndApplyTemplate indexContentTemplate ctx >>=
           loadAndApplyTemplate indexTemplate ctx >>=
           finish defaultTemplate ctx
+  where
+    pageUrl n =
+      fmap (maybe (error "Missing page " <> show n) toUrl) .
+      getRoute . paginateMakeId pages $
+      n
+    Just ultimatePage = Map.lookupMax (paginateMap pages)
+    penultimatePage = Map.lookupLT (fst ultimatePage) (paginateMap pages)
+    pat =
+      fromList . mappend (snd ultimatePage) . maybe mempty snd $ penultimatePage
 
 stripArgMapLink :: Inline -> Inline
 stripArgMapLink (Link _ innerHtml ("#arg-map", _)) = Span mempty innerHtml
@@ -593,15 +623,6 @@ finish defaultTemplate ctx i =
   loadAndApplyTemplate defaultTemplate ctx i >>=
   ((replaceAll "index.html" (const mempty) <$>) <$>) . relativizeUrls
 
-paginateOverflow :: Int -> [a] -> [[a]]
-paginateOverflow low xs =
-  case paginateEvery low xs of
-    [] -> []
-    pgs ->
-      if length (last pgs) < low
-        then uncurry (:) . first mconcat . splitAt 2 $ pgs
-        else pgs
-
 lastPage :: Paginate -> Identifier
 lastPage pg = paginateMakeId pg . Map.size . paginateMap $ pg
 
@@ -669,7 +690,7 @@ cssCtx = listFieldWith' "csses" (idField "filename") $ getListMeta "css"
 
 getListMeta :: MonadMetadata m => String -> Identifier -> m [String]
 getListMeta k ident =
-  maybe mempty (map trim . splitAll ",") . lookupString k <$> getMetadata ident
+  maybe mempty (fmap trim . splitAll ",") . lookupString k <$> getMetadata ident
 
 tagsCtx :: Tags -> Context String
 tagsCtx tags = listFieldWith' "tags" tagCtx getTags
