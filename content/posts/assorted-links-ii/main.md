@@ -1,7 +1,7 @@
 ---
 title: Assorted links II
 published: 2018-04-15
-tag: links
+tags: links
 ---
 
 1. [Rescuing Economics from Neoliberalism](http://bostonreview.net/class-inequality/dani-rodrik-rescuing-economics-neoliberalism)

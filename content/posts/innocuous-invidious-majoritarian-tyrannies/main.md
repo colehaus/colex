@@ -1,7 +1,7 @@
 ---
 title: Innocuous and invidious majoritarian tyrannies
 published: 2018-04-10
-tag: social choice, mechanism design
+tags: social choice, mechanism design
 ---
 
 ::: macros
@@ -16,8 +16,6 @@ Democracy is two wolves and a lamb voting on what to eat for lunch.
 
 It seems that, [in common use]{.noted}[^strawman], the term 'tyranny of the majority' conflates two importantly distinct concepts.
 
-<!--more-->
-
 # Invidious
 
 The first sense in which one can mean tyranny of the majority is the one highlighted in the epigraph. In this form, some passing whim of the majority overrules and outweighs the critical interest of the minority. The wolves' purely gustatory (pretending that wolves aren't obligate carnivores) interest in the lamb trumps the lamb's literally vital interest in living. Real world examples in this category include: [[Jim Crow laws](https://en.wikipedia.org/wiki/Jim_Crow_laws)]{.noted}[^crow]; [marriage for same-sex couples](https://en.wikipedia.org/wiki/Same-sex_marriage); often [Nimbyism](https://en.wikipedia.org/wiki/NIMBY).
@@ -27,6 +25,8 @@ The first sense in which one can mean tyranny of the majority is the one highlig
 Tyranny of the majority is often framed as a majority violating the political and moral rights of the minority. Once we permit ourselves the ontological spookiness that is 'rights', it seems only fair to allow ourselves [cardinal utility](https://en.wikipedia.org/wiki/Cardinal_utility) and [interpersonal utility comparison](https://en.wikipedia.org/wiki/Social_choice_theory#Interpersonal_utility_comparison). With these tools, we can reframe and make precise the tyranny of the majority described above.
 
 Invidious tyranny of the majority occurs when the weak preferences of many outweigh the strong preferences of the few such that [the actual outcome doesn't maximize utility/satisfaction of preferences]{.noted}[^efficiency].
+
+<!--more-->
 
 For example, the lamb gets -10 utils from being eaten. Each wolf gets 2 utils from eating the lamb. The aggregate net utility of eating the lamb is -6, but their are two votes for and only 1 against. On the other hand, if the wolves were fanatical gourmands that each got 15 utils from eating the lamb, [we wouldn't call their feast a tyranny of the majority]{.noted}[^rights].
 

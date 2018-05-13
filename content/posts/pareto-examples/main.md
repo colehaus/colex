@@ -1,7 +1,7 @@
 ---
 title: Some things which are and aren't Pareto optimal
 subtitle: Your periodic reminder that Pareto efficiency carries exceedingly little normative weight
-published: 2018-03-01
+published: 2018-04-08
 tags: economics, metrics
 ---
 
@@ -32,6 +32,8 @@ Briefly, a scenario ([canonically, a distribution of resources across individual
 - Scenario 3 isn't a Pareto improvement over scenario 4 because person A has fewer goods in scenario 3. It's not a Pareto improvement over scenario 1 or 2 because person B has fewer goods in scenario 3.
 - Scenario 4 isn't a Pareto improvement over scenarios 1--3 because person B has fewer goods in scenario 4.
 :::
+
+<!--more-->
 
 <table>
 <thead>
