@@ -1,8 +1,13 @@
 ---
-title: A visual intuition for the instrumental argument for equality
+title: Notebook–A visual intuition for the instrumental argument for equality
+published: 2018-04-19
 tags: notebook, social welfare, economics, inequality
-published: 2018-02-19
 ---
+
+#+BEGIN_EXPORT html
+<!--more-->
+#+END_EXPORT
+
 # Local Variables:
 # before-save-hook: org-babel-execute-buffer
 # End:

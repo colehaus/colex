@@ -1,7 +1,7 @@
 ---
 title: A visual intuition for the instrumental argument for equality
 tags: social welfare, economics, inequality
-published: 2018-03-03
+published: 2018-04-20
 js: util-egal, draw
 css: draw
 ---
@@ -14,11 +14,13 @@ css: draw
 
 ## Equality instrumentally
 
-If our sole intrinsic good is something like [utils](https://en.wikipedia.org/wiki/Utility), we will still often prefer equality to inequality. What sorcery could introduce such deontological concepts into our consequentialist paradise? The incantation is ["diminishing marginal utility"]( https://en.wikipedia.org/wiki/Marginal_utility#Diminishing_marginal_utility). It is an empirical proposition (and mostly fact) that humans do not enjoy the 10th print copy of [_My Immortal_](https://en.wikipedia.org/wiki/My_Immortal_(fan_fiction)) as much as the first. Thus, an _Immortal_ hoarder can improve overall well-being by sharing the love. Losing copy 10 hurts less than gaining copy 1 helps.
+If our sole intrinsic good is something like [utils](https://en.wikipedia.org/wiki/Utility), we will still often prefer equality to inequality. What sorcery could introduce such deontological concepts into our consequentialist paradise? The incantation is ["diminishing marginal utility"]( https://en.wikipedia.org/wiki/Marginal_utility#Diminishing_marginal_utility). It is an empirical proposition (and mostly fact) that humans do not enjoy their 10th print copy of even their favorite book as much as the first. Thus, a bibliomaniac can improve overall well-being by sharing the love. Losing copy 10 hurts less than gaining copy 1 helps.
 
 # Visualizing the utilitarian consequences of income distribution
 
 We can start to build a visual intuition for this instrumental egalitarianism. Suppose we have an income distribution that looks like this:
+
+<!--more-->
 
 <form>
 <fieldset class="draw">
