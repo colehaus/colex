@@ -426,12 +426,12 @@ writeAsSvgFile destination macros typ math =
     Just tex2svg -> do
       debugCompiler $
         "Calling " <> tex2svg <> " " <>
-            -- `phantom` is a very hacky way to avoid having the shell interpret an initial `-` as a command line option
         show (inlineFlag <> [macros <> math])
       svg <-
         compilerUnsafeIO $
         readProcess
           tex2svg
+            -- `phantom` is a very hacky way to avoid having the shell interpret an initial `-` as a command line option
           (inlineFlag <> ["\\phantom{}" <> macros <> math])
           mempty
       compilerUnsafeIO $ writeFile destination svg
@@ -545,10 +545,9 @@ buildArchive postPat defaultTemplate archiveTemplate tags =
 buildCss :: Blessed "scss" Pattern -> Rules (Blessed "css" Pattern)
 buildCss scssPat = do
   includes <- makePatternDependency scssPat
-  rulesExtraDependencies [includes] $
-    match "css/*.scss" $ do
-      route $ setExtension "css"
-      compile compileScss
+  rulesExtraDependencies [includes] . match "css/*.scss" $ do
+    route $ setExtension "css"
+    compile compileScss
 
 fileInDirectoryRoute :: FilePath -> Rules ()
 fileInDirectoryRoute dir =
@@ -580,7 +579,7 @@ buildPosts defaultTemplate postTemplate bibIdent cslIdent tags chunkMap dir = do
     match (fromGlob $ dir <> "/*/warnings.md") $ compile getResourceBody
   warnings <- makePatternDependency warningsPat
   postPat <-
-    rulesExtraDependencies [overlays, warnings, abstracts] $
+    rulesExtraDependencies [overlays, warnings, abstracts] .
     match (mkPostPat dir) $ do
       route . customRoute $ \ident ->
         dir <> "/" <> (takeBaseName . takeDirectory . toFilePath) ident <>
