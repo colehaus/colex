@@ -30,6 +30,7 @@ import System.FilePath
   , splitPath
   , takeBaseName
   , takeDirectory
+  , takeExtension
   , takeFileName
   )
 import System.Process (readProcess)
@@ -355,7 +356,9 @@ buildIndex defaultTemplate indexTemplate indexContentTemplate abstractPat tags p
       fmap (maybe (error "Missing page " <> show n) toUrl) .
       getRoute . paginateMakeId pages $
       n
-    Just ultimatePage = Map.lookupMax (paginateMap pages)
+    ultimatePage =
+      fromMaybe (error "Must have at least one post") $
+      Map.lookupMax (paginateMap pages)
     penultimatePage = Map.lookupLT (fst ultimatePage) (paginateMap pages)
     pat =
       fromList . mappend (snd ultimatePage) . maybe mempty snd $ penultimatePage
@@ -456,12 +459,16 @@ buildAtom renderMethod destinationDir webHost postPat bibIdent cslIdent =
         traverse
           (readPandocBiblio readerOpt csl bib >=>
            traverse markdownTransform >=>
-           toHtmlAndBack bib csl >=>
+           ifMarkdown (toHtmlAndBack bib csl) >=>
            traverse htmlTransform >=>
            pure . (relativizeUrlsWith webHost <$>) . writePandocWith writerOpt) >>=
         fmap (replaceAll "index.html" (const mempty) <$>) .
         renderAtom feedConfig (postCtx <> bodyField "description")
   where
+    ifMarkdown f p =
+      if takeExtension (toFilePath $ itemIdentifier p) == ".md"
+      then f p
+      else pure p
     markdownTransform p =
       walkM
         (renderMath
