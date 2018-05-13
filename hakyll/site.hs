@@ -406,14 +406,14 @@ renderMath ::
 renderMath MathjaxNode destinationDir macros (Math typ math) = do
   alreadyRendered <- compilerUnsafeIO . doesPathExist $ destSvg
   unless alreadyRendered $ writeAsSvgFile destSvg macros typ math
-  pure $ Image mempty mempty (destination "png", math)
+  pure $ Image mempty mempty (destination "svg", math)
   where
     destSvg = destinationDir <> destination "svg"
     destination ext = "/images/latex/" <> show (hash math) <> "." <> ext
 renderMath FeedlyCompatible destinationDir macros (Math DisplayMath math) = do
   alreadyRendered <- compilerUnsafeIO . doesPathExist $ destSvg
   unless alreadyRendered $ writeAsSvgFile destSvg macros DisplayMath math
-  pure $ Image mempty mempty (destination "png", math)
+  pure $ Image mempty mempty (destination "svg", math)
   where
     destSvg = destinationDir <> destination "svg"
     destination ext = "/images/latex/" <> show (hash math) <> "." <> ext
