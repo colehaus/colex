@@ -1,8 +1,8 @@
 ---
 title: Some things which are and aren't Pareto optimal
 subtitle: Your periodic reminder that Pareto efficiency carries exceedingly little normative weight
-published: 2018-04-08
-tags: economics, metrics
+published: 2018-04-13
+tags: economics, metrics, self-flagellation friday
 ---
 
 # Definition and context
