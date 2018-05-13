@@ -30,19 +30,19 @@ cd "${root}/content"
 cd "${root}/content/js"
 webpack &
 
-cd "${root}/content/js/bibliometric"
-bower install
-pulp --watch browserify --to ../dist/bibliometric.js &
+# cd "${root}/content/js/bibliometric"
+# bower install
+# pulp --watch browserify --to ../dist/bibliometric.js &
 
-cd "${root}/content/js/value-of-information-calculator"
-npm install
-bower install
-pulp --watch browserify --to ../dist/value-of-information-calculator.js &
+# cd "${root}/content/js/value-of-information-calculator"
+# npm install
+# bower install
+# pulp --watch browserify --to ../dist/value-of-information-calculator.js &
 
-cd "${root}/content/js/construct-vnm-utility-function"
-bower install
-npm install
-pulp --watch browserify --to ../dist/construct-vnm-utility-function.js &
+# cd "${root}/content/js/construct-vnm-utility-function"
+# bower install
+# npm install
+# pulp --watch browserify --to ../dist/construct-vnm-utility-function.js &
 
 trap 'kill $(jobs -p)' EXIT
 sleep infinity

@@ -28,7 +28,7 @@ Tyranny of the majority is often framed as a majority violating the political an
 
 Invidious tyranny of the majority occurs when the weak preferences of many outweigh the strong preferences of the few such that [the actual outcome doesn't maximize utility/satisfaction of preferences]{.noted}[^efficiency].
 
-For example, the lamb gets -10 utils from being eaten. Each wolf gets 2 utils from eating the lamb. The aggregate net utility of eating the lamb is -6, but their are two votes for and only 1 against.
+For example, the lamb gets -10 utils from being eaten. Each wolf gets 2 utils from eating the lamb. The aggregate net utility of eating the lamb is -6, but their are two votes for and only 1 against. On the other hand, if the wolves were fanatical gourmands that each got 15 utils from eating the lamb, [we wouldn't call their feast a tyranny of the majority]{.noted}[^rights].
 
 In symbols,
 
@@ -41,13 +41,13 @@ where $D$ is the set of all possible outcomes/policies, $\Theta$ is the set of a
 
 # Innocuous
 
-From this perspective, it's obvious what an innocuous majoritarian tyranny is. It's when individuals in the majority care about the outcome less than the minority, but honoring the majority's preferences still maximizes aggregate utility. (Presumably/hopefully, no one cries "tyranny" when the majority both has more numbers *and* cares more.)
+From this perspective, it becomes clearer what in innocuous majoritarian tyranny is. It's when individuals in the majority care about the outcome less than the minority, but honoring the majority's preferences still maximizes aggregate utility. (Presumably/hopefully, no one cries "tyranny" when the majority both has more numbers *and* cares more.)
 
-If you have 10 wolves, each of whom get 2 utils from eating the original lamb, the aggregate utility of eating the lamb is 10 versus 0 for abstaining.
+If you have 10 wolves, each of whom get 2 utils from eating the original lamb, the aggregate utility of eating the lamb is 10 ($10 * 2 - 10 = 10$) versus 0 for abstaining. Thus, eating maximizes overall utility despite the fact that individual preference of each wolf is weaker than the lamb's.
 
 In symbols, an innocuous tyranny is when $d_{v} = d_{u}$, but $\sum_{\theta \in \Theta_{M}} \frac{u(\theta, d_{v})}{\norm{\Theta_{M}}} < \sum_{\theta \in \Theta_{m}} \frac{u(\theta, d')}{\norm{\Theta_{m}}}$ where $\Theta_{M}$ is the set of voters in the majority, $\Theta_{m}$ is the set of voters in the minority, and $d'$ is the minority's preferred outcome.
 
-Obviously, calling this situation innocuous is tendentious. It ignores the 'separateness of persons', etc. But I think utilitarians at least would be on board with majority rule in this kind of scenario whereas I think fairly few theories of the good would support the invidious tyranny of the majority.
+Obviously, calling this situation innocuous is tendentious and I'm not about run out and slaughter lambs based on this logic. The logic outlined here ignores classic objects to utilitarianism like the 'separateness of persons'. But I think utilitarians at least would be on board with majority rule in 'innocuous' scenario whereas I think zero (?) theories of the good would support the invidious tyranny of the majority.
 
 # Conclusion
 
@@ -57,5 +57,6 @@ To summarize, we call it a 'tyranny of the majority' when the minority has stron
 [^crow]: Maybe. [@chin2008] points out that African Americans were an absolute majority in several southern states. It was only via extralegal means that they were disenfranchised.
 [^range]: In a typical "one person, one vote" setup. We could easily generalize this to other voting systems.
 [^efficiency]: Mechanism design calls this property (your decision rule always chooses the outcome that maximizes utility) *<dfn>efficiency</dfn>*.
+[^rights]: At least in this framework where we throw out the concept of rights and instead look only to preferences and utility. Of course, some would reject this framework and say that the violation of the lamb's rights means that this scenario still constitutes a majoritarian tyranny.
 
 <hr class="references">
