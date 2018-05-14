@@ -116,6 +116,9 @@ figure {
     > img {
         @include width-full;
     }
+    > embed {
+        @include width-full;
+    }
     > figcaption {
         @include margin-horizontal-2em;
         @include font-smaller;
@@ -273,4 +276,7 @@ table {
 // Make subheadings smaller
 thead > tr:nth-of-type(2) {
     @include font-smaller;
+}
+.teaser .no-home {
+    display: none;
 }
