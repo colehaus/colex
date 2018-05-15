@@ -1,7 +1,7 @@
 ---
 title: Most of us read with our eyes <em>and</em> our brains
 subtitle: 'Regurgitating "So Much to Read, So Little Time: How Do We Read, and Can Speed Reading Help?"'
-published: 2018-04-23
+published: 2018-04-30
 tags: meta monday, reading
 ---
 

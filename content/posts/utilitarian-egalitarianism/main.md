@@ -1,7 +1,7 @@
 ---
 title: A visual intuition for the instrumental argument for equality
 tags: social welfare, economics, inequality
-published: 2018-04-20
+published: 2018-04-26
 js: util-egal, draw
 css: draw
 ---
