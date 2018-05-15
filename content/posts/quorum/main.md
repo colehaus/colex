@@ -52,7 +52,7 @@ wouldn't that have swung the outcome?</li></ol>
 present at the meetings](#quorum-map){#quorum-def .arg-map} of a deliberative assembly for business to be
 validly transacted is the *quorum* of the assembly. The requirement of a quorum
 is a protection against totally unrepresentative action in the name of the body
-by an unduly small number of persons. [@ronr]
+by an unduly small number of persons. [[@ronr]]{.attribution}
 </blockquote>
 
 So quorum is a proxy for representativeness. But as the examples demonstrate,

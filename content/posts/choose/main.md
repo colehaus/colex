@@ -56,7 +56,7 @@ scheme of equal basic liberties compatible with a similar scheme of
 liberties for others.
 Second: social and economic inequalities are to be arranged so that they are
 both (a) reasonably expected to be to everyone’s advantage, and (b) attached to
-positions and offices open to all. [@rawls09]
+positions and offices open to all. [[@rawls09]]{.attribution}
 </blockquote>
 
 (these principles justified by the
@@ -71,7 +71,7 @@ associations: all will answer the call of any member for defense or for the
 enforcement of his rights. ... [I]nconvenciences attend such simple
 mutual-protection associations .... Some people will be hired to perform
 protective functions, and some entrepreneurs will go into the business of
-selling protective services. [@nozick74]
+selling protective services. [[@nozick74]]{.attribution}
 </blockquote>
 
 Nozick then goes on to suggest that these protective agencies would form virtual

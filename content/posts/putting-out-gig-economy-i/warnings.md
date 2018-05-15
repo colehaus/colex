@@ -1,0 +1,1 @@
+Gotcha|Appearances to the contrary, this is not an attempt to "Gotcha!" leftists. I read Margolin's <i>What Do Bosses Do</i> long ago and was confused once I made the connection to the gig economy so decided to investigate.

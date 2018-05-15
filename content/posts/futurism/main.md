@@ -12,7 +12,7 @@ attached is called "Keep to-morrow dark," .... The players listen very carefully
 and respectfully to all that the clever men have to say about what is to happen
 in the next generation. The players then wait until all the clever men are dead,
 and bury them nicely. They then go and do something else. That is all. For a
-race of simple tastes, however, it is great fun. [@chesterton04]
+race of simple tastes, however, it is great fun. [[@chesterton04]]{.attribution}
 </blockquote>
 
 ::: conversation

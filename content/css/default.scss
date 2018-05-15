@@ -266,6 +266,7 @@ dl.posts > dt {
 .skippable::before {
     content: "Skippable";
     position: absolute;
+    @include left-to-gutter;
     @include font-x-small;
     @include weight-light;
     transform: translate(-3ex, 4ex) rotate(-90deg);
@@ -279,4 +280,7 @@ thead > tr:nth-of-type(2) {
 }
 .teaser .no-home {
     display: none;
+}
+.attribution {
+    float: right;
 }
