@@ -4,7 +4,7 @@ published: 2018-05-07
 tags: economics, metrics
 ---
 
-We covered the notion of [Pareto improvement](https://en.wikipedia.org/wiki/Pareto_efficiency) in the [preceding post](../pareto-examples/). I briefly alluded to the fact that it's a strict [partial order](https://en.wikipedia.org/wiki/Partially_ordered_set). Let's explore that a bit more.
+We covered the notion of [Pareto improvement](https://en.wikipedia.org/wiki/Pareto_efficiency) in the [preceding post](/posts/pareto-examples/). I briefly alluded to the fact that it's a strict [partial order](https://en.wikipedia.org/wiki/Partially_ordered_set). Let's explore that a bit more.
 
 # Partial order
 
@@ -22,7 +22,7 @@ Alternatively, we can just take the shortcut of noting that Pareto improvement i
 
 # Total order
 
-In the [preceding post](../pareto-examples/), we objected to the fact that Pareto improvement is partial---unable to render judgment between many scenarios and declare one as better than another despite our strongest intuitions. [We could remedy this problem if instead we had a [total order](https://en.wikipedia.org/wiki/Total_order)]{.noted}[^antichain]. We turn a strict partial order into a strict total order by adding the following property:
+In the [preceding post](/posts/pareto-examples/), we objected to the fact that Pareto improvement is partial---unable to render judgment between many scenarios and declare one as better than another despite our strongest intuitions. [We could remedy this problem if instead we had a [total order](https://en.wikipedia.org/wiki/Total_order)]{.noted}[^antichain]. We turn a strict partial order into a strict total order by adding the following property:
 
 Trichotomous: $(A \prec B) \lor (B \prec A) \lor (A = B)$
 :    Arbitrary scenario A is preferred to arbitrary scenario B or scenario B is preferred to scenario A or scenario A and B are the same.

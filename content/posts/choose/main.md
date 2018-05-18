@@ -80,7 +80,7 @@ monopolies, approximating a state.
 :::
 :::
 
-This technique can be found *in vivo* in [the post on quorum](../quorum/) (which
+This technique can be found *in vivo* in [the post on quorum](/posts/quorum/) (which
 also demonstrates synchronized choice i.e. changing what needs to be changed in
 subsequent sections to congrue with early choices).
 

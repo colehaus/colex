@@ -44,7 +44,7 @@ And suppose that the marginal utility of the last dollar of income looks like th
 </fieldset>
 </form>
 
-Then, via some math (check [the preceding post](../utilitarian-egalitarianism-notebook/) for details), we can figure out the utility across the population:
+Then, via some math (check [the preceding post](/posts/utilitarian-egalitarianism-notebook/) for details), we can figure out the utility across the population:
 
 <figure>
 <figcaption>Utility by percentile for hypothetical populations based on income distribution and marginal utility of money.</figcaption>
