@@ -17,6 +17,7 @@
 * TODO Bibtexify AI safety post
 * TODO File node writeAsync bug
 * TODO Linkify citations
+* TODO Definition custom element
 * DONE Reorganize nix files in colex root
   CLOSED: [2018-05-09 Wed 22:19]
 * TODO [#C] Set up vega to use colex color schemes
