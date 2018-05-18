@@ -1,6 +1,6 @@
 ---
-title: Build your own Von Neumann–Morgenstern utility function
-published: 2018-04-20
+title: Standalone–Build your own von Neumann–Morgenstern utility function
+published: 2018-05-14
 tags: decision theory, economics
 css: construct-vnm-utility-function
 js: construct-vnm-utility-function
@@ -8,6 +8,9 @@ js: construct-vnm-utility-function
 
 <form>
 <p>Which things would you like to make a utility function out of?</p>
+
+<!--more-->
+
 <textarea id="goods">
 ```{=html}
 Apple

@@ -1,0 +1,1 @@
+The von Neumann--Morgenstern utility theorem lets us turn an ordinal utility function into a cardinal utility function. Here, we have an interactive widget that actually constructs a utility function from a series of questions using the theorem.
