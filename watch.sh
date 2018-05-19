@@ -22,7 +22,7 @@ for path in ${NODE_PATH//:/ }; do
 done
 
 # Fixes race between hakyll and webpack
-# NO_WATCH=no_watch webpack
+NO_WATCH=no_watch webpack
 
 cd "${root}/content"
 "${root}/hakyll/.stack-bin/site" watch &

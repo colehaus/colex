@@ -497,6 +497,9 @@ toHtmlAndBack bib csl =
         (fromFilePath . (`replaceExtension` ext) . toFilePath $ identifier)
         body
 
+addCiteLinkDirective :: String -> String
+addCiteLinkDirective = replaceAll "---\ntitle:" (const "---\nlink-citations: true\ntitle:")
+
 swapJsForEin :: String -> String
 swapJsForEin = replaceAll "#\\+BEGIN_SRC ein" (const "#+BEGIN_SRC js")
 
@@ -596,9 +599,9 @@ buildPosts defaultTemplate postTemplate bibIdent cslIdent tags chunkMap dir = do
          in do bib <- load bibIdent
                csl <- load cslIdent
                directory <- takeDirectory . toFilePath <$> getUnderlying
-               getResourceBody >>=
+               getResourceString >>=
                  saveSnapshot "raw" .
-                 fmap (swapJsForEin . includeOrgFiles directory) >>=
+                 fmap (addCiteLinkDirective . swapJsForEin . includeOrgFiles directory) >>=
                  readPandocBiblio readerOpt csl bib >>=
                  saveSnapshot "teaser" .
                  (demoteHeaders . demoteHeaders <$>) . writePandocWith writerOpt >>=

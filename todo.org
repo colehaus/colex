@@ -16,8 +16,10 @@
   CLOSED: [2018-05-12 Sat 11:44]
 * TODO Bibtexify AI safety post
 * TODO File node writeAsync bug
-* TODO Linkify citations
+* DONE Linkify citations
+  CLOSED: [2018-05-19 Sat 00:39]
 * TODO Definition custom element
+* TODO Add visible atom link
 * DONE Reorganize nix files in colex root
   CLOSED: [2018-05-09 Wed 22:19]
 * TODO [#C] Set up vega to use colex color schemes
