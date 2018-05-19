@@ -19,7 +19,8 @@
 * DONE Linkify citations
   CLOSED: [2018-05-19 Sat 00:39]
 * TODO Definition custom element
-* TODO Add visible atom link
+* DONE Add visible atom link
+  CLOSED: [2018-05-19 Sat 00:56]
 * DONE Reorganize nix files in colex root
   CLOSED: [2018-05-09 Wed 22:19]
 * TODO [#C] Set up vega to use colex color schemes

@@ -254,6 +254,12 @@ dl.posts > dt {
 }
 .main-menu.bottom {
     order: 1;
+    position: relative;
+}
+.rss {
+    position: absolute;
+    @include top-2ex;
+    @include right-neg-5em;
 }
 .mark-line > path:hover {
     opacity: 1 !important;

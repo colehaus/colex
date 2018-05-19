@@ -70,3 +70,9 @@
     border-collapse: separate;
     border-spacing: 1em 0;
 }
+@mixin right-neg-5em {
+    right: -5em;
+}
+@mixin top-2ex {
+    top: 2ex;
+}
