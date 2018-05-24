@@ -13,6 +13,9 @@
 @mixin width-full {
     width: 100%;
 }
+@mixin width-extra {
+    width: 140%;
+}
 @mixin width-small {
     width: 15em;
 }

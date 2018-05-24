@@ -1,7 +1,7 @@
 ---
 title: Pareto improvement as partial order
 published: 2018-05-07
-tags: economics, metrics
+tags: social choice, order theory
 ---
 
 We covered the notion of [Pareto improvement](https://en.wikipedia.org/wiki/Pareto_efficiency) in the [preceding post](/posts/pareto-examples/). I briefly alluded to the fact that it's a strict [partial order](https://en.wikipedia.org/wiki/Partially_ordered_set). Let's explore that a bit more.
