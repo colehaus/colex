@@ -4,6 +4,9 @@
 .single-choice, .double-choice, .triple-choice, .general-choice {
     display: flex;
     @include width-extra;
+    .sidenote {
+        right: -28em;
+    }
 }
 .math-col {
     @include margin-right-1em;

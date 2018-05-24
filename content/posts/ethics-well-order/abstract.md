@@ -1,0 +1,1 @@
+There is an analogy to be found between choice functions and ethical theories. Both select a distinguished element/action from a collection of sets/actions. If we continue along this line of thought, certain assumptions permit us to make a further analogy between well-orders and ethical theories.
