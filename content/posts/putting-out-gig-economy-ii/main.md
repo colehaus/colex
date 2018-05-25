@@ -10,6 +10,8 @@ They have driven us away from our houses and gardens to work as prisoners in the
 </blockquote>
 
 
+# Intro
+
 [Last time](/posts/putting-out-gig-economy-i/) we reviewed the putting out system---a pre-industrial system of manufacture used in England where workers would take intermediate products home, refine them in some way, and return them to a merchant so that some other worker could perform the next step in the production process. Then, I suggested that this system sounds a lot like the modern gig economy.
 
 Which left us with the question: Why is the gig economy worse than regular, full-time employment (for workers), but putting-out was better than factories (for workers)? We can resolve this tension by either finding that contemporary praise of the putting out system is wrong, finding that criticism of the gig economy is wrong, or (hint, hint) highlighting the disanalogies between the systems.

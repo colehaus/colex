@@ -1,0 +1,1 @@
+Donor lotteries are a way for small donors to pool their funds in the hopes that economies of scale will make them more effective. Some people worry about whether others in the lottery are aligned. A parable about a donor lottery with devil illustrates that we should be willing to enter donor lotteries with those opposed to us as long as they have smaller economies of scale.

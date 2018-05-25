@@ -5,6 +5,8 @@ tags: metaethics, order theory
 css: ethics-well-order
 ---
 
+# Intro
+
 Ethics is fundamentally about 'ought'. What ought we to do? Which actions are proscribed and which prescribed? Among all available actions, which should we actually pursue? I think we can formalize this basic understanding and draw some interesting conclusions.
 
 For any given ethical decision, we have some nonempty set $\mathcal{A}$ (depending on how we individuate, possibly infinite) of possible actions. But, alas, we cannot perform all these actions; only one. So an ethical theory is something that for every possible $\mathcal{A}$ selects a distinguished element $a \in \mathcal{A}$. That is, an ethical theory is a [choice function](https://en.wikipedia.org/wiki/Choice_function) over nonempty sets of actions.
