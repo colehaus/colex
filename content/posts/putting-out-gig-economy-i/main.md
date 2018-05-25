@@ -45,7 +45,7 @@ I'll take a moment to explicitly note this for the ensuing discussion: An avowed
 
 # The gig economy
 
-I hope the earlier description of the putting-out system echoed in your brain. To me, it sounds a great deal like a technologically limited gig economy. In both systems, workers have considerable freedom over how much work they perform, but not which tasks. Their tasks are assigned by a central clearinghouse which also mediates their relationship with the final consumer. Unlike freelancers, workers have relationships with only one or a few buyers ([monopsony](https://en.wikipedia.org/wiki/Monopsony)/ [oligopsony](https://en.wikipedia.org/wiki/Oligopsony)). Unlike modern full-time employees, in both systems, workers have very limited and almost purely monetary interactions with their employer.
+I hope the earlier description of the putting-out system echoed in your brain. To me, it sounds a great deal like a technologically limited gig economy. In both systems, workers have considerable freedom over how much work they perform, but not which tasks. Their tasks are assigned by a central clearinghouse which also mediates their relationship with the final consumer. Unlike freelancers, workers have relationships with only one or a few buyers ([monopsony](https://en.wikipedia.org/wiki/Monopsony)/ [oligopsony](https://en.wikipedia.org/wiki/Oligopsony)). Unlike modern full-time employees, in both systems, workers have very limited physical interactions with their employer.
 
 If you accept the aptness of this analogy, we're left with a confusion. Why was the putting-out system considered better than full-time, centralized employment while the gig economy is often considered worse? Especially from the leftist perspective?
 
@@ -64,7 +64,7 @@ If you doubt that leftists look dimly on the gig economy, look no further:
 
 # Reconciliation
 
-We have three ways to reconcile the apparent conflict. People are wrong about the putting-out system, people are wrong about the gig economy, or the two systems are crucially different. But that will have to wait for another day.
+We have three ways to reconcile the apparent conflict. People are wrong about the putting-out system, people are wrong about the gig economy, or the two systems are crucially different. But that will have to wait for [another day](/posts/putting-out-gig-economy-i/).
 
 <hr class="references">
 

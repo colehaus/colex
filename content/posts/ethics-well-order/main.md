@@ -39,7 +39,7 @@ So our choice function applies our irreflexive, asymmetric binary relation to ou
 :::
 
 ::: ethics-col
-What happens when our ethical theory needs to actually start pulling its weight and giving guidance between two different actions (call them A and B)? At its simplest, the theory can either declare that A is better or instead that B is better. Or it might declare that the two actions are incomparable---neither stands anywhere in ethical relation to the other. This is often unsatisfactory (as suggested in a [previous post](/posts/pareto-examples)). So we'll provisionally adhere to the introduction's demand that our ethical theory never avail itself of this escape hatch. This demand for comprehensive guidance means that we also need a notion of moral equivalence. At a minimum, every action must be morally equivalent to itself. (Our ethical theory ought not to claim that action A is better than A.)
+What happens when our ethical theory needs to actually start pulling its weight and giving guidance between two different actions (call them A and B)? At its simplest, the theory can either declare that A is better or instead that B is better. Or it might declare that the two actions are incomparable---neither stands anywhere in ethical relation to the other. This is often unsatisfactory (as suggested in a [previous post](/posts/pareto-examples/)). So we'll provisionally adhere to the introduction's demand that our ethical theory never avail itself of this escape hatch. This demand for comprehensive guidance means that we also need a notion of moral equivalence. At a minimum, every action must be morally equivalent to itself. (Our ethical theory ought not to claim that action A is better than A.)
 
 All of that is to say, when presented with two different actions, our ethical theory always recommends one or the other as the better to pursue.
 :::
@@ -146,3 +146,5 @@ Along the way, we made several choices about how our choice function and binary 
 [^asymmetric]: Asymmetric---$\forall a, b \in \mathcal{A} : a \prec b \implies \neg \left(b \prec a\right)$. For example, it's not true that both $1 < 2$ and $2 < 1$.
 [^totality]: Totality---$\forall a, b \in \mathcal{A} : a \prec b \veebar b \prec a \veebar a \approx b$. For any two integers $a$ and $b$, only one of the following holds: $a < b$; $b < b$; $a = b$. You cannot pick two integers which are 'undefined' with respect to $<$ and $=$.
 [^transitivity]: Transitivity---$\forall a, b, c \in \mathcal{A} : \left(a \prec b \land b \prec c\right) \implies a \prec c$. For example, $1 < 2$, $2 < 3$, and $1 < 3$.
+
+<hr class="references">

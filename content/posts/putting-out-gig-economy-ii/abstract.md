@@ -1,0 +1,1 @@
+There's not a lot of high quality evidence, but it seems plausible to the author that the putting-out system was better for workers than the factory system and that most gig workers would prefer more standard employment.
