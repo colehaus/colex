@@ -1,5 +1,5 @@
 ---
-title: Summary—What Money Can't Buy
+title: Summary—The Moral Limits of Markets
 published: 2018-05-25
 tags: ethics, markets
 ---
