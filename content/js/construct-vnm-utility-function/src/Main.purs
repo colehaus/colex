@@ -2,9 +2,11 @@ module Main where
 
 import Prelude hiding (bottom,top)
 
+import Chart (ChartInterval(..), chartData, chartOpts, chartSpec)
 import Charts.Vega.Primitive as Vega
 import Control.Alt ((<|>))
 import Control.Monad.Eff (Eff)
+import Control.Monad.Eff.Console (CONSOLE, log)
 import Control.Monad.Eff.JQuery (ready) as J
 import Control.Monad.Eff.JQuery.Fancy (clearOne, displayOne, getProp, getText, hideOne, setText, width) as J
 import Control.Monad.Eff.Ref (REF, Ref, newRef, readRef, writeRef)
@@ -33,16 +35,14 @@ import Economics.Utility.VNM.Function (UtilityFn, best, byGood, goodsToInitialFn
 import FRP (FRP)
 import FRP.Event (Event)
 import FRP.Event as FRP
+import FRP.JQuery (jqueryEvent, textAreaEvent)
+import Helpers (nonEmptySet, unsafeFromJustBecause)
+import Html (DecisionDisplays, DecisionInputs, VisualizationDisplays, InitialInputs, collectElements)
 import Math.Interval (unmake)
 import Math.Interval.Bound (Finite(MkFinite), finite)
 import Partial.Unsafe (unsafeCrashWith, unsafePartialBecause)
 
-import Chart (ChartInterval(..), chartData, chartOpts, chartSpec)
-import Helpers (nonEmptySet, unsafeFromJustBecause)
-import Html (DecisionDisplays, DecisionInputs, VisualizationDisplays, InitialInputs, collectElements)
-import FRP.JQuery (jqueryEvent, textAreaEvent)
-
-main :: forall e. Eff (dom :: DOM, frp :: FRP, ref :: REF | e) Unit
+main :: forall e. Eff (console :: CONSOLE, dom :: DOM, frp :: FRP, ref :: REF | e) Unit
 main =
   unsafePartialBecause "Initial text known to be good" $
   J.ready do
@@ -55,6 +55,7 @@ main =
           update
           ((Left <$> FRP.filterMap hush utilityFn'.event) <|> (Right <$> ordering))
           utilityFn'.initial
+    void $ FRP.subscribe ordering sinkResponses
     void $ FRP.subscribe (pickNextLottery <$> function) (sinkLottery elements . decisionDisplays)
     void <<< FRP.subscribe function <<< sinkFunction elements.visualizationDisplays =<< newRef Nothing
 
@@ -77,7 +78,7 @@ response els = do
   first <- jqueryEvent (wrap "click") (\_ -> pure GT) els.first
   indifferent <- jqueryEvent (wrap "click") (\_ -> pure EQ) els.indifferent
   second <- jqueryEvent (wrap "click") (\_ -> pure LT) els.second
-  pure (first <|> indifferent <|> second)
+  pure $ first <|> indifferent <|> second
 
 utilityFn ::
      forall e.
@@ -102,12 +103,17 @@ utilityFn els =
     goodsToInitialFn' =
       goodsToInitialFn <=< note unit <<< nonEmptySet <<< Set.fromFoldable
 
+sinkResponses :: forall e. Ordering -> Eff (console :: CONSOLE | e) Unit
+sinkResponses ord = do
+  log (show ord)
+
 sinkLottery ::
      forall e.
      DecisionDisplays
   -> Ratio String Number
-  -> Eff (dom :: DOM | e) Unit
+  -> Eff (console :: CONSOLE, dom :: DOM | e) Unit
 sinkLottery els lottery = do
+  log $ show lottery
   J.setText (Ratio.base lottery) els.firstGood
   J.setText (Ratio.quote lottery) els.secondGood
   J.setText (show' base') els.firstChance
@@ -125,8 +131,9 @@ sinkFunction ::
      VisualizationDisplays
   -> Ref (Maybe Vega.View)
   -> UtilityFn String Number
-  -> Eff (dom :: DOM, ref :: REF | e) Unit
+  -> Eff (console :: CONSOLE, dom :: DOM, ref :: REF | e) Unit
 sinkFunction els ref fn = do
+  log $ show fn
   case (\best' -> Tuple best' <$> Map.lookup best' (byGood fn)) =<< best fn of
     Nothing -> clear
     Just (Tuple best' ratios) -> do
@@ -155,7 +162,7 @@ sinkFunction els ref fn = do
       writeRef ref Nothing
     encodeAsObject = unsafeFromJustBecause "Static object" <<< Argo.toObject <<< Argo.encodeJson
     toChartInterval best'
-      (MkRatio
+      r@(MkRatio
         { pair: MkPair {base, quote}
         , relativeValue: bounds
         }
@@ -167,4 +174,4 @@ sinkFunction els ref fn = do
               then {good: quote, lower: 1.0 / upperBound, upper: 1.0 / lowerBound}
               -- We bump `lower` by smallest because log scale can't handle 0
               else {good: base, lower: lowerBound + smallest, upper: upperBound}
-          _ /\ _ -> unsafeCrashWith "Presence of 'best' implies these properties"
+          l /\ u -> unsafeCrashWith $ "Presence of 'best' implies these properties.\nl: " <> show l <> "\nu: " <> show u <> "\nr:" <> show r <> "\nbest': " <> show best'
