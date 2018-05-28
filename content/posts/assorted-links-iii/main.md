@@ -14,7 +14,7 @@ tags: links
 
 2. [Mental Health](https://ourworldindata.org/mental-health)
 
-  "[M]ental and substance use disorders account for around 7 percent of global disease burden in 2016, but this reaches up to 13-14 percent in several countries."
+   "[M]ental and substance use disorders account for around 7 percent of global disease burden in 2016, but this reaches up to 13-14 percent in several countries."
 
 3. [Basic income and a public job offer: complementary policies to reduce poverty and unemployment](https://www.dropbox.com/s/dvi19mo1032cdz0/Fitzroy%2C%20F.%20Journal%20of%20Poverty%20and%20Social%20Justice%202018%20Basic%20Income%20and%20a%20Public%20Job%20Offer.pdf)
 

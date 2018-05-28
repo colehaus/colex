@@ -1,0 +1,1 @@
+Markets continue to expand into areas that were once governed by other mechanisms. But markets can be unfair and they can corrupt the goods allocated by them. Because markets have a moral dimension, their continued expansion means that economic reasoning must explicitly embrace moral reasoning.
