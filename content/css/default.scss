@@ -94,6 +94,14 @@ blockquote::after {
         background-color: $convo-2;
     }
 }
+.abstract::before {
+    content: "Abstract";
+    position: absolute;
+    @include left-to-gutter;
+    @include font-x-small;
+    @include weight-light;
+    transform: translate(-3ex, 4ex) rotate(-90deg);
+}
 .epigraph, .abstract {
     @include margin-horizontal-3em;
     @include font-smaller;
