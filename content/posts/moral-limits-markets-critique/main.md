@@ -59,6 +59,10 @@ If the meaning assigned to markets changed enough for enough people, markets mig
 
 However, because markets are fundamentally an impersonal mechanism for the allocation of goods, that meaning is unavoidable. Transactions intended to be personal and particularistic ought not to be conducted via the market.
 
+# Trade-offs
+
+Sandel acknowledges that we may sometimes make moral comprises---we may accept the corruption of some good in exchange for the efficiency markets provide. However, Sandel never provides any detailed criteria or even examples for how we should make this tradeoff. I think this is because is doing so would require describing and committing to some concrete, normative theory. His reluctance to do so is both understandable (it would take him on quite a tangent) and a bit ironic given his criticism of amoral economists. I think Sandel's reluctance to defend any particular trade-off reveals just how tricky the thing he's advocating for (bringing moral discussion into economic decisions) is.
+
 # Straw man
 
 The critique about economists being ignorant of the commercialization effect and otherwise believing in *[Homo economicus](https://en.wikipedia.org/wiki/Homo_economicus)* uncritically rings false to me. This is what behavioral economics is all about and many of the works Sandel cites in support of his claims (e.g. the study of crowding out effects with placement of nuclear waste) were produced by economists!

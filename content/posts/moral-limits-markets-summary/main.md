@@ -52,7 +52,7 @@ One way in which markets can be corrupting is that they function like bribes. Sa
 
 Another crucial piece of the corruption story is that market incentives are [not merely additive]{.noted}[^additive]. Offering money in exchange for some good or task can crowd out and diminish other incentives. As evidence of this, he describes the famous (in certain circles) Israeli day-care study where parents picked up their children *later* after the introduction of a fine for late pickups [@gneezy2000]. He also describes a Swiss village where inhabitants were *less* willing to house nuclear waste if offered annual cash compensation than if done purely out of a sense of civic duty [@frey1997].
 
-## Tradeoffs
+## Trade-offs
 
 We'll close this section by noting that Sandel does acknowledge that corruption and unfairness aren't definitive arguments against markets; they're defeasible. "I do not claim that promoting virtuous attitudes toward the environment, or parenting, or education must always trump competing considerations. Bribery sometimes works. And it may, on occasion, be the right thing to do. [...] But it is important to remember that it is bribery we are engaged in, a morally compromised practice that substitutes a lower norm [...] for a higher one [...]."
 
