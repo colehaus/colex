@@ -3,14 +3,15 @@ module Html where
 import Prelude
 
 import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.JQuery.Fancy (JQuery, One)
+import Control.Monad.Eff.JQuery.Fancy (JQuery, Many, One)
 import Control.Monad.Eff.JQuery.Fancy as J
 import DOM (DOM)
 import Data.Maybe (Maybe(..))
 import Partial.Unsafe (unsafePartialBecause)
 
 type DecisionDisplays =
-  { firstChance :: JQuery (One "span")
+  { scenario :: JQuery Many
+  , firstChance :: JQuery (One "span")
   , secondChance :: JQuery (One "span")
   , firstGood :: JQuery (One "span")
   , secondGood :: JQuery (One "span")
@@ -64,9 +65,10 @@ collectDecisionDisplays ::
   forall e. Eff (dom :: DOM | e) DecisionDisplays
 collectDecisionDisplays =
   unsafePartialBecause "We require this element structure to function" do
+    Just scenario <- J.select ".input"
     [firstChance, secondChance] <- J.selectOnes ".odds"
     [firstGood, secondGood] <- J.selectOnes ".good"
-    pure { firstChance, secondChance, firstGood, secondGood }
+    pure { scenario, firstChance, secondChance, firstGood, secondGood }
 
 collectVisualizationDisplays ::
   forall e. Eff (dom :: DOM | e) VisualizationDisplays

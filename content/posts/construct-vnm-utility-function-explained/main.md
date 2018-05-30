@@ -41,8 +41,8 @@ Banana
 Carrot
 ```
 </textarea>
-<p>Which do you prefer?</p>
-<div class="scenario">
+<p class="input">Which do you prefer?</p>
+<div class="input scenario">
 Receive <span id="first-good" class="lottery"><span class="odds">1.00e+0</span> <span class="good">Banana</span> lottery ticket(s)</span><br/><br/>or <span id="second-good" class="lottery"><span class="odds">1.00e+0</span> <span class="good">Carrot</span> lottery ticket(s)</span><br/><br/>
 <span id="indifferent" class="lottery">Indifferent</span>
 </div>

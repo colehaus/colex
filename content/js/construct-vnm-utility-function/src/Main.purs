@@ -8,7 +8,7 @@ import Control.Alt ((<|>))
 import Control.Monad.Eff (Eff)
 import Control.Monad.Eff.Console (CONSOLE, log)
 import Control.Monad.Eff.JQuery (ready) as J
-import Control.Monad.Eff.JQuery.Fancy (clearOne, displayOne, getProp, getText, hideOne, setText, width) as J
+import Control.Monad.Eff.JQuery.Fancy (clearOne, displayOne, getProp, getText, hide, hideOne, setText, width) as J
 import Control.Monad.Eff.Ref (REF, Ref, newRef, readRef, writeRef)
 import DOM (DOM)
 import Data.Argonaut.Core (fromObject, toObject) as Argo
@@ -26,18 +26,18 @@ import Data.StrMap as StrMap
 import Data.String as String
 import Data.These (These(..))
 import Data.Tuple (Tuple(..))
-import Data.Tuple.Nested ((/\))
 import Data.Unfoldable (class Unfoldable)
 import Economics.Utility.Ratio (Pair(..), Ratio(..))
 import Economics.Utility.Ratio as Ratio
-import Economics.Utility.VNM (pickNextLottery, refine, smallest)
+import Economics.Utility.VNM (isComplete, pickNextLottery, refine, smallest)
+import Economics.Utility.VNM as VNM
 import Economics.Utility.VNM.Function (UtilityFn, best, byGood, goodsToInitialFn, prune)
 import FRP (FRP)
 import FRP.Event (Event)
 import FRP.Event as FRP
 import FRP.JQuery (jqueryEvent, textAreaEvent)
 import Helpers (nonEmptySet, unsafeFromJustBecause)
-import Html (DecisionDisplays, DecisionInputs, VisualizationDisplays, InitialInputs, collectElements)
+import Html (DecisionInputs, InitialInputs, VisualizationDisplays, DecisionDisplays, collectElements)
 import Math.Interval (unmake)
 import Math.Interval.Bound (Finite(MkFinite), finite)
 import Partial.Unsafe (unsafeCrashWith, unsafePartialBecause)
@@ -47,28 +47,42 @@ main =
   unsafePartialBecause "Initial text known to be good" $
   J.ready do
     elements <- collectElements
-    ordering <- response elements.decisionInputs
-    utilityFn' <- utilityFn elements.initialInputs
-    let
-      function =
-        FRP.fold
-          update
-          ((Left <$> FRP.filterMap hush utilityFn'.event) <|> (Right <$> ordering))
-          utilityFn'.initial
+    ordering <- response elements . decisionInputs
+    utilityFn' <- utilityFn elements . initialInputs
+    let function =
+          FRP.fold
+            (\evt acc -> update evt =<< acc)
+            ((Left <$> FRP.filterMap hush utilityFn' . event) <|>
+             (Right <$> ordering))
+            (Right utilityFn' . initial)
     void $ FRP.subscribe ordering sinkResponses
-    void $ FRP.subscribe (pickNextLottery <$> function) (sinkLottery elements . decisionDisplays)
-    void <<< FRP.subscribe function <<< sinkFunction elements.visualizationDisplays =<< newRef Nothing
+    void $
+      FRP.subscribe
+        (map pickNextLottery <$> function)
+        (either
+           (\_ -> sinkDone elements . decisionDisplays)
+           (sinkLottery elements . decisionDisplays))
+    (\r ->
+       void <<< FRP.subscribe function $
+       either
+         (sinkFunction elements . visualizationDisplays r)
+         (sinkFunction elements . visualizationDisplays r)) =<<
+      newRef Nothing
 
 update ::
      forall a.
      Ord a
   => Either (UtilityFn a Number) Ordering
   -> UtilityFn a Number
-  -> UtilityFn a Number
+  -> Either (UtilityFn a Number) (UtilityFn a Number)
 update evt oldFn =
-  maybePrune $ either id (flip (refine (pickNextLottery oldFn)) oldFn) evt
+  complete <<< maybePrune $ either id (flip (refine (pickNextLottery oldFn)) oldFn) evt
   where
     maybePrune f = maybe f (flip prune f) <<< best $ f
+    complete f =
+      if isComplete f
+      then Left f
+      else Right f
 
 response ::
      forall e.
@@ -106,6 +120,11 @@ utilityFn els =
 sinkResponses :: forall e. Ordering -> Eff (console :: CONSOLE | e) Unit
 sinkResponses ord = do
   log (show ord)
+
+sinkDone :: forall e. DecisionDisplays -> Eff (console :: CONSOLE, dom :: DOM | e) Unit
+sinkDone els = do
+  log "done"
+  J.hide els.scenario
 
 sinkLottery ::
      forall e.
@@ -167,11 +186,13 @@ sinkFunction els ref fn = do
         , relativeValue: bounds
         }
       ) =
-        case finite (unmake bounds).lower /\ finite (unmake bounds).upper of
-          Just (MkFinite { bound: lowerBound }) /\ Just (MkFinite { bound: upperBound }) ->
+        case finite (unmake bounds).lower of
+          Just (MkFinite { bound: lowerBound }) ->
             MkChartInterval $
             if best' == base
               then {good: quote, lower: 1.0 / upperBound, upper: 1.0 / lowerBound}
               -- We bump `lower` by smallest because log scale can't handle 0
               else {good: base, lower: lowerBound + smallest, upper: upperBound}
-          l /\ u -> unsafeCrashWith $ "Presence of 'best' implies these properties.\nl: " <> show l <> "\nu: " <> show u <> "\nr:" <> show r <> "\nbest': " <> show best'
+          Nothing -> unsafeCrashWith $ "Presence of 'best' implies these properties.\nr:" <> show r <> "\nbest': " <> show best'
+        where
+          upperBound = maybe VNM.top ((_.bound) <<< unwrap) <<< finite $ (unmake bounds).upper
