@@ -1,6 +1,7 @@
 ---
 title: Hot takes—The Moral Limits of Markets
 published: 2018-05-28
+edited: 2018-05-31
 tags: ethics, markets
 ---
 
@@ -85,5 +86,6 @@ Ultimately, this is an empirical question. I think it's clear that people do giv
 
 [^markets-property]: Are these things actually distinct? If property rights are always and everywhere tied to markets, then this would be an idle distinction. But they are not. We have many other mechanisms for the transfer of property rights like marriage (private property (often) becomes jointly held by the couple) and inheritance (the inheritor receives the property rights).
 [^squicky]: By 'squicky', I mean 'incenses my moral intution' or 'is likely to incense the moral intuition of others'.
-[^conspiracy]: It sounds more conniving and conspiratorial here in shorthand than I mean it to.
+[^conspiracy]: It sounds more conniving and conspiratorial here in shorthand than I mean it to. My claim is intended to be read a la Robinson and Acemoglu [@acemoglu2005]:
+      <blockquote>Economic institutions determine the incentives of and the constraints on economic actors, and shape economic outcomes. As such, they are social decisions, chosen for their consequences. Because different groups and individuals typically benefit from different economic institutions, there is generally a conflict over these social choices, ultimately resolved in favor of groups with greater political power.</blockquote>
 [^impulse]: I'm not claiming this *is* what's moral. Just that it might be how our biology predisposes us to act.

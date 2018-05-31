@@ -21,6 +21,8 @@ executable site
                   , process
                   , split
                   , text
+                  , time
+                  , time-locale-compat
                   , transformers
   ghc-options:      -threaded -Wall
   default-language: Haskell2010

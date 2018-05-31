@@ -14,7 +14,7 @@ $endfor$
   $partial("templates/tag-nav.html")$
   <span class="date">Published on <time datetime="$num-date$">$date$</time>.</span>
   $if(edited)$
-    <br><span class="date">Last edited on <time datetime="$date$">$date$</time>.</span>
+    <br><span class="date">Last edited on <time datetime="$dateInNumbers(edited)$">$dateInWords(edited)$</time>.</span>
   $endif$
   </div>
   $if(graph-of-contents)$

@@ -17,6 +17,9 @@ import Data.Map (Map)
 import qualified Data.Map as Map
 import Data.Maybe (fromMaybe)
 import Data.Monoid ((<>), mconcat, mempty)
+import Data.Time.Clock (UTCTime)
+import Data.Time.Format (parseTimeM, formatTime)
+import Data.Time.Locale.Compat (defaultTimeLocale)
 import System.Directory
   ( createDirectoryIfMissing
   , doesPathExist
@@ -649,7 +652,31 @@ idField key = field key $ pure . itemBody
 
 postCtx :: Context String
 postCtx =
+  functionField "dateInWords" (wrap dateInWords) <>
+  functionField "dateInNumbers" (wrap dateInNumbers) <>
   dateField "date" "%B %e, %Y" <> dateField "num-date" "%F" <> defaultContext
+  where
+    wrap :: Applicative m => (a -> c) -> [a] -> b -> m c
+    wrap f = flip . const . singleArg $ pure . f
+
+singleArg :: (a -> b) -> [a] -> b
+singleArg f [a] = f a
+singleArg _ _ = error "Expected single argument to function"
+
+dateInWords :: String -> String
+dateInWords = dateIn "%B %e, %Y"
+
+dateInNumbers :: String -> String
+dateInNumbers = dateIn "%F"
+
+dateIn :: String -> String -> String
+dateIn f s =
+  formatTime defaultTimeLocale f .
+  fromMaybe (error $ "Bad date " <> s) .
+  parseTimeM @_ @UTCTime True defaultTimeLocale "%Y-%m-%d" $ s
+
+
+
 
 overCtx :: Blessed "overlay" Pattern -> Context String
 overCtx overPat =
