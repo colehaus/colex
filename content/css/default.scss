@@ -75,9 +75,10 @@ blockquote {
 }
 blockquote::before {
     content: open-quote;
-    font-size: 6ex;
-    line-height: 0;
-    vertical-align: -0.7ex;
+    @include decorative-size;
+    @include margin-right-tenthem;
+    line-height: 0.8ex;
+    float: left;
 }
 // Must close quote to satisfy browser nesting algo
 blockquote::after {
