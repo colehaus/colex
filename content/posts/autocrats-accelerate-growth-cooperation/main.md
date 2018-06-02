@@ -67,7 +67,7 @@ The utility of player $i$ given all actions of all players across time ($\mathbf
 
 We'll start by examining the utility obtained by each player when they pursue a constant strategy (e.g. *always* invest, *always* loot).
 
-#### $\text{Tax}$, $\mathtt{Invest}$
+#### $\text{Tax}\backslash\mathtt{Invest}$
 
 In the first round, $\mathtt{Producers} invest but have not yet reaped the benefit. So they obtain only $(1 - k) - c$ (what's left after the $\text{Autocrat}$'s taxes minus the cost of $\mathtt{Investing}$) while the $\text{Autocrat}$ simply receives their tax share of output $k$. In all subsequent rounds, output is scaled by the competing factors of the discount rate $\delta$ and the growth rate $r$ while cost is scaled only by the discount rate $\delta$.
 
@@ -83,7 +83,7 @@ U_{\mathtt{P}}(\mathbf{a}) &= (1 - k) - c + \sum_{t=1}^\infty \delta^t \cdot (r 
 $$
 </figure>
 
-#### $\text{Loot}$, $\mathtt{Invest}$
+#### $\text{Loot}\backslash\mathtt{Invest}$
 
 The setup is identical here except that the lower $\text{Tax}$ rate $k$ has been replaced by the higher $\text{Looting}$ rate $l$.
 
@@ -99,7 +99,7 @@ U_{\mathtt{P}}(\mathbf{a}) &= (1 - l) - c + \sum_{t=1}^\infty \delta^t \cdot (r 
 $$
 </figcaption>
 
-#### $\text{Tax}$, $\mathtt{Shirk}$
+#### $\text{Tax}\backslash\mathtt{Shirk}$
 
 In the first round, $\mathtt{Producers}$ don't invest so they simply receive $1 - k$. Similarly, the $\text{Autocrat}$ receives only $k$ in the first round. In all subsequent rounds, players' rewards are scaled by the discount factor $\delta$.
 
@@ -115,7 +115,7 @@ U_{\mathtt{P}}(\mathbf{a}) &= (1 - k) + \sum_{t=1}^\infty \delta^t \cdot (o \cdo
 $$
 </figcaption>
 
-#### $\text{Loot}$, $\mathtt{Shirk}$
+#### $\text{Loot}\backslash\mathtt{Shirk}$
 
 The setup is identical here except that the lower $\text{Tax}$ rate $k$ has been replaced by the higher $\text{Looting}$ rate $l$.
 
@@ -150,10 +150,10 @@ So we find ourselves in the same equilibrium again than. When only constant stra
 
 #### Tit for tat
 
-In repeated games, we can encourage cooperation by punishing defection. What happens if we permit $\mathtt{Producers}$ to use a [tit for tat strategy](https://en.wikipedia.org/wiki/Trigger_strategy)? First, we'll note that if the $\text{Autocrat}$ $\text{Taxes}$, the $\mathtt{Producers}$ never need to punish and so it plays out exactly like $\text{Tax}$, $\mathtt{Invest}$. On the other hand, if the autocrat follows a constant $\text{Loot}$ strategy, the $\mathtt{Producers Invest}$ in the first round and never again.
+In repeated games, we can encourage cooperation by punishing defection. What happens if we permit $\mathtt{Producers}$ to use a [tit for tat strategy](https://en.wikipedia.org/wiki/Trigger_strategy)? First, we'll note that if the $\text{Autocrat}$ $\text{Taxes}$, the $\mathtt{Producers}$ never need to punish and so it plays out exactly like $\text{Tax}\backslash\mathtt{Invest}$. On the other hand, if the autocrat follows a constant $\text{Loot}$ strategy, the $\mathtt{Producers Invest}$ in the first round and never again.
 
 <figure>
-<figcaption>Discounted utility obtained by the $\text{Autocrat}$ and $\mathtt{Producers}$ given they play $\text{Loot}$ and $\mathtt{Tit for tat}$ against each other.</figcaption>
+<figcaption>Discounted utility obtained by the $\text{Autocrat}$ and $\mathtt{Producers}$ given they play $\text{Loot}$ and $\mathtt{Tit-for-tat}$ against each other.</figcaption>
 $$
 \begin{align*}
 U_{\text{A}}(\mathbf{a}) &= l + \sum_{t=1}^\infty \delta^t \cdot r \cdot l \\
@@ -164,9 +164,9 @@ U_{\mathtt{P}}(\mathbf{a}) &= (1 - l) - c + \sum_{t=1}^\infty \delta^t (o \cdot 
 $$
 </figcaption>
 
-It turns out that $\text{Tax}, \mathtt{Tit for tat}$ is an equilibrium (given the strategy space) and the appropriate parameters.
+It turns out that $\text{Tax}, \mathtt{Tit-for-tat}$ is an equilibrium (given the strategy space) and the appropriate parameters.
 
-To see this, we first confirm that the $\mathtt{Producer}$ can do no better. Here, we appeal to our earlier claim that the payoffs for this game are the same as for $\text{Tax}, \mathtt{Invest}$ so no improvement is possible there. Comparing $\mathtt{Tit for tat}$ to $\mathtt{Shirking}$ while $\text{Taxed}$ is also structurally identical to our earlier comparison of $\mathtt{Investing}$ to $\mathtt{Shirking}$ while $\mathtt{Looted}$. We just swap out the higher tax rate $l$ in favor of a $k$. The critical growth rate then is $r = 1 + \frac{c \cdot (1 - \delta)}{c \cdot \delta + \delta \cdot (1 - k)}$. For $r$ less than this, $\mathtt{Producers}$ prefer $\mathtt{Shirking}$ and otherwise $\mathtt{Investing}$.
+To see this, we first confirm that the $\mathtt{Producer}$ can do no better. Here, we appeal to our earlier claim that the payoffs for this game are the same as for $\text{Tax}, \mathtt{Invest}$ so no improvement is possible there. Comparing $\mathtt{Tit-for-tat}$ to $\mathtt{Shirking}$ while $\text{Taxed}$ is also structurally identical to our earlier comparison of $\mathtt{Investing}$ to $\mathtt{Shirking}$ while $\mathtt{Looted}$. We just swap out the higher tax rate $l$ in favor of a $k$. The critical growth rate then is $r = 1 + \frac{c \cdot (1 - \delta)}{c \cdot \delta + \delta \cdot (1 - k)}$. For $r$ less than this, $\mathtt{Producers}$ prefer $\mathtt{Shirking}$ and otherwise $\mathtt{Investing}$.
 
 Now we have only to confirm that the $\text{Autocrat}$ can't improve their lot by $\text{Looting}$. Again, we'll copy over the two utility expressions and set them equal to find the critical growth rate $r$.
 
@@ -180,13 +180,13 @@ r = \frac{\sqrt{\delta^2 \cdot l + (4 \cdot \delta - 4) \cdot (k - l)}}{2 \cdot 
 $$
 </figure>
 
-If $r$ is greater than this, the $\text{Autocrat}$ will prefer $\text{Taxing}$. That means when $r$ satisfies both of these constraints, $\text{Tax}, \mathtt{Tit for tat}$ is an equilibrium.
+If $r$ is greater than this, the $\text{Autocrat}$ will prefer $\text{Taxing}$. That means when $r$ satisfies both of these constraints, $\text{Tax}, \mathtt{Tit-for-tat}$ is an equilibrium.
 
 #### Concrete
 
 Let's check our math and make this a bit more concrete by plugging in some numbers. If we pick $k = 0.2$, $l = 0.8$, $c = 0.8$ and $\delta = 0.95$, we find that our two constraints on $r$ work out to  $r > \frac{39}{38} \approx 1.02632$ and $r \gtrapprox 1.03995$. We'll pick $r = 1.04$. Now plugging in all our parameters, we can calculate all the payoffs. We end up with a game like this:
 
-| $\text{Autocrat} \backslash \mathtt{Producers}$ | $\mathtt{Invest}$        | $\mathtt{Shirk}$     | $\mathtt{Tit for tat}$   |
+| $\text{Autocrat} \backslash \mathtt{Producers}$ | $\mathtt{Invest}$        | $\mathtt{Shirk}$     | $\mathtt{Tit-for-tat}$   |
 |-------------------------------------------------|--------------------------|----------------------|--------------------------|
 | $\text{Tax}$                                    | $16.66 \backslash 50.66$ | $4 \backslash 2.32$  | $16.66 \backslash 50.66$ |
 | $\text{Loot}$                                   | $66.66 \backslash 0.66$  | $16 \backslash 0.58$ | $16.61 \backslash 3.352$ |
