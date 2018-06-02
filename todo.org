@@ -16,6 +16,7 @@
   CLOSED: [2018-05-12 Sat 11:44]
 * TODO Bibtexify AI safety post
 * TODO File node writeAsync bug
+* TODO Strip html from title metadata
 * DONE Label abstract as such
   CLOSED: [2018-05-28 Mon 22:22]
 * TODO Release serverless lib
