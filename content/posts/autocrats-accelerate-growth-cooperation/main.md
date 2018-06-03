@@ -144,7 +144,7 @@ Examination makes it clear that, with only these constant strategies available, 
 $$
 U_{\mathtt{I}}(\mathbf{a}) = (1 - l) - c + \frac{\delta \cdot r \cdot (1 - l)}{1 - \delta \cdot r} - \frac{\delta \cdot c}{1 - \delta} \\
 U_{\mathtt{S}}(\mathbf{a}) = (1 - l) + \frac{\delta \cdot (1 - l)}{1 - \delta} \\
-(1 - l) - c + \frac{\delta \cdot r \cdot (1 - l)}{1 - \delta \cdot r} - \frac{\delta \cdot c}{1 - \delta} = U_{\mathtt{S}}(\mathbf{a}) = (1 - l) + \frac{\delta \cdot (1 - l)}{1 - \delta} \\
+(1 - l) - c + \frac{\delta \cdot r \cdot (1 - l)}{1 - \delta \cdot r} - \frac{\delta \cdot c}{1 - \delta} = (1 - l) + \frac{\delta \cdot (1 - l)}{1 - \delta} \\
 r = 1 + \frac{c \cdot (1 - \delta)}{c \cdot \delta + \delta \cdot (1 - l)}
 $$
 
@@ -154,7 +154,7 @@ So we find ourselves in the same equilibrium again than. When only constant stra
 
 #### Tit for tat
 
-In repeated games, we can encourage cooperation by punishing defection. What happens if we permit $\mathtt{Producers}$ to use a [tit for tat strategy](https://en.wikipedia.org/wiki/Trigger_strategy)? First, we'll note that if the $\text{Autocrat}$ $\text{Taxes}$, the $\mathtt{Producers}$ never need to punish and so it plays out exactly like $\text{Tax}\backslash\mathtt{Invest}$. On the other hand, if the autocrat follows a constant $\text{Loot}$ strategy, the $\mathtt{Producers Invest}$ in the first round and never again.
+In repeated games, we can encourage cooperation by punishing defection. What happens if we permit $\mathtt{Producers}$ to use a [tit for tat strategy](https://en.wikipedia.org/wiki/Trigger_strategy)? First, we'll note that if the $\text{Autocrat}$ $\text{Taxes}$, the $\mathtt{Producers}$ never need to punish and so it plays out exactly like $\text{Tax}\backslash\mathtt{Invest}$. On the other hand, if the autocrat follows a constant $\text{Loot}$ strategy, the $\mathtt{Producers}$ $\mathtt{Invest}$ in the first round and never again.
 
 <figure>
 <figcaption>Discounted utility obtained by the $\text{Autocrat}$ and $\mathtt{Producers}$ given they play $\text{Loot}$ and $\mathtt{Tit-for-tat}$ against each other.</figcaption>
@@ -168,7 +168,7 @@ U_{\mathtt{P}}(\mathbf{a}) &= (1 - l) - c + \sum_{t=1}^\infty \delta^t (o \cdot 
 $$
 </figcaption>
 
-It turns out that $\text{Tax}, \mathtt{Tit-for-tat}$ is an equilibrium (given the strategy space) and the appropriate parameters.
+It turns out that $\text{Tax}, \mathtt{Tit-for-tat}$ is an equilibrium (given the strategy space and the appropriate parameters).
 
 To see this, we first confirm that the $\mathtt{Producer}$ can do no better. Here, we appeal to our earlier claim that the payoffs for this game are the same as for $\text{Tax}, \mathtt{Invest}$ so no improvement is possible there. Comparing $\mathtt{Tit-for-tat}$ to $\mathtt{Shirking}$ while $\text{Taxed}$ is also structurally identical to our earlier comparison of $\mathtt{Investing}$ to $\mathtt{Shirking}$ while $\mathtt{Looted}$. We just swap out the higher tax rate $l$ in favor of a $k$. The critical growth rate then is $r = 1 + \frac{c \cdot (1 - \delta)}{c \cdot \delta + \delta \cdot (1 - k)}$. For $r$ less than this, $\mathtt{Producers}$ prefer $\mathtt{Shirking}$ and otherwise $\mathtt{Investing}$.
 
