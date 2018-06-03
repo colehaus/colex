@@ -1,6 +1,6 @@
 ---
 title: In praise of principal-agent problems
-date: 2018-06-01
+date: 2018-06-02
 tags: political economy, contract theory, autocracy
 ---
 
