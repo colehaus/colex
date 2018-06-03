@@ -36,7 +36,9 @@ Pedagogical Esotericism](https://econjwatch.org/file_download/1060/MelzerMay2018
    [T]he primary aim of philosophic education must be less to instruct than to convert, less to elaborate a philosophical system than to produce that "turning around of the soul" that brings individuals to love and live for the truth. But precisely if the primary end of education is to foster the love of truth, this love cannot be presupposed in the means. The means must rather be based on a resourceful pedagogical rhetoric that, knowing how initially resistant or impervious we all are to philosophic truth, necessarily makes use of motives other than love of truth and of techniques other than "saying exactly what you mean."
    </blockquote>
 
-   Compare to [The <i>Philosophy and Literature</i> Bad Writing Contest](http://www.denisdutton.com/bad_writing.htm).
+   I remain somewhat unconvinced, but this is the best case I've heard for obscurantism.
+
+   Also see [The <i>Philosophy and Literature</i> Bad Writing Contest](http://www.denisdutton.com/bad_writing.htm).
 
 5. [How is the world doing in its fight against vaccine preventable diseases?](https://ourworldindata.org/vaccine-preventable-diseases)
 
