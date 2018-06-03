@@ -20,6 +20,10 @@ The problem is that the political elites---those in control of political power--
 [...] The consequence is clear: without such protection, productive investments are not undertaken, and opportunities for economic growth go unexploited.
 </blockquote>
 
+# Counterclaim
+
+Contrary to the claim here, I think a rational and informed autocrat could credibly support economic institutions like property rights. If the autocrat and the producers interact over a non-trivial period of time, producers can condition their behavior on the autocrat's. That is, the producers can decide that they'll only invest if the autocrat preserves economic freedoms. If the autocrat expropriates and otherwise abuses the producers, they'll do the bare minimum (shirk). Knowing this, the autocrat realizes that they can't simply choose to loot while the producers continue to invest. The autocrat's choice is between looting a minimal economy and a more restrained taxation of a growing economy. Under the right circumstances, a rational autocrat would do best to choose taxing a growing economy rather than looting a minimal economy.
+
 # Model
 
 ## Single-shot
