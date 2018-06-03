@@ -26,6 +26,18 @@ tags: links
 
    <blockquote>
    GDP and derived metrics (e.g., productivity) have been central to understanding economic progress and well-being. In principle, the change in consumer surplus (compensating expenditure) provides a superior, and more direct, measure of the change in well-being, especially for digital goods, but in practice, it has been difficult to measure. We explore the potential of massive online choice experiments to measure consumers’ willingness to accept compensation for losing access to various digital goods and thereby estimate the consumer surplus generated from these goods. We test the robustness of the approach and benchmark it against established methods, including incentive compatible choice experiments that require participants to give up Facebook for a certain period in exchange for compensation. The proposed choice experiments show convergent validity and are massively scalable. Our results indicate that **digital goods have created large gains in well-being that are missed by conventional measures of GDP and productivity**. By periodically querying a large, representative sample of goods and services, including those which are not priced in existing markets, changes in consumer surplus and other new measures of well-being derived from these online choice experiments have the potential for providing cost-effective supplements to existing national income and product accounts.
+
+   [...]
+
+   50% of the Facebook users in our sample would give up all access to Facebook for one month if we paid them about $50 or more.
+
+   [...]
+
+   According to the median WTA estimates for 2017, Search Engines ($17,530 [for a year]) is the most valued category of digital goods followed by Email ($8,414 [for a year]) and digital Maps ($3,648 [for a year]).
+
+   [...]
+
+   We estimate the median WTA to give up breakfast cereal [for a year] to be $44.27 in the US in 2017.
    </blockquote>
 
 4. [The
