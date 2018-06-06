@@ -1,0 +1,1 @@
+Preference utilitarianism involves preferences. Knowing whether a preferences has been satisfied often requires knowing about the world. But epistemology says that "knowing about the world" is not such a simple thing. From a moral perspective, should we count a preference as satisfied when the world changes or when the preferrer learns about the change?
