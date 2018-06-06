@@ -65,9 +65,9 @@ If we accept the implication that past preferences have moral import for current
 
 Another bizarre consequence of honoring past preferences is that we might be obliged to honor our own past preferences that we now regard as mistaken. If our preferences are time-weighted (i.e. the longer a preference is held, the more weight it's granted in our moral calculus), naive MPU suggests I'm morally obliged to honor an old, long-standing preference contrary to my current preferences until I've held the current preference long enough. That is, if I preferred action A to B for times 1-10, and start preferring action B at time 11, it is only morally permissible to undertake B from time 21 on.
 
-### Conclusion
+### Subconclusion
 
-These concerns all suggest that we must be more selective in which preferences we regard as morally important---all preferences everywhere and everywhen quickly becomes baffling. What is the demarcation criterion that doesn't rely on psychology? Light cones? It's hard to be certain.
+These concerns all suggest that we must be more selective in which preferences we regard as morally important---all preferences everywhere and everywhen quickly becomes baffling. It's not enough to say that a preference is satisfied when the world comes into accord with it. There must be some further relationship between the preference and the world. But what is this demarcation criterion that doesn't rely on psychology? Light cones?
 
 # Conclusion
 
