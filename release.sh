@@ -9,6 +9,7 @@ access_token=`cat ./rollbar-access-token.txt`
 environment=production
 nix-build
 cd ../colehaus.github.io
+sudo rm -r *
 shopt -s extglob
 sudo cp -r ../colex/result/* .
 git add --interactive
