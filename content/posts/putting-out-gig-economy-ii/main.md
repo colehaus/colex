@@ -9,10 +9,9 @@ tags: economic history, current events, labor
 They have driven us away from our houses and gardens to work as prisoners in their factories and their seminaries of vice. [Thomas Exell, 1838]{.attribution}
 </blockquote>
 
-
 # Intro
 
-[Last time](/posts/putting-out-gig-economy-i/) we reviewed the putting out system---a pre-industrial system of manufacture used in England where workers would take intermediate products home, refine them in some way, and return them to a merchant so that some other worker could perform the next step in the production process. Then, I suggested that this system sounds a lot like the modern gig economy.
+[Last time](/posts/putting-out-gig-economy-i/), we reviewed the putting out system---a pre-industrial system of manufacture used in England where workers would take intermediate products home, refine them in some way, and return them to a merchant so that some other worker could perform the next step in the production process. Then, I suggested that this system sounds a lot like the modern gig economy.
 
 Which left us with the question: Why is the gig economy worse than regular, full-time employment (for workers), but putting-out was better than factories (for workers)? We can resolve this tension by either finding that contemporary praise of the putting out system is wrong, finding that criticism of the gig economy is wrong, or (hint, hint) highlighting the disanalogies between the systems.
 
@@ -40,13 +39,13 @@ One objection the attentive reader might raise is: If the workers didn't like fa
 
 ## Summation
 
-I'll readily admit that no particular of evidence here is impressive. In the aggregate though, I'm still fairly ready to believe that workers preferred the putting-out system to factory work.
+I'll readily admit that no particular piece of evidence here is impressive. In the aggregate though, I'm still fairly ready to believe that workers preferred the putting-out system to factory work.
 
 # Is FLSA work actually preferred to gig work?
 
 (FLSA stands for [Fair Labor Standards Act](https://en.wikipedia.org/wiki/Fair_Labor_Standards_Act_of_1938) and we'll use work where these rules apply as a conceptual shorthand for 'normal' work.)
 
-Sadly, the intervening centuries don't mean that we're drowning in evidence on this question either. Everyone in the nascent literature seems to lament that the best source of data is a 2005 (!) BLS report on <i>Contingent and Alternative Employment Arrangements</i> [@bls2005]. Obviously, there wasn't much of a gig economy in 2005 so data from that report is best interpreted with caution.
+Sadly, the intervening centuries don't mean that we're drowning in evidence on these questions. Everyone in the nascent gig economy literature seems to lament that the best source of data is a 2005 (!) BLS report on <i>Contingent and Alternative Employment Arrangements</i> [@bls2005]. Obviously, there wasn't much of a gig economy in 2005 so data from that report is best interpreted with caution.
 
 ## Direct evidence
 
