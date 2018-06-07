@@ -15,7 +15,7 @@ Also, I've tried to order things for comprehensibility, but there isn't a single
 
 I think it behooves us to start with a discussion of precisely what markets are. This should clarify and it should help us understand which features of markets are necessary and which contingent.
 
-Without thinking *too* deeply about it, I'll say a market is a legal and sociocultural system via which unaffiliated parties may exchange rights---paradigmatically, one party gives up the rights for exclusive use (viz., property rights) of some tangible good and receives in exchange the rights for exclusive use of some quantity of money. I choose this annoyingly abstract definition to highlight the flexibility and generality of markets which is important when talking about atypical markets.
+Without thinking *too* deeply about it, I'll say a market is a legal and sociocultural system via which unaffiliated parties may exchange rights---paradigmatically, one party gives up the rights for exclusive use (i.e. property rights) of some tangible good and receives in exchange the rights for exclusive use of some quantity of money. I choose this annoyingly abstract definition to highlight the flexibility and generality of markets which is important when talking about atypical markets.
 
 # Markets vs. property
 
@@ -45,7 +45,7 @@ All that said, I do more or less grant this argument. We live in a world of radi
 
 On multiple occasions, Sandel talks about market norms crowding out other norms. If we examine why this happens, I think we'll find something useful.
 
-Once we leave the most naive versions of rational choice, we can suggest that humans sometimes act for expressive reasons. That is, we intend to communicate with our actions. When I show up late to pick up my child, I express that I don't value the time of the day-care workers. Conversely, punctuality expresses that I do. When I agree to accept nuclear waste in my town, I am communicating that I value my fellow citizens and that I am sensitive to claims of civic need.
+Once we leave the most naive versions of rational choice, we can suggest that humans sometimes act for expressive reasons. That is, we intend to or happen to communicate with our actions. When I show up late to pick up my child, I express that I don't value the time of the day-care workers. Conversely, punctuality expresses that I do. When I agree to accept nuclear waste in my town, I am communicating that I value my fellow citizens and that I am sensitive to claims of civic need.
 
 On this view, market norms can crowd out other norms because they make it harder to express what people hope to express. Prompt pick up might express respect or it might express unwillingness to pay. Agreeing to house nuclear waste might express civic responsibility or it might just be a cash grab. If people are going to misinterpret an action, it's a much less appealing expression.
 
@@ -55,14 +55,13 @@ If we accept this story, crowding out isn't unique to the introduction of market
 
 Markets as 'corrupting' is largely contingent. It depends on the meaning we assign to markets which is socioculturally determined. We can imagine some [Randian](https://en.wikipedia.org/wiki/Objectivism_(Ayn_Rand)) paradise in which markets are held in the highest esteem. Here, allocating a thing via the market elevates rather than degrades.
 
-Even short of some mass reeducation program that shifts the whole culture, I think this is relevant. I and many economists object to the use of markets much less than average, it seems. This suggests that at least some individuals can independently make peace with atypical markets.
-If the meaning assigned to markets changed enough for enough people, markets might be both more efficient and non-corrupting.
+Even short of some mass reeducation program that shifts the whole culture, I think this is relevant. I and many economists object to the use of markets much less than average, it seems. This suggests that at least some individuals can independently make peace with atypical markets. If the meaning assigned to markets changed enough for enough people, markets might be both more efficient and non-corrupting.
 
-However, because markets are fundamentally an impersonal mechanism for the allocation of goods, that meaning is unavoidable. Transactions intended to be personal and particularistic ought not to be conducted via the market.
+However, because markets are fundamentally an impersonal mechanism for the allocation of goods, that meaning is unavoidable. Actions intended to be personal and particularistic ought not to be conducted via the market.
 
 # Trade-offs
 
-Sandel acknowledges that we may sometimes make moral comprises---we may accept the corruption of some good in exchange for the efficiency markets provide. However, Sandel never provides any detailed criteria or even examples for how we should make this tradeoff. I think this is because is doing so would require describing and committing to some concrete, normative theory. His reluctance to do so is both understandable (it would take him on quite a tangent) and a bit ironic given his criticism of amoral economists. I think Sandel's reluctance to defend any particular trade-off reveals just how tricky the thing he's advocating for (bringing moral discussion into economic decisions) is.
+Sandel acknowledges that we may sometimes make moral comprises---we may accept the corruption of some good in exchange for the efficiency markets provide. However, Sandel never provides any detailed criteria or even examples for how we should make this trade-off. I think this is because is doing so would require describing and committing to some concrete, normative theory. His reluctance to do so is both understandable (it would take him on quite a tangent) and a bit ironic given his criticism of amoral economists. I think Sandel's reluctance to defend any particular trade-off reveals just how tricky the thing he's advocating for (bringing moral discussion into economic decisions) is.
 
 # Straw man
 
@@ -80,7 +79,7 @@ In the ancestral environment, anyone you interacted with was likely someone you 
 
 [If our moral impulses are to give due consideration to those we know or those with whom we'll interact again]{.noted}[^impulse], they suffice for the ancestral environment and are woefully inadequate now. I feel a fondness for my family that militates against profit maximizing when letting them borrow my car but have no such compunction when renting my car out to the man who lives on the other side of city. In our impersonal era, we need social technology to fill the gaps.
 
-Ultimately, this is an empirical question. I think it's clear that people do give special moral consideration to those that are close to them. The only question that's left is if the lesser moral consideration allotted to strangers is sufficient to enable modern society without social technologies like markets.
+Ultimately, this is an empirical question. I think it's clear that people do give special moral consideration to those that are close to them. The question that's left is if the lesser moral consideration allotted to strangers is sufficient to enable modern society without social technologies like markets. If not, do we sacrifice modernity (mass society) in the name of morality?
 
 <hr class="references">
 
