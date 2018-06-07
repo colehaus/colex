@@ -11,7 +11,7 @@ In [@acemoglu2005] and [@acemoglu2013] (and surely elsewhere), Acemoglu and Robi
 
 # Scenario
 
-But is it true? As far as I can tell, the best articulation of this claim is in section 6 of [@acemoglu2005]. It lays out several claims in support of the argument that authoritarian societies have a structural disadvantage when it comes to economic growth. In this post, we'll focus on the first:
+But is it true? As far as I can tell, the best articulation of this claim is in section 6 of [@acemoglu2005]. It lays out several claims in support of the argument that oligarchic societies have a structural disadvantage when it comes to economic growth. In this post, we'll focus on the first:
 
 <blockquote>Imagine a situation in which an individual or a group holds unconstrained political power. Also suppose that productive investments can be undertaken by a group of citizens or producers that are distinct from the "political elites", i.e., the current power holders. The producers will only undertake the productive investments if they expect to receive the benefits from their investments. Therefore, a set of economic institutions protecting their property rights are necessary for investment. Can the society opt for a set of economic institutions ensuring such secure property rights? The answer is often no (even assuming that "society" wants to do so).
 
