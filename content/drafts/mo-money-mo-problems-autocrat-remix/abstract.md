@@ -1,0 +1,1 @@
+We've been wondering why stratified societies grow more slowly than inclusive societies. After challenging offered explanations in previous posts, we offer a new explanation. Perhaps dictators don't seek economic growth because increased material wealth is basically pointless for the already obscenely wealthy.
