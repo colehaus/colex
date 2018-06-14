@@ -1,6 +1,6 @@
 ---
 title: Mo money, mo problems—autocrat remix
-published: 2018-06-12
+published: 2018-06-14
 tags: political economy, autocracy
 ---
 
@@ -40,6 +40,10 @@ We can resuscitate the second explanation by noting how pervasive it is.
 If you're the dictator of basically any country, you're so materially wealthy that more money for personal consumption is close to pointless. Tunisia (from the epigraph) is not a wealthy country. Its per capita GDP is $3,553 and its total GDP is $40 billion putting it in 96th place out of 191 listed countries [@weod2017]. Yet the president's son-in-law has a tiger named Pasha. I'm sure you could tell a similar story about North Korea.
 
 Formalizing this somewhat, I'm suggesting that basically every dictator is in the region of their utility function where the marginal utility of more money is very small indeed. If we also suppose that increasing economic growth has some expected cost (most saliently, increased risk of deposition), autocrats' reluctance to increase growth is quite rational. In symbols and sloppily, $u(\Delta\$ + \$) \cdot (1 - (\Delta r + r)) < u(\$) \cdot (1 - r)$ where $r$ is the risk of deposition, $u(\$)$ is the utility from money, and $\Delta\$$ and $\Delta r$ are the increased money and risk associated with some proposed reform.
+
+## Empirical evidence
+
+This is all lovely theorizing, but is it actually true? We already (briefly) [examined the data](/posts/minor-blessings-god-emperor/#empirical-evidence) on the counterclaim that restraint is useful for dictators in the long-term and the data seemed supportive. To test the new explanation offered here (diminishing marginal utility) we might look at GDP and rapacity as measured by risk of expropriation (which seems to be the standard proxy in the literature). If there is a substantial anticorrelation when comparing these variables across countries and times, our new explanation would be less plausible (i.e. Anticorrelation could indicate that autocrats in smaller countries are more rapacious because they can't be sated by the income available from more moderate rates of expropriation). Unfortunately, the data set that's standard for these kinds of questions [@prs2004] is proprietary.
 
 <!--more-->
 

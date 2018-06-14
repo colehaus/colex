@@ -18,6 +18,9 @@
 * TODO File node writeAsync bug
 * TODO Strip html from title metadata
 * TODO Source maps in rollbar
+* TODO Link ethics as order page to SEP preferences
+* DONE Add evidence to autocrats diminishing marginal utility
+  CLOSED: [2018-06-14 Thu 14:21]
 * DONE Label abstract as such
   CLOSED: [2018-05-28 Mon 22:22]
 * TODO Release serverless lib
