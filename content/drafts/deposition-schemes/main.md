@@ -18,11 +18,11 @@ A similar problem plagues the reverse solution, whereby the dictator agrees to a
 
 ## A solution
 
-If, as proposed in [the previous post](/posts/mo-money-mo-problems-autocrat-remix/), autocrats would prefer a guarantee of somewhat reduced income to a chance of somewhat greater income, this transition would be a Pareto improvement. The autocrat gets stability and in exchange the people suffer less expropriation. So indeed, the only problem is one of commitment.
+If, as proposed in [the previous post](/posts/mo-money-mo-problems-autocrat-remix/), autocrats would prefer a guarantee of somewhat reduced income to a chance of somewhat greater income, this transition would be a Pareto improvement. The autocrat gets stability and in exchange the people suffer less expropriation/taxation. So indeed, the only problem is one of commitment.
 
 We can solve this problem by moving 'up a level'. The citizens of any particular country can't credibly commit to honoring such an agreement. But if we turn the one-shot game into an repeated game by asking an international organization (e.g. the UN) to facilitate and enforce all such agreements, we create a new equilibrium. The UN (or another international org) would have an incentive to honor these agreements because their credibility when it comes to future such agreements relies on their past behavior.
 
-To be slightly more concrete: The UN creates a new program, Retirement Early Autocrat Program (it got mangled in the translation from French). Every year, REAP diplomats go around to autocracies and convene autocrats and a sortition of citizens. At the conventions, they attempt to negotiate a deal---the autocrat peacefully retires in exchange for an income of $X in perpetuity. If the deal doesn't go through, the REAPers leave and try again next year. If the deal is struck, REAPers take care of logistics (the autocrat should probably go into comfortable exile) and ensure the agreed upon payment is collected and delivered. If either party tries to renege on the agreement, the REAPers say "No" and bring some enforcement mechanism to bear. They know that if they don't their whole program loses credibility and purpose.
+To be slightly more concrete: The UN creates a new program, Retirement Early Autocrat Program (it got mangled in the translation from French). Every year, REAP diplomats go around to autocracies and convene autocrats and a sortition of citizens. At the conventions, they attempt to negotiate a deal---the autocrat peacefully retires in exchange for an income of $X in perpetuity. If the deal doesn't go through, the REAPers leave and try again next year. If the deal is struck, REAPers take care of logistics (the autocrat should probably go into comfortable exile) and ensure the agreed upon payment is collected and delivered. If either party tries to renege on the agreement, the REAPers say, "No!", and bring some enforcement mechanism to bear. They know that if they don't, their whole program loses credibility and purpose.
 
 ## Political feasibility
 
@@ -38,7 +38,7 @@ If [Muammar Gaddafi](https://en.wikipedia.org/wiki/Muammar_Gaddafi) had been exp
 
 Even this approach of third-party funding has political problems. It smacks of the dreaded Appeasement and so might be disfavored when compared to military intervention even if a bargain.
 
-## Gut check
+## Trust your gut
 
 Outside of political feasibility, is this scheme plausible? I admit that I don't expect there's a price at which each and every autocrat can be bought. There are non-pecuniary perks to power. But I also find it somewhat unlikely that *no* autocrat can be bought.
 
@@ -70,9 +70,9 @@ The proposal advanced here only differs in that it also proposes funding such re
 
 # Justice and incentives
 
-Discussions in this area like those cited above and like [@bosko2017] often end up talking about the possible perverse impact of the [International Criminal Court](https://en.wikipedia.org/wiki/International_Criminal_Court). In trying to ensure that autocrats are held accountable for atrocities, the ICC may actually encourage autocrats to cling to power. When in power, autocrats are relatively hard to prosecute. When out of power, they're likely easier to prosecute.
+Discussions in this area like those cited above and like [@bosco2017] often end up talking about the perverse impact of the [International Criminal Court](https://en.wikipedia.org/wiki/International_Criminal_Court). In trying to ensure that autocrats are held accountable for atrocities, the ICC may actually encourage autocrats to cling to power. When in power, autocrats are relatively hard to prosecute. When out of power, they're likely easier to prosecute.
 
-A tension is then established between a deontological commitment to justice and providing autocrats with the right incentives. I think this conflict can be dissolved by offering 'credit' for abdication. If the ICC would sentence a forcibly deposed autocrat with sentence X for their actions, that autocrat should receive sentence X - A in the case of voluntary abdication. Now, the autocrat is generally discouraged from committing atrocities and generally encouraged to abdicate. The only problem is if the credit cancels out the punishment entirely so that the autocrat gets some 'freebie' atrocities. The size of the credit should be carefully calibrated to account for this.
+A tension is then established between a deontological commitment to justice and providing autocrats with the right incentives. I think this conflict can mostly be dissolved by offering 'credit' for abdication. If the ICC would sentence a forcibly deposed autocrat with sentence X for their actions, that autocrat should receive sentence X - A in the case of voluntary abdication. Now, the autocrat is generally discouraged from committing atrocities and generally encouraged to abdicate. The only problem is if the credit cancels out the punishment entirely so that the autocrat gets some 'freebie' atrocities. The size of the credit should be carefully calibrated to account for this.
 
 <hr class="references">
 
