@@ -1,7 +1,7 @@
 ---
 title: Toward an alternative bibliometric
 published: 2015-03-10
-tags: bibliometrics, science, publishing, bayes, information-theory
+tags: bibliometrics, bayes, information theory, constructive
 js: bibliometric
 css: bibliometric
 graph-of-contents: bibliometric
