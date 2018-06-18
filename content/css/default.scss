@@ -95,8 +95,11 @@ blockquote::after {
         background-color: $convo-2;
     }
 }
+.abstract {
+    @include margin-bottom-8ex;
+}
 .abstract::before {
-    content: "Abstract";
+    content: "TL;DR";
     position: absolute;
     @include left-to-gutter;
     @include font-x-small;
