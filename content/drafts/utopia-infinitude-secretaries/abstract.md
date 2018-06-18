@@ -1,0 +1,1 @@
+<i>The Tyranny of the Ideal</i> juxtaposes a unidimensional model of worlds with a multidimensional model. It goes on to suggest that ideal theory is otiose in the unidimensional model. I disagree and attempt to illustrate the disagreement via analogy to the famous secretary problem.
