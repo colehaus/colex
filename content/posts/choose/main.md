@@ -56,7 +56,7 @@ scheme of equal basic liberties compatible with a similar scheme of
 liberties for others.
 Second: social and economic inequalities are to be arranged so that they are
 both (a) reasonably expected to be to everyone’s advantage, and (b) attached to
-positions and offices open to all. [[@rawls09]]{.attribution}
+positions and offices open to all. [[@rawls71]]{.attribution}
 </blockquote>
 
 (these principles justified by the

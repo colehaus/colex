@@ -49,6 +49,7 @@ module.exports = {
   entry: {
     'util-egal': './util-egal.wp.es.js',
     quorum: './quorum.wp.es.js',
+    'ideal-calibration': './ideal-calibration.wp.es.js',
     'custom-elements': './custom-elements.wp.es.js',
   },
   output: {
