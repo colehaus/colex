@@ -1,7 +1,7 @@
 ---
 title: How not to write a book
 subtitle: Review of Mortimer Adler's <i>How to Read a Book</i>
-published: 2018-06-17
+published: 2018-06-18
 tags: reading, meta monday
 ---
 
