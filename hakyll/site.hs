@@ -7,16 +7,18 @@
 
 module Main where
 
+import Control.Applicative (empty)
 import Control.Monad ((<=<), (>=>), unless)
 import Control.Monad.Trans.Class (lift)
 import Data.Functor ((<$>))
 import Data.Hashable (hash)
-import Data.List (foldl1', stripPrefix)
+import Data.List (sortOn, foldl1', stripPrefix)
 import Data.List.Split (splitOn)
 import Data.Map (Map)
 import qualified Data.Map as Map
 import Data.Maybe (fromMaybe)
 import Data.Monoid ((<>), mconcat, mempty)
+import Data.Ord (Down(..))
 import Data.Time.Clock (UTCTime)
 import Data.Time.Format (parseTimeM, formatTime)
 import Data.Time.Locale.Compat (defaultTimeLocale)
@@ -56,6 +58,7 @@ import qualified Hakyll
 import Hakyll.Core.Compiler.Internal (compilerUnsafeIO)
 import Hakyll.Core.Rules.Internal (Rules(..))
 import Hakyll.Fancy
+import Hakyll.Series
 import HakyllPandoc
 
 hakyllConfig :: Configuration
@@ -83,7 +86,8 @@ main =
     let defaultTemplate = narrowEx templates "templates/default.html"
     csl <- matchIdentifier @"csl" "misc/biblio.csl" $ compile cslCompiler
     bib <- matchIdentifier @"bib" "misc/biblio.bib" $ compile biblioCompiler
-    tags <- buildTags (mkPostPat "posts") (fromCapture "tag/*/index.html")
+    tags <- buildTags (mkPostPat "posts") (fromCapture "tag/*/index.html" . toUrl)
+    series <- buildSeries (mkPostPat "posts") (fromCapture "series/*/index.html")
     chunkMap <- unsafeRules buildChunkMap
     (postPat, _, _, abstractPat) <-
       buildPosts
@@ -92,6 +96,7 @@ main =
         bib
         csl
         tags
+        series
         chunkMap
         "posts"
     _ <-
@@ -101,6 +106,7 @@ main =
         bib
         csl
         tags
+        series
         chunkMap
         "drafts"
     feedIdent <-
@@ -111,7 +117,8 @@ main =
         postPat
         bib
         csl
-    buildTagPages defaultTemplate (narrowEx templates "templates/tag.html") tags
+    buildTagPages "Tagged" defaultTemplate (narrowEx templates "templates/tag.html") tags
+    buildTagPages "Series:" defaultTemplate (narrowEx templates "templates/tag.html") series
     paginate <-
       buildPaginateWith
         ((paginateEvery perPage <$>) . sortChronological)
@@ -123,6 +130,7 @@ main =
       (narrowEx templates "templates/index-content.html")
       abstractPat
       tags
+      series
       paginate
       chunkMap
     tagIndexIdent <-
@@ -130,6 +138,11 @@ main =
         defaultTemplate
         (narrowEx templates "templates/tags.html")
         tags
+    seriesIndexIdent <-
+      buildSeriesIndex
+        defaultTemplate
+        (narrowEx templates "templates/series-index.html")
+        series
     indexIdent <-
       buildIndex
         defaultTemplate
@@ -137,6 +150,7 @@ main =
         (narrowEx templates "templates/index-content.html")
         abstractPat
         tags
+        series
         paginate
         chunkMap
     scssPat <- match "css/libs/**_*.scss" $ compile copyFileCompiler
@@ -181,6 +195,7 @@ main =
         postPat
         feedIdent
         tagIndexIdent
+        seriesIndexIdent
         indexIdent
         archiveIdent
     pure ()
@@ -223,17 +238,20 @@ buildSitemap ::
   -> Blessed "index" Identifier
   -> Blessed "index" Identifier
   -> Blessed "index" Identifier
+  -> Blessed "index" Identifier
   -> Rules (Blessed "map" Identifier)
-buildSitemap sitemapTemplate postsPat feedIdent tagIndexIdent indexIdent archiveIdent =
+buildSitemap sitemapTemplate postsPat feedIdent tagIndexIdent seriesIndexIdent indexIdent archiveIdent =
   (head <$>) . create ["sitemap.xml"] $ do
     route idRoute
     compile $ do
       posts <- recentFirst =<< loadAll postsPat
       feed <- load feedIdent
       tagIndex <- load tagIndexIdent
+      seriesIndex <- load seriesIndexIdent
       index <- load indexIdent
       archive <- load archiveIdent
       tags <- Hakyll.loadAll "tag/*/index.html"
+      series <- Hakyll.loadAll "series/*/index.html"
       pages <- Hakyll.loadAll "page/*/index.html"
       makeItem mempty >>=
         loadAndApplyTemplate
@@ -243,7 +261,10 @@ buildSitemap sitemapTemplate postsPat feedIdent tagIndexIdent indexIdent archive
                  "entries"
                  (postCtx <> constField "host" prodHost)
                  (pure $
-                  feed : tagIndex : index : archive : posts <> tags <> pages)
+                  feed :
+                  tagIndex :
+                  seriesIndex :
+                  index : archive : posts <> tags <> series <> pages)
              , defaultContext
              ])
 
@@ -258,10 +279,11 @@ buildPages ::
   -> Blessed "template" Identifier
   -> Blessed "abstract" Pattern
   -> Tags
+  -> Tags
   -> Paginate
   -> Map String [String]
   -> Rules ()
-buildPages defaultTemplate indexTemplate indexContentTemplate abstractPat tags pages chunkMap =
+buildPages defaultTemplate indexTemplate indexContentTemplate abstractPat tags series pages chunkMap =
   paginateRules pages $ \n pat -> do
     route idRoute
     compile $
@@ -270,7 +292,8 @@ buildPages defaultTemplate indexTemplate indexContentTemplate abstractPat tags p
             constField "title" ("Page " <> show n) <>
             listField
               "posts"
-              (teaserField "teaser" "teaser" <> tagsCtx tags <> pageCtx <>
+              (teaserField "teaser" "teaser" <> tagsCtx tags <> seriesCtx series <>
+               pageCtx <>
                abstractCtx abstractPat <>
                postCtx)
               (recentFirst =<< Hakyll.loadAll pat) <>
@@ -283,16 +306,17 @@ buildPages defaultTemplate indexTemplate indexContentTemplate abstractPat tags p
           finish defaultTemplate ctx
 
 buildTagPages ::
-     Blessed "template" Identifier
+     String
+  -> Blessed "template" Identifier
   -> Blessed "template" Identifier
   -> Tags
   -> Rules ()
-buildTagPages defaultTemplate tagTemplate tags =
+buildTagPages titleText defaultTemplate tagTemplate tags =
   tagsRules tags $ \tag pat -> do
     route idRoute
     compile $
       let ctx =
-            constField "title" ("Tagged " <> tag) <>
+            constField "title" (titleText <> " " <> tag) <>
             boolField (tag <> "-page") (const True) <>
             listField
               "posts"
@@ -301,6 +325,22 @@ buildTagPages defaultTemplate tagTemplate tags =
             defaultContext
        in makeItem mempty >>= loadAndApplyTemplate tagTemplate ctx >>=
           finish defaultTemplate ctx
+
+buildSeriesIndex ::
+     Blessed "template" Identifier
+  -> Blessed "template" Identifier
+  -> Tags
+  -> Rules (Blessed "index" Identifier)
+buildSeriesIndex defaultTemplate seriesIndexTemplate series =
+  (head <$>) . create ["series/index.html"] $ do
+    route idRoute
+    compile $ do
+      let ctx =
+            seriesListCtx series <> constField "title" "Series" <>
+            boolField "series-index-page" (const True) <>
+            defaultContext
+      makeItem mempty >>= loadAndApplyTemplate seriesIndexTemplate ctx >>=
+        finish defaultTemplate ctx
 
 buildTagIndex ::
      Blessed "template" Identifier
@@ -324,10 +364,11 @@ buildIndex ::
   -> Blessed "template" Identifier
   -> Blessed "abstract" Pattern
   -> Tags
+  -> Tags
   -> Paginate
   -> Map String [String]
   -> Rules (Blessed "index" Identifier)
-buildIndex defaultTemplate indexTemplate indexContentTemplate abstractPat tags pages chunkMap =
+buildIndex defaultTemplate indexTemplate indexContentTemplate abstractPat tags series pages chunkMap =
   (head <$>) . create ["index.html"] $ do
     route idRoute
     compile $ do
@@ -344,7 +385,8 @@ buildIndex defaultTemplate indexTemplate indexContentTemplate abstractPat tags p
             customElementsCtx chunkMap <>
             listField
               "posts"
-              (teaserField "teaser" "teaser" <> tagsCtx tags <> pageCtx <>
+              (teaserField "teaser" "teaser" <> tagsCtx tags <> seriesCtx series <>
+               pageCtx <>
                abstractCtx abstractPat <>
                postCtx)
               (recentFirst =<< Hakyll.loadAll pat) <>
@@ -566,13 +608,14 @@ buildPosts ::
   -> Blessed "bib" Identifier
   -> Blessed "csl" Identifier
   -> Tags
+  -> Tags
   -> Map String [String]
   -> String
   -> Rules ( Blessed "post" Pattern
            , Blessed "warnings" Pattern
            , Blessed "overlay" Pattern
            , Blessed "abstract" Pattern)
-buildPosts defaultTemplate postTemplate bibIdent cslIdent tags chunkMap dir = do
+buildPosts defaultTemplate postTemplate bibIdent cslIdent tags series chunkMap dir = do
   overlayPat <-
     match (fromGlob $ dir <> "/*/overlay.md") . compile $
     pandocCompilerWith readerOpt writerOpt
@@ -596,6 +639,7 @@ buildPosts defaultTemplate postTemplate bibIdent cslIdent tags chunkMap dir = do
               abstractCtx abstractPat <>
               jsCtx chunkMap <>
               cssCtx <>
+              seriesCtx series <>
               tagsCtx tags <>
               customElementsCtx chunkMap <>
               postCtx
@@ -727,6 +771,41 @@ cssCtx = listFieldWith' "csses" (idField "filename") $ getListMeta "css"
 getListMeta :: MonadMetadata m => String -> Identifier -> m [String]
 getListMeta k ident =
   maybe mempty (fmap trim . splitAll ",") . lookupString k <$> getMetadata ident
+
+seriesListCtx :: Tags -> Context String
+seriesListCtx series =
+  listField "series-list" seriesCtx' .
+  (traverse makeItem . latestMostRecentFirst <=< addDates) $
+  tagsMap series
+  where
+    latestMostRecentFirst = sortOn (Down . maximum . fmap snd . snd)
+    addDates :: [(t, [Identifier])] -> Compiler [(t, [(Identifier, UTCTime)])]
+    addDates =
+      traverse (secondM (traverse (appM (getItemUTC defaultTimeLocale))))
+    seriesCtx' =
+      field "series-name" (pure . fst . itemBody) <>
+      field "series-url" (pure . toUrl . toFilePath . tagsMakeId series . fst . itemBody) <>
+      field "series-size" (pure . show . length . snd . itemBody) <>
+      field
+        "series-start"
+        (pure .
+         formatTime defaultTimeLocale "%y-%m-%d" . minimum . fmap snd . snd . itemBody) <>
+      field
+        "series-end"
+        (pure .
+         (formatTime defaultTimeLocale "%y-%m-%d" .
+          maximum . fmap snd . snd . itemBody))
+    secondM f (a, b) = (a, ) <$> f b
+    appM f x = (x, ) <$> f x
+
+seriesCtx :: Tags -> Context String
+seriesCtx series =
+  field "series-present" (maybe empty pure <=< getSeries . itemIdentifier) <>
+  field "series-name" (maybe empty pure <=< getSeries . itemIdentifier) <>
+  field
+    "series-url"
+    (maybe empty (pure . toUrl . toFilePath . tagsMakeId series) <=<
+     getSeries . itemIdentifier)
 
 tagsCtx :: Tags -> Context String
 tagsCtx tags = listFieldWith' "tags" tagCtx getTags

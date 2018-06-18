@@ -3,6 +3,7 @@ title: Putting-out with smartphones I
 subtitle: The pre-Industrial putting-out system and its parallels to the modern gig economy
 published: 2018-05-04
 tags: economic history, current events, labor
+series: Putting-out with smartphones
 ---
 
 <blockquote class="epigraph">

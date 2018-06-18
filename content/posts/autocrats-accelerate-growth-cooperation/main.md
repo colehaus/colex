@@ -3,6 +3,7 @@ title: Autocrats <em>can</em> accelerate growth through cooperation
 subtitle: Disagreeing with <i>Institutions as a fundamental cause of long-run growth</i>
 published: 2018-06-01
 tags: political economy, autocracy
+series: Why Nations Fail
 ---
 
 # Intro

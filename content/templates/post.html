@@ -12,6 +12,9 @@ $endfor$
   $endif$
   <div class="metadata">
   $partial("templates/tag-nav.html")$
+  $if(series-present)$
+    <nav><a class="series" href="$series-url$">Series: $series-name$</a></nav>
+  $endif$
   <span class="date">Published on <time datetime="$num-date$">$date$</time>.</span>
   $if(edited)$
     <br><span class="date">Last edited on <time datetime="$dateInNumbers(edited)$">$dateInWords(edited)$</time>.</span>

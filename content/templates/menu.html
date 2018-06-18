@@ -5,18 +5,24 @@
       <li><a href="/">Home</a></li>
     $endif$
     $if(archive-page)$
-      <li class="inactive"><strong>Posts by date</strong></li>
+      <li class="inactive"><strong>By date</strong></li>
     $else$
-      <li><a href="/posts/">Posts by date</a></li>
+      <li><a href="/posts/">By date</a></li>
     $endif$
     $if(tags-page)$
-      <li class="inactive"><strong>Posts by tag</strong></li>
+      <li class="inactive"><strong>By tag</strong></li>
     $else$
-      <li><a href="/tags/">Posts by tag</a></li>
+      <li><a href="/tags/">By tag</a></li>
+    $endif$
+    $if(series-index-page)$
+      <li class="inactive"><strong>By series</strong></li>
+    $else$
+      <li><a href="/series/">By series</a></li>
     $endif$
     $if(meta-page)$
       <li class="inactive"><strong>Meta</strong></li>
     $else$
       <li><a href="/tag/meta/">Meta</a></li>
     $endif$
+    <li class="rss"><a href="/atom.xml">RSS</a></li>
 </ul></nav>

@@ -3,6 +3,7 @@ title: Preference utilitarianism—psychological or metaphysical? I
 subtitle: The problem
 published: 2018-06-04
 tags: ethics
+series: Preference utilitarianism—psychological or metaphysical?
 ---
 
 <blockquote class="epigraph">

@@ -15,6 +15,9 @@ if (/Trident/.test(navigator.userAgent)) {
         <h2><a href="$url$">$title$</a></h2>
        <div class="metadata">
         $partial("templates/tag-nav.html")$
+        $if(series-present)$
+          <nav><a class="series" href="$series-url$">Series: $series-name$</a></nav>
+        $endif$
         <span class="date">Published on <time datetime="$date$">$date$</time>.</span>
        </div>
 

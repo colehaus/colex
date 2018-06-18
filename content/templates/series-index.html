@@ -1,0 +1,25 @@
+</head>
+<body>
+<div id="underlay">
+<main>
+  <h2>Series List</h2>
+  <table id="series-list">
+    <tr>
+        <th>Name</th>
+        <th>Num. posts</th>
+        <th>Earliest</th>
+        <th>Latest</th>
+    </tr>
+    $for(series-list)$
+      <tr>
+          <td><a href="$series-url$">$series-name$</a></td>
+          <td>$series-size$</td>
+          <td><time>$series-start$</time></td>
+          <td><time>$series-end$</time></td>
+      </tr>
+    $endfor$
+  </table>
+</main>
+
+$partial("templates/bottom.html")$
+</div>

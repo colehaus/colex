@@ -237,19 +237,26 @@ dl.posts > dt {
     @include font-larger;
     @include width-small;
 }
-.tags > ul {
+#series-list {
+    @include font-smaller;
+}
+.tags {
+  & > ul {
+    @include margin-vertical-none;
     @include horizontal-list;
     > li~li::before {
         @include em-dash;
         @include light-color-text;
     }
+  }
 }
 .pagination ul > li.inactive, .main-menu ul > li.inactive {
     @include inactive-color;
 }
 .pagination > ul > li > a,
 .tags > ul > li > a,
-#tag-cloud > a {
+#tag-cloud > a,
+nav a.series {
     @include darken-link;
 }
 .main-menu {
@@ -257,6 +264,9 @@ dl.posts > dt {
 }
 .main-menu.top {
     order: -2;
+    .rss {
+        display: none;
+    }
 }
 .pagination.top {
     order: -1;
@@ -264,11 +274,6 @@ dl.posts > dt {
 .main-menu.bottom {
     order: 1;
     position: relative;
-}
-.rss {
-    position: absolute;
-    @include top-2ex;
-    @include right-neg-5em;
 }
 .mark-line > path:hover {
     opacity: 1 !important;

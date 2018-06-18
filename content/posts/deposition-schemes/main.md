@@ -2,6 +2,7 @@
 title: Deposition schemes
 published: 2018-06-15
 tags: political economy, autocracy, constructive
+series: Why Nations Fail
 ---
 
 We've been talking about autocrats lately. It'd be good if we could put our new understanding to use. In that spirit, here are a couple of constructive schemes.

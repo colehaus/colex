@@ -2,6 +2,7 @@
 title: Summary—The Moral Limits of Markets
 published: 2018-05-25
 tags: ethics, markets, self-flagellation friday
+series: The Moral Limits of Markets
 ---
 
 I recently read Michael Sandel's <i>What Money Can't Buy: The Moral Limits of Markets</i> [@sandel2012]. Now, I'll [summarize it]{.noted}[^structure]. [Next time](/posts/moral-limits-markets-critique/), I'll critique it.
