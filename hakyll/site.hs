@@ -87,7 +87,7 @@ main =
     csl <- matchIdentifier @"csl" "misc/biblio.csl" $ compile cslCompiler
     bib <- matchIdentifier @"bib" "misc/biblio.bib" $ compile biblioCompiler
     tags <- buildTags (mkPostPat "posts") (fromCapture "tag/*/index.html" . toUrl)
-    series <- buildSeries (mkPostPat "posts") (fromCapture "series/*/index.html")
+    series <- buildSeries (mkPostPat "posts") (fromCapture "series/*/index.html" . toUrl)
     chunkMap <- unsafeRules buildChunkMap
     (postPat, _, _, abstractPat) <-
       buildPosts
