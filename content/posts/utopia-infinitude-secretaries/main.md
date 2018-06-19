@@ -1,6 +1,6 @@
 ---
 title: Utopia and an infinitude of secretaries
-published: 2018-06-14
+published: 2018-06-19
 tags: ideal theory, political philosophy
 css: utopia-infinitude-secretaries
 series: The Tyranny of the Ideal
@@ -29,6 +29,8 @@ Implicitly, they are both modeling the unidimensional search for a better world 
 To see that distributional information is valuable even in a unidimensional context, we'll model ideal theory as a classic unidimensional problem: [the secretary problem](https://en.wikipedia.org/wiki/Secretary_problem). In this problem, an employer wants to hire a secretary and starts to interview applicants. After each interview, the employer can decide to continue interviewing or hire the last interviewee and end the process. Their goal is to stop optimally so that they hire the best possible applicant.
 
 The crucial consideration for us is that the employer doesn't know in advance the quality of the best secretary in the applicant pool. After each interview, the employer must decide if this is as good as it gets or whether to gamble by continuing on. If the employer knew in advance what the best applicant looked like, the problem would be trivial---just keep interviewing until you reach the best applicant.
+
+<!--more-->
 
 ### Better fidelity
 
@@ -69,9 +71,9 @@ Of course, the classic secretary problem isn't a perfect model of our social eng
 
 Altogether, our model makes it clear that having some idea as to the best possible outcome is quite valuable. In other words, having an ideal society in mind is useful for political philosophy, even from the unidimensionalist's perspective (supposing that conceivability *is* a guide to possibility [@yablo1993]). It helps us know what is possible and so helps us know when to stop striving.
 
-Let's be a bit more concrete. Suppose we had no ideal in mind and could only guess the quality of 'adjacent' worlds. It would be quite hard to know when to stay and when to go. Even if we think the adjacent world is better, we may be wrong. And since we have only a weak sense of our position in the overall distribution, we don't know how much we have to lose when wrong and how much to gain when right.
+Let's be a bit more concrete. Suppose we had no ideal in mind and could only guess as to the quality of available secretaries. It would be quite hard to know when to quit and when to continue the search. Even if we think there are better secretaries out there, we may be wrong. And since we have only a weak sense of the overall distribution, we don't know how much we have to lose when wrong and how much to gain when right.
 
-Now, suppose instead that we had an ideal in mind. Our decision process becomes easier. When we are far from the ideal, we know that we have much to gain and should be bold. As we near the ideal, we know that we have much to lose and little to gain so we should be cautious.
+Now, suppose instead that we know how good the best possible secretary is. Our decision process becomes easier. When we are far from the ideal, we know that we have much to gain and should be bold. As we near the ideal, we know that we have much to lose and little to gain so we should be cautious.
 
 # Conclusion
 
