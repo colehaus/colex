@@ -1,0 +1,1 @@
+The ideal serves not only as destination but as calibration. Once we acknowledge our ignorance of possible worlds, we must treat the task of social engineering as a problem of statistical inference. From the statistical inference perspective, the ideal (maximum) is very informative about the underlying distribution of possible worlds and helps us make more informed trade-offs.

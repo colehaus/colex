@@ -1,6 +1,6 @@
 ---
 title: Ideal theory as calibration
-published: 2018-06-18
+published: 2018-06-20
 tags: ideal theory, political philosophy
 series: The Tyranny of the Ideal
 css: ideal-calibration
@@ -28,9 +28,14 @@ To actually use this in a model, we'll also need a way of finding worlds $W$ fro
 
 [@gaus2016] and the rest of the literature suggest that the an ideal is useful as a destination. According to Rawls, "By showing how the social world may realize the features of a realistic Utopia, political philosophy provides a long-term goal of political endeavor, and in working toward it gives meaning to what we can do today." [@rawls1993]
 
-In terms of our model, the ideal is $\argmax_{W \in \mathbb{W}} e(W) = W_i$, the possible world that achieves the highest justice score. A wholly naive algorithm would then use this to orient societal progress by always picking $\argmin_{W \in \{W_c, W_r\}} d(W, W_i) = W_{bk}$. In other words, on every 'step', someone proposes some random alternative world $W_r$ and this naive algorithm compares it to the current world and picks whichever is closer to the ideal.
+In terms of our model, the ideal is $\argmax_{W \in \mathbb{W}} e(W) = W_i$, the possible world that achieves the highest justice score. A wholly naive algorithm would then:
+
+1. Use our ideal $W_i$ to orient societal progress by always picking $\argmin_{W \in \{W_c, W_r\}} d(W, W_i) = W_{bk}$. In other words, on every 'step', someone proposes some random alternative world $W_r$ and this naive algorithm compares it to the current world and picks whichever is closer to the ideal.
+2. Stop when $d(W_c, W_i) = 0$.
 
 With this interpretation, it's clear that the ideal as destination as not only otiose in the unidimensional model but nonsensical. The unidimensional perspective was defined by its omission of the metric $d$ so we certainly can't use it in our algorithm to find $W_{bk}$.
+
+<!--more-->
 
 # Ideal as calibration
 
@@ -43,13 +48,18 @@ The best world we know of is then $\argmax_{W \in \mathbb{W}_k} e_p(W) = W_{bk}$
 
 ## Unidimensional
 
-If we take the unidimensional perspective, what's an algorithm for social engineering in the face of ignorance? Because exploring worlds is costly (and because there's an infinite number of possible worlds), we can't simply try them all. Instead, any time we're not at $W_{bk}$, we switch to that. If we're currently at $W_{bk}$, things are much trickier. Do we just abandon it and try our luck with a random, unknown alternative world? It takes a certain moxie to abandon the best known world in the blind faith that something better will come along.
+With this understanding in place, we can construct a naive algorithm just like the earlier one we described for the unidimensional case.
 
-But perhaps our faith doesn't have to be entirely blind. We can treat this as a problem of [statistical inference](https://en.wikipedia.org/wiki/Statistical_inference). We have a sample of possible worlds (the worlds we've experienced) and would like to estimate the true distribution of possible worlds. Once we have an estimate as to the distribution of possible worlds, we can make a more informed decision on whether to continue striving or to accept the status quo.
+1. Use our ideal $W_i$ to orient societal progress by always picking $\argmax{W \in \{W_c, W_r\}} e(W) = W_{bk}$.
+2. Stop when $e(W_c) = e(W_i)$.
+
+We see that knowledge of the ideal is crucial in our stopping condition. Without it, it would be hard to determine when to stop the search and stop incurring search costs.
+
+But we could still make a best guess about whether to stay or go, even without knowledge of the ideal. We can treat it as a problem of [statistical inference](https://en.wikipedia.org/wiki/Statistical_inference). We have a sample of possible worlds (the worlds we've experienced) and would like to estimate the true distribution of possible worlds. Once we have an estimate as to the distribution of possible worlds, we can make a more informed decision on whether to continue striving or to accept the status quo.
 
 For example, if we've experienced many mediocre worlds in the past and only a few that are nearly as good as $W_{bk}$ []{.spark #in-upper-spark} (and if we, for the sake of expository convenience, suppose that possible worlds are normally distributed with respect to justice score), we should suspect that we're in the upper tail of the distribution and be correspondingly cautious. Contrariwise, if we've experienced a few bad worlds in the past and many worlds about as good as ours []{.spark #in-middle-spark}, we should suspect that we're in the fattest part of the distribution and that there's still substantial room for improvement.
 
-From this statistical inference perspective, the calibration value of an ideal is clear. Extrema have an outsize influence on our estimate of the distribution of possible worlds. If we've only experienced a handful of mediocre worlds []{.spark #mediocre-spark}, we might suppose that distribution of possible worlds is mediocre. If however, we learn of an ideal world that is far, far better []{.spark #ideal-spark}, our estimate of the distribution changes and so our actions should change accordingly.
+So even though the ideal isn't absolutely necessary to provide a stopping condition in the unidimensional case, it is useful. Extrema have an outsize influence on our estimate of the distribution of possible worlds. If we've only experienced a handful of mediocre worlds []{.spark #mediocre-spark}, we might suppose that distribution of possible worlds is mediocre. If however, we learn of an ideal world that is far, far better []{.spark #ideal-spark}, our estimate of the distribution changes and so our actions should change accordingly.
 
 ## Multidimensional
 
