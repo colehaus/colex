@@ -34,3 +34,5 @@ I think it's fair to gloss Acemoglu and Robinson's 'inclusive' and 'extractive' 
 Of course, these counterarguments also aren't definitive. For example, taking advantage of the structural benefits of oligarchy requires fairly sophisticated oligarchs.
 
 But these considerations do change the overall picture. Instead of saying that stratified societies are at a pure disadvantage to inclusive societies and inclusive societies are thus destined to win out, we see that each has structure has advantages and disadvantages. It comes down to an empirical question about which set of advantages is more important in practice.
+
+<hr class="references">
