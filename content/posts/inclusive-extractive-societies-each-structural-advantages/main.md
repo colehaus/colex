@@ -7,7 +7,7 @@ series: Why Nations Fail
 
 # Intro
 
-In [@acemoglu2005] and [@acemoglu2013] (and surely elsewhere), Acemoglu and Robinson contend that inclusive societies have inherent economic advantages over stratified (extractive) societies. If true, this is quite important; it suggests that, in the long run, we should [expect inclusive societies to "win" out]{.noted}[^inclusive-win]. The moral arc of the universe bends toward justice and all that.
+In [@acemoglu2005] and [@acemoglu2013] (and surely elsewhere), Acemoglu and Robinson contend that inclusive societies have inherent economic advantages over stratified (extractive) societies. If true, this is quite important; it suggests that, in the long run, we should expect inclusive societies to "win" out. The moral arc of the universe bends toward justice and all that.
 
 # Oligarchs favor stability over growth
 
