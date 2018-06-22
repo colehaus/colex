@@ -1,6 +1,7 @@
 ---
 title: Deposition schemes
 published: 2018-06-15
+edited: 2018-06-21
 tags: political economy, autocracy, constructive
 series: Why Nations Fail
 ---
@@ -74,6 +75,10 @@ The proposal advanced here only differs in that it also proposes funding such re
 Discussions in this area like those cited above and like [@bosco2017] often end up talking about the perverse impact of the [International Criminal Court](https://en.wikipedia.org/wiki/International_Criminal_Court). In trying to ensure that autocrats are held accountable for atrocities, the ICC may actually encourage autocrats to cling to power. When in power, autocrats are relatively hard to prosecute. When out of power, they're likely easier to prosecute.
 
 A tension is then established between a deontological commitment to justice and providing autocrats with the right incentives. I think this conflict can mostly be dissolved by offering 'credit' for abdication. If the ICC would sentence a forcibly deposed autocrat with sentence X for their actions, that autocrat should receive sentence X - A in the case of voluntary abdication. Now, the autocrat is generally discouraged from committing atrocities and generally encouraged to abdicate. The only problem is if the credit cancels out the punishment entirely so that the autocrat gets some 'freebie' atrocities. The size of the credit should be carefully calibrated to account for this.
+
+# Disclaimers
+
+Obviously, *obviously*, If you are the leader of a nation state or a powerful international organization, you shouldn't just take any of this at face value. These are complex matters involving issues (beyond those already mentioned) of interventionism, parochialism, hubris, unintended consequences, etc.
 
 <hr class="references">
 

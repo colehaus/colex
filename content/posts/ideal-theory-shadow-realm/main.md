@@ -1,6 +1,6 @@
 ---
 title: Ideal theory in the shadow realm
-published: 2018-06-18
+published: 2018-06-21
 tags: ideal theory, political philosophy
 series: The Tyranny of the Ideal
 ---
