@@ -11,9 +11,11 @@ It's opposite day! Instead of talking about the ideal, we're going to talk about
 
 # Ideal as destination
 
-To recapitulate, this line of thinking claims the ideal is useful because it provides a long-term goal and something to work toward. Symmetrically, the anti-ideal is useful because it provides a long-term goal and something to avoid. We operationalize this as seeking to minimize the distance between our current world and the ideal and maximize the distance between our world and the anti-ideal.
+To recapitulate, this line of thinking claims the ideal is useful because it provides a long-term goal and something to work toward. Symmetrically, the anti-ideal is useful because it provides a long-term anti-goal and something to avoid. We operationalize this as seeking to minimize the distance between our current world and the ideal and maximize the distance between our world and the anti-ideal.
 
 This is where the symmetry breaks down. For most reasonable [metrics](https://en.wikipedia.org/wiki/Metric_(mathematics)), there is only one world with a minimum distance to the ideal---namely, the ideal itself. Depending on what we believe about the set of possible worlds, there might be none, one or many points which are at a maximum distance from the anti-ideal.
+
+<!--more-->
 
 A physical analogy may help your intuition. If the ideal is the attractive pole of a magnet, drawing us toward it, the anti-ideal is the repulsive pole of a magnet. If we place an iron ball bearing in a ring surrounding the repulsive pole, any position on the edge of the ring is (subject to the constraints imposed by the ring) at a maximum distance from the repulsive pole.
 
