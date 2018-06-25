@@ -1,6 +1,6 @@
 ---
 title: Assorted links V
-published: 2018-06-04
+published: 2018-06-24
 tags: links
 ---
 
@@ -44,3 +44,4 @@ tags: links
 
    Agnotology is the study of culturally induced ignorance or doubt. The tobacco industry is an easy example. ["Doubt is our product"](http://www.kevinhabits.com/doubt-is-our-product-fascinating-memo-on-the-tobacco-industrys-pr-strategy/), says one industry memo.
 
+<!--more-->
