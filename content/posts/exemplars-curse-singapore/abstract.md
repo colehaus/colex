@@ -1,0 +1,1 @@
+Like the optimizer's curse, if we try to make policy decisions based on exemplars, we may systematically mislead ourselves by picking the luckiest polities rather than the wisest. This theory might apply to Singapore.

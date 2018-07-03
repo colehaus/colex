@@ -15,7 +15,7 @@ Alas, broader measures of progress over that time period aren't readily availabl
 
 # What's so hard about growth? Just stop making bad decisions and start making good ones.
 
-A book club I recently attended read [Lee Kuan Yew's](https://en.wikipedia.org/wiki/Lee_Kuan_Yew) (the prime minister of Singapore from independence in 1965 to 1990) memoir, <i>The Singapore Story</i>. My friend's first reaction to the book was, "He makes it sound so easy!", and I can't disagree. My overwhelming impression of the book is that of proficient nonchalance.
+A book club I recently attended read [Lee Kuan Yew's](https://en.wikipedia.org/wiki/Lee_Kuan_Yew) (the prime minister of Singapore from independence in 1965 to 1990) memoir, <i>The Singapore Story</i> [@yew2012]. My friend's first reaction to the book was, "He makes it sound so easy!", and I can't disagree. My overwhelming impression of the book is that of proficient nonchalance.
 
 Some examples from the text which I hope convey that feeling:
 
@@ -76,7 +76,7 @@ I'll pretend that list was a <i>tour de force</i> and you're now on my side. If 
 
 There will surely be some solution 4 in whatever mix we ultimately decide on, but it's hard to know how much without reading other sources. And that's a bridge too far. Also, it seems plausible that there are no other widely available sources to contradict or corroborate many of the key claims in the memoir.
 
-In future posts, we'll examine solution 1 and solution 3 using the text itself. If I'm feeling brash, I might also offer baseless speculation on 2 in some future post.
+In future posts, we'll examine solution 1 and [solution 3](/posts/exemplars-curse-singapore/) using the text itself. If I'm feeling brash, I might also offer baseless speculation on 2 in some future post.
 
 <hr class="references">
 
