@@ -50,6 +50,7 @@ module.exports = {
     'util-egal': './util-egal.wp.es.js',
     quorum: './quorum.wp.es.js',
     'ideal-calibration': './ideal-calibration.wp.es.js',
+    'is-development-easy': './is-development-easy.wp.es.js',
     'custom-elements': './custom-elements.wp.es.js',
   },
   output: {
