@@ -1,7 +1,7 @@
 ---
 title: The Exemplar's Curse and Singapore
 published: 2018-07-03
-tags: statistics, development
+tags: decision theory, development
 series: The Singapore Story
 ---
 
