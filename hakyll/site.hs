@@ -205,6 +205,7 @@ purescriptProjects =
   [ "js/dist/bibliometric.js"
   , "js/dist/value-of-information-calculator.js"
   , "js/dist/construct-vnm-utility-function.js"
+  , "js/dist/exemplars-curse.js"
   ]
 
 buildChunkMap :: IO (Map String [String])

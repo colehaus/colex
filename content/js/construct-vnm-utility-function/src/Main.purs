@@ -47,8 +47,8 @@ main =
   unsafePartialBecause "Initial text known to be good" $
   J.ready do
     elements <- collectElements
-    ordering <- response elements . decisionInputs
-    utilityFn' <- utilityFn elements . initialInputs
+    ordering <- response elements.decisionInputs
+    utilityFn' <- utilityFn elements.initialInputs
     let function =
           FRP.fold
             (\evt acc -> update evt =<< acc)

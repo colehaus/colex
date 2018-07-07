@@ -6,6 +6,7 @@
     bibliometric = pkgs.callPackage ./js/bibliometric { inherit pkgs extras; };
     voi = pkgs.callPackage ./js/value-of-information-calculator { inherit pkgs extras; };
     vnm = pkgs.callPackage ./js/construct-vnm-utility-function { inherit pkgs extras; };
+    exemplar = pkgs.callPackage ./js/exemplars-curse { inherit pkgs extras; };
     mathJaxNodeCli = extras.callNpm {
       inherit pkgs;
       name = "mathjax-node-cli";
@@ -37,6 +38,7 @@
         cp ${bibliometric}/* js/dist
         cp ${voi}/* js/dist
         cp ${vnm}/* js/dist
+        cp ${exemplar}/* js/dist
       '';
       buildPhase = ''
         site build

@@ -1,0 +1,13 @@
+input[type="number"] {
+    width: 3em;
+}
+form {
+    > p:not(:last-of-type) {
+        margin-bottom: -1.5ex;
+    }
+}
+output {
+    > p:not(:last-of-type) {
+        margin-bottom: -1.5ex;
+    }
+}

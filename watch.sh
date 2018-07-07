@@ -44,5 +44,10 @@ webpack &
 # npm install
 # pulp --watch browserify --to ../dist/construct-vnm-utility-function.js &
 
+# cd "${root}/content/js/exemplars-curse"
+# bower install
+# npm install
+# pulp --watch browserify --to ../dist/exemplars-curse.js &
+
 trap 'kill $(jobs -p)' EXIT
 sleep infinity
