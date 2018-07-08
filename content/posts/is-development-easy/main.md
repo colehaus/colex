@@ -19,11 +19,11 @@ A book club I recently attended read [Lee Kuan Yew's](https://en.wikipedia.org/w
 
 Some examples from the text which I hope convey that feeling:
 
-<blockquote>
+- <blockquote>
 I had many pressing concerns: first, to get international recognition for Singapore’s independence, including our membership of the United Nations. I chose Sinnathamby Rajaratnam (affectionately called Raja by all of us) as foreign minister. [...] He was to be much liked and respected by all those he worked with at home and abroad. As messages of recognition flowed in, Toh Chin Chye, the deputy prime minister, and Raja as foreign minister set off to New York to take our seat at the UN that September of 1965.
 </blockquote>
 
-<blockquote>
+- <blockquote>
 Mordecai Kidron, the Israeli ambassador in Bangkok [...] had approached me several times in 1962–63 to ask for an Israeli consulate in Singapore. [...] I replied that it ... [might] create an issue that would excite the Malay Muslim grassroots and upset my plans [...].
 
 [...]
@@ -31,17 +31,17 @@ Mordecai Kidron, the Israeli ambassador in Bangkok [...] had approached me sever
 [N]ow that the Israeli presence in Singapore was well-known, we allowed them a diplomatic mission. They wanted an embassy. We decided to allow them a trade representative office first, in October 1968. The following May, after Malay Muslims in Singapore and the region had become accustomed to an Israeli presence, we allowed them to upgrade it to an embassy.
 </blockquote>
 
-<blockquote>
+- <blockquote>
 Seah Mui Kok, a union leader and PAP MP, another old friend from my time with the unions, objected to the wide latitude given to employers to hire and fire, but accepted the need for unions to be less confrontational to create a better climate for foreign investments. I included safeguards against misuse of these powers.
 </blockquote>
 
 <!--more-->
 
-<blockquote>
+- <blockquote>
 We suffered a reverse in the Asian financial crisis of 1997: unemployment increased to 3.2 per cent in 1998. To regain our competitiveness, the unions and government agreed and implemented a package of measures that reduced wages and other costs by 15 per cent [...]
 </blockquote>
 
-<blockquote>
+- <blockquote>
 From 1955 to 1968 the [CPF](https://en.wikipedia.org/wiki/Central_Provident_Fund) contribution had remained unchanged. I raised it in stages from 5 per cent to 25 per cent in 1984, making a total [compulsory] savings rate of 50 per cent of wages. This was later reduced to 40 per cent.
 </blockquote>
 
@@ -76,7 +76,7 @@ I'll pretend that list was a <i>tour de force</i> and you're now on my side. If 
 
 There will surely be some solution 4 in whatever mix we ultimately decide on, but it's hard to know how much without reading other sources. And that's a bridge too far. Also, it seems plausible that there are no other widely available sources to contradict or corroborate many of the key claims in the memoir.
 
-In future posts, we'll examine solution 1 and [solution 3](/posts/exemplars-curse-singapore/) using the text itself. If I'm feeling brash, I might also offer baseless speculation on 2 in some future post.
+In future posts, we'll examine [solution 1](/posts/lky-deity-dude/) and [solution 3](/posts/exemplars-curse-singapore/) using the text itself. If I'm feeling brash, I might also offer baseless speculation on 2 in some future post.
 
 <hr class="references">
 
