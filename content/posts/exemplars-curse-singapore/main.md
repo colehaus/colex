@@ -19,7 +19,7 @@ Or, another route to this intuition: Even if you ran the contest again with the 
 
 ## Abstracted
 
-Summarizing, the exemplar's curse occurs when you're selecting an exemplar from a set of outcomes which resulted from both stochastic and deterministic factors. If many outcomes have [similarly compelling deterministic factors]{.noted}[^similar], the chosen winner is probably unusually lucky. Reversion to the mean then suggests that the chosen winner will disappoint when the deterministic factors are replicated.
+Summarizing, the exemplar's curse occurs when you're selecting an exemplar from a set of outcomes which resulted from both stochastic and deterministic factors. If many outcomes have [similarly compelling deterministic factors]{.noted}[^similar], the chosen winner is probably unusually lucky. [Regression to the mean](https://en.wikipedia.org/wiki/Regression_toward_the_mean) then suggests that the chosen winner will disappoint when the deterministic factors are replicated.
 
 ## Optimizer's curse
 

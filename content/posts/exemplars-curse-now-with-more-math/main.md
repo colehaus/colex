@@ -16,7 +16,9 @@ Restating the core idea in words: The exemplar's curse occurs when we select an 
 
 ## Model
 
-We can model this with the use of [random variables](https://en.wikipedia.org/wiki/Random_variable). We'll call our bundle of deterministic factors $\mathcal{D}$ and say they range uniformly in cumulative value from $0$ to $D$ where $D$ is finite. Our bundle of stochastic factors $\mathcal{S}$ range uniformly in value from from $0$ to $S$ where $S$ is finite. Since we observe only visible outcomes rather than underlying causal factors, we see $\mathcal{O} = \mathcal{D} + \mathcal{S}$. The exemplar's curse is then about the inferrable properties of the causal factors $\mathcal{D}$ corresponding to the selected maximum $\mathcal{O}$ from a set of outcomes $\mathbb{O}$.
+(If you don't like the mathematical exposition that follows, you can also try [@barnett2004].)
+
+We can model this with the use of [random variables](https://en.wikipedia.org/wiki/Random_variable). We'll call our bundle of deterministic factors $\mathcal{D}$ and say they range uniformly in cumulative value from $0$ to $D$ where $D$ is finite. Our bundle of stochastic factors $\mathcal{S}$ range uniformly in value from from $0$ to $S$ where $S$ is finite. Since we observe only visible outcomes rather than underlying causal factors, we see $\mathcal{O} = \mathcal{D} + \mathcal{S}$. The exemplar's curse is then about the inferrable properties of the causal factors $\mathcal{D}$ corresponding to the selected maximum $\mathcal{O}$ from a set of outcomes $\mathbb{O}$. In other words, if we have a set of observable outcomes $\mathbb{O}$ and select the best outcome from that set $\mathcal{O}$, what can we infer about the underlying structure of $\mathcal{O}$---how big are that $\mathcal{O}$'s $\mathcal{D}$ and $\mathcal{S}$?
 
 # False exemplars
 
@@ -26,7 +28,7 @@ This leaves a open a compelling retort. One could say, "Even though I'm too opti
 
 Alas, this is not true. Depending on the parameters, there could be only a vanishingly small chance that the bundle of deterministic factors corresponding to the best outcome (the sum of the deterministic and stochastic factors) is also the best bundle of deterministic factors when looking *only* at the deterministic factors. In symbols, supposing we have a projection function $p_\mathcal{D} : \mathbb{O} \rightarrow \mathbb{D}$ which finds the bundle of deterministic factors $\mathcal{D}$ used in outcome $\mathcal{O}$, we're interested in $P(\max \mathbb{D} = p_\mathcal{D}(\max \mathbb{O}))$.
 
-For example, if we choose the max from 1000 outcomes and the value of stochastic factors ranges from 0 to 100 while the value of deterministic factors ranges from 0 to 1, we should actually be quite surprised if our best outcome actually has the best deterministic factors.
+For example, if we choose the max from 1000 outcomes and the value of stochastic factors ranges from 0 to 100 while the value of deterministic factors ranges from 0 to 1, we should be quite surprised if our best outcome actually has the best deterministic factors.
 
 # Calculator
 
@@ -38,7 +40,7 @@ You can change the range of values for stochastic and deterministic factors and 
 
 This results in:
 
- - The mean value of stochastic factors in best outcomes across Monte Carlo samples. This allows us to estimate the magnitude of expected mean reversion.
+ - The mean value of stochastic factors in best outcomes across Monte Carlo samples. This allows us to estimate the magnitude of expected mean regression.
  - An estimated probability that our observed best outcome actually corresponds to the best bundle of deterministic factors.
  - A chart showing all the trials used to produce the estimate. One interesting thing to note about the chart is that the number of points on the diagonal corresponds to the probability of 'success' (i.e. the probability that the best outcome also has the best deterministic factors).
 
@@ -66,4 +68,6 @@ This confirms the intuition highlighted by the example a few paragraphs up.
 
 # Conclusion
 
-So we see that the exemplar's curse is even worse than we thought. It's not just about our outcomes reverting to the mean in spite of making the best possible choice. It will often lead us to pick the wrong exemplar!
+So we see that the exemplar's curse is even worse than we thought. It's not just about our outcomes regressing to the mean in spite of making the best possible choice. It will often lead us to pick the wrong exemplar!
+
+<hr class="references">
