@@ -8,7 +8,7 @@ series: The Tyranny of the Ideal
 
 # Ideals as superfluous
 
-In [@gaus2016], the author lays out two conflicting views of social engineering. The [ideal theorists](https://plato.stanford.edu/entries/rawls/#IdeNonIdeThe) insist on the value of having an ideal society in mind when deciding between possible futures. Their opponents, represented by [Amartya Sen](https://en.wikipedia.org/wiki/Amartya_Sen), suggest this is a bit silly.
+In [@gaus2016], the author lays out two conflicting views of political philosophy. The [ideal theorists](https://plato.stanford.edu/entries/rawls/#IdeNonIdeThe) insist on the value of having an ideal society in mind when deciding between possible futures. Their opponents, represented by [Amartya Sen](https://en.wikipedia.org/wiki/Amartya_Sen), suggest this is a bit silly.
 
 <blockquote>
 The possibility of having an identifiably perfect alternative does not indicate that it is necessary, or indeed useful, to refer to it in judging the relative merits of two alternatives; for example, we may be willing to accept, with great certainty, that Mount Everest is the tallest mountain in the world, completely unbeatable in terms of stature by any other peak, but that understanding is neither needed, nor particularly helpful, in comparing the peak heights of, say, Mount Kilimanjaro and Mount McKinley. There would be something off in the general belief that a comparison of any two alternatives cannot be sensibly made without a prior identification of a supreme alternative. [[@sen2011]]{.attribution}

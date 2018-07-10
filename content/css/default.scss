@@ -69,6 +69,12 @@ hr {
 .macros {
     display: none;
 }
+.sidenote blockquote {
+    &::before {
+        @include font-default-size;
+    }
+    @include margin-none;
+}
 blockquote {
     @include margin-left-1em;
     quotes: "“" "”" "‘" "’";

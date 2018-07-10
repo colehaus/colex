@@ -52,6 +52,7 @@ module.exports = {
     'ideal-calibration': './ideal-calibration.wp.es.js',
     'is-development-easy': './is-development-easy.wp.es.js',
     'custom-elements': './custom-elements.wp.es.js',
+    'false-dichotomy-ideal-theory-debate': './false-dichotomy-ideal-theory-debate.wp.es.js'
   },
   output: {
     path: outDir
