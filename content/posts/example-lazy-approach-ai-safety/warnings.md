@@ -1,0 +1,1 @@
+Cognitive load|I think there's a tricky trade-off with examples between providing useful intuitions and specificity while minimizing extraneous details that tax the reader. Hopefully, I've struck an okay balance.

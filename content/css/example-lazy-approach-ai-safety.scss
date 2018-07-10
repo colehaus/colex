@@ -1,0 +1,5 @@
+@import 'libs/primitives/typography';
+
+pre > code {
+    @include font-small;
+}

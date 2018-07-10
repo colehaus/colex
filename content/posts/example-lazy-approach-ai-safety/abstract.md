@@ -1,0 +1,1 @@
+The lazy approach to AI safety suggests that we explicitly encode our moral uncertainty into artificial agents. Then agents can decide to undertake moral investigation via value of information calculations. We make the description of this approach more concrete by examining its application in a nearly trivial setting.
