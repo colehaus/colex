@@ -42,7 +42,7 @@ He also sometimes responds to problems with solutions that seem like they can't 
 
 - <blockquote>Soon afterwards we also phased out protection for the assembly of refrigerators, air-conditioners, television sets, radios and other consumer electrical and electronic products.</blockquote>
 
-  Economic theory both recommends free trade for its positive impact on aggregate welfare and warns of its distributional consequences. I saw no engagement with the latter concern in the memoirs.
+  Economic theory both recommends free trade for its positive impact on aggregate productivity and warns of its distributional consequences. I saw no engagement with the latter concern in the memoirs.
 
 - <blockquote>[...] I wanted: good health services, with waste and costs kept in check by requiring co-payments from the user. Subsidies for health care were necessary, but could be extremely wasteful and ruinous for the budget.</blockquote>
 
