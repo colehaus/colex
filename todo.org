@@ -14,6 +14,7 @@
   CLOSED: [2018-05-12 Sat 11:44]
 * DONE Paging
   CLOSED: [2018-05-12 Sat 11:44]
+* TODO Sticky essential elements for reference during post scrolling
 * TODO Bibtexify AI safety post
 * TODO File node writeAsync bug
 * TODO Strip html from title metadata

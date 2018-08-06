@@ -1,7 +1,7 @@
 ---
 title: A quorum alternative
 published: 2015-01-28
-tags: voting, bayes, frequentist, statistics
+tags: voting, bayes, frequentist, constructive
 css: quorum
 js: quorum
 graph-of-contents: quorum
