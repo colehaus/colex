@@ -1,1 +1,1 @@
-The dichotomy of ideal and anti-ideal theory is a false one. For each supposedly unique feature of ideal theorizing, there is a scaled-down analogue in anti-ideal theory. Furthermore, all the dilemmas in the debate can be fruitfully approached as problems in decision theory.
+The dichotomy of ideal and anti-ideal theory is a false one. For each supposedly unique feature of ideal theorizing, there is a scaled-down analogue in non-ideal theory. Furthermore, all the dilemmas in the debate can be fruitfully approached as problems in decision theory.

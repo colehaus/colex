@@ -81,3 +81,5 @@ I __ been here for hours
 http://www.joelsimon.net/evo_floorplans.html
 
 ![Left: Optimized for minimizing traffic flow bewteen classes and material usage. Right: Also optimized for minimizing fire escape paths.](/images/floor-plan.jpg)
+
+https://academic.oup.com/scan/article/11/12/1872/2544449

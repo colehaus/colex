@@ -7,9 +7,9 @@ css: false-dichotomy-ideal-theory-debate
 js: false-dichotomy-ideal-theory-debate
 ---
 
-# Ideal and anti-ideal theory
+# Ideal and non-ideal theory
 
-We've already described ideal theory in [previous posts](/posts/utopia-infinitude-secretaries/), but we'll give a short recap here for the sake of self-sufficiency. Ideal theory suggests that when making decisions about alternative social worlds---that is, about different political and economic institutions, we should have an ideally just society in mind. Anti-idealists argue that this information is irrelevant; we only need to be able to perform pairwise comparisons. A popular metaphor in the area is that of mountain climbing. In the language of this metaphor, ideal theorists like [John Rawls](https://en.wikipedia.org/wiki/John_Rawls) suggest that mountaineers orient themselves toward Everest while anti-idealists like [Amartya Sen](https://en.wikipedia.org/wiki/Amartya_Sen) suggest that knowledge of [Everest](https://en.wikipedia.org/wiki/Mount_Everest) is irrelevant when comparing the heights of [Kilimanjaro](https://en.wikipedia.org/wiki/Mount_Kilimanjaro) and [Denali](https://en.wikipedia.org/wiki/Denali).
+We've already described ideal theory in [previous posts](/posts/utopia-infinitude-secretaries/), but we'll give a short recap here for the sake of self-sufficiency. Ideal theory suggests that when making decisions about alternative social worlds---that is, about different political and economic institutions, we should have an ideally just society in mind. Non-idealists argue that this information is irrelevant; we only need to be able to perform pairwise comparisons. A popular metaphor in the area is that of mountain climbing. In the language of this metaphor, ideal theorists like [John Rawls](https://en.wikipedia.org/wiki/John_Rawls) suggest that mountaineers orient themselves toward Everest while non-idealists like [Amartya Sen](https://en.wikipedia.org/wiki/Amartya_Sen) suggest that knowledge of [Everest](https://en.wikipedia.org/wiki/Mount_Everest) is irrelevant when comparing the heights of [Kilimanjaro](https://en.wikipedia.org/wiki/Mount_Kilimanjaro) and [Denali](https://en.wikipedia.org/wiki/Denali).
 
 # Thesis
 
@@ -19,15 +19,15 @@ I contend this is a debate which can be [dissolved](http://askphilosophers.com/q
 
 Before I can make the argument that's it's a *false* dichotomy, I need to show that it's a putative dichotomy. There's little value in attacking [straw men](https://en.wikipedia.org/wiki/Straw_man). Since I've just read [@gaus2016], we'll examine that in detail and expect that it's representative of the larger discussion.
 
-The boundary that Gaus draws is between worlds in the 'neighborhood' of the status quo and those outside it. If we restrict our attention to worlds in the neighborhood, we're engaging in anti-ideal theory, but if we speculate on distant worlds we're doing ideal theory. What is this key neighborhood concept? In Gaus's words: "A neighborhood delimits a set of nearby social worlds characterized by relatively similar justice-relevant social structures."
+The boundary that Gaus draws is between worlds in the 'neighborhood' of the status quo and those outside it. If we restrict our attention to worlds in the neighborhood, we're engaging in non-ideal theory, but if we speculate on distant worlds we're doing ideal theory. What is this key neighborhood concept? In Gaus's words: "A neighborhood delimits a set of nearby social worlds characterized by relatively similar justice-relevant social structures."
 
-So we're already on firm grounds for a claim of dichotomous thinking. On this view, the [structure of the problem is dichotomous]{.noted}[^relax]. But Gaus also demonstrates the dichotomous view when describing the divergent implications of the ideal and anti-ideal view:
+So we're already on firm grounds for a claim of dichotomous thinking. On this view, the [structure of the problem is dichotomous]{.noted}[^relax]. But Gaus also demonstrates the dichotomous view when describing the divergent implications of the ideal and non-ideal view:
 
 <blockquote>[L]ocal optimization often points in a different direction than pursuit of the ideal. We then confront what I have called [The Choice]{#the-choice}: should we turn our back on local optimization and move toward the ideal? [... O]ur judgments within our neighborhood have better warrant than judgments outside of it; if the ideal is outside our current neighborhood, then we are forgoing relatively clear gains in justice for an uncertain prospect that our realistic utopia lies in a different direction. [Mill’s revolutionaries]{.noted}[^revolutionaries], certain of their own wisdom and judgment, were more than willing to commit society to the pursuit of their vision of the ideal; their hubris had terrible costs for many.</blockquote>
 
 # Similarities
 
-Now, I'll hope you agree ideal and anti-ideal theory are framed as incompatible. On that assumption, I'll begin to argue against the dichotomy.
+Now, I'll hope you agree ideal and non-ideal theory are framed as incompatible. On that assumption, I'll begin to argue against the dichotomy.
 
 ## Uncertainty all around
 
@@ -37,7 +37,7 @@ I do accept Gaus's Neigborhood Constraint---our knowledge of distant social word
 
 ## Foresight all around
 
-Anti-idealists not only contend that our knowledge of the ideal is highly uncertain, they suggest it's otiose. On the contrary, knowledge about world C is useful for evaluating worlds A and B not only when C is the ideal but when all of A, B, and C are in the same neighborhood. As long as we don't expect the next world we inhabit to be the last world we ever inhabit, a thorough evaluation of that next world should include it's likely effects on the subsequent chain of worlds. That is, an evaluation which judges B against A only on the immediate effects and not on how B enables and forecloses other nearby possibilities like C is a very blinkered analysis indeed. So again, we see a difference of degree rather than kind---we should surely evaluate the knock-on effects of our choices and the only real question is how rapidly does the value of such estimation decline as we step into the future and away from the status quo.
+Non-idealists not only contend that our knowledge of the ideal is highly uncertain, they suggest it's otiose. On the contrary, knowledge about world C is useful for evaluating worlds A and B not only when C is the ideal but when all of A, B, and C are in the same neighborhood. As long as we don't expect the next world we inhabit to be the last world we ever inhabit, a thorough evaluation of that next world should include it's likely effects on the subsequent chain of worlds. That is, an evaluation which judges B against A only on the immediate effects and not on how B enables and forecloses other nearby possibilities like C is a very blinkered analysis indeed. So again, we see a difference of degree rather than kind---we should surely evaluate the knock-on effects of our choices and the only real question is how rapidly does the value of such estimation decline as we step into the future and away from the status quo.
 
 # Decision theory
 
