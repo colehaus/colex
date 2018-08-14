@@ -1,0 +1,1 @@
+Problem-solving relies on working memory. Working memory is very limited except when it comes to information that's also in long-term memory. Long-term memory is thus central to expertise. Committing things to long-term memory (i.e. learning) is best accomplished by the careful management of cognitive load.
