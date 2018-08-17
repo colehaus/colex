@@ -1,7 +1,7 @@
 ---
 title: False dichotomies and the ideal theory debate
 published: 2018-07-09
-tags: ideal theory, decision theory
+tags: ideal theory, decision theory, political philosophy
 series: The Tyranny of the Ideal
 css: false-dichotomy-ideal-theory-debate
 js: false-dichotomy-ideal-theory-debate

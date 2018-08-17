@@ -1,7 +1,7 @@
 ---
 title: Notebook–A visual intuition for the instrumental argument for equality
 published: 2018-04-25
-tags: notebook, social welfare, economics, inequality
+tags: notebook, social welfare, inequality
 ---
 
 #+BEGIN_EXPORT html

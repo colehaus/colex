@@ -1,6 +1,6 @@
 ---
 title: A new welfare measure of inequality
-tags: notebook, population axiology, economics, econometrics, data analysis
+tags: notebook, population axiology, social welfare, econometrics, data analysis
 published: 2018-02-20
 ---
 # Local Variables:

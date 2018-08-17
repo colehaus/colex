@@ -1,7 +1,7 @@
 ---
 title: Build your own von Neumann–Morgenstern utility function
 published: 2018-05-13
-tags: decision theory, economics
+tags: decision theory, interactive
 css: construct-vnm-utility-function
 js: construct-vnm-utility-function
 ---

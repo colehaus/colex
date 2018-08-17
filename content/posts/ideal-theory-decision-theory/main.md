@@ -1,7 +1,7 @@
 ---
 title: Ideal theory and decision theory
 date: 2018-08-15
-tags: ideal theory, decision theory
+tags: ideal theory, decision theory, political philosophy
 series: The Tyranny of the Ideal
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Standalone–Value of information calculator
 published: 2018-06-13
-tags: value of information, decision theory
+tags: value of information, decision theory, interactive
 css: value-of-information-calculator
 js: value-of-information-calculator
 ---

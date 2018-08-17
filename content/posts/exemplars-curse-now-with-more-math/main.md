@@ -1,7 +1,7 @@
 ---
 title: Exemplar's curse—Now with 80% more math!
 published: 2018-07-06
-tags: decision theory
+tags: decision theory, interactive
 js: exemplars-curse
 css: exemplars-curse
 ---
