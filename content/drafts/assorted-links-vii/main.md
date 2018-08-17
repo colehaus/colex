@@ -10,6 +10,8 @@ http://www.sssscomic.com/comic.php?page=196
 
 https://twitter.com/Unwise_Trousers/status/1009320569299275776
 
+http://uahost.uantwerpen.be/funmorph/raoul/macroevolutie/Robertson2004.pdf
+
 https://www.ncbi.nlm.nih.gov/pmc/articles/PMC1470475/
 
 The shortest-lived child of Prohibition actually survived to adulthood. This was the change in drinking patterns that depressed the level of consumption compared with the pre-Prohibition years. Straitened family finances during the Depression of course kept the annual per capita consumption rate low, hovering around 1.5 US gallons. The true results of Prohibition’s success in socializing Americans in temperate habits became apparent during World War II, when the federal government turned a more cordial face toward the liquor industry than it had during World War I, and they became even more evident during the prosperous years that followed.50 Although annual consumption rose, to about 2 gallons per capita in the 1950s and 2.4 gallons in the 1960s, it did not surpass the pre-Prohibition peak until the early 1970s.51

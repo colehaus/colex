@@ -1,0 +1,1 @@
+The ideal theory debate is actually applied decision theory. The tools and vocabulary of decision theory---at a minimum, the von Neumann-Morgenstern utility theorem, the concept of epistemic risk aversion, and the area of sequential decision theory---are useful in this new domain.
