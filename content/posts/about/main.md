@@ -5,7 +5,7 @@ edited: 2018-06-07
 tags: meta, biographical
 ---
 
-This is a single-author, half-heartedly pseudonymous (the pseudonym being Cole) blog.
+This is a single-author, half-heartedly pseudonymous (the pseudonym being Cole) blog. [The moral imperative and mortal peril of maximizing](/posts/moral-imperative-mortal-peril-maximizing) is the closest you're likely to get to a statement of purpose.
 
 <!--more-->
 
