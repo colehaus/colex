@@ -54,11 +54,36 @@ const ticked = <A: ForceLink, B: ForceNode>(link: SelectWithData<A>, node: Selec
   node.attr('transform', d => `translate(${d.x}, ${d.y})`)
 }
 
-const mkSimulation = ({ width, height }) =>
+const boundingBox = (width: number, height: number, nodes: Array<Node<*>>): void => {
+  const margin = 10
+  S.map(node_ => {
+    // Tell Flow about the properties d3 has added
+    const node: ForceNode = (node_: any)
+    if (node.x + node.vx < margin) {
+      node.x = margin
+      node.vx = 0
+    }
+    if (node.y + node.vy < margin) {
+      node.y = margin
+      node.vy = 0
+    }
+    if (node.x + node.vx > width - margin) {
+      node.x = width - margin
+      node.vx = 0
+    }
+    if (node.y + node.vy > height - margin) {
+      node.y = height - margin
+      node.vy = 0
+    }
+  })(nodes)
+}
+
+const mkSimulation = ({ width, height }, nodes) =>
   d3.forceSimulation()
     .force('link', d3.forceLink().id(d => d.id).strength(STRENGTH).distance(width / 5))
     .force('charge', d3.forceManyBody().strength(-250))
     .force('center', d3.forceCenter(width / 2, height / 2))
+    .force('bound', (alpha) => boundingBox(width, height, nodes))
     .alphaDecay(0.015)
 
 const drawLibrary = <Ty: string>(id: string, svg: SelectWithoutData, linkTypes: Array<LinkType<Ty>>) => {
@@ -135,7 +160,7 @@ const mkArgMap = (id: string, dataSrc: string, canvasSelector: string): Promise<
       .attr('width', canvas.width)
       .attr('height', canvas.height)
 
-    const simulation = mkSimulation(canvas)
+    const simulation = mkSimulation(canvas, nodes)
     drawLibrary(id, svg, linkTypes)
     const link = drawLinks(id, svg, links)
     const node = drawNodes(svg, nodes, nodeTypes, simulation)
@@ -144,8 +169,9 @@ const mkArgMap = (id: string, dataSrc: string, canvasSelector: string): Promise<
       .nodes(nodes)
       .on('tick', ticked(link, node))
 
-    simulation.force('link')
-      .links(links)
+    // We're getting from a heterogenous map so we just use `any` for now
+    const linkForce: any = (simulation.force('link'): any)
+    linkForce.links(links)
 
     mkLegend(id, svg, nodeTypes, linkTypes)
 

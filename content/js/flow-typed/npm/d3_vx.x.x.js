@@ -1,6 +1,8 @@
 export type ForceNode = {
   x: number,
   y: number,
+  vx: number,
+  vy: number,
   fx: ?number,
   fy: ?number
 }
@@ -40,6 +42,14 @@ declare class SelectWithoutData extends Select<SelectWithoutData> {
   call(fn: SelectWithoutData => void): SelectWithoutData;
 }
 
+declare class ForceX {
+  strength(strength: number | any => number): ForceX;
+  x(x: number | any => number): ForceX;
+}
+declare class ForceY {
+  strength(strength: number | any => number): ForceX;
+  x(x: number | any => number): ForceX;
+}
 declare class Link<N, L> {
   strength(strength: number): Link<N, L>;
   distance(distance: number): Link<N, L>;
@@ -53,6 +63,7 @@ declare class Center {
   x(x: number): Center;
   y(y: number): Center;
 }
+declare type Forces<N, L> = ForceX | ForceY | Link<N, L> | ManyBody | Center | any;
 
 declare class Simulation<N, L> {
   nodes(nodes: Array<N>): Simulation<N, L>;
@@ -61,10 +72,8 @@ declare class Simulation<N, L> {
   alphaDecay(rate: number): Simulation<N, L>;
   alphaTarget(target: number): Simulation<N, L>;
   on(event: 'tick', fn: () => void): Simulation<N, L>;
-  force(typ: 'link', link: Link<N, L>): Simulation<N, L>;
-  force(typ: 'charge', charge: ManyBody): Simulation<N, L>;
-  force(typ: 'center', center: Center): Simulation<N, L>;
-  force(typ: 'link'): Link<N, L>;
+  force(name: string, force: Forces<N, L>): Simulation<N, L>;
+  force(name: string): Forces<N, L>;
 }
 
 declare class ContinuousScale {
@@ -83,6 +92,8 @@ declare module 'd3' {
   declare export function forceCenter(width: number, height: number): Center;
   declare export function forceManyBody(): ManyBody;
   declare export function forceLink<N, L>(): Link<N, L>;
+  declare export function forceX(x?: number): ForceX;
+  declare export function forceY(y?: number): ForceY;
   declare export var event: { x: number, y: number };
   declare export function drag(): any;
   declare export function select(selector: string): SelectWithoutData;
