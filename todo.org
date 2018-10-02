@@ -14,12 +14,13 @@
   CLOSED: [2018-05-12 Sat 11:44]
 * DONE Paging
   CLOSED: [2018-05-12 Sat 11:44]
+* TODO Tooltip for references
 * TODO Sticky essential elements for reference during post scrolling
 * TODO Bibtexify AI safety post
 * TODO File node writeAsync bug
 * TODO Strip html from title metadata
 * TODO Source maps in rollbar
-* TODO Link ethics as order page to SEP preferences
+* TODO Fix hover/click for menus
 * DONE Add evidence to autocrats diminishing marginal utility
   CLOSED: [2018-06-14 Thu 14:21]
 * DONE Label abstract as such

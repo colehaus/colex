@@ -80,7 +80,7 @@ const boundingBox = (width: number, height: number, nodes: Array<Node<*>>): void
 
 const mkSimulation = ({ width, height }, nodes) =>
   d3.forceSimulation()
-    .force('link', d3.forceLink().id(d => d.id).strength(STRENGTH).distance(width / 5))
+    .force('link', d3.forceLink().id(d => d.id).strength(STRENGTH).distance(width / 7))
     .force('charge', d3.forceManyBody().strength(-250))
     .force('center', d3.forceCenter(width / 2, height / 2))
     .force('bound', (alpha) => boundingBox(width, height, nodes))

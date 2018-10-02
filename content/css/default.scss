@@ -139,7 +139,12 @@ figure {
     }
     > figcaption {
         @include margin-horizontal-2em;
-        @include font-smaller;
+        &:first-child {
+            @include weight-bold;
+        }
+        &:last-child {
+            @include font-smaller;
+        }
         &:nth-child(1) {
             @include margin-bottom-1ex;
         }
