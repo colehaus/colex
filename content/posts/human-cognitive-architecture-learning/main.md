@@ -1,7 +1,8 @@
 ---
-title: Human cognitive architecture and learning
+title: YAAS Human cognitive architecture and learning
+subtitle: "Yet Another Amateur Summary: <br> Sweller's <i>Human cognitive architecture</i>"
 date: 2018-08-13
-tags: meta monday, pedagogy
+tags: meta monday, pedagogy, yaas
 css: cognitive-architecture
 ---
 
