@@ -19,7 +19,7 @@ But, after reading up on pedagogy in articles like [the one we discussed earlier
 
 Thus, I present my own entry in the burgeoning [subgenre](https://www.gwern.net/Spaced-repetition) of [spaced repetition software](http://augmentingcognition.com/ltm.html) [encomia](http://devonzuegel.com/post/thoughts-on-spaced-repetition).
 
-Briefly, [spaced repetition](https://en.wikipedia.org/wiki/Spaced_repetition) software optimally schedules flashcard review to radically boost retention of information in long-term memory. Anki is one such program. I'd heard of Anki in the past but only managed to acquire the habit of regular review more recently. I've performed a total of 4803 reviews of 1518 cards during review sessions covering 40 of the last 42 days (Let it never be said that I do things in half measures.). This is probably too intense and more than I'd recommend for most people. But that information should serve to calibrate you as to how much experience I have with Anki.
+Briefly, [spaced repetition](https://en.wikipedia.org/wiki/Spaced_repetition) software optimally schedules flashcard review to radically boost retention of information in long-term memory. [Anki](https://apps.ankiweb.net/) is one such program. I'd heard of Anki in the past but only managed to acquire the habit of regular review more recently. I've performed a total of 4803 reviews of 1518 cards during review sessions covering 40 of the last 42 days (Let it never be said that I do things in half measures.). This is probably too intense and more than I'd recommend for most people. But that information should serve to calibrate you as to how much experience I have with Anki.
 
 ## The feel of a thing
 
