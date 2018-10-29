@@ -37,7 +37,7 @@ type S = {
   joinWith(s: string): Array<string> => string,
   keys<A>(m: { [string]: A }): Array<string>,
   fromPairs<A>(ps: Array<[string, A]>): { [string]: A },
-  range(low: number, high: number): Array<number>
+  range(low: number): number => Array<number>
 } & {
   map<A, B>(f: A => B): Array<A> => Array<B>
 } & {

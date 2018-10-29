@@ -17,7 +17,7 @@ import { setHandlers } from 'custom-elements/draw'
 const S = create({checkTypes: false, env})
 
 const q = 'quantitative'
-const schema = 'https://vega.github.io/schema/vega-lite/v2.json'
+const schema = 'https://vega.github.io/schema/vega-lite/v3.json'
 
 const percentileDomain = [0, 100]
 const defaultIncomeDistribution = p => Math.pow(p, 2) * 30
@@ -28,7 +28,7 @@ const defaultUtilityOfMarginalDollar = d => 1 - d / maxIncome
 const maxUtility = defaultUtilityOfMarginalDollar(minIncome)
 
 const values = ([minDomain, maxDomain]: [number, number], xKey: string, yKey: string, stepSize: ?number) => (fn: number => number, series: ?string) =>
-  S.range(minDomain, stepSize == null ? maxDomain : maxDomain / stepSize)
+  S.range(minDomain)(stepSize == null ? maxDomain : maxDomain / stepSize)
     .map(x => stepSize == null ? x : x * stepSize)
     .map(x => {
       return (

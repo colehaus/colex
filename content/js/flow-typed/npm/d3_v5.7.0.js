@@ -77,7 +77,7 @@ declare class Simulation<N, L> {
 }
 
 declare class ContinuousScale {
-  $call: number => number;
+  [[call]]: number => number;
   domain(d: [number, number]): ContinuousScale;
   range(r: [number, number]): ContinuousScale;
   invert(n: number): number;

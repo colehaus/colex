@@ -35,7 +35,7 @@ const interpolate = (selection: SelectWithoutData, box: Box, callback: ?((number
   const scaleX = d3.scaleLinear().domain([box.left, box.left + box.width]).range([0, box.width])
   const scaleY = d3.scaleLinear().domain([box.height + box.top, box.top]).range([0, box.height])
   const func = kernel.regression(S.map(p => scaleX(p[0]))(points), S.map(p => scaleY(p[1]))(points), kernel.fun.gaussian, 10)
-  const interpolatedPoints = S.map(x => [scaleX.invert(x), scaleY.invert(func(x))])(S.range(0, box.width))
+  const interpolatedPoints = S.map(x => [scaleX.invert(x), scaleY.invert(func(x))])(S.range(0)(box.width))
 
   if (interpolatedPoints.every(([x, y]) => !Number.isNaN(x) && !Number.isNaN(y))) {
     if (callback != null) {
