@@ -2,24 +2,22 @@ module FRP.JQuery where
 
 import Prelude
 
-import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.JQuery (preventDefault) as J
-import Control.Monad.Eff.JQuery.Fancy (JQuery, One)
-import Control.Monad.Eff.JQuery.Fancy (getValue, on) as J
-import DOM (DOM)
-import DOM.Event.Types (EventType)
-import Data.Foreign (unsafeFromForeign)
 import Data.Newtype (wrap)
-import FRP (FRP)
+import Effect (Effect)
+import Foreign (unsafeFromForeign)
 import FRP.Event (Event)
 import FRP.Event as FRP
+import JQuery (preventDefault) as J
+import JQuery.Fancy (JQuery, One)
+import JQuery.Fancy (getValue, on) as J
+import Web.Event.Event (EventType)
 
 jqueryEvent ::
      forall a e tag.
      EventType
-  -> (Unit -> Eff (frp :: FRP, dom :: DOM | e) a)
+  -> (Unit -> Effect a)
   -> JQuery (One tag)
-  -> Eff (dom :: DOM , frp :: FRP | e) (Event a)
+  -> Effect (Event a)
 jqueryEvent eventType f el = do
   { event, push } <- FRP.create
   J.on eventType (\evt _ -> push =<< f unit <* J.preventDefault evt) el
@@ -28,7 +26,7 @@ jqueryEvent eventType f el = do
 textAreaEvent ::
      forall e.
      JQuery (One "textarea")
-  -> Eff (dom :: DOM , frp :: FRP | e) (Event String)
+  -> Effect (Event String)
 textAreaEvent el =
   jqueryEvent (wrap "input") (\_ -> unsafeFromForeign <$> J.getValue el) el
 

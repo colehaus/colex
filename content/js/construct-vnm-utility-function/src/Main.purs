@@ -2,27 +2,18 @@ module Main where
 
 import Prelude hiding (bottom,top)
 
-import Chart (ChartInterval(..), chartData, chartOpts, chartSpec)
+import Chart (ChartInterval(..), chartData, chartOpts, chartSpec, extractRecord)
 import Charts.Vega.Primitive as Vega
 import Control.Alt ((<|>))
-import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.Console (CONSOLE, log)
-import Control.Monad.Eff.JQuery (ready) as J
-import Control.Monad.Eff.JQuery.Fancy (clearOne, displayOne, getProp, getText, hide, hideOne, setText, width) as J
-import Control.Monad.Eff.Ref (REF, Ref, newRef, readRef, writeRef)
-import DOM (DOM)
 import Data.Argonaut.Core (fromObject, toObject) as Argo
 import Data.Argonaut.Encode (encodeJson) as Argo
 import Data.Array as Array
 import Data.Either (Either(..), either, hush, note)
-import Data.Foreign (unsafeFromForeign)
 import Data.Map as Map
 import Data.Maybe (Maybe(..), maybe)
-import Data.Monoid (mempty)
 import Data.Newtype (unwrap, wrap)
 import Data.Number.Format (exponential, toStringWith)
 import Data.Set as Set
-import Data.StrMap as StrMap
 import Data.String as String
 import Data.These (These(..))
 import Data.Tuple (Tuple(..))
@@ -32,17 +23,24 @@ import Economics.Utility.Ratio as Ratio
 import Economics.Utility.VNM (isComplete, pickNextLottery, refine, smallest)
 import Economics.Utility.VNM as VNM
 import Economics.Utility.VNM.Function (UtilityFn, best, byGood, goodsToInitialFn, prune)
-import FRP (FRP)
+import Effect (Effect)
+import Effect.Console (log)
+import Effect.Ref (Ref)
+import Effect.Ref as Ref
+import Foreign (unsafeFromForeign)
+import Foreign.Object as Object
 import FRP.Event (Event)
 import FRP.Event as FRP
 import FRP.JQuery (jqueryEvent, textAreaEvent)
 import Helpers (nonEmptySet, unsafeFromJustBecause)
 import Html (DecisionInputs, InitialInputs, VisualizationDisplays, DecisionDisplays, collectElements)
+import JQuery (ready) as J
+import JQuery.Fancy (clearOne, displayOne, getProp, getText, hide, hideOne, setText, width) as J
 import Math.Interval (unmake)
 import Math.Interval.Bound (Finite(MkFinite), finite)
 import Partial.Unsafe (unsafeCrashWith, unsafePartialBecause)
 
-main :: forall e. Eff (console :: CONSOLE, dom :: DOM, frp :: FRP, ref :: REF | e) Unit
+main :: Effect Unit
 main =
   unsafePartialBecause "Initial text known to be good" $
   J.ready do
@@ -67,7 +65,7 @@ main =
        either
          (sinkFunction elements . visualizationDisplays r)
          (sinkFunction elements . visualizationDisplays r)) =<<
-      newRef Nothing
+      Ref.new Nothing
 
 update ::
      forall a.
@@ -76,7 +74,7 @@ update ::
   -> UtilityFn a Number
   -> Either (UtilityFn a Number) (UtilityFn a Number)
 update evt oldFn =
-  complete <<< maybePrune $ either id (flip (refine (pickNextLottery oldFn)) oldFn) evt
+  complete <<< maybePrune $ either identity (flip (refine (pickNextLottery oldFn)) oldFn) evt
   where
     maybePrune f = maybe f (flip prune f) <<< best $ f
     complete f =
@@ -85,9 +83,8 @@ update evt oldFn =
       else Right f
 
 response ::
-     forall e.
      DecisionInputs
-  -> Eff (dom :: DOM, frp :: FRP | e) (Event Ordering)
+  -> Effect (Event Ordering)
 response els = do
   first <- jqueryEvent (wrap "click") (\_ -> pure GT) els.first
   indifferent <- jqueryEvent (wrap "click") (\_ -> pure EQ) els.indifferent
@@ -95,10 +92,8 @@ response els = do
   pure $ first <|> indifferent <|> second
 
 utilityFn ::
-     forall e.
      InitialInputs
-  -> Eff
-      (dom :: DOM , frp :: FRP | e)
+  -> Effect
       { initial :: UtilityFn String Number
       , event :: Event (Either Unit (UtilityFn String Number))
       }
@@ -117,20 +112,19 @@ utilityFn els =
     goodsToInitialFn' =
       goodsToInitialFn <=< note unit <<< nonEmptySet <<< Set.fromFoldable
 
-sinkResponses :: forall e. Ordering -> Eff (console :: CONSOLE | e) Unit
+sinkResponses :: Ordering -> Effect Unit
 sinkResponses ord = do
   log (show ord)
 
-sinkDone :: forall e. DecisionDisplays -> Eff (console :: CONSOLE, dom :: DOM | e) Unit
+sinkDone :: DecisionDisplays -> Effect Unit
 sinkDone els = do
   log "done"
   J.hide els.scenario
 
 sinkLottery ::
-     forall e.
      DecisionDisplays
   -> Ratio String Number
-  -> Eff (console :: CONSOLE, dom :: DOM | e) Unit
+  -> Effect Unit
 sinkLottery els lottery = do
   log $ show lottery
   J.setText (Ratio.base lottery) els.firstGood
@@ -146,11 +140,10 @@ sinkLottery els lottery = do
            | otherwise = val
 
 sinkFunction ::
-     forall e.
      VisualizationDisplays
   -> Ref (Maybe Vega.View)
   -> UtilityFn String Number
-  -> Eff (console :: CONSOLE, dom :: DOM, ref :: REF | e) Unit
+  -> Effect Unit
 sinkFunction els ref fn = do
   log $ show fn
   case (\best' -> Tuple best' <$> Map.lookup best' (byGood fn)) =<< best fn of
@@ -158,7 +151,7 @@ sinkFunction els ref fn = do
     Just (Tuple best' ratios) -> do
       let intervals :: forall f. Unfoldable f => Functor f => f ChartInterval
           intervals = toChartInterval best' <$> Set.toUnfoldable ratios
-      maybe (createViewWithData best' intervals) (flip changeData intervals) =<< readRef ref
+      maybe (createViewWithData best' intervals) (flip changeData intervals) =<< Ref.read ref
   where
     createViewWithData best' intervals = do
       J.displayOne els.caption
@@ -166,19 +159,19 @@ sinkFunction els ref fn = do
       id <- unsafeFromForeign <$> J.getProp "id" els.functionVisualization
       Vega.embed
         ("#" <> id)
-        (Argo.fromObject $ StrMap.union (chartSpec width best') (chartData intervals))
+        (Argo.fromObject $ Object.union (chartSpec width best') (chartData intervals))
         (Argo.fromObject chartOpts)
-        (writeRef ref <<< Just)
+        (flip Ref.write ref <<< Just)
 
     changeData view intervals =
       Vega.changeData
             "main"
-            (Both {remove: Vega.ByPredicate $ const true} {insert: encodeAsObject <$> intervals })
+            (Both {remove: Vega.ByPredicate $ const true} {insert: extractRecord <<< encodeAsObject <$> intervals })
             view
     clear = do
       J.hideOne els.caption
       J.clearOne els.functionVisualization
-      writeRef ref Nothing
+      flip Ref.write ref Nothing
     encodeAsObject = unsafeFromJustBecause "Static object" <<< Argo.toObject <<< Argo.encodeJson
     toChartInterval best'
       r@(MkRatio

@@ -2,40 +2,52 @@ module Chart where
 
 import Prelude
 
-import Data.Argonaut.Core (JObject, fromArray, fromNumber, fromObject, fromString, jsonFalse) as Argo
+import Data.Array as Array
+import Data.Argonaut.Core (Json)
+import Data.Argonaut.Core (fromArray, fromNumber, fromObject, fromString, jsonFalse, toArray, toObject) as Argo
 import Data.Argonaut.Encode (class EncodeJson, encodeJson) as Argo
-import Data.Argonaut.Generic.Aeson (encodeJson)
-import Data.Generic (class Generic, gShow)
+import Data.Argonaut.Encode.Generic.Rep (genericEncodeJson)
+import Data.Generic.Rep (class Generic)
+import Data.Generic.Rep.Show (genericShow)
 import Data.List (List)
-import Data.StrMap as StrMap
+import Data.Maybe (fromJust)
 import Data.Tuple.Nested ((/\))
 import Economics.Utility.VNM (smallest)
+import Foreign.Object (Object)
+import Foreign.Object as Object
+import Partial.Unsafe (unsafePartialBecause)
 
-chartOpts :: Argo.JObject
+chartOpts :: Object Json
 chartOpts =
-  StrMap.fromFoldable ["renderer" /\ Argo.fromString "svg", "actions" /\ Argo.jsonFalse]
+  Object.fromFoldable ["renderer" /\ Argo.fromString "svg", "actions" /\ Argo.jsonFalse]
 
 newtype ChartInterval = MkChartInterval { good :: String, lower :: Number, upper :: Number }
-derive instance genericChartInterval :: Generic ChartInterval
+derive instance genericChartInterval :: Generic ChartInterval _
 instance encodeChartInterval :: Argo.EncodeJson ChartInterval where
-  encodeJson = encodeJson
+  encodeJson = genericEncodeJson
 instance showChartInterval :: Show ChartInterval where
-  show = gShow
+  show = genericShow
 
-chartData :: List ChartInterval -> Argo.JObject
+extractRecord :: Object Json -> Object Json
+extractRecord obj =
+  unsafePartialBecause "Static format" $ fromJust $
+    Argo.toObject <=< Array.head <=< Argo.toArray <=< Object.lookup "values" $ obj
+
+chartData :: List ChartInterval -> Object Json
 chartData intervals =
-  StrMap.fromFoldable
-    [ "datasets" /\ (obj ["main" /\ Argo.encodeJson intervals])
+  Object.fromFoldable
+    [ "datasets" /\ (obj ["main" /\ Argo.encodeJson (intervalToJson <$> intervals)])
     , "data" /\ (obj ["name" /\ str "main"])
     ]
   where
-    obj = Argo.fromObject <<< StrMap.fromFoldable
+    intervalToJson x = unsafePartialBecause "Static format" $ extractRecord <<< fromJust <<< Argo.toObject <<< Argo.encodeJson $ x
+    obj = Argo.fromObject <<< Object.fromFoldable
     str = Argo.fromString
 
-chartSpec :: Number -> String -> Argo.JObject
+chartSpec :: Number -> String -> Object Json
 chartSpec width good =
-  StrMap.fromFoldable
-    [ "$schema" /\ str "https://vega.github.io/schema/vega-lite/v2.json"
+  Object.fromFoldable
+    [ "$schema" /\ str "https://vega.github.io/schema/vega-lite/v3.json"
     , "width" /\ num (width - 100.0)
     , "height" /\ num (width * 0.4)
     , "layer" /\
@@ -52,13 +64,13 @@ chartSpec width good =
         ]
     ]
   where
-    obj = Argo.fromObject <<< StrMap.fromFoldable
+    obj = Argo.fromObject <<< Object.fromFoldable
     arr = Argo.fromArray
     str = Argo.fromString
     num = Argo.fromNumber
-    tickEncoding field = StrMap.fromFoldable [y, "x" /\ x field]
+    tickEncoding field = Object.fromFoldable [y, "x" /\ x field]
     y = "y" /\ obj ["field" /\ str "good", "type" /\ str "ordinal"]
-    ruleEncoding = StrMap.fromFoldable [y, "x" /\ x "lower", "x2" /\ x "upper"]
+    ruleEncoding = Object.fromFoldable [y, "x" /\ x "lower", "x2" /\ x "upper"]
     x field =
       obj
         [ "field" /\ str field
