@@ -9,10 +9,10 @@ import plot from 'libs/plot'
 import mcmc from 'libs/mcmc'
 
 const plotOptions = {
-  font: {size: 8},
+  font: { size: 8 },
   shadowSize: 0,
-  yaxis: {tickLength: 5},
-  xaxis: {tickLength: 5},
+  yaxis: { tickLength: 5 },
+  xaxis: { tickLength: 5 },
   legend: {
     backgroundColor: 'rgba(0, 0, 0, 0)',
     color: colors.bodyText
@@ -42,9 +42,9 @@ const plotMcmcHist = (jq, paramData, conf, preds = []) => {
 
   const lims = ([min, max]) => {
     if (conf.log === true) {
-      return {min: min / 2, max: max * 2}
+      return { min: min / 2, max: max * 2 }
     } else {
-      return {min, max}
+      return { min, max }
     }
   }
   if (typeof conf.xlims === 'object' && conf.xlims !== null) {
@@ -89,7 +89,7 @@ const plotMcmcHist = (jq, paramData, conf, preds = []) => {
       data: [[conf.compValue, 0], [conf.compValue, Infinity]],
       label: '' + (compPerc[0] * 100).toPrecision(3) + '% < ' +
         conf.compValue + ' < ' + (compPerc[1] * 100).toPrecision(3) + '%',
-      lines: {lineWidth: 2},
+      lines: { lineWidth: 2 },
       color: 2
     })
   }
@@ -139,7 +139,7 @@ const plotMcmcHist = (jq, paramData, conf, preds = []) => {
   }
   if (typeof paramData.length !== 'undefined' && paramData.length !== 0) {
     const mean = jStat.mean(paramData)
-    data.push({data: [[mean, 0]],
+    data.push({ data: [[mean, 0]],
       label: 'Mean: ' + mean.toPrecision(3),
       points: { show: true },
       color: 4
@@ -157,7 +157,7 @@ const best = ds => {
     plotMcmcHist(
       $('#mean > div'),
       plot.twoDArrayCol(chain, 2),
-      {di: 'BI', comp: 0, xlims: [-1, 1]}
+      { di: 'BI', comp: 0, xlims: [-1, 1] }
     )
     progress(0.95)
 
@@ -202,12 +202,12 @@ const freq = ds => {
   }
   const data = [{
     data: cis,
-    lines: {show: true},
+    lines: { show: true },
     color: 1
   }, {
     data: [[mean, 0]],
     label: 'Mean: ' + mean.toPrecision(3),
-    points: {show: true},
+    points: { show: true },
     color: 4
   }];
   [0.95, 0.99].forEach(conf => {
@@ -216,7 +216,7 @@ const freq = ds => {
       data: [[lb, y], [ub, y]],
       label: conf.toPrecision(2).slice(2) + '% CI (' +
         lb.toPrecision(3) + ', ' + ub.toPrecision(3) + ')',
-      lines: {lineWidth: 5},
+      lines: { lineWidth: 5 },
       color: 3
     })
   })
@@ -275,9 +275,9 @@ const inputGraph = pred => {
   const ys = getData()
   if (typeof ys === 'undefined') { return }
   const ylims = plot.yHistLims(ys)
-  plotMcmcHist($('#preview1 > div'), ys[0], {xlims: [0, 1], ylims})
-  plotMcmcHist($('#preview2 > div'), ys[1], {xlims: [0, 1], ylims})
-  plotMcmcHist($('#diff > div'), ys[2], {xlims: [-1, 1]}, pred)
+  plotMcmcHist($('#preview1 > div'), ys[0], { xlims: [0, 1], ylims })
+  plotMcmcHist($('#preview2 > div'), ys[1], { xlims: [0, 1], ylims })
+  plotMcmcHist($('#diff > div'), ys[2], { xlims: [-1, 1] }, pred)
 }
 
 $(() => {

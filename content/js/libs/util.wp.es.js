@@ -2,8 +2,8 @@
 /* eslint no-undef: "off" */
 
 import $ from 'jquery'
-import {create, env} from 'sanctuary'
-const S = create({checkTypes: false, env})
+import { create, env } from 'sanctuary'
+const S = create({ checkTypes: false, env })
 
 // For when we know that a thing is provably not null but it's not apparent to flow
 const claimNotNull = <A>(a: ?A): A => (a: any)

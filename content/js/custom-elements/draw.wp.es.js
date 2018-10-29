@@ -5,7 +5,7 @@ import $ from 'jquery'
 import * as d3 from 'd3'
 import kernel from 'kernel-smooth'
 import { create, env } from 'sanctuary'
-const S = create({checkTypes: false, env})
+const S = create({ checkTypes: false, env })
 
 export type Box = {
   width: number,

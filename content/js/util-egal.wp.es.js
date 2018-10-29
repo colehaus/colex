@@ -14,7 +14,7 @@ import { documentReadyPromise } from 'libs/util'
 import type { Box } from 'custom-elements/draw'
 import { setHandlers } from 'custom-elements/draw'
 
-const S = create({checkTypes: false, env})
+const S = create({ checkTypes: false, env })
 
 const q = 'quantitative'
 const schema = 'https://vega.github.io/schema/vega-lite/v3.json'

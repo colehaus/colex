@@ -8,7 +8,7 @@ import { create, env } from 'sanctuary'
 
 import * as shapesImport from 'libs/shapes'
 import { uniquify, documentReadyPromise } from 'libs/util'
-const S = create({checkTypes: false, env})
+const S = create({ checkTypes: false, env })
 
 type Shape = 'circle' | 'triangle' | 'diamond' | 'square' | 'pentagon' | 'hexagon'
 type Node<Ty: string> = { label: string, type: Ty, id: string }
@@ -226,7 +226,7 @@ const mkLegend = <NTy: string, LTy: string>(id: string, svg: SelectWithoutData, 
     .attr('transform', (_, i: number) => 'translate(0, ' + i * 30 + ')')
 
   legendLink.append('path')
-    .attr('d', linkArc({source: {x: -RADIUS, y: RADIUS}, target: {x: RADIUS, y: -RADIUS}}))
+    .attr('d', linkArc({ source: { x: -RADIUS, y: RADIUS }, target: { x: RADIUS, y: -RADIUS } }))
     .attr('class', d => d.type)
     .attr('stroke', d => `url(#${id}-gradient-${d.type}`)
     .classed('link', true)

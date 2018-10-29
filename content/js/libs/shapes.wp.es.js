@@ -1,8 +1,8 @@
 // @flow
 
-import {create, env} from 'sanctuary'
+import { create, env } from 'sanctuary'
 
-const S = create({checkTypes: false, env})
+const S = create({ checkTypes: false, env })
 
 const toSvgPolygon =
   (angles: Array<number>) =>

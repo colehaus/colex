@@ -2,14 +2,14 @@
 /* eslint no-undef: "off" */
 
 import $ from 'jquery'
-import {create, env} from 'sanctuary'
+import { create, env } from 'sanctuary'
 import { interpolateNumber } from 'd3'
 
 import menu from 'custom-elements/menu'
 import sidenote from 'custom-elements/sidenote'
 import { makeAnimationPromise, documentReadyPromise } from 'libs/util'
 
-const S = create({checkTypes: false, env})
+const S = create({ checkTypes: false, env })
 
 type Event
   = { tag: 'INVISIBLEPARENT', from: JQuery, to: JQuery }
@@ -110,9 +110,9 @@ documentReadyPromise.then(() => {
   })
 
   S.map(el =>
-    $(el).click(({pageY, pageX, target}) => {
+    $(el).click(({ pageY, pageX, target }) => {
       menu.getMenu(fixTarget(target))
-        .offset({top: pageY, left: pageX})
+        .offset({ top: pageY, left: pageX })
         .children('ul.menu').children()
         .off().click(choose)
       return false

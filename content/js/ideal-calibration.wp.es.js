@@ -7,8 +7,8 @@ $(() => {
   const plotOpts = {
     grid: { show: false },
     colors: [colors.value[3], colors.value[1]],
-    legend: {show: false},
-    bars: {show: true}
+    legend: { show: false },
+    bars: { show: true }
   }
   $.plot($('#in-upper-spark'),
     [ { label: 'current', data: [[5, 1]] },

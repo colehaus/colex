@@ -2,8 +2,8 @@
 /* eslint no-undef: "off" */
 
 import $ from 'jquery'
-import {create, env} from 'sanctuary'
-const S = create({checkTypes: false, env})
+import { create, env } from 'sanctuary'
+const S = create({ checkTypes: false, env })
 
 const getReferrer = (el: JQuery): ?JQuery =>
   S.pipe([
@@ -18,17 +18,17 @@ const fixNotes = () => {
   S.reduce(
     prevBot => _el => {
       const el = $(_el)
-      el.offset((_1, {top, left}) =>
+      el.offset((_1, { top, left }) =>
         S.pipe([
           S.toMaybe,
           S.maybe_(() => {
             prevBot = top + el.outerHeight(true)
-            return {top, left}
+            return { top, left }
           })(
             ref => {
               const top = S.max(ref.prev().offset().top)(prevBot)
               prevBot = top + el.outerHeight(true)
-              return {top, left}
+              return { top, left }
             }
           )
         ])(
@@ -62,7 +62,7 @@ const setNotes = () => {
 
   $('.footnotes').hide()
   $('details').each((_, el) => {
-    observer.observe(el, {attributes: true})
+    observer.observe(el, { attributes: true })
   })
   $('.sidenote').not('#warnings').remove()
   $('.footnotes > ol > li').each((_, el) => {
@@ -99,4 +99,4 @@ $(() => {
   $(window).resize(addOrRemoveNotes)
 })
 
-export default {setNotes, fixNotes}
+export default { setNotes, fixNotes }

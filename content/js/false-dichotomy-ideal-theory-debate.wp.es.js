@@ -7,12 +7,12 @@ $(() => {
   const plotOpts = {
     grid: { show: false },
     colors: [colors.value[3], colors.value[1]],
-    legend: {show: false},
-    lines: {show: true},
-    yaxis: {min: -1}
+    legend: { show: false },
+    lines: { show: true },
+    yaxis: { min: -1 }
   }
   $.plot($('#reliability'),
-    [{data: [
+    [{ data: [
       [1, 10],
       [2, 10],
       [3, 9],
@@ -23,6 +23,6 @@ $(() => {
       [8, 1],
       [9, 0],
       [10, 0]
-    ]}
+    ] }
     ], plotOpts)
 })

@@ -5,7 +5,7 @@ var mkGraphHtml = (spec, tooltipOpts) => {
   spec.width = 600
   spec.height = 400
   var specString = JSON.stringify(spec)
-  var randomId = 'graph-' + crypto.createHash('sha256').update(specString).digest('hex').slice(0,7)
+  var randomId = 'graph-' + crypto.createHash('sha256').update(specString).digest('hex').slice(0, 7)
 
   var options = { renderer: 'svg' }
   return (`
@@ -28,7 +28,7 @@ var mkGraphHtml = (spec, tooltipOpts) => {
 
 var mkRange = ([low, high], stepSize) => {
   var numSteps = ((high - low) / stepSize) + 1
-  return Array.from({length: numSteps}, (_, i) => i * stepSize + low)
+  return Array.from({ length: numSteps }, (_, i) => i * stepSize + low)
 }
 
 module.exports = { mkGraphHtml, mkRange }

@@ -4,35 +4,35 @@
 // Doesn't currently handle nested swaps
 
 import $ from 'jquery'
-import {create, env} from 'sanctuary'
+import { create, env } from 'sanctuary'
 
 import sidenote from 'custom-elements/sidenote'
 import { makeAnimationPromise } from 'libs/util'
 import { circleFromChord, pointOnCircle } from 'libs/geometry'
 
-const S = create({checkTypes: false, env})
+const S = create({ checkTypes: false, env })
 
 const translations = (top: JQuery, bottom: JQuery) => {
   const bottomToTop = top.offset().top - bottom.offset().top
   const between = bottom.height() - top.height()
   const topToBottom = bottom.offset().top - top.offset().top + between
-  return {bottomToTop, between, topToBottom}
+  return { bottomToTop, between, topToBottom }
 }
 
 const swapTranslate = (topEl: JQuery, bottomEl: JQuery) => (resolve: Function, reject: Function) => {
   const betweenEls = topEl.nextUntil(bottomEl)
-  const {bottomToTop, between, topToBottom} = translations(topEl, bottomEl)
+  const { bottomToTop, between, topToBottom } = translations(topEl, bottomEl)
 
   const angle = Math.PI / 4
   const mkTranslator = (trans: number): (number => string) => {
     const startAngle = trans <= 0 ? Math.PI + angle : angle
-    const {center, radius} = circleFromChord(
+    const { center, radius } = circleFromChord(
       startAngle,
       startAngle - 2 * angle,
-      {x: 0, y: 0},
-      {x: 0, y: trans})
+      { x: 0, y: 0 },
+      { x: 0, y: trans })
     return (prog: number): string => {
-      const {x, y} = pointOnCircle(center, radius,
+      const { x, y } = pointOnCircle(center, radius,
         startAngle - angle * 2 * prog)
       return `translate(${x}px, ${-y}px)`
     }

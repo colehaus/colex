@@ -10,10 +10,10 @@ const circleFromChord = (startRads: number, stopRads: number, startCoord: Coordi
   const radius = distance(startCoord, stopCoord) /
     Math.sin(Math.abs(stopRads - startRads) / 2) / 2
   const center = pointOnCircle(startCoord, radius, startRads + Math.PI)
-  return {radius, center}
+  return { radius, center }
 }
 
-const pointOnCircle = ({x, y}: Coordinate, radius: number, angle: number): Coordinate => ({
+const pointOnCircle = ({ x, y }: Coordinate, radius: number, angle: number): Coordinate => ({
   x: x + Math.cos(angle) * radius,
   y: y + Math.sin(angle) * radius
 })

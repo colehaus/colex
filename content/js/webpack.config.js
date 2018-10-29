@@ -25,7 +25,7 @@ module.exports = {
       {
         enforce: 'pre',
         test: /\.wp.es.js$/,
-        loader: 'standard-loader',
+        loader: 'standard-loader'
       },
       { test: /\.js$|\.es$|\.ws$/, exclude: /node_modules/, loader: 'babel-loader' },
       { test: [
@@ -44,7 +44,7 @@ module.exports = {
     ]
   },
   plugins: [
-    new FlowWebpackPlugin({ flowPath }),
+    new FlowWebpackPlugin({ flowPath })
   ],
   entry: {
     'util-egal': './util-egal.wp.es.js',

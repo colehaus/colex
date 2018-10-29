@@ -2,11 +2,11 @@
 /* eslint no-undef: "off" */
 
 import $ from 'jquery'
-import {create, env} from 'sanctuary'
+import { create, env } from 'sanctuary'
 
 import { documentReadyPromise } from 'libs/util'
 
-const S = create({checkTypes: false, env})
+const S = create({ checkTypes: false, env })
 
 const defaultHandlers = (el: JQuery) => {
   if (el.attr('type') === 'radio') {
