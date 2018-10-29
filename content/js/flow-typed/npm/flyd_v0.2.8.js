@@ -1,5 +1,5 @@
 declare class Stream<A> {
-  $call: ((A) => void) & (() => A);
+  [[call]]: ((A) => void) & (() => A);
 }
 
 declare class Flyd {
