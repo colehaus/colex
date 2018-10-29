@@ -7,20 +7,20 @@
     "output"
   ],
   "dependencies": {
-    "purescript-argonaut-core": "^3.1.1",
-    "purescript-argonaut-codecs": "^3.3.0",
-    "purescript-argonaut-generic-codecs": "^6.0.4",
-    "purescript-behaviors": "^6.3.0",
-    "purescript-integers": "^3.2.0",
-    "purescript-jquery": "^4.3.0",
-    "purescript-jquery-fancy": "^0.3.0",
-    "purescript-numbers": "^5.0.0",
-    "purescript-prelude": "^3.3.0",
-    "purescript-random": "^3.0.0",
-    "purescript-refs": "^3.0.0",
-    "purescript-vega": "^0.0.1"
+    "purescript-argonaut-core": "^4.0.1",
+    "purescript-argonaut-codecs": "^4.0.2",
+    "purescript-argonaut-generic": "^2.0.0",
+    "purescript-behaviors": "^7.0.0",
+    "purescript-integers": "^4.0.0",
+    "purescript-jquery": "^5.0.0",
+    "purescript-jquery-fancy": "^2.0.0",
+    "purescript-numbers": "^6.0.0",
+    "purescript-prelude": "^4.1.0",
+    "purescript-random": "^4.0.0",
+    "purescript-refs": "^4.1.0",
+    "purescript-vega": "^1.0.0"
   },
   "devDependencies": {
-    "purescript-psci-support": "^3.0.0"
+    "purescript-psci-support": "^4.0.0"
   }
 }

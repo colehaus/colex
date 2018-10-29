@@ -5,20 +5,14 @@ import Prelude
 import Chart as Chart
 import Charts.Vega.Primitive as Vega
 import Control.Alt ((<|>))
-import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.Console (CONSOLE, log)
-import Control.Monad.Eff.JQuery (ready) as J
-import Control.Monad.Eff.JQuery.Fancy (setText, width) as J
-import Control.Monad.Eff.Random (RANDOM, randomRange)
-import Control.Monad.Eff.Ref (REF, Ref, newRef, readRef, writeRef)
-import DOM (DOM)
-import Data.Argonaut.Core (fromObject, toObject) as Argo
+import Data.Argonaut.Core (fromObject, stringify, toObject) as Argo
 import Data.Argonaut.Encode (encodeJson) as Argo
 import Data.Either.Nested (either3, in1, in2, in3)
 import Data.Foldable (maximumBy)
 import Data.Foldable as Foldable
 import Data.Function (on)
-import Data.Generic (class Generic, gShow)
+import Data.Generic.Rep (class Generic)
+import Data.Generic.Rep.Show (genericShow)
 import Data.Int (round, toNumber)
 import Data.List.Lazy (List)
 import Data.List.Lazy as List
@@ -26,23 +20,29 @@ import Data.Maybe (Maybe(..), maybe)
 import Data.Newtype (class Newtype, unwrap)
 import Data.Number (fromString)
 import Data.Number.Format (precision, toStringWith)
-import Data.StrMap as StrMap
 import Data.These (These(..))
 import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested (Tuple3, over1, over2, over3, tuple3, (/\))
-import FRP (FRP)
+import Effect (Effect)
+import Effect.Console (log)
+import Effect.Random (randomRange)
+import Effect.Ref (Ref)
+import Effect.Ref as Ref
+import Foreign.Object as Object
 import FRP.Event (Event)
 import FRP.Event as FRP
 import FRP.JQuery (inputChangeEvent)
 import Html as Html
+import JQuery (ready) as J
+import JQuery.Fancy (setText, width) as J
 import Partial.Unsafe (unsafeCrashWith)
 
-main :: forall e. Eff (console :: CONSOLE, dom :: DOM, frp :: FRP, random :: RANDOM, ref :: REF | e) Unit
+main :: Effect Unit
 main = do
   J.ready do
     elements <- Html.collectElements
     inputs <- inputsEvents elements.inputs
-    (\r -> void $ FRP.subscribe inputs (sink elements r)) =<< newRef Nothing
+    (\r -> void $ FRP.subscribe inputs (sink elements r)) =<< Ref.new Nothing
     pure unit
 
 type Inputs =
@@ -52,11 +52,10 @@ type Inputs =
   }
 
 sink ::
-     forall e.
      Html.Elements
   -> Ref (Maybe Vega.View)
   -> Maybe Inputs
-  -> Eff (console :: CONSOLE, dom :: DOM, frp :: FRP, random :: RANDOM, ref :: REF | e) Unit
+  -> Effect Unit
 sink els ref = maybe (log "Nothing") (outputActions <=< randomTrials)
   where
     outputActions trials = do
@@ -65,20 +64,21 @@ sink els ref = maybe (log "Nothing") (outputActions <=< randomTrials)
       maybe
         (createViewWithData <<< List.toUnfoldable $ trials)
         (flip changeData (List.toUnfoldable trials)) =<<
-        readRef ref
+        Ref.read ref
     changeData view trials =
       Vega.changeData
         "main"
-        (Both {remove: Vega.ByPredicate $ const true} {insert: encodeAsObject <<< mkTrial <$> trials})
+        (Both {remove: Vega.ByPredicate $ const true} {insert: Chart.extractRecord <<< encodeAsObject <<< mkTrial <$> trials})
         view
     encodeAsObject = unsafeFromJustBecause "Static object" <<< Argo.toObject <<< Argo.encodeJson
     createViewWithData trials = do
       width <- J.width els.charts.combinedChart
+      log <<< Argo.stringify <<< Argo.fromObject $ Object.union (Chart.mkSpec width) (Chart.mkData (mkTrial <$> trials))
       Vega.embed
         "#combined-chart"
-        (Argo.fromObject $ StrMap.union (Chart.mkSpec width) (Chart.mkData (mkTrial <$> trials)))
+        (Argo.fromObject $ Object.union (Chart.mkSpec width) (Chart.mkData (mkTrial <$> trials)))
         (Argo.fromObject Chart.opts)
-        (writeRef ref <<< Just)
+        (flip Ref.write ref <<< Just)
     mkTrial contestants =
       Chart.MkTrial
         { deterministic
@@ -116,7 +116,7 @@ defaultDeterministicMax = 1.0
 defaultNumContestants :: Int
 defaultNumContestants = 5
 
-inputsEvents :: forall e. Html.Inputs -> Eff (dom :: DOM, frp :: FRP | e) (Event (Maybe Inputs))
+inputsEvents :: Html.Inputs -> Effect (Event (Maybe Inputs))
 inputsEvents els = do
   mStochasticMax <- (map fromString) <$> inputChangeEvent els.stochasticMax
   mDeterministicMax <- (map fromString) <$> inputChangeEvent els.deterministicMax
@@ -139,10 +139,10 @@ inputsEvents els = do
 
 newtype Contestant = MkContestant { stochastic :: Number, deterministic :: Number }
 derive instance eqContestant :: Eq Contestant
-derive instance genericContestant :: Generic Contestant
+derive instance genericContestant :: Generic Contestant _
 derive instance newtypeContestant :: Newtype Contestant _
 instance showContestant :: Show Contestant where
-  show = gShow
+  show = genericShow
 
 numTrials :: Int
 numTrials = 1000
@@ -160,16 +160,16 @@ probMax trials =
   where
     toTuple contestant = Tuple contestant.stochastic contestant.deterministic
 
-randomTrials :: forall e. Inputs -> Eff (random :: RANDOM | e) (List (List Contestant))
+randomTrials :: Inputs -> Effect (List (List Contestant))
 randomTrials inputs = List.replicateM numTrials (randomContestants inputs)
 
-randomContestant :: forall e. Inputs -> Eff (random :: RANDOM | e) Contestant
+randomContestant :: Inputs -> Effect Contestant
 randomContestant inputs = do
   stochastic <- randomRange 0.0 inputs.stochasticMax
   deterministic <- randomRange 0.0 inputs.deterministicMax
   pure $ MkContestant { stochastic, deterministic }
 
-randomContestants :: forall e. Inputs -> Eff (random :: RANDOM | e) (List Contestant)
+randomContestants :: Inputs -> Effect (List Contestant)
 randomContestants inputs = List.replicateM inputs.numContestants (randomContestant inputs)
 
 maxDeterministic :: List Contestant -> Contestant

@@ -2,11 +2,10 @@ module Html where
 
 import Prelude
 
-import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.JQuery.Fancy (JQuery, One)
-import Control.Monad.Eff.JQuery.Fancy as J
-import DOM (DOM)
 import Data.Maybe (Maybe(..))
+import Effect (Effect)
+import JQuery.Fancy (JQuery, One)
+import JQuery.Fancy as J
 import Partial.Unsafe (unsafePartialBecause)
 
 type Elements =
@@ -30,7 +29,7 @@ type Outputs =
   , meanStochastic :: JQuery (One "span")
   }
 
-collectInputs :: forall e. Eff (dom :: DOM | e) Inputs
+collectInputs :: Effect Inputs
 collectInputs = do
   unsafePartialBecause "We require this element structure to function" do
     Just stochasticMax <- J.selectOne "#stochastic-max"
@@ -38,20 +37,20 @@ collectInputs = do
     Just numContestants <- J.selectOne "#num-contestants"
     pure { stochasticMax, deterministicMax, numContestants }
 
-collectCharts :: forall e. Eff (dom :: DOM | e) Charts
+collectCharts :: Effect Charts
 collectCharts = do
   unsafePartialBecause "We require this element structure to function" do
     Just combinedChart <- J.selectOne "#combined-chart"
     pure { combinedChart }
 
-collectOutputs :: forall e. Eff (dom :: DOM | e) Outputs
+collectOutputs :: Effect Outputs
 collectOutputs =
   unsafePartialBecause "We require this element structure to function" do
     Just probMax <- J.selectOne "#prob-max"
     Just meanStochastic <- J.selectOne "#mean-stochastic"
     pure { probMax, meanStochastic }
 
-collectElements :: forall e. Eff (dom :: DOM | e) Elements
+collectElements :: Effect Elements
 collectElements = do
   inputs <- collectInputs
   charts <- collectCharts
