@@ -1,28 +1,28 @@
 module Main where
 
-import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.Exception (EXCEPTION, throw)
-import Control.Monad.Eff.JQuery as J
+import Prelude
+
 import Control.Monad.Except.Trans (runExceptT)
 import Data.Array as A
 import Data.Either (Either(..), either)
 import Data.Foldable as F
-import Data.Foreign (readString)
 import Data.Maybe (fromJust)
 import Data.Newtype (unwrap)
 import Data.String as ST
 import Data.Tuple (Tuple, fst, snd)
-import DOM (DOM)
-import Text.Parsing.Parser (ParseError, ParserT, runParserT)
+import Effect (Effect)
+import Effect.Exception (throw)
+import Foreign as Foreign
+import JQuery as J
 import Partial.Unsafe (unsafePartial)
-import Prelude
+import Text.Parsing.Parser (ParseError, ParserT, runParserT)
 
 import Network (netScores, comboProb)
 import Network.Parser (networkP)
 import Network.Types (PmfError, Variable(..))
 import Math.Probability.Information (Entropy (..))
 
-header :: forall eff. Array Variable -> Eff (dom :: DOM | eff) J.JQuery
+header :: Array Variable -> Effect J.JQuery
 header vs = do
   head <- J.create "<thead>"
   row <- J.create "<tr>"
@@ -36,22 +36,21 @@ header vs = do
   row `J.append` head
   pure row
 
-body :: forall eff. Array Entropy -> Eff (dom :: DOM | eff) J.JQuery
+body :: Array Entropy -> Effect J.JQuery
 body ps = do
   body' <- J.create "<tbody>"
   row <- J.create "<tr>"
   label <- J.create "<td>"
   "Score" `J.appendText` label
   label `J.append` row
-  F.for_ ps (\(Entropy e) -> do
+  F.for_ ps (\(MkEntropy e) -> do
                 cell <- J.create "<td>"
                 ST.take 6 (show e) `J.appendText` cell
                 cell `J.append` row)
   row `J.append` body'
   pure body'
 
-table :: forall eff.
-         Array (Tuple Variable Entropy) -> Eff (dom :: DOM | eff) J.JQuery
+table :: Array (Tuple Variable Entropy) -> Effect J.JQuery
 table ss = do
   t <- J.create "<table>"
   let ss' = A.unzip ss
@@ -66,10 +65,10 @@ runParserT' :: forall a. String -> ParserT String (Either PmfError) a ->
                Either PmfError (Either ParseError a)
 runParserT' = runParserT
 
-process :: forall eff. Eff (dom :: DOM, exception :: EXCEPTION | eff) Unit
+process :: Effect Unit
 process = do
   input <- J.select ".net textarea"
-  s <- either (throw <<< show) pure =<< unwrap <<< runExceptT <<< readString <$> J.getValue input
+  s <- either (throw <<< show) pure =<< unwrap <<< runExceptT <<< Foreign.readString <$> J.getValue input
   let n = runParserT' s networkP
   output <- J.select ".net output"
   J.clear output
@@ -79,7 +78,7 @@ process = do
       Left e -> show e `J.appendText` output
       Right n' -> table (netScores (\n'' -> unsafePartial $ fromJust <<< comboProb n'') n') >>= flip J.append output
 
-main :: Eff (dom :: DOM, exception :: EXCEPTION) Unit
+main :: Effect Unit
 main = J.ready $ do
   button <- J.select ".net > button"
   process

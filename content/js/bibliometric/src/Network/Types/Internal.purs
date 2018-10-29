@@ -9,11 +9,14 @@ import Data.Traversable as T
 import Partial.Unsafe (unsafePartial)
 import Prelude
 
-import Math.Probability (Dist)
+import Math.Probability.Prob.Number (Prob)
+import Math.Probability.Dist (Dist)
+
+type Dist' = Dist Prob
 
 data Space a b = Space a (Array b)
-data CondPMF a b c d = CondPMF a c (M.Map d (Dist b))
-data CondPMFN b c d = CondPMFN c (M.Map d (Dist b))
+data CondPMF a b c d = CondPMF a c (M.Map d (Dist' b))
+data CondPMFN b c d = CondPMFN c (M.Map d (Dist' b))
 data Network a b c d = Network (M.Map a (CondPMFN b c d)) (Array a)
 newtype PmfError = PmfError String
 
@@ -54,7 +57,7 @@ instance ordSpace :: (Ord a, Ord b) => Ord (Space a b) where
 instance showSpace :: (Show a, Show b) => Show (Space a b) where
   show (Space v ps) = "Space (" <> show v <> ") (" <> show ps <> ")"
 
-instance eqCond :: (Eq a, Eq b, Eq c, Eq d) => Eq (CondPMF a b c d) where
+instance eqCond :: (Eq a, Ord b, Eq c, Eq d) => Eq (CondPMF a b c d) where
   eq (CondPMF sa vsa ma) (CondPMF sb vsb mb) =
     sa == sb && vsa == vsb && ma == mb
 instance ordCond :: (Ord a, Ord b, Ord c, Ord d) => Ord (CondPMF a b c d) where
@@ -65,12 +68,12 @@ instance showCond :: (Show a, Show b, Show c, Show d) =>
   show (CondPMF s vs m) =
     "CondPMF (" <> show s <> ") (" <> show vs <> ") (" <> show m <> ")"
 
-instance eqCondN :: (Eq b, Eq c, Eq d) => Eq (CondPMFN b c d) where
+instance eqCondN :: (Ord b, Eq c, Eq d) => Eq (CondPMFN b c d) where
   eq (CondPMFN vsa ma) (CondPMFN vsb mb) = vsa == vsb && ma == mb
 instance ordCondN :: (Ord b, Ord c, Ord d) => Ord (CondPMFN b c d) where
   compare (CondPMFN vsa ma) (CondPMFN vsb mb) = compare vsa vsb <> compare ma mb
 
-instance eqNet :: (Eq a, Eq b, Eq c, Eq d) => Eq (Network a b c d) where
+instance eqNet :: (Eq a, Ord b, Eq c, Eq d) => Eq (Network a b c d) where
   eq (Network a _) (Network b _) = a == b
 instance ordNet :: (Ord a, Ord b, Ord c, Ord d) => Ord (Network a b c d) where
   compare (Network a _) (Network b _) = compare a b

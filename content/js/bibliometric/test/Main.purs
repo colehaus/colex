@@ -1,14 +1,16 @@
 module Test.Main where
 
-import qualified Data.Array as A
+import Prelude
+
+import Data.Array as Array
 import Data.Either
-import Data.Either.Unsafe
-import qualified Data.Foldable as F
-import qualified Data.Map as M
-import Data.Maybe.Unsafe
-import qualified Data.Set as S
+import Data.Foldable as F
+import Data.Map as Map
+import Data.Maybe (fromJust)
+import Data.Set as Set
 import Data.Tuple
-import Debug.Trace
+import Effect.Console as Console
+import Partial.Unsafe (unsafePartialBecause)
 import Text.Parsing.Parser (runParserT, ParseError())
 
 import Network
@@ -16,7 +18,6 @@ import Network.Parser
 import Network.Types
 import Math.Probability
 import Math.Probability.Information
-import Math.Probability.Internal ((~~))
 
 main = do
   example firstStudy
@@ -24,14 +25,14 @@ main = do
   example twoStudies
   example fourStudies
 
-example = print <<< netScores (\n -> fromJust <<< comboProb n) <<< parse
+example x = unsafePartialBecause "Test1" $ Console.log <<< show <<< netScores (\n -> fromJust <<< comboProb n) <<< parse $ x
 
-parse :: String -> Network Variable State [Variable] [State]
-parse s = fromRight <<< fromRight $ e where
+parse :: String -> Network Variable State (Array Variable) (Array State)
+parse s = unsafePartialBecause "Test2" $ fromRight <<< fromRight $ e where
   -- Type-checking aid
   e = runParserT s networkP :: Either PmfError
                                (Either ParseError
-                                (Network Variable State [Variable] [State]))
+                                (Network Variable State (Array Variable) (Array State)))
 
 
 firstStudy = """

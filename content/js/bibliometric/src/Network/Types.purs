@@ -1,22 +1,26 @@
-module Network.Types where
+module Network.Types (module Network.Types, module ForReExport) where
 
 import Control.Monad.Error.Class (class MonadError)
-import Data.Array as A
+import Data.Array as Array
 import Data.Foldable as F
-import Data.List as L
-import Data.Map as M
+import Data.List (List)
+import Data.List as List
+import Data.Map (Map)
+import Data.Map as Map
 import Data.Maybe (Maybe, maybe, fromJust)
+import Data.NonEmpty (fromNonEmpty)
+import Data.NonEmpty.Indexed as Indexed
+import Data.Set as Set
 import Data.Tuple (Tuple(..))
-import Partial.Unsafe (unsafePartial)
+import Partial.Unsafe (unsafePartial, unsafePartialBecause)
 import Prelude
 
-import Math.Probability (Dist, ProbList, extract, runProbList, zipDist)
+import Math.Probability.Dist (Dist)
+import Math.Probability.Dist as Dist
+import Math.Probability.Prob.Number (Prob)
+import Network.Types.Internal (Space, CondPMF, Network, PmfError)
+import Network.Types.Internal (Space, CondPMF, Network, PmfError) as ForReExport
 import Network.Types.Internal as N
-
-type Space = N.Space
-type CondPMF = N.CondPMF
-type Network = N.Network
-type PmfError = N.PmfError
 
 newtype Variable = Variable String
 newtype State = State String
@@ -27,13 +31,17 @@ outcomeVar (Outcome v _) = v
 outcomeState :: Outcome -> State
 outcomeState (Outcome _ s) = s
 
-data PMF a b = PMF a (Dist b)
+type Dist' = Dist Prob
+
+data PMF a b = PMF a (Dist' b)
 pmfVar :: forall a b. PMF a b -> a
 pmfVar (PMF v _) = v
-pmfDist :: forall a b. PMF a b -> Dist b
+pmfDist :: forall a b. PMF a b -> Dist' b
 pmfDist (PMF _ m) = m
-pmfSpace :: forall a b. PMF a b -> Space a b
+pmfSpace :: forall a b. Ord b => PMF a b -> Space a b
 pmfSpace (PMF v d) = N.Space v $ extract d
+  where
+    extract = Set.toUnfoldable <<< fromNonEmpty Set.insert <<< Dist.values
 
 class Spacy a b where
   space :: forall m. MonadError N.PmfError m => Monad m =>
@@ -43,7 +51,7 @@ instance spacyVarState :: Spacy Variable State where
   space v ss = pure $ N.Space v ss
 instance spacyVarsStates :: Spacy (Array Variable) (Array State) where
   space v [] = N.throwPmf $ "No states provided for " <> show v
-  space v ss | A.length ss /= A.length (N.combos ss) =
+  space v ss | (F.length ss :: Int) /= F.length (N.combos ss) =
     N.throwPmf $ "Non-exhaustive list of [State] for " <> show v <> ": " <> show ss
              | otherwise = pure $ N.Space v ss
 
@@ -59,33 +67,44 @@ spaceVar (N.Space v _) = v
 -- As far as I can tell, we can't encode this requirement (in full generality)
 -- with the type class features available
 condPmf :: forall a b c d m.
-           MonadError N.PmfError m => Monad m => Ord d =>
+           MonadError N.PmfError m => Monad m => Ord b => Ord d =>
             Show a => Show b => Show c => Show d =>
-           Space a b -> Space c d -> (Array ProbList) -> m (CondPMF a b c d)
+           Space a b -> Space c d -> Array (Array Prob) -> m (CondPMF a b c d)
 condPmf xs zs ps |
-  A.length (spaceStates zs) /= A.length ps ||
-  let l = A.length $ spaceStates xs in
-  (not $ F.all (\p -> A.length (runProbList p) == l) ps) =
+  F.length (spaceStates zs) /= (F.length ps :: Int) ||
+  let l :: Int
+      l = F.length $ spaceStates xs in
+  (not $ F.all (\p -> F.length p == l) ps) =
     N.throwPmf $ "Probabilities don't have same shape as state space: " <>
                show xs <> "\n" <> show zs <> "\n" <> show ps
                 | otherwise =
-  pure <<< N.CondPMF (spaceVar xs) (spaceVar zs) <<< M.fromFoldable $
-  A.zipWith (\z p -> Tuple z $ zipDist (spaceStates xs) p) (spaceStates zs) ps
+  pure <<< N.CondPMF (spaceVar xs) (spaceVar zs) <<< Map.fromFoldable $
+  Array.zipWith (\z p -> Tuple z $ zipDist (spaceStates xs) p) (spaceStates zs) ps
+  where
+    zipDist keys ps = unsafePartialBecause "Grandfathered" $ Dist.make <<< fromJust <<< nonEmptyMap <<< Map.fromFoldable $ Array.zip keys ps
+    nonEmptyMap m =
+      (\l -> (Tuple l.key l.value) Indexed.:| (l.key `Map.delete` m)) <$> Map.findMin m
+
+
+
 
 condMain :: forall a b c d. CondPMF a b c d -> a
 condMain (N.CondPMF v _ _) = v
-condMainSpace :: forall a b c d. CondPMF a b c d -> Space a b
-condMainSpace (N.CondPMF v _ m) = unsafePartial $ N.Space v <<< extract <<< fromJust <<< L.head $ M.values m
+condMainSpace :: forall a b c d. Ord b => CondPMF a b c d -> Space a b
+condMainSpace (N.CondPMF v _ m) = unsafePartial $ N.Space v <<< extract <<< fromJust <<< List.head $ Map.values m
+  where
+    extract = Set.toUnfoldable <<< fromNonEmpty Set.insert <<< Dist.values
+
 condDeps :: forall a b c d. CondPMF a b c d -> c
 condDeps (N.CondPMF _ v _) = v
 condDepsSpace :: forall a b c d. CondPMF a b c d -> Space c d
-condDepsSpace (N.CondPMF _ v m) = N.Space v <<< A.fromFoldable $ M.keys m
-condMap :: forall a b c d. CondPMF a b c d -> M.Map d (Dist b)
+condDepsSpace (N.CondPMF _ v m) = N.Space v <<< Array.fromFoldable $ Map.keys m
+condMap :: forall a b c d. CondPMF a b c d -> Map d (Dist' b)
 condMap (N.CondPMF _ _ m) = m
 
 -- Transforms to form expected by Probability and Information modules
-functionize :: forall a b c d. Ord d => Partial => CondPMF a b c d -> d -> Dist b
-functionize c d = fromJust $ d `M.lookup` condMap c
+functionize :: forall a b c d. Ord d => Partial => CondPMF a b c d -> d -> Dist' b
+functionize c d = fromJust $ d `Map.lookup` condMap c
 
 -- Actually a DAG
 -- There shouldn't be any dangling dependencies,
@@ -96,30 +115,30 @@ network :: forall a b c d m.
            MonadError N.PmfError m => Monad m => Ord a =>
             Show a => Show b => Show c => Show d =>
            Array (CondPMF a b c d) -> m (Network a b c d)
-network cs | A.null cs = N.throwPmf "No CondPMF when constructing Network"
+network cs | Array.null cs = N.throwPmf "No CondPMF when constructing Network"
            | N.duplicate $ condMain <$> cs =
   N.throwPmf $ "Duplicated variable when constructing Network: " <> show cs
            | otherwise =
-  pure $ N.Network (M.fromFoldable $
+  pure $ N.Network (Map.fromFoldable $
   (\(N.CondPMF x z m) -> Tuple x $ N.CondPMFN z m) <$> cs) (condMain <$> cs)
 
 lookup :: forall a b c d. (Ord a) => a -> Network a b c d -> Maybe (CondPMF a b c d)
-lookup a (N.Network m _) = N.cp a <$> a `M.lookup` m
+lookup a (N.Network m _) = N.cp a <$> a `Map.lookup` m
 
-netVars :: forall a b c d. Network a b c d -> L.List a
-netVars (N.Network m _) = M.keys m
+netVars :: forall a b c d. Network a b c d -> List a
+netVars (N.Network m _) = Set.toUnfoldable <<< Map.keys $ m
 netList :: forall a b c d. Ord a => Network a b c d -> Array (CondPMF a b c d)
 netList = N.netList
 
 condPmfMap :: forall a b c d.
-              (Dist b -> Dist b) -> CondPMF a b c d -> CondPMF a b c d
+              (Dist' b -> Dist' b) -> CondPMF a b c d -> CondPMF a b c d
 condPmfMap f (N.CondPMF a c m) = N.CondPMF a c $ f <$> m
 
 netPmfAlter :: forall a b c d. (Ord a) =>
                (CondPMF a b c d -> CondPMF a b c d) -> a ->
                Network a b c d -> Network a b c d
 netPmfAlter f a n@(N.Network m as) =
-  maybe n (flip N.Network as <<< flip (M.insert a) m <<< N.cpn <<< f) $ a `lookup` n
+  maybe n (flip N.Network as <<< flip (Map.insert a) m <<< N.cpn <<< f) $ a `lookup` n
 
 -- Utility
 
@@ -149,7 +168,7 @@ instance ordOutcome :: Ord Outcome where
 instance showOutcome :: Show Outcome where
   show (Outcome v f) = "Outcome (" <> show v <> ") (" <> show f <> ")"
 
-instance eqPmf :: (Eq a, Eq b) => Eq (PMF a b) where
+instance eqPmf :: (Eq a, Ord b) => Eq (PMF a b) where
   eq (PMF va sa) (PMF vb sb) = va == vb && sa == sb
 instance ordPmf :: (Ord a, Ord b) => Ord (PMF a b) where
   compare (PMF va sa) (PMF vb sb) = compare va vb <> compare sa sb
