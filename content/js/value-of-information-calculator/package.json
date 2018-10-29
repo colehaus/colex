@@ -2,6 +2,6 @@
   "name": "value-of-information-calculator",
   "version": "0.0.1",
   "dependencies": {
-    "js-yaml": "^3.11.0"
+    "js-yaml": "^3.12.0"
   }
 }

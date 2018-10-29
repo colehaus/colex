@@ -2,26 +2,25 @@ module Main where
 
 import Prelude
 
-import Control.Monad.Eff (Eff)
-import Control.Monad.Eff.JQuery (Selector)
-import Control.Monad.Eff.JQuery (display, hide, ready) as J
-import Control.Monad.Eff.JQuery.Fancy (JQuery, One)
-import Control.Monad.Eff.JQuery.Fancy (getText, getValue, on, setText, unsafeSelectOneBecause) as J
-import DOM (DOM)
-import DOM.Event.Types (EventType(..))
-import Data.Argonaut.Generic.Aeson as Generic
+import Data.Argonaut.Decode (decodeJson)
+import Data.Argonaut.Encode (encodeJson)
 import Data.Array as Array
 import Data.Bifunctor (lmap)
 import Data.Either (Either(Left, Right), either)
-import Data.Foreign (unsafeFromForeign)
 import Data.Functor.Tagged (Tagged, tagged, untagged)
 import Data.Newtype (unwrap)
 import Data.Number.Format (fixed, toStringWith)
 import Data.Tuple (Tuple(Tuple), uncurry)
 import Data.Yaml (parseFromYaml, printToYaml)
-import FRP (FRP)
+import Effect (Effect)
+import Effect.Console as Console
+import Foreign (unsafeFromForeign)
 import FRP.Event (Event)
 import FRP.Event (create, fold, subscribe) as FRP
+import JQuery (Selector)
+import JQuery (display, hide, ready) as J
+import JQuery.Fancy (JQuery, One)
+import JQuery.Fancy (getText, getValue, on, setText, unsafeSelectOneBecause) as J
 import Math.Probability.Dist (Dist)
 import Math.Probability.Information.Value (Value)
 import Math.Probability.Information.Value (evMaxDecide, evMaxValue, forget, investigationAndDecisionTreeValue, simpleDecisionTreeValue, valueOfInformation) as VOI
@@ -31,8 +30,9 @@ import Math.Probability.Information.Value.SimpleDecisionTree (SimpleDecisionTree
 import Math.Probability.Information.Value.SimpleDecisionTree as SDT
 import Math.Probability.Information.Value.Utility (unsafeFromRightBecause)
 import Math.Probability.Prob.Number (Prob(..))
+import Web.Event.Event (EventType(..))
 
-import Data (Result(MkResult), unwrapInvestigation, wrapChoice)
+import Data (Result(MkResult), encodeChoiceJson, unwrapInvestigation, wrapChoice, decodeInvestigationJson)
 
 type Elements =
   { forgotten :: JQuery (One "pre")
@@ -44,7 +44,7 @@ type Elements =
 
 type Inputs = { voiText :: Event String, initialVoiText :: String }
 
-collectElements :: forall e. Eff (dom :: DOM | e) Elements
+collectElements :: Effect Elements
 collectElements = do
   forgotten <- sel "#forgotten"
   expectedValue <- sel "#expected-value"
@@ -54,12 +54,12 @@ collectElements = do
   pure { forgotten, expectedValue, forgottenValue, expectedVoi, error }
 
 sel ::
-     forall e tag.
+     forall tag.
      Selector
-  -> Eff (dom :: DOM | e) (JQuery (One tag))
+  -> Effect (JQuery (One tag))
 sel s = J.unsafeSelectOneBecause (s <> " required") s
 
-setup :: forall e. Eff (dom :: DOM, frp :: FRP | e) Inputs
+setup :: Effect Inputs
 setup = do
   voiTextEl <- sel "#voi-text"
   voiText <- textAreaEvent voiTextEl
@@ -67,10 +67,10 @@ setup = do
   pure { voiText, initialVoiText }
 
 sink ::
-     forall e. Elements
+     Elements
   -> Either String Unit
   -> InvestigationAndDecisionTree Prob String String (Result String Number)
-  -> Eff (dom :: DOM | e) Unit
+  -> Effect Unit
 sink el error tree = do
   void $ errorTextEl el.error error
   void $ J.setText (show' <<< untagged <<< voi $ tree) el.expectedVoi
@@ -81,10 +81,11 @@ sink el error tree = do
     show' = toStringWith (fixed 2)
     forgotten = VOI.forget tree
 
-main :: forall e. Eff (dom :: DOM, frp :: FRP | e) Unit
+main :: Effect Unit
 main =
   J.ready do
     inputs <- setup
+    Console.log <<< show $ parse inputs.initialVoiText
     let initialTree = unsafeFromRightBecause "Starting text known good" $ parse inputs.initialVoiText
     elements <- collectElements
     sink elements (Right unit) initialTree
@@ -94,8 +95,10 @@ printSimpleDecisionTree ::
      SimpleDecisionTree Prob String (Result String Number) -> String
 printSimpleDecisionTree =
   printToYaml <<<
-  Generic.encodeJson <<<
+  encodeJson <<< map (encodeChoiceJson (encodeJson <<< un)) <<<
   Array.fromFoldable <<< map wrapChoice <<< SDT.elementary
+  where
+    un (MkProb n) = n
 
 simpleDecisionTreeValue ::
      SimpleDecisionTree Prob String (Result String Number) -> Tagged Value Number
@@ -138,13 +141,13 @@ parse ::
 parse =
   lmap show <<<
   VOI.fromElementary <<<
-  unwrapInvestigation <=< Generic.decodeJson <=< parseFromYaml
+  unwrapInvestigation <=< decodeInvestigationJson (map MkProb <<< decodeJson) <=< parseFromYaml
 
 errorTextEl ::
-     forall a e tag.
+     forall a tag.
      JQuery (One tag)
   -> Either String a
-  -> Eff (dom :: DOM | e) Unit
+  -> Effect Unit
 errorTextEl el =
   either
     (\t -> J.setText t el *> J.display (unwrap el))
@@ -164,19 +167,18 @@ latestSuccess g o evt = FRP.fold f evt (Tuple (Right unit) o)
         Left e -> Tuple (Left e) old
 
 jqueryEvent ::
-     forall a e tag.
+     forall a tag.
      EventType
-  -> (Unit -> Eff (frp :: FRP, dom :: DOM | e) a)
+  -> (Unit -> Effect a)
   -> JQuery (One tag)
-  -> Eff (dom :: DOM , frp :: FRP | e) (Event a)
+  -> Effect (Event a)
 jqueryEvent eventType f el = do
   { event, push } <- FRP.create
   J.on eventType (\_ _ -> push =<< f unit) el
   pure event
 
 textAreaEvent ::
-     forall e.
      JQuery (One "textarea")
-  -> Eff (dom :: DOM , frp :: FRP | e) (Event String)
+  -> Effect (Event String)
 textAreaEvent el =
   jqueryEvent (EventType "input") (\_ -> unsafeFromForeign <$> J.getValue el) el
