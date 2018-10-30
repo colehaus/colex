@@ -3,19 +3,19 @@
 , hakyll ? pkgs.callPackage ../hakyll { inherit pkgs; }} :
   let
     webpackColEx = pkgs.callPackage ./js { inherit pkgs extras; };
-    bibliometric = pkgs.callPackage ./js/bibliometric { inherit pkgs extras; };
-    voi = pkgs.callPackage ./js/value-of-information-calculator { inherit pkgs extras; };
-    vnm = pkgs.callPackage ./js/construct-vnm-utility-function { inherit pkgs extras; };
-    exemplar = pkgs.callPackage ./js/exemplars-curse { inherit pkgs extras; };
+    bibliometric = pkgs.callPackage ./js/bibliometric { inherit extras; };
+    voi = pkgs.callPackage ./js/value-of-information-calculator { inherit extras; };
+    vnm = pkgs.callPackage ./js/construct-vnm-utility-function { inherit extras; };
+    exemplar = pkgs.callPackage ./js/exemplars-curse { inherit extras; };
     mathJaxNodeCli = extras.callNpm {
       inherit pkgs;
       name = "mathjax-node-cli";
-      versionSpec = "^1.0.0";
+      versionSpec = "^1.0.1";
     };
     uglifyJs = extras.callNpm {
       inherit pkgs;
       name = "uglify-js";
-      versionSpec = "^3.3.10";
+      versionSpec = "^3.4.9";
     };
   in
     pkgs.stdenv.mkDerivation rec {
@@ -31,7 +31,6 @@
       LC_ALL = "en_US.UTF-8";
       WEB_HOST = "https://www.col-ex.org";
       MATH_RENDER_METHOD = "FeedlyCompatible";
-      # TODO Remove `rm` once we reorganize source directory
       patchPhase = ''
         mkdir js/dist
         cp ${webpackColEx}/* js/dist

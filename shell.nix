@@ -3,7 +3,7 @@ let
     import ./nix/extras.nix //
     import ./nix/gitignore.nix { inherit (pkgs) lib; };
   pkgs = extras.pinnedPkgs {
-    specFile = ./nix/nixpkgs.json;
+    specFile = ./nix/nixpkgs-shell.json;
     opts = { config = { packageOverrides = import ./nix/package-overrides.nix; }; };
   };
   webpack = pkgs.callPackage ./content/js { inherit pkgs extras; };
