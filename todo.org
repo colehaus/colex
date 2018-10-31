@@ -55,6 +55,7 @@
 * TODO Archive links
 ** TODO http://www.thomaschermack.com/Thomas_Chermack_-_Scenario_Planning/Research_files/Chermack%282008%29EffectsofSPonDM.pdf 404
 ** http://www.econ.brown.edu/1996/pdfs/96-21.pdf 301
+** Webcite
 * DONE Try pngs on RSS
   CLOSED: [2018-04-02 Mon 00:36]
 * DONE Delete latex svgs
