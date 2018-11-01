@@ -6,7 +6,7 @@ tags: links
 
 1. [Stand Still. Stay Silent.](http://www.sssscomic.com/comic.php?page=196)
 
-![Old World Language Families](/images/language-tree.jpg)
+![Old World Language Families](/images/language-tree-resized.jpg)
 
 2. [The Ends of the World](https://www.goodreads.com/book/show/32075449-the-ends-of-the-world)
 
