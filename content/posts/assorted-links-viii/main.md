@@ -1,5 +1,5 @@
 ---
-title: Assorted Links VIII
+title: Assorted links VIII
 date: 2018-10-31
 tags: links
 ---

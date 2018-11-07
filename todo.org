@@ -51,6 +51,7 @@
   CLOSED: [2018-04-04 Wed 10:29]
 * DONE Fix old absolute URLs
   CLOSED: [2018-04-02 Mon 01:59]
+* TODO https://hackage.haskell.org/package/pandoc-filter-graphviz
 * TODO Stretchtext
 * TODO Archive links
 ** TODO http://www.thomaschermack.com/Thomas_Chermack_-_Scenario_Planning/Research_files/Chermack%282008%29EffectsofSPonDM.pdf 404

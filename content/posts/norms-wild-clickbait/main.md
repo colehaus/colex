@@ -53,6 +53,7 @@ Female genital cutting prevalence vs support of the practice among women 15--49
 | Mauritania   |        2007 |       72.2 |    53.4 |
 | Chad         |        2004 |       44.9 |    49.4 |
 | Yemen        |        1997 |       22.6 |      41 |
+</figure>
 
 # On dirty laundry
 
