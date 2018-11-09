@@ -17,8 +17,8 @@ rm -f dist/*
 # Default `NODE_PATH` doesn't work with scoped packages
 for path in ${NODE_PATH//:/ }; do
     if [[ "${path}" = *"node-dependencies-ColEx"* ]]; then
-        rm node_modules
-        ln -s "${path}" node_modules
+        sudo rm -r node_modules
+        cp -r "${path}" node_modules
         NODE_PATH="${path}/@colehaus":$NODE_PATH
         NODE_PATH="${path}/@babel":$NODE_PATH
     fi
