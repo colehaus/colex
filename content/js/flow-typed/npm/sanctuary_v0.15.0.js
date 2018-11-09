@@ -20,8 +20,11 @@ declare module 'sanctuary' {
 
 declare class Maybe<A> {
 }
+declare class Pair<A, B> {
+}
 
 type S = {
+  curry2<A, B, C>(f: (A, B) => C): A => B => C,
   init<A>(as: Array<A>): Maybe<Array<A>>,
   head<A>(as: Array<A>): Maybe<A>,
   tail<A>(as: Array<A>): Maybe<Array<A>>,
@@ -32,12 +35,23 @@ type S = {
   maybe<A, B>(b: B): (A => B) => Maybe<A> => B,
   maybe_<A, B>(b: () => B): (A => B) => Maybe<A> => B,
   toMaybe<A>(a: ?A):  Maybe<A>,
+  fromMaybe_<A>(f: () => A): Maybe<A> => A,
+  fromMaybe<A>(f: A): Maybe<A> => A,
   maybeToNullable<A>(a: Maybe<A>): ?A,
   reduce<A, B>(f: (B => A => B)): B => Array<A> => B,
   joinWith(s: string): Array<string> => string,
   keys<A>(m: { [string]: A }): Array<string>,
   fromPairs<A>(ps: Array<[string, A]>): { [string]: A },
-  range(low: number): number => Array<number>
+  range(low: number): number => Array<number>,
+  find<A>(pred: A => boolean): Array<A> => Maybe<A>,
+  stripPrefix(prefix: string): string => Maybe<string>,
+  trim(s: string): string,
+  at<A>(i: number): Array<A> => Maybe<A>,
+  splitOn(s: string): string => Array<string>,
+  splitOnRegex(s: RegExp): string => Array<string>,
+  zip<A, B>(as: Array<A>): Array<B> => Array<Pair<A, B>>,
+  fst<A, B>(p: Pair<A, B>): A,
+  snd<A, B>(p: Pair<A, B>): B
 } & {
   map<A, B>(f: A => B): Array<A> => Array<B>
 } & {
@@ -48,6 +62,14 @@ type S = {
   pipe<A, B, C, D>([A => B, B => C, C => D]): A => D
 } & {
   pipe<A, B, C, D, E>([A => B, B => C, C => D, D => E]): A => E
+} & {
+  pipe<A, B, C, D, E, F>([A => B, B => C, C => D, D => E, E => F]): A => F
+} & {
+  pipe<A, B, C, D, E, F, G>([A => B, B => C, C => D, D => E, E => F, F => G]): A => G
+} & {
+  pipe<A, B, C, D, E, F, G, H>([A => B, B => C, C => D, D => E, E => F, F => G, G => H]): A => H
+} & {
+  pipe<A, B, C, D, E, F, G, H, I>([A => B, B => C, C => D, D => E, E => F, F => G, G => H, H => I]): A => I
 } & {
   join<A>(a: Array<Array<A>>): Array<A>
 }
