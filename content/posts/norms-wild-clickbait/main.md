@@ -1,6 +1,7 @@
 ---
 title: Clickbait from <i>Norms in the Wild</i>
 date: 2018-10-30
+edited: 2018-11-08
 tags: norms, clickbait
 series: Norms in the Wild
 ---
@@ -27,6 +28,10 @@ For example, Yoder (1995) demonstrated that local Zairian understandings of the 
 
 <blockquote>
 In some such interventions, facilitators will lead groups of people through the heart of open defecation fields, effectively triggering collective feelings of disgust and embarrassment. Later the **facilitators will place feces next to food, and point out how flies will flit back and forth between them**, effectively simulating the disease transmission process. Through this example, food that is left out near feces is linked with feelings of disgust. **The facilitator can also smear her hands with clay or charcoal, wipe them on a leaf (simulating having fecal matter on one’s hands even after wiping them "clean"), and shake hands with members of the community**. The community members will get a little clay or charcoal on their hands, and consequently those who do not adequately wash their hands will be seen as disgusting. [[@bicchieri2016]]{.attribution}
+</blockquote>
+
+<blockquote>
+All the communities where the practice was successfully abandoned collectively decided to **sanction transgressions** and closely monitored adherence to the new behavior. **Children may go around with whistles drawing attention to the defectors, and elders may take long sticks, ready to “slap the wrists” of anyone who violates the new rule**. [[@bicchieri2016]]{.attribution}
 </blockquote>
 
 # On reluctant female genital cutting

@@ -1,0 +1,22 @@
+digraph G {
+  node [shape=box]
+  a [label="Observe a collective\npattern of behavior" shape=ellipse]
+  i [label="Is it socially\nconditional?" shape=diamond]
+  b [label="People prefer to\nfollow it irrespective\nof what others do"]
+  c [label="People prefer to\nfollow it if they have\nsocial expectations"]
+  d [label="Collective custom,\nshared moral rule or\nlegal injunction" shape=ellipse]
+  j [label="What type\nof social\nexpectations?" shape=diamond]
+  e [label="Empirical expectations\nsuffice to motivate\naction"]
+  f [label="Empirical and\nnormative\nexpectations are\nneed to motivate\naction"]
+  g [label="Descriptive norm" shape=ellipse]
+  h [label="Social norm" shape=ellipse]
+  a -> i
+  i -> b
+  i -> c
+  b -> d
+  c -> j
+  j -> e
+  j -> f
+  e -> g
+  f -> h
+}

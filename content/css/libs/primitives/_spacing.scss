@@ -79,9 +79,9 @@
     padding-left: 0.25em;
     padding-right: 0.25em;
 }
-@mixin border-spacing-horizontal-1em {
+@mixin border-spacing-1em-1ex {
     border-collapse: separate;
-    border-spacing: 1em 0;
+    border-spacing: 1em 1ex;
 }
 @mixin right-neg-5em {
     right: -5em;

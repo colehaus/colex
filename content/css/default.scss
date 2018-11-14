@@ -307,7 +307,12 @@ nav a.series {
     transform: translate(-3ex, 4ex) rotate(-90deg);
 }
 table {
-    @include border-spacing-horizontal-1em;
+    @include border-spacing-1em-1ex;
+}
+th, .label-row {
+    @include weight-normal;
+    @include small-caps;
+    @include font-larger;
 }
 // Make subheadings smaller
 thead > tr:nth-of-type(2) {
