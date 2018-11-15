@@ -48,6 +48,12 @@ const parseMatrixToYTranslation = (transformationMatrix: string): number =>
   parseMatrixToNumbers(transformationMatrix)[5]
 
 const uniquify = <A>(as: Array<A>): Array<A> => Array.from((new Set(as)).values())
+const uniquifyValue = <A>(as: Array<A>): Array<A> =>
+  S.pipe([
+    S.map(JSON.stringify),
+    uniquify,
+    S.map(JSON.parse)
+  ])(as)
 
 export {
   claimNotNull,
@@ -56,4 +62,6 @@ export {
   makeSleepPromise,
   parseMatrixToAngle,
   parseMatrixToYTranslation,
-  uniquify }
+  uniquify,
+  uniquifyValue
+}

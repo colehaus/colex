@@ -24,6 +24,9 @@ declare class Pair<A, B> {
 }
 
 type S = {
+  isJust<A>(m: Maybe<A>): boolean,
+  filter<A>(pred: A => boolean): Array<A> => Array<A>,
+  reject<A>(pred: A => boolean): Array<A> => Array<A>,
   curry2<A, B, C>(f: (A, B) => C): A => B => C,
   init<A>(as: Array<A>): Maybe<Array<A>>,
   head<A>(as: Array<A>): Maybe<A>,
@@ -51,7 +54,8 @@ type S = {
   splitOnRegex(s: RegExp): string => Array<string>,
   zip<A, B>(as: Array<A>): Array<B> => Array<Pair<A, B>>,
   fst<A, B>(p: Pair<A, B>): A,
-  snd<A, B>(p: Pair<A, B>): B
+  snd<A, B>(p: Pair<A, B>): B,
+  concat<A>(l: Array<A>): Array<A> => Array<A>
 } & {
   map<A, B>(f: A => B): Array<A> => Array<B>
 } & {

@@ -7,7 +7,7 @@ import asciiStringSplit from 'ascii-string-split'
 import { create, env } from 'sanctuary'
 
 import * as shapesImport from 'libs/shapes'
-import { uniquify, documentReadyPromise } from 'libs/util'
+import { uniquify, uniquifyValue, documentReadyPromise } from 'libs/util'
 const S = create({ checkTypes: false, env })
 
 type Shape = 'circle' | 'triangle' | 'diamond' | 'square' | 'pentagon' | 'hexagon'
@@ -45,12 +45,36 @@ const fetchData = <NTy: string, LTy: string>(dataSrc: string): Promise<[Array<No
     d3.csv(dataSrc + '/link-types.csv')
   ])
 
+const isUndirectedLink = <LTy: string>(links: Array<Link<LTy>>): (Link<LTy> => boolean) => link =>
+  S.pipe([
+    S.find(l => l.target === link.source && l.source === link.target),
+    S.isJust
+  ])(links)
+const toUndirectedLink = <LTy: string>(link: Link<LTy>): Link<LTy> => {
+  return {
+    source: link.source < link.target ? link.source : link.target,
+    target: link.source < link.target ? link.target : link.source,
+    type: link.type
+  }
+}
+// Unnecessarily quadratic but n is small
+const separateDirectedAndUndirected = <LTy: string>(links: Array<Link<LTy>>): [Array<Link<LTy>>, Array<Link<LTy>>] =>
+  [
+    S.reject(isUndirectedLink(links))(links),
+    S.pipe([
+      S.filter(isUndirectedLink(links)),
+      S.map(toUndirectedLink),
+      uniquifyValue
+    ])(links)
+  ]
+
 // Hacky way of telling Flow about d3's property additions
 const forceNodeProps = <T>(t: T): (T & ForceNode) => (t: any)
 const forceLinkProps = <T>(t: T): (T & ForceLink) => (t: any)
 
-const ticked = <A: ForceLink, B: ForceNode>(link: SelectWithData<A>, node: SelectWithData<B>) => () => {
-  link.attr('d', linkArc)
+const ticked = <A: ForceLink, B: ForceNode>(directedLink: SelectWithData<A>, undirectedLink: SelectWithData<A>, node: SelectWithData<B>) => () => {
+  directedLink.attr('d', linkArc)
+  undirectedLink.attr('d', linkArc)
   node.attr('transform', d => `translate(${d.x}, ${d.y})`)
 }
 
@@ -130,6 +154,16 @@ const drawLinks = <Ty: string>(id: string, svg: SelectWithoutData, links: Array<
     .attr('marker-end', d => `url(#${id}-marker-${d.type})`)
     .attr('stroke', d => `url(#${id}-gradient-${d.type})`)
 
+const drawUndirectedLinks = <Ty: string>(id: string, svg: SelectWithoutData, links: Array<Link<Ty>>): SelectWithData<Link<Ty> & ForceLink> =>
+      svg.append('g')
+      .attr('class', 'links')
+      .selectAll('path')
+      .data(S.map(forceLinkProps)(links))
+      .enter().append('path')
+      .attr('class', d => d.type)
+      .classed('link', true)
+      .attr('stroke', d => `url(#${id}-gradient-${d.type})`)
+
 const drawNodes = (svg: SelectWithoutData, nodes: Array<Node<*>>, nodeTypes: Array<NodeType<*>>, simulation: Simulation<Node<*>, Link<*>>): SelectWithData<Node<*> & ForceNode> => {
   const node =
     svg.append('g')
@@ -153,7 +187,9 @@ const drawNodes = (svg: SelectWithoutData, nodes: Array<Node<*>>, nodeTypes: Arr
 }
 
 const mkArgMap = (id: string, dataSrc: string, canvasSelector: string): Promise<Simulation<Node<*>, Link<*>>> => {
-  return fetchData(dataSrc).then(([nodes, links, nodeTypes, linkTypes]) => {
+  return fetchData(dataSrc).then(([nodes, links_, nodeTypes, linkTypes]) => {
+    const [directedLinks, undirectedLinks] = separateDirectedAndUndirected(links_)
+    const links = S.concat(directedLinks)(undirectedLinks)
     const canvas = { width: $(canvasSelector).width(), height: $(canvasSelector).height() }
     const svg = d3.select(canvasSelector).append('svg')
       .attr('id', id)
@@ -162,12 +198,13 @@ const mkArgMap = (id: string, dataSrc: string, canvasSelector: string): Promise<
 
     const simulation = mkSimulation(canvas, nodes)
     drawLibrary(id, svg, linkTypes)
-    const link = drawLinks(id, svg, links)
+    const directedLink = drawLinks(id, svg, directedLinks)
+    const undirectedLink = drawUndirectedLinks(id, svg, undirectedLinks)
     const node = drawNodes(svg, nodes, nodeTypes, simulation)
 
     simulation
       .nodes(nodes)
-      .on('tick', ticked(link, node))
+      .on('tick', ticked(directedLink, undirectedLink, node))
 
     // We're getting from a heterogenous map so we just use `any` for now
     const linkForce: any = (simulation.force('link'): any)
