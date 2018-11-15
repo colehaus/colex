@@ -2,7 +2,9 @@
 title: YAAS Social Norms
 subtitle: "Yet Another Amateur Summary: Bicchieri's <i>Norms in the Wild: How to Diagnose, Measure, and Change Social Norms</i>"
 date: 2018-11-13
+edited: 2018-11-15
 tags: yaas, norms
+graph-of-contents: yaas-social-norms
 series: Norms in the Wild
 ---
 
@@ -18,13 +20,13 @@ When agents act or plan to act, they do so on the basis of both beliefs and pref
 
 Before we can analyze collective behavior, we have to make a few foundational distinctions.
 
-## Preferences
+## [Preferences](#yaas-social-norms-map){#pref .arg-map}
 
-### Individual or social
+### [Individual or social](#yaas-social-norms-map){#social-pref .arg-map}
 
 Preferences can be either individual or social preferences. Social preferences are those that "take into account the behavior, beliefs, and outcomes of other people" while individual preferences do not [@bicchieri2016]. (Example to come.) This distinction is important because changing individual preferences can plausibly happen in isolation, one person after another. Changing social preferences on the other hand is more likely to require coordinated group action.
 
-### Conditional or unconditional
+### [Conditional or unconditional](#yaas-social-norms-map){#conditional .arg-map}
 
 Preferences can also be conditional or [unconditional]{.noted}[^unconditional]. Conditional preferences are those that vary with some feature of the environment while unconditional preferences do not. This is an important distinction because a social engineer can change the way conditional preferences manifest by changing the environment while unconditional preferences can only be altered in a direct confrontation.
 
@@ -44,13 +46,13 @@ If we put these two axes together, we end up with a classificatory grid like thi
 
 <!--more-->
 
-## Beliefs
+## [Beliefs](#yaas-social-norms-map){#beliefs .arg-map}
 
-### Normative and non-normative
+### [Normative and non-normative](#yaas-social-norms-map){#normative .arg-map}
 
 We can also distinguish between [normative and non-normative beliefs](https://en.wikipedia.org/wiki/Positive_statement#Positive_statements_and_normative_statements) ([ought vs is](https://en.wikipedia.org/wiki/Is%E2%80%93ought_problem)). This distinction is important when discussing norms because demonstrations and other empirical evidence can be used to change non-normative beliefs but are harder to apply to normative beliefs.
 
-### Social and non-social beliefs
+### [Social and non-social beliefs](#yaas-social-norms-map){#social-belief .arg-map}
 
 Some beliefs are social and others are not. Social beliefs are "expectations we have about
 other people’s behaviors and beliefs" [@bicchieri2016]. This distinction is important for much the same reason as the distinction between social and non-social preferences is important---it determines whether a social engineer has a divisible problem or one that must be tackled at the scale of groups.
@@ -69,7 +71,7 @@ If we put these two axes together, we end up with a classificatory grid like thi
 
 To be explicit, empirical expectations are "beliefs about how other people are going to act or react in certain situations" while normative expectations are "beliefs about other people’s personal normative beliefs (i.e., they are second-order beliefs)" [@bicchieri2016]. That is, "All do it" is an empirical expectation while "All approve of it" is a normative expectation.
 
-# Collective behavior
+# [Collective behavior](#yaas-social-norms-map){#collective .arg-map}
 
 With those distinctions made, we can start to suss out the varieties of collective behavior. <abbr title="Norms in the Wild">NitW</abbr> suggests something like the following overview:
 
@@ -77,13 +79,13 @@ With those distinctions made, we can start to suss out the varieties of collecti
 
 We'll start from the bottom. There are three different types of collective behavior identified here: 
 
-Custom
+[Custom](#yaas-social-norms-map){#custom .arg-map}
 :   "a pattern of behavior such that individuals (unconditionally) prefer to conform to it because it meets their needs" [@bicchieri2016] 
 
-Descriptive norm
+[Descriptive norm](#yaas-social-norms-map){#descriptive .arg-map}
 :   "a pattern of behavior such that individuals prefer to conform to it on condition that they believe that most people in their reference network conform to it (empirical expectation)" [@bicchieri2016]
 
-Social norm
+[Social norm](#yaas-social-norms-map){#norm .arg-map}
 :   "a rule of behavior such that individuals prefer to conform to it on condition that they believe that (a) most people in their reference network conform to it (empirical expectation), and (b) that most people in their reference network believe they ought to conform to it (normative expectation)" [@bicchieri2016]
 
 If the distinctions aren't quite clear yet, hopefully walking through the diagnostic process will clarify. We start at the top of [the diagram](#diagnostic-diagram) with an observed collective behavior. 
@@ -124,7 +126,7 @@ Questionnaires are a fairly straightforward way to do this. Crucially, the surve
 | [Normative]{.label-row} | What I should do (personal normative belief) | What others should do (personal normative belief) | What others believe I/others should do (normative expectation) |
 </figure>
 
-### Pluralistic ignorance
+### [Pluralistic ignorance](#yaas-social-norms-map){#ignorance .arg-map}
 
 A social engineer needs to ask about personal normative beliefs and normative social expectations because these don't always align. When each person (or most people) in a community falsely believes that others support a norm and their private disapproval is exceptional, we have [pluralistic ignorance](https://en.wikipedia.org/wiki/Pluralistic_ignorance). [The table on female genital cutting](/posts/norms-wild-clickbait#on-reluctant-female-genital-cutting), for example, suggests a serious divergence between private beliefs and public professions due to pluralistic ignorance in countries like Djibouti and Somalia.
 
@@ -165,15 +167,15 @@ Now, we get to the part that justifies (at least my) interest in all this: the p
 
 We'll tackle these in order.
 
-## Problem
+## [Problem](#yaas-social-norms-map){#persistence .arg-map}
 
 A harmful (from the social engineer's perspective) norm may persist for one of many reasons [@bicchieri2016]:
 
-- "People may not see the current norm as problematic, and even if presented with alternatives, they may defend their ways as superior."
-- "A second reason why a norm may not seem problematic is the lack of knowledge of possible alternatives"
+- ["People may not see the current norm as problematic, and even if presented with alternatives, they may defend their ways as superior."](#yaas-social-norms-map){#preferred .arg-map}
+- ["A second reason why a norm may not seem problematic is the lack of knowledge of possible alternatives"](#yaas-social-norms-map){#alternatives .arg-map}
 - Pluralistic ignorance
 
-## Shared reasons
+## [Shared reasons](#yaas-social-norms-map){#reasons .arg-map}
 
 Because of each of the above problem scenarios has distinct implications, we'll consider them separately when walking through the shared reasons part of norm change.
 
@@ -185,13 +187,13 @@ The most challenging circumstances for the social engineer are when a community 
 
 It's often prohibitively difficult to convince a community to abandon a norm entirely. Norms are often the outgrowth of deeply held moral beliefs; convincing someone to abandon their core moral beliefs is both difficult and (hopefully) unnecessary. Imagine someone trying to convince you to abandon your belief that wanton killing is wrong---they'd have a hard time of it. Instead, a social engineer can take advantage of the multiplicity of norms and interpretations of norms. 
 
-Defiance of an undesirable norm can be grounded in adherence to some alternative norm. For example, the [Franca Viola](https://en.wikipedia.org/wiki/Franca_Viola) case involved giving the norm of protecting your child priority over the norm of honor:
+Defiance of an undesirable norm can be [grounded in adherence to some alternative norm](#yaas-social-norms-map){#prioritize .arg-map}. For example, the [Franca Viola](https://en.wikipedia.org/wiki/Franca_Viola) case involved giving the norm of protecting your child priority over the norm of honor:
 
 <blockquote>
 People who abide by honor norms also hold norms of protective parenting. In the 1960s, Sicily was a place where honor norms held strong. For example, a girl who was raped was expected to marry her rapist to preserve her family’s honor. In the well-known case of Franca Viola, this expectation was completely reframed. She was raped but refused to marry her rapist, and her unusual decision was supported by her father, who put caring for and protecting his child above the powerful norm of honor. By appealing to this other norm, he was able to justifiably defy honor norms. [[@bicchieri2016]]{.attribution}
 </blockquote>
 
-Another option is to change the way a moral ideal is manifested in practice while leaving the ideal itself untouched. For example, the saleema campaign reframed uncut girls as intact and pure whereas the old interpretation had been that cut girls were chaste and pure:
+Another option is to [change the way a moral ideal is manifested](#yaas-social-norms-map){#reinterpret .arg-map} in practice while leaving the ideal itself untouched. For example, the saleema campaign reframed uncut girls as intact and pure whereas the old interpretation had been that cut girls were chaste and pure:
 
 <blockquote>
 The word saleema means whole, intact, healthy, and perfect. It conveys the idea that being uncut is the natural, pristine state. Radio and video campaigns linked traditional values of honor and purity to the idea that uncut girls are complete and pure. Media campaigns and community discussions were framed and organized around this positive message. Perceiving girls through the “Saleema lens” functionally disconfirmed the belief that uncut girls are not chaste and pure. [[@bicchieri2016]]{.attribution}
@@ -199,7 +201,7 @@ The word saleema means whole, intact, healthy, and perfect. It conveys the idea 
 
 In either case, these approaches make the social engineer's task easier. They must simply make some existing beliefs more salient rather than attempting to destroy existing norms entirely and create new ones whole cloth.
 
-### Theories of persuasion
+### [Theories of persuasion](#yaas-social-norms-map){#theories .arg-map}
 
 We can theorize the task of persuasion as changing people's underlying *[schemata](https://en.wikipedia.org/wiki/Schema_(psychology))* and *[scripts](https://en.wikipedia.org/wiki/Behavioral_script)*. Schemata are patterns of thought that organize information and the relationships among pieces of information. Scripts are schemata applied to events and behavior---scripts are sequences of expected actions linked to particular circumstances (the response in [stimulus-response](https://en.wikipedia.org/wiki/Stimulus%E2%80%93response_model), if you will).
 
@@ -227,6 +229,8 @@ Allcott and Mullainathan (2010) report that American households who got mailers 
 </blockquote>
 
 Another example of the priority of empirical expectations is given in the section [on dirty laundry in another post on <i>Norms in the Wild</i>](/posts/norms-wild-clickbait/#on-dirty-laundry).
+
+This suggests that harmful [norms can be undermined by highlighting existing non-compliance](#yaas-social-norms-map){#defiance .arg-map}.
 :::
 ::: {}
 Whether alternatives norms and arrangements are possible is often a matter of debate. See, for example, the sloganeering around neoliberalism: ["There is no alternative"](https://en.wikipedia.org/wiki/There_is_no_alternative) versus ["Another world is possible"](https://solidarity-us.org/atc/110/p419/). Part of the difficulty here is that "the actual limits of what is achievable depend in part on the beliefs people hold about what sorts of alternatives are viable" [@wright2010eru].
@@ -241,7 +245,7 @@ In circumstances of pluralistic ignorance, all or most individuals privately pre
 :::
 :::
 
-## Expectation change
+## [Expectation change](#yaas-social-norms-map){#expectation-change .arg-map}
 
 Even if the above persuasion succeeds, that's not enough. Individuals privately supporting an alternative norm doesn't necessarily lead to changed behavior. The reason is that social norms, unlike customs and descriptive norms, are rarely self-enforcing. 
 
@@ -258,7 +262,7 @@ If the social engineer succeeds only at the first two, each individual will stil
 
 The necessity of [common knowledge]{.noted}[^islanders] means that public fora are quite useful. When people discuss norms, their concerns, and their changing attitudes with other members of their community, it becomes possible for people to "infer that others' beliefs are changing alongside their own" [@bicchieri2016].
 
-## Collective action
+## [Collective action](#yaas-social-norms-map){#collective-action .arg-map}
 
 We're almost there. In the first three steps, the social engineer identified why a problematic norm persists, convinced people privately that an alternative is superior, and then made people's preferences for change common knowledge. The final step is to realize these common preferences and enact a new norm.
 
@@ -268,11 +272,11 @@ This echoes back to the discussion on social norms not being self-enforcing. Jus
 
 Sanctions aren't the only way to solve collective action problems. There are other opportunities too, but the literature on collective action is deep and we won't cover any more of it here. I hope to address it more directly in a future post.
 
-# Tools
+# [Tools](#yaas-social-norms-map){#tools .arg-map}
 
 That last section is the last of the core content in <i>Norms in the Wild</i>. This last section will just cover some tools it outlines as potentially useful for a social engineer.
 
-## Economic
+## [Economic](#yaas-social-norms-map){#economic .arg-map}
 
 One obvious option for changing norms (in particular, providing shared reasons for change) is altering economic incentives. However, this approach has several limitations:
 
@@ -280,13 +284,13 @@ One obvious option for changing norms (in particular, providing shared reasons f
 - "If the price is too low, it may signal that the activity is of low import, discouraging engagement in it." [@bicchieri2016] 
 - "Finally, a monetary incentive may implicitly suggest that an inducement is needed, otherwise people would skirt the activity." [@bicchieri2016]
 
-## Legal
+## [Legal](#yaas-social-norms-map){#legal .arg-map}
 
 Alternatively, one could simply try to mandate adherence to a new norm with the force of law. This should provide strong shared reasons to change. However, "if a new legal norm imposes harsh penalties against an accepted social norm, police will be less likely to enforce the legal norm, prosecutors will be less likely to charge, and juries to convict, with the effect of ultimately reinforcing the social norm that was intended to be changed." [@bicchieri2016].
 
 The efficacy of legal mandates for changing norms is strongly correlated with trust in formal institutions.
 
-### Trendsetters
+## [Trendsetters](#yaas-social-norms-map){#trend .arg-map}
 
 *Trendsetters* may be useful for both providing reasons to change and altering shared expectations. As previously mentioned, the [positive deviance](https://en.wikipedia.org/wiki/Positive_deviance) approach suggests that lived demonstrations by one trendsetter may be worth a thousand exhortations from a social engineer. Additionally, if a trendsetter is not sanctioned or only sanctioned lightly, this may change observers expectations about the cost of their own defiance.
 
@@ -301,7 +305,7 @@ Misperceive the risks of deviance
 Norm-insentive
 :   They may not have much esteem for the norm and what it represents
 
-### Media
+## [Media](#yaas-social-norms-map){#media .arg-map}
 
 Finally, edutainment is, reportedly, [shockingly effective at changing norms](/posts/norms-wild-clickbait/#on-the-unreasonable-effectiveness-of-tv).
 

@@ -1,0 +1,28 @@
+id,label,type
+pref,Preferences,topic
+social-pref,Individual v. social,option
+conditional,Conditional v. unconditional,option
+beliefs,Beliefs,topic
+normative,Normative v. empirical,option
+social-belief,Social v. non-social,option
+custom,Custom,option
+descriptive,Descriptive norm,option
+norm,Social norm,option
+collective,Collective behavior,topic
+ignorance,Pluralistic ignorance,option
+persistence,Persistence of harmful norm,step
+preferred,People like it,option
+alternatives,No known alternatives,option
+tools,Tools for change,topic
+economic,Economic incentives,option
+legal,Legal mandate,option
+trend,Trendsetters,option
+media,Media,option
+reasons,Reasons for change,step
+change,Changing a norm,topic
+prioritize,Prioritizing alternate norms,option
+reinterpret,Reinterpreting norm,option
+theories,Theories of change,topic
+defiance,Highlighting non-compliance,option
+expectation-change,Change in expectations,step
+collective-action,Collective action,step
