@@ -155,14 +155,14 @@ const drawLinks = <Ty: string>(id: string, svg: SelectWithoutData, links: Array<
     .attr('stroke', d => `url(#${id}-gradient-${d.type})`)
 
 const drawUndirectedLinks = <Ty: string>(id: string, svg: SelectWithoutData, links: Array<Link<Ty>>): SelectWithData<Link<Ty> & ForceLink> =>
-      svg.append('g')
-      .attr('class', 'links')
-      .selectAll('path')
-      .data(S.map(forceLinkProps)(links))
-      .enter().append('path')
-      .attr('class', d => d.type)
-      .classed('link', true)
-      .attr('stroke', d => `url(#${id}-gradient-${d.type})`)
+  svg.append('g')
+    .attr('class', 'links')
+    .selectAll('path')
+    .data(S.map(forceLinkProps)(links))
+    .enter().append('path')
+    .attr('class', d => d.type)
+    .classed('link', true)
+    .attr('stroke', d => `url(#${id}-gradient-${d.type})`)
 
 const drawNodes = (svg: SelectWithoutData, nodes: Array<Node<*>>, nodeTypes: Array<NodeType<*>>, simulation: Simulation<Node<*>, Link<*>>): SelectWithData<Node<*> & ForceNode> => {
   const node =
