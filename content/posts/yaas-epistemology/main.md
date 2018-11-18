@@ -186,7 +186,7 @@ Yet again, there's lots of argument on both sides of this debate. We can't possi
 <figure>
 <figcaption>Epistemic justification: internalism or externalism?</figcaption>
 | Position                           | Responses | Percentage |
-|------------------------------------|-----------|------------|
+|:-----------------------------------|:----------|:-----------|
 | Accept or lean toward: externalism | 398 / 931 |      42.7% |
 | Other	                             | 287 / 931 |      30.8% |
 | Accept or lean toward: internalism | 246 / 931 |      26.4% |
@@ -234,7 +234,7 @@ Alas, the relationship between these categories isn't actually as straightforwar
 <figure>
 <figcaption><i>A priori</i> knowledge: yes or no?</figcaption>
 | Position                   | Responses | Percentage |
-|----------------------------|-----------|------------|
+|:---------------------------|:----------|:-----------|
 | Accept or lean toward: yes | 662 / 931 |      71.1% |
 | Accept or lean toward: no  | 171 / 931 |      18.4% |
 | Other                      | 98 / 931  |      10.5% |
@@ -249,9 +249,9 @@ Hopefully, that distinction is fairly straightforward at this point (If not, you
 <figure>
 <figcaption>The relationship between analytic-synthetic and <i>a priori</i>-<i>a posteriori</i></figcaption>
 |           | <i>A priori</i>                       | <i>A posteriori</i>                     |
-|-----------|---------------------------------------|-----------------------------------------|
-| Analytic  | Logical propositions; Mostly accepted | Mostly rejected                         |
-| Synthetic | Empiricists v. rationalists           | Empirical propositions; Mostly accepted |
+|:----------|:--------------------------------------|:----------------------------------------|
+| [Analytic]{.label-row} | Logical propositions; Mostly accepted | Mostly rejected                         |
+| [Synthetic]{.label-row} | Empiricists v. rationalists           | Empirical propositions; Mostly accepted |
 </figure>
 
 There's general philosophical agreement that analytic propositions with <i>a priori</i> justification exist, that synthetic propositions with <i>a posteriori</i> justification exist, and that analytic propositions with <i>a posteriori</i> justification don't exist. The most controversial intersection then is between <i>a priori</i> and synthetic. On one view, this is what the [rationalism v. empiricism](https://plato.stanford.edu/entries/rationalism-empiricism/) debate is about---rationalists hold that synthetic <i>a priori</i> knowledge is possible while empiricists deny it.
@@ -261,7 +261,7 @@ That also serves as the segue for the shoehorning of two more survey results [@b
 <figure>
 <figcaption>Analytic-synthetic distinction: yes or no?</figcaption>
 | Position                   | Responses | Percentage |
-|----------------------------|-----------|------------|
+|:---------------------------|:----------|:-----------|
 | Accept or lean toward: yes | 604 / 931 |      64.9% |
 | Accept or lean toward: no  | 252 / 931 |      27.1% |
 | Other                      | 75 / 931  |       8.1% |
@@ -270,7 +270,7 @@ That also serves as the segue for the shoehorning of two more survey results [@b
 <figure class="empiri-rati">
 <figcaption>Knowledge: empiricism or rationalism?</figcaption>
 | Position                           | Responses | Percentage |
-|------------------------------------|-----------|------------|
+|:-----------------------------------|:----------|:-----------|
 | Other                              | 346 / 931 |      37.2% |
 | Accept or lean toward: empiricism  | 326 / 931 |      35.0% |
 | Accept or lean toward: rationalism | 259 / 931 |      27.8% |
@@ -299,7 +299,7 @@ Here too, the debate is unresolved [@bourget2014]:
 <figure>
 <figcaption>Truth: correspondence, deflationary, or epistemic?</figcaption>
 | Position                              | Responses | Percentage |
-|---------------------------------------|-----------|------------|
+|:--------------------------------------|:----------|:-----------|
 | Accept or lean toward: correspondence | 473 / 931 | 50.8%      |
 | Accept or lean toward: deflationary   | 231 / 931 | 24.8%      |
 | Other                                 | 163 / 931 | 17.5%      |

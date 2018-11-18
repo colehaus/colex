@@ -22,7 +22,7 @@ In this case, <abbr title="Naive application of the principle of indifference">N
 So, depending on the framing, we assign probability 1/2 or 1/3 to the same outcome---the traveler is from France.
 
 | Description                       | Outcome | Probability |
-|-----------------------------------|---------|-------------|
+|:----------------------------------|:--------|:------------|
 | France, Ireland, or Great Britain | France  | 1/3         |
 | France or British Isles           | France  | 1/2         |
 
@@ -39,7 +39,7 @@ In this case, <abbr title="Naive application of the principle of indifference">N
 So, depending on the framing, we assign probability 1/2 or 1/3 to the same outcome---the ball is red.
 
 | Description          | Outcome | Probability |
-|----------------------|---------|-------------|
+|:---------------------|:--------|:------------|
 | Red, black or yellow | Red     | 1/3         |
 | Red or not red       | Red     | 1/2         |
 
@@ -56,7 +56,7 @@ If we construct our random chords by choosing a random point inside the circle a
 So depending on our framing, we assign probability of 1/4, 1/3 or 1/2 to the same proposition.
 
 | Description                          | Outcome    | Probability |
-|--------------------------------------|------------|-------------|
+|:-------------------------------------|:-----------|:------------|
 | Chord by two points on circumference | Long chord | 1/3         |
 | Chord by random radius and point     | Long chord | 1/2         |
 | Chord by random point as midpoint    | Long chord | 1/4         |
@@ -76,7 +76,7 @@ If we apply the principle of indifference and assign a uniform probability distr
 So depending on our framing, we assign probability of 1/8, 1/4 or 1/2 to the same proposition.
 
 | Description                    | Outcome     | Probability |
-|--------------------------------|-------------|-------------|
+|:-------------------------------|:------------|:------------|
 | Indifferent over side lengths  | Short sides | 1/2         |
 | Indifferent over surface areas | Short sides | 1/4         |
 | Indifferent over volumes       | Short sides | 1/8         |
@@ -92,7 +92,7 @@ If we apply the principle of indifference over the possible ratios of water to w
 So depending on our framing, we assign probability of 5/8 and 15/16 to the same proposition.
 
 | Description                 | Outcome        | Probability |
-|-----------------------------|----------------|-------------|
+|:----------------------------|:---------------|:------------|
 | Indifferent over wine:water | Dilute mixture | 5/8         |
 | Indifferent over water:wine | Dilute mixture | 15/16       |
 

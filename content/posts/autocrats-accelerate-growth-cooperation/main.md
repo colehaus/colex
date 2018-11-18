@@ -34,7 +34,7 @@ Let's model this situation more explicitly to make our claims precise. We can de
 <figure>
 <figcaption>Single-shot game of economic production in an autocratic regime</figcaption>
 | $\text{Autocrat} \backslash \mathtt{Producers}$ | $\mathtt{Invest}$                   | $\mathtt{Shirk}$              |
-|-------------------------------------------------|-------------------------------------|-------------------------------|
+|:------------------------------------------------|:------------------------------------|:------------------------------|
 | $\text{Tax}$                                    | $k \backslash \mathtt{(1 - k) - c}$ | $k \backslash \mathtt{1 - k}$ |
 | $\text{Loot}$                                   | $l \backslash \mathtt{(1 - l) - c}$ | $l \backslash \mathtt{1 - l}$ |
 </figure>
@@ -61,7 +61,7 @@ We just use this productivity multiplicatively with our previous terms so the ne
 <figure>
 <figcaption>Stage of repeated game of economic production in an autocratic regime. Incorporates conditional productivity growth.</figcaption>
 | $\text{Autocrat} \backslash \mathtt{Producers}$ | $\mathtt{Invest}$                                   | $\mathtt{Shirk}$                                |
-|-------------------------------------------------|-----------------------------------------------------|-------------------------------------------------|
+|:------------------------------------------------|:----------------------------------------------------|:------------------------------------------------|
 | $\text{Tax}$                                    | $p \cdot k \backslash \mathtt{p \cdot (1 - k) - c}$ | $p \cdot k \backslash \mathtt{p \cdot (1 - k)}$ |
 | $\text{Loot}$                                   | $p \cdot l \backslash \mathtt{p \cdot (1 - l) - c}$ | $p \cdot l \backslash \mathtt{p \cdot (1 - l)}$ |
 </figure>
@@ -192,7 +192,7 @@ If $r$ is greater than this, the $\text{Autocrat}$ will prefer $\text{Taxing}$. 
 Let's check our math and make this a bit more concrete by plugging in some numbers. If we pick $k = 0.2$, $l = 0.8$, $c = 0.8$ and $\delta = 0.95$, we find that our two constraints on $r$ work out to  $r > \frac{39}{38} \approx 1.02632$ and $r \gtrapprox 1.03995$. We'll pick $r = 1.04$. Now plugging in all our parameters, we can calculate all the payoffs. We end up with a game like this:
 
 | $\text{Autocrat} \backslash \mathtt{Producers}$ | $\mathtt{Invest}$        | $\mathtt{Shirk}$     | $\mathtt{Tit-for-tat}$   |
-|-------------------------------------------------|--------------------------|----------------------|--------------------------|
+|:------------------------------------------------|:-------------------------|:---------------------|:-------------------------|
 | $\text{Tax}$                                    | $16.66 \backslash 50.66$ | $4 \backslash 2.32$  | $16.66 \backslash 50.66$ |
 | $\text{Loot}$                                   | $66.66 \backslash 0.66$  | $16 \backslash 0.58$ | $16.61 \backslash 3.352$ |
 

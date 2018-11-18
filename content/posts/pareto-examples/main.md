@@ -15,7 +15,7 @@ Briefly, a scenario ([canonically, a distribution of resources across individual
 
 <table>
 <thead>
-<tr><th>Scenario</th><th>Person A</th><th>Person B</th></tr>
+<tr><th>Scenario</th><th style="text-align: left;">Person A</th><th style="text-align: left;">Person B</th></tr>
 <tr><th></th><th>no. widgets possessed</th><th>no. widgets possessed</th></tr>
 </thead>
 <tbody>
@@ -56,7 +56,7 @@ Briefly, a scenario ([canonically, a distribution of resources across individual
 :::
 
 | Scenario | Diabetic         | Thief                    |
-|----------|------------------|--------------------------|
+|:---------|:-----------------|:-------------------------|
 |        1 | Consumes insulin | Does nothing             |
 |        2 | Foot amputation  | Steals and sells insulin |
 
@@ -66,7 +66,7 @@ Briefly, a scenario ([canonically, a distribution of resources across individual
 :::
 
 | Scenario | Hitler       | World     |
-|----------|--------------|-----------|
+|:---------|:-------------|:----------|
 |        1 | Assassinated | Safe      |
 |        2 | Safe         | Holocaust |
 

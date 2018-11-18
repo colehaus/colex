@@ -46,7 +46,7 @@ Female genital cutting prevalence vs support of the practice among women 15--49
 </figcaption>
 
 | Area         | Time period | Prevalence | Support |
-|--------------|-------------|------------|---------|
+|:-------------|:------------|:-----------|:--------|
 | Somalia      |        2006 |       97.9 |    64.5 |
 | Guinea       |        2005 |       95.6 |    69.2 |
 | Djibouti     |        2006 |       93.1 |    36.6 |

@@ -25,7 +25,7 @@ For generality, we'll call voting for increased library funding option $\alpha$ 
 
 <figure>
 | Voter | Private value of $\alpha$ | Private value of $\beta$ | Belief about others' private value of $\alpha$ | Belief about others' private value of $\beta$ |
-|-------|---------------------------|--------------------------|------------------------------------------------|-----------------------------------------------|
+|:------|:--------------------------|:-------------------------|:-----------------------------------------------|:----------------------------------------------|
 | A     |                        -1 |                        0 |                                              1 |                                             0 |
 | B     |                        -1 |                        0 |                                              1 |                                             0 |
 | C     |                        -1 |                        0 |                                              1 |                                             0 |

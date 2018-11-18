@@ -37,8 +37,8 @@ Unlike the typical Hollywood CGI depictions of asteroid impacts, where an extrat
 <blockquote>
 In MUSE a distinction is made between present and past perfect (i.e., within the perfect aspect, tense is marked). Perfect means that the action is completed. AAVE has two additional markers for aspect which extend the perfect:
 
-|                 | Muse          | AAVE          |
-|-----------------|---------------|---------------|
+| Tense           | Muse          | AAVE          |
+|:----------------|:--------------|:--------------|
 | present perfect | I have walked | I have walked |
 | past perfect    | I had walked  | I had walked  |
 | completive      | n/a           | I done walked |

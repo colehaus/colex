@@ -39,7 +39,7 @@ If we put these two axes together, we end up with a classificatory grid like thi
 <figure id="preferences-grid">
 <figcaption>Classifying different types of preferences</figcaption>
 |                             | Individual preferences           | Social preferences                         |
-|-----------------------------|----------------------------------|--------------------------------------------|
+|-----------------------------|:---------------------------------|:-------------------------------------------|
 | [Unconditional]{.label-row} | "I want apples."                 | "I want more apples than you."             |
 | [Conditional]{.label-row}   | "I want apples if it is autumn." | "I want apples if my friends want apples." |
 </figure>
@@ -64,7 +64,7 @@ If we put these two axes together, we end up with a classificatory grid like thi
 <figure id="beliefs-grid">
 <figcaption>Classification of normative/non-normative and social/non-social beliefs</figcaption>
 |                                     | Non-social beliefs         | Social beliefs         |
-|-------------------------------------|----------------------------|------------------------|
+|-------------------------------------|:---------------------------|:-----------------------|
 | [Non-normative beliefs]{.label-row} | Factual beliefs            | Empirical expectations |
 | [Normative beliefs]{.label-row}     | Personal normative beliefs | Normative expectations |
 </figure>
@@ -121,7 +121,7 @@ Questionnaires are a fairly straightforward way to do this. Crucially, the surve
 <figure>
 <figcaption>Summary of personal and social beliefs a social engineer may want to assess</figcaption>
 | What one believes about | Self                                         | Others                                            | Others 2nd order                                               |
-|-------------------------|----------------------------------------------|---------------------------------------------------|----------------------------------------------------------------|
+|:------------------------|:---------------------------------------------|:--------------------------------------------------|:---------------------------------------------------------------|
 | [Empirical]{.label-row} | What I am going to do                        | What others do (empirical expectation)            | What others believe I/others do                                |
 | [Normative]{.label-row} | What I should do (personal normative belief) | What others should do (personal normative belief) | What others believe I/others should do (normative expectation) |
 </figure>
