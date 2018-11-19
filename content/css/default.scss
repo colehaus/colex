@@ -41,15 +41,20 @@ a {
 a:hover {
     @include border-bottom-solid;
 }
-article a {
-    &[href^="#"] {
-        @include border-bottom-dotted;
+article {
+    a {
+        &[href^="#"] {
+            @include border-bottom-dotted;
+        }
+        @include border-bottom-dashed;
     }
-    @include border-bottom-dashed;
 }
 h1, h2, h3, h4, h5, h6 {
     > a {
         @include border-none;
+        &[href^="#"] {
+            @include border-none;
+        }
     }
 }
 #article-subtitle {
