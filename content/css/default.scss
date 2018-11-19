@@ -42,6 +42,34 @@ a:hover {
     @include border-bottom-solid;
 }
 article {
+    h2 {
+        @include font-size-h2;
+    }
+    h3 {
+        @include font-size-h3;
+    }
+    h3::before {
+        @include section-1;
+    }
+    h4 {
+        @include font-size-h4;
+    }
+    h4::before {
+        @include section-2;
+    }
+    h5 {
+        @include font-size-h5;
+
+    }
+    h5::before {
+        @include section-3;
+    }
+    h6 {
+        @include font-size-h6;
+    }
+    h6::before {
+        @include section-4;
+    }
     a {
         &[href^="#"] {
             @include border-bottom-dotted;
@@ -58,8 +86,9 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 #article-subtitle {
-    font-variant: small-caps;
-    @include weight-normal;
+    &::before {
+        content: none;
+    }
 }
 hr {
     @include margin-left-none;

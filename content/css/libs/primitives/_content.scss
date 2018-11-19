@@ -2,10 +2,10 @@
     content: '◈ ';
 }
 @mixin hook-right {
-    content: " ↪";
+    content: ' ↪';
 }
 @mixin em-dash {
-    content: "—";
+    content: '—';
 }
 @mixin right-triangle {
     content: '► ';
@@ -15,4 +15,20 @@
 }
 @mixin right-curve {
     content: '⤸';
+}
+@mixin section-1 {
+    content: '§ ';
+    font-size: smaller;
+}
+@mixin section-2 {
+    content: '§§ ';
+    font-size: smaller;
+}
+@mixin section-3 {
+    content: '§§§ ';
+    font-size: smaller;
+}
+@mixin section-4 {
+    content: '§§§§ ';
+    font-size: smaller;
 }
