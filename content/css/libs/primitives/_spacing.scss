@@ -71,6 +71,9 @@
 @mixin padding-bottom-1ex {
     padding-bottom: 1ex;
 }
+@mixin left-5vw {
+    left: 5vw;
+}
 @mixin padding-horizontal-view {
     padding-left: 5vw;
     padding-right: 5vw;
@@ -91,4 +94,7 @@
 }
 @mixin top-2ex {
     top: 2ex;
+}
+@mixin top-0 {
+    top: 0;
 }

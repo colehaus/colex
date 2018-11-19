@@ -24,12 +24,17 @@ declare class Pair<A, B> {
 }
 
 type S = {
+  Nothing: Maybe<*>,
+  Just<A>(a: A): Maybe<A>,
+  append<A>(a: A): Array<A> => Array<A>,
+  takeWhile<A>(pred: A => boolean): Array<A> => Array<A>,
   isJust<A>(m: Maybe<A>): boolean,
   filter<A>(pred: A => boolean): Array<A> => Array<A>,
   reject<A>(pred: A => boolean): Array<A> => Array<A>,
   curry2<A, B, C>(f: (A, B) => C): A => B => C,
   init<A>(as: Array<A>): Maybe<Array<A>>,
   head<A>(as: Array<A>): Maybe<A>,
+  last<A>(as: Array<A>): Maybe<A>,
   tail<A>(as: Array<A>): Maybe<Array<A>>,
   equals<A>(a: A): A => boolean,
   on<A, B, C>(f: (A => A => B)): (C => A) => C => C => B,
@@ -37,6 +42,7 @@ type S = {
   max(number): number => number,
   maybe<A, B>(b: B): (A => B) => Maybe<A> => B,
   maybe_<A, B>(b: () => B): (A => B) => Maybe<A> => B,
+  justs<A>(as: Array<Maybe<A>>): Array<A>,
   toMaybe<A>(a: ?A):  Maybe<A>,
   fromMaybe_<A>(f: () => A): Maybe<A> => A,
   fromMaybe<A>(f: A): Maybe<A> => A,
@@ -55,7 +61,11 @@ type S = {
   zip<A, B>(as: Array<A>): Array<B> => Array<Pair<A, B>>,
   fst<A, B>(p: Pair<A, B>): A,
   snd<A, B>(p: Pair<A, B>): B,
-  concat<A>(l: Array<A>): Array<A> => Array<A>
+  concat<A>(l: Array<A>): Array<A> => Array<A>,
+  sort<A>(as: Array<A>): Array<A>,
+  join<A>(a: Maybe<Maybe<A>>): Maybe<A>
+} & {
+  chain<A, B>(f: A => Maybe<B>): Maybe<A> => Maybe<B>
 } & {
   map<A, B>(f: A => B): Array<A> => Array<B>
 } & {
