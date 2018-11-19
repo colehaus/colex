@@ -58,6 +58,9 @@
     padding-top: 0;
     padding-bottom: 0;
 }
+@mixin padding-halfex-1ex {
+    padding: 0.5ex 1ex;
+}
 @mixin padding-1ex {
     padding: 1ex;
 }

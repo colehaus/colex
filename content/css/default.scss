@@ -307,7 +307,17 @@ nav a.series {
     transform: translate(-3ex, 4ex) rotate(-90deg);
 }
 table {
-    @include border-spacing-1em-1ex;
+    @include border-top-2px-solid;
+    @include border-bottom-2px-solid;
+}
+th {
+    @include border-bottom-solid-inactive;
+    &:empty {
+        @include border-none;
+    }
+}
+th, td {
+    @include padding-halfex-1ex;
 }
 th, .label-row {
     @include weight-normal;

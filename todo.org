@@ -16,6 +16,7 @@
   CLOSED: [2018-05-12 Sat 11:44]
 * DONE Tooltip for references
   CLOSED: [2018-11-08 Thu 16:30]
+* TODO HTML sections
 * TODO Pull out key terms feature
 * TODO Sticky essential elements for reference during post scrolling
 * TODO Bibtexify AI safety post
