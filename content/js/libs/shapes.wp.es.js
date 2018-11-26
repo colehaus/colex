@@ -46,6 +46,6 @@ const hexagon = [
   9 / 6 * Math.PI,
   11 / 6 * Math.PI
 ]
-const circle = S.map(i => 2 * Math.PI / 16 * i)(S.range(0)(16))
+const circle: Array<number> = S.map(i => 2 * Math.PI / 16 * i)(S.range(0)(16))
 
 export { toSvgPolygon, triangle, square, diamond, pentagon, hexagon, circle }

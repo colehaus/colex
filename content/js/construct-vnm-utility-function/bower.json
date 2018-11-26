@@ -8,7 +8,7 @@
   ],
   "dependencies": {
     "purescript-argonaut-core": "^4.0.1",
-    "purescript-argonaut-generic": "^2.0.0",
+    "purescript-argonaut-generic": "^3.0.0",
     "purescript-behaviors": "^7.0.0",
     "purescript-foreign-generic": "^7.0.0",
     "purescript-generics-rep": "^6.1.0",

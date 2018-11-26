@@ -17,6 +17,7 @@
 * DONE Tooltip for references
   CLOSED: [2018-11-08 Thu 16:30]
 * TODO Header links
+* TODO Big figures
 * TODO HTML sections
 * TODO Prune use of font enum primitives
 * TODO Pull out key terms feature

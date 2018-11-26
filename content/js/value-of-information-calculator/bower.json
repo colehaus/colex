@@ -7,9 +7,9 @@
     "output"
   ],
   "dependencies": {
-    "purescript-argonaut-codecs": "^4.0.2",
+    "purescript-argonaut-codecs": "^5.0.0",
     "purescript-argonaut-core": "^4.0.1",
-    "purescript-argonaut-generic": "^2.0.0",
+    "purescript-argonaut-generic": "^3.0.0",
     "purescript-behaviors": "^7.0.0",
     "purescript-jquery": "^5.0.0",
     "purescript-jquery-fancy": "^2.0.0",

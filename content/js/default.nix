@@ -1,4 +1,4 @@
-{ pkgs ? import <nixpkgs> {}, extras ? import ../../nix/extras.nix } :
+{ pkgs ? import <nixpkgs> {}, extras ? import ../../nix/extras.nix // import ../../nix/gitignore.nix { inherit (import <nixpkgs> {}) lib; } } :
   let
     nodeEnv = extras.callNode2nix {
       inherit pkgs;
