@@ -62,9 +62,11 @@ const addTooltips = (pairs: Array<Pair<HTMLElement, string>>): void => {
   })
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  const citeLinks = Array.from(document.querySelectorAll('.citation > a'))
-  const citations = Array.from(document.querySelectorAll('.citation'))
-  const refs = Array.from(document.querySelectorAll('#refs > div'))
-  addTooltips(S.zip(citations)(getRefTitles(citeLinks, refs)))
-}, false)
+if (document.location.pathname.startsWith('/posts/')) {
+  document.addEventListener('DOMContentLoaded', () => {
+    const citeLinks = Array.from(document.querySelectorAll('.citation > a'))
+    const citations = Array.from(document.querySelectorAll('.citation'))
+    const refs = Array.from(document.querySelectorAll('#refs > div'))
+    addTooltips(S.zip(citations)(getRefTitles(citeLinks, refs)))
+  })
+}

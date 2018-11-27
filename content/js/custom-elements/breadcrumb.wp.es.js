@@ -49,13 +49,13 @@ const cb = targets => entries => {
   }
 }
 
-document.addEventListener('DOMContentLoaded', () => {
-  if (document.location.pathname.startsWith('/posts/')) {
+if (document.location.pathname.startsWith('/posts/')) {
+  document.addEventListener('DOMContentLoaded', () => {
     const targets = Array.from(document.querySelectorAll('h3:not(#article-subtitle), h4, h5, h6'))
     const observer = new IntersectionObserver(cb(targets), { threshold: 0 })
     targets.forEach(el => observer.observe(el))
-  }
-})
+  })
+}
 
 const prettyPrintHeaders =
   S.pipe([
