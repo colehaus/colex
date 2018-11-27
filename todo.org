@@ -16,12 +16,14 @@
   CLOSED: [2018-05-12 Sat 11:44]
 * DONE Tooltip for references
   CLOSED: [2018-11-08 Thu 16:30]
+* TODO Fix table captions
+  - State "TODO"       from              [2018-11-27 Tue 08:15]
 * TODO Header links
 * TODO Big figures
-* TODO HTML sections
+* TODO [#C] HTML sections
 * TODO Prune use of font enum primitives
 * TODO Pull out key terms feature
-* TODO Sticky essential elements for reference during post scrolling
+* TODO [#C] Sticky essential elements for reference during post scrolling
 * TODO Bibtexify AI safety post
 * DONE File node writeAsync bug
   CLOSED: [2018-11-08 Thu 13:35]
@@ -73,15 +75,27 @@
 * TODO Regularize a la stimulus
 * DONE Use nix overrides to for updated versions of hakyll and pandoc
   CLOSED: [2018-02-20 Tue 18:07]
-* TODO [#C] Improve arg-map handling of resizing
-** TODO e.g. centering
-* TODO [#C] Set up purescript and elm builds
+* DONE [#C] Improve arg-map handling of resizing
+  CLOSED: [2018-11-26 Mon 21:19]
+  - State "DONE"       from "TODO"       [2018-11-26 Mon 21:19]
+** DONE e.g. centering
+   CLOSED: [2018-11-26 Mon 21:19]
+   - State "DONE"       from "TODO"       [2018-11-26 Mon 21:19]
+* DONE [#C] Set up purescript and elm builds
+  CLOSED: [2018-11-26 Mon 21:19]
+  - State "DONE"       from "TODO"       [2018-11-26 Mon 21:19]
 ** DONE Modernize purescript
    CLOSED: [2018-02-05 Mon 17:35]
 ** DONE Set up purescript build
    CLOSED: [2018-02-06 Tue 12:25]
-** TODO Set up elm build
-* TODO [#C] Contain output
+** SCRAPPED Set up elm build
+   CLOSED: [2018-11-26 Mon 21:19]
+   - State "SCRAPPED"   from "TODO"       [2018-11-26 Mon 21:19] \\
+     Not worth the time investment since no plans for further elm
+* DONE_NOTED [#C] Contain output
+  CLOSED: [2018-11-26 Mon 21:20]
+  - State "DONE_NOTED" from "TODO"       [2018-11-26 Mon 21:20] \\
+    Nix gitignore should alleviate this problem
 * DONE [#C] Derive derivable things in purescript
   CLOSED: [2018-04-04 Wed 16:41]
 * TODO [#C] Autogenerate chunk per post
