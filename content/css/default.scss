@@ -80,9 +80,9 @@ article {
 }
 h1, h2, h3, h4, h5, h6 {
     > a {
-        @include border-none;
+        border: none;
         &[href^="#"] {
-            @include border-none;
+            border: none;
         }
     }
 }
@@ -92,7 +92,7 @@ h1, h2, h3, h4, h5, h6 {
     }
 }
 hr {
-    @include margin-left-none;
+    margin-left: 0;
     @include border-solid;
     @include light-color-text;
 }
@@ -109,7 +109,7 @@ hr {
     &::before {
         @include font-default-size;
     }
-    @include margin-none;
+    margin: 0;
 }
 blockquote {
     @include margin-left-1em;
@@ -144,29 +144,29 @@ blockquote::after {
     content: "TL;DR";
     position: absolute;
     @include left-to-gutter;
-    @include font-x-small;
+    font-size: x-small;
     @include weight-light;
     transform: translate(-3ex, 4ex) rotate(-90deg);
 }
 .epigraph, .abstract {
     @include margin-horizontal-3em;
-    @include font-smaller;
+    font-size: smaller;
 }
 blockquote.epigraph {
-    @include padding-none;
+    padding: 0;
     &::before {
         content: open-quote;
         font-size: 5ex;
     }
 }
 .references {
-    @include font-smaller;
+    font-size: smaller;
 }
 hr.references {
     @include width-60;
 }
 figure {
-    @include margin-none;
+    margin: 0;
     > img {
         @include width-full;
     }
@@ -176,11 +176,11 @@ figure {
     > figcaption {
         &:first-child {
             text-align: center;
-            @include small-caps;
-            @include font-larger;
+            font-variant: small-caps;
+            font-size: larger;
         }
         &:last-child {
-            @include font-smaller;
+            font-size: smaller;
         }
         &:nth-child(1) {
             @include margin-bottom-1ex;
@@ -231,7 +231,7 @@ header {
     order: -3;
     @include max-width-medium;
     > hr {
-        @include margin-bottom-none;
+        margin-bottom: 0;
     }
     > h1 {
         @include margin-right-quarterem;
@@ -245,7 +245,7 @@ header {
 /* ========== */
 
 ul.teasers {
-    @include padding-none;
+    padding: 0;
     list-style-type: none;
     > hr {
         @include width-60;
@@ -261,7 +261,7 @@ ul.teasers {
 
 dl.posts > dd {
     @include margin-left-1em;
-    @include font-smaller;
+    font-size: smaller;
 }
 dl.posts > dt {
     @include margin-vertical-1ex;
@@ -272,14 +272,14 @@ dl.posts > dt {
 /* ========== */
 
 #graph-of-contents {
-    @include font-smaller;
+    font-size: smaller;
     @include light-color-text;
 }
 #graph-of-contents::before {
     @include diamond;
 }
 .metadata {
-    @include font-smaller;
+    font-size: smaller;
 }
 .main-menu > nav > ul,
 .pagination > ul {
@@ -291,11 +291,11 @@ dl.posts > dt {
     @include lighten-link;
 }
 .pagination > ul {
-    @include font-larger;
+    font-size: larger;
     @include width-small;
 }
 #series-list {
-    @include font-smaller;
+    font-size: smaller;
 }
 .tags {
   & > ul {
@@ -337,14 +337,14 @@ nav a.series {
 }
 .skippable {
     @include weight-light;
-    @include font-smaller;
+    font-size: smaller;
     @include light-color-text;
 }
 .skippable::before {
     content: "Skippable";
     position: absolute;
     @include left-to-gutter;
-    @include font-x-small;
+    font-size: x-small;
     @include weight-light;
     transform: translate(-3ex, 4ex) rotate(-90deg);
 }
@@ -355,7 +355,7 @@ table {
 th {
     @include border-bottom-solid-inactive;
     &:empty {
-        @include border-none;
+        border: none;
     }
 }
 th, td {
@@ -363,12 +363,12 @@ th, td {
 }
 th, .label-row {
     @include weight-normal;
-    @include small-caps;
-    @include font-larger;
+    font-variant: small-caps;
+    font-size: larger;
 }
 // Make subheadings smaller
 thead > tr:nth-of-type(2) {
-    @include font-smaller;
+    font-size: smaller;
 }
 .teaser .no-home {
     display: none;
@@ -377,9 +377,9 @@ thead > tr:nth-of-type(2) {
     float: right;
 }
 .citation {
-    @include font-smaller;
+    font-size: smaller;
     @include weight-light;
 }
 .small-caps {
-    @include small-caps;
+    font-variant: small-caps;
 }

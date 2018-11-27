@@ -6,8 +6,8 @@
 
 .voi-tree {
     @include line-height-small;
-    @include monospace;
-    @include font-smaller;
+    font-family: monospace;
+    font-size: smaller;
     @include width-full;
 }
 figure {
@@ -18,7 +18,7 @@ figure {
 }
 pre.voi-tree {
     /* To increase specificity */
-    @include font-smaller;
+    font-size: smaller;
     overflow-y: hidden;
 }
 textarea.voi-tree {

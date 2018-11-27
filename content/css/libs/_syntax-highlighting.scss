@@ -46,14 +46,14 @@ pre.sourceCode code, pre.example code {
 }
 
 .sourceCode > a {
-    @include border-none;
+    border: none;
     &:hover {
-        @include border-none;
+        border: none;
     }
 }
 pre.sourceCode::before, pre.example::before {
     position: absolute;
-    @include font-x-small;
+    font-size: x-small;
     @include weight-light;
     transform: translate(-7ex, 2ex) rotate(-90deg);
 }
@@ -65,7 +65,7 @@ pre.example::before {
 }
 pre.sourceCode, pre.example {
     @include background-color-dark;
-    @include font-small;
+    font-size: small;
     @include padding-1ex;
     @include border-radius;
 }

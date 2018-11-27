@@ -10,7 +10,7 @@
     @include height-small-view;
 }
 .good {
-    @include small-caps;
+    font-variant: small-caps;
 }
 .lottery {
     @include border-radius;

@@ -2,7 +2,7 @@
 
 #article-breadcrumb {
     position: fixed;
-    @include top-0;
+    top: 0;
     @include left-5vw;
     @include padding-1ex;
     background: nth(map-get($colors, chroma), 1);

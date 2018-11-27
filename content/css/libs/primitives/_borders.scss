@@ -21,9 +21,6 @@
 @mixin border-solid {
     border: 1px solid;
 }
-@mixin border-none {
-    border: none;
-}
 @mixin border-left-big($color) {
     border-left: 10px solid $color;
 }

@@ -1,12 +1,3 @@
-@mixin margin-none {
-    margin: 0;
-}
-@mixin margin-left-none {
-    margin-left: 0;
-}
-@mixin margin-right-none {
-    margin-right: 0;
-}
 @mixin margin-left-1em {
     margin-left: 1em;
 }
@@ -35,9 +26,6 @@
     margin-bottom: 0;
     margin-top: 0;
 }
-@mixin margin-bottom-none {
-    margin-bottom: 0;
-}
 @mixin margin-bottom-1ex {
     margin-bottom: 1ex;
 }
@@ -50,9 +38,6 @@
 @mixin margin-vertical-1ex {
     margin-top: 1ex;
     margin-bottom: 1ex;
-}
-@mixin padding-none {
-    padding: 0;
 }
 @mixin padding-vertical-none {
     padding-top: 0;
@@ -94,7 +79,4 @@
 }
 @mixin top-2ex {
     top: 2ex;
-}
-@mixin top-0 {
-    top: 0;
 }

@@ -3,7 +3,7 @@
 @import 'libs/primitives/spacing';
 
 .draw {
-    @include border-none;
+    border: none;
     button {
         @include margin-horizontal-3em;
     }

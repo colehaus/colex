@@ -26,18 +26,6 @@
 @mixin font-default-size {
     font-size: 1.2em;
 }
-@mixin font-smaller {
-    font-size: smaller;
-}
-@mixin font-larger {
-    font-size: larger;
-}
-@mixin font-x-small {
-    font-size: x-small;
-}
-@mixin font-small {
-    font-size: small;
-}
 @mixin font-default {
     font-family: 'Open Sans', sans-serif;
 }
@@ -52,12 +40,6 @@
 }
 @mixin line-height-small {
     line-height: 1;
-}
-@mixin monospace {
-    font-family: monospace;
-}
-@mixin small-caps {
-    font-variant: small-caps;
 }
 @mixin decorative-size {
     font-size: 5ex;
