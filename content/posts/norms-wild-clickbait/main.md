@@ -41,23 +41,20 @@ All the communities where the practice was successfully abandoned collectively d
 <!--more-->
 
 <figure>
-<figcaption>
-Female genital cutting prevalence vs support of the practice among women 15--49
-</figcaption>
-
-| Area         | Time period | Prevalence | Support |
-|:-------------|:------------|:-----------|:--------|
-| Somalia      |        2006 |       97.9 |    64.5 |
-| Guinea       |        2005 |       95.6 |    69.2 |
-| Djibouti     |        2006 |       93.1 |    36.6 |
-| Egypt        |        2008 |       91.1 |      54 |
-| Sudan        |        2006 |       89.3 |    23.7 |
-| Mali         |        2007 |       85.2 |      76 |
-| Ethiopia     |        2005 |       74.3 |    31.4 |
-| Burkina Faso |        2006 |       72.5 |    11.1 |
-| Mauritania   |        2007 |       72.2 |    53.4 |
-| Chad         |        2004 |       44.9 |    49.4 |
-| Yemen        |        1997 |       22.6 |      41 |
+<figcaption>Female genital cutting prevalence vs <br>support of the practice among women <span style="font-size: smaller;">15--49</span></figcaption>
+| Area           |   Time period |  Prevalence |  Support |
+| :------------- | :------------ | ----------: | -------: |
+| Somalia        |          2006 |        97.9 |     64.5 |
+| Guinea         |          2005 |        95.6 |     69.2 |
+| Djibouti       |          2006 |        93.1 |     36.6 |
+| Egypt          |          2008 |        91.1 |       54 |
+| Sudan          |          2006 |        89.3 |     23.7 |
+| Mali           |          2007 |        85.2 |       76 |
+| Ethiopia       |          2005 |        74.3 |     31.4 |
+| Burkina Faso   |          2006 |        72.5 |     11.1 |
+| Mauritania     |          2007 |        72.2 |     53.4 |
+| Chad           |          2004 |        44.9 |     49.4 |
+| Yemen          |          1997 |        22.6 |       41 |
 </figure>
 
 # On dirty laundry

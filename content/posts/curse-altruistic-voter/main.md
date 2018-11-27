@@ -24,12 +24,12 @@ Alas, the voting results are no guarantee that you've _actually_ acted altruisti
 For generality, we'll call voting for increased library funding option $\alpha$ and voting against (the status quo) option $\beta$.
 
 <figure>
+<figcaption>Individual voters private values for options $\alpha$ and $\beta$ and <br> their belief about others' private values for these options</figcaption>
 | Voter | Private value of $\alpha$ | Private value of $\beta$ | Belief about others' private value of $\alpha$ | Belief about others' private value of $\beta$ |
-|:------|:--------------------------|:-------------------------|:-----------------------------------------------|:----------------------------------------------|
+|:------|--------------------------:|-------------------------:|-----------------------------------------------:|----------------------------------------------:|
 | A     |                        -1 |                        0 |                                              1 |                                             0 |
 | B     |                        -1 |                        0 |                                              1 |                                             0 |
 | C     |                        -1 |                        0 |                                              1 |                                             0 |
-<figcaption>Individual voters private values for options $\alpha$ and $\beta$ and their belief about others' private values for these options
 </figure>
 
 The table outlines a scenario in which each of three voters (it's a small polity) prefers option $\beta$. Unfortunately, they've each come to the inaccurate belief that each other voter prefers option $\alpha$. That is voter A slightly prefers $\beta$ but believes voter B and voter C each slightly prefer $\alpha$.

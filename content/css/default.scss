@@ -174,9 +174,10 @@ figure {
         @include width-full;
     }
     > figcaption {
-        @include margin-horizontal-2em;
         &:first-child {
-            @include weight-bold;
+            text-align: center;
+            @include small-caps;
+            @include font-larger;
         }
         &:last-child {
             @include font-smaller;
@@ -188,6 +189,9 @@ figure {
             @include margin-top-1ex;
         }
     }
+}
+figure > table {
+    @include width-full;
 }
 
 /* ========== */

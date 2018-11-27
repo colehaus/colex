@@ -202,6 +202,8 @@ Happily, this supports our earlier claim that, with the right choice of paramete
 
 Contra [@acemoglu2005], autocrats can credibly cooperate in support of economic institutions which promote growth. The possibility for cooperation arises when we move from a single-shot game to a repeated game (as is often the case). This is bad news because it means we have one fewer reason to suppose that economics supports inclusivity in the long run.
 
+<hr class="references">
+
 [^inclusive-win]: The victory of inclusive societies is maintained, they argue, by a virtuous circle in which inclusive institutions are robust to perturbations.
 [^producers]: We will grant ourselves the unrealistic convenience of modeling the disparate group of producers as a single coordinated actor.
 [^growth-rate]: We demand $\delta \cdot r < 1$ for reasons of both mathematical tractability and economic plausibility.

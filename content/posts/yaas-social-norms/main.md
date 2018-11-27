@@ -38,10 +38,10 @@ If we put these two axes together, we end up with a classificatory grid like thi
 
 <figure id="preferences-grid">
 <figcaption>Classifying different types of preferences</figcaption>
-|                             | Individual preferences           | Social preferences                         |
-|-----------------------------|:---------------------------------|:-------------------------------------------|
-| [Unconditional]{.label-row} | "I want apples."                 | "I want more apples than you."             |
-| [Conditional]{.label-row}   | "I want apples if it is autumn." | "I want apples if my friends want apples." |
+|                               | Individual preferences             | Social preferences                           |
+| :---------------------------- | :--------------------------------- | :------------------------------------------- |
+| [Unconditional]{.label-row}   | "I want apples."                   | "I want more apples than you."               |
+| [Conditional]{.label-row}     | "I want apples if it is autumn."   | "I want apples if my friends want apples."   |
 </figure>
 
 <!--more-->
@@ -63,10 +63,10 @@ If we put these two axes together, we end up with a classificatory grid like thi
 
 <figure id="beliefs-grid">
 <figcaption>Classification of normative/non-normative and social/non-social beliefs</figcaption>
-|                                     | Non-social beliefs         | Social beliefs         |
-|-------------------------------------|:---------------------------|:-----------------------|
-| [Non-normative beliefs]{.label-row} | Factual beliefs            | Empirical expectations |
-| [Normative beliefs]{.label-row}     | Personal normative beliefs | Normative expectations |
+|                                       | Non-social beliefs           | Social beliefs           |
+| :------------------------------------ | :--------------------------- | :----------------------- |
+| [Non-normative beliefs]{.label-row}   | Factual beliefs              | Empirical expectations   |
+| [Normative beliefs]{.label-row}       | Personal normative beliefs   | Normative expectations   |
 </figure>
 
 To be explicit, empirical expectations are "beliefs about how other people are going to act or react in certain situations" while normative expectations are "beliefs about other people’s personal normative beliefs (i.e., they are second-order beliefs)" [@bicchieri2016]. That is, "All do it" is an empirical expectation while "All approve of it" is a normative expectation.
@@ -119,11 +119,11 @@ The next step is to establish whether there are normative social expectations be
 Questionnaires are a fairly straightforward way to do this. Crucially, the survey should ask about each of personal normative beliefs ("Do you personally think female genital cutting is morally obligatory, permissible or forbidden?"), empirical social expectations ("How prevalent do you think female genital cutting is in your community?"), and normative social expectations ("What fraction of your community do you think believes that female genital cutting is morally obligatory? Permissible? Forbidden?"). We can actually go even further as outlined in the following table:
 
 <figure>
-<figcaption>Summary of personal and social beliefs a social engineer may want to assess</figcaption>
-| What one believes about | Self                                         | Others                                            | Others 2nd order                                               |
-|:------------------------|:---------------------------------------------|:--------------------------------------------------|:---------------------------------------------------------------|
-| [Empirical]{.label-row} | What I am going to do                        | What others do (empirical expectation)            | What others believe I/others do                                |
-| [Normative]{.label-row} | What I should do (personal normative belief) | What others should do (personal normative belief) | What others believe I/others should do (normative expectation) |
+<figcaption>Summary of personal and social beliefs <br> a social engineer may want to assess</figcaption>
+| What one believes about   | Self                                           | Others                                              | Others 2nd order                                                 |
+| :------------------------ | :--------------------------------------------- | :-------------------------------------------------- | :--------------------------------------------------------------- |
+| [Empirical]{.label-row}   | What I am going to do                          | What others do (empirical expectation)              | What others believe I/others do                                  |
+| [Normative]{.label-row}   | What I should do (personal normative belief)   | What others should do (personal normative belief)   | What others believe I/others should do (normative expectation)   |
 </figure>
 
 ### [Pluralistic ignorance](#yaas-social-norms-map){#ignorance .arg-map}
