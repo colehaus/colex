@@ -55,6 +55,10 @@ const uniquifyValue = <A>(as: Array<A>): Array<A> =>
     S.map(JSON.parse)
   ])(as)
 
+const unexpectedCase = (impossible: empty): void => {
+  throw new Error(`Unexpected case ${impossible}`)
+}
+
 export {
   claimNotNull,
   documentReadyPromise,
@@ -63,5 +67,6 @@ export {
   parseMatrixToAngle,
   parseMatrixToYTranslation,
   uniquify,
-  uniquifyValue
+  uniquifyValue,
+  unexpectedCase
 }
