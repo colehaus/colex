@@ -16,28 +16,30 @@ Grossman, Chaloupka, and Sirtalan (1998) find that the long-run elasticity in a 
 
 The most widely quoted US estimates of alcohol consumption externalities, appropriately defined, are those of Manning et al. (1989), who estimate that net external costs are equivalent in value to about 35 per cent of the producer price of alcohol. A very large proportion of the next external cost is accounted for by the valuation of alcohol-related traffic fatalities.
 
+<figure class="big-fig">
 |                                                                                             | £  million (1992 prices) | Percentage of pre-tax alcohol expenditure |
 |:--------------------------------------------------------------------------------------------|-------------------------:|------------------------------------------:|
 | 1. The social cost to industry                                                              |                          |                                      14.2 |
-| Sickness absence                                                                            |                    1,059 |                                           |
-| Housework services                                                                          |                       71 |                                           |
-| Unemployment                                                                                |                      244 |                                           |
-| Premature deaths                                                                            |                      956 |                                           |
+| &emsp;Sickness absence                                                            |                    1,059 |                                           |
+| &emsp;Housework services                                                                          |                       71 |                                           |
+| &emsp;Unemployment                                                                          |                      244 |                                           |
+| &emsp;Premature deaths                                                                       |                      956 |                                           |
 | 2. The social cost to the NHS                                                               |                          |                                       1.0 |
-| In-patient costs---direct alcohol diagnosis                                                 |                       41 |                                           |
-| In-patient costs---other alcohol-related diagnosis                                          |                      120 |                                           |
-| General Practice costs                                                                      |                        3 |                                           |
+| &emsp;In-patient costs---direct alcohol diagnosis                                          |                       41 |                                           |
+| &emsp;In-patient costs---other alcohol-related diagnosis                                          |                      120 |                                           |
+| &emsp;General Practice costs                                                                      |                        3 |                                           |
 | 3. Society's response to alcohol-related problems                                           |                          |                                      0.01 |
-| Expenditure by national bodies                                                              |                      0.5 |                                           |
-| Research                                                                                    |                      0.9 |                                           |
+| &emsp;Expenditure by national bodies                                                              |                      0.5 |                                           |
+| &emsp;Research                                                                                    |                      0.9 |                                           |
 | 4. Social cost of material damage                                                           |                          |                                       0.9 |
-| Road traffic accidents (damage)                                                             |                      152 |                                           |
+| &emsp;Road traffic accidents (damage)                                                             |                      152 |                                           |
 | 5. Social cost of criminal activities                                                       |                          |                                       0.3 |
-| Police involvement in traffic offences (excluding road accidents)                           |                        7 |                                           |
-| Police involvement in traffice accidents (including judiciary and insurance administration) |                       21 |                                           |
-| Drink-related court cases                                                                   |                       27 |                                           |
+| &emsp;Police involvement in traffic offences (excluding road accidents)                           |                        7 |                                           |
+| &emsp;Police involvement in traffice accidents (including judiciary and insurance administration) |                       21 |                                           |
+| &emsp;Drink-related court cases                                                                   |                       27 |                                           |
 | Total (excluding unemployment and premature death)                                          |                    1,503 |                                       9.2 |
 | Total (including unemployment and premature death)                                          |                    2,703 |                                      16.5 |
+</figure>
 
 A very large proportion of the net external cost is accounted for by the valuation of alcohol-related traffic fatalities. Since the number of alcohol-related traffic fatalities seems to vary quite widely across countries, this would suggest that these US estimates may not be a good indication of alcohol externalities in other countries. Parry (2001) notes that there are fewer serious alcohol-related traffic accidents in the UK than in the USA, and that the marginal external costs are consequently also likely to be lower in the UK.
 
@@ -47,7 +49,7 @@ A very large proportion of the net external cost is accounted for by the valuati
 
 On 1 October 2011, the Danish Fat Tax Act came into effect.21 The tax of DKK 16 (around EUR 2.15) per kilogram of saturated fat is imposed on all food products produced in and imported into Denmark. The scope of the new legislation is established in Article 1 of the Act, which specifies that the following products are taxable: meat, certain dairy products, animal fats, edible oils and other fats, margarine, spreadable composite products, and other products which can be considered as substitutes or imitations of the above. The tax does not apply to products containing less than 2.3% per weight of saturated fat, which means that most types of milk are exempt.
 
-[@alemanno2011]
+<!-- [@alemanno2011] -->
 
 <figure>
 ![Line chart of income elasticities of food demand for milk and dairy products](/images/pigou/food-income-elasticity.png)
@@ -118,21 +120,19 @@ There is a large literature that tries to put numbers on each of these external 
 2.7.5 Other environmental externalities. Improper disposal of vehicles and vehicle parts (e.g., tires, batteries, oil) can result in environmental and health hazards; however Lee (1993) put these costs at only 0.0015 cents per vehicle mile, and they have probably declined with more stringent regulations governing disposal and recycling. Damages from upstream emissions leakage from 15 the petroleum industry are also relatively small, around 2 cents per gallon according to NRC (2002).
 
 <figure>
-<figcaption>
-Summary of external costs of driving
-</figcaption>
+<figcaption>Summary of external costs of driving</figcaption>
 |                                                | cents/gal | cents/mile |
 |:-----------------------------------------------|----------:|-----------:|
 | Central values for marginal external costs     |           |            |
-| &nbsp;&nbsp;Fuel-related costs                 |           |            |
-| &nbsp;&nbsp;&nbsp;&nbsp;Greenhouse warming     |       7.0 |        0.4 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Oil dependency         |      12.0 |        0.6 |
-| &nbsp;&nbsp;&nbsp;&nbsp;sum                    |        19 |        1.0 |
-| &nbsp;&nbsp;Mileage-related costs              |           |            |
-| &nbsp;&nbsp;&nbsp;&nbsp;Local pollution        |      46.0 |        2.3 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Congestion, cents/mile |      70.0 |        3.5 |
-| &nbsp;&nbsp;&nbsp;&nbsp;Accidents              |      60.0 |        3.0 |
-| &nbsp;&nbsp;&nbsp;&nbsp;sum                    |     176.0 |        8.8 |
+| &emsp;Fuel-related costs                             |           |            |
+| &emsp;&emsp;Greenhouse warming     |       7.0 |        0.4 |
+| &emsp;&emsp;Oil dependency         |      12.0 |        0.6 |
+| &emsp;&emsp;sum                    |        19 |        1.0 |
+| &emsp;Mileage-related costs        |           |            |
+| &emsp;&emsp;Local pollution        |      46.0 |        2.3 |
+| &emsp;&emsp;Congestion, cents/mile |      70.0 |        3.5 |
+| &emsp;&emsp;Accidents              |      60.0 |        3.0 |
+| &emsp;&emsp;sum                    |     176.0 |        8.8 |
 <figcaption>
 Note: Costs converted assuming on-road fuel economy of 20 miles per gallon. [@parry2007]
 </figcaption>

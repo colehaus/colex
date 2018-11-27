@@ -193,6 +193,9 @@ figure {
 figure > table {
     @include width-full;
 }
+.big-fig {
+    width: 90vw;
+}
 
 /* ========== */
 /*  Body      */

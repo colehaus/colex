@@ -16,10 +16,14 @@
   CLOSED: [2018-05-12 Sat 11:44]
 * DONE Tooltip for references
   CLOSED: [2018-11-08 Thu 16:30]
-* TODO Fix table captions
+* DONE Fix table captions
+  CLOSED: [2018-11-27 Tue 13:28]
+  - State "DONE"       from "TODO"       [2018-11-27 Tue 13:28]
   - State "TODO"       from              [2018-11-27 Tue 08:15]
 * TODO Header links
-* TODO Big figures
+* DONE Big figures
+  CLOSED: [2018-11-27 Tue 14:03]
+  - State "DONE"       from "TODO"       [2018-11-27 Tue 14:03]
 * TODO [#C] HTML sections
 * TODO Prune use of font enum primitives
 * TODO Pull out key terms feature

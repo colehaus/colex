@@ -118,8 +118,8 @@ The next step is to establish whether there are normative social expectations be
 
 Questionnaires are a fairly straightforward way to do this. Crucially, the survey should ask about each of personal normative beliefs ("Do you personally think female genital cutting is morally obligatory, permissible or forbidden?"), empirical social expectations ("How prevalent do you think female genital cutting is in your community?"), and normative social expectations ("What fraction of your community do you think believes that female genital cutting is morally obligatory? Permissible? Forbidden?"). We can actually go even further as outlined in the following table:
 
-<figure>
-<figcaption>Summary of personal and social beliefs <br> a social engineer may want to assess</figcaption>
+<figure class="big-fig">
+<figcaption>Summary of personal and social beliefs a social engineer may want to assess</figcaption>
 | What one believes about   | Self                                           | Others                                              | Others 2nd order                                                 |
 | :------------------------ | :--------------------------------------------- | :-------------------------------------------------- | :--------------------------------------------------------------- |
 | [Empirical]{.label-row}   | What I am going to do                          | What others do (empirical expectation)              | What others believe I/others do                                  |

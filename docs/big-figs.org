@@ -1,0 +1,8 @@
+* Story
+  - Some figures will take up full screen width to avoid crowding when possible
+* Properties
+  - Should take up 90% of full width on each device
+  - Content should be spread evenly/sensibly
+  - Should never be smaller than standard figures
+* Issues
+  - Might be smaller than standard figures on small devices
