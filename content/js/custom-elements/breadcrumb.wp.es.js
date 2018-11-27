@@ -72,6 +72,7 @@ const combineActions = (scrollDown: ScrollDownAction, scrollUp: ScrollUpAction):
 }
 
 const executeAction = (targets) => (action: ScrollAction): void => {
+  console.log(targets, action)
   switch (action.tag) {
     case 'SetBreadcrumb':
       getOrCreateBreadcrumbs().innerHTML = prettyPrintHeaders(breadcrumbHeaders(targets)(action.target))
@@ -85,16 +86,26 @@ const executeAction = (targets) => (action: ScrollAction): void => {
 }
 
 const cb = targets => entries => {
-  scrollDirection = window.scrollY >= lastScrollPosition ? 'down' : 'up'
-  lastScrollPosition = window.scrollY
-  executeAction(targets)(combineActions(lastScrollOff(entries), firstScrollBack(targets)(entries)))
+  const isInitialLoad = lastScrollPosition === undefined
+  if (isInitialLoad) {
+    lastScrollPosition = window.scrollY
+    S.pipe([
+      S.filter(target => target.getBoundingClientRect().top < 0),
+      S.last,
+      S.maybe({ tag: 'DoNothing' })(target => { return { tag: 'SetBreadcrumb', target } }),
+      executeAction(targets)
+    ])(targets)
+  } else {
+    scrollDirection = window.scrollY >= lastScrollPosition ? 'down' : 'up'
+    lastScrollPosition = window.scrollY
+    executeAction(targets)(combineActions(lastScrollOff(entries), firstScrollBack(targets)(entries)))
+  }
 }
 
 var lastScrollPosition, scrollDirection
 
 if (document.location.pathname.startsWith('/posts/')) {
   document.addEventListener('DOMContentLoaded', () => {
-    lastScrollPosition = window.scrollY
     const targets = Array.from(document.querySelectorAll('h3:not(#article-subtitle), h4, h5, h6'))
     const observer = new IntersectionObserver(cb(targets), { threshold: 0 })
     targets.forEach(el => observer.observe(el))
