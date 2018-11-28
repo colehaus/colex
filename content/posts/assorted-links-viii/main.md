@@ -48,7 +48,10 @@ Analysts’ subjective beliefs about the research hypothesis were assessed four 
 
 More long-term results on direct cash transfers. Also mixed. See [earlier discussion](/posts/assorted-links-i). Awaiting [GiveWell's promised update](https://blog.givewell.org/2018/05/04/new-research-on-cash-transfers/) eagerly.
 
-![Comparing interventions in Rwanda](/images/give-directly-cash-transfers-resized.png)
+<figure>
+<figcaption>Comparing interventions in Rwanda</figcaption>
+![Table showing results of different interventions on different outcome measures](/images/give-directly-cash-transfers-resized.png)
+</figure>
 
 <!--more-->
 

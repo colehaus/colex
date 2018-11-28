@@ -102,7 +102,7 @@ const cb = targets => entries => {
   }
 }
 
-var lastScrollPosition, scrollDirection
+let lastScrollPosition, scrollDirection
 
 if (document.location.pathname.startsWith('/posts/')) {
   document.addEventListener('DOMContentLoaded', () => {
