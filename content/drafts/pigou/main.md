@@ -4,9 +4,181 @@ date: 2018-11-21
 tags: externalities
 ---
 
-fat, sugar, guns, cigarettes, alcohol, traffic 
+zoning, executive pay, gambling
 
-zoning, executive pay, and financial transactions, gambling
+Perhaps the best
+example of a Pigouvian tax we have found is the Ozone Depleting
+Chemicals Tax (ODC), which was implemented by Congress in 1989 in
+order to comply with the Montreal Protocol.32 The ODC applies to the sale
+or use of ozone-depleting chemicals and is assessed at a rate proportional to
+their potential for depleting the ozone layer.33 Similarly, in the wake of the
+Exxon Valdez oil spill in 1989, Congress created an oil pollution fund, called
+the Oil Spill Liability Trust Fund, to provide compensation to those who 
+have suffered losses or damages due to an oil spill.34 The Fund is primarily
+funded by a tax of five cents per barrel of oil produced and imported to the
+United States. In addition, the Surface Mining Control and Reclamation Act,
+which was passed in order to mitigate the negative effects of coal mining on
+the environment, imposes a tax on the extraction of coal from domestic
+mines.35 
+
+[@masur2015]
+
+# Finance
+
+A third social cost of financial activity is the problem of gambling or
+“speculation.”146 Financial transactions are different from transactions in the
+“real economy” because they involve a pure transfer of money instead of the
+exchange of money for goods or services. When one person buys an asset
+from another—say, a share of stock—the buyer gains at the seller’s expense
+or the seller gains at the buyer’s expense, depending on whether the price is
+less than or greater than the true value of the asset. A transfer of money
+does not generate social value unless it is part of a transaction that reduces
+risk or otherwise enables people to spread receipts of money across times or
+states of the world in a way that advances their interests. 
+
+Imagine, for example, that one person sells a Greek sovereign bond to
+another person. If the seller owns a huge amount of Greek assets while the
+buyer owns none, the transaction could very well reduce the amount of risk
+in both the seller’s and buyer’s portfolio (the seller’s, by reducing her
+dependence on the value of Greek assets; the buyer’s, by diversifying a
+portfolio that is loaded with assets in other countries). If it does reduce
+their risk, the transaction also decreases the total amount of risk in the
+economy. But if the seller and buyer are in opposite positions, the
+transaction will increase risk. The seller and buyer are simply gambling
+about what will happen in Greece—the seller believes that Greece may
+default, while the buyer believes that Greece will not default. Their
+behavior is not any different from people betting on horses.
+Some commentators see no problem with such gambling, but there are
+several reasons to be concerned about the motivations underlying the
+transaction. First, if the buyer and seller are rational and risk averse (as is
+usually assumed), the transaction can take place only if they are gambling
+with other people’s money. One possibility is that each person represents an
+institution that is guaranteed by the government. Another possibility is that
+they are agents for funds whose investors do not carefully monitor their
+behavior, and who have contracts that give them payoffs if they make
+money while not forcing them to fully absorb losses.
+Second, if the buyer and seller are risk averse, but poorly informed or
+boundedly rational, they may enter the transaction believing that each has
+special insight about the likely direction of the value of the asset when in
+fact they do not. In such a case, the transaction is just a wasteful transfer
+from one person to another, and there is no reason for society to tolerate it.
+Third, if the buyer and seller are rational but not risk averse (e.g., they
+enjoy gambling) then it is almost certainly better to direct them to casinos
+than to allow them to gamble using the financial system. Casinos are heavily
+regulated because governments recognize that people may develop an
+addiction to gambling and subsequently act against their interest. Casinos
+are also not vulnerable to financial panics and systemic risk. Financial
+institutions are. Accordingly, the government should discourage purely
+speculative activity that takes place in the financial system. 
+
+A second example of the social cost of financial activity is the problem of
+“races,” first identified by Jack Hirshleifer.141 The value of an asset is a
+function of information about the various factors that affect the supply and
+demand of that asset. For example, the price of oil depends on information
+about the prospect of war in the Middle East or the likelihood of continued
+economic prosperity in China. When new information about events like
+these comes into existence, market participants will scramble to be the first
+to trade on the information.
+To understand why, suppose that a barrel of oil currently trades at $100.
+A terrorist attack destroys a pipeline in an obscure part of the world and
+raises the possibility of additional disruption of the oil supply. When the
+market learns of the attack, the price of oil will rise to $105. Any person who
+learns about the terrorist attack first, can buy oil (or oil futures or other
+derivatives) at $100 and reap a quick profit of $5 per barrel by selling when
+the price rises.
+The prospect of such profits will encourage investors to spend money to
+obtain information about events before others. Investors have spent vast
+sums to construct fiberoptic cables that increase the flow of information by
+nanoseconds. For example, Spread Networks, a high-speed trading firm,
+paid $300 million to build cables from New York to Chicago so that they
+could trade on the Chicago exchange using New York information
+microseconds before the market learned the information.142 Investors have
+purchased and leased buildings close to exchanges for the same reason.143
+This activity is socially wasteful.144 To see why, consider first why it is
+valuable for information to spread at a relatively speedy rate. If terrorism is 
+increasing, then oil will become more expensive because it will be harder to
+produce and ship. If the market learns this information quickly, then
+airlines, trucking companies, consumers, and others can quickly adjust by
+engaging in alternative activities—for example, by relying more on
+electricity. However, the key point is that the broader market will not
+benefit at all if information about terrorism, as embodied in market prices,
+reaches them a nanosecond quicker than it otherwise does. Thus, high-speed
+investors incur expenses in a socially wasteful race.
+ This problem can be addressed with a Pigouvian tax. The economist
+James Tobin famously advocated just such a tax, now known as a Tobin tax,
+on financial transactions.145 Because high-speed traders make tiny profits on
+numerous trades, a tax on each trade would deter them from much of their
+wasteful activity. But because the Tobin tax is low, it will not deter valuable
+financial transactions.
+
+Banks and other financial institutions frequently fund themselves
+through very short-term debt, including debt that is due on demand.
+Commercial banks heavily rely on deposit accounts, where customers park
+funds for short periods in return for interest and checking services, and can
+also withdraw those funds at any time. Commercial banks and other
+financial institutions—including investment banks—also fund themselves
+through the repo market. In this market, large institutions, like pension
+funds, make short-term (one- or two-day) collateralized loans that are
+routinely rolled over. “Withdrawing” effectively occurs when the lender
+refuses to roll over a loan because it prefers to invest those funds elsewhere.
+Short-term debt creates a negative externality.135 When a depositor or
+other short-term lender withdraws money, it increases the probability that
+the borrower will not have enough funds to pay other lenders when the
+loans are due or demanded. Those lenders will not be able to recover in full
+because of bankruptcy. To protect themselves, lenders may withdraw funds
+in response to other lenders withdrawing their funds, leading to a run. The
+firm may be forced to sell assets into a declining market, resulting in losses.
+If firms are shut down, then real value consisting of the firm’s private
+information and contacts may be lost.136 And if the collapse of one firm 
+leads to the collapse of other firms, resulting in a full-blown contagion of
+the sort seen in 2008, the sudden massive withdrawal of credit from the
+economy can cause severe macroeconomic effects, including unemployment.
+The government tries to deter runs by requiring banks to offer FDIC
+insurance to depositors and by acting as a lender of last resort.137 The idea is
+that if short-term lenders know that the government will protect them, they
+are less likely to jump the gun and withdraw. However, government
+insurance creates a new problem in the form of moral hazard. Because
+financial institutions expect to be rescued, they will take greater risk,
+enjoying the upside if the risk pays off and transferring the loss to the
+government if it does not. Moreover, even if deposit insurance were
+correctly priced, or creditors adequately monitored financial institutions,
+every institution would still create a negative externality from risk-taking
+behavior by increasing the probability of default and losses to other institutions,
+which could in turn trigger a system-wide collapse with negative
+effects for the economy.138
+As John Cochrane has argued, the simplest response to this problem is a
+Pigouvian tax.139 Every time a bank borrows $100, there is a tiny increase in
+the risk of a run that could result in a financial crisis.140 Although the risk is
+tiny, the losses associated with financial crisis are huge, so the tax itself may
+well be substantial. Cochrane suggests a tax of five percent—meaning that
+the bank would be required to pay $5 to the government for every $100 it
+borrows, with the precise amount depending on various factors including
+the maturity of the debt. 
+
+[@masur2015]
+
+Thus, it is worth asking what costs an optimal Pigouvian tax would require the form to take into account. Relevant items would include the expected costs to (1) uninsured counter-parties from firm insolvency, (2) taxpayers and beneficiaries of government programmes, present and future, who would be worse off to the extent the government offered explicit or implicit insurance coverage, and (3) anyone else directly or indirectly affected by the heightened prospect of runs on the bank (at the same firm or elsewhere) and/or of the negative economic consequences from the associated harm to the liquidity function that banks and other financial firms serve in facilitating transactions that generate surplus.
+
+[@shackelford2010]
+
+# Antibiotics
+
+The magnitude the tax based on European Union numbers ranges between 29 and 287€ per kilogram active substance or between 9 and 86% of the average price of commonly used antibiotics depending on the foreseen period in years (1–10 years) between the development of a new antibiotic drug.
+
+| Domain                                                                       | Tonnes of antibiotics used (active ingredients)   |
+| :--------------------------------------------------------------------------- | ------------------------------------------------: |
+| Human medicine                                                               | 5,400                                             |
+| Veterinary medicine                                                          | 3,494                                             |
+| Antimicrobial feed-additives or growth promoters used for zootechnical use   | 1,599                                             |
+| Sum                                                                          | 10,493                                            |
+
+[@vaagsholm2010]
+
+# Smoking
+
+Although nonsmokers subsidize smokers' medical care and group life insurance, smokers subsidize nonsmokers' pensions and nursing home payments. On balance, smokers probably pay their way at the current level of excise taxes on cigarettes
+
+[@manning1989]
 
 # Alcohol
 
@@ -17,33 +189,52 @@ Grossman, Chaloupka, and Sirtalan (1998) find that the long-run elasticity in a 
 The most widely quoted US estimates of alcohol consumption externalities, appropriately defined, are those of Manning et al. (1989), who estimate that net external costs are equivalent in value to about 35 per cent of the producer price of alcohol. A very large proportion of the next external cost is accounted for by the valuation of alcohol-related traffic fatalities.
 
 <figure class="big-fig">
-|                                                                                             | £  million (1992 prices) | Percentage of pre-tax alcohol expenditure |
-|:--------------------------------------------------------------------------------------------|-------------------------:|------------------------------------------:|
-| 1. The social cost to industry                                                              |                          |                                      14.2 |
-| &emsp;Sickness absence                                                            |                    1,059 |                                           |
-| &emsp;Housework services                                                                          |                       71 |                                           |
-| &emsp;Unemployment                                                                          |                      244 |                                           |
-| &emsp;Premature deaths                                                                       |                      956 |                                           |
-| 2. The social cost to the NHS                                                               |                          |                                       1.0 |
-| &emsp;In-patient costs---direct alcohol diagnosis                                          |                       41 |                                           |
-| &emsp;In-patient costs---other alcohol-related diagnosis                                          |                      120 |                                           |
-| &emsp;General Practice costs                                                                      |                        3 |                                           |
-| 3. Society's response to alcohol-related problems                                           |                          |                                      0.01 |
-| &emsp;Expenditure by national bodies                                                              |                      0.5 |                                           |
-| &emsp;Research                                                                                    |                      0.9 |                                           |
-| 4. Social cost of material damage                                                           |                          |                                       0.9 |
-| &emsp;Road traffic accidents (damage)                                                             |                      152 |                                           |
-| 5. Social cost of criminal activities                                                       |                          |                                       0.3 |
-| &emsp;Police involvement in traffic offences (excluding road accidents)                           |                        7 |                                           |
-| &emsp;Police involvement in traffice accidents (including judiciary and insurance administration) |                       21 |                                           |
-| &emsp;Drink-related court cases                                                                   |                       27 |                                           |
-| Total (excluding unemployment and premature death)                                          |                    1,503 |                                       9.2 |
-| Total (including unemployment and premature death)                                          |                    2,703 |                                      16.5 |
+|                                                                                                   |   £  million (1992 prices) |   Percentage of pre-tax alcohol expenditure |
+| :--------------------------------------------------------------------------------------------     | -------------------------: | ------------------------------------------: |
+| 1. The social cost to industry                                                                    |                            |                                        14.2 |
+| &emsp;Sickness absence                                                                            |                      1,059 |                                             |
+| &emsp;Housework services                                                                          |                         71 |                                             |
+| &emsp;Unemployment                                                                                |                        244 |                                             |
+| &emsp;Premature deaths                                                                            |                        956 |                                             |
+| 2. The social cost to the NHS                                                                     |                            |                                         1.0 |
+| &emsp;In-patient costs---direct alcohol diagnosis                                                 |                         41 |                                             |
+| &emsp;In-patient costs---other alcohol-related diagnosis                                          |                        120 |                                             |
+| &emsp;General Practice costs                                                                      |                          3 |                                             |
+| 3. Society's response to alcohol-related problems                                                 |                            |                                        0.01 |
+| &emsp;Expenditure by national bodies                                                              |                        0.5 |                                             |
+| &emsp;Research                                                                                    |                        0.9 |                                             |
+| 4. Social cost of material damage                                                                 |                            |                                         0.9 |
+| &emsp;Road traffic accidents (damage)                                                             |                        152 |                                             |
+| 5. Social cost of criminal activities                                                             |                            |                                         0.3 |
+| &emsp;Police involvement in traffic offences (excluding road accidents)                           |                          7 |                                             |
+| &emsp;Police involvement in traffice accidents (including judiciary and insurance administration) |                         21 |                                             |
+| &emsp;Drink-related court cases                                                                   |                         27 |                                             |
+| Total (excluding unemployment and premature death)                                                |                      1,503 |                                         9.2 |
+| Total (including unemployment and premature death)                                                |                      2,703 |                                        16.5 |
 </figure>
 
 A very large proportion of the net external cost is accounted for by the valuation of alcohol-related traffic fatalities. Since the number of alcohol-related traffic fatalities seems to vary quite widely across countries, this would suggest that these US estimates may not be a good indication of alcohol externalities in other countries. Parry (2001) notes that there are fewer serious alcohol-related traffic accidents in the UK than in the USA, and that the marginal external costs are consequently also likely to be lower in the UK.
 
 [@smith2005]
+
+| Country | Publication  | Cost as % of GDP High | Cost as % of GDP low | Cost (€) per adult High | Cost (€) per adult Low | Cost (€) per liter of pure alcohol High | Cost (€) per liter of pure alcohol low |
+|:--------+:-------------|----------------------:+---------------------:+------------------------:+-----------------------:+----------------------------------------:+---------------------------------------:|
+| US      | Harwood 2000 |                   2.1 |                  0.6 |                     882 |                    252 |                                      93 |                                     27 |
+
+In a pioneering study, Manning et al. (1989) estimated the net external costs in the mid-1980s at about US$0.48 per ounce of ethanol, double the average state and federal tax per ounce that was then in place. A similar result was reported by Pogue and Sgontz (1989). Much of the external costs were borne by victims of drunk drivers. The costs would have been higher still had non-fatal highway injuries (Miller and Blincoe 1994) and intra-family effects been taken into account. Furthermore, Kenkel (1996) estimated that the duty rate should be about equal to the pre-tax alcohol price, while Saffer and Chaloupka (1994) calculated the weighted average optimal US tax on alcohol at 2.3 times the 1991 level.
+
+One of the most widely cited studies, by Leung and Phelps (1993), concludes that the price elasticities of alcohol demand are −0.3 for beer, −1.0 for wine and −1.5 for spirits. Clements et al. (1997) report price elasticities for seven countries (including three EU member states, i.e. Finland, Sweden and the UK), covering the period from the mid-1950s to the mid-1980s. They find elasticities of −0.35 for beer, −0.68 for wine and −0.98 for spirits, which are broadly in line with those found for the US.
+
+Intuitively, moderate drinkers should be more price responsive than heavy drinkers. Indeed, Manning et al. (1995) found that the median drinker had a price elasticity of −1.19, whereas light and heavy drinkers’ price elasticities were around −0.5. Specifically, the price elasticity of the heaviest drinkers (those in the 95th percentile) was found to be not significantly different from zero. At the 80th percentile, however drinkers were still significantly responsive to price, with a price elasticity of −0.74. In a recent study, Farrell et al. (2003) argue that higher duties would reduce alcohol dependence and abuse, estimating a high price elasticity of −1.487. This confirms the results of an earlier study by Kenkel (1993), who estimated the demand for heavy drinking to be at least as price elastic as the demand for moderate drinking.
+
+As noted above, however, nearly all external costs are caused by 10% of the drinking
+population who consume one-third to one-half of all alcohol sold.
+
+[@cnossen2007]
+
+Excise taxes are relatively small but non-trivial sources of revenue. On average across the OECD, they account for almost 11 percent of government revenues
+
+[@decicca2013]
 
 # Fat
 

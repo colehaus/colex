@@ -25,7 +25,9 @@
   CLOSED: [2018-11-27 Tue 14:03]
   - State "DONE"       from "TODO"       [2018-11-27 Tue 14:03]
 * TODO [#C] HTML sections
-* TODO Prune use of font enum primitives
+* DONE Prune use of font enum primitives
+  CLOSED: [2018-11-28 Wed 13:30]
+  - State "DONE"       from "TODO"       [2018-11-28 Wed 13:30]
 * TODO Pull out key terms feature
 * TODO [#C] Sticky essential elements for reference during post scrolling
 * TODO Bibtexify AI safety post
@@ -41,7 +43,10 @@
 * TODO Release serverless lib
 * DONE Linkify citations
   CLOSED: [2018-05-19 Sat 00:39]
-* TODO Definition custom element
+* SCRAPPED Definition custom element
+  CLOSED: [2018-11-28 Wed 13:30]
+  - State "SCRAPPED"   from "TODO"       [2018-11-28 Wed 13:30] \\
+    Don't remember what this means. Possibly the same as key terms feature.
 * DONE Add visible atom link
   CLOSED: [2018-05-19 Sat 00:56]
 * DONE Reorganize nix files in colex root
