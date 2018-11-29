@@ -26,7 +26,7 @@ Obviously, this section is brief and handwavey. We've sidestepped big, intricate
 
 # Moral uncertainty
 
-Once we accept this uncertainty, we must choose how to respond. If we don't reflect on the idea of moral uncertainty, our approach is likely to approximate ["my favorite theory"](http://johanegustafsson.net/papers/in-defence-of-my-favourite-theory.pdf). In this approach, we weigh the options, find whichever ethical theory fares best, and discard the rest. That is, if, after analysis, we think the categorical imperative is 20% likely to be true and utilitarianism is 80% likely to be true, we act as utilitarians.
+Once we accept this uncertainty, we must choose how to respond. If we don't reflect on the idea of moral uncertainty, our approach is likely to approximate "my favorite theory" [@gustafsson2014]. In this approach, we weigh the options, find whichever ethical theory fares best, and discard the rest. That is, if, after analysis, we think the categorical imperative is 20% likely to be true and utilitarianism is 80% likely to be true, we act as utilitarians.
 
 A compelling alternative is to [retain our uncertainty and evaluate actions against a weighted parliament of ethical theories](http://www.overcomingbias.com/2009/01/moral-uncertainty-towards-a-solution.html). In our 80-20 scenario above, any action is evaluated against both theories. If utilitarianism marginally prefers action B to A while the categorical imperative heavily favors A over B, we do A (even though we are "mostly" utilitarian!).
 
@@ -54,7 +54,7 @@ In this case, the value in our value of information calculation is determined by
 
 ## AI arms race
 
-In an [AI arms race](https://www.fhi.ox.ac.uk/wp-content/uploads/Racing-to-the-precipice-a-model-of-artificial-intelligence-development.pdf), the naive approach to alignment---first, solve ethics; then, develop AGI---puts the most scrupulous developers at a disadvantage. Because the costs of scrupulosity are so high, we expect most developers to end up in the 'unscrupulous' category. The lazy approach may offer a significant advantage here. Because the approach is conceptually straightforward, implementation could be relatively manageable. As such, asking all agent creators to include it is a more plausible request than demanding the cessation of all agent development. Furthermore, when an agent finds itself doing trivial actions of no moral import, it can remain fairly disinterested in ethics. Broad approximations of ethical truth suffice. This means agent creators working in certain fields can be fairly confident that the run time costs---in terms of agent performance overhead, constraints on agent actions, agent predictability, etc.---are minimal. Again, this makes ethical consideration cheaper and more likely.
+In an AI arms race, the naive approach to alignment---first, solve ethics; then, develop AGI---puts the most scrupulous developers at a disadvantage [@armstrong2016]. Because the costs of scrupulosity are so high, we expect most developers to end up in the 'unscrupulous' category. The lazy approach may offer a significant advantage here. Because the approach is conceptually straightforward, implementation could be relatively manageable. As such, asking all agent creators to include it is a more plausible request than demanding the cessation of all agent development. Furthermore, when an agent finds itself doing trivial actions of no moral import, it can remain fairly disinterested in ethics. Broad approximations of ethical truth suffice. This means agent creators working in certain fields can be fairly confident that the run time costs---in terms of agent performance overhead, constraints on agent actions, agent predictability, etc.---are minimal. Again, this makes ethical consideration cheaper and more likely.
 
 ## Ambiguity alignment
 
@@ -65,3 +65,5 @@ All the moral conundrums that we humans confront are now moral conundrums for ou
 [^intractable]: This demands further defense in some future post. <!-- TODO -->
 [^circular]: Future post. <!-- TODO -->
 [^lazy]: Hence the "lazy" in our title. In particular, we're appealing to the concept of [lazy evaluation](https://en.wikipedia.org/wiki/Lazy_evaluation)---values (both computational and ethical) ought to be computed only on an as needed basis instead of eagerly and preemptively.
+
+<hr class="references">
