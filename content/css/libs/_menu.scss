@@ -3,10 +3,16 @@
 @import 'primitives/borders';
 @import 'primitives/typography';
 
+menu[type="popup"] {
+    margin: 0;
+    padding: 0;
+}
+
 .menu {
     @include border-radius;
     @include background-alt-color;
     @include padding-1ex;
+    margin: 0;
     list-style-type: none;
     position: absolute;
     & > li {

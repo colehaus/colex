@@ -30,17 +30,21 @@
   - State "DONE"       from "TODO"       [2018-11-28 Wed 13:30]
 * TODO Pull out key terms feature
 * TODO [#C] Sticky essential elements for reference during post scrolling
-* TODO Bibtexify AI safety post
+* DONE Bibtexify AI safety post
+  CLOSED: [2018-11-28 Wed 16:15]
+  - State "DONE"       from "TODO"       [2018-11-28 Wed 16:15]
 * DONE File node writeAsync bug
   CLOSED: [2018-11-08 Thu 13:35]
 * TODO [#C] Strip html from title metadata
 * TODO Source maps in rollbar
-* TODO Fix hover/click for menus
+* DONE Fix hover/click for menus
+  CLOSED: [2018-11-28 Wed 16:32]
+  - State "DONE"       from "TODO"       [2018-11-28 Wed 16:32]
 * DONE Add evidence to autocrats diminishing marginal utility
   CLOSED: [2018-06-14 Thu 14:21]
 * DONE Label abstract as such
   CLOSED: [2018-05-28 Mon 22:22]
-* TODO Release serverless lib
+* TODO [#C] Release serverless lib
 * DONE Linkify citations
   CLOSED: [2018-05-19 Sat 00:39]
 * SCRAPPED Definition custom element
