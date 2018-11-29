@@ -32,3 +32,9 @@
     content: '§§§§ ';
     font-size: smaller;
 }
+@mixin external-link {
+    content: '⤴';
+}
+@mixin internal-link {
+    content: '⥀';
+}

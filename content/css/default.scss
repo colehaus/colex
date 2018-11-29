@@ -39,8 +39,13 @@ a {
     text-decoration: none;
     color: unset;
 }
-a:hover {
-    @include border-bottom-solid;
+a {
+    &:hover {
+        @include border-bottom-solid;
+    }
+    &[href^="#"]:hover {
+        @include border-bottom-solid;
+    }
 }
 article {
     h2 {
@@ -78,12 +83,26 @@ article {
         @include border-bottom-dashed;
     }
 }
+article:not(.teaser) {
+    h1, h2, h3, h4, h5, h6 {
+        > a {
+            &::after {
+                @include external-link;
+                @include superscript;
+            }
+            &[href^="#"] {
+                border: none;
+                &::after {
+                    @include internal-link;
+                    @include superscript;
+                }
+            }
+        }
+    }
+}
 h1, h2, h3, h4, h5, h6 {
     > a {
         border: none;
-        &[href^="#"] {
-            border: none;
-        }
     }
 }
 #article-subtitle {

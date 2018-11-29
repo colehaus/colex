@@ -20,7 +20,9 @@
   CLOSED: [2018-11-27 Tue 13:28]
   - State "DONE"       from "TODO"       [2018-11-27 Tue 13:28]
   - State "TODO"       from              [2018-11-27 Tue 08:15]
-* TODO Header links
+* DONE Header links
+  CLOSED: [2018-11-29 Thu 13:48]
+  - State "DONE"       from "TODO"       [2018-11-29 Thu 13:48]
 * DONE Big figures
   CLOSED: [2018-11-27 Tue 14:03]
   - State "DONE"       from "TODO"       [2018-11-27 Tue 14:03]

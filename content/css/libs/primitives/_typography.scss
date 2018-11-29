@@ -44,3 +44,7 @@
 @mixin decorative-size {
     font-size: 5ex;
 }
+@mixin superscript {
+    font-size: small;
+    vertical-align: super;
+}
