@@ -115,7 +115,6 @@ documentReadyPromise.then(() => {
         .offset({ top: pageY, left: pageX })
         .children('ul.menu').children()
         .off().click(choose)
-      return false
     })
   )(
     $('[type="menu"]').toArray()

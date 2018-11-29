@@ -115,7 +115,7 @@ const handleEvent = (event: Event) => {
 
 const toggleMenu = (ev: JQueryMouseEventObject) => {
   // Menu shouldn't popup when clicking on interactive element
-  const isInter = [
+  const isInteractive = [
     'TEXTAREA',
     'BUTTON',
     'INPUT',
@@ -125,7 +125,7 @@ const toggleMenu = (ev: JQueryMouseEventObject) => {
     'SUMMARY',
     'A'
   ].some(tg => fixTarget(ev.target).nodeName === tg)
-  if (isInter) { return }
+  if (isInteractive) { return }
   const isPopup = el =>
     $(el).get(0).nodeName === 'MENU' && $(el).attr('type') === 'popup'
   const menu = getMenu(fixTarget(ev.target)).filter((_, el) => isPopup(el))
