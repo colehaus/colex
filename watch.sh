@@ -15,12 +15,14 @@ cd "${root}/content/js"
 rm -f dist/*
 
 # Default `NODE_PATH` doesn't work with scoped packages
+# e.g. `webpack-cli` expects `flow-webpack-plugin` to be a direct child of one of the `NODE_PATH` entries
 for path in ${NODE_PATH//:/ }; do
     if [[ "${path}" = *"node-dependencies-ColEx"* ]]; then
-        sudo rm -r node_modules
-        cp -r "${path}" node_modules
         NODE_PATH="${path}/@colehaus":$NODE_PATH
-        NODE_PATH="${path}/@babel":$NODE_PATH
+        # babel doesn't read NODE_PATH so this seems like the most convenient way to tell it about required deps
+        sudo rm -rf node_modules
+        mkdir node_modules
+        ln -s "${path}/@babel" node_modules/@babel
     fi
 done
 
@@ -47,10 +49,10 @@ webpack &
 # npm install
 # pulp --watch browserify --to ../dist/construct-vnm-utility-function.js &
 
-# cd "${root}/content/js/exemplars-curse"
-# bower install
-# npm install
-# pulp --watch browserify --to ../dist/exemplars-curse.js &
+cd "${root}/content/js/exemplars-curse"
+bower install
+npm install
+pulp --watch browserify --to ../dist/exemplars-curse.js &
 
 trap 'kill $(jobs -p)' EXIT
 sleep infinity
