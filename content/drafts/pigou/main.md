@@ -4,7 +4,7 @@ date: 2018-11-21
 tags: externalities
 ---
 
-zoning, executive pay, gambling
+zoning, executive pay
 
 Perhaps the best
 example of a Pigouvian tax we have found is the Ozone Depleting
@@ -22,6 +22,74 @@ the environment, imposes a tax on the extraction of coal from domestic
 mines.35 
 
 [@masur2015]
+
+# Garbage
+
+In particular, the Tellus Institute (1991) studies the full cost of An Excise Tax on Municipal Solid Waste? 171 waste disposal for the state of California, employing the ‘control cost’ method of pollutant evaluation for the external costs. Under that method, the marginal external damage (MED) attributed to a specific pollutant is the cost of preventing a marginal unit of that pollutant from entering the environment
+
+For the UK, the Centre for Social and Economic Research of the Global Environment (1993) found external costs of £1.30 to £4.00 per ton, depending on whether the landfill has energy recovery from methane gas.
+
+For the Netherlands, Dijkgraaf and Vollebergh (1998) estimate that the external cost of landfill garbage is $US28 per ton (about $US0.28 per 32-gallon bag of garbage).
+
+The external costs can include aesthetic costs incurred by individuals, such as the noise pollution from the collection trucks and a less scenic view. So far, no studies have estimated these aesthetic costs per unit of solid waste.28 The external cost also includes the negative health effects from toxins in the leachate that seeps into the groundwater. It includes the effect of methane gas produced as organic material in the landfill decomposes. Before methane was collected and vented, it could seep through crevices underground, emerge in some neighbouring house or basement, and then possibly ignite and explode. That danger has been virtually eliminated and is not part of calculations here. If the methane is vented and released into the atmosphere, then external costs include the greenhouse effect on global warming. Finally, if the methane is ‘flared’, as required on all new landfills, then the high greenhouse effect of the methane is reduced to the lower greenhouse effect of carbon dioxide (but the flaring creates other air emissions).
+
+The first entry, under water emissions, is the range for leachate’s environmental costs. Leachate is produced from the interaction between degrading landfill material and water from precipitation. It contains toxins that may contaminate groundwater. For present purposes, leachate is a local water pollutant that will be linked with the precipitation level in each state.30 Because of recent controls, however, the range in the table is small ($0.0–$1.0 per ton of waste).
+
+Under air emissions, methane is the biggest potential problem. In fact, landfills are the source of 35 per cent of methane emissions in the USA, or 4 per cent of all greenhouse gas emissions (Environmental Protection Agency, 2001). More is said about the greenhouse effect of carbon dioxide, because so much more carbon dioxide is released into the atmosphere from industries and vehicles that burn fossil fuels, but each methane gas molecule has much more greenhouse effect than a carbon dioxide molecule. Thus the row of the table for methane shows a high range of costs from the greenhouse effect ($8.8–$59.5 per ton). If the methane is flared, however, then the combustion converts the methane into carbon dioxide and other air emissions, so the effect of methane from the landfill is much reduced ($2.1–$6.9 per ton). On the other hand, that flaring creates more carbon dioxide, and so the range of estimated costs from carbon dioxide increases (from $0.4--$1.4 per ton to $0.7--$2.0 per ton). These global costs of the two greenhouse gases are not specific to any state’s temperature or precipitation.
+
+<figure>
+<figcaption>Environmental Cost Estimates for a Landfill (1997 dollars per ton)</figcaption>
+| Cost              |   No methane flaring |   Methane flaring |
+| :---------------- | -------------------: | ----------------: |
+| Water emissions   |                      |                   |
+| Leachate          |             0.0--1.0 |          0.0--1.0 |
+| Air emissions     |                      |                   |
+| Methane           |            8.8--59.5 |          2.1--6.9 |
+| Carbon dioxide    |             0.4--1.4 |          0.7--2.0 |
+| Vinyl chloride    |             4.3--4.8 |          4.3--4.8 |
+| Benzene           |             0.1--2.8 |          0.1--2.8 |
+| Others            |             0.3--4.8 |          0.3--4.8 |
+| Total             |           13.8--74.3 |         7.5--22.3 |
+</figure>
+
+[@fullerton2005excise]
+
+# Gambling
+
+Further complicating the assessment of the efficiency of gambling taxes are externalities that arise from gambling. Probably the most serious of these arises from the apparent social fact that there exist some individuals who are especially susceptible to the temptation to gamble excessively. Compulsive gamblers, their gambling stimulated by easy accessibility to opportunities to bet, may spend enormous amounts, driving themselves into bankruptcy, their families into hardship, and their personal relationships into ruin. They are estimated to be of the order of 1–2 per cent of the adult population in countries where surveys have been conducted. Other ‘problem gamblers’ constitute another 2–4 per cent (Azmier, 2001, p. 10; Volberg, 2001, p. 49). Together, these two groups appear to constitute a small but stubbornly resilient share of the adult population. Research on gambling by these groups suggests that the harmful effects can be mitigated through restrictions on types of games, conditions of play, and marketing,15 but most experts would agree that legalization will inevitably make life worse for this small subset of the population. Accordingly, most governments that sponsor or allow gambling also provide services to help problem gamblers. This being an inevitable social cost associated with legalized gambling, the logic of Pigouvian taxation implies that gambling taxes reflect, in part, this cost.
+
+A second category of social cost is less visible and probably less severe; it may even be illusory. Some commentators argue that the legalization of gambling, especially when it is endorsed and advertised by the government, may impose a cost to society by undercutting the educational function of government. Government, through its schools, laws, and public pronouncements, advocates certain beliefs, including the value of productive work. To the extent that the sponsorship and, particularly, the promotion of gambling undercut that traditional message, legalized gambling creates a second category of external costs.16 By the same logic of Pigouvian taxation, these costs would imply higher gambling taxes. This justification is similar to the time-honoured argument for sumptuary laws and ‘sin taxes’. Arising out of religious or moral disapproval, sumptuary laws dating from the ancient Greeks have been used to restrict or forbid certain kinds of consumption.
+
+One last form of external cost associated with legalized gambling is crime, specifically organized crime. Although government-operated lotteries do not appear to have attracted or stimulated organized crime activity, some other aspects of the gaming industry have. As with other aspects of social cost, the design and regulation of legalized games will have a major impact on the severity of social costs.
+
+[@clotfelter2005gambling]
+
+# Obesity
+
+In addition, Finkelstein et al. (2009) found that, across all payers, the obese spend $1,429 more per year on medical services, or roughly 42% more than those of normal weight, and that Medicare and Medicaid financed more than half of the expenditures attributable to obesity
+
+externalities and associated deadweight losses may arise through publicly financed health insurance or other public medical expenditures that offset private health-care costs otherwise borne by individuals, such as expenditures through Medicare and Medicaid. In the first section of the paper, we review the somewhat terse literature on whether obesity is associated with externalities. We propose that a measure of the marginal increase in public-health expenditure associated with a change in obesity prevalence is a useful first-order estimate of both the marginal external cost and the marginal excess burden on the economy, or deadweight loss, arising from excess weight among the population.
+
+We estimate that a 1-unit increase in BMI for every adult in the United States would
+increase annual public medical expenditures (i.e., direct medical costs) by $38.7 billion; an
+average marginal cost of $175 per year per unit of BMI for each adult in the United States.
+We further estimate that if every adult who is currently obese (BMI ≥ 30) had a BMI of
+25 instead, then annual public medical expenditures would be reduced by $173.7 billion (in
+constant 2008$). This estimate implies that obesity accounted for 17.2% of annual public
+medical expenditures in 2008. Using the same results, if we assume further that a BMI of 25
+represents the social optimum in the sense that the marginal social benefit associated with
+behavior giving rise to obesity equals the marginal social cost, we predict that U.S. adults
+classified as obese in 2008 imposed a net social cost, or deadweight loss of $203.6 billion in 2008. Using data from the National Health Expenditure Accounts, Finkelstein et al. (2009) estimated that obesity accounted for $61.8 million in Medicaid and Medicare, the two largest components of public medical expenditures (see Exhibit 4 in Finkelstein et al. 2009). Our estimates imply a significantly larger publicly financed cost of obesity mainly because we allow for non-linearities in the relationship between BMI and medical expenditures.
+
+[@parks2012marginal]
+
+# Guns
+
+In 2016, 38,658 people died from firearm-related injuries in the United States.15 On top of that, the U.S. saw 116,414 nonfatal injuries.16 While those numbers are sobering on their own,17 these deaths and injuries come with financial costs. Calculating those costs can be difficult, though. Different analyses use “widely differing accounting principles and procedures.”18
+
+For purposes of this analysis, though, there are three main categories of costs that derive from gun violence: the cost of personal injury and death, the cost of damage to property, and the cost of first responders.
+
+[@brunson2018]
 
 # Finance
 
@@ -176,9 +244,38 @@ The magnitude the tax based on European Union numbers ranges between 29 and 287�
 
 # Smoking
 
+One author found that including the costs of the long-term intellectual and physical consequences of smoking-related low-birth-weight disabilities implied a tax of $4.80 per pack (Hay, 1991)
+
+
+The potential role of ETS costs in reevaluating the net negative externalities associated with smoking is seen by considering the following figures. Manning et al. (1991) noted that inclusion of the costs of 2,400 lung cancers from ETS (a fairly conservative estimate of this toll (Environmental Protection Agency, 1992) ) as external costs would add approximately 19 cents per pack in external costs (updated to 1994 dollars). In addition, inclusion of the costs of neonatal care for smoking-related low- birth-weight babies would add 3 cents to the total, while including fetal deaths attributable to smoking would add yet another 19 cents. Deaths from smoking-related fires would add a further 9 cents. The ETS costs would skyrocket if one included the estimated 30,000-60,000 heart disease deaths recently associated with ETS (Glantz and Parmley, 1995), adding perhaps 70 cents to the total social costs per pack. Similarly, inclusion of the smoking-induced respiratory tract infections and cases of aggravated asthma in children (Environmental Protection Agency, 1992) would boost the total further, as would inclusion of the long-term developmental disabilities in smoking-related low-birth-weight babies (Hay, 1991). All told, the social costs per pack could easily mount toward several dollars if all of the health hazards associated with ETS are real, many are treated as external to the basic consuming unit, and if all or even a significant fraction of the associated costs are included.
+
+[@chaloupka2000economics]
+
 Although nonsmokers subsidize smokers' medical care and group life insurance, smokers subsidize nonsmokers' pensions and nursing home payments. On balance, smokers probably pay their way at the current level of excise taxes on cigarettes
 
 [@manning1989]
+
+ Premature death means that covered costs will be incurred earlier and that the smoker will not be the source of such costs in subsequent years. If cutting off nonmortality-related costs in these later years offsets both the impact of accelerated health costs due to premature death and any tendency for expected medical costs to be higher from smoking-related deaths, then, with respect to expected medical costs, smoking will provide a net positive externality to the health insurance system.72 Smokers and non-smokers will have paid the same premiums, but the average expected costs paid out on behalf of the smokers will be lower. Nonsmokers will be subsidized by smokers. Of course, the externality may easily run in the other direction.
+
+There is less ambiguity in the case of social insurance systems, such as Social Security in the United States. Within such systems, premature death from smoking typically results in a positive externality. Smokers and nonsmokers make the same contributions to the system, but these contributions will fund larger benefits for nonsmokers because they live longer.
+
+Leaving aside ETS-related externalities, most researchers find that the negative externality related to tobacco use is small, justifying a tax on cigarettes on the order of fifteen to thirty cents per pack. This amount is less than the present federal tax per pack.
+
+<figure>
+<figcaption>External cost per pack of cigarettes, 1993</figcaption>
+| Category                  |   0 percent discount rate |   5 percent discount rate |
+| :------------------------ | ------------------------: | ------------------------: |
+| Medical care              |                     $0.72 |                     $0.51 |
+| Group life insurance      |                      0.24 |                      0.09 |
+| Sick leave                |                      0.00 |                      0.02 |
+| Fires                     |                      0.01 |                      0.02 |
+| Nursing home care         |                     -0.60 |                     -0.08 |
+| Retirement pension        |                     -2.89 |                     -0.37 |
+| Lost payroll taxes        |                      0.88 |                      0.12 |
+| Total net cost per pack   |                     -1.64 |                      0.31 |
+</figure>
+
+[@strnad2004]
 
 # Alcohol
 
@@ -240,7 +337,7 @@ Excise taxes are relatively small but non-trivial sources of revenue. On average
 
 On 1 October 2011, the Danish Fat Tax Act came into effect.21 The tax of DKK 16 (around EUR 2.15) per kilogram of saturated fat is imposed on all food products produced in and imported into Denmark. The scope of the new legislation is established in Article 1 of the Act, which specifies that the following products are taxable: meat, certain dairy products, animal fats, edible oils and other fats, margarine, spreadable composite products, and other products which can be considered as substitutes or imitations of the above. The tax does not apply to products containing less than 2.3% per weight of saturated fat, which means that most types of milk are exempt.
 
-<!-- [@alemanno2011] -->
+[@alemanno2011]
 
 <figure>
 ![Line chart of income elasticities of food demand for milk and dairy products](/images/pigou/food-income-elasticity.png)
