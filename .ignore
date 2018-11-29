@@ -1,0 +1,6 @@
+node_modules/
+package-lock.json
+bower_components/
+output/
+data/offline/
+vendoredOut/
