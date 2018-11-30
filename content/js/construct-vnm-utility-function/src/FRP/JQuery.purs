@@ -13,7 +13,7 @@ import JQuery.Fancy (getValue, on) as J
 import Web.Event.Event (EventType)
 
 jqueryEvent ::
-     forall a e tag.
+     forall a tag.
      EventType
   -> (Unit -> Effect a)
   -> JQuery (One tag)
@@ -23,10 +23,7 @@ jqueryEvent eventType f el = do
   J.on eventType (\evt _ -> push =<< f unit <* J.preventDefault evt) el
   pure event
 
-textAreaEvent ::
-     forall e.
-     JQuery (One "textarea")
-  -> Effect (Event String)
+textAreaEvent :: JQuery (One "textarea") -> Effect (Event String)
 textAreaEvent el =
   jqueryEvent (wrap "input") (\_ -> unsafeFromForeign <$> J.getValue el) el
 
