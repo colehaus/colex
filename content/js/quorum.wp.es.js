@@ -80,15 +80,21 @@ const plotMcmcHist = (jq, paramData, conf, preds = []) => {
   }
 
   const percSmallerLarger = (comp, data) => {
-    const percLarger = jStat.mean(jStat.map(data, x => x >= comp ? 1 : 0))
+    const percLarger = jStat.mean(jStat.map(data, x => (x >= comp ? 1 : 0)))
     return [1 - percLarger, percLarger]
   }
   if (typeof conf.compValue === 'number') {
     const compPerc = percSmallerLarger(conf.compValue, paramData)
     data.push({
       data: [[conf.compValue, 0], [conf.compValue, Infinity]],
-      label: '' + (compPerc[0] * 100).toPrecision(3) + '% < ' +
-        conf.compValue + ' < ' + (compPerc[1] * 100).toPrecision(3) + '%',
+      label:
+        '' +
+        (compPerc[0] * 100).toPrecision(3) +
+        '% < ' +
+        conf.compValue +
+        ' < ' +
+        (compPerc[1] * 100).toPrecision(3) +
+        '%',
       lines: { lineWidth: 2 },
       color: 2
     })
@@ -109,7 +115,7 @@ const plotMcmcHist = (jq, paramData, conf, preds = []) => {
     for (let i = 0, l = x.length - nbrPoints; i < l; i++) {
       width = x[i + nbrPoints] - x[i]
       if (width < max - min) {
-        [min, max] = [x[i], x[i + nbrPoints]]
+        ;[min, max] = [x[i], x[i + nbrPoints]]
       }
     }
     return [min, max]
@@ -121,25 +127,33 @@ const plotMcmcHist = (jq, paramData, conf, preds = []) => {
           [min, plot.getHeight(min === interval[0] ? max : min, barData)],
           [max, plot.getHeight(max === interval[1] ? min : max, barData)]
         ],
-        label: c.toPrecision(2).slice(2) + '% ' + conf.di + ' (' +
-          min.toPrecision(3) + ', ' + max.toPrecision(3) + ')',
+        label:
+          c.toPrecision(2).slice(2) +
+          '% ' +
+          conf.di +
+          ' (' +
+          min.toPrecision(3) +
+          ', ' +
+          max.toPrecision(3) +
+          ')',
         lines: { lineWidth: 5 },
         color: 3
       })
     }
     if (conf.di === 'BI') {
-      [0.95, 0.99].forEach(c => {
+      ;[0.95, 0.99].forEach(c => {
         intervAdd(c, boundedI(c, paramData))
       })
     } else {
-      [0.95].forEach(c => {
+      ;[0.95].forEach(c => {
         intervAdd(c, HDI(c, paramData))
       })
     }
   }
   if (typeof paramData.length !== 'undefined' && paramData.length !== 0) {
     const mean = jStat.mean(paramData)
-    data.push({ data: [[mean, 0]],
+    data.push({
+      data: [[mean, 0]],
       label: 'Mean: ' + mean.toPrecision(3),
       points: { show: true },
       color: 4
@@ -154,11 +168,11 @@ const best = ds => {
     progress(0.925)
 
     $('#stat-out').show()
-    plotMcmcHist(
-      $('#mean > div'),
-      plot.twoDArrayCol(chain, 2),
-      { di: 'BI', comp: 0, xlims: [-1, 1] }
-    )
+    plotMcmcHist($('#mean > div'), plot.twoDArrayCol(chain, 2), {
+      di: 'BI',
+      comp: 0,
+      xlims: [-1, 1]
+    })
     progress(0.95)
 
     const a = plot.twoDArrayCol(chain, 0)
@@ -182,7 +196,11 @@ const freq = ds => {
   const l = ds.length
   const dof = l - 1
   if (l < 30) {
-    alert('We need at least 30 votes for this calculation. You need at least ' + (30 - l) + ' more.')
+    alert(
+      'We need at least 30 votes for this calculation. You need at least ' +
+        (30 - l) +
+        ' more.'
+    )
     return
   }
 
@@ -200,22 +218,30 @@ const freq = ds => {
       return [y, -Infinity, mean + bound]
     }
   }
-  const data = [{
-    data: cis,
-    lines: { show: true },
-    color: 1
-  }, {
-    data: [[mean, 0]],
-    label: 'Mean: ' + mean.toPrecision(3),
-    points: { show: true },
-    color: 4
-  }];
-  [0.95, 0.99].forEach(conf => {
+  const data = [
+    {
+      data: cis,
+      lines: { show: true },
+      color: 1
+    },
+    {
+      data: [[mean, 0]],
+      label: 'Mean: ' + mean.toPrecision(3),
+      points: { show: true },
+      color: 4
+    }
+  ]
+  ;[0.95, 0.99].forEach(conf => {
     const [y, lb, ub] = ci(conf)
     data.push({
       data: [[lb, y], [ub, y]],
-      label: conf.toPrecision(2).slice(2) + '% CI (' +
-        lb.toPrecision(3) + ', ' + ub.toPrecision(3) + ')',
+      label:
+        conf.toPrecision(2).slice(2) +
+        '% CI (' +
+        lb.toPrecision(3) +
+        ', ' +
+        ub.toPrecision(3) +
+        ')',
       lines: { lineWidth: 5 },
       color: 3
     })
@@ -249,17 +275,29 @@ const getData = check => {
     y1 = stringToNums($('#data1').val())
     y2 = stringToNums($('#data2').val())
   } catch (err) {
-    alert('ERROR: Data not supplied for both groups or not formatted correctly.')
+    alert(
+      'ERROR: Data not supplied for both groups or not formatted correctly.'
+    )
     return null
   }
   const dif = y2.length - y1.length
   if (dif !== 0 && check === true) {
     const err = " Since we're supposed to pair data, that's bad."
     if (dif > 0) {
-      alert('You have ' + dif + ' more data points for Proposal 2 than for Proposal 1.' + err)
+      alert(
+        'You have ' +
+          dif +
+          ' more data points for Proposal 2 than for Proposal 1.' +
+          err
+      )
       return null
     } else {
-      alert('You have ' + -dif + ' more data points for Proposal 1 than for Proposal 2.' + err)
+      alert(
+        'You have ' +
+          -dif +
+          ' more data points for Proposal 1 than for Proposal 2.' +
+          err
+      )
       return null
     }
   }
@@ -273,7 +311,9 @@ const getData = check => {
 
 const inputGraph = pred => {
   const ys = getData()
-  if (typeof ys === 'undefined') { return }
+  if (typeof ys === 'undefined') {
+    return
+  }
   const ylims = plot.yHistLims(ys)
   plotMcmcHist($('#preview1 > div'), ys[0], { xlims: [0, 1], ylims })
   plotMcmcHist($('#preview2 > div'), ys[1], { xlims: [0, 1], ylims })
@@ -283,33 +323,59 @@ const inputGraph = pred => {
 $(() => {
   $('.act > .analyze').click(() => {
     const d = getData(true)
-    if (typeof d === 'undefined') { return }
-    if ($('#best').parent().hasClass('open')) {
+    if (typeof d === 'undefined') {
+      return
+    }
+    if (
+      $('#best')
+        .parent()
+        .hasClass('open')
+    ) {
       best(d[2])
     } else {
       freq(d[2])
     }
   })
-  $('.preview').click(() => { inputGraph() })
+  $('.preview').click(() => {
+    inputGraph()
+  })
 
   // For reasons unkown, setTimeout is required
-  setTimeout(function () { inputGraph() })
+  setTimeout(function () {
+    inputGraph()
+  })
   const plotOpts = {
     grid: { show: false },
     colors: [colors.value[3]]
   }
-  $.plot($('#non-norm'),
-    [{
-      bars: { show: true },
-      data: [[-2, 4], [-1, 1], [0, 0], [1, 1], [2, 4]]
-    }], plotOpts)
-  $.plot($('#sym1'),
-    [{
-      bars: { show: true },
-      data: [[-2, 1], [-1, 0], [0, 0], [1, 2], [2, 0]]
-    }], plotOpts)
-  $.plot($('#sym2'),
-    [{ bars: { show: true },
-      data: [[-2, 0], [-1, 0], [0, 3], [1, 0], [2, 0]]
-    }], plotOpts)
+  $.plot(
+    $('#non-norm'),
+    [
+      {
+        bars: { show: true },
+        data: [[-2, 4], [-1, 1], [0, 0], [1, 1], [2, 4]]
+      }
+    ],
+    plotOpts
+  )
+  $.plot(
+    $('#sym1'),
+    [
+      {
+        bars: { show: true },
+        data: [[-2, 1], [-1, 0], [0, 0], [1, 2], [2, 0]]
+      }
+    ],
+    plotOpts
+  )
+  $.plot(
+    $('#sym2'),
+    [
+      {
+        bars: { show: true },
+        data: [[-2, 0], [-1, 0], [0, 3], [1, 0], [2, 0]]
+      }
+    ],
+    plotOpts
+  )
 })

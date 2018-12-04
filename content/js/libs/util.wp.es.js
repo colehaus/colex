@@ -5,7 +5,9 @@ import { create, env } from 'sanctuary'
 const S = create({ checkTypes: false, env })
 
 const outerHeight = (el: HTMLElement) =>
-  el.offsetHeight + parseInt(getComputedStyle(el).marginTop) + parseInt(getComputedStyle(el).marginBottom)
+  el.offsetHeight +
+  parseInt(getComputedStyle(el).marginTop) +
+  parseInt(getComputedStyle(el).marginBottom)
 
 const fromNullableError = (err: string) => <A>(a: ?A): A => {
   if (a == null) {
@@ -37,24 +39,32 @@ const removeElement = (el: HTMLElement): void => {
 }
 
 const getBySelector = (sel: string): HTMLElement =>
-  fromNullableError(`Missing required element corresponding to selector ${sel}`)(document.querySelector(sel))
+  fromNullableError(
+    `Missing required element corresponding to selector ${sel}`
+  )(document.querySelector(sel))
 
 // For when we know that a thing is provably not null but it's not apparent to flow
 const claimNotNull = <A>(a: ?A): A => (a: any)
 
-const documentReadyPromise: Promise<*> =
-  new Promise((resolve, reject) => document.addEventListener('DOMContentLoaded', () => {
+const documentReadyPromise: Promise<*> = new Promise((resolve, reject) =>
+  document.addEventListener('DOMContentLoaded', () => {
     resolve()
-  }))
+  })
+)
 
 const makeSleepPromise = (milliseconds: number): Promise<*> =>
   new Promise((resolve, reject) => setTimeout(resolve, milliseconds))
 
-const makeAnimationPromise = (milliseconds: number, f: (number => *)): Promise<*> =>
+const makeAnimationPromise = (
+  milliseconds: number,
+  f: number => *
+): Promise<*> =>
   new Promise((resolve, reject) => {
     let start, prog
     const f_ = timestamp => {
-      if (start == null) { start = timestamp }
+      if (start == null) {
+        start = timestamp
+      }
       prog = (timestamp - start) / milliseconds
       if (prog <= 1) {
         f(prog)
@@ -68,29 +78,25 @@ const makeAnimationPromise = (milliseconds: number, f: (number => *)): Promise<*
   })
 
 const parseMatrixToNumbers = (transformationMatrix: string): Array<number> =>
-  S.map(
-    S.pipe([
-      x => x.trim(),
-      Number.parseFloat
-    ])
-  )(
-    transformationMatrix.split('(')[1].split(')')[0].split(',')
+  S.map(S.pipe([x => x.trim(), Number.parseFloat]))(
+    transformationMatrix
+      .split('(')[1]
+      .split(')')[0]
+      .split(',')
   )
 
 const parseMatrixToAngle = (transformationMatrix: string): number =>
   // See https://css-tricks.com/get-value-of-css-rotation-through-javascript/
-  Math.round(Math.asin(parseMatrixToNumbers(transformationMatrix)[1]) * (180 / Math.PI))
+  Math.round(
+    Math.asin(parseMatrixToNumbers(transformationMatrix)[1]) * (180 / Math.PI)
+  )
 
 const parseMatrixToYTranslation = (transformationMatrix: string): number =>
   parseMatrixToNumbers(transformationMatrix)[5]
 
-const uniquify = <A>(as: Array<A>): Array<A> => Array.from((new Set(as)).values())
+const uniquify = <A>(as: Array<A>): Array<A> => Array.from(new Set(as).values())
 const uniquifyValue = <A>(as: Array<A>): Array<A> =>
-  S.pipe([
-    S.map(JSON.stringify),
-    uniquify,
-    S.map(JSON.parse)
-  ])(as)
+  S.pipe([S.map(JSON.stringify), uniquify, S.map(JSON.parse)])(as)
 
 export {
   asHTMLElement,

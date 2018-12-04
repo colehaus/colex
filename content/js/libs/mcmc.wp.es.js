@@ -18,9 +18,11 @@ var posterior_predictive_check = function (chain) {
   var preds = []
   for (var i = 0; i < n_post; i++) {
     var params = chain[rand_int(0, l)]
-    preds.push(plot.sampleFunc(-1, 1, function (x) {
-      return generalized_beta(x, params[0], params[1], interval)
-    }))
+    preds.push(
+      plot.sampleFunc(-1, 1, function (x) {
+        return generalized_beta(x, params[0], params[1], interval)
+      })
+    )
   }
   return preds
 }
@@ -52,13 +54,18 @@ var run_BEST = function (ys, n_samples_, n_burnin, progress_cb, final_cb) {
     }
     var derived_params = function (p) {
       // mean scaled to our interval
-      return interval[0] + jStat.beta.mean(p[0], p[1]) * (interval[1] - interval[0])
+      return (
+        interval[0] + jStat.beta.mean(p[0], p[1]) * (interval[1] - interval[0])
+      )
     }
     var next_sample = function () {
       chain.push(curr_state.concat(derived_params(curr_state)))
 
       for (var param_i = 0; param_i < n_params; param_i++) {
-        var param_prop = jStat.normal.sample(curr_state[param_i], Math.exp(log_sd[param_i]))
+        var param_prop = jStat.normal.sample(
+          curr_state[param_i],
+          Math.exp(log_sd[param_i])
+        )
         var prop = curr_state.slice()
         prop[param_i] = param_prop
         var accept_prob = Math.exp(posterior(prop) - posterior(curr_state))
@@ -94,18 +101,26 @@ var run_BEST = function (ys, n_samples_, n_burnin, progress_cb, final_cb) {
       if (n > 0) {
         running_asynch = true
         n_samples(nbr_of_samples)
-        return setTimeout(function () { n_samples_asynch(n - nbr_of_samples, nbr_of_samples) }, 0)
+        return setTimeout(function () {
+          n_samples_asynch(n - nbr_of_samples, nbr_of_samples)
+        }, 0)
       } else {
         running_asynch = false
         return null
       }
     }
     return {
-      chain: function () { return chain },
-      running_asynch: function () { return running_asynch },
+      chain: function () {
+        return chain
+      },
+      running_asynch: function () {
+        return running_asynch
+      },
       burn: burn,
       n_samples: n_samples,
-      samples_left: function () { return samples_left },
+      samples_left: function () {
+        return samples_left
+      },
       n_samples_asynch: n_samples_asynch
     }
   }
@@ -129,7 +144,9 @@ var run_BEST = function (ys, n_samples_, n_burnin, progress_cb, final_cb) {
     if (n > 0) {
       var fracDone = 1 - 500 * n / n_burnin
       progress_cb(0.45 * fracDone)
-      burn_timeout_id = setTimeout(function () { burn_asynch(n - 1) }, 0)
+      burn_timeout_id = setTimeout(function () {
+        burn_asynch(n - 1)
+      }, 0)
     } else {
       sample_timeout_id = sampler.n_samples_asynch(n_samples_, 50)
       plot_asynch()

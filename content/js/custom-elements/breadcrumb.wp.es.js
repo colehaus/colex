@@ -7,27 +7,28 @@ import { documentReadyPromise } from 'libs/util'
 
 const S = create({ checkTypes: false, env })
 
-type ScrollDownAction
-  = { tag: 'SetBreadcrumb', target: HTMLElement }
+type ScrollDownAction =
+  | { tag: 'SetBreadcrumb', target: HTMLElement }
   | { tag: 'DoNothing' }
 
-type ScrollUpAction
-  = { tag: 'SetBreadcrumb', target: HTMLElement }
+type ScrollUpAction =
+  | { tag: 'SetBreadcrumb', target: HTMLElement }
   | { tag: 'DoNothing' }
   | { tag: 'DeleteBreadcrumbs' }
 
-type ScrollAction
-  = { tag: 'SetBreadcrumb', target: HTMLElement }
+type ScrollAction =
+  | { tag: 'SetBreadcrumb', target: HTMLElement }
   | { tag: 'DoNothing' }
   | { tag: 'DeleteBreadcrumbs' }
 
 // Handles scrolling down
-const lastScrollOff =
-  S.pipe([
-    S.filter(entry => !entry.isIntersecting && scrollDirection === 'down'),
-    S.last,
-    S.maybe({ tag: 'DoNothing' })(entry => { return { tag: 'SetBreadcrumb', target: entry.target } })
-  ])
+const lastScrollOff = S.pipe([
+  S.filter(entry => !entry.isIntersecting && scrollDirection === 'down'),
+  S.last,
+  S.maybe({ tag: 'DoNothing' })(entry => {
+    return { tag: 'SetBreadcrumb', target: entry.target }
+  })
+])
 
 // Handles scrolling up
 const firstScrollBack = targets =>
@@ -36,18 +37,29 @@ const firstScrollBack = targets =>
     S.head,
     S.map(entry => entry.target),
     S.map(target => targets.findIndex(t => t === target)),
-    S.maybe({ tag: 'DoNothing' })(index => index === 0 ? { tag: 'DeleteBreadcrumbs' } : { tag: 'SetBreadcrumb', target: targets[index - 1] })
+    S.maybe({ tag: 'DoNothing' })(
+      index =>
+        index === 0
+          ? { tag: 'DeleteBreadcrumbs' }
+          : { tag: 'SetBreadcrumb', target: targets[index - 1] }
+    )
   ])
 
 const breadcrumbHeaders = targets =>
   S.pipe([
     target => [target, S.takeWhile(t => t !== target)(targets)],
-    ([current, prev]) => [current, S.filter(target => target.tagName < current.tagName)(prev)],
+    ([current, prev]) => [
+      current,
+      S.filter(target => target.tagName < current.tagName)(prev)
+    ],
     ([current, prev]) => S.append(current)(prev),
     targets => new Map(S.map(target => [target.tagName, target])(targets))
   ])
 
-const combineActions = (scrollDown: ScrollDownAction, scrollUp: ScrollUpAction): ScrollAction => {
+const combineActions = (
+  scrollDown: ScrollDownAction,
+  scrollUp: ScrollUpAction
+): ScrollAction => {
   // Humor `flow` for exhaustiveness checking
   switch (scrollDown.tag) {
     case 'SetBreadcrumb':
@@ -60,22 +72,24 @@ const combineActions = (scrollDown: ScrollDownAction, scrollUp: ScrollUpAction):
         case 'DoNothing':
           return scrollDown
         default:
-          (scrollUp.tag: empty) // eslint-disable-line no-unused-expressions
+          ;(scrollUp.tag: empty) // eslint-disable-line no-unused-expressions
           throw new Error(`Unexpected tag in ${scrollUp}`)
       }
     case 'DoNothing':
       return scrollUp
     default:
-      (scrollDown.tag: empty) // eslint-disable-line no-unused-expressions
+      ;(scrollDown.tag: empty) // eslint-disable-line no-unused-expressions
       throw new Error(`Unexpected tag in ${scrollDown}`)
   }
 }
 
-const executeAction = (targets) => (action: ScrollAction): void => {
+const executeAction = targets => (action: ScrollAction): void => {
   console.log(targets, action)
   switch (action.tag) {
     case 'SetBreadcrumb':
-      getOrCreateBreadcrumbs().innerHTML = prettyPrintHeaders(breadcrumbHeaders(targets)(action.target))
+      getOrCreateBreadcrumbs().innerHTML = prettyPrintHeaders(
+        breadcrumbHeaders(targets)(action.target)
+      )
       break
     case 'DeleteBreadcrumbs':
       deleteBreadcrumbs()
@@ -92,13 +106,17 @@ const cb = targets => entries => {
     S.pipe([
       S.filter(target => target.getBoundingClientRect().top < 0),
       S.last,
-      S.maybe({ tag: 'DoNothing' })(target => { return { tag: 'SetBreadcrumb', target } }),
+      S.maybe({ tag: 'DoNothing' })(target => {
+        return { tag: 'SetBreadcrumb', target }
+      }),
       executeAction(targets)
     ])(targets)
   } else {
     scrollDirection = window.scrollY >= lastScrollPosition ? 'down' : 'up'
     lastScrollPosition = window.scrollY
-    executeAction(targets)(combineActions(lastScrollOff(entries), firstScrollBack(targets)(entries)))
+    executeAction(targets)(
+      combineActions(lastScrollOff(entries), firstScrollBack(targets)(entries))
+    )
   }
 }
 
@@ -106,19 +124,20 @@ let lastScrollPosition, scrollDirection
 
 if (document.location.pathname.startsWith('/posts/')) {
   documentReadyPromise.then(() => {
-    const targets = Array.from(document.querySelectorAll('h3:not(#article-subtitle), h4, h5, h6'))
+    const targets = Array.from(
+      document.querySelectorAll('h3:not(#article-subtitle), h4, h5, h6')
+    )
     const observer = new IntersectionObserver(cb(targets), { threshold: 0 })
     targets.forEach(el => observer.observe(el))
   })
 }
 
-const prettyPrintHeaders =
-  S.pipe([
-    headers => Array.from(headers.entries()),
-    S.sort,
-    S.map(([key, value]) => value.innerText),
-    values => values.join(' ⊃ ')
-  ])
+const prettyPrintHeaders = S.pipe([
+  headers => Array.from(headers.entries()),
+  S.sort,
+  S.map(([key, value]) => value.innerText),
+  values => values.join(' ⊃ ')
+])
 
 const deleteBreadcrumbs = (): void => {
   S.pipe([
@@ -130,17 +149,18 @@ const deleteBreadcrumbs = (): void => {
 }
 
 const getOrCreateBreadcrumbs = (): HTMLElement =>
-  S.pipe([
-    S.toMaybe,
-    S.fromMaybe_(createBreadcrumbs)
-  ])(document.querySelector('#article-breadcrumb'))
+  S.pipe([S.toMaybe, S.fromMaybe_(createBreadcrumbs)])(
+    document.querySelector('#article-breadcrumb')
+  )
 
 const createBreadcrumbs = (): HTMLElement => {
   const div = document.createElement('div')
   div.id = 'article-breadcrumb'
   S.pipe([
     S.toMaybe,
-    S.fromMaybe_(() => { throw new Error('<article> must exist') }),
+    S.fromMaybe_(() => {
+      throw new Error('<article> must exist')
+    }),
     article => article.appendChild(div)
   ])(document.querySelector('article'))
   return div

@@ -4,21 +4,13 @@ import { create, env } from 'sanctuary'
 
 const S = create({ checkTypes: false, env })
 
-const toSvgPolygon =
-  (angles: Array<number>) =>
-    (RADIUS: number): string =>
-      S.pipe([
-        S.map(angle => Math.cos(angle) * RADIUS + ' ' + Math.sin(angle) * RADIUS),
-        S.joinWith(', ')
-      ])(
-        angles
-      )
+const toSvgPolygon = (angles: Array<number>) => (RADIUS: number): string =>
+  S.pipe([
+    S.map(angle => Math.cos(angle) * RADIUS + ' ' + Math.sin(angle) * RADIUS),
+    S.joinWith(', ')
+  ])(angles)
 
-const triangle = [
-  3 / 6 * Math.PI,
-  7 / 6 * Math.PI,
-  11 / 6 * Math.PI
-]
+const triangle = [3 / 6 * Math.PI, 7 / 6 * Math.PI, 11 / 6 * Math.PI]
 const square = [
   1 / 4 * Math.PI,
   3 / 4 * Math.PI,

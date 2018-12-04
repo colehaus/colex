@@ -21,27 +21,24 @@ module.exports = {
     modules: process.env.NODE_PATH.split(':')
   },
   module: {
-    rules: [
-      {
-        enforce: 'pre',
-        test: /\.wp.es.js$/,
-        loader: 'standard-loader'
-      },
-      { test: /\.js$|\.es$|\.ws$/, exclude: /node_modules/, loader: 'babel-loader' },
-      { test: [
-        require.resolve('jquery-flot')
-      ],
+    rules: [{
+      enforce: 'pre',
+      test: /\.wp.es.js$/,
+      loader: 'standard-loader'
+    }, {
+      test: /\.js$|\.es$|\.ws$/,
+      exclude: /node_modules/,
+      loader: 'babel-loader'
+    }, {
+      test: [ require.resolve('jquery-flot') ],
       use: 'imports-loader?$=jquery,jQuery=jquery'
-      },
-      // For purescript
-      {
-        test: require.resolve('jquery'),
-        use: [{
-          loader: 'expose-loader',
-          options: 'jQuery'
-        }]
-      }
-    ]
+    }, { // For purescript
+      test: require.resolve('jquery'),
+      use: [{
+        loader: 'expose-loader',
+        options: 'jQuery'
+      }]
+    }]
   },
   plugins: [
     new FlowWebpackPlugin({ flowPath })

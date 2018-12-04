@@ -27,15 +27,18 @@ const incomeDomain = [minIncome, maxIncome]
 const defaultUtilityOfMarginalDollar = d => 1 - d / maxIncome
 const maxUtility = defaultUtilityOfMarginalDollar(minIncome)
 
-const values = ([minDomain, maxDomain]: [number, number], xKey: string, yKey: string, stepSize: ?number) => (fn: number => number, series: ?string) =>
+const values = (
+  [minDomain, maxDomain]: [number, number],
+  xKey: string,
+  yKey: string,
+  stepSize: ?number
+) => (fn: number => number, series: ?string) =>
   S.range(minDomain)(stepSize == null ? maxDomain : maxDomain / stepSize)
-    .map(x => stepSize == null ? x : x * stepSize)
+    .map(x => (stepSize == null ? x : x * stepSize))
     .map(x => {
-      return (
-        series == null
-          ? { [xKey]: x, [yKey]: fn(x) }
-          : { [xKey]: x, [yKey]: fn(x), series }
-      )
+      return series == null
+        ? { [xKey]: x, [yKey]: fn(x) }
+        : { [xKey]: x, [yKey]: fn(x), series }
     })
 
 const mountIncomeDistribution = () => {
@@ -44,21 +47,35 @@ const mountIncomeDistribution = () => {
     ...chartSpecBoilerplate($(id).width()),
     config: { mark: { orient: 'vertical' } },
     mark: 'line',
-    data: { values: values(percentileDomain, 'percentile', 'income')(defaultIncomeDistribution) },
+    data: {
+      values: values(percentileDomain, 'percentile', 'income')(
+        defaultIncomeDistribution
+      )
+    },
     encoding: {
       x: { field: 'percentile', type: q },
       y: { field: 'income', type: q }
     }
   }
   const stream = flyd.stream(defaultIncomeDistribution)
-  vegaEmbed(id, chart, chartOpts).then(addDrawingHandlers(id, stream, percentileDomain[1], maxIncome))
+  vegaEmbed(id, chart, chartOpts).then(
+    addDrawingHandlers(id, stream, percentileDomain[1], maxIncome)
+  )
   return stream
 }
 
 const baselineBox = (id: string): Box => {
-  const svgBound = $(id + ' svg').get(0).getBoundingClientRect()
-  const xAxis = $($(id + ' g.mark-rule.role-axis-grid').get(1)).children('line').get(0).getBoundingClientRect()
-  const yAxis = $($(id + ' g.mark-rule.role-axis-grid').get(0)).children('line').get(0).getBoundingClientRect()
+  const svgBound = $(id + ' svg')
+    .get(0)
+    .getBoundingClientRect()
+  const xAxis = $($(id + ' g.mark-rule.role-axis-grid').get(1))
+    .children('line')
+    .get(0)
+    .getBoundingClientRect()
+  const yAxis = $($(id + ' g.mark-rule.role-axis-grid').get(0))
+    .children('line')
+    .get(0)
+    .getBoundingClientRect()
   return {
     width: xAxis.width,
     left: xAxis.left - svgBound.left,
@@ -67,25 +84,36 @@ const baselineBox = (id: string): Box => {
   }
 }
 
-const addDrawingHandlers = (id: string, stream: Stream<number => number>, domainMax: number, rangeMax: number) => {
+const addDrawingHandlers = (
+  id: string,
+  stream: Stream<(number) => number>,
+  domainMax: number,
+  rangeMax: number
+) => {
   const bound = baselineBox(id)
-  const xLogicalToPixel = d3.scaleLinear().domain([0, domainMax]).range([0, bound.width])
-  const yPixelToLogical = d3.scaleLinear().domain([0, bound.height]).range([0, rangeMax])
-  $(id).closest('.draw').each((_, el) => {
-    if (el instanceof HTMLElement) {
-      // Callback will be given `fn` in pixel terms. We want the `Stream` to be in logical (e.g. income) terms.
-      setHandlers(
-        el,
-        bound,
-        fn => stream(S.pipe([xLogicalToPixel, fn, yPixelToLogical]))
-      )
-    }
-  })
+  const xLogicalToPixel = d3
+    .scaleLinear()
+    .domain([0, domainMax])
+    .range([0, bound.width])
+  const yPixelToLogical = d3
+    .scaleLinear()
+    .domain([0, bound.height])
+    .range([0, rangeMax])
+  $(id)
+    .closest('.draw')
+    .each((_, el) => {
+      if (el instanceof HTMLElement) {
+        // Callback will be given `fn` in pixel terms. We want the `Stream` to be in logical (e.g. income) terms.
+        setHandlers(el, bound, fn =>
+          stream(S.pipe([xLogicalToPixel, fn, yPixelToLogical]))
+        )
+      }
+    })
 }
 
 const chartSpecBoilerplate = (elWidth: number) => {
   return {
-    '$schema': schema,
+    $schema: schema,
     width: elWidth - 100,
     height: elWidth * 0.6
   }
@@ -98,7 +126,11 @@ const mountMarginalUtility = () => {
   const chart = {
     ...chartSpecBoilerplate($(id).width()),
     config: { mark: { orient: 'vertical' } },
-    data: { values: values(incomeDomain, 'income', 'marginalUtility', 1000)(defaultUtilityOfMarginalDollar) },
+    data: {
+      values: values(incomeDomain, 'income', 'marginalUtility', 1000)(
+        defaultUtilityOfMarginalDollar
+      )
+    },
     mark: 'line',
     encoding: {
       x: { field: 'income', type: q },
@@ -106,7 +138,9 @@ const mountMarginalUtility = () => {
     }
   }
   const stream = flyd.stream(defaultUtilityOfMarginalDollar)
-  vegaEmbed(id, chart, chartOpts).then(() => addDrawingHandlers(id, stream, maxIncome, maxUtility))
+  vegaEmbed(id, chart, chartOpts).then(() =>
+    addDrawingHandlers(id, stream, maxIncome, maxUtility)
+  )
   return stream
 }
 
@@ -119,52 +153,81 @@ const mountUtilityDistribution = () => {
       rule: { strokeDash: [8, 8], opacity: 0.3 }
     },
     data: { name: 'table' },
-    layer: [{
-      mark: { type: 'line', orient: 'vertical' },
-      encoding: {
-        x: { field: 'percentile', type: q },
-        y: { field: 'utility', type: q, axis: { minExtent: 40 } },
-        color: { field: 'series', type: 'nominal' }
+    layer: [
+      {
+        mark: { type: 'line', orient: 'vertical' },
+        encoding: {
+          x: { field: 'percentile', type: q },
+          y: { field: 'utility', type: q, axis: { minExtent: 40 } },
+          color: { field: 'series', type: 'nominal' }
+        }
+      },
+      {
+        mark: 'rule',
+        encoding: {
+          y: {
+            field: 'utility',
+            type: q,
+            aggregate: 'mean'
+          },
+          size: { value: 5 },
+          color: { field: 'series', type: 'nominal' }
+        }
       }
-    }, {
-      mark: 'rule',
-      encoding: {
-        y: {
-          field: 'utility',
-          type: q,
-          aggregate: 'mean'
-        },
-        size: { value: 5 },
-        color: { field: 'series', type: 'nominal' }
-      }
-    }]
+    ]
   }
   return vegaEmbed(id, chart, chartOpts).then(res => res.view)
 }
 
-const makeUtilityDistribution = (incomeDistributionFnStream: Stream<number => number>, marginalUtilityFnStream: Stream<number => number>) => {
-  const utilityOfIncomeFn = (income: number) => numbers.calculus.Riemann(marginalUtilityFnStream(), minIncome, income, 200)
+const makeUtilityDistribution = (
+  incomeDistributionFnStream: Stream<(number) => number>,
+  marginalUtilityFnStream: Stream<(number) => number>
+) => {
+  const utilityOfIncomeFn = (income: number) =>
+    numbers.calculus.Riemann(marginalUtilityFnStream(), minIncome, income, 200)
   const meanIncome =
-    numbers.calculus.Riemann(incomeDistributionFnStream(), percentileDomain[0], percentileDomain[1], 200) /
+    numbers.calculus.Riemann(
+      incomeDistributionFnStream(),
+      percentileDomain[0],
+      percentileDomain[1],
+      200
+    ) /
     (percentileDomain[1] - percentileDomain[0])
-  return [(p: number) => utilityOfIncomeFn(incomeDistributionFnStream()(p)), _ => utilityOfIncomeFn(meanIncome)]
+  return [
+    (p: number) => utilityOfIncomeFn(incomeDistributionFnStream()(p)),
+    _ => utilityOfIncomeFn(meanIncome)
+  ]
 }
 
 documentReadyPromise.then(() => {
   const incomeDistributionFnStream = mountIncomeDistribution()
   const marginalUtilityFnStream = mountMarginalUtility()
-  const utilityDistributionFnStream = flyd.combine(makeUtilityDistribution, [incomeDistributionFnStream, marginalUtilityFnStream])
+  const utilityDistributionFnStream = flyd.combine(makeUtilityDistribution, [
+    incomeDistributionFnStream,
+    marginalUtilityFnStream
+  ])
   mountUtilityDistribution().then(view => {
     flyd.on(([inegal, egal]) => {
-      view.change(
-        'table',
-        vega.changeset().insert(
-          S.join([
-            values(percentileDomain, 'percentile', 'utility')(inegal, 'inegalitarian'),
-            values(percentileDomain, 'percentile', 'utility')(egal, 'egalitarian')
-          ])
-        ).remove(_ => true)
-      ).run()
+      view
+        .change(
+          'table',
+          vega
+            .changeset()
+            .insert(
+              S.join([
+                values(percentileDomain, 'percentile', 'utility')(
+                  inegal,
+                  'inegalitarian'
+                ),
+                values(percentileDomain, 'percentile', 'utility')(
+                  egal,
+                  'egalitarian'
+                )
+              ])
+            )
+            .remove(_ => true)
+        )
+        .run()
     }, utilityDistributionFnStream)
   })
 })

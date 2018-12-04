@@ -43,7 +43,7 @@ const renderMenuItem = (menuItem: MenuItem): HTMLElement => {
       }
       return li
     default:
-      (menuItem.tag: empty) // eslint-disable-line no-unused-expressions
+      ;(menuItem.tag: empty) // eslint-disable-line no-unused-expressions
       throw new Error(menuItem.toString())
   }
 }
@@ -58,29 +58,32 @@ const renderMenu = (menu: Menu): ?HTMLElement => {
       S.map(S.pipe([renderMenuItem, x => ul.appendChild(x)]))(menu.items)
       return ul
     default:
-      (menu.tag: empty) // eslint-disable-line no-unused-expressions
+      ;(menu.tag: empty) // eslint-disable-line no-unused-expressions
       throw new Error(menu.toString())
   }
 }
 
 type MenuItemType = 'radio' | string
 
-type MenuItem
-  = { tag: 'HR' }
+type MenuItem =
+  | { tag: 'HR' }
   | { tag: 'MENUITEM', label: string, type: MenuItemType, active: boolean }
 
-type Menu
-  = { tag: 'OPEN', items: Array<MenuItem> }
-  | { tag: 'CLOSED' }
+type Menu = { tag: 'OPEN', items: Array<MenuItem> } | { tag: 'CLOSED' }
 
 const parseMenuItem = (menuItem: HTMLElement): MenuItem => {
   switch (menuItem.tagName) {
     case 'HR':
       return { tag: 'HR' }
     case 'MENUITEM':
-      return { tag: 'MENUITEM',
-        label: fromNullableError(`Missing label for ${menuItem.toString()}`)(menuItem.getAttribute('label')),
-        type: fromNullableError(`Missing type for ${menuItem.toString()}`)(menuItem.getAttribute('type')),
+      return {
+        tag: 'MENUITEM',
+        label: fromNullableError(`Missing label for ${menuItem.toString()}`)(
+          menuItem.getAttribute('label')
+        ),
+        type: fromNullableError(`Missing type for ${menuItem.toString()}`)(
+          menuItem.getAttribute('type')
+        ),
         active: menuItem.getAttribute('checked') === 'checked'
       }
     default:
@@ -91,12 +94,15 @@ const parseMenuItem = (menuItem: HTMLElement): MenuItem => {
 const parseMenu = (menu: HTMLElement): Menu =>
   menu.dataset.active === 'true'
     ? { tag: 'CLOSED' }
-    : { tag: 'OPEN',
-      items: S.map((el) => parseMenuItem(el))(Array.from(menu.querySelectorAll('menuitem, hr')))
+    : {
+      tag: 'OPEN',
+      items: S.map(el => parseMenuItem(el))(
+        Array.from(menu.querySelectorAll('menuitem, hr'))
+      )
     }
 
-type Event
-  = { tag: 'MENUCLICK', menu: HTMLElement }
+type Event =
+  | { tag: 'MENUCLICK', menu: HTMLElement }
   | { tag: 'ITEMSELECT', item: HTMLElement, menu: HTMLElement }
 
 const handleEvent = (event: Event) => {
@@ -106,24 +112,21 @@ const handleEvent = (event: Event) => {
         parseMenu,
         renderMenu,
         S.toMaybe,
-        S.maybe_(
-          () => {
-            document.querySelectorAll('ul.menu').forEach(removeElement)
-            event.menu.dataset.active = 'false'
-          })(
-          menuDom => {
-            event.menu.appendChild(menuDom)
-            event.menu.dataset.active = 'true'
-          }
-        )
-      ])(
-        event.menu
-      )
+        S.maybe_(() => {
+          document.querySelectorAll('ul.menu').forEach(removeElement)
+          event.menu.dataset.active = 'false'
+        })(menuDom => {
+          event.menu.appendChild(menuDom)
+          event.menu.dataset.active = 'true'
+        })
+      ])(event.menu)
       break
     case 'ITEMSELECT':
       document.querySelectorAll('ul.menu').forEach(removeElement)
       event.menu.dataset.active = 'false'
-      S.map(el => el.removeAttribute('checked'))(Array.from(event.menu.children))
+      S.map(el => el.removeAttribute('checked'))(
+        Array.from(event.menu.children)
+      )
       event.item.setAttribute('checked', 'checked')
       break
   }
@@ -142,7 +145,9 @@ const toggleMenu = (ev: MouseEvent) => {
     'SUMMARY',
     'A'
   ].some(tg => asHTMLElement(ev.target).nodeName === tg)
-  if (isInteractive) { return }
+  if (isInteractive) {
+    return
+  }
   const isPopup = el =>
     el.tagName === 'MENU' && el.getAttribute('type') === 'popup'
   const menu = getMenu(asHTMLElement(ev.target))

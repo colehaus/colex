@@ -26,14 +26,15 @@ const getReferrer = (el: HTMLElement): ?HTMLElement =>
   ])(el)
 
 const fixNotes = () => {
-  S.reduce(
-    (prevBot: number) => (el: HTMLElement) => {
-      const referrer = fromNullableError(`No referrer for ${el.toString()}`)(getReferrer(el))
-      const notedSpan = relative(el => el.previousElementSibling)(referrer)
-      const top = S.max(notedSpan.offsetTop)(prevBot)
-      el.style.top = top + 'px'
-      return top + outerHeight(el)
-    })(0)(Array.from(document.querySelectorAll('.sidenote:not(#warnings)')))
+  S.reduce((prevBot: number) => (el: HTMLElement) => {
+    const referrer = fromNullableError(`No referrer for ${el.toString()}`)(
+      getReferrer(el)
+    )
+    const notedSpan = relative(el => el.previousElementSibling)(referrer)
+    const top = S.max(notedSpan.offsetTop)(prevBot)
+    el.style.top = top + 'px'
+    return top + outerHeight(el)
+  })(0)(Array.from(document.querySelectorAll('.sidenote:not(#warnings)')))
 }
 
 const setNotes = () => {
@@ -43,8 +44,11 @@ const setNotes = () => {
     if (referrer != null) {
       const noted = relative(el => el.previousElementSibling)(referrer)
       if (getComputedStyle(noted).display !== 'none') {
-        const p = noted.closest('p');
-        (p == null ? noted : p).insertAdjacentHTML('beforebegin', '<aside class="sidenote">' + el.innerHTML + '</aside>')
+        const p = noted.closest('p')
+        ;(p == null ? noted : p).insertAdjacentHTML(
+          'beforebegin',
+          '<aside class="sidenote">' + el.innerHTML + '</aside>'
+        )
       }
     }
   }
@@ -58,12 +62,19 @@ const setNotes = () => {
         el => el.querySelectorAll('a'),
         Array.from,
         S.last,
-        S.map(el => { el.style.display = 'none' })
-      ]))
+        S.map(el => {
+          el.style.display = 'none'
+        })
+      ])
+    )
   }
 
-  document.querySelectorAll('.footnotes').forEach(el => { el.style.display = 'none' })
-  document.querySelectorAll('details').forEach(el => observer.observe(el, { attributes: true }))
+  document.querySelectorAll('.footnotes').forEach(el => {
+    el.style.display = 'none'
+  })
+  document
+    .querySelectorAll('details')
+    .forEach(el => observer.observe(el, { attributes: true }))
   document.querySelectorAll('.sidenote:not(#warnings)').forEach(removeElement)
   document.querySelectorAll('.footnotes > ol > li').forEach(addSidenote)
   delink()
@@ -78,18 +89,20 @@ const removeNotes = () => {
     const nextSibling = relative(el => el.nextElementSibling)(el)
     nextSibling.style.display = ''
   })
-  document.querySelectorAll('.footnotes').forEach(el => { el.style.display = '' })
+  document.querySelectorAll('.footnotes').forEach(el => {
+    el.style.display = ''
+  })
 }
 
-const getFontSize =
-  S.pipe([
-    getComputedStyle,
-    style => style['font-size'],
-    Number.parseFloat
-  ])
+const getFontSize = S.pipe([
+  getComputedStyle,
+  style => style['font-size'],
+  Number.parseFloat
+])
 
 const addOrRemoveNotes = () => {
-  const emWidth = window.innerWidth / parseFloat(getFontSize(getBySelector('html')))
+  const emWidth =
+    window.innerWidth / parseFloat(getFontSize(getBySelector('html')))
   if (emWidth > 60) {
     setNotes()
     // $FlowFixMe

@@ -16,12 +16,19 @@ export type Box = {
   height: number
 }
 
-const setHandlers = (drawEl: HTMLElement, box: Box, callback: ?((number => number)) => void) => {
+const setHandlers = (
+  drawEl: HTMLElement,
+  box: Box,
+  callback: ?((number) => number) => void
+) => {
   let points = []
-  d3.select(drawEl).select('svg').call(draw(points, box, callback))
-  Array.from(drawEl.children).filter(el => el.matches('button')).forEach(el =>
-    el.addEventListener('click', clear(points))
-  )
+  d3
+    .select(drawEl)
+    .select('svg')
+    .call(draw(points, box, callback))
+  Array.from(drawEl.children)
+    .filter(el => el.matches('button'))
+    .forEach(el => el.addEventListener('click', clear(points)))
 }
 
 const clear = (points: Array<Array<[number, number]>>) => (evt: Event) => {
@@ -29,27 +36,46 @@ const clear = (points: Array<Array<[number, number]>>) => (evt: Event) => {
   S.pipe([
     el => el.closest('.draw'),
     S.toMaybe,
-    S.chain(
-      S.pipe([
-        el => el.querySelector('svg'),
-        S.toMaybe
-      ])),
-    S.map(svg => d3.select(svg).selectAll('path').remove())
+    S.chain(S.pipe([el => el.querySelector('svg'), S.toMaybe])),
+    S.map(svg =>
+      d3
+        .select(svg)
+        .selectAll('path')
+        .remove()
+    )
   ])(asHTMLElement(evt.currentTarget))
 }
 
 // `Box` allows us to specify some zone that specifies the domain and range (in pixels) of our interpolated function. i.e. Drawing at the lower left corner of `Box` is (0, 0) instead of some coordinate relative to the SVG origin.
-const interpolate = (selection: SelectWithoutData, box: Box, callback: ?((number => number) => void)) => (points: Array<[number, number]>) => {
-  selection
-    .selectAll('path:not(.draw-input)')
-    .remove()
+const interpolate = (
+  selection: SelectWithoutData,
+  box: Box,
+  callback: ?((number) => number) => void
+) => (points: Array<[number, number]>) => {
+  selection.selectAll('path:not(.draw-input)').remove()
 
-  const scaleX = d3.scaleLinear().domain([box.left, box.left + box.width]).range([0, box.width])
-  const scaleY = d3.scaleLinear().domain([box.height + box.top, box.top]).range([0, box.height])
-  const func = kernel.regression(S.map(p => scaleX(p[0]))(points), S.map(p => scaleY(p[1]))(points), kernel.fun.gaussian, 10)
-  const interpolatedPoints = S.map(x => [scaleX.invert(x), scaleY.invert(func(x))])(S.range(0)(box.width))
+  const scaleX = d3
+    .scaleLinear()
+    .domain([box.left, box.left + box.width])
+    .range([0, box.width])
+  const scaleY = d3
+    .scaleLinear()
+    .domain([box.height + box.top, box.top])
+    .range([0, box.height])
+  const func = kernel.regression(
+    S.map(p => scaleX(p[0]))(points),
+    S.map(p => scaleY(p[1]))(points),
+    kernel.fun.gaussian,
+    10
+  )
+  const interpolatedPoints = S.map(x => [
+    scaleX.invert(x),
+    scaleY.invert(func(x))
+  ])(S.range(0)(box.width))
 
-  if (interpolatedPoints.every(([x, y]) => !Number.isNaN(x) && !Number.isNaN(y))) {
+  if (
+    interpolatedPoints.every(([x, y]) => !Number.isNaN(x) && !Number.isNaN(y))
+  ) {
     if (callback != null) {
       callback(func)
     }
@@ -60,7 +86,11 @@ const interpolate = (selection: SelectWithoutData, box: Box, callback: ?((number
   }
 }
 
-const draw = function (points: Array<Array<[number, number]>>, box: Box, callback: ?((number => number) => void)) {
+const draw = function (
+  points: Array<Array<[number, number]>>,
+  box: Box,
+  callback: ?((number) => number) => void
+) {
   return function (selection: SelectWithoutData) {
     let down = false
     let path
