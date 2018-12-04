@@ -3,7 +3,7 @@
 
 import { create, env } from 'sanctuary'
 
-import { unexpectedCase } from 'libs/util'
+import { documentReadyPromise } from 'libs/util'
 
 const S = create({ checkTypes: false, env })
 
@@ -49,25 +49,25 @@ const breadcrumbHeaders = targets =>
 
 const combineActions = (scrollDown: ScrollDownAction, scrollUp: ScrollUpAction): ScrollAction => {
   // Humor `flow` for exhaustiveness checking
-  const downTag = scrollDown.tag
-  switch (downTag) {
+  switch (scrollDown.tag) {
     case 'SetBreadcrumb':
-      const upTag = scrollUp.tag
-      switch (upTag) {
+      switch (scrollUp.tag) {
         case 'SetBreadcrumb':
+          // Flow doesn't know up fallthrough apparently
+          throw new Error('Somehow scrolling up and down simultaneously')
         case 'DeleteBreadcrumbs':
           throw new Error('Somehow scrolling up and down simultaneously')
         case 'DoNothing':
           return scrollDown
         default:
-          unexpectedCase(upTag)
-          return (null: any)
+          (scrollUp.tag: empty) // eslint-disable-line no-unused-expressions
+          throw new Error(`Unexpected tag in ${scrollUp}`)
       }
     case 'DoNothing':
       return scrollUp
     default:
-      unexpectedCase(downTag)
-      return (null: any)
+      (scrollDown.tag: empty) // eslint-disable-line no-unused-expressions
+      throw new Error(`Unexpected tag in ${scrollDown}`)
   }
 }
 
@@ -105,7 +105,7 @@ const cb = targets => entries => {
 let lastScrollPosition, scrollDirection
 
 if (document.location.pathname.startsWith('/posts/')) {
-  document.addEventListener('DOMContentLoaded', () => {
+  documentReadyPromise.then(() => {
     const targets = Array.from(document.querySelectorAll('h3:not(#article-subtitle), h4, h5, h6'))
     const observer = new IntersectionObserver(cb(targets), { threshold: 0 })
     targets.forEach(el => observer.observe(el))

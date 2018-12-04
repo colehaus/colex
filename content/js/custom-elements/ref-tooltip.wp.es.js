@@ -2,6 +2,9 @@
 /* eslint no-undef: "off" */
 
 import { create, env } from 'sanctuary'
+
+import { documentReadyPromise } from 'libs/util'
+
 const S = create({ checkTypes: false, env })
 
 // Cite looks like:
@@ -63,7 +66,7 @@ const addTooltips = (pairs: Array<Pair<HTMLElement, string>>): void => {
 }
 
 if (document.location.pathname.startsWith('/posts/')) {
-  document.addEventListener('DOMContentLoaded', () => {
+  documentReadyPromise.then(() => {
     const citeLinks = Array.from(document.querySelectorAll('.citation > a'))
     const citations = Array.from(document.querySelectorAll('.citation'))
     const refs = Array.from(document.querySelectorAll('#refs > div'))

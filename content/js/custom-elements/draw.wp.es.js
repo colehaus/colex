@@ -1,10 +1,12 @@
 // @flow
 /* eslint no-undef: "off" */
 
-import $ from 'jquery'
 import * as d3 from 'd3'
 import kernel from 'kernel-smooth'
 import { create, env } from 'sanctuary'
+
+import { asHTMLElement } from 'libs/util'
+
 const S = create({ checkTypes: false, env })
 
 export type Box = {
@@ -17,13 +19,23 @@ export type Box = {
 const setHandlers = (drawEl: HTMLElement, box: Box, callback: ?((number => number)) => void) => {
   let points = []
   d3.select(drawEl).select('svg').call(draw(points, box, callback))
-  $(drawEl).children('button').click(clear(points))
+  Array.from(drawEl.children).filter(el => el.matches('button')).forEach(el =>
+    el.addEventListener('click', clear(points))
+  )
 }
 
 const clear = (points: Array<Array<[number, number]>>) => (evt: Event) => {
   points.length = 0
-  const svg = $(evt.currentTarget).closest('.draw').find('svg')[0]
-  d3.select(svg).selectAll('path').remove()
+  S.pipe([
+    el => el.closest('.draw'),
+    S.toMaybe,
+    S.chain(
+      S.pipe([
+        el => el.querySelector('svg'),
+        S.toMaybe
+      ])),
+    S.map(svg => d3.select(svg).selectAll('path').remove())
+  ])(asHTMLElement(evt.currentTarget))
 }
 
 // `Box` allows us to specify some zone that specifies the domain and range (in pixels) of our interpolated function. i.e. Drawing at the lower left corner of `Box` is (0, 0) instead of some coordinate relative to the SVG origin.

@@ -27,6 +27,7 @@ type S = {
   Nothing: Maybe<*>,
   Just<A>(a: A): Maybe<A>,
   append<A>(a: A): Array<A> => Array<A>,
+  dropWhile<A>(pred: A => boolean): Array<A> => Array<A>,
   takeWhile<A>(pred: A => boolean): Array<A> => Array<A>,
   isJust<A>(m: Maybe<A>): boolean,
   filter<A>(pred: A => boolean): Array<A> => Array<A>,

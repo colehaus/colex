@@ -1,13 +1,19 @@
 // @flow
 /* eslint no-undef: "off" */
 
-import $ from 'jquery'
 import * as d3 from 'd3'
 import asciiStringSplit from 'ascii-string-split'
 import { create, env } from 'sanctuary'
 
 import * as shapesImport from 'libs/shapes'
-import { uniquify, uniquifyValue, documentReadyPromise } from 'libs/util'
+import {
+  asHTMLElement,
+  documentReadyPromise,
+  fromNullableError,
+  getBySelector,
+  uniquify,
+  uniquifyValue
+} from 'libs/util'
 const S = create({ checkTypes: false, env })
 
 type Shape = 'circle' | 'triangle' | 'diamond' | 'square' | 'pentagon' | 'hexagon'
@@ -137,7 +143,7 @@ const drawNode = <Ty: string>(nodeTypes: Array<NodeType<Ty>>): (Ty => string) =>
   return type => {
     const nodeTypeIndex = nodeTypes.findIndex(t => t.type === type)
     if (nodeTypeIndex == null) {
-      throw Error(`Couldn't find node type ${type} in ${nodeTypes.toString()}`)
+      throw new Error(`Couldn't find node type ${type} in ${nodeTypes.toString()}`)
     }
     return shapes[nodeTypeIndex](RADIUS)
   }
@@ -186,17 +192,32 @@ const drawNodes = (svg: SelectWithoutData, nodes: Array<Node<*>>, nodeTypes: Arr
   return node
 }
 
+const getWidth =
+  S.pipe([
+    getComputedStyle,
+    style => style.width,
+    Number.parseFloat
+  ])
+
+const getHeight =
+  S.pipe([
+    getComputedStyle,
+    style => style.height,
+    Number.parseFloat
+  ])
+
 const mkArgMap = (id: string, dataSrc: string, canvasSelector: string): Promise<Simulation<Node<*>, Link<*>>> => {
   return fetchData(dataSrc).then(([nodes, links_, nodeTypes, linkTypes]) => {
+    const canvas = getBySelector(canvasSelector)
     const [directedLinks, undirectedLinks] = separateDirectedAndUndirected(links_)
     const links = S.concat(directedLinks)(undirectedLinks)
-    const canvas = { width: $(canvasSelector).width(), height: $(canvasSelector).height() }
+    const canvasDims = { width: getWidth(canvas), height: getHeight(canvas) }
     const svg = d3.select(canvasSelector).append('svg')
       .attr('id', id)
-      .attr('width', canvas.width)
-      .attr('height', canvas.height)
+      .attr('width', canvasDims.width)
+      .attr('height', canvasDims.height)
 
-    const simulation = mkSimulation(canvas, nodes)
+    const simulation = mkSimulation(canvasDims, nodes)
     drawLibrary(id, svg, linkTypes)
     const directedLink = drawLinks(id, svg, directedLinks)
     const undirectedLink = drawUndirectedLinks(id, svg, undirectedLinks)
@@ -282,61 +303,68 @@ const drawTSpans = <T>(fn: T => string, x: number): (SelectWithData<T> => any) =
 }
 
 const close = (map: Simulation<Node<*>, Link<*>>) => () => {
-  $('#arg-map a').removeAttr('style')
-  $('#underlay').removeClass('inactive')
-  $('#overlay').addClass('inactive')
+  getBySelector('#arg-map a').removeAttribute('style')
+  getBySelector('#underlay').classList.remove('inactive')
+  getBySelector('#overlay').classList.add('inactive')
   history.replaceState(null, '', window.location.pathname)
   map.stop()
 }
 
-const open = (map: Simulation<Node<*>, Link<*>>) => (evt: ?JQueryMouseEventObject) => {
-  $('#underlay').addClass('inactive')
-  $('#overlay').removeClass('inactive')
-  $('#arg-map a').click(close(map))
-  $('#arg-map > svg, #overlay').click(function (e) {
-    if (e.target === this) { close(map)() }
-  })
+const open = (map: Simulation<Node<*>, Link<*>>) => (evt: ?MouseEvent) => {
+  getBySelector('#underlay').classList.add('inactive')
+  getBySelector('#overlay').classList.remove('inactive')
+  document.querySelectorAll('#arg-map a').forEach(el => el.addEventListener('click', close(map)))
+  document.querySelectorAll('#arg-map > svg, #overlay').forEach(el =>
+    el.addEventListener('click', function (e: Event) {
+      if (e.target === this) { close(map)() }
+    })
+  )
   if (evt != null) {
-    const id = $(evt.currentTarget).attr('id')
+    const id = asHTMLElement(evt.currentTarget).id
     if (id != null) {
-      $('.node > a').removeClass('entry-point')
-      $('.node > a').filter((_, a) =>
+      document.querySelectorAll('.node > a').forEach(el => el.classList.remove('entry-point'))
+      Array.from(document.querySelectorAll('.node > a')).filter(a =>
         // $FlowFixMe Doesn't know about SVG anchors
         a.href.baseVal === '#' + id
-      ).addClass('entry-point')
+      ).forEach(el => el.classList.add('entry-point'))
     }
   }
 }
 
 const maps: { [string]: Simulation<Node<*>, Link<*>> } = {}
 
-const addClickHandler = () => $('a.arg-map').click(evt => {
-  const id = $(evt.currentTarget).attr('href').slice(1)
+const addClickHandler = () => document.querySelectorAll('a.arg-map').forEach(e => e.addEventListener('click', (evt: MouseEvent) => {
+  const target = evt.currentTarget
+  const id = (target instanceof HTMLAnchorElement ? () => fromNullableError('Link without href')(target.getAttribute('href')).slice(1) : () => { throw new Error('Somehow not a link') })()
   // This probably doesn't scale beautifully put I doubt it's a problem in practice ATM
-  $('#overlay svg').hide()
+  document.querySelectorAll('#overlay svg').forEach(el => { el.style.display = 'none' })
   if (maps[id] == null) {
-    mkArgMap(id, $(`a[href="#${id}"][data-data-src]`).data('data-src'), '#overlay #arg-map').then(map => {
+    const dataSource = getBySelector(`a[href="#${id}"][data-data-src]`).dataset.dataSrc
+    mkArgMap(id, dataSource, '#overlay #arg-map').then(map => {
       maps[id] = map
       open(map)(evt)
     })
   } else {
-    $('#' + id).show()
+    getBySelector('#' + id).style.display = ''
     open(maps[id])(evt)
     maps[id].restart()
   }
-})
+}))
 
 const addResizeHandler = () => {
-  $(window).resize(() => {
-    $('#arg-map svg').width($('#arg-map').width())
-    $('#arg-map svg').height($('#arg-map').height())
+  window.addEventListener('resize', () => {
+    const svg = getBySelector('#arg-map svg')
+    const argMap = getBySelector('#arg-map')
+    svg.style.width = getWidth(argMap) + 'px'
+    svg.style.height = getHeight(argMap) + 'px'
   })
 }
 
 const handleHash = () => {
   if (location.hash.endsWith('-map')) {
     const id = location.hash.slice(1)
-    mkArgMap(id, $(`a[href="#${id}"]`).data('data-src'), '#overlay #arg-map').then(map => {
+    const dataSource = getBySelector(`a[href="#${id}"]`).dataset.dataSrc
+    mkArgMap(id, dataSource, '#overlay #arg-map').then(map => {
       maps[id] = map
       open(map)()
     })

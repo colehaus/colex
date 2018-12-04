@@ -1,14 +1,51 @@
 // @flow
 /* eslint no-undef: "off" */
 
-import $ from 'jquery'
 import { create, env } from 'sanctuary'
 const S = create({ checkTypes: false, env })
+
+const outerHeight = (el: HTMLElement) =>
+  el.offsetHeight + parseInt(getComputedStyle(el).marginTop) + parseInt(getComputedStyle(el).marginBottom)
+
+const fromNullableError = (err: string) => <A>(a: ?A): A => {
+  if (a == null) {
+    throw new Error(err)
+  } else {
+    return a
+  }
+}
+
+const asHTMLElement = <El: EventTarget>(el: El): HTMLElement => {
+  if (el instanceof HTMLElement) {
+    return el
+  } else {
+    throw new Error(`${el.toString()} not an HTMLElement`)
+  }
+}
+
+const relative = (fn: HTMLElement => ?Node) => (el: HTMLElement): HTMLElement =>
+  S.pipe([
+    fn,
+    fromNullableError(`No relative for ${el.toString()}`),
+    asHTMLElement
+  ])(el)
+
+const parent = relative(el => el.parentNode)
+
+const removeElement = (el: HTMLElement): void => {
+  parent(el).removeChild(el)
+}
+
+const getBySelector = (sel: string): HTMLElement =>
+  fromNullableError(`Missing required element corresponding to selector ${sel}`)(document.querySelector(sel))
 
 // For when we know that a thing is provably not null but it's not apparent to flow
 const claimNotNull = <A>(a: ?A): A => (a: any)
 
-const documentReadyPromise: Promise<*> = new Promise((resolve, reject) => $(() => resolve()))
+const documentReadyPromise: Promise<*> =
+  new Promise((resolve, reject) => document.addEventListener('DOMContentLoaded', () => {
+    resolve()
+  }))
 
 const makeSleepPromise = (milliseconds: number): Promise<*> =>
   new Promise((resolve, reject) => setTimeout(resolve, milliseconds))
@@ -55,18 +92,20 @@ const uniquifyValue = <A>(as: Array<A>): Array<A> =>
     S.map(JSON.parse)
   ])(as)
 
-const unexpectedCase = (impossible: empty): void => {
-  throw new Error(`Unexpected case ${impossible}`)
-}
-
 export {
+  asHTMLElement,
   claimNotNull,
   documentReadyPromise,
+  fromNullableError,
+  getBySelector,
   makeAnimationPromise,
   makeSleepPromise,
+  outerHeight,
+  parent,
   parseMatrixToAngle,
   parseMatrixToYTranslation,
+  relative,
+  removeElement,
   uniquify,
-  uniquifyValue,
-  unexpectedCase
+  uniquifyValue
 }
