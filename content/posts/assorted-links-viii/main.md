@@ -46,7 +46,7 @@ Analysts’ subjective beliefs about the research hypothesis were assessed four 
 
 5. [4 years in the making: first cash benchmarking results released](https://www.givedirectly.org/blog-post/5260516806241676953)
 
-More long-term results on direct cash transfers. Also mixed. See [earlier discussion](/posts/assorted-links-i). Awaiting [GiveWell's promised update](https://blog.givewell.org/2018/05/04/new-research-on-cash-transfers/) eagerly.
+More long-term results on direct cash transfers. Also mixed. See [earlier discussion](/posts/assorted-links-i/). Awaiting [GiveWell's promised update](https://blog.givewell.org/2018/05/04/new-research-on-cash-transfers/) eagerly.
 
 <figure>
 <figcaption>Comparing interventions in Rwanda</figcaption>

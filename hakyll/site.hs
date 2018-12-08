@@ -117,8 +117,8 @@ main =
         postPat
         bib
         csl
-    buildTagPages "Tagged" defaultTemplate (narrowEx templates "templates/tag.html") tags
-    buildTagPages "Series:" defaultTemplate (narrowEx templates "templates/tag.html") series
+    buildTagPages "Tagged" defaultTemplate (narrowEx templates "templates/tag.html") tags tags
+    buildTagPages "Series:" defaultTemplate (narrowEx templates "templates/tag.html") series tags
     paginate <-
       buildPaginateWith
         ((paginateEvery perPage <$>) . sortChronological)
@@ -307,8 +307,9 @@ buildTagPages ::
   -> Blessed "template" Identifier
   -> Blessed "template" Identifier
   -> Tags
+  -> Tags
   -> Rules ()
-buildTagPages titleText defaultTemplate tagTemplate tags =
+buildTagPages titleText defaultTemplate tagTemplate tags postTags =
   tagsRules tags $ \tag pat -> do
     route idRoute
     compile $
@@ -317,7 +318,7 @@ buildTagPages titleText defaultTemplate tagTemplate tags =
             boolField (tag <> "-page") (const True) <>
             listField
               "posts"
-              (tagsCtx tags <> postCtx)
+              (tagsCtx postTags <> postCtx)
               (recentFirst =<< Hakyll.loadAll pat) <>
             defaultContext
        in makeItem mempty >>= loadAndApplyTemplate tagTemplate ctx >>=

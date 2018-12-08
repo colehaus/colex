@@ -11,7 +11,7 @@ I used to scorn long-term memory. My brain is an exquisite organ for vanquishing
 
 - [Memorizers are the lowest achievers](https://hechingerreport.org/memorizers-are-the-lowest-achievers-and-other-common-core-math-surprises/)
 - [Why connections trump memorization in Common Core math](https://www.dummies.com/education/common-core-standards/why-connections-trump-memorization-in-common-core-math/)
-- [Deeper Learning: Moving Students Beyond Memorization](Deeper Learning: Moving Students Beyond Memorization)
+- [Deeper Learning: Moving Students Beyond Memorization](http://neatoday.org/2014/11/25/deeper-learning-moving-students-beyond-memorization-2/)
 - [Wen says rote learning must go in Chinese schools](https://www.reuters.com/article/us-china-education/wen-says-rote-learning-must-go-in-chinese-schools-idUSTRE67U18Y20100831)
 
 But, after reading up on pedagogy in articles like [the one we discussed earlier](/posts/human-cognitive-architecture-learning), "[I] no longer see longterm memory as a repository of isolated, unrelated facts that are occasionally stored and retrieved; instead, it is the central structure of human cognitive architecture." [@sweller2008]
