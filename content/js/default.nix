@@ -4,7 +4,7 @@
       inherit pkgs;
       name = "webpackColEx";
       package = ./package.json;
-      package-lock = ./package-lock.json;
+      packageLock = ./package-lock.json;
     };
   in
     pkgs.stdenv.mkDerivation rec {
