@@ -132,7 +132,6 @@ main =
       tags
       series
       paginate
-      chunkMap
     tagIndexIdent <-
       buildTagIndex
         defaultTemplate
@@ -152,7 +151,6 @@ main =
         tags
         series
         paginate
-        chunkMap
     scssPat <- match "css/libs/**_*.scss" $ compile copyFileCompiler
     _ <- buildCss scssPat
     archiveIdent <-
@@ -282,9 +280,8 @@ buildPages ::
   -> Tags
   -> Tags
   -> Paginate
-  -> Map String [String]
   -> Rules ()
-buildPages defaultTemplate indexTemplate indexContentTemplate abstractPat tags series pages chunkMap =
+buildPages defaultTemplate indexTemplate indexContentTemplate abstractPat tags series pages =
   paginateRules pages $ \n pat -> do
     route idRoute
     compile $
@@ -299,7 +296,6 @@ buildPages defaultTemplate indexTemplate indexContentTemplate abstractPat tags s
                postCtx)
               (recentFirst =<< Hakyll.loadAll pat) <>
             pageCtx <>
-            customElementsCtx chunkMap <>
             defaultContext
        in makeItem mempty >>= loadAndApplyTemplate indexContentTemplate ctx >>=
           saveSnapshot "page" >>=
@@ -367,9 +363,8 @@ buildIndex ::
   -> Tags
   -> Tags
   -> Paginate
-  -> Map String [String]
   -> Rules (Blessed "index" Identifier)
-buildIndex defaultTemplate indexTemplate indexContentTemplate abstractPat tags series pages chunkMap =
+buildIndex defaultTemplate indexTemplate indexContentTemplate abstractPat tags series pages =
   (head <$>) . create ["index.html"] $ do
     route idRoute
     compile $ do
@@ -383,7 +378,6 @@ buildIndex defaultTemplate indexTemplate indexContentTemplate abstractPat tags s
             pure $ first <> prev
       let ctx =
             boolField "home-page" (const True) <> constField "title" "Home" <>
-            customElementsCtx chunkMap <>
             listField
               "posts"
               (teaserField "teaser" "teaser" <> tagsCtx tags <> seriesCtx series <>
@@ -392,7 +386,6 @@ buildIndex defaultTemplate indexTemplate indexContentTemplate abstractPat tags s
                postCtx)
               (recentFirst =<< Hakyll.loadAll pat) <>
             pageCtx <>
-            customElementsCtx chunkMap <>
             defaultContext
        in makeItem mempty >>= loadAndApplyTemplate indexContentTemplate ctx >>=
           loadAndApplyTemplate indexTemplate ctx >>=
