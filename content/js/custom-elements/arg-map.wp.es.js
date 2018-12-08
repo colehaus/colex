@@ -502,10 +502,7 @@ const handleHash = () => {
   }
 }
 
-console.log('hallo')
-
 documentReadyPromise.then(() => {
-  console.log('hello')
   addResizeHandler()
   addClickHandler()
   handleHash()

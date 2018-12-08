@@ -636,6 +636,7 @@ buildPosts defaultTemplate postTemplate bibIdent cslIdent tags series chunkMap d
               seriesCtx series <>
               tagsCtx tags <>
               customElementsCtx chunkMap <>
+              graphContentsCtx chunkMap <>
               postCtx
          in do bib <- load bibIdent
                csl <- load cslIdent
@@ -750,6 +751,11 @@ customElementsCtx :: Map String [String] -> Context String
 customElementsCtx chunkMap =
   constListField "custom-elements" (idField "filename") $
   "custom-elements" : chunkMap Map.! "custom-elements"
+
+graphContentsCtx :: Map String [String] -> Context String
+graphContentsCtx chunkMap =
+  listFieldWith' "arg-map" (idField "filename") $
+  fmap (maybe [] (const $ "arg-map" : chunkMap Map.! "arg-map")) . flip getMetadataField "graph-of-contents"
 
 jsCtx :: Map String [String] -> Context String
 jsCtx chunkMap =

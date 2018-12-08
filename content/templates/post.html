@@ -45,6 +45,9 @@ $if(overlay)$
 <div id="overlay" class="inactive">$overlay$</div>
 $endif$
 
+$for(arg-map)$
+<script defer type="text/javascript" src="/js/$filename$.js"></script>
+$endfor$
 $for(custom-elements)$
 <script defer type="text/javascript" src="/js/$filename$.js"></script>
 $endfor$
