@@ -3,7 +3,8 @@
     nodeEnv = extras.callNode2nix {
       inherit pkgs;
       name = "webpackColEx";
-      src = ./package.json;
+      package = ./package.json;
+      package-lock = ./package-lock.json;
     };
   in
     pkgs.stdenv.mkDerivation rec {
@@ -27,6 +28,6 @@
         # babel doesn't read NODE_PATH so this seems like the most convenient way to tell it about required deps
         mkdir node_modules
         ln -s ${nodeEnv.shell.nodeDependencies}/lib/node_modules/@babel node_modules/@babel
-        OUT_DIR="$out" webpack
+        OUT_DIR="$out" webpack --display-error-details
       '';
     }
