@@ -1,7 +1,10 @@
 // @flow
 /* eslint no-undef: "off" */
 
-import * as d3 from 'd3'
+import { drag } from 'd3-drag'
+import { csv } from 'd3-fetch'
+import * as sel from 'd3-selection'
+import * as force from 'd3-force'
 import asciiStringSplit from 'ascii-string-split'
 import { create, env } from 'sanctuary'
 
@@ -60,10 +63,10 @@ const fetchData = <NTy: string, LTy: string>(
   ]
 > =>
     Promise.all([
-      d3.csv(dataSrc + '/nodes.csv'),
-      d3.csv(dataSrc + '/links.csv'),
-      d3.csv(dataSrc + '/node-types.csv'),
-      d3.csv(dataSrc + '/link-types.csv')
+      csv(dataSrc + '/nodes.csv'),
+      csv(dataSrc + '/links.csv'),
+      csv(dataSrc + '/node-types.csv'),
+      csv(dataSrc + '/link-types.csv')
     ])
 
 const isUndirectedLink = <LTy: string>(
@@ -135,18 +138,18 @@ const boundingBox = (
 }
 
 const mkSimulation = ({ width, height }, nodes) =>
-  d3
+  force
     .forceSimulation()
     .force(
       'link',
-      d3
+      force
         .forceLink()
         .id(d => d.id)
         .strength(STRENGTH)
         .distance(width / 7)
     )
-    .force('charge', d3.forceManyBody().strength(-250))
-    .force('center', d3.forceCenter(width / 2, height / 2))
+    .force('charge', force.forceManyBody().strength(-250))
+    .force('center', force.forceCenter(width / 2, height / 2))
     .force('bound', alpha => boundingBox(width, height, nodes))
     .alphaDecay(0.015)
 
@@ -246,8 +249,7 @@ const drawNodes = (
     .classed('node', true)
     .on('dblclick', dblClicked)
     .call(
-      d3
-        .drag()
+      drag()
         .on('start', dragStarted(simulation))
         .on('drag', dragged)
         .on('end', dragEnded(simulation))
@@ -291,7 +293,7 @@ const mkArgMap = (
     )
     const links = S.concat(directedLinks)(undirectedLinks)
     const canvasDims = { width: getWidth(canvas), height: getHeight(canvas) }
-    const svg = d3
+    const svg = sel
       .select(canvasSelector)
       .append('svg')
       .attr('id', id)
@@ -325,12 +327,12 @@ const dragStarted = simulation => d => {
 }
 
 const dragged = d => {
-  d.fx = d3.event.x
-  d.fy = d3.event.y
+  d.fx = sel.event.x
+  d.fy = sel.event.y
 }
 
 const dblClicked = function (d) {
-  d3
+  sel
     .select(this)
     .select('polygon')
     .classed('fixed', false)
@@ -340,7 +342,7 @@ const dblClicked = function (d) {
 
 const dragEnded = function (simulation) {
   return function () {
-    d3
+    sel
       .select(this)
       .select('polygon')
       .classed('fixed', true)
@@ -500,7 +502,10 @@ const handleHash = () => {
   }
 }
 
+console.log('hallo')
+
 documentReadyPromise.then(() => {
+  console.log('hello')
   addResizeHandler()
   addClickHandler()
   handleHash()

@@ -1,11 +1,11 @@
 // @flow
 /* eslint no-undef: "off" */
 
-import * as d3 from 'd3'
+import { scaleLinear } from 'd3-scale'
 import flyd from 'flyd'
 import $ from 'jquery'
-import * as numbers from 'numbers'
-import * as vega from 'vega-lib'
+import { calculus } from 'numbers'
+import { changeset } from 'vega-lib'
 import vegaEmbed from 'vega-embed'
 import { create, env } from 'sanctuary'
 
@@ -91,12 +91,10 @@ const addDrawingHandlers = (
   rangeMax: number
 ) => {
   const bound = baselineBox(id)
-  const xLogicalToPixel = d3
-    .scaleLinear()
+  const xLogicalToPixel = scaleLinear()
     .domain([0, domainMax])
     .range([0, bound.width])
-  const yPixelToLogical = d3
-    .scaleLinear()
+  const yPixelToLogical = scaleLinear()
     .domain([0, bound.height])
     .range([0, rangeMax])
   $(id)
@@ -184,9 +182,9 @@ const makeUtilityDistribution = (
   marginalUtilityFnStream: Stream<(number) => number>
 ) => {
   const utilityOfIncomeFn = (income: number) =>
-    numbers.calculus.Riemann(marginalUtilityFnStream(), minIncome, income, 200)
+    calculus.Riemann(marginalUtilityFnStream(), minIncome, income, 200)
   const meanIncome =
-    numbers.calculus.Riemann(
+    calculus.Riemann(
       incomeDistributionFnStream(),
       percentileDomain[0],
       percentileDomain[1],
@@ -211,8 +209,7 @@ documentReadyPromise.then(() => {
       view
         .change(
           'table',
-          vega
-            .changeset()
+          changeset()
             .insert(
               S.join([
                 values(percentileDomain, 'percentile', 'utility')(

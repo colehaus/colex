@@ -1,7 +1,9 @@
 // @flow
 /* eslint no-undef: "off" */
 
-import * as d3 from 'd3'
+import { scaleLinear } from 'd3-scale'
+import { line } from 'd3-shape'
+import * as sel from 'd3-selection'
 import kernel from 'kernel-smooth'
 import { create, env } from 'sanctuary'
 
@@ -22,7 +24,7 @@ const setHandlers = (
   callback: ?((number) => number) => void
 ) => {
   let points = []
-  d3
+  sel
     .select(drawEl)
     .select('svg')
     .call(draw(points, box, callback))
@@ -38,7 +40,7 @@ const clear = (points: Array<Array<[number, number]>>) => (evt: Event) => {
     S.toMaybe,
     S.chain(S.pipe([el => el.querySelector('svg'), S.toMaybe])),
     S.map(svg =>
-      d3
+      sel
         .select(svg)
         .selectAll('path')
         .remove()
@@ -54,12 +56,10 @@ const interpolate = (
 ) => (points: Array<[number, number]>) => {
   selection.selectAll('path:not(.draw-input)').remove()
 
-  const scaleX = d3
-    .scaleLinear()
+  const scaleX = scaleLinear()
     .domain([box.left, box.left + box.width])
     .range([0, box.width])
-  const scaleY = d3
-    .scaleLinear()
+  const scaleY = scaleLinear()
     .domain([box.height + box.top, box.top])
     .range([0, box.height])
   const func = kernel.regression(
@@ -81,7 +81,7 @@ const interpolate = (
     }
     selection
       .append('path')
-      .attr('d', d3.line()(interpolatedPoints))
+      .attr('d', line()(interpolatedPoints))
       .classed('interpolated', true)
   }
 }
@@ -98,11 +98,11 @@ const draw = function (
     selection
       .on('mousedown', function () {
         down = true
-        const point = d3.mouse(this)
+        const point = sel.mouse(this)
         currentPoints = [point]
         path = selection
           .append('path')
-          .attr('d', d3.line()([point, point]))
+          .attr('d', line()([point, point]))
           .classed('draw-input', true)
       })
       .on('mouseup', function () {
@@ -112,8 +112,8 @@ const draw = function (
       })
       .on('mousemove', function () {
         if (down) {
-          currentPoints.push(d3.mouse(this))
-          path.attr('d', d3.line()(currentPoints))
+          currentPoints.push(sel.mouse(this))
+          path.attr('d', line()(currentPoints))
         }
       })
   }

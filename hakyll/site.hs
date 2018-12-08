@@ -227,7 +227,7 @@ extractChunks :: String -> [String]
 extractChunks fp =
   case stripSuffix ".js" <=< stripPrefix "vendors~" $ fp of
     Just chunkString -> splitOn "~" chunkString
-    Nothing -> error "Not just a vendor chunk"
+    Nothing -> error $ fp <> ": Not a vendor chunk"
 
 prodHost :: String
 prodHost = "https://www.col-ex.org"
