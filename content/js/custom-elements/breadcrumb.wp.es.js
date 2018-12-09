@@ -122,15 +122,13 @@ const cb = targets => entries => {
 
 let lastScrollPosition, scrollDirection
 
-if (document.location.pathname.startsWith('/posts/')) {
-  documentReadyPromise.then(() => {
-    const targets = Array.from(
-      document.querySelectorAll('h3:not(#article-subtitle), h4, h5, h6')
-    )
-    const observer = new IntersectionObserver(cb(targets), { threshold: 0 })
-    targets.forEach(el => observer.observe(el))
-  })
-}
+documentReadyPromise.then(() => {
+  const targets = Array.from(
+    document.querySelectorAll('h3:not(#article-subtitle), h4, h5, h6')
+  )
+  const observer = new IntersectionObserver(cb(targets), { threshold: 0 })
+  targets.forEach(el => observer.observe(el))
+})
 
 const prettyPrintHeaders = S.pipe([
   headers => Array.from(headers.entries()),

@@ -67,11 +67,9 @@ const addTooltips = (pairs: Array<Pair<HTMLElement, string>>): void => {
   })
 }
 
-if (document.location.pathname.startsWith('/posts/')) {
-  documentReadyPromise.then(() => {
-    const citeLinks = Array.from(document.querySelectorAll('.citation > a'))
-    const citations = Array.from(document.querySelectorAll('.citation'))
-    const refs = Array.from(document.querySelectorAll('#refs > div'))
-    addTooltips(S.zip(citations)(getRefTitles(citeLinks, refs)))
-  })
-}
+documentReadyPromise.then(() => {
+  const citeLinks = Array.from(document.querySelectorAll('.citation > a'))
+  const citations = Array.from(document.querySelectorAll('.citation'))
+  const refs = Array.from(document.querySelectorAll('#refs > div'))
+  addTooltips(S.zip(citations)(getRefTitles(citeLinks, refs)))
+})
