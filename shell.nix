@@ -26,4 +26,5 @@ in
       (extras.purescriptDevEnv { inherit pkgs; }).buildInputs ++
       (if pkgs.stdenv.isDarwin then [ pkgs.darwin.apple_sdk.frameworks.Cocoa ] else []) ++
       (if pkgs.stdenv.isLinux then [ pkgs.glibcLocales ] else []);
+    shellHook = webpack.shellHook;
   }

@@ -9,7 +9,7 @@
   in
     pkgs.stdenv.mkDerivation rec {
       name = "webpackColEx";
-      phases = [ "unpackPhase" "buildPhase" ];
+      phases = [ "unpackPhase" "configurePhase" "buildPhase" ];
       nativeBuildInputs = [
         pkgs.nodejs
         pkgs.flow
@@ -17,17 +17,27 @@
       ];
       src = extras.gitignoreSource ./.;
       NODE_ENV = "production";
-      buildPhase = ''
-        # Default `NODE_PATH` doesn't work with scoped packages
-        # e.g. `webpack-cli` expects `flow-webpack-plugin` to be a direct child of one of the `NODE_PATH` entries
+      # Default `NODE_PATH` doesn't work with scoped packages
+      # e.g. `webpack-cli` expects `flow-webpack-plugin` to be a direct child of one of the `NODE_PATH` entries
+      nodePathFix = ''
         for path in ''${NODE_PATH//:/ }; do
             if [[ "$path" = *"node-dependencies-ColEx"* ]]; then
                 NODE_PATH="$path/@colehaus":$NODE_PATH
             fi
         done
-        # babel doesn't read NODE_PATH so this seems like the most convenient way to tell it about required deps
+      '';
+      # babel doesn't read NODE_PATH so this seems like the most convenient way to tell it about required deps
+      babelDepFix = ''
+        rm -rf node_modules
         mkdir node_modules
         ln -s ${nodeEnv.shell.nodeDependencies}/lib/node_modules/@babel node_modules/@babel
+      '';
+      configurePhase = ''
+        ${nodePathFix}
+        ${babelDepFix}
+      '';
+      buildPhase = ''
         OUT_DIR="$out" webpack --display-error-details
       '';
+      shellHook = configurePhase;
     }

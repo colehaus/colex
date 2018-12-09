@@ -14,18 +14,6 @@ stack install
 cd "${root}/content/js"
 rm -f dist/*
 
-# Default `NODE_PATH` doesn't work with scoped packages
-# e.g. `webpack-cli` expects `flow-webpack-plugin` to be a direct child of one of the `NODE_PATH` entries
-for path in ${NODE_PATH//:/ }; do
-    if [[ "${path}" = *"node-dependencies-ColEx"* ]]; then
-        NODE_PATH="${path}/@colehaus":$NODE_PATH
-        # babel doesn't read NODE_PATH so this seems like the most convenient way to tell it about required deps
-        sudo rm -rf node_modules
-        mkdir node_modules
-        ln -s "${path}/@babel" node_modules/@babel
-    fi
-done
-
 # Fixes race between hakyll and webpack
 NO_WATCH=no_watch webpack
 
