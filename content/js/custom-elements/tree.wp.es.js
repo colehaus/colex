@@ -168,8 +168,12 @@ documentReadyPromise.then(() => {
           menuEl.querySelector('ul.menu')
         )
         S.map((ul: HTMLElement) => {
-          ul.style.left = pageX + 'px'
-          ul.style.top = pageY + 'px'
+          // CSS `top` and `left` set relative to containing block
+          // pageX and pageY are relative to document
+          // So we need to adjust for containing block
+          const containingBlock = getBySelector('main')
+          ul.style.left = pageX - containingBlock.offsetLeft + 'px'
+          ul.style.top = pageY - containingBlock.offsetTop + 'px'
           Array.from(ul.children).forEach(el =>
             el.removeEventListener('click', choose)
           )

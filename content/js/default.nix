@@ -12,6 +12,7 @@
       phases = [ "unpackPhase" "configurePhase" "buildPhase" ];
       nativeBuildInputs = [
         pkgs.nodejs
+        # `flow-bin` from npm doesn't work with nix
         pkgs.flow
         nodeEnv.shell.nodeDependencies
       ];
