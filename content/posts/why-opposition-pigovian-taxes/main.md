@@ -2,10 +2,11 @@
 title: Gas taxes for thee, but not for me
 subtitle: Why the popular opposition to Pigovian taxes?
 date: 2018-12-08
+edited: 2018-12-11
 tags: current events, pigovian taxes
 ---
 
-Paris and other French cities have recently been the site of large and heated (there were fires) protests. The most prominent symbol of the protests is the high-visibility [<abbr title="yellow vests">'gilets jaunes'</abbr>](https://en.wikipedia.org/wiki/Yellow_vests_movement) which all French motorists are required to own. This symbol is fitting for a series of protests that coalesced in opposition to an increase in the gas tax. While this protest (and any other protest) [isn't about a single grievance](https://www.nytimes.com/2018/12/06/world/europe/france-fuel-carbon-tax.html), it certainly seems to signify something about the popular opinion of gas taxes.
+Paris and other French cities have recently been the site of large and heated (there were fires) protests. The most prominent symbol of the protests is the high-visibility [<abbr title="yellow vests"><i>gilets jaunes</i></abbr>](https://en.wikipedia.org/wiki/Yellow_vests_movement) which all French motorists are required to own. This symbol is fitting for a series of protests that coalesced in opposition to an increase in the gas tax. While this protest (and any other protest) [isn't about a single grievance](https://www.nytimes.com/2018/12/06/world/europe/france-fuel-carbon-tax.html), it certainly seems to signify something about the popular opinion of gas taxes.
 
 These protests pair [somewhat uncomfortably]{.noted}[^hypocrisy] with the popular [march against climate change in Paris](https://www.independent.ie/world-news/thousands-march-in-paris-against-climate-change-37296183.html) just three months ago.
 
@@ -43,7 +44,7 @@ For a (very accessible) fuller discussion in support of Pigovian taxes from an e
 
 # Reasons to oppose
 
-I'll confess myself to be on the side of economists when it comes to Pigovian taxes. I'm then left with the question, why are they so unpopular with the general public? There are many possible reasons which we'll now rehearse. Since the case for Pigovian taxes rests on both positive (these are the effects of Pigovian taxes) and normative (these effects are good) premises, [we'll categorize]{.noted}[^categorize] the objections as:
+I'll confess myself to be on the side of economists when it comes to Pigovian taxes. I'm then left with the question, why are they so unpopular with the general public? There are many possible reasons which we'll now rehearse (Though we will stick to arguments where there's something interesting to say about Pigovian taxes specifically; we won't rehash arguments about whether the government should ever intervene in the market, can be trusted, &c.) . Since the case for Pigovian taxes rests on both positive (these are the effects of Pigovian taxes) and normative (these effects are good) premises, [we'll categorize]{.noted}[^categorize] the objections as:
 
 1. Misapprehensions of the positive
 2. Disagreements with the positive
@@ -68,7 +69,7 @@ Gas taxes are relatively complicated. The isolation effect says that in complica
 
 ### Distributional impact
 
-The biggest concern by far (according to my sense of the public discussion) is about the distributional impacts. It's often believed that gas taxes (and other Pigovian taxes) are unfair and regressive. The story is that poor people spend a larger fraction of their income on gas, so increasing the gas tax flatly (i.e. without regard to income) ends up taxing poor people at a higher percentage of their income. Their are several possible responses to this:
+The biggest concern by far (according to my sense of the public discussion) is about the distributional impacts. It's often believed that gas taxes (and other Pigovian taxes) are unfair and regressive. The story is that poor people spend a larger fraction of their income on gas, so increasing the gas tax flatly (i.e. without regard to income) ends up taxing poor people at a higher percentage of their income. There are several possible responses to this:
 
 #### Flat denial
 
@@ -89,6 +90,8 @@ The externalities that Pigovian taxes seek to reduce don't have equal incidence 
 #### Concluding remarks on distributional impacts
 
 If you're still concerned, [@schweitzer2009empirical] and [@metcalf1999distributional] address the issues fairly comprehensively.
+
+I'll also note here that the gas tax the <i>gilets jaunes</i> opposed was not revenue neutral---the revenue was to be used to reduce the deficit. So it was actually regressive at the most straightforward level.
 
 Even though concerns about the distributional impact are primarily normative, I categorize this issue under positive misapprehensions because that's where the error lies. People aren't wrong to be concerned about the distributional impacts of policy; they just happen to be wrong as to how (at least some) gas taxes affect different income groups.
 
