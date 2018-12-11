@@ -4,24 +4,99 @@ date: 2018-11-21
 tags: externalities
 ---
 
-zoning, executive pay
+Overlap
+Current taxes subsidies
 
-Perhaps the best
-example of a Pigouvian tax we have found is the Ozone Depleting
-Chemicals Tax (ODC), which was implemented by Congress in 1989 in
-order to comply with the Montreal Protocol.32 The ODC applies to the sale
-or use of ozone-depleting chemicals and is assessed at a rate proportional to
-their potential for depleting the ozone layer.33 Similarly, in the wake of the
-Exxon Valdez oil spill in 1989, Congress created an oil pollution fund, called
-the Oil Spill Liability Trust Fund, to provide compensation to those who 
-have suffered losses or damages due to an oil spill.34 The Fund is primarily
-funded by a tax of five cents per barrel of oil produced and imported to the
-United States. In addition, the Surface Mining Control and Reclamation Act,
-which was passed in order to mitigate the negative effects of coal mining on
-the environment, imposes a tax on the extraction of coal from domestic
-mines.35 
+<figure class="big-fig">
+| Activity                                                   | Externalities                                                       |      $ per unit | Unit    | Total quantity                                                                                                                                     | Total $                | Total $ as % of GPD | Total $ per capita | Data year |
+| :--------------                                            | :---------------------------------------------------                | --------------: | :------ | -----------------------:                                                                                                                           | -----:                 |   ----------------: |    --------------: |      ---: |
+| Drinking soda                                              | Obesity-related publicly-provided healthcare costs                  |         Unknown | Liter   | [$4.82 \times 10^9$](http://big.assets.huffingtonpost.com/soda.pdf)                                                                                | Unknown                |             Unknown |            Unknown |      2013 |
+| Agriculture                                                | Damage to natural capital and human health                          |              80 | Hectare | $4.31 \times 10^8$                                                                                                                                 | $3.45 \times 10^{10}$  |                0.17 |                104 |      1996 |
+| Household debt                                             | Social borrowing constraint                                         |           0.048 | Dollar  | [$1.33 \times 10^{13}$](https://www.reuters.com/article/us-usa-fed-debt/u-s-household-debt-rises-to-13-3-trillion-in-second-quarter-idUSKBN1KZ1QZ) | $6.38 \times 10^{10}$  |                 0.3 |                193 |      2018 |
+| <abbr title="Small and medium enterprises">SME</abbr> debt | Social borrowing constraint                                         |           0.056 | Dollar  | $5.34 \times 10^{12}$                                                                                                                              | $3.0 \times 10^{10}$   |                0.15 |                 90 |      2009 |
+| Municipal solid waste                                      | Environmental costs                                                 |              22 | Ton     | [$2.62 \times 10^8$](https://www.epa.gov/facts-and-figures-about-materials-waste-and-recycling/national-overview-facts-and-figures-materials)      | $5.764 \times 10^9$    |                0.03 |                 17 |      2015 |
+| Gambling                                                   | Problem gamblers, undermining government authority, organized crime |         Unknown | Dollar  | [$1.37 \times 10^{11}$](https://www.statista.com/topics/1368/gambling/)                                                                            | Unknown                |             Unknown |            Unknown |      2014 |
+| Obesity                                                    | Socialized healthcare spending                                      |             175 | BMI     | $9.9 \times 10^8$                                                                                                                                  | $1.737 \times 10^{11}$ |                 0.9 |                533 |      2012 |
+| Dietary fat                                                | Socialized healthcare spending                                      |         Unknown | kg      | [$9.39 \times 10^{9}$](https://healthyeating.sfgate.com/average-fat-intake-sad-11370.html)                                                         | Unknown                |             Unknown |            Unknown |      2007 |
+| Guns                                                       | Unintentional killings                                              |             138 | Gun     | $1.62 \times 10^7$                                                                                                                                 | $2.25 \times 10^9$     |                0.01 |               6.90 |      2013 |
+| Finance                                                    | Speculation, races, insolvency                                      |         Unknown | Unknown | Unknown                                                                                                                                            | Unknown                |             Unknown |            Unknown |   Unknown |
+| Antibiotic use                                             | Antibiotic resistance                                               |              50 | lb      | $2.54 \times 10^7$                                                                                                                                 | $1.27 \times 10^9$     |               0.006 |                3.9 |      2015 |
+| Smoking                                                    | Medical issues, fires                                               |            0.20 | Pack    | [$1.335 \times 10^{10}](https://www.statista.com/statistics/261573/total-cigarette-consumption-in-the-us-since-1900/)                              | $2.67 \times 10^9$     |                0.01 |               8.19 |      2015 |
+| Drinking alcohol                                           | Lost productivity, medical care, car crashes, crime                 |              62 | Liter   | [$2.5 \times 10^9$](http://apps.who.int/gho/data/node.main.A1036)                                                                                  | $1.52 \times 10^{11}$  |                 0.7 |                467 |      2016 |
+| Emitting carbon                                            | Global warming                                                      |              50 | Tonne   | [$5.38 \times 10^9$](https://data.worldbank.org/indicator/EN.ATM.CO2E.PC)                                                                          | $2.69 \times 10^{11}$  |                 1.4 |                825 |      2014 |
+| Driving                                                    | Local pollution, global warming, crashes, congestion                |            1.76 | Gallon  | [1.43 \times 10^11](https://www.eia.gov/tools/faqs/faq.php?id=23&t=10)                                                                             | $2.51 \times 10^{11}$  |                 1.3 |                772 |      2017 |
+</figure>
+
+Excise taxes are relatively small but non-trivial sources of revenue. On average across the OECD, they account for almost 11 percent of government revenues
+
+[@decicca2013]
+
+
+Perhaps the best example of a Pigouvian tax we have found is the Ozone Depleting Chemicals Tax (ODC), which was implemented by Congress in 1989 in order to comply with the Montreal Protocol.32 The ODC applies to the sale or use of ozone-depleting chemicals and is assessed at a rate proportional to their potential for depleting the ozone layer.33 Similarly, in the wake of the Exxon Valdez oil spill in 1989, Congress created an oil pollution fund, called the Oil Spill Liability Trust Fund, to provide compensation to those who have suffered losses or damages due to an oil spill.34 The Fund is primarily funded by a tax of five cents per barrel of oil produced and imported to the United States. In addition, the Surface Mining Control and Reclamation Act, which was passed in order to mitigate the negative effects of coal mining on the environment, imposes a tax on the extraction of coal from domestic mines.35
 
 [@masur2015]
+
+# Soda
+
+In economic terms, the consumption of sugary beverages creates a social cost—obesity-related healthcare—that is not a component of a good’s price.113 As one commentator has put it, “[I]ndividuals acting in their own self-interest . . . will not effectively address the problem [of obesity] because they do not internalize some of the major costs or benefits of action or nonaction.”
+
+# Agriculture
+
+The environmental and human health effects of modern agriculture are wide-ranging and well documented (Conway & Pretty, 1991; Altieri, 1995; Pretty, 1995, 1998; Mason, 1996; European Environment Agency (EEA), 1998), and include: (1) pesticides contaminating water and harming wildlife and human health; (2) nitrate and phosphate from fertilizers, livestock wastes and silage effluents contaminating water, and so contributing to algal blooms, deoxygenation, fish deaths and nuisance to leisure users; (3) soil erosion disrupting watercourses, and run-off from eroded land causing flooding and damage to housing and natural resources; (4) harm to consumers exposed to harmful residues and micro-organisms in foods; and (5) contamination of the atmospheric environment by methane, nitrous oxide and ammonia derived from livestock, their manures and fertilizers.
+
+For a variety of reasons, these estimates are likely to be conservative (Pretty et al., 2000): · some costs are known to be substantial underestimates (for example, acute and chronic pesticide poisoning of humans, monitoring costs, eutrophication of reservoirs and restoration of all hedgerow losses); · some costs currently cannot be calculated (for example, dredging to maintain navigable water, flood defences, marine eutrophication and poisoning of domestic pets); · the costs of returning the environment or human health to pristine conditions were not calculated; · treatment and prevention costs may be underestimates of how much people might be willing to pay to see positive externalities created; · the data do not account for time lags between the cause of a problem and its expression as a cost (i.e. some processes long since stopped may still be causing costs; some current practices may not yet have caused costs); · this study did not include the externalities arising from transporting food from farms to manufacturers, processors, retailers and finally to consumers.
+
+<figure>
+<figcaption>The annual external costs of modern agriculture in the USA ($ million, adjusted to 2018 prices)</figcaption>
+
+| Cost Category                                                                 |      USA |
+| :---------------------------------------------------------------------------- |  ------: |
+| 1. Damage to natural capital: water                                           |          |
+| &emsp;a) Pesticides in sources of drinking water                              |      851 |
+| &emsp;b) Nitrate, phosphate and soil in sources of drinking water             |     1170 |
+| &emsp;c) Zoonoses (esp. Cryptosporidum) in sources of drinking water *        |      360 |
+| &emsp;d) Eutrophication, pollution incidents, fish deaths, monitoring costs   |      244 |
+| 2. Damage to natural capital: air                                             |          |
+| Emissions of methane, ammonia, nitrous oxide and carbon dioxide               |    15720 |
+| 3. Damage to natural capital: soil                                            |          |
+| &emsp;a) Off-site damage caused by erosion                                    |        0 |
+| &emsp;&emsp;i) Flooding, blocked ditches and lost water storage               |     3288 |
+| &emsp;&emsp;ii) Damage to industry, navigation and fisheries                  |     8287 |
+| &emsp;b) Organic matter and carbon dioxide losses from soils *                |     1286 |
+| 4. Damage to natural capital: biodiversity and landscape                      |          |
+| &emsp;a) Biodiversity/wildlife losses                                         |      313 |
+| &emsp;b) Hedgerows and drystone wall losses                                   |        1 |
+| &emsp;c) Bee colony losses and damage to domestic pets                        |      218 |
+| 5. Damage to human health: pesticides                                         |      126 |
+| 6. Damage to human health: nitrate                                            |        1 |
+| 7. Damage to human health: micro-organisms/disease agents                     |          |
+| &emsp;a) Bacterial and viral outbreaks in food *                              |     2648 |
+| &emsp;b) BSE and new variant CJD                                              |        1 |
+| &emsp;c) Overuse of antibiotics                                               |        1 |
+| Total annual external costs                                                   |    34516 |
+| Total costs per hectare of arable and grassland                               | 0.000080 |
+
+<!-- [calculations](data/offline/pigou/agriculture.org) -->
+
+<figcaption>
+Data is from [@pretty2001policy] updated to 2018 dollars using a [1996 exchange rate of 1.12 €/$](https://www.poundsterlinglive.com/bank-of-england-spot/historical-spot-exchange-rates/usd/USD-to-EUR-2001) and [inflation adjusted at 1.61 $2018/$1996](http://www.in2013dollars.com/1996-dollars-in-2018?amount=1)
+
+Rows marked with * are interpolated from UK figures using [£9.9 billion of UK agricultural output](
+https://en.wikipedia.org/wiki/Agriculture_in_the_United_Kingdom), [$138 billion of US agricultural ouptut](
+https://www.ers.usda.gov/data-products/chart-gallery/gallery/chart-detail/?chartId=58270) and an [exchange rate of 1.27 $/£](
+https://www.currency-calc.com/USD_GBP).
+</figcaption>
+</figure>
+
+# Credit
+
+A borrower who has one more dollar of liquid net worth when the economy experiences a bust relaxes not only his private borrowing constraint but also the borrowing constraints of all other insiders. Not internalizing this spillover effect, the insider takes on too much debt during good times.
+
+It is important that the level of the tax on a given sector be adjusted to its vulnerability to credit and asset price busts. In a benchmark calibration of our model to the US small and medium-sized enterprise (SME) sector, we find that the optimal tax converges to 0.56 percent of the amount of debt outstanding over the course of a boom, and drops to zero when a bust occurs. Borrowing by the US household sector is subject to externalities of similar magnitude (0.48 percent in booms). By contrast, US Flow of Funds data over the past decade suggest that large corporations who have access to corporate bond markets were less subject to systemic externalities and did not require macro-prudential measures.
+
+agents do not internalize that their borrowing choices in boom times render the economy more vulnerable to credit and asset price busts involving debt deflation in bust times. Therefore their borrowing imposes an externality on the economy. In our baseline calibration, a social planner would impose on average an ex-ante tax of half a percent per dollar on borrowing so as to reduce the debt burden and mitigate the decline in consumption in case of crisis.
+
+[@jeanne2010managing]
 
 # Garbage
 
@@ -56,9 +131,9 @@ Under air emissions, methane is the biggest potential problem. In fact, landfill
 
 # Gambling
 
-Further complicating the assessment of the efficiency of gambling taxes are externalities that arise from gambling. Probably the most serious of these arises from the apparent social fact that there exist some individuals who are especially susceptible to the temptation to gamble excessively. Compulsive gamblers, their gambling stimulated by easy accessibility to opportunities to bet, may spend enormous amounts, driving themselves into bankruptcy, their families into hardship, and their personal relationships into ruin. They are estimated to be of the order of 1–2 per cent of the adult population in countries where surveys have been conducted. Other ‘problem gamblers’ constitute another 2–4 per cent (Azmier, 2001, p. 10; Volberg, 2001, p. 49). Together, these two groups appear to constitute a small but stubbornly resilient share of the adult population. Research on gambling by these groups suggests that the harmful effects can be mitigated through restrictions on types of games, conditions of play, and marketing,15 but most experts would agree that legalization will inevitably make life worse for this small subset of the population. Accordingly, most governments that sponsor or allow gambling also provide services to help problem gamblers. This being an inevitable social cost associated with legalized gambling, the logic of Pigouvian taxation implies that gambling taxes reflect, in part, this cost.
+Further complicating the assessment of the efficiency of gambling taxes are externalities that arise from gambling. Probably the most serious of these arises from the apparent social fact that there exist some individuals who are especially susceptible to the temptation to gamble excessively. Compulsive gamblers, their gambling stimulated by easy accessibility to opportunities to bet, may spend enormous amounts, driving themselves into bankruptcy, their families into hardship, and their personal relationships into ruin. They are estimated to be of the order of 1–2 per cent of the adult population in countries where surveys have been conducted. Other ‘problem gamblers’ constitute another 2–4 per cent (Azmier, 2001, p. 10; Volberg, 2001, p. 49). Together, these two groups appear to constitute a small but stubbornly resilient share of the adult population. Research on gambling by these groups suggests that the harmful effects can be mitigated through restrictions on types of games, conditions of play, and marketing, but most experts would agree that legalization will inevitably make life worse for this small subset of the population. Accordingly, most governments that sponsor or allow gambling also provide services to help problem gamblers. This being an inevitable social cost associated with legalized gambling, the logic of Pigouvian taxation implies that gambling taxes reflect, in part, this cost.
 
-A second category of social cost is less visible and probably less severe; it may even be illusory. Some commentators argue that the legalization of gambling, especially when it is endorsed and advertised by the government, may impose a cost to society by undercutting the educational function of government. Government, through its schools, laws, and public pronouncements, advocates certain beliefs, including the value of productive work. To the extent that the sponsorship and, particularly, the promotion of gambling undercut that traditional message, legalized gambling creates a second category of external costs.16 By the same logic of Pigouvian taxation, these costs would imply higher gambling taxes. This justification is similar to the time-honoured argument for sumptuary laws and ‘sin taxes’. Arising out of religious or moral disapproval, sumptuary laws dating from the ancient Greeks have been used to restrict or forbid certain kinds of consumption.
+A second category of social cost is less visible and probably less severe; it may even be illusory. Some commentators argue that the legalization of gambling, especially when it is endorsed and advertised by the government, may impose a cost to society by undercutting the educational function of government. Government, through its schools, laws, and public pronouncements, advocates certain beliefs, including the value of productive work. To the extent that the sponsorship and, particularly, the promotion of gambling undercut that traditional message, legalized gambling creates a second category of external costs. By the same logic of Pigouvian taxation, these costs would imply higher gambling taxes. This justification is similar to the time-honoured argument for sumptuary laws and ‘sin taxes’. Arising out of religious or moral disapproval, sumptuary laws dating from the ancient Greeks have been used to restrict or forbid certain kinds of consumption.
 
 One last form of external cost associated with legalized gambling is crime, specifically organized crime. Although government-operated lotteries do not appear to have attracted or stimulated organized crime activity, some other aspects of the gaming industry have. As with other aspects of social cost, the design and regulation of legalized games will have a major impact on the severity of social costs.
 
@@ -70,158 +145,65 @@ In addition, Finkelstein et al. (2009) found that, across all payers, the obese 
 
 externalities and associated deadweight losses may arise through publicly financed health insurance or other public medical expenditures that offset private health-care costs otherwise borne by individuals, such as expenditures through Medicare and Medicaid. In the first section of the paper, we review the somewhat terse literature on whether obesity is associated with externalities. We propose that a measure of the marginal increase in public-health expenditure associated with a change in obesity prevalence is a useful first-order estimate of both the marginal external cost and the marginal excess burden on the economy, or deadweight loss, arising from excess weight among the population.
 
-We estimate that a 1-unit increase in BMI for every adult in the United States would
-increase annual public medical expenditures (i.e., direct medical costs) by $38.7 billion; an
-average marginal cost of $175 per year per unit of BMI for each adult in the United States.
-We further estimate that if every adult who is currently obese (BMI ≥ 30) had a BMI of
-25 instead, then annual public medical expenditures would be reduced by $173.7 billion (in
-constant 2008$). This estimate implies that obesity accounted for 17.2% of annual public
-medical expenditures in 2008. Using the same results, if we assume further that a BMI of 25
-represents the social optimum in the sense that the marginal social benefit associated with
-behavior giving rise to obesity equals the marginal social cost, we predict that U.S. adults
-classified as obese in 2008 imposed a net social cost, or deadweight loss of $203.6 billion in 2008. Using data from the National Health Expenditure Accounts, Finkelstein et al. (2009) estimated that obesity accounted for $61.8 million in Medicaid and Medicare, the two largest components of public medical expenditures (see Exhibit 4 in Finkelstein et al. 2009). Our estimates imply a significantly larger publicly financed cost of obesity mainly because we allow for non-linearities in the relationship between BMI and medical expenditures.
+We estimate that a 1-unit increase in BMI for every adult in the United States would increase annual public medical expenditures (i.e., direct medical costs) by $38.7 billion; an average marginal cost of $175 per year per unit of BMI for each adult in the United States. We further estimate that if every adult who is currently obese (BMI ≥ 30) had a BMI of 25 instead, then annual public medical expenditures would be reduced by $173.7 billion (in constant 2008$). This estimate implies that obesity accounted for 17.2% of annual public medical expenditures in 2008. Using the same results, if we assume further that a BMI of 25 represents the social optimum in the sense that the marginal social benefit associated with behavior giving rise to obesity equals the marginal social cost, we predict that U.S. adults classified as obese in 2008 imposed a net social cost, or deadweight loss of $203.6 billion in 2008. Using data from the National Health Expenditure Accounts, Finkelstein et al. (2009) estimated that obesity accounted for $61.8 million in Medicaid and Medicare, the two largest components of public medical expenditures (see Exhibit 4 in Finkelstein et al. 2009). Our estimates imply a significantly larger publicly financed cost of obesity mainly because we allow for non-linearities in the relationship between BMI and medical expenditures.
 
 [@parks2012marginal]
 
+
+# Fat
+
+On 1 October 2011, the Danish Fat Tax Act came into effect.21 The tax of DKK 16 (around EUR 2.15) per kilogram of saturated fat is imposed on all food products produced in and imported into Denmark. The scope of the new legislation is established in Article 1 of the Act, which specifies that the following products are taxable: meat, certain dairy products, animal fats, edible oils and other fats, margarine, spreadable composite products, and other products which can be considered as substitutes or imitations of the above. The tax does not apply to products containing less than 2.3% per weight of saturated fat, which means that most types of milk are exempt.
+
+[@alemanno2011]
+
+<figure>
+![Line chart of income elasticities of food demand for milk and dairy products](/images/pigou/food-income-elasticity.png)
+<figcaption>
+Income elasticities of food demand for milk and dairy products [@schmidhuber2004]
+</figcaption>
+</figure>
+
+<figure>
+![Line chart of price elasticities for food across income ranges](/images/pigou/food-income-elasticity.png)
+<figcaption>
+Price elasticities for food across income ranges [@schmidhuber2004]
+</figcaption>
+</figure>
+
 # Guns
 
-In 2016, 38,658 people died from firearm-related injuries in the United States.15 On top of that, the U.S. saw 116,414 nonfatal injuries.16 While those numbers are sobering on their own,17 these deaths and injuries come with financial costs. Calculating those costs can be difficult, though. Different analyses use “widely differing accounting principles and procedures.”18
+In 2016, 38,658 people died from firearm-related injuries in the United States. On top of that, the U.S. saw 116,414 nonfatal injuries. While those numbers are sobering on their own, these deaths and injuries come with financial costs. Calculating those costs can be difficult, though. Different analyses use “widely differing accounting principles and procedures.”
 
 For purposes of this analysis, though, there are three main categories of costs that derive from gun violence: the cost of personal injury and death, the cost of damage to property, and the cost of first responders.
 
 [@brunson2018]
 
+505 deaths from accidental discharge
+https://www.cdc.gov/nchs/data/nvsr/nvsr64/nvsr64_02.pdf
+
+Half shot by another person
+
+A total of 398 people died from unintentional firearm injuries in the NVDRS jurisdictions over the 4-year period. In 35 cases (9%), it was unknown whether the shooting was inflicted by self or other, so these cases were set aside, leaving a final dataset of 363 deaths. In almost half of these fatalities, the victim was shot by another person (Table 2).
+
+[@hemenway2010unintentional]
+
+https://en.wikipedia.org/wiki/Value_of_life#United_States
+
+[11497441 manufactured in us in 2016](https://www.statista.com/statistics/215395/number-of-total-firearms-manufactured-in-the-us/)
+[376818 exported in 2016](https://www.statista.com/statistics/215562/number-of-exported-firearms-manufactured-in-the-us/)
+[5137771 imported in 2016](https://www.statista.com/statistics/215562/number-of-exported-firearms-manufactured-in-the-us/)
+
+16258394 total in us
+
 # Finance
 
-A third social cost of financial activity is the problem of gambling or
-“speculation.”146 Financial transactions are different from transactions in the
-“real economy” because they involve a pure transfer of money instead of the
-exchange of money for goods or services. When one person buys an asset
-from another—say, a share of stock—the buyer gains at the seller’s expense
-or the seller gains at the buyer’s expense, depending on whether the price is
-less than or greater than the true value of the asset. A transfer of money
-does not generate social value unless it is part of a transaction that reduces
-risk or otherwise enables people to spread receipts of money across times or
-states of the world in a way that advances their interests. 
+A third social cost of financial activity is the problem of gambling or “speculation.” Financial transactions are different from transactions in the “real economy” because they involve a pure transfer of money instead of the exchange of money for goods or services. When one person buys an asset from another—say, a share of stock—the buyer gains at the seller’s expense or the seller gains at the buyer’s expense, depending on whether the price is less than or greater than the true value of the asset. A transfer of money does not generate social value unless it is part of a transaction that reduces risk or otherwise enables people to spread receipts of money across times or states of the world in a way that advances their interests.
 
-Imagine, for example, that one person sells a Greek sovereign bond to
-another person. If the seller owns a huge amount of Greek assets while the
-buyer owns none, the transaction could very well reduce the amount of risk
-in both the seller’s and buyer’s portfolio (the seller’s, by reducing her
-dependence on the value of Greek assets; the buyer’s, by diversifying a
-portfolio that is loaded with assets in other countries). If it does reduce
-their risk, the transaction also decreases the total amount of risk in the
-economy. But if the seller and buyer are in opposite positions, the
-transaction will increase risk. The seller and buyer are simply gambling
-about what will happen in Greece—the seller believes that Greece may
-default, while the buyer believes that Greece will not default. Their
-behavior is not any different from people betting on horses.
-Some commentators see no problem with such gambling, but there are
-several reasons to be concerned about the motivations underlying the
-transaction. First, if the buyer and seller are rational and risk averse (as is
-usually assumed), the transaction can take place only if they are gambling
-with other people’s money. One possibility is that each person represents an
-institution that is guaranteed by the government. Another possibility is that
-they are agents for funds whose investors do not carefully monitor their
-behavior, and who have contracts that give them payoffs if they make
-money while not forcing them to fully absorb losses.
-Second, if the buyer and seller are risk averse, but poorly informed or
-boundedly rational, they may enter the transaction believing that each has
-special insight about the likely direction of the value of the asset when in
-fact they do not. In such a case, the transaction is just a wasteful transfer
-from one person to another, and there is no reason for society to tolerate it.
-Third, if the buyer and seller are rational but not risk averse (e.g., they
-enjoy gambling) then it is almost certainly better to direct them to casinos
-than to allow them to gamble using the financial system. Casinos are heavily
-regulated because governments recognize that people may develop an
-addiction to gambling and subsequently act against their interest. Casinos
-are also not vulnerable to financial panics and systemic risk. Financial
-institutions are. Accordingly, the government should discourage purely
-speculative activity that takes place in the financial system. 
+Imagine, for example, that one person sells a Greek sovereign bond to another person. If the seller owns a huge amount of Greek assets while the buyer owns none, the transaction could very well reduce the amount of risk in both the seller’s and buyer’s portfolio (the seller’s, by reducing her dependence on the value of Greek assets; the buyer’s, by diversifying a portfolio that is loaded with assets in other countries). If it does reduce their risk, the transaction also decreases the total amount of risk in the economy. But if the seller and buyer are in opposite positions, the transaction will increase risk. The seller and buyer are simply gambling about what will happen in Greece—the seller believes that Greece may default, while the buyer believes that Greece will not default. Their behavior is not any different from people betting on horses. Some commentators see no problem with such gambling, but there are several reasons to be concerned about the motivations underlying the transaction. First, if the buyer and seller are rational and risk averse (as is usually assumed), the transaction can take place only if they are gambling with other people’s money. One possibility is that each person represents an institution that is guaranteed by the government. Another possibility is that they are agents for funds whose investors do not carefully monitor their behavior, and who have contracts that give them payoffs if they make money while not forcing them to fully absorb losses. Second, if the buyer and seller are risk averse, but poorly informed or boundedly rational, they may enter the transaction believing that each has special insight about the likely direction of the value of the asset when in fact they do not. In such a case, the transaction is just a wasteful transfer from one person to another, and there is no reason for society to tolerate it. Third, if the buyer and seller are rational but not risk averse (e.g., they enjoy gambling) then it is almost certainly better to direct them to casinos than to allow them to gamble using the financial system. Casinos are heavily regulated because governments recognize that people may develop an addiction to gambling and subsequently act against their interest. Casinos are also not vulnerable to financial panics and systemic risk. Financial institutions are. Accordingly, the government should discourage purely speculative activity that takes place in the financial system.
 
-A second example of the social cost of financial activity is the problem of
-“races,” first identified by Jack Hirshleifer.141 The value of an asset is a
-function of information about the various factors that affect the supply and
-demand of that asset. For example, the price of oil depends on information
-about the prospect of war in the Middle East or the likelihood of continued
-economic prosperity in China. When new information about events like
-these comes into existence, market participants will scramble to be the first
-to trade on the information.
-To understand why, suppose that a barrel of oil currently trades at $100.
-A terrorist attack destroys a pipeline in an obscure part of the world and
-raises the possibility of additional disruption of the oil supply. When the
-market learns of the attack, the price of oil will rise to $105. Any person who
-learns about the terrorist attack first, can buy oil (or oil futures or other
-derivatives) at $100 and reap a quick profit of $5 per barrel by selling when
-the price rises.
-The prospect of such profits will encourage investors to spend money to
-obtain information about events before others. Investors have spent vast
-sums to construct fiberoptic cables that increase the flow of information by
-nanoseconds. For example, Spread Networks, a high-speed trading firm,
-paid $300 million to build cables from New York to Chicago so that they
-could trade on the Chicago exchange using New York information
-microseconds before the market learned the information.142 Investors have
-purchased and leased buildings close to exchanges for the same reason.143
-This activity is socially wasteful.144 To see why, consider first why it is
-valuable for information to spread at a relatively speedy rate. If terrorism is 
-increasing, then oil will become more expensive because it will be harder to
-produce and ship. If the market learns this information quickly, then
-airlines, trucking companies, consumers, and others can quickly adjust by
-engaging in alternative activities—for example, by relying more on
-electricity. However, the key point is that the broader market will not
-benefit at all if information about terrorism, as embodied in market prices,
-reaches them a nanosecond quicker than it otherwise does. Thus, high-speed
-investors incur expenses in a socially wasteful race.
- This problem can be addressed with a Pigouvian tax. The economist
-James Tobin famously advocated just such a tax, now known as a Tobin tax,
-on financial transactions.145 Because high-speed traders make tiny profits on
-numerous trades, a tax on each trade would deter them from much of their
-wasteful activity. But because the Tobin tax is low, it will not deter valuable
-financial transactions.
+A second example of the social cost of financial activity is the problem of “races,” first identified by Jack Hirshleifer. The value of an asset is a function of information about the various factors that affect the supply and demand of that asset. For example, the price of oil depends on information about the prospect of war in the Middle East or the likelihood of continued economic prosperity in China. When new information about events like these comes into existence, market participants will scramble to be the first to trade on the information. To understand why, suppose that a barrel of oil currently trades at $100. A terrorist attack destroys a pipeline in an obscure part of the world and raises the possibility of additional disruption of the oil supply. When the market learns of the attack, the price of oil will rise to $105. Any person who learns about the terrorist attack first, can buy oil (or oil futures or other derivatives) at $100 and reap a quick profit of $5 per barrel by selling when the price rises. The prospect of such profits will encourage investors to spend money to obtain information about events before others. Investors have spent vast sums to construct fiberoptic cables that increase the flow of information by nanoseconds. For example, Spread Networks, a high-speed trading firm, paid $300 million to build cables from New York to Chicago so that they could trade on the Chicago exchange using New York information microseconds before the market learned the information. Investors have purchased and leased buildings close to exchanges for the same reason.143 This activity is socially wasteful.144 To see why, consider first why it is valuable for information to spread at a relatively speedy rate. If terrorism is increasing, then oil will become more expensive because it will be harder to produce and ship. If the market learns this information quickly, then airlines, trucking companies, consumers, and others can quickly adjust by engaging in alternative activities—for example, by relying more on electricity. However, the key point is that the broader market will not benefit at all if information about terrorism, as embodied in market prices, reaches them a nanosecond quicker than it otherwise does. Thus, high-speed investors incur expenses in a socially wasteful race. This problem can be addressed with a Pigouvian tax. The economist James Tobin famously advocated just such a tax, now known as a Tobin tax, on financial transactions.145 Because high-speed traders make tiny profits on numerous trades, a tax on each trade would deter them from much of their wasteful activity. But because the Tobin tax is low, it will not deter valuable financial transactions.
 
-Banks and other financial institutions frequently fund themselves
-through very short-term debt, including debt that is due on demand.
-Commercial banks heavily rely on deposit accounts, where customers park
-funds for short periods in return for interest and checking services, and can
-also withdraw those funds at any time. Commercial banks and other
-financial institutions—including investment banks—also fund themselves
-through the repo market. In this market, large institutions, like pension
-funds, make short-term (one- or two-day) collateralized loans that are
-routinely rolled over. “Withdrawing” effectively occurs when the lender
-refuses to roll over a loan because it prefers to invest those funds elsewhere.
-Short-term debt creates a negative externality.135 When a depositor or
-other short-term lender withdraws money, it increases the probability that
-the borrower will not have enough funds to pay other lenders when the
-loans are due or demanded. Those lenders will not be able to recover in full
-because of bankruptcy. To protect themselves, lenders may withdraw funds
-in response to other lenders withdrawing their funds, leading to a run. The
-firm may be forced to sell assets into a declining market, resulting in losses.
-If firms are shut down, then real value consisting of the firm’s private
-information and contacts may be lost.136 And if the collapse of one firm 
-leads to the collapse of other firms, resulting in a full-blown contagion of
-the sort seen in 2008, the sudden massive withdrawal of credit from the
-economy can cause severe macroeconomic effects, including unemployment.
-The government tries to deter runs by requiring banks to offer FDIC
-insurance to depositors and by acting as a lender of last resort.137 The idea is
-that if short-term lenders know that the government will protect them, they
-are less likely to jump the gun and withdraw. However, government
-insurance creates a new problem in the form of moral hazard. Because
-financial institutions expect to be rescued, they will take greater risk,
-enjoying the upside if the risk pays off and transferring the loss to the
-government if it does not. Moreover, even if deposit insurance were
-correctly priced, or creditors adequately monitored financial institutions,
-every institution would still create a negative externality from risk-taking
-behavior by increasing the probability of default and losses to other institutions,
-which could in turn trigger a system-wide collapse with negative
-effects for the economy.138
-As John Cochrane has argued, the simplest response to this problem is a
-Pigouvian tax.139 Every time a bank borrows $100, there is a tiny increase in
-the risk of a run that could result in a financial crisis.140 Although the risk is
-tiny, the losses associated with financial crisis are huge, so the tax itself may
-well be substantial. Cochrane suggests a tax of five percent—meaning that
-the bank would be required to pay $5 to the government for every $100 it
-borrows, with the precise amount depending on various factors including
-the maturity of the debt. 
+Banks and other financial institutions frequently fund themselves through very short-term debt, including debt that is due on demand. Commercial banks heavily rely on deposit accounts, where customers park funds for short periods in return for interest and checking services, and can also withdraw those funds at any time. Commercial banks and other financial institutions—including investment banks—also fund themselves through the repo market. In this market, large institutions, like pension funds, make short-term (one- or two-day) collateralized loans that are routinely rolled over. “Withdrawing” effectively occurs when the lender refuses to roll over a loan because it prefers to invest those funds elsewhere. Short-term debt creates a negative externality.135 When a depositor or other short-term lender withdraws money, it increases the probability that the borrower will not have enough funds to pay other lenders when the loans are due or demanded. Those lenders will not be able to recover in full because of bankruptcy. To protect themselves, lenders may withdraw funds in response to other lenders withdrawing their funds, leading to a run. The firm may be forced to sell assets into a declining market, resulting in losses. If firms are shut down, then real value consisting of the firm’s private information and contacts may be lost.136 And if the collapse of one firm leads to the collapse of other firms, resulting in a full-blown contagion of the sort seen in 2008, the sudden massive withdrawal of credit from the economy can cause severe macroeconomic effects, including unemployment. The government tries to deter runs by requiring banks to offer FDIC insurance to depositors and by acting as a lender of last resort.137 The idea is that if short-term lenders know that the government will protect them, they are less likely to jump the gun and withdraw. However, government insurance creates a new problem in the form of moral hazard. Because financial institutions expect to be rescued, they will take greater risk, enjoying the upside if the risk pays off and transferring the loss to the government if it does not. Moreover, even if deposit insurance were correctly priced, or creditors adequately monitored financial institutions, every institution would still create a negative externality from risk-taking behavior by increasing the probability of default and losses to other institutions, which could in turn trigger a system-wide collapse with negative effects for the economy. As John Cochrane has argued, the simplest response to this problem is a Pigouvian tax.139 Every time a bank borrows $100, there is a tiny increase in the risk of a run that could result in a financial crisis.140 Although the risk is tiny, the losses associated with financial crisis are huge, so the tax itself may well be substantial. Cochrane suggests a tax of five percent—meaning that the bank would be required to pay $5 to the government for every $100 it borrows, with the precise amount depending on various factors including the maturity of the debt.
 
 [@masur2015]
 
@@ -242,10 +224,29 @@ The magnitude the tax based on European Union numbers ranges between 29 and 287�
 
 [@vaagsholm2010]
 
+Carmeli et al. (1999) report that the national cost of antibiotic resistance in the US lies somewhere between US$ 100 million and US$ 30 billion annually.
+
+[@rudholm2002economic]
+
+29 eu/kg = 15 $/lb
+287 eu/kg = 150 $/lb
+
+~ 50 $/lb
+
+$140
+
+8.4 million kilograms in animal agriculture
+https://www.pewtrusts.org/en/research-and-analysis/issue-briefs/2018/08/trends-in-us-antibiotic-use-2018
+
+18.4 million pounds in agriculture
+https://assets.nrdc.org/sites/default/files/better-bacon-pork-industry-antibiotics-ib.pdf
+
+7.0 million pounds of antibiotics sold for human medicine in 2015
+https://assets.nrdc.org/sites/default/files/better-bacon-pork-industry-antibiotics-ib.pdf
+
 # Smoking
 
 One author found that including the costs of the long-term intellectual and physical consequences of smoking-related low-birth-weight disabilities implied a tax of $4.80 per pack (Hay, 1991)
-
 
 The potential role of ETS costs in reevaluating the net negative externalities associated with smoking is seen by considering the following figures. Manning et al. (1991) noted that inclusion of the costs of 2,400 lung cancers from ETS (a fairly conservative estimate of this toll (Environmental Protection Agency, 1992) ) as external costs would add approximately 19 cents per pack in external costs (updated to 1994 dollars). In addition, inclusion of the costs of neonatal care for smoking-related low- birth-weight babies would add 3 cents to the total, while including fetal deaths attributable to smoking would add yet another 19 cents. Deaths from smoking-related fires would add a further 9 cents. The ETS costs would skyrocket if one included the estimated 30,000-60,000 heart disease deaths recently associated with ETS (Glantz and Parmley, 1995), adding perhaps 70 cents to the total social costs per pack. Similarly, inclusion of the smoking-induced respiratory tract infections and cases of aggravated asthma in children (Environmental Protection Agency, 1992) would boost the total further, as would inclusion of the long-term developmental disabilities in smoking-related low-birth-weight babies (Hay, 1991). All told, the social costs per pack could easily mount toward several dollars if all of the health hazards associated with ETS are real, many are treated as external to the basic consuming unit, and if all or even a significant fraction of the associated costs are included.
 
@@ -314,9 +315,12 @@ A very large proportion of the net external cost is accounted for by the valuati
 
 [@smith2005]
 
+62$
 | Country | Publication  | Cost as % of GDP High | Cost as % of GDP low | Cost (€) per adult High | Cost (€) per adult Low | Cost (€) per liter of pure alcohol High | Cost (€) per liter of pure alcohol low |
 |:--------+:-------------|----------------------:+---------------------:+------------------------:+-----------------------:+----------------------------------------:+---------------------------------------:|
 | US      | Harwood 2000 |                   2.1 |                  0.6 |                     882 |                    252 |                                      93 |                                     27 |
+
+Cost estimate is from [@harwood2000updating] by way of [@cnossen2007] updated to 2018 dollars using a [2003 exchange rate of 0.9 €/$](https://www.poundsterlinglive.com/bank-of-england-spot/historical-spot-exchange-rates/usd/USD-to-EUR-2003) and [inflation adjusted at 1.37 $2018/$2003](http://www.in2013dollars.com/2003-dollars-in-2018?amount=1)
 
 In a pioneering study, Manning et al. (1989) estimated the net external costs in the mid-1980s at about US$0.48 per ounce of ethanol, double the average state and federal tax per ounce that was then in place. A similar result was reported by Pogue and Sgontz (1989). Much of the external costs were borne by victims of drunk drivers. The costs would have been higher still had non-fatal highway injuries (Miller and Blincoe 1994) and intra-family effects been taken into account. Furthermore, Kenkel (1996) estimated that the duty rate should be about equal to the pre-tax alcohol price, while Saffer and Chaloupka (1994) calculated the weighted average optimal US tax on alcohol at 2.3 times the 1991 level.
 
@@ -328,30 +332,6 @@ As noted above, however, nearly all external costs are caused by 10% of the drin
 population who consume one-third to one-half of all alcohol sold.
 
 [@cnossen2007]
-
-Excise taxes are relatively small but non-trivial sources of revenue. On average across the OECD, they account for almost 11 percent of government revenues
-
-[@decicca2013]
-
-# Fat
-
-On 1 October 2011, the Danish Fat Tax Act came into effect.21 The tax of DKK 16 (around EUR 2.15) per kilogram of saturated fat is imposed on all food products produced in and imported into Denmark. The scope of the new legislation is established in Article 1 of the Act, which specifies that the following products are taxable: meat, certain dairy products, animal fats, edible oils and other fats, margarine, spreadable composite products, and other products which can be considered as substitutes or imitations of the above. The tax does not apply to products containing less than 2.3% per weight of saturated fat, which means that most types of milk are exempt.
-
-[@alemanno2011]
-
-<figure>
-![Line chart of income elasticities of food demand for milk and dairy products](/images/pigou/food-income-elasticity.png)
-<figcaption>
-Income elasticities of food demand for milk and dairy products [@schmidhuber2004]
-</figcaption>
-</figure>
-
-<figure>
-![Line chart of price elasticities for food across income ranges](/images/pigou/food-income-elasticity.png)
-<figcaption>
-Price elasticities for food across income ranges [@schmidhuber2004]
-</figcaption>
-</figure>
 
 # Carbon tax
 
@@ -409,18 +389,18 @@ There is a large literature that tries to put numbers on each of these external 
 
 <figure>
 <figcaption>Summary of external costs of driving</figcaption>
-|                                                | cents/gal | cents/mile |
-|:-----------------------------------------------|----------:|-----------:|
-| Central values for marginal external costs     |           |            |
-| &emsp;Fuel-related costs                             |           |            |
-| &emsp;&emsp;Greenhouse warming     |       7.0 |        0.4 |
-| &emsp;&emsp;Oil dependency         |      12.0 |        0.6 |
-| &emsp;&emsp;sum                    |        19 |        1.0 |
-| &emsp;Mileage-related costs        |           |            |
-| &emsp;&emsp;Local pollution        |      46.0 |        2.3 |
-| &emsp;&emsp;Congestion, cents/mile |      70.0 |        3.5 |
-| &emsp;&emsp;Accidents              |      60.0 |        3.0 |
-| &emsp;&emsp;sum                    |     176.0 |        8.8 |
+|                                                  |   cents/gal |   cents/mile |
+| :----------------------------------------------- | ----------: | -----------: |
+| Central values for marginal external costs       |             |              |
+| &emsp;Fuel-related costs                         |             |              |
+| &emsp;&emsp;Greenhouse warming                   |         7.0 |          0.4 |
+| &emsp;&emsp;Oil dependency                       |        12.0 |          0.6 |
+| &emsp;&emsp;sum                                  |          19 |          1.0 |
+| &emsp;Mileage-related costs                      |             |              |
+| &emsp;&emsp;Local pollution                      |        46.0 |          2.3 |
+| &emsp;&emsp;Congestion, cents/mile               |        70.0 |          3.5 |
+| &emsp;&emsp;Accidents                            |        60.0 |          3.0 |
+| &emsp;&emsp;sum                                  |       176.0 |          8.8 |
 <figcaption>
 Note: Costs converted assuming on-road fuel economy of 20 miles per gallon. [@parry2007]
 </figcaption>

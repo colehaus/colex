@@ -1,0 +1,38 @@
+| Cost Category                                                               |   UK |     USA |   UK |   USA |
+|-----------------------------------------------------------------------------+------+---------+------+-------|
+| 1. Damage to natural capital: water                                         |      |         |      |       |
+| &emsp;a) Pesticides in sources of drinking water                            |  120 |     592 |  172 |   851 |
+| &emsp;b) Nitrate, phosphate and soil in sources of drinking water           |   71 |     814 |  102 |  1170 |
+| &emsp;c) Zoonoses (esp. Cryptosporidum) in sources of drinking water *      |   23 | Unknown |   33 |   360 |
+| &emsp;d) Eutrophication, pollution incidents, fish deaths, monitoring costs |   17 |     170 |   24 |   244 |
+| 2. Damage to natural capital: air                                           |      |         |      |       |
+| Emissions of methane, ammonia, nitrous oxide and carbon dioxide             | 1113 |   10936 | 1600 | 15720 |
+| 3. Damage to natural capital: soil                                          |      |         |      |       |
+| &emsp;a) Off-site damage caused by erosion                                  |   14 |         |   20 |     0 |
+| &emsp;&emsp;i) Flooding, blocked ditches and lost water storage             |      |    2287 |    0 |  3288 |
+| &emsp;&emsp;ii) Damage to industry, navigation and fisheries                |      |    5765 |    0 |  8287 |
+| &emsp;b) Organic matter and carbon dioxide losses from soils *              |   82 | Unknown |  118 |  1286 |
+| 4. Damage to natural capital: biodiversity and landscape                    |      |         |      |       |
+| &emsp;a) Biodiversity/wildlife losses                                       |   25 |     218 |   36 |   313 |
+| &emsp;b) Hedgerows and drystone wall losses                                 |   99 |       1 |  142 |     1 |
+| &emsp;c) Bee colony losses and damage to domestic pets                      |    2 |     152 |    3 |   218 |
+| 5. Damage to human health: pesticides                                       |    1 |      88 |    1 |   126 |
+| 6. Damage to human health: nitrate                                          |    0 |       1 |    0 |     1 |
+| 7. Damage to human health: micro-organisms/disease agents                   |      |         |      |       |
+| &emsp;a) Bacterial and viral outbreaks in food *                            |  169 | Unknown |  243 |  2648 |
+| &emsp;b) BSE and new variant CJD                                            |  607 | Unknown |  873 |     1 |
+| &emsp;c) Overuse of antibiotics                                             |    1 |       1 |    1 |     1 |
+| Total annual external costs                                                 | 2342 |   21022 | 3367 | 34516 |
+| Total costs per hectare of arable and grassland                             |  208 |      49 |  299 |    80 |
+#+TBLFM: $4 = ($2 / 1.12) * 1.61;%0.0f :: $5 = ($3 / 1.12) * 1.61;%0.0f :: @5$5 = @5$4 * 137 / (9.9 * 1.27);%0.0f :: @13$5 = @13$4 * 137 / (9.9 * 1.27);%0.0f :: @21$5 = @21$4 * 137 / (9.9 * 1.27);%0.0f :: @24$5 = vsum(@1$5..@23$5) :: @25$5 = @24$5 / (@24$3 / @25$3);%0.0f
+
+1.27 dollars per pound
+https://www.currency-calc.com/USD_GBP
+137 billion dollars
+https://www.ers.usda.gov/data-products/chart-gallery/gallery/chart-detail/?chartId=58270
+9.9 billion dollars
+https://en.wikipedia.org/wiki/Agriculture_in_the_United_Kingdom
+1.61
+http://www.in2013dollars.com/1996-dollars-in-2018?amount=1
+1.12
+https://www.poundsterlinglive.com/bank-of-england-spot/historical-spot-exchange-rates/usd/USD-to-EUR-2001
