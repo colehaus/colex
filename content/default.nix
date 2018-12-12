@@ -1,5 +1,5 @@
-{ pkgs ? import <nixpkgs> {}
-, extras ? import ../nix/extras.nix // import ../nix/gitignore.nix { inherit (import <nixpkgs> {}) lib; }
+{ extras ? import ../nix/extras.nix // import ../nix/gitignore.nix { inherit (import <nixpkgs> {}) lib; }
+, pkgs ? extras.pinnedPkgs { specFile = ../nix/nixpkgs.json; opts = {}; }
 , hakyll ? pkgs.callPackage ../hakyll { inherit pkgs; }} :
   let
     webpackColEx = pkgs.callPackage ./js { inherit pkgs extras; };
@@ -17,6 +17,11 @@
       name = "uglify-js";
       versionSpec = "^3.4.9";
     };
+    stylelint = extras.callNpm {
+      inherit pkgs;
+      name = "stylelint";
+      versionSpec = "^9.9.0";
+    };
   in
     pkgs.stdenv.mkDerivation rec {
       name = "hakyllColEx";
@@ -27,6 +32,7 @@
         pkgs.sass
         mathJaxNodeCli
         uglifyJs
+        stylelint
       ] ++ (if pkgs.stdenv.isLinux then [ pkgs.glibcLocales ] else []);
       LC_ALL = "en_US.UTF-8";
       WEB_HOST = "https://www.col-ex.org";

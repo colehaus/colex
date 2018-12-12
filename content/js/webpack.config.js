@@ -41,7 +41,7 @@ module.exports = {
     }]
   },
   plugins: [
-    new FlowWebpackPlugin({ flowPath })
+    new FlowWebpackPlugin({ flowPath, failOnError: true })
   ],
   entry: {
     'util-egal': './util-egal.wp.es.js',
