@@ -3,18 +3,23 @@
     top: 0;
     left: 0;
 }
+
 @mixin top-10 {
     top: 10ex;
 }
+
 @mixin right-negative {
     right: -12em;
 }
+
 @mixin right-small-negative {
     right: -1em;
 }
+
 @mixin left-small-negative {
     left: -1em;
 }
+
 @mixin left-to-gutter {
     left: -1.5em;
 }

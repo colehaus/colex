@@ -9,18 +9,23 @@
     @include width-full;
     @include height-small-view;
 }
+
 .good {
     font-variant: small-caps;
 }
+
 .lottery {
     @include border-radius;
     @include background-alt-color;
     @include padding-1ex;
+
     cursor: pointer;
 }
+
 #function-visualization {
     @include width-full;
 }
+
 figcaption {
     text-align: center;
     display: none;

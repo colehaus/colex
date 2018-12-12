@@ -12,7 +12,8 @@ $color6: nth(map-get($colors, chroma), 1);
 $color7: nth(map-get($colors, hue), 2);
 $color8: nth(map-get($colors, hue), 3);
 
-pre.sourceCode code, pre.example code {
+pre.sourceCode code,
+pre.example code {
     color: $color1;
     span.kw { color: $color2; } /* Keyword */
     span.dt { color: $color3; } /* DataType */
@@ -47,25 +48,36 @@ pre.sourceCode code, pre.example code {
 
 .sourceCode > a {
     border: none;
+
     &:hover {
         border: none;
     }
 }
-pre.sourceCode::before, pre.example::before {
+
+pre.sourceCode::before,
+pre.example::before {
     position: absolute;
     font-size: x-small;
+
     @include weight-light;
+
     transform: translate(-7ex, 2ex) rotate(-90deg);
 }
+
 pre.sourceCode::before {
     content: "Source";
 }
+
 pre.example::before {
     content: "Result";
 }
-pre.sourceCode, pre.example {
+
+pre.sourceCode,
+pre.example {
     @include background-color-dark;
+
     font-size: small;
+
     @include padding-1ex;
     @include border-radius;
 }

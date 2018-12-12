@@ -6,30 +6,38 @@
 
 .voi-tree {
     @include line-height-small;
+
     font-family: monospace;
     font-size: smaller;
+
     @include width-full;
 }
+
 figure {
     @include border-radius;
     @include background-alt-color;
     @include margin-vertical-1ex;
     @include padding-1ex;
 }
+
 pre.voi-tree {
     /* To increase specificity */
     font-size: smaller;
     overflow-y: hidden;
 }
+
 textarea.voi-tree {
     @include height-big-view;
 }
+
 .label::after {
     content: ": ";
 }
+
 #voi-error::before {
     content: "Errors: ";
 }
+
 #voi-error {
     @include border-radius;
     @include padding-1ex;

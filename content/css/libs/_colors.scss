@@ -1,5 +1,6 @@
 // http://projects.kumpf.cc/projects/MunsellForDesigners/index.html
 
+// stylelint-disable indentation
 $colors: (
     hue: (
         #b5bae6, //1
@@ -26,8 +27,9 @@ $colors: (
         #18121e
     )
 );
+// stylelint-enable indentation
 
-$body-back-color: #eee;
+$body-back-color: #eeeeee;
 $body-back-alt-color: nth(map-get($colors, value), 1);
 $inactive-color: nth(map-get($colors, value), 3);
 $light-text-color: nth(map-get($colors, value), 4);
@@ -37,6 +39,7 @@ $body-text-color: nth(map-get($colors, value), 5);
     background-color: nth(map-get($colors, hue), 5);
 }
 $menu-back-color: nth(map-get($colors, hue), 6);
+
 @mixin swap-back-color {
     background-color: nth(map-get($colors, hue), 7);
 }
@@ -47,27 +50,35 @@ $convo-2: rgba(nth(map-get($colors, hue), 3), 0.15);
 @mixin background-error-color {
     background-color: nth(map-get($colors, hue), 3);
 }
+
 @mixin light-color-text {
     color: $light-text-color;
 }
+
 @mixin dark-color-text {
     color: $body-text-color;
 }
+
 @mixin inactive-color {
     color: $inactive-color;
 }
+
 @mixin background-color {
     background-color: $body-back-color;
 }
+
 @mixin background-alt-color {
     background-color: $body-back-alt-color;
 }
+
 @mixin menu-color-translucent {
     background-color: rgba($menu-back-color, 0.3);
 }
+
 @mixin background-color-translucent {
     background-color: rgba($body-back-color, 0.5);
 }
+
 @mixin background-color-dark {
     background-color: nth(map-get($colors, value), 5);
 }

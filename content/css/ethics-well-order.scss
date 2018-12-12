@@ -1,19 +1,28 @@
 @import 'libs/primitives/spacing';
 @import 'libs/primitives/dimensions';
 
-.single-choice, .double-choice, .triple-choice, .general-choice {
+.single-choice,
+.double-choice,
+.triple-choice,
+.general-choice {
     display: flex;
+
     @include width-extra;
+
     .sidenote {
         right: -28em;
     }
 }
+
 .math-col {
     @include margin-right-1em;
 }
+
 .ethics-col {
     @include margin-left-1em;
 }
-.ethics-col, .math-col {
+
+.ethics-col,
+.math-col {
     flex: 1 1 0;
 }

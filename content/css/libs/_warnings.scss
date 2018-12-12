@@ -4,13 +4,16 @@
     #warnings {
         position: unset;
         width: unset;
+
         > ul > li {
             display: inline-block;
+
             @include margin-horizontal-1em;
         }
     }
 }
+
 #warnings {
     @include top-10;
-    @include detail-list
+    @include detail-list;
 }

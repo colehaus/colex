@@ -3,30 +3,39 @@
 @mixin border-bottom-dotted {
     border-bottom: 1px dotted;
 }
+
 @mixin border-bottom-dashed {
     border-bottom: 1px dashed;
 }
+
 @mixin border-top-2px-solid {
     border-top: 2px solid $inactive-color;
 }
+
 @mixin border-bottom-2px-solid {
     border-bottom: 2px solid $inactive-color;
 }
+
 @mixin border-bottom-solid-inactive {
     border-bottom: 1px solid $inactive-color;
 }
+
 @mixin border-bottom-solid {
     border-bottom: 1px solid;
 }
+
 @mixin border-solid {
     border: 1px solid;
 }
+
 @mixin border-left-big($color) {
     border-left: 10px solid $color;
 }
+
 @mixin border-radius {
     border-radius: 4px;
 }
+
 @mixin border-radius-bigger-right {
     border-radius: 3px 5px 5px 3px;
 }

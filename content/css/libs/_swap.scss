@@ -5,23 +5,30 @@
 @import 'primitives/content';
 
 .swap {
-  position: relative;
-  @include swap-back-color;
-  @include padding-horizontal-quarterem;
-  @include border-radius;
+    position: relative;
+
+    @include swap-back-color;
+    @include padding-horizontal-quarterem;
+    @include border-radius;
 }
-.swap-down, .swap-up {
-  position: absolute;
-  &::before {
-    cursor: pointer;
-    @include right-curve;
-  }
-}
-.swap-down {
-  @include right-small-negative;
-}
+
+.swap-down,
 .swap-up {
-  @include left-small-negative;
-  // There is apparently no unicode character for this
-  transform: rotate(180deg);
+    position: absolute;
+
+    &::before {
+        cursor: pointer;
+
+        @include right-curve;
+    }
+}
+
+.swap-down {
+    @include right-small-negative;
+}
+
+.swap-up {
+    @include left-small-negative;
+    // There is apparently no unicode character for this
+    transform: rotate(180deg);
 }

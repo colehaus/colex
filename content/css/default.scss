@@ -23,7 +23,9 @@
 @import 'data-balloon';
 
 /* ========== */
+
 /*  General   */
+
 /* ========== */
 
 html,
@@ -35,63 +37,82 @@ textarea {
     @include font-default;
     @include typographic-features;
 }
+
 a {
     text-decoration: none;
     color: unset;
-}
-a {
+
     &:hover {
         @include border-bottom-solid;
     }
+
     &[href^="#"]:hover {
         @include border-bottom-solid;
     }
 }
+
 article {
     h2 {
         @include font-size-h2;
     }
+
     h3 {
         @include font-size-h3;
     }
+
     h3::before {
         @include section-1;
     }
+
     h4 {
         @include font-size-h4;
     }
+
     h4::before {
         @include section-2;
     }
+
     h5 {
         @include font-size-h5;
-
     }
+
     h5::before {
         @include section-3;
     }
+
     h6 {
         @include font-size-h6;
     }
+
     h6::before {
         @include section-4;
     }
+
     a {
         &[href^="#"] {
             @include border-bottom-dotted;
         }
+
         @include border-bottom-dashed;
     }
 }
+
 article:not(.teaser) {
-    h1, h2, h3, h4, h5, h6 {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
         > a {
             &::after {
                 @include external-link;
                 @include superscript;
             }
+
             &[href^="#"] {
                 border: none;
+
                 &::after {
                     @include internal-link;
                     @include superscript;
@@ -100,44 +121,63 @@ article:not(.teaser) {
         }
     }
 }
-h1, h2, h3, h4, h5, h6 {
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
     > a {
         border: none;
     }
 }
+
 #article-subtitle {
     &::before {
         content: none;
     }
 }
+
 hr {
     margin-left: 0;
+
     @include border-solid;
     @include light-color-text;
 }
+
 .date {
     @include light-color-text;
 }
+
 .math {
     font-size: 95%;
 }
+
 .macros {
     display: none;
 }
+
 .sidenote blockquote {
     &::before {
         @include font-default-size;
     }
+
     margin: 0;
 }
+
 blockquote {
     @include margin-left-1em;
+
     quotes: "“" "”" "‘" "’";
 }
+
 blockquote::before {
     content: open-quote;
+
     @include decorative-size;
     @include margin-right-tenthem;
+
     line-height: 0.8ex;
     float: left;
 }
@@ -146,78 +186,105 @@ blockquote::after {
     content: close-quote;
     visibility: hidden;
 }
+
 .conversation > p {
     @include border-radius;
     @include padding-horizontal-quarterem;
+
     &:nth-of-type(odd) {
         background-color: $convo-1;
     }
+
     &:nth-of-type(even) {
         background-color: $convo-2;
     }
 }
+
 .abstract {
     @include margin-bottom-8ex;
 }
+
 .abstract::before {
     content: "TL;DR";
     position: absolute;
+
     @include left-to-gutter;
+
     font-size: x-small;
+
     @include weight-light;
+
     transform: translate(-3ex, 4ex) rotate(-90deg);
 }
-.epigraph, .abstract {
+
+.epigraph,
+.abstract {
     @include margin-horizontal-3em;
+
     font-size: smaller;
 }
+
 blockquote.epigraph {
     padding: 0;
+
     &::before {
         content: open-quote;
         font-size: 5ex;
     }
 }
+
 .references {
     font-size: smaller;
 }
+
 hr.references {
     @include width-60;
 }
+
 figure {
     margin: 0;
+
     > img {
         @include width-full;
     }
+
     > embed {
         @include width-full;
     }
+
     > figcaption {
         &:first-child {
             text-align: center;
             font-variant: small-caps;
             font-size: larger;
         }
+
         &:last-child {
             font-size: smaller;
         }
+
         &:nth-child(1) {
             @include margin-bottom-1ex;
         }
+
         &:nth-child(2) {
             @include margin-top-1ex;
         }
     }
 }
+
 figure > table {
     @include width-full;
 }
+
 .big-fig {
     width: 90vw;
 }
 
 /* ========== */
+
 /*  Body      */
+
 /* ========== */
 
 body {
@@ -226,162 +293,221 @@ body {
     @include dark-color-text;
     @include background-color;
 }
+
 #underlay {
     @include height-full-view;
+
     display: flex;
     flex-direction: column;
+
     @include overlay-underlay;
 }
+
 #overlay {
     @include overlay-overlay;
 }
+
 main {
     position: relative;
     flex: 1;
+
     @include max-width-medium;
     @include padding-right-5vw;
 }
 
 /* ========== */
+
 /*  Header    */
+
 /* ========== */
 
 header {
     order: -3;
+
     @include max-width-medium;
+
     > hr {
         margin-bottom: 0;
     }
+
     > h1 {
         @include margin-right-quarterem;
+
         display: inline-block;
         hyphens: none;
     }
 }
 
 /* ========== */
+
 /*  Home      */
+
 /* ========== */
 
 ul.teasers {
     padding: 0;
     list-style-type: none;
+
     > hr {
         @include width-60;
     }
 }
+
 .teaser {
     @include silence-special;
 }
 
 /* ========== */
+
 /*  Archive   */
+
 /* ========== */
 
 dl.posts > dd {
     @include margin-left-1em;
+
     font-size: smaller;
 }
+
 dl.posts > dt {
     @include margin-vertical-1ex;
 }
 
 /* ========== */
+
 /*  Nav       */
+
 /* ========== */
 
 #graph-of-contents {
     font-size: smaller;
+
     @include light-color-text;
 }
+
 #graph-of-contents::before {
     @include diamond;
 }
+
 .metadata {
     font-size: smaller;
 }
+
 .main-menu > nav > ul,
 .pagination > ul {
     @include horizontal-list;
+
     justify-content: space-between;
+
     @include margin-vertical-1ex;
 }
+
 .main-menu > nav > ul > li > a {
     @include lighten-link;
 }
+
 .pagination > ul {
     font-size: larger;
+
     @include width-small;
 }
+
 #series-list {
     font-size: smaller;
 }
+
 .tags {
-  & > ul {
-    @include margin-vertical-none;
-    @include horizontal-list;
-    > li~li::before {
-        @include em-dash;
-        @include light-color-text;
+    & > ul {
+        @include margin-vertical-none;
+        @include horizontal-list;
+
+        > li ~ li::before {
+            @include em-dash;
+            @include light-color-text;
+        }
     }
-  }
 }
-.pagination ul > li.inactive, .main-menu ul > li.inactive {
+
+.pagination ul > li.inactive,
+.main-menu ul > li.inactive {
     @include inactive-color;
 }
+
 .pagination > ul > li > a,
 .tags > ul > li > a,
 #tag-cloud > a,
 nav a.series {
     @include darken-link;
 }
+
 .main-menu {
     @include max-width-medium;
 }
+
 .main-menu.top {
     order: -2;
+
     .rss {
         display: none;
     }
 }
+
 .pagination.top {
     order: -1;
 }
+
 .main-menu.bottom {
     order: 1;
     position: relative;
 }
+
 .mark-line > path:hover {
     opacity: 1 !important;
 }
+
 .skippable {
     @include weight-light;
+
     font-size: smaller;
+
     @include light-color-text;
 }
+
 .skippable::before {
     content: "Skippable";
     position: absolute;
+
     @include left-to-gutter;
+
     font-size: x-small;
+
     @include weight-light;
+
     transform: translate(-3ex, 4ex) rotate(-90deg);
 }
+
 table {
     @include border-top-2px-solid;
     @include border-bottom-2px-solid;
 }
+
 th {
     @include border-bottom-solid-inactive;
+
     &:empty {
         border: none;
     }
 }
-th, td {
+
+th,
+td {
     @include padding-halfex-1ex;
 }
-th, .label-row {
+
+th,
+.label-row {
     @include weight-normal;
+
     font-variant: small-caps;
     font-size: larger;
 }
@@ -389,16 +515,21 @@ th, .label-row {
 thead > tr:nth-of-type(2) {
     font-size: smaller;
 }
+
 .teaser .no-home {
     display: none;
 }
+
 .attribution {
     float: right;
 }
+
 .citation {
     font-size: smaller;
+
     @include weight-light;
 }
+
 .small-caps {
     font-variant: small-caps;
 }

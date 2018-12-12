@@ -4,46 +4,59 @@
     font-variant-ligatures: common-ligatures;
     font-kerning: normal;
 }
+
 @mixin font-size-h2 {
     font-size: 1.7em;
 }
+
 @mixin font-size-h3 {
     font-size: 1.5em;
     font-weight: normal;
 }
+
 @mixin font-size-h4 {
     font-size: 1.4em;
     font-weight: normal;
 }
+
 @mixin font-size-h5 {
     font-size: 1.3em;
     font-weight: normal;
 }
+
 @mixin font-size-h6 {
     font-size: 1.2em;
     font-weight: normal;
 }
+
 @mixin font-default-size {
     font-size: 1.2em;
 }
+
 @mixin font-default {
     font-family: 'Open Sans', sans-serif;
 }
+
 @mixin weight-bold {
     font-weight: 700;
 }
+
 @mixin weight-normal {
     font-weight: 400;
 }
+
 @mixin weight-light {
     font-weight: 300;
 }
+
 @mixin line-height-small {
     line-height: 1;
 }
+
 @mixin decorative-size {
     font-size: 5ex;
 }
+
 @mixin superscript {
     font-size: small;
     vertical-align: super;

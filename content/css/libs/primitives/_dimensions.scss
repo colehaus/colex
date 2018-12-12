@@ -1,27 +1,35 @@
 @mixin height-full-view {
     height: 100vh;
 }
+
 @mixin width-full-view {
     width: 100vw;
 }
+
 @mixin max-width-medium {
     max-width: 35em;
 }
+
 @mixin width-60 {
     width: 60%;
 }
+
 @mixin width-full {
     width: 100%;
 }
+
 @mixin width-extra {
     width: 140%;
 }
+
 @mixin width-small {
     width: 15em;
 }
+
 @mixin height-big-view {
     height: 60vh;
 }
+
 @mixin height-small-view {
     height: 20vh;
 }

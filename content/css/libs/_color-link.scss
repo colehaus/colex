@@ -1,17 +1,22 @@
 @mixin lighten-link {
     border: none;
     transition: color $transition-dur;
+
     &:hover {
         border: none;
+
         @include inactive-color;
     }
 }
 
 @mixin darken-link {
-  border: none;
-  @include light-color-text;
-  transition: color $transition-dur;
-  &:hover {
-      @include dark-color-text;
-  }
+    border: none;
+
+    @include light-color-text;
+
+    transition: color $transition-dur;
+
+    &:hover {
+        @include dark-color-text;
+    }
 }

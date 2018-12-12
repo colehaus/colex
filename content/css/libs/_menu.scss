@@ -12,14 +12,17 @@ menu[type="popup"] {
     @include border-radius;
     @include background-alt-color;
     @include padding-1ex;
+
     margin: 0;
     width: fit-content;
     z-index: 10;
     list-style-type: none;
     position: absolute;
+
     & > li {
         cursor: pointer;
     }
+
     & > li[checked=checked] {
         @include weight-bold;
     }

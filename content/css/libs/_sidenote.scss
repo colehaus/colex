@@ -10,25 +10,32 @@
     @include border-radius;
     @include padding-horizontal-quarterem;
     @include note-back-color;
+
     &::after {
         @include hook-right;
     }
 }
+
 .sidenote {
     position: absolute;
+
     @include right-negative;
     @include width-small;
     @include margin-vertical-1ex;
     @include weight-light;
+
     font-size: smaller;
+
     & > p {
         margin: 0;
         padding: 0;
     }
+
     & > *:first-child::first-letter {
         @include note-back-color;
     }
 }
+
 .footnoteRef {
     display: none;
 }
