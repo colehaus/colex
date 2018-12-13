@@ -4,4 +4,5 @@
     name = "bibliometric";
     src = extras.gitignoreSource ./.;
     executable = true;
+    npm = true;
   }

@@ -28,6 +28,7 @@ import Effect.Console (log)
 import Effect.Random (randomRange)
 import Effect.Ref (Ref)
 import Effect.Ref as Ref
+import Foreign (Foreign)
 import Foreign.Object as Object
 import FRP.Event (Event)
 import FRP.Event as FRP
@@ -36,6 +37,8 @@ import Html as Html
 import JQuery (ready) as J
 import JQuery.Fancy (setText, width) as J
 import Partial.Unsafe (unsafeCrashWith)
+
+foreign import jQuery :: Foreign
 
 main :: Effect Unit
 main = do

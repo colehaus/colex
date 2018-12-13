@@ -22,6 +22,8 @@ import Network.Parser (networkP)
 import Network.Types (PmfError, Variable(..))
 import Math.Probability.Information (Entropy (..))
 
+foreign import jQuery :: Foreign.Foreign
+
 header :: Array Variable -> Effect J.JQuery
 header vs = do
   head <- J.create "<thead>"

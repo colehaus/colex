@@ -27,7 +27,7 @@ import Effect (Effect)
 import Effect.Console (log)
 import Effect.Ref (Ref)
 import Effect.Ref as Ref
-import Foreign (unsafeFromForeign)
+import Foreign (Foreign, unsafeFromForeign)
 import Foreign.Object as Object
 import FRP.Event (Event)
 import FRP.Event as FRP
@@ -39,6 +39,8 @@ import JQuery.Fancy (clearOne, displayOne, getProp, getText, hide, hideOne, setT
 import Math.Interval (unmake)
 import Math.Interval.Bound (Finite(MkFinite), finite)
 import Partial.Unsafe (unsafeCrashWith, unsafePartialBecause)
+
+foreign import jQuery :: Foreign
 
 main :: Effect Unit
 main =

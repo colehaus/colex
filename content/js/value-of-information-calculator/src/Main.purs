@@ -14,7 +14,7 @@ import Data.Tuple (Tuple(Tuple), uncurry)
 import Data.Yaml (parseFromYaml, printToYaml)
 import Effect (Effect)
 import Effect.Console as Console
-import Foreign (unsafeFromForeign)
+import Foreign (Foreign, unsafeFromForeign)
 import FRP.Event (Event)
 import FRP.Event (create, fold, subscribe) as FRP
 import JQuery (Selector)
@@ -33,6 +33,8 @@ import Math.Probability.Prob.Number (Prob(..))
 import Web.Event.Event (EventType(..))
 
 import Data (Result(MkResult), encodeChoiceJson, unwrapInvestigation, wrapChoice, decodeInvestigationJson)
+
+foreign import jQuery :: Foreign
 
 type Elements =
   { forgotten :: JQuery (One "pre")
