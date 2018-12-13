@@ -3,15 +3,14 @@
   "version": "0.1.0",
   "license": "AGPL-3.0",
   "devDependencies": {
-    "@babel/core": "^7.1.2",
-    "@babel/plugin-proposal-object-rest-spread": "^7.0.0",
+    "@babel/core": "^7.2.0",
+    "@babel/plugin-proposal-object-rest-spread": "^7.2.0",
     "@babel/preset-flow": "^7.0.0",
     "@colehaus/flow-webpack-plugin": "^1.2.1",
     "babel-eslint": "^10.0.1",
     "babel-loader": "^8.0.4",
     "eslint-plugin-flowtype": "^3.0.0",
-    "expose-loader": "^0.7.5",
-    "flow-bin": "^0.83.0",
+    "flow-bin": "^0.87.0",
     "flow-typed": "^2.3.0",
     "imports-loader": "^0.8.0",
     "prettier-standard": "^8.0.1",
@@ -23,7 +22,7 @@
   },
   "dependencies": {
     "ascii-string-split": "^1.0.0",
-    "d3-drag": "1.2.2",
+    "d3-drag": "1.2.3",
     "d3-fetch": "^1.1.2",
     "d3-force": "^1.1.2",
     "d3-scale": "^2.1.2",
@@ -36,8 +35,8 @@
     "kernel-smooth": "^0.2.3",
     "numbers": "^0.7.0",
     "sanctuary": "^0.15.0",
-    "vega-lite": "^2.6.0",
-    "vega-embed": "^3.26.0"
+    "vega-embed": "^3.26.1",
+    "vega-lib": "^4.4.0"
   },
   "scripts": {
     "build": "webpack"
