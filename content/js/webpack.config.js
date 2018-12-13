@@ -32,12 +32,6 @@ module.exports = {
     }, {
       test: [ require.resolve('jquery-flot') ],
       use: 'imports-loader?$=jquery,jQuery=jquery'
-    }, { // For purescript
-      test: require.resolve('jquery'),
-      use: [{
-        loader: 'expose-loader',
-        options: 'jQuery'
-      }]
     }]
   },
   plugins: [
