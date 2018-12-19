@@ -1,0 +1,14 @@
+| Category                  | 0% discount rate | 3 % discount rate | 5% discount rate |   0.00 |   1.74 |   1.74 |
+| :------------------------ | ---------------: | ----------------: | ---------------: | #ERROR | #ERROR | #ERROR |
+| Medical care              |             0.72 |              0.55 |             0.51 |   1.25 |   0.96 |   0.89 |
+| Sick leave                |             0.00 |              0.01 |             0.02 |   0.00 |   0.02 |   0.03 |
+| Group life insurance      |             0.24 |              0.14 |             0.09 |   0.42 |   0.24 |   0.16 |
+| Nursing home care         |            -0.60 |             -0.23 |            -0.08 |  -1.04 |  -0.40 |  -0.14 |
+| Retirement pension        |            -2.89 |             -1.19 |            -0.37 |  -5.03 |  -2.07 |  -0.64 |
+| Fires                     |             0.01 |              0.02 |             0.02 |   0.02 |   0.03 |   0.03 |
+| Lost payroll taxes        |             0.88 |              0.40 |             0.12 |   1.53 |   0.70 |   0.21 |
+| Total net cost per pack   |            -1.64 |             -0.30 |             0.31 |  -2.85 |  -0.52 |   0.54 |
+#+TBLFM: $5 = $2 * 1.74;%0.2f :: $6 = $3 * 1.74;%0.2f :: $7 = $4 * 1.74;%0.2f
+
+1.74
+http://www.in2013dollars.com/1993-dollars-in-2018?amount=1

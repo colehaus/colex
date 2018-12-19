@@ -1,0 +1,16 @@
+|                                                  |   cents/gal |   cents/mile |    1.2 |    1.2 |
+| :----------------------------------------------- | ----------: | -----------: | #ERROR | #ERROR |
+| Central values for marginal external costs       |             |              |    0.0 |    0.0 |
+| &emsp;Fuel-related costs                         |             |              |    0.0 |    0.0 |
+| &emsp;&emsp;Greenhouse warming                   |         7.0 |          0.4 |    8.5 |    0.5 |
+| &emsp;&emsp;Oil dependency                       |        12.0 |          0.6 |   14.6 |    0.7 |
+| &emsp;&emsp;sum                                  |          19 |          1.0 |   23.2 |    1.2 |
+| &emsp;Mileage-related costs                      |             |              |    0.0 |    0.0 |
+| &emsp;&emsp;Local pollution                      |        46.0 |          2.3 |   56.1 |    2.8 |
+| &emsp;&emsp;Congestion, cents/mile               |        70.0 |          3.5 |   85.4 |    4.3 |
+| &emsp;&emsp;Accidents                            |        60.0 |          3.0 |   73.2 |    3.7 |
+| &emsp;&emsp;sum                                  |       176.0 |          8.8 |  214.7 |   10.7 |
+#+TBLFM: $4 = $2 * 1.22;%0.1f :: $5 = $3 * 1.22;%0.1f
+
+1.22
+http://www.in2013dollars.com/2007-dollars-in-2018?amount=1

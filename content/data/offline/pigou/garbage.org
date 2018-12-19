@@ -1,0 +1,16 @@
+| Cost                | No methane flaring, low | No methane flaring, high | Methane flaring, low | Methane flaring, high | No methane flaring, low | No methane flaring, high | Methane flaring, low | Methane flaring, high |
+| :----------------   |    -------------------: |        ----------------: |                 ---: |                   --: |                    ---: |                     ---: |                 ---: |                  ---: |
+| Water emissions     |                         |                          |                      |                       |                         |                          |                      |                       |
+| emsp;Leachate       |                     0.0 |                      0.0 |                  1.0 |                   1.0 |                     0.0 |                      0.0 |                  1.6 |                   1.6 |
+| Air emissions       |                         |                          |                      |                       |                         |                          |                      |                       |
+| emsp;Methane        |                     8.8 |                     59.5 |                  2.1 |                   6.9 |                    13.8 |                     93.4 |                  3.3 |                  10.8 |
+| emsp;Carbon dioxide |                     0.4 |                      1.4 |                  0.7 |                   2.0 |                     0.6 |                      2.2 |                  1.1 |                   3.1 |
+| emsp;Vinyl chloride |                     4.3 |                      4.8 |                  4.3 |                   4.8 |                     6.8 |                      7.5 |                  6.8 |                   7.5 |
+| emsp;Benzene        |                     0.1 |                      2.8 |                  0.1 |                   2.8 |                     0.2 |                      4.4 |                  0.2 |                   4.4 |
+| emsp;Others         |                     0.3 |                      4.8 |                  0.3 |                   4.8 |                     0.5 |                      7.5 |                  0.5 |                   7.5 |
+| Total               |                    13.8 |                     74.3 |                  7.5 |                  22.3 |                    21.7 |                    116.7 |                 11.8 |                  35.0 |
+#+TBLFM: $6 = $2 * 1.57;%0.1f :: $7 = $3 * 1.57;%0.1f :: $8 = $4 * 1.57;%0.1f :: $9 = $5 * 1.57;%0.1f 
+
+1.57
+http://www.in2013dollars.com/1997-dollars-in-2018?amount=1
+

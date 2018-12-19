@@ -1,0 +1,18 @@
+| External costs                                     |   $/excess ounce | $/excess ounce |
+| :---------------                                   | ---------------: |          ----: |
+| Medical and pension costs per excess ounce         |                  |           0.00 |
+| &emsp;Medical care                                 |             0.10 |           0.23 |
+| &emsp;Sick leave                                   |             0.05 |           0.12 |
+| &emsp;Group life insurance                         |             0.02 |           0.05 |
+| &emsp;Nursing home                                 |               ~0 |             ~0 |
+| &emsp;Retirement pension                           |             0.03 |           0.07 |
+| Lost taxes on earnings                             |             0.06 |           0.14 |
+| Net medical and pension costs per excess ounce     |             0.26 |           0.60 |
+| Motor-vehicle accidents and criminal justice costs |                  |           0.00 |
+| &emsp;Lives of nondrinkers                         |             0.58 |           1.33 |
+| &emsp;All other costs                              |             0.35 |           0.81 |
+| Total net costs                                    |             1.19 |           2.74 |
+#+TBLFM: $3 = $2 * 2.30;%0.2f
+
+2.30
+http://www.in2013dollars.com/1986-dollars-in-2018?amount=1

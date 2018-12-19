@@ -502,6 +502,7 @@ th {
 th,
 td {
     @include padding-halfex-1ex;
+    vertical-align: top;
 }
 
 th,
