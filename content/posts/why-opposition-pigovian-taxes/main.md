@@ -73,7 +73,7 @@ The biggest concern by far (according to my sense of the public discussion) is a
 
 #### Flat denial
 
-The regressive argument looks at incomes. But income is only part of the story. Arguably, [actual individual consumption](https://stats.oecd.org/glossary/detail.asp?ID=36) is a better measure. The total value of people's consumption is determined not only by their private incomes but also by the assistance they receive from the government and non-profits. If we account for this additional income analogue, "low-expenditure households devote a smaller share of their budget to gasoline than do their counterparts in the middle of the expenditure distribution" [@poterba1991gasoline].
+The regressive argument looks at incomes. But income is only part of the story. Arguably, [actual individual consumption](https://stats.oecd.org/glossary/detail.asp?ID=36) is a better measure [@fitoussi2009report]. The total value of people's consumption is determined not only by their private incomes but also by the assistance they receive from the government and non-profits. If we account for this additional income analogue, "low-expenditure households devote a smaller share of their budget to gasoline than do their counterparts in the middle of the expenditure distribution" [@poterba1991gasoline].
 
 #### Less regressive than alternatives
 
