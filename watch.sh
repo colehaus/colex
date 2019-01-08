@@ -24,6 +24,7 @@ cd "${root}/content/js"
 webpack &
 
 # cd "${root}/content/js/bibliometric"
+# npm install
 # bower install
 # pulp --watch browserify --to ../dist/bibliometric.js &
 
