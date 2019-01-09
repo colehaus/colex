@@ -1,5 +1,5 @@
 ---
-title: YAAS ReadingMost of us read with our eyes <em>and</em> our brains
+title: "YAAS Reading: Most of us read with our eyes <em>and</em> our brains"
 subtitle: "Yet Another Amateur Summary: <br> Rayner et al's <i>So Much to Read, So Little Time: How Do We Read, and Can Speed Reading Help?</i>"
 published: 2018-04-30
 tags: meta monday, reading, yaas
