@@ -1,0 +1,114 @@
+<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg width="641pt" height="304pt" viewBox="0.00 0.00 641.21 304.00" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs xmlns="http://www.w3.org/1999/xhtml"><style type="text/css"><![CDATA[
+button { margin: 4px 5px 4px 4px; cursor: pointer; font-size: 70%; }]]></style></defs>
+<g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 300)">
+<title>G</title>
+<polygon fill="none" stroke="none" points="-4,5 -4,-300 638.213,-300 638.213,5 -4,5"/>
+<!-- a -->
+<g id="node1" class="node"><title>a</title>
+<polygon fill="none" stroke="black" points="178.136,-296 -0.136245,-296 -0.136245,-260 178.136,-260 178.136,-296"/>
+<text text-anchor="middle" x="89" y="-273.8" font-family="Times,serif" font-size="14.00">Voter 1's private preferences</text>
+</g>
+<!-- d -->
+<g id="node4" class="node"><title>d</title>
+<polygon fill="none" stroke="black" points="157.436,-126 0.564365,-126 0.564365,-90 157.436,-90 157.436,-126"/>
+<text text-anchor="middle" x="79" y="-103.8" font-family="Times,serif" font-size="14.00">Voter 1's voting decision</text>
+</g>
+<!-- a&#45;&gt;d -->
+<g id="edge2" class="edge"><title>a-&gt;d</title>
+<path fill="none" stroke="black" d="M64.172,-259.865C46.9911,-246.389 25.5307,-225.931 15.7868,-202 5.34184,-176.347 25.8892,-150.564 46.285,-132.674"/>
+<polygon fill="black" stroke="black" points="48.5876,-135.311 54.0295,-126.221 44.1065,-129.934 48.5876,-135.311"/>
+<text text-anchor="middle" x="36.6066" y="-188.8" font-family="Times,serif" font-size="14.00">Known</text>
+</g>
+<!-- e -->
+<g id="node5" class="node"><title>e</title>
+<polygon fill="none" stroke="black" points="333.436,-126 176.564,-126 176.564,-90 333.436,-90 333.436,-126"/>
+<text text-anchor="middle" x="255" y="-103.8" font-family="Times,serif" font-size="14.00">Voter 2's voting decision</text>
+</g>
+<!-- a&#45;&gt;e -->
+<g id="edge8" class="edge"><title>a-&gt;e</title>
+<path fill="none" stroke="black" d="M104.136,-259.849C121.001,-240.918 149.263,-209.718 174.808,-184 192.081,-166.609 212.234,-147.767 228.016,-133.319"/>
+<polygon fill="black" stroke="black" points="230.799,-135.518 235.832,-126.195 226.084,-130.344 230.799,-135.518"/>
+<text text-anchor="middle" x="202.596" y="-188.8" font-family="Times,serif" font-size="14.00">Perceived</text>
+</g>
+<!-- f -->
+<g id="node6" class="node"><title>f</title>
+<polygon fill="none" stroke="black" points="521.436,-126 364.564,-126 364.564,-90 521.436,-90 521.436,-126"/>
+<text text-anchor="middle" x="443" y="-103.8" font-family="Times,serif" font-size="14.00">Voter 3's voting decision</text>
+</g>
+<!-- a&#45;&gt;f -->
+<g id="edge14" class="edge"><title>a-&gt;f</title>
+<path fill="none" stroke="black" d="M166.654,-259.95C233.257,-244.452 323.335,-221.15 355,-202 358.982,-199.592 395.413,-160.536 420.135,-133.81"/>
+<polygon fill="black" stroke="black" points="422.855,-136.023 427.071,-126.304 417.714,-131.273 422.855,-136.023"/>
+<text text-anchor="middle" x="400.596" y="-188.8" font-family="Times,serif" font-size="14.00">Perceived</text>
+</g>
+<!-- b -->
+<g id="node2" class="node"><title>b</title>
+<polygon fill="none" stroke="black" points="622.136,-296 443.864,-296 443.864,-260 622.136,-260 622.136,-296"/>
+<text text-anchor="middle" x="533" y="-273.8" font-family="Times,serif" font-size="14.00">Voter 3's private preferences</text>
+</g>
+<!-- b&#45;&gt;d -->
+<g id="edge4" class="edge"><title>b-&gt;d</title>
+<path fill="none" stroke="black" d="M447.284,-259.939C400.355,-248.192 342.44,-229.628 295.808,-202 285.853,-196.102 286.786,-190.173 277,-184 238.738,-159.864 191.504,-141.601 152.767,-129.142"/>
+<polygon fill="black" stroke="black" points="153.702,-125.767 143.112,-126.099 151.598,-132.443 153.702,-125.767"/>
+<text text-anchor="middle" x="323.596" y="-188.8" font-family="Times,serif" font-size="14.00">Perceived</text>
+</g>
+<!-- b&#45;&gt;e -->
+<g id="edge10" class="edge"><title>b-&gt;e</title>
+<path fill="none" stroke="black" d="M531.296,-259.743C528.33,-238.933 520.323,-204.236 499,-184 476.162,-162.326 403.508,-141.607 343.372,-127.46"/>
+<polygon fill="black" stroke="black" points="343.989,-124.01 333.456,-125.159 342.406,-130.829 343.989,-124.01"/>
+<text text-anchor="middle" x="539.596" y="-188.8" font-family="Times,serif" font-size="14.00">Perceived</text>
+</g>
+<!-- b&#45;&gt;f -->
+<g id="edge16" class="edge"><title>b-&gt;f</title>
+<path fill="none" stroke="black" d="M554.971,-259.943C575.407,-241.851 601.027,-212.063 589,-184 577.953,-158.223 553.823,-141.181 528.301,-129.968"/>
+<polygon fill="black" stroke="black" points="529.437,-126.651 518.857,-126.095 526.781,-133.127 529.437,-126.651"/>
+<text text-anchor="middle" x="612.607" y="-188.8" font-family="Times,serif" font-size="14.00">Known</text>
+</g>
+<!-- c -->
+<g id="node3" class="node"><title>c</title>
+<polygon fill="none" stroke="black" points="375.136,-296 196.864,-296 196.864,-260 375.136,-260 375.136,-296"/>
+<text text-anchor="middle" x="286" y="-273.8" font-family="Times,serif" font-size="14.00">Voter 2's private preferences</text>
+</g>
+<!-- c&#45;&gt;d -->
+<g id="edge6" class="edge"><title>c-&gt;d</title>
+<path fill="none" stroke="black" d="M196.648,-259.853C161.799,-248.85 124.394,-230.955 99.8078,-202 84.3759,-183.826 79.7241,-156.645 78.6059,-136.355"/>
+<polygon fill="black" stroke="black" points="82.099,-136.068 78.3034,-126.176 75.1021,-136.276 82.099,-136.068"/>
+<text text-anchor="middle" x="127.596" y="-188.8" font-family="Times,serif" font-size="14.00">Perceived</text>
+</g>
+<!-- c&#45;&gt;e -->
+<g id="edge12" class="edge"><title>c-&gt;e</title>
+<path fill="none" stroke="black" d="M270.085,-259.775C258.046,-245.498 242.483,-224.039 235.787,-202 229.083,-179.937 235.439,-154.222 242.586,-135.432"/>
+<polygon fill="black" stroke="black" points="245.885,-136.613 246.445,-126.033 239.409,-133.954 245.885,-136.613"/>
+<text text-anchor="middle" x="256.607" y="-188.8" font-family="Times,serif" font-size="14.00">Known</text>
+</g>
+<!-- c&#45;&gt;f -->
+<g id="edge18" class="edge"><title>c-&gt;f</title>
+<path fill="none" stroke="black" d="M359.339,-259.967C388.62,-248.888 418.736,-230.904 433,-202 443.08,-181.576 445.116,-155.617 444.897,-136.318"/>
+<polygon fill="black" stroke="black" points="448.388,-135.969 444.566,-126.088 441.392,-136.196 448.388,-135.969"/>
+<text text-anchor="middle" x="467.596" y="-188.8" font-family="Times,serif" font-size="14.00">Perceived</text>
+</g>
+<!-- g -->
+<g id="node7" class="node"><title>g</title>
+<polygon fill="none" stroke="black" points="303.454,-36 206.546,-36 206.546,0 303.454,0 303.454,-36"/>
+<text text-anchor="middle" x="255" y="-13.8" font-family="Times,serif" font-size="14.00">Voting system</text>
+</g>
+<!-- d&#45;&gt;g -->
+<g id="edge20" class="edge"><title>d-&gt;g</title>
+<path fill="none" stroke="black" d="M113.352,-89.8238C141.457,-75.7717 181.366,-55.817 211.664,-40.6681"/>
+<polygon fill="black" stroke="black" points="213.355,-43.7356 220.734,-36.1329 210.225,-37.4746 213.355,-43.7356"/>
+<text text-anchor="middle" x="196.606" y="-58.8" font-family="Times,serif" font-size="14.00">Vote</text>
+</g>
+<!-- e&#45;&gt;g -->
+<g id="edge22" class="edge"><title>e-&gt;g</title>
+<path fill="none" stroke="black" d="M255,-89.614C255,-77.2403 255,-60.3686 255,-46.2198"/>
+<polygon fill="black" stroke="black" points="258.5,-46.0504 255,-36.0504 251.5,-46.0504 258.5,-46.0504"/>
+<text text-anchor="middle" x="268.606" y="-58.8" font-family="Times,serif" font-size="14.00">Vote</text>
+</g>
+<!-- f&#45;&gt;g -->
+<g id="edge24" class="edge"><title>f-&gt;g</title>
+<path fill="none" stroke="black" d="M406.305,-89.8238C376.156,-75.7111 333.287,-55.6449 300.873,-40.4725"/>
+<polygon fill="black" stroke="black" points="302.143,-37.2024 291.602,-36.1329 299.175,-43.5422 302.143,-37.2024"/>
+<text text-anchor="middle" x="379.606" y="-58.8" font-family="Times,serif" font-size="14.00">Vote</text>
+</g>
+</g>
+</svg>
