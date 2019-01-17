@@ -43,5 +43,10 @@ webpack &
 # npm install
 # pulp --watch browserify --to ../dist/exemplars-curse.js &
 
+cd "${root}/content/js/dominated-decisions"
+bower install
+npm install
+pulp --watch browserify --to ../dist/dominated-decisions.js &
+
 trap 'kill $(jobs -p)' EXIT
 sleep infinity

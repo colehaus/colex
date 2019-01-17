@@ -1,0 +1,19 @@
+{
+  "name": "dominated-decisions",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output",
+    "result"
+  ],
+  "dependencies": {
+    "purescript-behaviors": "^7.0.0",
+    "purescript-jquery": "^5.0.0",
+    "purescript-jquery-fancy": "^2.0.0",
+    "purescript-prelude": "^4.1.0"
+  },
+  "devDependencies": {
+    "purescript-psci-support": "^4.0.0"
+  }
+}
