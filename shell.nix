@@ -19,7 +19,7 @@ in
     name = "colExEnv";
     LC_ALL = "en_US.UTF-8";
     buildInputs =
-      [ pkgs.python36Packages.jupyter ijavascript ] ++
+      [ pkgs.python36Packages.jupyter ijavascript pkgs.stack ] ++
       hakyll.nativeBuildInputs ++
       content.nativeBuildInputs ++
       webpack.nativeBuildInputs ++
