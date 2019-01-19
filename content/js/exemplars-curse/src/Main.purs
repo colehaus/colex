@@ -2,7 +2,6 @@ module Main where
 
 import Prelude
 
-import Chart as Chart
 import Charts.Vega.Primitive as Vega
 import Control.Alt ((<|>))
 import Data.Argonaut.Core (fromObject, stringify, toObject) as Argo
@@ -32,11 +31,13 @@ import Foreign (Foreign)
 import Foreign.Object as Object
 import FRP.Event (Event)
 import FRP.Event as FRP
-import FRP.JQuery (inputChangeEvent)
-import Html as Html
 import JQuery (ready) as J
 import JQuery.Fancy (setText, width) as J
 import Partial.Unsafe (unsafeCrashWith)
+
+import Chart as Chart
+import FRP.JQuery (inputChangeEvent)
+import Html as Html
 
 foreign import jQuery :: Foreign
 
