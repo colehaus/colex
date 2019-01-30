@@ -59,7 +59,7 @@ dominations table = Tuple (dominations' DT.dominatesWeakly) (dominations' DT.dom
   where
     dominations' pred =
       List.filter (Tuple.uncurry (/=)) <<<
-      List.filter ((==) (Just true) <<< Tuple.uncurry (pred table)) $
+      List.filter ((==) (Just true) <<< Tuple.uncurry (rows pred table)) $
       List.fromFoldable rowIdPairs
     rowIdPairs = pairs $ Table.rowIds table
 
@@ -69,3 +69,12 @@ pairs xs =
   where
     asList :: forall b. List b -> List b
     asList = identity
+
+rows ::
+  forall column row cell columnId rowId a.
+  Eq rowId =>
+  (row -> row -> a) -> Table rowId columnId cell row column -> rowId -> rowId -> Maybe a
+rows f table rowId1 rowId2 =
+  case Tuple (Table.row table rowId1) (Table.row table rowId2) of
+    Tuple (Just row1) (Just row2) -> Just $ f row1 row2
+    Tuple _ _ -> Nothing
