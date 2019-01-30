@@ -205,6 +205,7 @@ purescriptProjects =
   , "js/dist/construct-vnm-utility-function.js"
   , "js/dist/exemplars-curse.js"
   , "js/dist/dominated-decisions.js"
+  , "js/dist/priority-decisions.js"
   ]
 
 buildChunkMap :: IO (Map String [String])
