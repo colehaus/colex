@@ -23,30 +23,25 @@ cd "${root}/content"
 cd "${root}/content/js"
 webpack &
 
-# cd "${root}/content/js/bibliometric"
-# npm install
-# bower install
-# pulp --watch browserify --to ../dist/bibliometric.js &
+purescript_project () {
+    cd "${root}/content/js/${1}"
+    npm install
+    bower install
+    pulp --watch browserify --to "../dist/${1}.js" &
+}
 
-# cd "${root}/content/js/value-of-information-calculator"
-# npm install
-# bower install
-# pulp --watch browserify --to ../dist/value-of-information-calculator.js &
+declare -a purescript_projects=(
+    # "bibliometric"
+    # "value-of-information-calculator"
+    # "construct-vnm-utility-function"
+    # "exemplars-curse"
+    "dominated-decisions"
+)
 
-# cd "${root}/content/js/construct-vnm-utility-function"
-# bower install
-# npm install
-# pulp --watch browserify --to ../dist/construct-vnm-utility-function.js &
-
-# cd "${root}/content/js/exemplars-curse"
-# bower install
-# npm install
-# pulp --watch browserify --to ../dist/exemplars-curse.js &
-
-cd "${root}/content/js/dominated-decisions"
-bower install
-npm install
-pulp --watch browserify --to ../dist/dominated-decisions.js &
+for project in "${purescript_projects[@]}"
+do
+  purescript_project "$project"
+done
 
 trap 'kill $(jobs -p)' EXIT
 sleep infinity
