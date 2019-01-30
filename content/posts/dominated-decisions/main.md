@@ -2,6 +2,7 @@
 title: Dominated decisions
 series: An Introduction to Decision Theory
 published: 2019-01-17
+edited: 2019-01-30
 tags: decision theory, interactive, yaas
 js: dominated-decisions
 css: dominated-decisions
@@ -31,15 +32,27 @@ The decision matrix we depicted above reflects one of the [simplest possible]{.n
 
 Because this setting is so minimal, it both has wide applicability---it makes very few assumptions that can be contradicted by facts on the ground---and limited insight---the best you can do with minimal information still isn't very good.
 
+<!--more-->
+
 ## Prose
 
-One of the rules that exemplifies both broad applicability and limited insight is the [dominating decision rule](https://en.wikipedia.org/wiki/Dominating_decision_rule). Action A weakly dominates action B if it produces an outcome which is at least as good as that of action B in every state of the world. Action A strongly dominates action B if it produces an outcome which is at least as good as that of action B in every state of the world AND is strictly better than action B in at least one state of the world.
+One of the rules that exemplifies both broad applicability and limited insight is the dominance rule. Action A weakly dominates action B if it produces an outcome which is at least as good as that of action B in every state of the world. Action A strongly dominates action B if it produces an outcome which is at least as good as that of action B in every state of the world AND is strictly better than action B in at least one state of the world.
 
-<!--more-->
+## Example
+
+You have the choice of two alternative routes to work. In good conditions, both take 10 minutes. But the second route is prone to traffic and on bad days takes 20 minutes while the first route still takes 10 minutes. With a scenario like this, the dominance rule demands that you take the first route since it is never worse and sometimes better.
+
+<figure>
+<figcaption>Decision matrix about route to work. Preferred action in bold.</figcaption>
+|             | High traffic day | Low traffic day |
+|-------------|------------------|-----------------|
+| **Route 1** | 10 minutes       | 10 minutes      |
+| Route 2     | 20 minutes       | 10 minutes      |
+</figure>
 
 ## Interactive
 
-If the English description isn't that helpful try poking around with this interactive analysis (Note that "better than" in this case means later in [ASCIIbetical order](https://en.wikipedia.org/wiki/ASCII#Character_order)). The analysis will update whenever you stop editing text and defocus the text area.
+If the above description isn't sufficient, try poking around with this interactive analysis (Note that "better than" in this case means later in [ASCIIbetical order](https://en.wikipedia.org/wiki/ASCII#Character_order)---later letters are better than earlier letters). The analysis will update whenever you stop editing text and defocus the text area.
 
 <textarea id="decision-table">
 ```{=html}
@@ -51,41 +64,55 @@ If the English description isn't that helpful try poking around with this intera
 ```
 </textarea>
 
-<div id="decision-analysis">
+::: {#decision-analysis}
 - Action 2 weakly dominates Action 1
 
 - Action 2 strongly dominates Action 1
-</div>
+:::
 
 ## Source code
 
-Yet another way to explain dominance is with source code:
+Another way to explain dominance is with source code:
 
 ```haskell
-dominatesWeakly ::
-  forall rowId columnId cell column.
-  Eq rowId => PartialOrd cell =>
-  Table rowId columnId cell (NonEmptyList cell) column -> rowId -> rowId -> Maybe Boolean
-dominatesWeakly table rowId1 rowId2 =
-  case Tuple (Table.row table rowId1) (Table.row table rowId2) of
-    Tuple (Just row1) (Just row2) ->
-      Just $ Foldable.all ((==) true) (NonEmpty.zipWith (>=) row1 row2)
-    Tuple _ _ -> Nothing
+dominatesWeakly :: forall cell. PartialOrd cell => Row cell -> Row cell -> Boolean
+dominatesWeakly row1 row2 = Foldable.all ((==) true) (NonEmpty.zipWith (>=) row1 row2)
 
-dominatesStrongly ::
-  forall rowId columnId cell column.
-  Eq rowId => PartialOrd cell =>
-  Table rowId columnId cell (NonEmptyList cell) column -> rowId -> rowId -> Maybe Boolean
-dominatesStrongly table rowId1 rowId2 =
-  case Tuple (Table.row table rowId1) (Table.row table rowId2) of
-    Tuple (Just row1) (Just row2) ->
-      Just $
-        Foldable.all ((==) true) (NonEmpty.zipWith (>=) row1 row2) &&
-        Foldable.any ((==) true) (NonEmpty.zipWith (>) row1 row2)
-    Tuple _ _ -> Nothing
+dominatesStrongly :: forall cell. PartialOrd cell => Row cell -> Row cell -> Boolean
+dominatesStrongly row1 row2 =
+    Foldable.all ((==) true) (NonEmpty.zipWith (>=) row1 row2) &&
+    Foldable.any ((==) true) (NonEmpty.zipWith (>) row1 row2)
 ```
 
-To hammer home the point about dominance being applicable in very general settings: `rowId`, `columnId` and `cell` are totally polymorphic types except for the constraint that `rowId`s can be compared for equality and `cell`s form a [partial order](https://en.wikipedia.org/wiki/Partially_ordered_set).
+To hammer home the point about dominance being applicable in very general settings: `cell` is totally polymorphic except for the constraint that `cell`s form a [partial order](https://en.wikipedia.org/wiki/Partially_ordered_set).
+
+## Math
+
+And the final view on dominance will be the fully mathematical one:
+
+### Weak dominance
+
+We can also describe weak dominance $\preccurlyeq_{WD}$ in symbols:
+
+$$a_i \preccurlyeq_{WD} a_j \leftrightarrow \forall s \in S\ (v(a_i, s) \leq v(a_j, s))$$
+
+where $a_i$ and $a_j$ represent the ith and jth actions, $s$ is a particular state of the world from the set $S$ of all states, and $v : A \times S \to V$ is a function mapping an action in a particular state of the world to an element in the [partial order](https://en.wikipedia.org/wiki/Partially_ordered_set) of values $V$.
+
+In other words, we start out with a partially ordered set of valuations where each outcome (cell in a decision table) corresponds to a valuation in this set. These outcomes can (sometimes) be compared to one another to determine which is preferable. Weak dominance is then a way of lifting the partial order of outcome valuations and turning it into a binary relation on actions---each of which comprises several outcomes across different states of the world.
+
+The resulting binary relation is [antisymmetric](https://en.wikipedia.org/wiki/Antisymmetric_relation), [reflexive](https://en.wikipedia.org/wiki/Reflexive_relation) and [transitive](https://en.wikipedia.org/wiki/Transitive_relation). Depending on how we handle incomparable elements in the original partial order of valuations, this means the weak dominance relation is a either a partial or total order.
+
+### Strong dominance
+
+In symbols, strong dominance $\prec_{SD}$ is:
+
+$$a_i \prec_{SD} a_j \leftrightarrow \forall s \in S\ (v(a_i, s) \leq v(a_j, s)) \wedge \exists s \in S\ (v(a_i, s) < v(a_j, s))$$
+
+where $a_i$ and $a_j$ represent the ith and jth actions, $s$ is a particular state of the world from the set $S$ of all states, and $v : A \times S \to V$ is a function mapping an action in a particular state of the world to an element in the [partial order](https://en.wikipedia.org/wiki/Partially_ordered_set) of values $V$.
+
+In other words, we start out with a partially ordered set of valuations where each outcome (cell in a decision table) corresponds to a valuation in this set. These outcomes can (sometimes) be compared to one another to determine which is preferable. Strong dominance is then a way of lifting the partial order of outcome valuations and turning it into a binary relation on actions---each of which comprises several outcomes across different states of the world.
+
+The resulting binary relation is [asymmetric](https://en.wikipedia.org/wiki/Asymmetric_relation), [irreflexive](https://en.wikipedia.org/wiki/Irreflexive_relation), and [transitive](https://en.wikipedia.org/wiki/Transitive_relation). Depending on how we handle incomparable elements in the original partial order of valuations, this means the strong dominance relation is a either a strict partial or a strict total order.
 
 <hr class="references">
 

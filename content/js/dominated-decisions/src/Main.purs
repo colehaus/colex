@@ -38,7 +38,7 @@ main = do
 
 sink :: JQuery (One "div") -> String -> Effect Unit
 sink output tableText =
-  case Table.parse identity identity Just identity Just tableText of
+  case Table.parse Just Just Just Just Just tableText of
     Left e -> J.setText (show e) output
     Right table -> render output (dominations table)
 
