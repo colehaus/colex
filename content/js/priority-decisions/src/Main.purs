@@ -19,13 +19,12 @@ import Data.Tuple as Tuple
 import DecisionTheory as DT
 import Effect (Effect)
 import FRP.Event as FRP
+import FRP.JQuery (textAreaChangeEvent)
 import Foreign (Foreign)
+import Html as Html
 import JQuery (append, create, ready) as J
 import JQuery.Fancy (JQuery, One)
 import JQuery.Fancy (clearOne, setText) as J
-
-import FRP.JQuery (textAreaChangeEvent)
-import Html as Html
 
 foreign import jQuery :: Foreign
 
@@ -33,34 +32,47 @@ main :: Effect Unit
 main = do
   J.ready do
     els <- Html.collectElements
-    tableText <- textAreaChangeEvent els.input
-    FRP.subscribe tableText (sink els.output)
+    void $
+      flip FRP.subscribe (sink DT.maximin els.maximinElements.output) =<<
+      textAreaChangeEvent els.maximinElements.input
+    void $
+      flip FRP.subscribe (sink DT.maximax els.maximaxElements.output) =<<
+      textAreaChangeEvent els.maximaxElements.input
+    void $
+      flip FRP.subscribe (sink DT.leximin els.leximinElements.output) =<<
+      textAreaChangeEvent els.leximinElements.input
 
-sink :: JQuery (One "div") -> String -> Effect Unit
-sink output tableText =
-  case Table.parse identity identity Just identity Just tableText of
+sink ::
+  (DT.Row String -> DT.Row String -> Boolean) ->
+  JQuery (One "div") ->
+  String ->
+  Effect Unit
+sink rule output tableText =
+  case Table.parse Just Just Just Just Just tableText of
     Left e -> J.setText (show e) output
-    Right table -> render output (dominations table)
+    Right table -> render output (verdicts rule table)
 
 type PlainTable = Table String String String (NonEmptyList String) (NonEmptyList String)
 
-render :: JQuery (One "div") -> Tuple (List (Tuple String String)) (List (Tuple String String)) -> Effect Unit
-render output (Tuple weak strong) = do
+render :: JQuery (One "div") -> List (Tuple String String) -> Effect Unit
+render output results = do
   J.clearOne output
-  el <- J.create (listToHtml "weakly" weak <> listToHtml "strongly" strong)
+  el <- J.create (listToHtml results)
   J.append el (Newtype.unwrap output)
   where
-    listToHtml adj ds = "<ul class=\"" <> adj <> "\">" <> Foldable.foldMap itemToHtml ds <> "</ul>"
+    listToHtml ds = "<ul>" <> Foldable.foldMap itemToHtml ds <> "</ul>"
       where
-        itemToHtml (Tuple l r) = "<li>" <> l <> " " <> adj <> " dominates " <> r <> "</li>"
+        itemToHtml (Tuple l r) = "<li>" <> l <> " " <> " beats " <> r <> "</li>"
 
-dominations :: PlainTable -> Tuple (List (Tuple String String)) (List (Tuple String String))
-dominations table = Tuple (dominations' DT.dominatesWeakly) (dominations' DT.dominatesStrongly)
+verdicts ::
+  (DT.Row String -> DT.Row String -> Boolean) ->
+  PlainTable ->
+  List (Tuple String String)
+verdicts pred table =
+  List.filter (Tuple.uncurry (/=)) <<<
+  List.filter ((==) (Just true) <<< Tuple.uncurry (rows pred table)) $
+  List.fromFoldable rowIdPairs
   where
-    dominations' pred =
-      List.filter (Tuple.uncurry (/=)) <<<
-      List.filter ((==) (Just true) <<< Tuple.uncurry (rows pred table)) $
-      List.fromFoldable rowIdPairs
     rowIdPairs = pairs $ Table.rowIds table
 
 pairs :: forall a. Ord a => Set a -> Set (Tuple a a)

@@ -7,7 +7,6 @@ module Hakyll.Fancy where
 
 import Data.Binary
 import Data.Maybe
-import Data.Monoid
 import Data.Typeable
 import GHC.TypeLits
 import Hakyll hiding (load, match)
