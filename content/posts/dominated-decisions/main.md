@@ -88,7 +88,7 @@ To hammer home the point about dominance being applicable in very general settin
 
 ## Math
 
-And the final view on dominance will be the fully mathematical one:
+And the final view on dominance will be [the fully mathematical one]{.noted}[^math]:
 
 ### Weak dominance
 
@@ -117,3 +117,4 @@ The resulting binary relation is [asymmetric](https://en.wikipedia.org/wiki/Asym
 <hr class="references">
 
 [^simpler]: Ways we could go simpler: only one action, only one state of the world. But these settings are <em>too</em> simple and rather boring.
+[^math]: This perspective doesn't really appear in [@peterson2017introduction]; any errors here are my own.
