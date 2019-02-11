@@ -1,6 +1,7 @@
 ---
 title: The moral imperative and mortal peril of maximizing
 date: 2018-08-19
+edited: 2019-02-11
 tags: meta
 ---
 
@@ -40,7 +41,7 @@ Whatever suffocation you feel watching [Requiem for a Dream](https://en.wikipedi
 
 Whatever ache you feel watching [Grave of the Fireflies](https://en.wikipedia.org/wiki/Grave_of_the_Fireflies), it would hollow you out each day along with the approximately 815 million people who are chronically undernourished [@agriculture2014].
 
-But, for good or for ill, we are bounded and parochial. We cannot comprehend in any but the most abstracted ways the daily ruin that nature visits on us, that we visit on ourselves and each other.
+But, for good or for ill, we are bounded and parochial. We cannot comprehend in any but the most abstracted ways the daily ruin that nature visits on us, that we visit on ourselves and on each other.
 
 <!-- - Blue valentine: alcoholism -->
 <!-- - Old yeller, where the red fern grows: animals -->
@@ -60,10 +61,9 @@ But, for good or for ill, we are bounded and parochial. We cannot comprehend in 
 
 The tragedies of life on Earth are no recent revelation. The [Epic of Gilgamesh](https://en.wikipedia.org/wiki/Epic_of_Gilgamesh)---our earliest surviving great work of literature---is about the hero's vain attempt to undo the great tragedy of his life.
 
-For some, the knowledge that tragedy has been with us from the beginning inspires not acquiescence but determination that we might leave it behind before we reach [the end](https://en.wikipedia.org/wiki/Heat_death_of_the_universe). These are names that go down in history. Names like:
+For some, the knowledge that tragedy has been with us from the beginning inspires not acquiescence but determination that we might leave it behind before we reach [the end](https://en.wikipedia.org/wiki/Heat_death_of_the_universe). These are names that go down in history. The names of those that struggle for a more perfect future, obstacles be damned. Names like:
 
 <!--more-->
-
 
 Maximilien Robespierre
 
@@ -73,13 +73,9 @@ Adolph Hitler
 
 :   "The exposure of sick, weak, deformed children, in short their destruction, was more decent and in truth a thousand times more humane than the wretched insanity of our day which preserves the most pathological subject, and indeed at any price, and yet takes the life of a hundred thousand healthy children in consequence of birth control or through abortions, in order subsequently to breed a race of degenerates burdened with illnesses."
 
-Charles Trevelyan
-
-:   In the face of the catastrophic Irish famine: "If the Irish once find out that there are any circumstances in which they can get free government grants, we shall have a system of mendicancy such as the world never knew."
-
 George W. Bush
 
-:   "In many nations of the Middle East -- countries of great strategic importance -- democracy has not yet taken root. And the questions arise: Are the peoples of the Middle East somehow beyond the reach of liberty? Are millions of men and women and children condemned by history or culture to live in despotism? Are they alone never to know freedom, and never even to have a choice in the matter? I, for one, do not believe it."
+:   "In many nations of the Middle East---countries of great strategic importance---democracy has not yet taken root. And the questions arise: Are the peoples of the Middle East somehow beyond the reach of liberty? Are millions of men and women and children condemned by history or culture to live in despotism? Are they alone never to know freedom, and never even to have a choice in the matter? I, for one, do not believe it."
 
 Pol Pot
 
@@ -93,7 +89,7 @@ I include all these names on the list not to suggest that they are morally equiv
 
 <blockquote class="epigraph">This war is not as in the past; whoever occupies a territory also imposes on it his own social system. Everyone imposes his own system as far as his army can reach. It cannot be otherwise. If now there is not a communist government in Paris, this is only because Russia has no an army which can reach Paris in 1945. [---Actually Joseph Stalin]{.attribution}</blockquote>
 
-If hubris is the problem, is the answer simply to look at all the fables on hubris---[Icarus](https://en.wikipedia.org/wiki/Icarus), [Phaethon](https://en.wikipedia.org/wiki/Phaethon), [Paradise Lost](https://en.wikipedia.org/wiki/Paradise_Lost), [Frankenstein](https://en.wikipedia.org/wiki/Frankenstein)---and follow the sage advice found therein? Alas, the complexity of the world as it is exceeds the complexity of the world as we render it in stories. There's no author to ensure that our repentance is rewarded and we cannot relinquish power to its rightful source.
+If hubris is the problem, is the answer simply to look at all the fables on hubris---[Icarus](https://en.wikipedia.org/wiki/Icarus), [Phaethon](https://en.wikipedia.org/wiki/Phaethon), [Paradise Lost](https://en.wikipedia.org/wiki/Paradise_Lost), [Frankenstein](https://en.wikipedia.org/wiki/Frankenstein)---and follow the sage advice found therein? Alas, the complexity of the world as it is exceeds the complexity of the world as we render it in stories. There's no author to ensure that our humility is rewarded and we cannot relinquish power to its rightful source.
 
 On the contrary, the only way out is through---we must maximize. As Stalin suggests in the epigraph, I fear that maximizers are destined to win out over satisficers. Just as a strain of bacteria which reproduces would dominate a petri dish when pitted against a sterile strain and a proselytizing religion spreads farther and faster than a disinterested one, totalizing world-systems tend to crowd out complacent ones. So whether the maximizer you fear is [capitalism](https://www.buzzfeednews.com/article/tedchiang/the-real-danger-to-civilization-isnt-ai-its-runaway) or [its claimed successor](https://en.wikipedia.org/wiki/Superintelligence:_Paths,_Dangers,_Strategies), there is no refuge from maximizing.
 
@@ -111,7 +107,7 @@ In addition to the shorter 'Warnings' up top:
 
 2. I'm not a wholly credulous adherent of the [great man theory](https://en.wikipedia.org/wiki/Great_man_theory) of history. The implied blame for the names listed in [The world as we imagine it](#the-world-as-we-imagine-it) should surely be spread across many more actors.
 
-3. The arguments presented for [Maximize or be maximized](#maximize-or-be-maximized) are far from conclusive. I am not myself convinced the claim is correct. Even if it's not, I think the moral imperative to maximize can be made (under certain ethical views) in terms of opportunity cost. Opportunity cost just doesn't stir the heart in the same way that averting catastrophe does.
+3. The arguments presented for [Maximize or be maximized](#maximize-or-be-maximized) are far from conclusive. I am not myself convinced the claim is correct. (Edit: It turns out this argument that maximizers win in the end goes by the name "the singleton hypothesis" [@bostrom2006singleton].) Even if it's not, I think the moral imperative to maximize can be made (under certain ethical views) in terms of opportunity cost.
 
 ::::
 
