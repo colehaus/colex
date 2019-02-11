@@ -15,7 +15,7 @@
     "purescript-jquery-fancy": "^2.0.0",
     "purescript-numbers": "^6.0.0",
     "purescript-prelude": "^4.1.0",
-    "purescript-probability": "^5.1.0",
+    "purescript-probability": "^5.2.0",
     "purescript-value-of-information": "^0.1.0",
     "purescript-yayamll": "^1.1.0"
   },
