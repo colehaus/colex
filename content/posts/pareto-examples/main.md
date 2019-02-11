@@ -2,6 +2,7 @@
 title: Some things which are and aren't Pareto optimal
 subtitle: Your periodic reminder that Pareto efficiency carries exceedingly little normative weight
 published: 2018-04-13
+edited: 2019-02-11
 tags: social welfare, metrics, self-flagellation friday
 ---
 
@@ -79,13 +80,13 @@ Briefly, a scenario ([canonically, a distribution of resources across individual
 
 Person A and B split a pie in thirds. They each eat one third of the pie and throw the final third in the trash. Assuming everyone prefers more pie to less, giving half the pie to each person is a Pareto improvement.
 
-The [K foundation burns a million quid](https://en.wikipedia.org/wiki/K_Foundation_Burn_a_Million_Quid). Assuming people prefer more money to less and no one cares about performance art, it's a Pareto improvement to _not_ burn the million quid.
-
 Person A has 100 apples and is indifferent between 99 apples and 100 apples. Person B has 100 oranges and is indifferent between 99 oranges and 100 oranges. Assuming both parties prefer 1 of any given fruit to 0, it would be a Pareto improvement for person A to trade their 100th apple in exchange for person B's 100th orange.
 
 # Belaboring the obvious
 
-The Pareto approach cannot render judgment as to weather the Holocaust is better than not-the-Holocaust. On the other hand, it condemns foregone trade. This is not an approach that should take pride of place in evaluating policies.
+The Pareto approach cannot render judgment as to weather the Holocaust is better than not-the-Holocaust. On the other hand, it condemns foregone trade. This is not an approach that should take pride of place in evaluating policies. For an early article on how limiting thin, value-free analyses like these are, see [@harrod1938scope].
+
+<hr class="references">
 
 [^generalize]: In what follows, we'll allow the obvious extension to scenarios that vary on dimensions other than just resource distributions---that is, we'll apply the same logic of Pareto improvements and abjuring interpersonal tradeoffs to scenarios which vary in institutions, culture, social relationships, etc.
 
