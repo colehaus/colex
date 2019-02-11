@@ -1,7 +1,7 @@
 ---
 title: Hot takes—The Moral Limits of Markets
 published: 2018-05-28
-edited: 2018-05-31
+edited: 2019-02-11
 tags: ethics, markets
 series: The Moral Limits of Markets
 ---
@@ -51,6 +51,8 @@ Once we leave the most naive versions of rational choice, we can suggest that hu
 On this view, market norms can crowd out other norms because they make it harder to express what people hope to express. Prompt pick up might express respect or it might express unwillingness to pay. Agreeing to house nuclear waste might express civic responsibility or it might just be a cash grab. If people are going to misinterpret an action, it's a much less appealing expression.
 
 If we accept this story, crowding out isn't unique to the introduction of market incentives. *Any* additional incentives muddy the expressive waters. Because observers only see the action and not the intention, they're left to guess which predominated.
+
+(Edit: It turns out the theory described above is also talked about in the literature. See, for example, [@gneezy2011and]. I wish Sandel had engaged with this literature.)
 
 # Preferences are malleable
 
