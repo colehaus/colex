@@ -40,7 +40,7 @@ So Whetu's initial belief---"One of my coworkers owns a Vanagon"---turns out to 
 
 <!--more-->
 
-This set off a frenzy of philosophical activity that has yet to cease [@shope2017]. Most philosophers try to repair the traditional analysis by finding some appropriate link between justification and truth. If Whetu just got lucky, we need to ensure that luck doesn't suffice to constitute knowledge. For reasons of brevity (among others), I'll direct the interested to [SEP](https://plato.stanford.edu/entries/knowledge-analysis/) for a further discussion of the reams of argumentation here.
+This set off a frenzy of philosophical activity that has yet to cease [@shope2017]. Most philosophers try to repair the traditional analysis by finding some appropriate link between justification and truth. If Whetu just got lucky, we need to ensure that luck doesn't suffice to constitute knowledge. For reasons of brevity (among others), I'll direct the interested to [SEP](https://plato.stanford.edu/entries/knowledge-analysis/) for a further discussion of the reams of argumentation on this topic.
 
 ## [Justification](#yaas-epistemology-map){#justified .arg-map}
 
@@ -126,7 +126,7 @@ Now, we have a choice.
 
     Endorsing cyclic justification---we justify sight with reference to other senses and other senses with reference to sight--- characterizes [coherentism](https://plato.stanford.edu/entries/justep-coherence/).
 
-So, to summarize, when faced with endless 'why's, we can pursue one of three strategies: Provide an endless stream of responses, declare that some beliefs are above questioning, or provide circular justification. Again, there's lots of arguments about which (if any) of these positions is correct which we'll not cover here.
+So, to summarize, when faced with endless 'why's, we can pursue one of three strategies: Provide an endless stream of responses, declare that some beliefs are beyond questioning, or provide circular justification. Again, there's lots of arguments about which (if any) of these positions is correct which we'll not cover here.
 :::
 ::: {}
 In general, each belief ought to have some justification. Beliefs without any justification aren't even candidates for counting as knowledge. But the justification for a belief is also a belief and thus demands *it's* own justifying belief.
@@ -278,13 +278,13 @@ That also serves as the segue for the shoehorning of two more survey results [@b
 
 ## [Truth](#yaas-epistemology-map){#true .arg-map}
 
-Your patience for these persnickety philosophers likely begins to grow thin. They cavil and niggle, carp and quibble. They've taken common sense notions like knowledge, belief and justification, raised questions, drawn distinctions and offered precious little in the way of answers. But at last, you think, we come to truth---a concept so straightforward it's beyond the grasping claws of even the most wretched sophist. Alas...
+Your patience with these persnickety philosophers likely begins to grow thin. They cavil and niggle, carp and quibble. They've taken common sense notions like knowledge, belief and justification, raised questions, drawn distinctions and offered precious little in the way of answers. But at last, you think, we come to truth---a concept so straightforward it's beyond the grasping claws of even the most wretched sophist. Alas...
 
 Philosophers advance myriad interpretations of truth. These can be categorized under a few broad headings:
 
 [Correspondence](#yaas-epistemology-map){#correspondence .arg-map}
 
-:   [Correspondence theories of truth](https://plato.stanford.edu/entries/truth-correspondence/) are probably closest to common sense, folk theories of truth. They said that a proposition is true if and only if it corresponds to the world---if the map corresponds to the territory.
+:   [Correspondence theories of truth](https://plato.stanford.edu/entries/truth-correspondence/) are probably closest to common sense, folk theories of truth. They say that a proposition is true if and only if it corresponds to the world---if the map corresponds to the territory.
 
 [Epistemic](#yaas-epistemology-map){#epistemic .arg-map}
 
@@ -332,7 +332,7 @@ In additional to all the details we've skated over, there are whole subtopics co
 
 <hr class="references">
 
-[^a-priori]: Of course, humans can never actually come to hold beliefs independent of all sense experience. Our lives are filled with sensory experiences and before believing a proposition, we must come to understand it and the language used to express it (a process which necessarily relies on our senses). The <i>a priori</i>-<i>a posteriori</i> distinction is not about the causal mechanism by which we come to believe a proposition; it's about the epistemic justification for a proposition.
+[^a-priori]: Of course, humans can never actually come to hold beliefs independent of all sense experience. Our lives are filled with sensory experiences and before believing a proposition, we must come to understand the proposition and the language used to express it (a process which necessarily relies on our senses). The <i>a priori</i>-<i>a posteriori</i> distinction is not about the causal mechanism by which we come to believe a proposition; it's about the epistemic justification for a proposition.
 
 [^belief-cute]: Putting these under "Beliefs" is a bit cute---they're more properly regarded as describing propositions. But the contents of beliefs are propositions and this fits into our overarching organizational structure nicely.
 

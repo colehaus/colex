@@ -9,7 +9,7 @@ css: priority-decisions
 
 [Last time](/posts/dominated-decisions/), we introduced the basic setup of decision theory and examined the dominance decision rule. We also emphasized that the dominance decision rule is "weak" because it applies in very general settings with limited information to go on.
 
-This time, we'll look at other decision rules that apply in a very minimal setting.
+This time, we'll look at other decision rules that apply in a very general setting.
 
 # Maximin
 
@@ -72,13 +72,14 @@ Again, maximin applies in very general settings because the only constraint we m
 
 We can also describe maximin $\preccurlyeq_{MaMi}$ in symbols:
 
-$$a_i \preccurlyeq_{MaMi} a_j \leftrightarrow \min_{s \in S} v(a_i, s) \leq \min_{s \in S} v(a_j, s) s$$
+$$a_i \preccurlyeq_{MaMi} a_j \leftrightarrow \min_{s \in S} v(a_i, s) \leq \min_{s \in S} v(a_j, s)$$
 
 where $a_i$ and $a_j$ represent the ith and jth actions, $s$ is a particular state of the world from the set $S$ of all states, and $v : A \times S \to V$ is a function mapping an action in a particular state of the world to an element in the [total order](https://en.wikipedia.org/wiki/Total_order) order of values $V$.
 
-In other words, we start out with a totally ordered set of valuations where each outcome (cell in a decision table) corresponds to a valuation in this set. These outcomes can be compared to one another to determine which is preferable. Maximin is then a way of lifting the total order of outcome valuations and turning it into a binary relation on actions---each of which comprises several outcomes across different states of the world.
+In other words, we start out with a totally ordered set of valuations where each outcome (cell in a decision table) corresponds to a valuation in this set. These outcomes can be compared to one another to determine which is preferable. Maximin is then a way of lifting the total order of outcome valuations and turning it into a binary relation on actions---"lifting" is necessary because each  action consists of _several_ outcomes across different states of the world.
 
-The resulting binary relation is [reflexive](https://en.wikipedia.org/wiki/Reflexive_relation), [transitive](https://en.wikipedia.org/wiki/Transitive_relation) and [connex](https://en.wikipedia.org/wiki/Connex_relation). This means maximin is a total preorder. If we strengthen it by switching to $<$ in the right-hand side of the definition instead of $\leq$, strong maximin (analogous to strong dominance) becomes a total order (with [antisymmetry](https://en.wikipedia.org/wiki/Antisymmetric_relation) vacuously satisfied).
+
+The resulting binary relation on actions is [reflexive](https://en.wikipedia.org/wiki/Reflexive_relation), [transitive](https://en.wikipedia.org/wiki/Transitive_relation) and [connex](https://en.wikipedia.org/wiki/Connex_relation). This means maximin is a total preorder. If we strengthen it by switching to $<$ in the right-hand side of the definition instead of $\leq$, strong maximin (analogous to strong dominance) becomes a total order (with [antisymmetry](https://en.wikipedia.org/wiki/Antisymmetric_relation) vacuously satisfied).
 
 # Maximax
 
@@ -140,17 +141,17 @@ Again, maximax applies in very general settings because the only constraint we m
 
 We can also describe maximax $\preccurlyeq_{MaMa}$ in symbols:
 
-$$a_i \preccurlyeq_{MaMa} a_j \leftrightarrow \max_{s \in S} v(a_i, s) \leq \max_{s \in S} v(a_j, s) s$$
+$$a_i \preccurlyeq_{MaMa} a_j \leftrightarrow \max_{s \in S} v(a_i, s) \leq \max_{s \in S} v(a_j, s)$$
 
 where $a_i$ and $a_j$ represent the ith and jth actions, $s$ is a particular state of the world from the set $S$ of all states, and $v : A \times S \to V$ is a function mapping an action in a particular state of the world to an element in the [total order](https://en.wikipedia.org/wiki/Total_order) order of values $V$.
 
-In other words, we start out with a totally ordered set of valuations where each outcome (cell in a decision table) corresponds to a valuation in this set. These outcomes can be compared to one another to determine which is preferable. Maximax is then a way of lifting the total order of outcome valuations and turning it into a binary relation on actions---each of which comprises several outcomes across different states of the world.
+In other words, we start out with a totally ordered set of valuations where each outcome (cell in a decision table) corresponds to a valuation in this set. These outcomes can be compared to one another to determine which is preferable. Maximax is then a way of lifting the total order of outcome valuations and turning it into a binary relation on actions---"lifting" is necessary because each  action consists of _several_ outcomes across different states of the world.
 
-The resulting binary relation is [reflexive](https://en.wikipedia.org/wiki/Reflexive_relation), [transitive](https://en.wikipedia.org/wiki/Transitive_relation) and [connex](https://en.wikipedia.org/wiki/Connex_relation). This means maximax is a total preorder. If we strengthen it by switching to $<$ in the right-hand side of the definition instead of $\leq$, strong maximax (analogous to strong dominance) becomes a total order (with [antisymmetry](https://en.wikipedia.org/wiki/Antisymmetric_relation) vacuously satisfied).
+The resulting binary relation on actions is [reflexive](https://en.wikipedia.org/wiki/Reflexive_relation), [transitive](https://en.wikipedia.org/wiki/Transitive_relation) and [connex](https://en.wikipedia.org/wiki/Connex_relation). This means maximax is a total preorder. If we strengthen it by switching to $<$ in the right-hand side of the definition instead of $\leq$, strong maximax (analogous to strong dominance) becomes a total order (with [antisymmetry](https://en.wikipedia.org/wiki/Antisymmetric_relation) vacuously satisfied).
 
 # Leximin
 
-The final decision rule we'll look at is leximin.
+The final decision rule we'll look at today is leximin.
 
 ## Prose
 
@@ -214,8 +215,8 @@ Again, leximin applies in very general settings because the only constraint we m
 
 ## Math
 
-We start out with a totally ordered set of valuations where each outcome (cell in a decision table) corresponds to a valuation in this set. These outcomes can be compared to one another to determine which is preferable. Maximax is then a way of lifting the total order of outcome valuations and turning it into a binary relation on actions---each of which comprises several outcomes across different states of the world.
+We start out with a totally ordered set of valuations where each outcome (cell in a decision table) corresponds to a valuation in this set. These outcomes can be compared to one another to determine which is preferable. Maximax is then a way of lifting the total order of outcome valuations and turning it into a binary relation on actions---"lifting" is necessary because each  action consists of _several_ outcomes across different states of the world.
 
-The resulting binary relation is [reflexive](https://en.wikipedia.org/wiki/Reflexive_relation), [transitive](https://en.wikipedia.org/wiki/Transitive_relation) and [connex](https://en.wikipedia.org/wiki/Connex_relation). This means leximin is a total preorder. 
+The resulting binary relation on actions is [reflexive](https://en.wikipedia.org/wiki/Reflexive_relation), [transitive](https://en.wikipedia.org/wiki/Transitive_relation) and [connex](https://en.wikipedia.org/wiki/Connex_relation). This means leximin is a total preorder. 
 
 [^order]: The only change in setting/assumptions we've made between dominance and maximin is upgrading our `cell` valuations from a partial order to a total order. This isn't strictly necessary but incomparability becomes much more cumbersome with maximin because more pairwise comparisons are required. With dominance, the only comparisons needed to determine one action superior to another are those across two outcomes in each particular state of the world. With maximin, we need to be able to compare all the outcomes for a given state against each other and then compare the worst of these across actions.

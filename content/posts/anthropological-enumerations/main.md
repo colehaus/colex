@@ -233,6 +233,7 @@ Moiety
 # Associations and interest groups
 
 Anthropologists define associations as groupings satisfying the following criteria:
+
 - Institutionalized structure
 - Exclusion of some people
 - Common interest or purpose
@@ -292,13 +293,13 @@ Supernatural beliefs plausibly shape and are shaped by society. For example:
 People also put their supernatural belief into practice. There are several core types of supernatural practitioners:
 
 Shamans
-:   A religious intermediary, usually part-time, whose primary function is to cure people through sacred songs, pantomime, and other means; sometimes called witch doctor by Westerners.
+:   "A religious intermediary, usually part-time, whose primary function is to cure people through sacred songs, pantomime, and other means; sometimes called witch doctor by Westerners."
 Sorcerers and witches
 :   Sorcerers use tangible ritual materials in an attempt to harm people. Witches attempt to harm people through emotion and thought alone.
 Mediums
-:   Part-time religious practitioners who are asked to heal and divine while in a trance.
+:   "Part-time religious practitioners who are asked to heal and divine while in a trance."
 Priests
-:   Generally full-time specialists, with very high status, who are thought to be able to relate to superior or high gods beyond the ordinary person’s access or control.
+:   "Generally full-time specialists, with very high status, who are thought to be able to relate to superior or high gods beyond the ordinary person’s access or control."
 
 <hr class="references">
 
