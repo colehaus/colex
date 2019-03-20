@@ -1,12 +1,15 @@
-resolver: lts-12.22
+resolver: lts-13.13
 packages:
   - .
 local-bin-path: .stack-bin/
 extra-deps:
+  - hakyll-4.12.5.1
+  - lrucache-1.2.0.1
 nix:
   packages:
     - zlib.dev
     - zlib.out
   pure: false
+  path: ["nixpkgs=https://github.com/NixOS/nixpkgs/archive/c1d65d680b29c613eef2a6583c11f0586416ecb9.tar.gz"]
 ghc-options:
   "ColEx": -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints
