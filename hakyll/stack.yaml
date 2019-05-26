@@ -1,9 +1,9 @@
-resolver: lts-13.13
+resolver: lts-13.19
 packages:
   - .
 local-bin-path: .stack-bin/
 extra-deps:
-  - hakyll-4.12.5.1
+  - hakyll-4.12.5.2
   - lrucache-1.2.0.1
 nix:
   packages:
