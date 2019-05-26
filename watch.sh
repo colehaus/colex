@@ -5,8 +5,8 @@ set -euxo pipefail
 
 root=$(pwd)
 
-ijsinstall
-jupyter notebook --no-browser &
+# ijsinstall
+# jupyter notebook --no-browser &
 
 cd "${root}/hakyll"
 stack install

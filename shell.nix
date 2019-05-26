@@ -9,17 +9,17 @@ let
   webpack = pkgs.callPackage ./content/js { inherit pkgs extras; };
   content = pkgs.callPackage ./content { inherit hakyll pkgs extras; };
   hakyll = pkgs.callPackage ./hakyll { inherit pkgs extras; };
-  ijavascript = extras.callNpm {
-    inherit pkgs;
-    name = "ijavascript";
-    versionSpec = "^5.0.20";
-  };
+#   ijavascript = extras.callNpm {
+#     inherit pkgs;
+#     name = "ijavascript";
+#     versionSpec = "^5.0.20";
+#   };
 in
   pkgs.stdenv.mkDerivation {
     name = "colExEnv";
     LC_ALL = "en_US.UTF-8";
     buildInputs =
-      [ pkgs.python36Packages.jupyter ijavascript pkgs.stack ] ++
+      # [ pkgs.python36Packages.jupyter ijavascript pkgs.stack ] ++
       hakyll.nativeBuildInputs ++
       content.nativeBuildInputs ++
       webpack.nativeBuildInputs ++
