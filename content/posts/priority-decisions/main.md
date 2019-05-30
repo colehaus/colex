@@ -62,8 +62,10 @@ We see that with the default input table, Actions 2 and 3 beat Action 1 since th
 We can also explain maximin with its implementing source code:
 
 ```haskell
-maximin :: forall cell. Ord cell => Row cell -> Row cell -> Boolean
-maximin row1 row2 = Foldable1.minimum row1 >= Foldable1.minimum row2
+maximin :: forall cell. Ord cell => PairOfRows cell -> Boolean
+maximin rows = Foldable1.minimum row1 Prelude.>= Foldable1.minimum row2
+  where
+    Tuple row1 row2 = unzipNeMultiSet rows
 ```
 
 Again, maximin applies in very general settings because the only constraint we must satisfy is that `cell`s are [[orderable](https://en.wikipedia.org/wiki/Total_order)]{.noted}[^order].
@@ -131,8 +133,10 @@ We see that with the default input table, Actions 1 and 3 beat Action 2 since th
 We can also explain maximax with its implementing source code:
 
 ```haskell
-maximax :: forall cell. Ord cell => Row cell -> Row cell -> Boolean
-maximax row1 row2 = Foldable1.maximum row1 Prelude.>= Foldable1.maximum row2
+maximax :: forall cell. Ord cell => PairOfRows cell -> Boolean
+maximax rows = Foldable1.maximum row1 Prelude.>= Foldable1.maximum row2
+  where
+    Tuple row1 row2 = unzipNeMultiSet rows
 ```
 
 Again, maximax applies in very general settings because the only constraint we must satisfy is that `cell`s are [orderable](https://en.wikipedia.org/wiki/Total_order).
@@ -201,11 +205,12 @@ We see that with the default input table, Actions 2 and 3 beat Action 1 since th
 We can also explain leximin with its implementing source code:
 
 ```haskell
-leximin :: forall cell. Ord cell => Row cell -> Row cell -> Boolean
-leximin row1 row2 =
+leximin :: forall cell. Ord cell => PairOfRows cell -> Boolean
+leximin rows =
     fromMaybe true <<< List.head <<< NonEmpty.mapMaybe keepNonEq $
     NonEmpty.zipWith compare (NonEmpty.sort row1) (NonEmpty.sort row2)
   where
+    Tuple row1 row2 = unzipNeMultiSet rows
     keepNonEq GT = Just true
     keepNonEq LT = Just false
     keepNonEq EQ = Nothing

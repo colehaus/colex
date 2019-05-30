@@ -75,13 +75,17 @@ If the above description isn't sufficient, try poking around with this interacti
 Another way to explain dominance is with source code:
 
 ```haskell
-dominatesWeakly :: forall cell. PartialOrd cell => Row cell -> Row cell -> Boolean
-dominatesWeakly row1 row2 = Foldable.all ((==) true) (NonEmpty.zipWith (>=) row1 row2)
+dominatesWeakly :: forall cell. PartialOrd cell => PairOfRows cell -> Boolean
+dominatesWeakly rows = Foldable.and (NonEmpty.zipWith (>=) row1 row2)
+  where
+    Tuple row1 row2 = unzipNeMultiSet rows
 
-dominatesStrongly :: forall cell. PartialOrd cell => Row cell -> Row cell -> Boolean
-dominatesStrongly row1 row2 =
-    Foldable.all ((==) true) (NonEmpty.zipWith (>=) row1 row2) &&
-    Foldable.any ((==) true) (NonEmpty.zipWith (>) row1 row2)
+dominatesStrongly :: forall cell. PartialOrd cell => PairOfRows cell -> Boolean
+dominatesStrongly rows =
+  Foldable.and (NonEmpty.zipWith (>=) row1 row2) &&
+  Foldable.or (NonEmpty.zipWith (>) row1 row2)
+  where
+    Tuple row1 row2 = unzipNeMultiSet rows
 ```
 
 To hammer home the point about dominance being applicable in very general settings: `cell` is totally polymorphic except for the constraint that `cell`s form a [partial order](https://en.wikipedia.org/wiki/Partially_ordered_set).
