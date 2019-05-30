@@ -9,12 +9,12 @@
   ],
   "dependencies": {
     "purescript-behaviors": "^7.0.0",
-    "purescript-decision-theory": "^0.1.0",
+    "purescript-decision-theory": "0.1.2",
     "purescript-jquery": "^5.0.0",
     "purescript-jquery-fancy": "^2.0.0",
     "purescript-prelude": "^4.1.0",
-    "purescript-tables": "^0.0.2",
-    "purescript-tables-parse": "^0.1.0"
+    "purescript-tables": "0.0.7",
+    "purescript-tables-parse": "0.1.1"
   },
   "devDependencies": {
     "purescript-psci-support": "^4.0.0"

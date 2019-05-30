@@ -2,30 +2,29 @@ module Main where
 
 import Prelude
 
+import Data.Array as Array
+import Data.Bifunctor (bimap)
 import Data.Either (Either(..))
 import Data.Foldable as Foldable
-import Data.List (List)
-import Data.List as List
-import Data.List.NonEmpty (NonEmptyList)
+import Data.HashSet (HashSet)
+import Data.HashSet as HashSet
+import Data.Hashable (class Hashable)
 import Data.Maybe (Maybe(..))
 import Data.Newtype as Newtype
-import Data.Set (Set)
-import Data.Set as Set
 import Data.Table (Table)
-import Data.Table as Table
+import Data.Table (row, rowIds) as Table
 import Data.Table.Parse (parse) as Table
-import Data.Tuple (Tuple(..))
-import Data.Tuple as Tuple
-import DecisionTheory as DT
+import Data.Tuple (Tuple(..), uncurry)
+import DecisionTheory.Ignorance as DT
+import DecisionTheory.Utility as Utility
 import Effect (Effect)
 import FRP.Event as FRP
+import FRP.JQuery (textAreaChangeEvent)
 import Foreign (Foreign)
+import Html as Html
 import JQuery (append, create, ready) as J
 import JQuery.Fancy (JQuery, One)
 import JQuery.Fancy (clearOne, setText) as J
-
-import FRP.JQuery (textAreaChangeEvent)
-import Html as Html
 
 foreign import jQuery :: Foreign
 
@@ -38,43 +37,41 @@ main = do
 
 sink :: JQuery (One "div") -> String -> Effect Unit
 sink output tableText =
-  case Table.parse Just Just Just Just Just tableText of
+  case Table.parse Just Just Just tableText of
     Left e -> J.setText (show e) output
     Right table -> render output (dominations table)
 
-type PlainTable = Table String String String (NonEmptyList String) (NonEmptyList String)
+type PlainTable = Table String String String
 
-render :: JQuery (One "div") -> Tuple (List (Tuple String String)) (List (Tuple String String)) -> Effect Unit
+render ::
+  JQuery (One "div") ->
+  Tuple (HashSet (Tuple String String)) (HashSet (Tuple String String)) ->
+  Effect Unit
 render output (Tuple weak strong) = do
   J.clearOne output
   el <- J.create (listToHtml "weakly" weak <> listToHtml "strongly" strong)
   J.append el (Newtype.unwrap output)
   where
-    listToHtml adj ds = "<ul class=\"" <> adj <> "\">" <> Foldable.foldMap itemToHtml ds <> "</ul>"
+    listToHtml adj ds =
+      "<ul class=\"" <> adj <> "\">" <> Foldable.foldMap itemToHtml ds' <> "</ul>"
       where
+        ds' = Array.sort <<< HashSet.toArray $ ds
         itemToHtml (Tuple l r) = "<li>" <> l <> " " <> adj <> " dominates " <> r <> "</li>"
 
-dominations :: PlainTable -> Tuple (List (Tuple String String)) (List (Tuple String String))
+dominations ::
+  PlainTable ->
+  Tuple (HashSet (Tuple String String)) (HashSet (Tuple String String))
 dominations table = Tuple (dominations' DT.dominatesWeakly) (dominations' DT.dominatesStrongly)
   where
     dominations' pred =
-      List.filter (Tuple.uncurry (/=)) <<<
-      List.filter ((==) (Just true) <<< Tuple.uncurry (rows pred table)) $
-      List.fromFoldable rowIdPairs
+      HashSet.filter (uncurry (/=)) <<<
+      HashSet.filter ((==) (Just true) <<< map pred <<< rowIdsToRows) $
+      rowIdPairs
     rowIdPairs = pairs $ Table.rowIds table
+    rowIdsToRows =
+      Utility.neMultiSet <<< uncurry DT.zipActions <<<
+      bimap (Table.row table) (Table.row table)
 
-pairs :: forall a. Ord a => Set a -> Set (Tuple a a)
+pairs :: forall a. Hashable a => HashSet a -> HashSet (Tuple a a)
 pairs xs =
-  Set.fromFoldable <<< asList $ Tuple <$> Set.toUnfoldable xs <*> Set.toUnfoldable xs
-  where
-    asList :: forall b. List b -> List b
-    asList = identity
-
-rows ::
-  forall column row cell columnId rowId a.
-  Eq rowId =>
-  (row -> row -> a) -> Table rowId columnId cell row column -> rowId -> rowId -> Maybe a
-rows f table rowId1 rowId2 =
-  case Tuple (Table.row table rowId1) (Table.row table rowId2) of
-    Tuple (Just row1) (Just row2) -> Just $ f row1 row2
-    Tuple _ _ -> Nothing
+  HashSet.fromFoldable $ Tuple <$> HashSet.toArray xs <*> HashSet.toArray xs
