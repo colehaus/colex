@@ -2,11 +2,10 @@ module Html where
 
 import Prelude
 
-import Data.Maybe (Maybe(..))
+import Data.Maybe (Maybe)
 import Effect (Effect)
 import JQuery.Fancy (JQuery, One)
 import JQuery.Fancy as J
-import Partial.Unsafe (unsafePartialBecause)
 
 type RuleElements =
   { input :: JQuery (One "textarea")
@@ -14,25 +13,39 @@ type RuleElements =
   }
 
 type Elements =
-  { maximinElements :: RuleElements
-  , maximaxElements :: RuleElements
-  , leximinElements :: RuleElements
+  { maximinElements :: Maybe RuleElements
+  , maximaxElements :: Maybe RuleElements
+  , leximinElements :: Maybe RuleElements
+  , strongDominanceElements :: Maybe RuleElements
+  , weakDominanceElements :: Maybe RuleElements
   }
 
 collectElements :: Effect Elements
-collectElements =
-  unsafePartialBecause "We require these elements to function" ado
-    maximinElements <- ado
-      Just input <- J.selectOne "#maximin-table"
-      Just output <- J.selectOne "#maximin-analysis"
-      in { input, output }
-    maximaxElements <- ado
-      Just input <- J.selectOne "#maximax-table"
-      Just output <- J.selectOne "#maximax-analysis"
-      in { input, output }
-    leximinElements <- ado
-      Just input <- J.selectOne "#leximin-table"
-      Just output <- J.selectOne "#leximin-analysis"
-      in { input, output }
-    in { maximinElements, maximaxElements, leximinElements }
+collectElements = ado
+  maximinElements <- sequence' <$> ado
+    input <- J.selectOne "#maximin-table"
+    output <- J.selectOne "#maximin-analysis"
+    in { input, output }
+  maximaxElements <- sequence' <$> ado
+    input <- J.selectOne "#maximax-table"
+    output <- J.selectOne "#maximax-analysis"
+    in { input, output }
+  leximinElements <- sequence' <$> ado
+    input <- J.selectOne "#leximin-table"
+    output <- J.selectOne "#leximin-analysis"
+    in { input, output }
+  strongDominanceElements <- sequence' <$> ado
+    input <- J.selectOne "#dominance-table"
+    output <- J.selectOne "#strong-dominance-analysis"
+    in { input, output }
+  weakDominanceElements <- sequence' <$> ado
+    input <- J.selectOne "#dominance-table"
+    output <- J.selectOne "#weak-dominance-analysis"
+    in { input, output }
+  in { maximinElements, maximaxElements, leximinElements, strongDominanceElements, weakDominanceElements }
+  where
+    sequence' { input: mInput, output: mOutput } = ado
+      input <- mInput
+      output <- mOutput
+      in { input, output}
 

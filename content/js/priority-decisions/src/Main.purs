@@ -34,15 +34,15 @@ main :: Effect Unit
 main = do
   J.ready do
     els <- Html.collectElements
-    void $
-      flip FRP.subscribe (sink DT.maximin els.maximinElements.output) =<<
-      textAreaChangeEvent els.maximinElements.input
-    void $
-      flip FRP.subscribe (sink DT.maximax els.maximaxElements.output) =<<
-      textAreaChangeEvent els.maximaxElements.input
-    void $
-      flip FRP.subscribe (sink DT.leximin els.leximinElements.output) =<<
-      textAreaChangeEvent els.leximinElements.input
+    wireUp els.maximinElements DT.maximin
+    wireUp els.maximaxElements DT.maximax
+    wireUp els.leximinElements DT.leximin
+    wireUp els.strongDominanceElements DT.dominatesStrongly
+    wireUp els.weakDominanceElements DT.dominatesWeakly
+  where
+    wireUp mEls rule =
+      Foldable.for_ mEls $ \els ->
+        flip FRP.subscribe (sink rule els.output) =<< textAreaChangeEvent els.input
 
 sink ::
   (NonEmpty MultiSet (Tuple String String) -> Boolean) ->
