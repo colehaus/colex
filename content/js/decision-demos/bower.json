@@ -1,5 +1,5 @@
 {
-  "name": "dominated-decisions",
+  "name": "decision-demos",
   "ignore": [
     "**/.*",
     "node_modules",
@@ -14,7 +14,7 @@
     "purescript-jquery-fancy": "^2.0.0",
     "purescript-prelude": "^4.1.0",
     "purescript-tables": "0.0.7",
-    "purescript-tables-parse": "0.1.1"
+    "purescript-tables-parse": "0.1.2"
   },
   "devDependencies": {
     "purescript-psci-support": "^4.0.0"

@@ -1,5 +1,5 @@
 {
-  "name": "priority-decisions",
+  "name": "decision-demos",
   "version": "0.0.1",
   "dependencies": {
     "jquery": "^3.3.1"

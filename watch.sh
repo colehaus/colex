@@ -35,8 +35,7 @@ declare -a purescript_projects=(
     # "value-of-information-calculator"
     # "construct-vnm-utility-function"
     # "exemplars-curse"
-    # "dominated-decisions"
-    # "priority-decisions"
+    "decision-demos"
 )
 
 for project in "${purescript_projects[@]}"

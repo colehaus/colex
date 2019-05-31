@@ -3,8 +3,8 @@ title: Priority decisions
 series: An Introduction to Decision Theory
 published: 2019-01-30
 tags: decision theory, interactive, yaas
-js: priority-decisions
-css: priority-decisions
+js: decision-demos
+css: decision-demos
 ---
 
 [Last time](/posts/dominated-decisions/), we introduced the basic setup of decision theory and examined the dominance decision rule. We also emphasized that the dominance decision rule is "weak" because it applies in very general settings with limited information to go on.

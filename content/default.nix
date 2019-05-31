@@ -7,8 +7,7 @@
     voi = pkgs.callPackage ./js/value-of-information-calculator { inherit extras; };
     vnm = pkgs.callPackage ./js/construct-vnm-utility-function { inherit extras; };
     exemplar = pkgs.callPackage ./js/exemplars-curse { inherit extras; };
-    dominatedDecisions = pkgs.callPackage ./js/dominated-decisions { inherit extras; };
-    priorityDecisions = pkgs.callPackage ./js/priority-decisions { inherit extras; };
+    decisionDemos = pkgs.callPackage ./js/decision-demos { inherit extras; };
     mathJaxNodeCli = extras.callNpm {
       inherit pkgs;
       name = "mathjax-node-cli";
@@ -46,8 +45,7 @@
         cp ${voi}/* js/dist
         cp ${vnm}/* js/dist
         cp ${exemplar}/* js/dist
-        cp ${dominatedDecisions}/* js/dist
-        cp ${priorityDecisions}/* js/dist
+        cp ${decisionDemos}/* js/dist
       '';
       buildPhase = ''
         site build

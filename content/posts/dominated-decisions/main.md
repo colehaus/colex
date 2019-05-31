@@ -4,8 +4,8 @@ series: An Introduction to Decision Theory
 published: 2019-01-17
 edited: 2019-01-30
 tags: decision theory, interactive, yaas
-js: dominated-decisions
-css: dominated-decisions
+js: decision-demos
+css: decision-demos
 ---
 
 # Decision matrices
@@ -54,7 +54,7 @@ You have the choice of two alternative routes to work. In good conditions, both 
 
 If the above description isn't sufficient, try poking around with this interactive analysis (Note that "better than" in this case means later in [ASCIIbetical order](https://en.wikipedia.org/wiki/ASCII#Character_order)---later letters are better than earlier letters). The analysis will update whenever you stop editing text and defocus the text area.
 
-<textarea id="decision-table">
+<textarea id="dominance-table" class="decision-table">
 ```{=html}
 
 |          | State 1 | State 2 |
@@ -64,9 +64,15 @@ If the above description isn't sufficient, try poking around with this interacti
 ```
 </textarea>
 
-::: {#decision-analysis}
-- Action 2 weakly dominates Action 1
+Weak:
 
+::: {#weak-dominance-analysis}
+- Action 2 weakly dominates Action 1
+:::
+
+Strong:
+
+::: {#strong-dominance-analysis}
 - Action 2 strongly dominates Action 1
 :::
 
