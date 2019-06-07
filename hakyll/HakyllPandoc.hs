@@ -57,3 +57,13 @@ readPandocWith ropt item =
           "the type " ++ show t ++ " for: " ++ show (itemIdentifier item)
     addExt ro e =
       ro {readerExtensions = enableExtension e $ readerExtensions ro}
+
+writePandocPlainWith :: WriterOptions -> Item Pandoc -> Item String
+writePandocPlainWith wopt (Item itemi doc) =
+  case runPure $ writePlain wopt doc of
+    Left err -> error $ "HakyllPandoc.writePandocPlainWith" <> show err
+    Right item' -> Item itemi $ T.unpack item'
+
+renderPandocPlainWith ::
+  ReaderOptions -> WriterOptions -> Item String -> Compiler (Item String)
+renderPandocPlainWith ropt wopt s = writePandocPlainWith wopt <$> readPandocWith ropt s

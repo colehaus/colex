@@ -50,6 +50,9 @@ load = Hakyll.load . unBlessedIdentifier
 loadBody :: (Typeable a, Binary a) => Blessed ty Identifier -> Compiler a
 loadBody = Hakyll.loadBody . unBlessedIdentifier
 
+loadSnapshotBody :: (Typeable a, Binary a) => Blessed ty Identifier -> Snapshot -> Compiler a
+loadSnapshotBody ident snap = flip Hakyll.loadSnapshotBody snap . unBlessedIdentifier $ ident
+
 loadAndApplyTemplate ::
      Blessed "template" Identifier
   -> Context a

@@ -50,6 +50,7 @@ import Hakyll hiding
   , loadAllSnapshots
   , loadAndApplyTemplate
   , loadBody
+  , loadSnapshotBody
   , makePatternDependency
   , match
   , readPandocBiblio
@@ -617,8 +618,12 @@ buildPosts defaultTemplate postTemplate bibIdent cslIdent tags series chunkMap d
     pandocCompilerWith readerOpt writerOpt
   overlays <- makePatternDependency overlayPat
   abstractPat <-
-    match (fromGlob $ dir <> "/*/abstract.md") . compile $
-    pandocCompilerWith readerOpt writerOpt
+    match (fromGlob $ dir <> "/*/abstract.md") . compile $ do
+      r <- getResourceBody
+      _ <-
+        saveSnapshot "plain" <=<
+        renderPandocPlainWith readerOpt writerOpt $ replaceAll "\"" (const "'") <$> r
+      renderPandocWith readerOpt writerOpt r
   abstracts <- makePatternDependency abstractPat
   warningsPat <-
     match (fromGlob $ dir <> "/*/warnings.md") $ compile getResourceBody
@@ -631,8 +636,10 @@ buildPosts defaultTemplate postTemplate bibIdent cslIdent tags series chunkMap d
         "/index.html"
       compile $
         let ctx =
-              warnCtx warningsPat <> overCtx overlayPat <>
+              warnCtx warningsPat <>
+              overCtx overlayPat <>
               abstractCtx abstractPat <>
+              abstractPlainCtx abstractPat <>
               jsCtx chunkMap <>
               cssCtx <>
               seriesCtx series <>
@@ -726,6 +733,14 @@ overCtx overPat =
   narrowEx overPat .
   fromFilePath .
   (<> "/overlay.md") . takeDirectory . toFilePath . itemIdentifier
+
+abstractPlainCtx :: Blessed "abstract" Pattern -> Context String
+abstractPlainCtx abstractPat =
+  field "abstract-plain" $
+  flip loadSnapshotBody "plain" .
+  narrowEx abstractPat .
+  fromFilePath .
+  (<> "/abstract.md") . takeDirectory . toFilePath . itemIdentifier
 
 abstractCtx :: Blessed "abstract" Pattern -> Context String
 abstractCtx abstractPat =
