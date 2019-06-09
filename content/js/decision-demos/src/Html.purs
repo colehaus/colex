@@ -12,28 +12,30 @@ type RuleElements =
   , output :: JQuery (One "div")
   }
 
+type OptimPessimElements =
+  { input :: JQuery (One "textarea")
+  , alpha :: JQuery (One "input")
+  , output :: JQuery (One "div")
+  }
+
 type Elements =
   { maximinElements :: Maybe RuleElements
   , maximaxElements :: Maybe RuleElements
   , leximinElements :: Maybe RuleElements
   , strongDominanceElements :: Maybe RuleElements
   , weakDominanceElements :: Maybe RuleElements
+  , optimismPessimismElements :: Maybe OptimPessimElements
+  , minimaxRegretElements :: Maybe RuleElements
+  , indifferenceElements :: Maybe RuleElements
   }
 
 collectElements :: Effect Elements
 collectElements = ado
-  maximinElements <- sequence' <$> ado
-    input <- J.selectOne "#maximin-table"
-    output <- J.selectOne "#maximin-analysis"
-    in { input, output }
-  maximaxElements <- sequence' <$> ado
-    input <- J.selectOne "#maximax-table"
-    output <- J.selectOne "#maximax-analysis"
-    in { input, output }
-  leximinElements <- sequence' <$> ado
-    input <- J.selectOne "#leximin-table"
-    output <- J.selectOne "#leximin-analysis"
-    in { input, output }
+  maximinElements <- collectElementsForRule "maximin"
+  maximaxElements <- collectElementsForRule "maximax"
+  leximinElements <- collectElementsForRule "leximin"
+  indifferenceElements <- collectElementsForRule "indifference"
+  minimaxRegretElements <- collectElementsForRule "minimax-regret"
   strongDominanceElements <- sequence' <$> ado
     input <- J.selectOne "#dominance-table"
     output <- J.selectOne "#strong-dominance-analysis"
@@ -42,10 +44,35 @@ collectElements = ado
     input <- J.selectOne "#dominance-table"
     output <- J.selectOne "#weak-dominance-analysis"
     in { input, output }
-  in { maximinElements, maximaxElements, leximinElements, strongDominanceElements, weakDominanceElements }
+  optimismPessimismElements <- sequence'' <$> ado
+    input <- J.selectOne "#optimism-pessimism-table"
+    alpha <- J.selectOne "#optimism-pessimism-alpha"
+    output <- J.selectOne "#optimism-pessimism-analysis"
+    in { input, alpha, output}
+  in
+    { maximinElements
+    , maximaxElements
+    , leximinElements
+    , strongDominanceElements
+    , weakDominanceElements
+    , optimismPessimismElements
+    , minimaxRegretElements
+    , indifferenceElements
+    }
   where
+    collectElementsForRule name =
+      sequence' <$> ado
+        input <- J.selectOne $ "#" <> name <> "-table"
+        output <- J.selectOne $ "#" <> name <> "-analysis"
+        in { input, output }
     sequence' { input: mInput, output: mOutput } = ado
       input <- mInput
       output <- mOutput
-      in { input, output}
+      in { input, output }
+    sequence'' { input: mInput, output: mOutput, alpha: mAlpha } = ado
+      input <- mInput
+      output <- mOutput
+      alpha <- mAlpha
+      in { input, output, alpha }
+
 
