@@ -1,0 +1,8 @@
+#key-terms {
+    @include padding-horizontal-view;
+    @include max-width-medium;
+    dt {
+        font-style: italic;
+        @include margin-top-3ex;
+    }
+}

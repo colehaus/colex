@@ -6,6 +6,7 @@
 @import 'libs/primitives/spacing';
 @import 'libs/primitives/borders';
 @import 'libs/normalize';
+@import 'libs/misc';
 @import 'libs/colors';
 @import 'libs/detail-list';
 @import 'libs/sidenote';
@@ -13,6 +14,7 @@
 @import 'libs/tree';
 @import 'libs/swap';
 @import 'libs/arg-map';
+@import 'libs/key-terms';
 @import 'libs/warnings';
 @import 'libs/silence';
 @import 'libs/horizontal-list';
@@ -89,10 +91,7 @@ article {
     }
 
     a {
-        &[href^="#"] {
-            @include border-bottom-dotted;
-        }
-
+        @include internal-link-styling;
         @include border-bottom-dashed;
     }
 }
@@ -109,15 +108,7 @@ article:not(.teaser) {
                 @include external-link;
                 @include superscript;
             }
-
-            &[href^="#"] {
-                border: none;
-
-                &::after {
-                    @include internal-link;
-                    @include superscript;
-                }
-            }
+            @include internal-link-styling;
         }
     }
 }

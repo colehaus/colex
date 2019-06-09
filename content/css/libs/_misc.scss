@@ -1,0 +1,9 @@
+@mixin internal-link-styling {
+    &[href^="#"] {
+        border: none;
+        &::after {
+            @include internal-link;
+            @include superscript;
+        }
+    }
+}
