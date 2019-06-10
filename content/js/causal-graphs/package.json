@@ -1,8 +1,9 @@
 {
-  "name": "decision-demos",
+  "name": "causal-graphs",
   "version": "0.0.1",
   "dependencies": {
     "jquery": "^3.3.1",
+    "js-yaml": "^3.12.0",
     "viz.js": "^1.8.0"
   }
 }
