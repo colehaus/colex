@@ -37,7 +37,7 @@ import Partial.Unsafe (unsafePartialBecause)
 foreign import jQuery :: Foreign
 
 main :: Effect Unit
-main = do
+main =
   J.ready do
     els <- Html.collectElements
     traverse_

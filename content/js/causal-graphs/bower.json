@@ -1,0 +1,21 @@
+{
+  "name": "causal-graphs",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "output"
+  ],
+  "dependencies": {
+    "purescript-event": "^1.2.4",
+    "purescript-causal-graphs": "../../../../purescript-causal-graphs",
+    "purescript-dotlang": "../../../../purescript-dotlang",
+    "purescript-graphviz": "../../../../purescript-graphviz",
+    "purescript-jquery": "^5.0.0",
+    "purescript-jquery-fancy": "^2.0.0",
+    "purescript-prelude": "^4.1.1"
+  },
+  "devDependencies": {
+    "purescript-psci-support": "^4.0.0"
+  }
+}

@@ -36,6 +36,7 @@ declare -a purescript_projects=(
     # "construct-vnm-utility-function"
     # "exemplars-curse"
     "decision-demos"
+    "causal-graphs"
 )
 
 for project in "${purescript_projects[@]}"

@@ -4,73 +4,74 @@
 #arg-map {
     @include height-full-view;
     @include width-full-view;
-}
 
-path.link {
-    fill: none;
-    stroke-width: 3px;
-}
+    path.link {
+        fill: none;
+        stroke-width: 3px;
+    }
 
-polygon {
-    stroke: nth(map-get($colors, value), 5);
-    fill: nth(map-get($colors, value), 1);
-    stroke-width: 0;
-}
+    polygon {
+        stroke: nth(map-get($colors, value), 5);
+        fill: nth(map-get($colors, value), 1);
+        stroke-width: 0;
+    }
 
-.fixed {
-    stroke-width: 2px;
-}
+    .fixed {
+        stroke-width: 2px;
+    }
 
-text {
-    font-size: smaller;
-}
+    text {
+        font-size: smaller;
+    }
 
-svg a {
-    cursor: pointer;
-}
+    svg a {
+        cursor: pointer;
+    }
 
-defs > g > marker:nth-child(1) {
-    fill: nth(map-get($colors, hue), 6);
-}
+    defs > g > marker:nth-child(1) {
+        fill: nth(map-get($colors, hue), 6);
+    }
 
-defs > g > marker:nth-child(2) {
-    fill: nth(map-get($colors, hue), 2);
-}
+    defs > g > marker:nth-child(2) {
+        fill: nth(map-get($colors, hue), 2);
+    }
 
-defs > g > marker:nth-child(3) {
-    fill: nth(map-get($colors, hue), 5);
-}
+    defs > g > marker:nth-child(3) {
+        fill: nth(map-get($colors, hue), 5);
+    }
 
-defs > g > marker:nth-child(4) {
-    fill: nth(map-get($colors, hue), 3);
-}
+    defs > g > marker:nth-child(4) {
+        fill: nth(map-get($colors, hue), 3);
+    }
 
-defs > g > marker:nth-child(5) {
-    fill: nth(map-get($colors, hue), 4);
-}
+    defs > g > marker:nth-child(5) {
+        fill: nth(map-get($colors, hue), 4);
+    }
 
-// stylelint-disable selector-type-no-unknown
-defs > g > lineargradient:nth-child(1) > stop {
-    stop-color: nth(map-get($colors, hue), 6);
-}
+    // stylelint-disable selector-type-no-unknown
+    defs > g > lineargradient:nth-child(1) > stop {
+        stop-color: nth(map-get($colors, hue), 6);
+    }
 
-defs > g > lineargradient:nth-child(2) > stop {
-    stop-color: nth(map-get($colors, hue), 2);
-}
+    defs > g > lineargradient:nth-child(2) > stop {
+        stop-color: nth(map-get($colors, hue), 2);
+    }
 
-defs > g > lineargradient:nth-child(3) > stop {
-    stop-color: nth(map-get($colors, hue), 5);
-}
+    defs > g > lineargradient:nth-child(3) > stop {
+        stop-color: nth(map-get($colors, hue), 5);
+    }
 
-defs > g > lineargradient:nth-child(4) > stop {
-    stop-color: nth(map-get($colors, hue), 3);
-}
+    defs > g > lineargradient:nth-child(4) > stop {
+        stop-color: nth(map-get($colors, hue), 3);
+    }
 
-defs > g > lineargradient:nth-child(5) > stop {
-    stop-color: nth(map-get($colors, hue), 4);
-}
-// stylelint-enable selector-type-no-unknown
+    defs > g > lineargradient:nth-child(5) > stop {
+        stop-color: nth(map-get($colors, hue), 4);
+    }
+    // stylelint-enable selector-type-no-unknown
 
-.entry-point {
-    font-weight: bold;
+    .entry-point {
+        font-weight: bold;
+    }
+
 }
