@@ -1,5 +1,5 @@
 ---
-title: Summary—The Moral Limits of Markets
+title: Summary—<i>The Moral Limits of Markets</i>
 published: 2018-05-25
 tags: ethics, markets, self-flagellation friday, yaas
 series: The Moral Limits of Markets

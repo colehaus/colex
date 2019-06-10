@@ -1,5 +1,5 @@
 ---
-title: Anthropological Clickbait
+title: Anthropological clickbait
 date: 2018-11-21
 tags: clickbait, anthropology
 ---

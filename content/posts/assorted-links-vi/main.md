@@ -1,5 +1,5 @@
 ---
-title: Assorted Links VI
+title: Assorted links VI
 date: 2018-08-04
 tags: links
 ---

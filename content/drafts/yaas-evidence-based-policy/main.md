@@ -1,6 +1,6 @@
 ---
-title: YAAS Evidence-based Policy
-subtitle: "Yet Another Amateur Summary: Cartwright and Hardie's <i>Evidence-based Policy: A practical guide to doing it better</i>"
+title: YAAS evidence-based policy
+subtitle: "Yet Another Amateur Summary:<br>Cartwright and Hardie's <i>Evidence-based Policy: A practical guide to doing it better</i>"
 date: 2019-05-25
 tags: yaas, applied epistemology
 series: Evidence-based Policy

@@ -1,5 +1,5 @@
 ---
-title: Assorted Links XI
+title: Assorted links XI
 tags: links
 date: 2019-01-09
 ---

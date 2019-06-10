@@ -1,6 +1,6 @@
 ---
-title: YAAS Social Norms
-subtitle: "Yet Another Amateur Summary: Bicchieri's <i>Norms in the Wild: How to Diagnose, Measure, and Change Social Norms</i>"
+title: YAAS social norms
+subtitle: "Yet Another Amateur Summary:<br>Bicchieri's <i>Norms in the Wild: How to Diagnose, Measure, and Change Social Norms</i>"
 date: 2018-11-13
 edited: 2018-11-15
 tags: yaas, norms

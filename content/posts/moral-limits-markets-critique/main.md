@@ -1,5 +1,5 @@
 ---
-title: Hot takes—The Moral Limits of Markets
+title: Hot takes—<i>The Moral Limits of Markets</i>
 published: 2018-05-28
 edited: 2019-02-11
 tags: ethics, markets

@@ -1,6 +1,6 @@
 ---
-title: YAAS Epistemology
-subtitle: "Yet Another Amateur Summary: <br> Crumley's <i>An Introduction to Epistemology</i>"
+title: YAAS epistemology
+subtitle: "Yet Another Amateur Summary:<br>Crumley's <i>An Introduction to Epistemology</i>"
 date: 2018-10-01
 tags: yaas, epistemology
 graph-of-contents: yaas-epistemology

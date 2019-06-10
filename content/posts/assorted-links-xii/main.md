@@ -1,5 +1,5 @@
 ---
-title: Assorted Links XII
+title: Assorted links XII
 tags: links
 date: 2019-02-11
 css: assorted-links-xii
