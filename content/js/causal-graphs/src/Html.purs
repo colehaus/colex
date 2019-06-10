@@ -10,10 +10,12 @@ import Partial.Unsafe (unsafePartialBecause)
 
 
 type Elements =
-  { graphElement :: JQuery (One "div")
+  { graphInput :: JQuery (One "textarea")
+  , graphOutput :: JQuery (One "div")
   }
 
 collectElements :: Effect Elements
 collectElements = ado
-  graphElement <- unsafePartialBecause "Element required" $ fromJust <$> J.selectOne "#graph"
-  in { graphElement }
+  graphInput <- unsafePartialBecause "Element required" $ fromJust <$> J.selectOne "#graph-input"
+  graphOutput <- unsafePartialBecause "Element required" $ fromJust <$> J.selectOne "#graph-output"
+  in { graphInput, graphOutput }

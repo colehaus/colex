@@ -7,13 +7,15 @@
     "output"
   ],
   "dependencies": {
+    "purescript-argonaut-codecs": "^5.0.0",
     "purescript-event": "^1.2.4",
     "purescript-causal-graphs": "../../../../purescript-causal-graphs",
     "purescript-dotlang": "../../../../purescript-dotlang",
     "purescript-graphviz": "../../../../purescript-graphviz",
     "purescript-jquery": "^5.0.0",
     "purescript-jquery-fancy": "^2.0.0",
-    "purescript-prelude": "^4.1.1"
+    "purescript-prelude": "^4.1.1",
+    "purescript-yayamll": "^1.1.0"
   },
   "devDependencies": {
     "purescript-psci-support": "^4.0.0"

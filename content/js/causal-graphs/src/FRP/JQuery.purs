@@ -23,3 +23,5 @@ jqueryEvent eventType f el = do
   J.on eventType (\evt _ -> push =<< f unit <* J.preventDefault evt) el
   pure event
 
+textAreaChangeEvent :: JQuery (One "textarea") -> Effect (Event String)
+textAreaChangeEvent el = jqueryEvent (wrap "change") (\_ -> unsafeFromForeign <$> J.getValue el) el
