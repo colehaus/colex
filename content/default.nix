@@ -8,7 +8,7 @@
     vnm = pkgs.callPackage ./js/construct-vnm-utility-function { inherit extras; };
     exemplar = pkgs.callPackage ./js/exemplars-curse { inherit extras; };
     decisionDemos = pkgs.callPackage ./js/decision-demos { inherit extras; };
-    causalGraph = pkgs.callPackage ./js/causal-graph {inherit extras; };
+    causalGraph = pkgs.callPackage ./js/causal-graphs {inherit extras; };
     mathJaxNodeCli = extras.callNpm {
       inherit pkgs;
       name = "mathjax-node-cli";
