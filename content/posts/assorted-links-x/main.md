@@ -4,7 +4,7 @@ date: 2018-12-13
 tags: links
 ---
 
-1. <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I regret nothing <a href="https://t.co/OCo4NiOxho">pic.twitter.com/OCo4NiOxho</a></p>&mdash; Unlearning Economics (@UnlearningEcon) <a href="https://twitter.com/UnlearningEcon/status/1047589887518683137?ref_src=twsrc%5Etfw">October 3, 2018</a></blockquote>
+1. <blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">I regret nothing <a href="https://t.co/OCo4NiOxho">pic.twitter.com/OCo4NiOxho</a></p>&mdash; Unlearning Economics (@UnlearningEcon) <a href="https://twitter.com/UnlearningEcon/status/1047589887518683137">October 3, 2018</a></blockquote>
    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
 2. [Witches Outnumber Presbyterians in the US](https://www.christianpost.com/news/witches-outnumber-presbyterians-in-the-us-wicca-paganism-growing-astronomically-227857/)
