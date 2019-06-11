@@ -14,7 +14,7 @@
  */
 
 declare module 'sanctuary' {
-  declare export function create({checkTypes: boolean, env: *}): S
+  declare export function create({checkTypes: boolean, env: *}): any
   declare export var env: *
 }
 

@@ -5,6 +5,9 @@
       name = "webpackColEx";
       package = ./package.json;
       packageLock = ./package-lock.json;
+      postBuild = ''
+        sed -i -e 's/dontNpmInstall ? false/dontNpmInstall ? true/g' node-env.nix
+      '';
     };
   in
     pkgs.stdenv.mkDerivation rec {

@@ -10,6 +10,6 @@ nix:
     - zlib.dev
     - zlib.out
   pure: false
-  path: ["nixpkgs=https://github.com/NixOS/nixpkgs/archive/c1d65d680b29c613eef2a6583c11f0586416ecb9.tar.gz"]
+  path: ["nixpkgs=https://github.com/NixOS/nixpkgs/archive/e829aeefa35cb1c0b321c08e5b4dd2825911c050.tar.gz"]
 ghc-options:
   "ColEx": -Wall -Wcompat -Wincomplete-record-updates -Wincomplete-uni-patterns -Wredundant-constraints
