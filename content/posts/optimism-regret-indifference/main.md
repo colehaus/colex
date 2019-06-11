@@ -1,7 +1,8 @@
 ---
-title: Ignorant miscellany
+title: Optimism, regret and indifference
+subtitle: Remaining decision rules for decisions under ignorance
 series: An Introduction to Decision Theory
-published: 2019-05-30
+published: 2019-06-11
 tags: decision theory, interactive, yaas
 js: decision-demos
 css: decision-demos
@@ -13,13 +14,13 @@ This time, we'll look at three final decision rules in this category.
 
 # Optimism-pessimism
 
-The first decision rule we'll look at is the optimism-pessimism [TODO] rule. 
+The first decision rule we'll look at is the optimism-pessimism rule. 
 
 ## Prose
 
 Conceptually, optimism-pessimism is a generalization of the [maximin](/posts/priority-decisions/#maximin) and [maximax](/posts/priority-decisions/#maximax) rules. The maximin rule tells us to make the decision which has the best worst case outcome. The maximax rule tells us to make the decision which has the best best case outcome. 
 
-The optimism-pessimism rule tells us to look at both the best outcome which may come to pass after taking a particular action and the worst outcome which may come to pass. Then we should take a weighted average of the best and worst case outcome for each action and take the action that has the best such average. The weighting used in the decision rule is a parameter that the decision-maker [TODO] is free to choose based on how optimistic or pessimistic they are. So really the optimism-pessimism rule is a family of rules parameterized by a weighting factor.
+The optimism-pessimism rule tells us to look at both the best outcome which may come to pass after taking a particular action and the worst outcome which may come to pass. Then we should take a weighted average of the best and worst case outcome for each action and take the action that has the best such average. The weighting used in the decision rule is a parameter that the decision maker is free to choose based on how optimistic or pessimistic they are. So really the optimism-pessimism rule is a family of rules parameterized by a weighting factor.
 
 Also, it's worth noting that the optimism-pessimism family of rules no longer work in the fully general setting we were working with in previous posts. While we still don't have probabilities associated with states of the world, we will need to move from an [ordinal scale](https://en.wikipedia.org/wiki/Level_of_measurement) of outcomes to an [interval scale](https://en.wikipedia.org/wiki/Level_of_measurement). This shift is necessary because it doesn't make sense to take a weighted average of ordinal data.
 
@@ -81,11 +82,11 @@ optimismPessimism toCell α rows = value row1 >= value row2
     Tuple row1 row2 = unzipNeMultiSet rows
 ```
 
-`α` is the optimism parameter and `toCell` is a way of harmonizing its type with the `cell` type. Interestingly, we have leaped all the way from requiring `cell` only to be orderable---in maximin and maximax---to requiring that `cell` be a semiring [TODO]---taking a weighted average requires the ability to both multiply and add.
+`α` is the optimism parameter and `toCell` is a way of harmonizing its type with the `cell` type. Interestingly, we have leaped all the way from requiring `cell` only to be orderable---in maximin and maximax---to requiring that `cell` be a [semiring](https://en.wikipedia.org/wiki/Semiring)---taking a weighted average requires the ability to both multiply and add.
 
 ## Math
 
-We can also describe the optimism-pessimism decision rules $\preccucrlyeq_{OptPes}$ in symbols:
+We can also describe the optimism-pessimism decision rules $\preccurlyeq_{OptPes}$ in symbols:
 
 $$a_i \preccurlyeq_{OptPes} a_j \leftrightarrow \alpha \cdot \max_{s \in S} v(a_i, s) + (1 - \alpha) \cdot \min_{s \in S} v(a_i, s) \leq \alpha \cdot \max_{s \in S} v(a_j, s) + (1 - \alpha) \cdot \min_{s \in S} v(a_j, s)$$
 
@@ -101,7 +102,7 @@ Minimax regret counsels that you take the action which minimizes the amount of r
 
 Again we lose a bit of generality as our outcomes must be measured on an interval scale (to support computing regrets) rather than an ordinal scale.
 
-The other point worth making is that we have lost a property known as "independence of irrelevant alternatives" [TODO]. Suppose we are making a decision and only have actions A and B available. Furthermore, suppose minimax regret says that the best action is A. If we add a third action C that is worse than both A and B (in minimax regret terms), minimax regret may now insist that action B is best. This is pretty weird! We'll look at an example below.
+The other point worth making is that we have lost a property known as [independence of irrelevant alternatives](https://en.wikipedia.org/wiki/Independence_of_irrelevant_alternatives). Suppose we are making a decision and only have actions A and B available. Furthermore, suppose minimax regret says that the best action is A. If we add a third action C that is worse than both A and B (in minimax regret terms), minimax regret may now insist that action B is best. This is pretty weird! We'll look at an example below.
 
 ## Example
 
@@ -184,13 +185,13 @@ minimaxRegret ::
   Table rowId columnId cell -> NonEmpty HashSet rowId
 ```
 
-First, `cell` must now be a ring [TODO] which is a bit stronger than the semiring requirement of optimism-pessimism. This is because computing regrets requires subtraction. 
+First, `cell` must now be a [ring](https://en.wikipedia.org/wiki/Ring_(mathematics)) which is a bit stronger than the semiring requirement of optimism-pessimism. This is because computing regrets requires subtraction. 
 
 Second, the decision rule no longer operates on a pair of rows. In all our previous decision rules, we described the decision scenario with `PairOfRows cell`---independence of irrelevant alternatives meant that any context from other actions was irrelevant to the verdict. Here we must take a full `Table` because the verdict `minimaxRegret` returns for two rows may depend on some third row not under active consideration. This is the price we pay for losing independence of irrelevant alternatives.
 
 ## Math
 
-We can also describe the minimax regret decision rule $\preccucrlyeq_{Reg}$ in symbols:
+We can also describe the minimax regret decision rule $\preccurlyeq_{Reg}$ in symbols:
 
 $$a_i \preccurlyeq_{Reg} a_j \leftrightarrow \max_{s \in S}(\max_{a \in A} v(a, s) - v(a_i, s)) \geq \max_{s \in S}(\max_{a \in A} v(a, s) - v(a_j, s))$$
 
@@ -202,9 +203,9 @@ We see the entrance of irrelevant alternatives here in that we have a $\max_{a \
 
 ## Prose
 
-The final rule we'll look at is "[the principle of indifference](TODO)", also sometimes called "the principle of insufficient reason".
+The final rule we'll look at is [the principle of indifference](https://en.wikipedia.org/wiki/Principle_of_indifference), also sometimes called "the principle of insufficient reason".
 
-We've emphasized throughout that we're working in a fairly general setting with limited information. What if we just pretended we weren't? If we had probabilities associated with states of the world, we could just use good old [expected value maximization](TODO) as our decision rule. The principle of indifference says that in the absence of information to the contrary, we should just assign equal probabilities to all states of the world. Then we can proceed with expected value maximization.
+We've emphasized throughout that we're working in a fairly general setting with limited information. What if we just pretended we weren't? If we had probabilities associated with states of the world, we could just use good old expected value maximization as our decision rule. The principle of indifference says that in the absence of information to the contrary, we should just assign equal probabilities to all states of the world. Then we can proceed with expected value maximization.
 
 Of course, there are problems with explicitly representing our ignorance probabilistically. Which we've in fact already [discussed](/posts/list-problems-ignorant-priors/).
 
@@ -224,15 +225,15 @@ Because there are only two possible states of the world and we're pretending we 
 
 <figure>
 <figcaption>Decision matrix about route to work after assigning probabilities. Preferred action in bold.</figcaption>
-|             | High traffic day; p=0.5 | Low traffic day; p=0.5 | Expected value            |
-|-------------|-------------------------|------------------------|---------------------------|
-| **Route 1** | 10 minutes              | 10 minutes             | 0.5 * 10 + 0.5 * 10 = 10  |
-| Route 2     | 20 minutes              | 5 minutes              | 0.5 * 20 * 0.5 * 5 = 12.5 |
+|             | High traffic; p=0.5 | Low traffic; p=0.5 | Expected time |
+|-------------|---------------------|--------------------|---------------|
+| **Route 1** | 10 minutes          | 10 minutes         |            10 |
+| Route 2     | 20 minutes          | 5 minutes          |          12.5 |
 </figure>
 
 ## Interactive
 
-If the above description isn't sufficient, try poking around with this interactive analysis. The analysis will update whenever you stop editing text and defocus the text area. (Floating point foolishness [TODO] possible.)
+If the above description isn't sufficient, try poking around with this interactive analysis. The analysis will update whenever you stop editing text and defocus the text area. ([Floating point foolishness](https://en.wikipedia.org/wiki/Floating-point_arithmetic#Accuracy_problems) possible.)
 
 <textarea id="indifference-table" class="decision-table">
 ```{=html}
@@ -270,7 +271,7 @@ Note that we're back to only requiring `Semiring` of `cell` and taking pairs of 
 
 ## Math
 
-We can also describe the indifference decision rule $\preccucrlyeq_{Ind}$ in symbols:
+We can also describe the indifference decision rule $\preccurlyeq_{Ind}$ in symbols:
 
 $$a_i \preccurlyeq_{Ind} a_j \leftrightarrow \sum_{x=1}^{n} \frac{1}{n} v(a_i, s_x) \leq \sum_{x=1}^{n} \frac{1}{n} v(a_j, s_x)$$
 
