@@ -208,9 +208,9 @@ You can try it out below. Maybe look for:
 - A citation that doesn't give any "citation bonus"
 - Two networks with the same topology but different scores
 
+```{=html}
 <form class="net">
 <textarea>
-```{=html}
 ----
 | A P
 ----
@@ -244,12 +244,12 @@ f t | t 0.8
     | f 0.2
 f f | t 0.55
     | f 0.45
-```
 </textarea>
 <button type="button">Calculate scores</button>
 <output>
 </output>
 </form>
+```
 
 # Discussion
 

@@ -40,16 +40,16 @@ With a scenario like this, the maximin rule demands that you take the first rout
 
 If the above description isn't sufficient, try poking around with this interactive analysis (Note that "better than" in this case means later in [ASCIIbetical order](https://en.wikipedia.org/wiki/ASCII#Character_order)---later letters are better than earlier letters). The analysis will update whenever you stop editing text and defocus the text area.
 
-<textarea id="maximin-table" class="decision-table">
 ```{=html}
+<textarea id="maximin-table" class="decision-table">
 
 |          | State 1 | State 2 | State 3|
 |----------|---------|---------|--------|
 | Action 1 | a       | y       | z      |
 | Action 2 | b       | c       | y      |
 | Action 3 | b       | d       | z      |
-```
 </textarea>
+```
 
 ::: {#maximin-analysis}
 - Action 2 beats Action 1
@@ -108,16 +108,15 @@ With a scenario like this, the maximax rule demands that you take the second rou
 If the above description isn't sufficient, try poking around with this interactive analysis (Note that "better than" in this case means later in [ASCIIbetical order](https://en.wikipedia.org/wiki/ASCII#Character_order)---later letters are better than earlier letters). The analysis will update whenever you stop editing text and defocus the text area.
 
 
-<textarea id="maximax-table" class="decision-table">
 ```{=html}
-
+<textarea id="maximax-table" class="decision-table">
 |          | State 1 | State 2 | State 3|
 |----------|---------|---------|--------|
 | Action 1 | a       | y       | z      |
 | Action 2 | b       | c       | y      |
 | Action 3 | b       | d       | z      |
-```
 </textarea>
+```
 
 ::: {#maximax-analysis}
 - Action 1 beats Action 2
@@ -177,16 +176,15 @@ Route 2 is preferable because the two routes tie in the worst case---20 minutes-
 
 If the above description isn't sufficient, try poking around with this interactive analysis (Note that "better than" in this case means later in [ASCIIbetical order](https://en.wikipedia.org/wiki/ASCII#Character_order)---later letters are better than earlier letters). The analysis will update whenever you stop editing text and defocus the text area.
 
-<textarea id="leximin-table" class="decision-table">
 ```{=html}
-
+<textarea id="leximin-table" class="decision-table">
 |          | State 1 | State 2 | State 3|
 |----------|---------|---------|--------|
 | Action 1 | a       | y       | z      |
 | Action 2 | b       | c       | y      |
 | Action 3 | b       | d       | z      |
-```
 </textarea>
+```
 
 ::: {#leximin-analysis}
 - Action 2 beats Action 1

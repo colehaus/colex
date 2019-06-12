@@ -48,15 +48,15 @@ If the above description isn't sufficient, try poking around with this interacti
 
 Optimism: <input id="optimism-pessimism-alpha" min="0" max="1" step="0.1" type="number" value="0.5" />
 
-<textarea id="optimism-pessimism-table" class="decision-table">
 ```{=html}
+<textarea id="optimism-pessimism-table" class="decision-table">
 |          | State 1 | State 2 | State 3|
 |----------|---------|---------|--------|
 | Action 1 | 4       | 5       | 6      |
 | Action 2 | 3       | 5       | 8      |
 | Action 3 | 1       | 5       | 9      |
-```
 </textarea>
+```
 
 ::: {#optimism-pessimism-analysis}
 - Action 1 beats Action 3
@@ -156,16 +156,15 @@ Because route 3 is even faster than route 2 on low traffic days, it further incr
 
 If the above description isn't sufficient, try poking around with this interactive analysis. The analysis will update whenever you stop editing text and defocus the text area.
 
-<textarea id="minimax-regret-table" class="decision-table">
 ```{=html}
-
+<textarea id="minimax-regret-table" class="decision-table">
 |          | State 1 | State 2 | State 3|
 |----------|---------|---------|--------|
 | Action 1 | 4       | 5       | 6      |
 | Action 2 | 3       | 5       | 8      |
 | Action 3 | 1       | 5       | 9      |
-```
 </textarea>
+```
 
 Best actions:
 
@@ -235,16 +234,15 @@ Because there are only two possible states of the world and we're pretending we 
 
 If the above description isn't sufficient, try poking around with this interactive analysis. The analysis will update whenever you stop editing text and defocus the text area. ([Floating point foolishness](https://en.wikipedia.org/wiki/Floating-point_arithmetic#Accuracy_problems) possible.)
 
-<textarea id="indifference-table" class="decision-table">
 ```{=html}
-
+<textarea id="indifference-table" class="decision-table">
 |          | State 1 | State 2 | State 3|
 |----------|---------|---------|--------|
 | Action 1 | 0       | 5       | 6      |
 | Action 2 | 3       | 5       | 8      |
 | Action 3 | 1       | 5       | 9      |
-```
 </textarea>
+```
 
 ::: {#indifference-analysis}
 - Action 2 beats Action 1

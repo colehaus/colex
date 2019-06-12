@@ -54,15 +54,14 @@ You have the choice of two alternative routes to work. In good conditions, both 
 
 If the above description isn't sufficient, try poking around with this interactive analysis (Note that "better than" in this case means later in [ASCIIbetical order](https://en.wikipedia.org/wiki/ASCII#Character_order)---later letters are better than earlier letters). The analysis will update whenever you stop editing text and defocus the text area.
 
-<textarea id="dominance-table" class="decision-table">
 ```{=html}
-
+<textarea id="dominance-table" class="decision-table">
 |          | State 1 | State 2 |
 |----------|---------|---------|
 | Action 1 | c       | d       |
 | Action 2 | e       | f       |
-```
 </textarea>
+```
 
 Weak:
 

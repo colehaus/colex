@@ -46,9 +46,9 @@ In addition to showing the expected value of information, the calculator shows t
 
 ## Input
 
+```{=html}
 <form id="voi">
 <textarea class="voi-tree" id="voi-text">
-```{=html}
 - outcome:
     finding: coin is double heads
     choices:
@@ -81,9 +81,9 @@ In addition to showing the expected value of information, the calculator shows t
       - outcome: {label: tails, value: 1}
         prob: 1
   prob: 0.5
-```
 </textarea>
 </form>
+```
 
 ## Results
 
