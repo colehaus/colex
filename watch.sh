@@ -35,7 +35,7 @@ declare -a purescript_projects=(
     # "value-of-information-calculator"
     # "construct-vnm-utility-function"
     # "exemplars-curse"
-    "decision-demos"
+    # "decision-demos"
     "causal-graphs"
 )
 
