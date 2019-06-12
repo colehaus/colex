@@ -15,7 +15,7 @@ css: decision-demos
 <figure>
 <figcaption>A decision matrix describing the decision to purchase home insurance</figcaption>
 |                    | Fire                 | No fire        |
-|--------------------|----------------------|----------------|
+|:-------------------|:---------------------|:---------------|
 | Take out insurance | No house and $100,00 | House and $0   |
 | No insurance       | No house and $100    | House and $100 |
 </figure>
@@ -45,7 +45,7 @@ You have the choice of two alternative routes to work. In good conditions, both 
 <figure>
 <figcaption>Decision matrix about route to work. Preferred action in bold.</figcaption>
 |             | High traffic day | Low traffic day |
-|-------------|------------------|-----------------|
+|:------------|:-----------------|:----------------|
 | **Route 1** | 10 minutes       | 10 minutes      |
 | Route 2     | 20 minutes       | 10 minutes      |
 </figure>

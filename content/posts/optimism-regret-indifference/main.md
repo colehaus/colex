@@ -31,7 +31,7 @@ You have the choice of two alternative routes to work. In good conditions, the f
 <figure>
 <figcaption>Decision matrix about route to work.</figcaption>
 |             | High traffic day | Low traffic day |
-|-------------|------------------|-----------------|
+|:------------|:-----------------|:----------------|
 | Route 1     | 10 minutes       | 10 minutes      |
 | Route 2     | 20 minutes       | 5 minutes       |
 </figure>
@@ -111,7 +111,7 @@ Suppose you're choosing between routes to work again:
 <figure>
 <figcaption>Decision matrix about route to work. Preferred action in bold.</figcaption>
 |             | High traffic day | Low traffic day |
-|-------------|------------------|-----------------|
+|:------------|:-----------------|:----------------|
 | **Route 1** | 20 minutes       | 20 minutes      |
 | Route 2     | 30 minutes       | 15 minutes      |
 </figure>
@@ -121,7 +121,7 @@ With a scenario like this, minimax regret demands that you take the first route.
 <figure>
 <figcaption>Table of regrets corresponding to table immediately above.</figcaption>
 |             | High traffic day | Low traffic day |
-|-------------|------------------|-----------------|
+|:------------|:-----------------|:----------------|
 | **Route 1** | 0 minutes        | 5 minutes       |
 | Route 2     | 10 minutes       | 0 minutes       |
 </figure>
@@ -135,7 +135,7 @@ Suppose that we discover a third possible route to work. If we follow the minima
 <figure>
 <figcaption>Decision matrix about route to work. Preferred action in bold.</figcaption>
 |             | High traffic day | Low traffic day |
-|-------------|------------------|-----------------|
+|:------------|:-----------------|:----------------|
 | Route 1     | 20 minutes       | 20 minutes      |
 | **Route 2** | 30 minutes       | 15 minutes      |
 | Route 3     | 40 minutes       | 5 minutes       |
@@ -144,7 +144,7 @@ Suppose that we discover a third possible route to work. If we follow the minima
 <figure>
 <figcaption>Table of regrets corresponding to table immediately above.</figcaption>
 |             | High traffic day | Low traffic day |
-|-------------|------------------|-----------------|
+|:------------|:-----------------|:----------------|
 | Route 1     | 0 minutes        | 15 minutes      |
 | **Route 2** | 10 minutes       | 10 minutes      |
 | Route 3     | 20 minutes       | 0 minutes       |
@@ -215,7 +215,7 @@ Suppose you're choosing between routes to work again:
 <figure>
 <figcaption>Decision matrix about route to work. Preferred action in bold.</figcaption>
 |             | High traffic day | Low traffic day |
-|-------------|------------------|-----------------|
+|:------------|:-----------------|:----------------|
 | **Route 1** | 10 minutes       | 10 minutes      |
 | Route 2     | 20 minutes       | 5 minutes       |
 </figure>
@@ -225,7 +225,7 @@ Because there are only two possible states of the world and we're pretending we 
 <figure>
 <figcaption>Decision matrix about route to work after assigning probabilities. Preferred action in bold.</figcaption>
 |             | High traffic; p=0.5 | Low traffic; p=0.5 | Expected time |
-|-------------|---------------------|--------------------|---------------|
+|:------------|:--------------------|:-------------------|:--------------|
 | **Route 1** | 10 minutes          | 10 minutes         |            10 |
 | Route 2     | 20 minutes          | 5 minutes          |          12.5 |
 </figure>

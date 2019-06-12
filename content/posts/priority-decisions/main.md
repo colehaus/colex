@@ -27,7 +27,7 @@ You have the choice of two alternative routes to work. In good conditions, the f
 <figure>
 <figcaption>Decision matrix about route to work. Preferred action in bold.</figcaption>
 |             | High traffic day | Low traffic day |
-|-------------|------------------|-----------------|
+|:------------|:-----------------|:----------------|
 | **Route 1** | 10 minutes       | 10 minutes      |
 | Route 2     | 20 minutes       | 5 minutes       |
 </figure>
@@ -96,7 +96,7 @@ Suppose you're choosing between routes to work again:
 <figure>
 <figcaption>Decision matrix about route to work. Preferred action in bold.</figcaption>
 |             | High traffic day | Low traffic day |
-|-------------|------------------|-----------------|
+|:------------|:-----------------|:----------------|
 | Route 1     | 10 minutes       | 10 minutes      |
 | **Route 2** | 20 minutes       | 5 minutes       |
 </figure>
@@ -165,7 +165,7 @@ Suppose you're choosing between routes to work again:
 <figure>
 <figcaption>Decision matrix about route to work. Preferred action in bold.</figcaption>
 |             | High traffic day | Medium traffic day | Low traffic day |
-|-------------|------------------|--------------------|-----------------|
+|:------------|:-----------------|:-------------------|:----------------|
 | Route 1     | 20 minutes       | 12 minutes         | 4 minutes       |
 | **Route 2** | 20 minutes       | 8 minutes          | 8 minutes       |
 </figure>
