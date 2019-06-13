@@ -71,6 +71,10 @@ $convo-2: rgba(nth(map-get($colors, hue), 3), 0.15);
     background-color: $body-back-alt-color;
 }
 
+@mixin background-alt-color-translucent {
+    background-color: rgba($body-back-alt-color, 0.5);
+}
+
 @mixin menu-color-translucent {
     background-color: rgba($menu-back-color, 0.3);
 }

@@ -7,17 +7,23 @@
     "output"
   ],
   "dependencies": {
-    "purescript-argonaut-codecs": "^5.0.0",
+    "purescript-argonaut-codecs": "^5.1.2",
     "purescript-event": "^1.2.4",
-    "purescript-causal-graphs": "../../../../purescript-causal-graphs",
-    "purescript-dotlang": "../../../../purescript-dotlang",
-    "purescript-graphviz": "../../../../purescript-graphviz",
+    "purescript-causal-graphs": "^0.0.1",
+    "purescript-dotlang": "^1.2.0",
+    "purescript-functors": "^3.1.1",
+    "purescript-graphviz": "^1.2.0",
     "purescript-jquery": "^5.0.0",
     "purescript-jquery-fancy": "^2.0.0",
     "purescript-prelude": "^4.1.1",
-    "purescript-yayamll": "^1.1.0"
+    "purescript-yayamll": "^1.1.1"
   },
   "devDependencies": {
     "purescript-psci-support": "^4.0.0"
+  },
+  "resolutions": {
+    "purescript-argonaut-core": "^4.0.0",
+    "purescript-foreign-object": "^1.0.0",
+    "purescript-typelevel-prelude": "^3.0.0"
   }
 }

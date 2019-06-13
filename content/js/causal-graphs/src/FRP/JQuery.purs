@@ -3,6 +3,7 @@ module FRP.JQuery where
 import Prelude
 
 import Data.Newtype (wrap)
+import Data.Tuple (Tuple(..))
 import Effect (Effect)
 import FRP.Event (Event)
 import FRP.Event as FRP
@@ -23,5 +24,14 @@ jqueryEvent eventType f el = do
   J.on eventType (\evt _ -> push =<< f unit <* J.preventDefault evt) el
   pure event
 
-textAreaChangeEvent :: JQuery (One "textarea") -> Effect (Event String)
-textAreaChangeEvent el = jqueryEvent (wrap "change") (\_ -> unsafeFromForeign <$> J.getValue el) el
+textAreaChangeEvent :: JQuery (One "textarea") -> Effect (Tuple String (Event String))
+textAreaChangeEvent el = ado
+  evt <- jqueryEvent (wrap "change") (\_ -> unsafeFromForeign <$> J.getValue el) el
+  initial <- unsafeFromForeign <$> J.getValue el
+  in Tuple initial evt
+
+inputTextChangeEvent :: JQuery (One "input") -> Effect (Tuple String (Event String))
+inputTextChangeEvent el = ado
+  evt <- jqueryEvent (wrap "change") (\_ -> unsafeFromForeign <$> J.getValue el) el
+  initial <- unsafeFromForeign <$> J.getValue el
+  in Tuple initial evt

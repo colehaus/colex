@@ -1,8 +1,51 @@
+@import 'libs/primitives/borders';
+@import 'libs/colors';
+@import 'libs/primitives/spacing';
+
 svg > g.graph > polygon {
     fill: none;
 }
 
-#graph-input {
-    width: 100%;
+#graph-spec {
+    width: 50%;
     height: 30ex;
+}
+
+#spec-and-render {
+    display: flex;
+    justify-content: space-between;
+}
+
+#d-connection-from, #d-connection-to {
+    width: 8ex;
+}
+
+#graph-error::before {
+    content: "Errors: ";
+}
+
+#graph-error {
+    @include border-radius;
+    @include padding-1ex;
+    @include background-error-color;
+}
+
+.analysis-header {
+    @include margin-bottom-1ex;
+}
+
+.analysis-panel {
+    @include border-radius;
+    @include padding-1ex;
+    @include margin-vertical-1ex;
+    @include background-alt-color-translucent;
+}
+
+#nodes-and-seps {
+    > textarea {
+        height: 30ex;
+        width: 48%;
+    }
+    display: flex;
+    justify-content: space-between;
 }
