@@ -1,0 +1,1 @@
+We can describe causal models with directed graphs. The graph perspective allows us to specify precise procedures for determining when variables (vertices) are independent (d-separated) and dependent (d-connected).

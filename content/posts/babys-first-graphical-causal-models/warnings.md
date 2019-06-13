@@ -1,0 +1,1 @@
+Lies, damn lies, and statistics|I've made an important simplification in all the discussion so far by omitting the possibility of conditioning on variables. Being able to talk about conditioning on variables makes the analysis much more interesting and useful, but it seem pedagogically preferable to talk about the simplest setting first.

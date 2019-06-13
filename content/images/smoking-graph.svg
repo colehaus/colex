@@ -1,0 +1,28 @@
+<?xml version="1.0" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg width="210pt" height="116pt" viewBox="0.00 0.00 210.00 116.00" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" xmlns="http://www.w3.org/2000/svg"><defs xmlns="http://www.w3.org/1999/xhtml"><style type="text/css"><![CDATA[
+button { margin: 4px 5px 4px 4px; cursor: pointer; font-size: 70%; }]]></style></defs>
+<g id="graph1" class="graph" transform="scale(1 1) rotate(0) translate(4 112)">
+<title>G</title>
+<!-- Smoking -->
+<g id="node1" class="node"><title>Smoking</title>
+<text text-anchor="middle" x="104" y="-85.8" font-family="Times,serif" font-size="14.00">Smoking</text>
+</g>
+<!-- Yellow fingers -->
+<g id="node2" class="node"><title>Yellow fingers</title>
+<text text-anchor="middle" x="49" y="-13.8" font-family="Times,serif" font-size="14.00">Yellow fingers</text>
+</g>
+<!-- Smoking&#45;&gt;Yellow fingers -->
+<g id="edge2" class="edge"><title>Smoking-&gt;Yellow fingers</title>
+<path fill="none" stroke="black" d="M90.4045,-71.6966C83.8773,-63.3893 75.932,-53.2771 68.7534,-44.1407"/>
+<polygon fill="black" stroke="black" points="71.3695,-41.8051 62.4391,-36.1043 65.8653,-46.1299 71.3695,-41.8051"/>
+</g>
+<!-- Lung cancer -->
+<g id="node3" class="node"><title>Lung cancer</title>
+<text text-anchor="middle" x="160" y="-13.8" font-family="Times,serif" font-size="14.00">Lung cancer</text>
+</g>
+<!-- Smoking&#45;&gt;Lung cancer -->
+<g id="edge4" class="edge"><title>Smoking-&gt;Lung cancer</title>
+<path fill="none" stroke="black" d="M117.843,-71.6966C124.489,-63.3893 132.578,-53.2771 139.887,-44.1407"/>
+<polygon fill="black" stroke="black" points="142.803,-46.0995 146.317,-36.1043 137.336,-41.7266 142.803,-46.0995"/>
+</g>
+</g>
+</svg>

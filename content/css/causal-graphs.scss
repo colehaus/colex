@@ -2,6 +2,10 @@
 @import 'libs/colors';
 @import 'libs/primitives/spacing';
 
+#smoking-graph {
+  width: 60%;
+}
+
 svg > g.graph > polygon {
     fill: none;
 }
@@ -12,6 +16,7 @@ svg > g.graph > polygon {
 }
 
 #spec-and-render {
+    @include margin-vertical-3ex;
     display: flex;
     justify-content: space-between;
 }
@@ -48,4 +53,12 @@ svg > g.graph > polygon {
     }
     display: flex;
     justify-content: space-between;
+}
+
+#triplets-table {
+    width: 60vw;
+}
+
+#widget-hr {
+    width: 60%;
 }
