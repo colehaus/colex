@@ -4,36 +4,14 @@ import Prelude
 
 import Data.Array as Array
 import Data.Foldable as Foldable
-import Data.Function (on)
-import Data.Graph (Graph)
-import Data.Graph as Graph
-import Data.Graph.Causal as Causal
 import Data.List (List(..))
 import Data.List as List
 import Data.Map (Map)
 import Data.Map as Map
 import Data.Maybe (Maybe(..))
-import Data.Newtype (class Newtype, un)
 import Data.Set (Set)
 import Data.Set as Set
 import Data.Tuple (Tuple(..), snd, uncurry)
-
-newtype UnorderedTuple a = MkUnorderedTuple (Tuple a a)
-instance eqUnorderedTuple :: Ord a => Eq (UnorderedTuple a) where
-  eq = eq `on` (sortTuple <<< un MkUnorderedTuple)
-instance ordUnorderedTuple :: (Ord a) => Ord (UnorderedTuple a) where
-  compare = compare `on` (sortTuple <<< un MkUnorderedTuple)
-derive instance newtypeUnorderedTuple :: Newtype (UnorderedTuple a) _
-
-sortTuple :: forall a. Ord a => Tuple a a -> Tuple a a
-sortTuple (Tuple a b)
-  | a <= b = Tuple a b
-  | otherwise = Tuple b a
-
-distinctUnorderedPairs :: forall a. Ord a => Set a -> Set (UnorderedTuple a)
-distinctUnorderedPairs as =
-  Set.filter (uncurry (/=) <<< un MkUnorderedTuple) <<< Set.fromFoldable $
-  (\l r -> MkUnorderedTuple $ Tuple l r) <$> Array.fromFoldable as <*> Array.fromFoldable as
 
 distinctPairs :: forall a. Ord a => Set a -> Set (Tuple a a)
 distinctPairs as =
@@ -61,9 +39,3 @@ closeGraph m = m `Map.union` Map.fromFoldable (Set.map mkOrphanVertex orphanEdge
     mkOrphanVertex k = Tuple k (Tuple k Set.empty)
     orphanEdgeVertices = edgeVertices `Set.difference` Map.keys m
     edgeVertices = Set.fromFoldable $ Set.toUnfoldable <<< snd =<< Map.values m
-
-dSeparations :: forall k v. Ord k => Graph k v -> Set (UnorderedTuple k)
-dSeparations g =
-  Set.filter (\(MkUnorderedTuple (Tuple k1 k2)) -> Causal.isDSeparated k1 k2 Set.empty g) <<<
-  distinctUnorderedPairs <<<
-  Map.keys <<< Graph.toMap $ g

@@ -12,6 +12,7 @@ import Data.Functor.Compose (Compose(..))
 import Data.FunctorWithIndex (mapWithIndex)
 import Data.Graph (Graph)
 import Data.Graph as Graph
+import Data.Graph.Causal (dSeparations)
 import Data.Graph.Causal as Causal
 import Data.List (List)
 import Data.Map as Map
@@ -23,6 +24,7 @@ import Data.Set as Set
 import Data.Traversable (traverse_)
 import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested (Tuple3, uncurry3)
+import Data.TwoSet (TwoSet(..))
 import Data.Yaml (parseFromYaml)
 import DotLang (graphToGraph, highlightPaths)
 import Effect (Effect)
@@ -35,7 +37,7 @@ import Graphics.Graphviz (Engine(..), renderToSvg)
 import JQuery (display, hide) as J
 import JQuery.Fancy (JQuery, One)
 import JQuery.Fancy (clearOne, selectOne, setText) as J
-import Utility (UnorderedTuple(..), closeGraph, dSeparations)
+import Utility (closeGraph)
 import Utility.Render (Element(..), ListType(..), renderFoldableAsHtmlList, replaceElIn)
 
 type Elements =
@@ -60,13 +62,13 @@ type RawInput = Tuple3 String String String
 
 type Input k v =
   { graph :: Graph k v
-  , connectionQuery :: Maybe (UnorderedTuple k)
+  , connectionQuery :: Maybe (TwoSet k)
   }
 
 type Analysis k v =
   { graph :: Graph k v
   , dConnections :: Maybe (Set (List k))
-  , dSeparations :: Set (UnorderedTuple k)
+  , dSeparations :: Set (TwoSet k)
   }
 
 type Output =
@@ -128,7 +130,7 @@ unparse kToId valueToLabel { dSeparations: dSep, dConnections, graph } =
     dSeparationsEl =
       renderFoldableAsHtmlList Ul (MkElement "<div>None</div>") itemToHtml dSep
       where
-        itemToHtml (MkUnorderedTuple (Tuple k1 k2)) = kToId k1 <> " and " <> kToId k2
+        itemToHtml (MkTwoSet k1 k2) = kToId k1 <> " and " <> kToId k2
     Tuple dConnections svg =
       rmap (MkElement <<< renderToSvg Dot) <<< maybe nothing just $ dConnections
         where
@@ -156,8 +158,7 @@ analyze { graph, connectionQuery } =
   { graph
   , dSeparations: dSeparations graph
   , dConnections:
-    (\(Tuple from to) -> Causal.dConnectedBy from to Set.empty graph) <<<
-    un MkUnorderedTuple <$> connectionQuery
+    (\ks -> Causal.dConnectedBy ks Set.empty graph) <$> connectionQuery
   }
 
 stringToGraph :: String -> Either String (Graph String String)
@@ -176,7 +177,7 @@ parse graphString from to =
   { graph: _, connectionQuery } <$> stringToGraph graphString
   where
     connectionQuery =
-      (\x y -> MkUnorderedTuple $ Tuple x y) <$> emptyToNothing from <*> emptyToNothing to
+      MkTwoSet <$> emptyToNothing from <*> emptyToNothing to
       where
         emptyToNothing s
           | s == mempty = Nothing
