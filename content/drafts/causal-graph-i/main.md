@@ -67,25 +67,6 @@ d:
 <div id="d-connection-result"></div>
 </div>
 
-<div id="nodes-and-seps">
-```{=html}
-<textarea id="nodes">
-- a
-- b
-- c
-- d
-</textarea>
-```
-```{=html}
-<textarea id="d-separations">
-- [d, c]
-- [a, d]
-</textarea>
-```
-</div>
-<div id="compatible-graphs"></div>
-<div id="d-separation-error"></div>
-
 Back-door path. A noncausal path that connects the independent variable of interest with the dependent variable of interest.
 
 Back-door paths: All paths that start with an arrow pointing to the independent variable and end with an arrow pointing to the dependent variable
