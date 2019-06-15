@@ -4,41 +4,33 @@ import Prelude
 
 import App (App)
 import Color (rgb)
-import Data.Argonaut.Decode (decodeJson)
 import Data.Bifunctor (rmap)
-import Data.Either (Either)
+import Data.Either (Either(..))
 import Data.Foldable as Foldable
 import Data.Functor.Compose (Compose(..))
-import Data.FunctorWithIndex (mapWithIndex)
 import Data.Graph (Graph)
-import Data.Graph as Graph
 import Data.Graph.Causal (dSeparations)
 import Data.Graph.Causal as Causal
 import Data.List (List)
-import Data.Map as Map
 import Data.Maybe (Maybe(..), maybe)
 import Data.Newtype (un)
-import Data.Newtype as Newtype
 import Data.Set (Set)
 import Data.Set as Set
-import Data.Traversable (traverse_)
+import Data.Traversable (traverse, traverse_)
 import Data.Tuple (Tuple(..))
 import Data.Tuple.Nested (Tuple3, uncurry3)
 import Data.TwoSet (TwoSet(..))
-import Data.Yaml (parseFromYaml)
 import DotLang (graphToGraph, highlightPaths)
 import Effect (Effect)
 import FRP ((<+>))
 import FRP.Event (Event)
 import FRP.JQuery (inputTextChangeEvent, textAreaChangeEvent)
-import Foreign.Object (Object)
-import Foreign.Object as Object
 import Graphics.Graphviz (Engine(..), renderToSvg)
-import JQuery (display, hide) as J
 import JQuery.Fancy (JQuery, One)
-import JQuery.Fancy (clearOne, selectOne, setText) as J
-import Utility (closeGraph)
+import JQuery.Fancy as J
+import Utility (stringToGraph, vertexInGraph)
 import Utility.Render (Element(..), ListType(..), renderFoldableAsHtmlList, replaceElIn)
+import Utility.Render as Render
 
 type Elements =
   { specAndRender :: SpecAndRender
@@ -82,7 +74,7 @@ app =
   { elements
   , readInput
   , parse: uncurry3 parse
-  , analyze: analyze
+  , analyze
   , unparse: unparse identity identity
   , render: \el -> traverse_ (render el)
   , error
@@ -108,12 +100,7 @@ elements =
       in { from, to, result }
 
 error :: Elements -> Maybe String -> Effect Unit
-error els =
-  maybe
-    (J.hide (Newtype.unwrap errEl))
-    (\e -> J.setText e errEl *> J.display (Newtype.unwrap errEl))
-  where
-    errEl = els.specAndRender.error
+error els = Render.error els.specAndRender.error
 
 readInput :: Elements -> Effect (Tuple RawInput (Event RawInput))
 readInput els = ado
@@ -148,10 +135,11 @@ unparse kToId valueToLabel { dSeparations: dSep, dConnections, graph } =
                   itemToHtml path = Foldable.intercalate "→" (kToId <$> path)
 
 render :: Elements -> Output -> Effect Unit
-render els { dConnections, svg, dSeparations: dSep } = do
+render els { dConnections, svg, dSeparations: dSep } = ado
   maybe (J.clearOne els.dConnection.result) (replaceElIn els.dConnection.result) dConnections
   replaceElIn els.specAndRender.svg svg
   replaceElIn els.dSeparationResults dSep
+  in unit
 
 analyze :: forall k v. Ord k => Input k v -> Analysis k v
 analyze { graph, connectionQuery } =
@@ -161,24 +149,16 @@ analyze { graph, connectionQuery } =
     (\ks -> Causal.dConnectedBy ks Set.empty graph) <$> connectionQuery
   }
 
-stringToGraph :: String -> Either String (Graph String String)
-stringToGraph = map fromObject <<< decodeJson <=< parseFromYaml
-  where
-    fromObject :: Object (Array String) -> Graph String String
-    fromObject =
-      Graph.fromMap <<< closeGraph <<<
-      mapWithIndex (\k ks -> Tuple k (Set.fromFoldable ks)) <<<
-      Map.fromFoldable <<< asArray <<< Object.toUnfoldable
-    asArray :: forall a. Array a -> Array a
-    asArray = identity
-
 parse :: String -> String -> String -> Either String (Input String String)
-parse graphString from to =
-  { graph: _, connectionQuery } <$> stringToGraph graphString
+parse graphS fromS toS = do
+  graph <- stringToGraph graphS
+  from <- traverse (missingVertex graph) $ emptyToNothing fromS
+  to <- traverse (missingVertex graph) $ emptyToNothing toS
+  pure $ { graph, connectionQuery: MkTwoSet <$> from <*> to }
   where
-    connectionQuery =
-      MkTwoSet <$> emptyToNothing from <*> emptyToNothing to
-      where
-        emptyToNothing s
-          | s == mempty = Nothing
-          | otherwise = Just s
+    missingVertex g k
+      | vertexInGraph k g = Right k
+      | otherwise = Left "d-connection query asks about vertex not in graph"
+    emptyToNothing s
+      | s == mempty = Nothing
+      | otherwise = Just s

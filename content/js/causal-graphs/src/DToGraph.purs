@@ -13,9 +13,8 @@ import Data.Graph.Causal (dSeparations)
 import Data.List (List)
 import Data.List as List
 import Data.Map as Map
-import Data.Maybe (Maybe, maybe)
+import Data.Maybe (Maybe)
 import Data.Newtype (un)
-import Data.Newtype as Newtype
 import Data.Set (Set)
 import Data.Set as Set
 import Data.Tuple (Tuple(..), uncurry)
@@ -29,11 +28,11 @@ import FRP as FRP
 import FRP.Event (Event)
 import FRP.JQuery (textAreaChangeEvent)
 import Graphics.Graphviz (Engine(..), renderToSvg)
-import JQuery (display, hide) as J
 import JQuery.Fancy (JQuery, One)
-import JQuery.Fancy (selectOne, setText) as J
+import JQuery.Fancy as J
 import Utility (distinctPairs, powerSet)
 import Utility.Render (Element(..), replaceElIn)
+import Utility.Render as Render
 
 type Elements =
   { nodes :: JQuery (One "textarea")
@@ -73,12 +72,7 @@ app =
   }
 
 error :: Elements -> Maybe String -> Effect Unit
-error els =
-  maybe
-    (J.hide (Newtype.unwrap errEl))
-    (\e -> J.setText e errEl *> J.display (Newtype.unwrap errEl))
-  where
-    errEl = els.error
+error els = Render.error els.error
 
 readInput :: Elements -> Effect (Tuple RawInput (Event RawInput))
 readInput els =
