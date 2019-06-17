@@ -1,0 +1,1 @@
+Last time we found the d-separations that correspond to a graph. This time, we find the graphs that correspond to a set of d-separations. Which is more useful because we generally know d-separations and generally don't know graphs.

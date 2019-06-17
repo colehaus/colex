@@ -2,7 +2,7 @@
 @import 'libs/colors';
 @import 'libs/primitives/spacing';
 
-#smoking-graph {
+#smoking-graph, #smoking-graph-silly {
   width: 60%;
 }
 
@@ -47,10 +47,13 @@ svg > g.graph > polygon {
 }
 
 #nodes-and-seps, #spec1-spec2 {
-    > textarea {
+    textarea {
         height: 30ex;
-        width: 48%;
+        width: 100%;
     }
+    > * {
+        width: 48%;
+    };
     display: flex;
     justify-content: space-between;
 }
