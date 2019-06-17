@@ -32,3 +32,32 @@ What are the instruments for the causal effect of <input id="instruments-cause" 
 <div id="instruments-result"></div>
 </div>
 
+<div id="spec1-spec2">
+```{=html}
+<textarea id="graph-spec1">
+a:
+  - b
+  - c
+b:
+  []
+c:
+  []
+</textarea>
+```
+
+```{=html}
+<textarea id="graph-spec2">
+a:
+  []
+b:
+  - a
+  - c
+c:
+  []
+</textarea>
+```
+</div>
+
+<div id="discriminate-error"></div>
+
+<div id="discriminate-analysis"></div>

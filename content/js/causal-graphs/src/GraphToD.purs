@@ -25,7 +25,8 @@ import Effect (Effect)
 import FRP ((<+>))
 import FRP.Event (Event)
 import FRP.JQuery (inputTextChangeEvent, textAreaChangeEvent)
-import Graphics.Graphviz (Engine(..), renderToSvg)
+import Graphics.Graphviz (Engine(..))
+import Graphics.Graphviz as Dot
 import JQuery.Fancy (JQuery, One)
 import JQuery.Fancy as J
 import Utility (stringToGraph, vertexInGraph)
@@ -119,7 +120,7 @@ unparse kToId valueToLabel { dSeparations: dSep, dConnections, graph } =
       where
         itemToHtml (MkTwoSet k1 k2) = kToId k1 <> " and " <> kToId k2
     Tuple dConnections svg =
-      rmap (MkElement <<< renderToSvg Dot) <<< maybe nothing just $ dConnections
+      rmap (MkElement <<< Dot.renderToSvg Dot) <<< maybe nothing just $ dConnections
         where
           dotGraph = graphToGraph valueToLabel graph
           nothing = Tuple Nothing dotGraph
@@ -135,11 +136,10 @@ unparse kToId valueToLabel { dSeparations: dSep, dConnections, graph } =
                   itemToHtml path = Foldable.intercalate "→" (kToId <$> path)
 
 render :: Elements -> Output -> Effect Unit
-render els { dConnections, svg, dSeparations: dSep } = ado
-  maybe (J.clearOne els.dConnection.result) (replaceElIn els.dConnection.result) dConnections
-  replaceElIn els.specAndRender.svg svg
+render els { dConnections, svg, dSeparations: dSep } =
+  maybe (J.clearOne els.dConnection.result) (replaceElIn els.dConnection.result) dConnections *>
+  replaceElIn els.specAndRender.svg svg *>
   replaceElIn els.dSeparationResults dSep
-  in unit
 
 analyze :: forall k v. Ord k => Input k v -> Analysis k v
 analyze { graph, connectionQuery } =

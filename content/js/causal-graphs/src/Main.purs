@@ -3,6 +3,7 @@ module Main where
 import Prelude
 
 import App (runApp)
+import Discriminate as Discriminate
 import DToGraph as DToGraph
 import Effect (Effect)
 import FindInstruments as FindInstruments
@@ -18,3 +19,4 @@ main =
     runApp GraphToD.app
     runApp DToGraph.app
     runApp FindInstruments.app
+    runApp Discriminate.app

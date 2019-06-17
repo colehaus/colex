@@ -27,7 +27,8 @@ import Effect (Effect)
 import FRP as FRP
 import FRP.Event (Event)
 import FRP.JQuery (textAreaChangeEvent)
-import Graphics.Graphviz (Engine(..), renderToSvg)
+import Graphics.Graphviz (Engine(..))
+import Graphics.Graphviz as Dot
 import JQuery.Fancy (JQuery, One)
 import JQuery.Fancy as J
 import Utility (distinctPairs, powerSet)
@@ -113,7 +114,7 @@ allGraphsExcept dSeps nodes =
 
 unparse :: forall k. Show k => (k -> String) -> Analysis k -> Element
 unparse kToLabel { compatibleGraphs } =
-  MkElement <<< foldMap (renderToSvg Dot <<< graphToGraph kToLabel) $ compatibleGraphs
+  MkElement <<< foldMap (Dot.renderToSvg Dot <<< graphToGraph kToLabel) $ compatibleGraphs
 
 render :: Elements -> Element -> Effect Unit
 render els svgs = replaceElIn els.compatibleGraphs svgs

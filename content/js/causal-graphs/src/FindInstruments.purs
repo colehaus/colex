@@ -7,9 +7,7 @@ import Data.Either (Either(..))
 import Data.Foldable (traverse_)
 import Data.Functor.Compose (Compose(..))
 import Data.Graph (Graph)
-import Data.Graph as Graph
 import Data.Graph.Causal as Casual
-import Data.Map as Map
 import Data.Maybe (Maybe)
 import Data.Newtype (un)
 import Data.Set (Set)
@@ -128,10 +126,9 @@ unparse kToId valueToLabel { graph, instruments } = { svg, instrumentsList }
         itemToHtml k = kToId k
 
 render :: Elements -> Output -> Effect Unit
-render els { svg, instrumentsList } = ado
-  replaceElIn els.specAndRender.svg svg
+render els { svg, instrumentsList } =
+  replaceElIn els.specAndRender.svg svg *>
   replaceElIn els.instruments.result instrumentsList
-  in unit
 
 error :: Elements -> Maybe String -> Effect Unit
 error els = Render.error els.specAndRender.error
