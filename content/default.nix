@@ -1,6 +1,6 @@
 { extras ? import ../nix/extras.nix // import ../nix/gitignore.nix { inherit (import <nixpkgs> {}) lib; }
 , pkgs ? extras.pinnedPkgs { specFile = ../nix/nixpkgs.json; opts = {}; }
-, hakyll ? pkgs.callPackage ../hakyll { inherit pkgs; }} :
+, hakyllColEx ? pkgs.callPackage ../hakyll { inherit pkgs; }} :
   let
     webpackColEx = pkgs.callPackage ./js { inherit pkgs extras; };
     bibliometric = pkgs.callPackage ./js/bibliometric { inherit extras; };
@@ -24,17 +24,27 @@
       name = "stylelint";
       versionSpec = "^9.9.0";
     };
+    depsOf = list: pkgs.lib.lists.unique (builtins.filter pkgs.lib.attrsets.isDerivation (pkgs.lib.lists.concatMap (x: x.nativeBuildInputs ++ x.buildInputs) list ++ list));
   in
     pkgs.stdenv.mkDerivation rec {
-      name = "hakyllColEx";
+      name = "colex-content";
       src = extras.gitignoreSource ./.;
       phases = [ "unpackPhase" "patchPhase" "buildPhase" "installPhase" ];
+      noGcDeps = depsOf [ webpackColEx bibliometric voi vnm exemplar decisionDemos causalGraph ];
       nativeBuildInputs = [
-        hakyll
+        hakyllColEx
         pkgs.sass
         mathJaxNodeCli
         uglifyJs
         stylelint
+
+        webpackColEx
+        bibliometric
+        voi
+        vnm
+        exemplar
+        decisionDemos
+        causalGraph
       ] ++ (if pkgs.stdenv.isLinux then [ pkgs.glibcLocales ] else []);
       LC_ALL = "en_US.UTF-8";
       WEB_HOST = "https://www.col-ex.org";

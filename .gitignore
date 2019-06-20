@@ -6,3 +6,9 @@ rollbar-access-token.txt
 .ipynb_checkpoints
 
 result
+
+no-gc-drvs
+no-gc-drvs-*
+
+no-gc-outs
+no-gc-outs-*

@@ -1,22 +1,24 @@
 { extras ? import ../../nix/extras.nix // import ../../nix/gitignore.nix { inherit (import <nixpkgs> {}) lib; }, pkgs ? extras.pinnedPkgs { specFile = ../../nix/nixpkgs.json; opts = {}; } } :
   let
-    nodeEnv = extras.callNode2nix {
+    nodeNix = extras.callNode2nix {
       inherit pkgs;
-      name = "webpackColEx";
+      name = "colex-webpack";
       package = ./package.json;
       packageLock = ./package-lock.json;
       postBuild = ''
         sed -i -e 's/dontNpmInstall ? false/dontNpmInstall ? true/g' node-env.nix
       '';
     };
+    nodeEnv = pkgs.callPackage nodeNix {};
   in
     pkgs.stdenv.mkDerivation rec {
-      name = "webpackColEx";
+      name = "colex-webpack";
       phases = [ "unpackPhase" "configurePhase" "buildPhase" ];
       nativeBuildInputs = [
         pkgs.nodejs
         # `flow-bin` from npm doesn't work with nix
         pkgs.flow
+        nodeNix
         nodeEnv.shell.nodeDependencies
       ];
       src = extras.gitignoreSource ./.;

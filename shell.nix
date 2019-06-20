@@ -7,8 +7,8 @@ let
     opts = { config = { packageOverrides = import ./nix/package-overrides.nix; }; };
   };
   webpack = pkgs.callPackage ./content/js { inherit pkgs extras; };
-  content = pkgs.callPackage ./content { inherit hakyll pkgs extras; };
-  hakyll = pkgs.callPackage ./hakyll { inherit pkgs extras; };
+  content = pkgs.callPackage ./content { inherit hakyllColEx pkgs extras; };
+  hakyllColEx = pkgs.callPackage ./hakyll { inherit pkgs extras; };
 #   ijavascript = extras.callNpm {
 #     inherit pkgs;
 #     name = "ijavascript";
@@ -16,11 +16,11 @@ let
 #   };
 in
   pkgs.stdenv.mkDerivation {
-    name = "colExEnv";
+    name = "colex-env";
     LC_ALL = "en_US.UTF-8";
     buildInputs =
       # [ pkgs.python36Packages.jupyter ijavascript pkgs.stack ] ++
-      hakyll.nativeBuildInputs ++
+      hakyllColEx.nativeBuildInputs ++
       content.nativeBuildInputs ++
       webpack.nativeBuildInputs ++
       (extras.purescriptDevEnv { inherit pkgs; }).buildInputs ++
