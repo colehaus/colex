@@ -9,7 +9,7 @@ series: Graphical causal models
 
 # Causal graphs
 
-We can represent causal models as directed [graphs](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)). The vertices in the graph represent different variables---causes and effects---and the edges represent causal relationships. For example:
+We can represent causal models as directed [graphs](https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)). The vertices in the graph represent different random variables---causes and effects---and the edges represent causal relationships. If two vertices do not have an edge between them, there is no direct causal relationship between them. For example:
 
 ![Smoking is causally associated with both lung cancer and yellow fingers](/images/smoking-graph.svg){#smoking-graph}
 

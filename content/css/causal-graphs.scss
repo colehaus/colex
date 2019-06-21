@@ -25,11 +25,11 @@ svg > g.graph > polygon {
     width: 8ex;
 }
 
-#graph-error::before {
+#graph-error::before, #discriminate-error::before {
     content: "Errors: ";
 }
 
-#graph-error {
+#graph-error, #discriminate-error {
     @include border-radius;
     @include padding-1ex;
     @include background-error-color;
@@ -46,13 +46,22 @@ svg > g.graph > polygon {
     @include background-alt-color-translucent;
 }
 
-#nodes-and-seps, #spec1-spec2 {
+#nodes-and-seps {
     textarea {
         height: 30ex;
         width: 100%;
     }
     > * {
         width: 48%;
+    };
+    display: flex;
+    justify-content: space-between;
+}
+
+#spec1-spec2 {
+    > * {
+        width: 48%;
+        height: 30ex;
     };
     display: flex;
     justify-content: space-between;
