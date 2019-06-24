@@ -72,5 +72,5 @@ d-separations:
 ```
 </div>
 </div>
-<div id="compatible-graphs"></div>
 <div id="d-separation-error"></div>
+<div id="compatible-graphs"></div>

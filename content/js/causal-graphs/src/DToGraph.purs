@@ -11,7 +11,8 @@ import Data.Graph (Graph)
 import Data.Graph as Graph
 import Data.Graph.Causal (dSeparations)
 import Data.List (List)
-import Data.List as List
+import Data.List.Lazy as Lazy
+import Data.List.Lazy as LL
 import Data.Map as Map
 import Data.Maybe (Maybe)
 import Data.Newtype (un)
@@ -31,7 +32,7 @@ import Graphics.Graphviz (Engine(..))
 import Graphics.Graphviz as Dot
 import JQuery.Fancy (JQuery, One)
 import JQuery.Fancy as J
-import Utility (distinctPairs, powerSet)
+import Utility (distinctPairs, powerSet')
 import Utility.Render (Element(..), replaceElIn)
 import Utility.Render as Render
 
@@ -89,8 +90,10 @@ parse nodesS dSeparationsS = ado
 analyze :: forall k. Ord k => Input k -> Analysis k
 analyze { nodes, dSeparations: dSep } =
   { compatibleGraphs:
-      -- Splitting the two filters avoid a stack overflow for some reason
-      List.filter matchingDSeps <<< List.filter (nonCyclic && fullSize) <<<
+      LL.toUnfoldable <<<
+      -- For some reason, merging these two filters causes a stack overflow
+      LL.filter matchingDSeps  <<<
+      LL.filter (nonCyclic && fullSize) <<<
       allGraphsExcept dSep $ nodes
   }
   where
@@ -99,10 +102,10 @@ analyze { nodes, dSeparations: dSep } =
     fullSize g = Set.size nodes == (Set.size <<< Map.keys <<< Graph.toMap $ g)
 
 -- `List` instead of `Set` because `Graph` isn't `Ord`
-allGraphsExcept :: forall k. Ord k => Set (TwoSet k) -> Set k -> List (Graph k k)
+allGraphsExcept :: forall k. Ord k => Set (TwoSet k) -> Set k -> Lazy.List (Graph k k)
 allGraphsExcept dSeps nodes =
-  map mkGraph <<< List.fromFoldable <<< Set.filter (not <<< Set.isEmpty) <<<
-  powerSet <<< flip Set.difference dSeps' <<< distinctPairs $ nodes
+  map mkGraph <<< LL.filter (not <<< Set.isEmpty) <<<
+  powerSet' <<< flip Set.difference dSeps' <<< distinctPairs $ nodes
   where
     dSeps' =
       Set.map TwoSet.toTuple dSeps <> Set.map (Tuple.swap <<< TwoSet.toTuple) dSeps

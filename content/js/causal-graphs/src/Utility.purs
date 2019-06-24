@@ -11,6 +11,8 @@ import Data.Graph (Graph)
 import Data.Graph as Graph
 import Data.List (List(..))
 import Data.List as List
+import Data.List.Lazy as LL
+import Data.List.Lazy as Lazy
 import Data.Map (Map)
 import Data.Map as Map
 import Data.Maybe (Maybe(..))
@@ -38,6 +40,12 @@ powerSet =
   Set.fromFoldable <<< map Set.fromFoldable <<<
   List.filterM (const [true, false]) <<<
   List.fromFoldable
+
+-- Like the above, but lazier
+powerSet' :: forall a. Ord a => Set a -> Lazy.List (Set a)
+powerSet' =
+  map Set.fromFoldable <<<
+  LL.filterM (const $ LL.fromFoldable [true, false]) <<< LL.fromFoldable
 
 -- If the user has one vertex point to another vertex that they haven't explicitly defined,
 -- add that implicit vertex in with no outgoing edges

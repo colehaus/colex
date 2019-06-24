@@ -25,11 +25,11 @@ svg > g.graph > polygon {
     width: 8ex;
 }
 
-#graph-error::before, #discriminate-error::before {
+#graph-error::before, #discriminate-error::before, #d-separation-error::before {
     content: "Errors: ";
 }
 
-#graph-error, #discriminate-error {
+#graph-error, #discriminate-error, #d-separation-error {
     @include border-radius;
     @include padding-1ex;
     @include background-error-color;
