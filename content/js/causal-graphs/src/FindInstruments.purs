@@ -8,7 +8,7 @@ import Data.Foldable (traverse_)
 import Data.Functor.Compose (Compose(..))
 import Data.Graph (Graph)
 import Data.Graph.Causal as Casual
-import Data.Maybe (Maybe)
+import Data.Maybe (Maybe, fromJust)
 import Data.Newtype (un)
 import Data.Set (Set)
 import Data.Set as Set
@@ -22,6 +22,7 @@ import FRP.JQuery (inputTextChangeEvent, textAreaChangeEvent)
 import Graphics.Graphviz (Engine(..), renderToSvg)
 import JQuery.Fancy (JQuery, One)
 import JQuery.Fancy as J
+import Partial.Unsafe (unsafePartialBecause)
 import Utility (stringToGraph, vertexInGraph)
 import Utility.Render (Element(..), ListType(..), renderFoldableAsHtmlList, replaceElIn)
 import Utility.Render as Render
@@ -114,7 +115,10 @@ parse graphS causeS effectS = do
 
 analyze :: forall k v. Ord k => Input k v -> Analysis k v
 analyze { graph, instrumentsQuery } =
-  { graph, instruments: Casual.instruments instrumentsQuery Set.empty graph }
+  { graph, instruments: fromJust' $ Casual.instruments instrumentsQuery Set.empty graph }
+  where
+    fromJust' x = unsafePartialBecause "No conditioning set" $ fromJust x
+
 
 unparse :: forall k v. Show k => (k -> String) -> (v -> String) -> Analysis k v -> Output
 unparse kToId valueToLabel { graph, instruments } = { svg, instrumentsList }

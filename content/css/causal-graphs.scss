@@ -46,7 +46,7 @@ svg > g.graph > polygon {
     @include background-alt-color-translucent;
 }
 
-#nodes-and-seps {
+#nodes-and-seps, #spec-and-conditions {
     textarea {
         height: 30ex;
         width: 100%;

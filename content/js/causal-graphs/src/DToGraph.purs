@@ -97,7 +97,7 @@ analyze { nodes, dSeparations: dSep } =
       allGraphsExcept dSep $ nodes
   }
   where
-    matchingDSeps g = dSep == dSeparations g
+    matchingDSeps g = dSep == dSeparations Set.empty g
     nonCyclic = not <<< Graph.isCyclic
     fullSize g = Set.size nodes == (Set.size <<< Map.keys <<< Graph.toMap $ g)
 

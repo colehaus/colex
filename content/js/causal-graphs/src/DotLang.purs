@@ -12,20 +12,22 @@ import Data.Foldable as Foldable
 import Data.Graph (Graph)
 import Data.Graph as Graph
 import Data.List (List(..))
+import Data.List as List
+import Data.List.NonEmpty (NonEmptyList)
 import Data.Map as Map
 import Data.Set (Set)
 import Data.Tuple (Tuple(..))
 import Partial.Unsafe (unsafePartialBecause)
 import Utility (piecesOfN)
 
-highlightPaths :: forall k. Show k => Color -> Set (List k) -> Dot.Graph -> Dot.Graph
+highlightPaths :: forall k. Show k => Color -> Set (NonEmptyList k) -> Dot.Graph -> Dot.Graph
 highlightPaths color paths g =
   Foldable.foldr (modifyPath <<< Array.cons $ Edge.Color color) g paths
 
 modifyPath ::
   forall k.
   Show k =>
-  (Array Edge.Attr -> Array Edge.Attr) -> List k -> Dot.Graph -> Dot.Graph
+  (Array Edge.Attr -> Array Edge.Attr) -> NonEmptyList k -> Dot.Graph -> Dot.Graph
 modifyPath f path g =
   case g of
     Dot.Graph defs -> Dot.Graph defs
@@ -34,7 +36,7 @@ modifyPath f path g =
     inPath d = Foldable.any (\(Tuple from to) -> isEdge from to d) edges
     edges =
       unsafePartialBecause "piecesOfN guarantees lists of 2" $
-      (\(Cons x (Cons y Nil)) -> Tuple x y) <$> piecesOfN 2 path
+      map (\(Cons x (Cons y Nil)) -> Tuple x y) <<< piecesOfN 2 <<< List.fromFoldable $ path
 
 isEdge :: forall k. Show k => k -> k -> Dot.Definition -> Boolean
 isEdge from to (Dot.EdgeDef (Edge _ fromS toS _)) =

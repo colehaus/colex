@@ -3,6 +3,7 @@ module Main where
 import Prelude
 
 import App (runApp)
+import ConditionalDSep as ConditionalDSep
 import Discriminate as Discriminate
 import DToGraph as DToGraph
 import Effect (Effect)
@@ -20,3 +21,4 @@ main =
     runApp DToGraph.app
     runApp FindInstruments.app
     runApp Discriminate.app
+    runApp ConditionalDSep.app
