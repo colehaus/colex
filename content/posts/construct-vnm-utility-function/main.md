@@ -11,13 +11,13 @@ js: construct-vnm-utility-function
 
 <!--more-->
 
-<textarea id="goods">
 ```{=html}
+<textarea id="goods">
 Apple
 Banana
 Carrot
-```
 </textarea>
+```
 <p class="input">Which do you prefer?</p>
 <div class="scenario input">
 Receive <span id="first-good" class="lottery"><span class="odds">1.00e+0</span> <span class="good">Banana</span> lottery ticket(s)</span><br/><br/>or <span id="second-good" class="lottery"><span class="odds">1.00e+0</span> <span class="good">Carrot</span> lottery ticket(s)</span><br/><br/>
