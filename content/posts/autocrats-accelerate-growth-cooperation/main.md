@@ -74,7 +74,7 @@ We'll start by examining the utility obtained by each player when they pursue a 
 
 #### $\text{Tax}\backslash\mathtt{Invest}$
 
-In the first round, $\mathtt{Producers} invest but have not yet reaped the benefit. So they obtain only $(1 - k) - c$ (what's left after the $\text{Autocrat}$'s taxes minus the cost of $\mathtt{Investing}$) while the $\text{Autocrat}$ simply receives their tax share of output $k$. In all subsequent rounds, output is scaled by the competing factors of the discount rate $\delta$ and the growth rate $r$ while cost is scaled only by the discount rate $\delta$.
+In the first round, $\mathtt{Producers}$ invest but have not yet reaped the benefit. So they obtain only $(1 - k) - c$ (what's left after the $\text{Autocrat}$'s taxes minus the cost of $\mathtt{Investing}$) while the $\text{Autocrat}$ simply receives their tax share of output $k$. In all subsequent rounds, output is scaled by the competing factors of the discount rate $\delta$ and the growth rate $r$ while cost is scaled only by the discount rate $\delta$.
 
 <figure>
 <figcaption>Discounted utility obtained by the $\text{Autocrat}$ and $\mathtt{Producers}$ given they play $\text{Tax}$ and $\mathtt{Invest}$ against each other.</figcaption>
@@ -176,7 +176,7 @@ To see this, we first confirm that the $\mathtt{Producer}$ can do no better. Her
 Now we have only to confirm that the $\text{Autocrat}$ can't improve their lot by $\text{Looting}$. Again, we'll copy over the two utility expressions and set them equal to find the critical growth rate $r$.
 
 <figure>
-<figcaption>Parameter values at which a $\mathtt{Tit for tatted}$ $\text{Autocrat}$ is indifferent between $\text{Taxing}$ and $\text{Looting}$.</figcaption>
+<figcaption>Parameter values at which a $\mathtt{Tit-for-tatted}$ $\text{Autocrat}$ is indifferent between $\text{Taxing}$ and $\text{Looting}$.</figcaption>
 $$
 U_{\text{T}}(\mathbf{a}) = k + \frac{\delta \cdot r \cdot k}{1 - \delta \cdot r} \\
 U_{\text{L}}(\mathbf{a}) = l + \frac{\delta \cdot r \cdot l}{1 - \delta} \\
