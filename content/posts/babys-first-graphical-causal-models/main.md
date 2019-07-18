@@ -31,13 +31,13 @@ Now that we've presented the basic idea of modeling causal systems with graphs, 
 [Inverted forks](#key-terms)
 :  The final possible triplet configuration is what we call an inverted fork. If A causes B and C causes B (A → B ← C), then A and C will be independent. We call the central vertex B a [collider](#key-terms). For example, if smoking causes lung cancer and exposure to high doses of radiation also causes lung cancer, we wouldn't expect smoking and exposure to high doses of radiation to be correlated.
 
-<figure id="triplets-table">
+<figure class="triplets-table">
 <figcaption>Types of causal triplets</figcaption>
 | Name of triplet | Name of central vertex  | Diagram   | Ends (A and C) dependent? |
 |:----------------|:------------------------|:----------|:--------------------------|
 | Chain           | Mediator/Traverse       | A → B → C | Causally (probably)       |
 | Fork            | Confounder/Common cause | A ← B → C | Noncausally               |
-| Inverted fork   | Collider                | A → B ← C | No                        |
+| Inverted fork   | Collider/Common effect  | A → B ← C | No                        |
 </figure>
 
 So we can determine the causal and non-causal dependence between three factors by turning them into a causal graph and looking at the configuration of the edges.
@@ -66,11 +66,11 @@ I hope the intuition behind this is clear as a fairly straightforward extension 
 
 We also call a path with a collider on it a [blocked path](#key-terms).
 
-# d-separation and d-connection on arbitrary graphs
+# d-separation and d-connection on graphs
 
-But linear paths still aren't that useful. It's only when we get to full arbitrary graphs that we start to be able to make interesting claims.
+But linear paths still aren't that useful. It's only when we get to full arbitrary directed acyclic graphs that we start to be able to make interesting claims.
 
-In arbitrary graphs, we say that any two vertices are d-connected if they have an undirected path between them which is not blocked (i.e. does not have a collider). If there are no such paths (i.e. there are no paths at all or all paths have a collider), the two vertices are d-separated.
+In arbitrary graphs, we say that any two vertices are d-connected if they have an undirected path between them which is not blocked (i.e. does not have a collider). If there are no such unblocked paths (i.e. there are no paths at all or all paths have a collider), the two vertices are d-separated.
 
 ## Interactive
 

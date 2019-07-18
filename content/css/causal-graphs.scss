@@ -46,7 +46,7 @@ svg > g.graph > polygon {
     @include background-alt-color-translucent;
 }
 
-#nodes-and-seps, #spec-and-conditions {
+#nodes-and-seps, #spec-and-conditions, #graph-and-seps {
     textarea {
         height: 30ex;
         width: 100%;
@@ -67,10 +67,15 @@ svg > g.graph > polygon {
     justify-content: space-between;
 }
 
-#triplets-table {
+.triplets-table {
     width: 60vw;
 }
 
 #widget-hr {
     width: 60%;
+}
+
+.transform-reason {
+    color: $light-text-color;
+    font-size: smaller;
 }
