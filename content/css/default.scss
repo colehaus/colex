@@ -275,6 +275,13 @@ figure > table {
     @include width-full;
 }
 
+figure.natural-fig {
+    width: 90vw;
+    > img {
+        width: initial;
+    }
+}
+
 .big-fig {
     width: 90vw;
 }
