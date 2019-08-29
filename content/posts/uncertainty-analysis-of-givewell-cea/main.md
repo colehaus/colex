@@ -1,5 +1,5 @@
 ---
-title: Uncertainty analysis of GiveWell cost-effectiveness analysis
+title: Uncertainty analysis of GiveWell's cost-effectiveness analysis
 date: 2019-09-27
 tags: statistics, development
 ---
@@ -26,19 +26,19 @@ If we had to proceed analytically, working with probability distributions throug
 
 # Analysis
 
-We have the beginnings of a plan then. We can implement GiveWell's cost-effectiveness models in a Monte Carlo framework ([PyMC3](https://docs.pymc.io/) in my case), specify probability distributions over the input parameters, and finally run the calculation and look at the uncertainty that's been propagated to the results.
+We have the beginnings of a plan then. We can implement GiveWell's cost-effectiveness models in a Monte Carlo framework ([PyMC3](https://docs.pymc.io/) in this case), specify probability distributions over the input parameters, and finally run the calculation and look at the uncertainty that's been propagated to the results.
 
 <!--more-->
 
 ## The model
 
-The Python source code implementing GiveWell's models can be found on [GitHub](https://github.com/colehaus/givewell-analysis) [^models]. The core models can be found in `cash.py`, `nets.py`, `smc.py`, `worms.py` and `vas.py`.
+The Python [source code implementing GiveWell's models can be found on [GitHub](https://github.com/colehaus/givewell-analysis)]{.noted}[^models]. The core models can be found in `cash.py`, `nets.py`, `smc.py`, `worms.py` and `vas.py`.
 
 ## The inputs
 
-For the purposes of the uncertainty analysis that follows, it doesn't make much sense to infect the results with my own idiosyncratic views on the appropriate value of the input parameters. Instead, what I have done is uniformly taken GiveWell's best guess and added and subtracted 20%. These upper and lower bounds then become the 90% confidence interval of a [log-normal distribution](https://en.wikipedia.org/wiki/Log-normal_distribution) [^log-normal]. <!--TODO image here--> For example, if GiveWell's best guess for a parameter is 0.1, I used a log-normal with a 90% CI from 0.08 to 0.12. 
+For the purposes of the uncertainty analysis that follows, it doesn't make much sense to infect the results with my own idiosyncratic views on the appropriate value of the input parameters. Instead, what I have done is uniformly taken GiveWell's best guess and added and subtracted 20%. These upper and lower bounds then become the 90% confidence interval of a [[log-normal distribution](https://en.wikipedia.org/wiki/Log-normal_distribution)]{.noted}[^log-normal]. <!--TODO image here--> For example, if GiveWell's best guess for a parameter is 0.1, I used a log-normal with a 90% CI from 0.08 to 0.12. 
 
-While this approach screens off my influence it also means that the results of the analysis will primarily tell us about the structure of the computation rather than informing us about the world. Fortunately, there's a remedy for this problem too. I have set up a Jupyter notebook (TODO) with the all the input parameters to the calculation which you can manipulate and rerun the analysis. That is, if you think the moral weight given to increasing consumption ought to range from 0.8 to 1.5 instead of 0.8 to 1.2, you can make that edit and see the result of the analysis.
+While this approach screens off my influence it also means that the results of the analysis will primarily tell us about the structure of the computation rather than informing us about the world. Fortunately, there's a remedy for this problem too. I have set up a Jupyter notebook (TODO) with the all the input parameters to the calculation which you can manipulate and rerun the analysis. That is, if you think the moral weight given to increasing consumption ought to range from 0.8 to 1.5 instead of 0.8 to 1.2, you can make that edit and see the result of the analysis. Making these modifications is essential for a realistic analysis because we are not, in fact, equally uncertain about every input parameter.
 
 It's also worth noting that I have considerably expanded the set of input parameters receiving special scrutiny. The GiveWell cost-effectiveness analysis is (with good reason---it keeps things manageable for outside users) fairly conservative about which parameters it highlights as eligible for user manipulation. In this analysis, I include any input parameter which is not tautologically certain. For example, "Reduction in malaria incidence for children under 5 (from Lengeler 2004 meta-analysis)" shows up in the analysis which follows but is not highlighted in GiveWell's "User inputs" or "Moral weights" tab. Even though we don't have much information with which to second guess the meta-analysis, the value it reports is still uncertain and our calculation ought to reflect that.
 
@@ -64,14 +64,18 @@ For reference, here are the point estimates of value per dollar using GiveWell's
 | Helen Keller International           |             0.0223 |
 | Against Malaria Foundation           |             0.0247 |
 
-I've also plotted a version in which the results are normalized---I divided the results for each charity by that charity's mean value per dollar. This version of the plot abstracts from the actual value per dollar and emphasizes the percentage spread of uncertainty. It also reemphasizes the earlier point that--because we use the same spread of uncertainty for each input parameter---the current results are telling us more about the structure of the model than about the world. For real results, go try the Jupyter notebook!
+I've also plotted a version in which the results are normalized---I divided the results for each charity by that charity's expected value per dollar. Instead of showing the probability distribution on the value per dollar for each charity, this normalized version shows the probability distribution on the percentage of that charity's expected value that it achieves. This version of the plot abstracts from the actual value per dollar and emphasizes the spread of uncertainty. It also reemphasizes the earlier point that--because we use the same spread of uncertainty for each input parameter---the current results are telling us more about the structure of the model than about the world. For real results, go try the Jupyter notebook! <!--TODO link-->
 
 <figure class="natural-fig">
 ![Normalized plots of probability distributions of value per dollar for GiveWell's top charities](/images/givewell-analysis/uncertainties-overlaid.png)
-<figcaption>Normalized plots of probability distributions of value per dollar for GiveWell's top charities</figcaption>
+<figcaption>Probability distributions for percentage of expected value obtained with each of GiveWell's top charities</figcaption>
 </figure>
+
+# Conclusions
+
+Our preliminary conclusion is that all of GiveWell's top charities cost-effectiveness estimates have similar uncertainty with GiveDirectly being a bit more certain than the rest. However, this is mostly an artifact of pretending that we are exactly equally uncertain about each input parameter.
 
 <br>
 
-[^models]: Unfortunately, the code implements the 2019 V4 cost-effectiveness analysis instead of the most recent V5 because I just worked off the V4 tab I'd had lurking in my browser for months and didn't think to check for a new version until too late.
+[^models]: Unfortunately, the code implements the 2019 V4 cost-effectiveness analysis instead of the most recent V5 because I just worked off the V4 tab I'd had lurking in my browser for months and didn't think to check for a new version until too late. I also deviated from the spreadsheet in one place because I think there's an error (still waiting to hear back from GiveWell).
 [^log-normal]: Log-normal strikes me as a reasonable default distribution for this task: because it's support is (0, +∞) which fits many of our parameters well (they're all positive but some are actually bounded above by 1); and because ["A log-normal process is the statistical realization of the multiplicative product of many independent random variables"](https://en.wikipedia.org/wiki/Log-normal_distribution) which also seems reasonable here.

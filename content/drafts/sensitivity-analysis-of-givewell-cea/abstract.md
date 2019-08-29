@@ -1,0 +1,1 @@
+We perform visual (scatter plot) and delta moment-independent sensitivity analysis on GiveWell's cost-effectiveness models. We find that some uncertain input parameters are much more influential on the final cost-effectiveness results for each charity than other input parameters.
