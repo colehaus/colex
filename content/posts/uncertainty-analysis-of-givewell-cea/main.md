@@ -2,6 +2,7 @@
 title: Uncertainty analysis of GiveWell's cost-effectiveness analysis
 date: 2019-09-27
 tags: statistics, development
+series: GiveWell cost-effectiveness analysis analysis
 ---
 
 # GiveWell's cost-effectiveness analysis
@@ -47,8 +48,8 @@ It's also worth noting that I have considerably expanded the set of input parame
 Finally, we get to the part that you actually care about, dear reader: the results. Given input parameters which are each distributed log-normally with a 90% confidence interval spanning ±20% of GiveWell's best estimate, here are the resulting uncertainties in the cost-effectiveness estimates:
 
 <figure class="natural-fig">
-![Plots of probability distributions of value per dollar for GiveWell's top charities](/images/givewell-analysis/uncertainties-small-multiples.png)
-<figcaption>Plots of probability distributions of value per dollar for GiveWell's top charities</figcaption>
+![Probability distributions of value per dollar for GiveWell's top charities](/images/givewell-analysis/uncertainties-small-multiples.png)
+<figcaption>Probability distributions of value per dollar for GiveWell's top charities</figcaption>
 </figure>
 
 For reference, here are the point estimates of value per dollar using GiveWell's values for the charities:
@@ -67,7 +68,7 @@ For reference, here are the point estimates of value per dollar using GiveWell's
 I've also plotted a version in which the results are normalized---I divided the results for each charity by that charity's expected value per dollar. Instead of showing the probability distribution on the value per dollar for each charity, this normalized version shows the probability distribution on the percentage of that charity's expected value that it achieves. This version of the plot abstracts from the actual value per dollar and emphasizes the spread of uncertainty. It also reemphasizes the earlier point that--because we use the same spread of uncertainty for each input parameter---the current results are telling us more about the structure of the model than about the world. For real results, go try the Jupyter notebook! <!--TODO link-->
 
 <figure class="natural-fig">
-![Normalized plots of probability distributions of value per dollar for GiveWell's top charities](/images/givewell-analysis/uncertainties-overlaid.png)
+![Probability distributions for percentage of expected value obtained with each of GiveWell's top charities](/images/givewell-analysis/uncertainties-overlaid.png)
 <figcaption>Probability distributions for percentage of expected value obtained with each of GiveWell's top charities</figcaption>
 </figure>
 
@@ -77,5 +78,5 @@ Our preliminary conclusion is that all of GiveWell's top charities cost-effectiv
 
 <br>
 
-[^models]: Unfortunately, the code implements the 2019 V4 cost-effectiveness analysis instead of the most recent V5 because I just worked off the V4 tab I'd had lurking in my browser for months and didn't think to check for a new version until too late. I also deviated from the spreadsheet in one place because I think there's an error (still waiting to hear back from GiveWell).
+[^models]: Unfortunately, the code implements the 2019 V4 cost-effectiveness analysis instead of the most recent V5 because I just worked off the V4 tab I'd had lurking in my browser for months and didn't think to check for a new version until too late. I also deviated from the spreadsheet in one place because I think there's an error (Update: The error will be fixed in GiveWell's next publically released version).
 [^log-normal]: Log-normal strikes me as a reasonable default distribution for this task: because it's support is (0, +∞) which fits many of our parameters well (they're all positive but some are actually bounded above by 1); and because ["A log-normal process is the statistical realization of the multiplicative product of many independent random variables"](https://en.wikipedia.org/wiki/Log-normal_distribution) which also seems reasonable here.

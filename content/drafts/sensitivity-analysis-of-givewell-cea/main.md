@@ -1,20 +1,21 @@
 ---
 title: Sensitivity analysis of GiveWell's cost-effectiveness analysis
-date: 2019-09-27
+date: 2019-09-28
 tags: statistics, development
+series: GiveWell cost-effectiveness analysis analysis
 ---
 
-[Last time](/posts/uncertainty-analysis-of-givewell-cea) we introduced GiveWell's cost effectiveness analysis which uses a spreadsheet model to take point estimates of uncertain input parameters to point estimates of uncertain results. We adjusted this approach to take probability distributions on the input parameters and in exchange got probability distributions on the resulting cost-effectiveness estimates. But this machinery lets us do more. Now that we've completed an uncertainty analysis, we can move on to sensitivity analysis.
+[Last time](/posts/uncertainty-analysis-of-givewell-cea/) we introduced GiveWell's cost effectiveness analysis which uses a spreadsheet model to take point estimates of uncertain input parameters to point estimates of uncertain results. We adjusted this approach to take probability distributions on the input parameters and in exchange got probability distributions on the resulting cost-effectiveness estimates. But this machinery lets us do more. Now that we've completed an uncertainty analysis, we can move on to sensitivity analysis.
 
 # Sensitivity analysis
 
-The basic idea of [sensitivity analysis](TODO) is, when working with uncertain values, to see which input values most affect the output when they vary. For example, if you have the equation $f(a, b) = 2^a + b$ and each of $a$ and $b$ varies uniformly over the range from 5 to 10, $f(a, b)$ is much more sensitive to $a$ then $b$. A sensitivity analysis is practically useful in that it can offer you guidance as to which parameters in your model it would be most useful to investigate further (i.e. to narrow their uncertainty).
+The basic idea of [sensitivity analysis](https://en.wikipedia.org/wiki/Sensitivity_analysis) is, when working with uncertain values, to see which input values most affect the output when they vary. For example, if you have the equation $f(a, b) = 2^a + b$ and each of $a$ and $b$ varies uniformly over the range from 5 to 10, $f(a, b)$ is much more sensitive to $a$ then $b$. A sensitivity analysis is practically useful in that it can offer you guidance as to which parameters in your model it would be most useful to investigate further (i.e. to narrow their uncertainty).
 
 # Visual sensitivity analysis
 
 The first kind of sensitivity analysis we'll run is just to look at scatter plots comparing each input parameter to the final cost-effectiveness estimates. We can imagine these scatter plots as the result of running [the following procedure many times]{.noted}[^monte-carlo]: sample a single value from the probability distribution for each input parameter and run the calculation on these values to determine a result value. If we repeat this procedure enough times, it starts to approximate the true values of the probability distributions. 
 
-One nice feature of this sort of analysis is that we see how the output depends on a particular input even in the face of variations in all the other inputs---we don't hold everything else constant. In other words, this is a [global](TODO) sensitivity analysis.
+One nice feature of this sort of analysis is that we see how the output depends on a particular input even in the face of variations in all the other inputs---we don't hold everything else constant. In other words, this is a [global](https://en.wikipedia.org/wiki/Sensitivity_analysis#Local_methods) sensitivity analysis.
 
 (Caveat: We are again pretending that we are equally uncertain about each input parameter and the results reflect this limitation. To see the analysis result for different input uncertainties, edit and run [the Jupyter notebook](TODO).)
 
@@ -135,7 +136,7 @@ The scatter plots show that, given our choice of input uncertainty, the output i
 | external validity adjustment                 | Methodological            | How much do the results of the underlying <abbr title="Seasonal malaria chemoprevention">SMC</abbr> studies transfer to new settings |
 | coverage in trials in meta-analysis          | Historical/methodological | Determines how much coverage an SMC program needs to achieve to match studies                                                        |
 | value of averting death of a young child     | Moral                     | Determines final conversion between outcomes and value                                                                               |
-| cost per child targeted | Operational | Determines cost of results |
+| cost per child targeted | Operational | Affects cost of results |
 </figure>
 
 ## Vitamin A supplementation
@@ -180,15 +181,15 @@ The scatter plots show that, given our choice of input uncertainty, the output i
 | lifespan of an <abbr title="Long-lasting insecticidal net">LLIN</abbr>              | Empirical            | Determines how many years of benefit accrue to each distribution                                                        |
 | net use adjustment                                                                  | Empirical            | Determines benefits from <abbr title="Long-lasting insecticidal net">LLIN</abbr> as mediated by proper and improper use |
 | internal validity adjustment                                                        | Methodological       | How much do we trust the results of the underlying studies                                                              |
-| percent of mortality due to malaria in AMF areas vs trials                          | Empirical/historical | Determines size of the problem                                                                                          |
-| percent of pop. under 5                                                             | Empirical            | Determines size of the problem                                                                                          |
+| percent of mortality due to malaria in AMF areas vs trials                          | Empirical/historical | Affects size of the problem                                                                                   |
+| percent of pop. under 5                                                             | Empirical            | Affects size of the problem                                                                                   |
 </figure>
 
 # Delta moment-independent sensitivity analysis
 
-If eyeballing plots seems a bit unsatisfying to you as a method for judging sensitivity, not to worry. We also have the results of a more formal sensitivity analysis. This method is called [delta moment-independent sensitivity analysis](TODO).
+If eyeballing plots seems a bit unsatisfying to you as a method for judging sensitivity, not to worry. We also have the results of a more formal sensitivity analysis. This method is called [delta moment-independent sensitivity analysis](http://www.relialab.org/Upload/files/A%20new%20uncertainty%20importance%20measure.pdf).
 
-$\delta_i$ (the delta moment-independent sensitivity indicator of parameter $i$) "represents the normalized expected shift in the distribution of [the output] provoked by [that input]" [TODO]. To make this meaning more explicit, we'll start with some notation/definitions. Let:
+$\delta_i$ (the delta moment-independent sensitivity indicator of parameter $i$) "represents the normalized expected shift in the distribution of [the output] provoked by [that input]" [@borgonovo2007new]. To make this meaning more explicit, we'll start with some notation/definitions. Let:
 
 ::: {.skippable}
 1. $X = (X_1, X_2, \ldots, X_n) \in \mathbb{R}^n$ be the random variables used as input parameters
@@ -196,14 +197,15 @@ $\delta_i$ (the delta moment-independent sensitivity indicator of parameter $i$)
 <!-- 3. $x = (x_1, x_2, \ldots, x_n)$ be a realization of X---i.e. some particular value for each of the input random variables -->
 <!-- 4. $f_X(x)$ be the joint density of $X$---i.e. the multi-dimensional probability distribution over all input parameters simultaneously -->
 <!-- 5. $f_{X_i}(x_i)$ be the marginal density of $x_i$---i.e. the individual probability distributions for each input parameter that we've already talked about -->
-6. $f_Y(y)$ be the density function of the result $Y$---i.e. the probability distributions we've already seen showing the cost-effectiveness for each charity
-7. $f_{Y|X_i}(y)$ be the conditional density of Y with one of the parameters $X_i$ fixed---i.e. a probability distribution for the cost-effectiveness of a charity while pretending that we know one of the input values precisely
+3. $f_Y(y)$ be the density function of the result $Y$---i.e. the probability distributions we've already seen showing the cost-effectiveness for each charity
+4. $f_{Y|X_i}(y)$ be the conditional density of Y with one of the parameters $X_i$ fixed---i.e. a probability distribution for the cost-effectiveness of a charity while pretending that we know one of the input values precisely
 
 With these in place, we can define $\delta_i$. It is:
 
-$$\delta_i = \frac{1}{2} E_{X_i}[\int |f_Y(y) - f_{Y|X_i}(y)| \dy]$$.
+$$\delta_i = \frac{1}{2} E_{X_i}[\int |f_Y(y) - f_{Y|X_i}(y)| \mathrm{d}y]$$.
 
-The inner $\int |f_Y(y) - f_{Y|X_i}(y)| \dy$ can be interpreted as the total area between probability density function $f_Y$ and probability density function $f_{Y|X_i}$. This is the "shift in the distribution of $Y$ provoked by $X_i$" we mentioned earlier. Overall, $\delta_i$ then says:
+The inner $\int |f_Y(y) - f_{Y|X_i}(y)| \mathrm{d}y$ can be interpreted as the total area between probability density function $f_Y$ and probability density function $f_{Y|X_i}$. This is the "shift in the distribution of $Y$ provoked by $X_i$" we mentioned earlier. Overall, $\delta_i$ then says:
+
 - pick one value for $X_i$ and measure the shift in the output distribution from the "default" output distribution
 - do that for each possible $X_i$ and take the expectation
 :::
@@ -212,7 +214,7 @@ Some useful properties to point out:
 
 - $\delta_i$ ranges from 0 to 1
 - If the output is independent of the input, $delta_i$ for that input is 0
-- The sum of $\delta_i$ for each input considered separately isn't necessarily 1 because there can be [interaction effects](TODO)
+- The sum of $\delta_i$ for each input considered separately isn't necessarily 1 because there can be interaction effects
 
 ## Direct cash transfers
 
@@ -230,7 +232,7 @@ Comfortingly, this agrees with the results of our scatter plot sensitivity analy
 | Input                                                   | Type of uncertainty                   | Meaning/importance                                                                 |
 | :---                                                    | :--                                   | :----                                                                              |
 | value of increasing ln consumption per capita per annum | Moral                                 | Determines final conversion between outcomes and value                             |
-| transfer as percent of total cost                       | Operational                           | Determines cost of results                                                         |
+| transfer as percent of total cost                       | Operational                           | Affects cost of results                                                  |
 | return on investment                                    | Opportunities available to recipients | Determines stream of consumption over time                                         |
 | baseline consumption per capita                         | Empirical                             | Diminishing marginal returns to consumption mean that baseline consumption matters |
 </figure>
@@ -330,7 +332,7 @@ Again, there seems to be good agreement between the delta sensitivity analysis a
 | :----                                        | :--                       | :--------                                                                                                                            |
 | internal validity adjustment                 | Methodological            | How much do we trust the results of the underlying <abbr title="Seasonal malaria chemoprevention">SMC</abbr> studies)                |
 | direct mortality in high transmission season | Empirical                 | Fraction of overall malaria mortality  during the peak transmission season and amenable to SMC                                       |
-| cost per child targeted                      | Operational               | Determines cost of results                                                                                                           |
+| cost per child targeted                      | Operational               | Afffects cost of results                                                                                                   |
 | external validity adjustment                 | Methodological            | How much do the results of the underlying <abbr title="Seasonal malaria chemoprevention">SMC</abbr> studies transfer to new settings |
 | coverage in trials in meta-analysis          | Historical/methodological | Determines how much coverage an SMC program needs to achieve to match studies                                                        |
 | value of averting death of a young child     | Moral                     | Determines final conversion between outcomes and value                                                                               |
@@ -375,10 +377,10 @@ Again, there's broad agreement between the scatter plot analysis and this one. F
 | cost per <abbr title="Long-lasting insecticidal net">LLIN</abbr>                    | Operational          | Affects the total cost required to achieve effect                                                                       |
 | deaths averted per protected child under 5                                          | Causal               | How effective is the core activity                                                                                      |
 | lifespan of an <abbr title="Long-lasting insecticidal net">LLIN</abbr>              | Empirical            | Determines how many years of benefit accrue to each distribution                                                        |
-| net use adjustment                                                                  | Empirical            | Determines benefits from <abbr title="Long-lasting insecticidal net">LLIN</abbr> as mediated by proper and improper use |
+| net use adjustment                                                                  | Empirical            | Affects benefits from <abbr title="Long-lasting insecticidal net">LLIN</abbr> as mediated by proper and improper use |
 | internal validity adjustment                                                        | Methodological       | How much do we trust the results of the underlying studies                                                              |
-| percent of mortality due to malaria in AMF areas vs trials                          | Empirical/historical | Determines size of the problem                                                                                          |
-| percent of pop. under 5                                                             | Empirical            | Determines size of the problem                                                                                          |
+| percent of mortality due to malaria in AMF areas vs trials                          | Empirical/historical | Affects size of the problem                                                                                   |
+| percent of pop. under 5                                                             | Empirical            | Affects size of the problem                                                                                   |
 </figure>
 
 # Conclusion
@@ -390,9 +392,9 @@ An important caveat to remember is that these results still reflect my fairly ar
 
 # Appendix
 
-I also did a [variance-based sensitivity analysis](TODO) with Sobol indices. Those plots follow.
+I also did a [variance-based sensitivity analysis](https://en.wikipedia.org/wiki/Variance-based_sensitivity_analysis) with Sobol indices. Those plots follow.
 
-The variable order in each plot is from the input parameter with the highest $\delta_i$ sensitivity to the input parameter with the lowest $delti_i$ sensitivity. That makes it straightforward to compare the ordering of sensitivities according to the delta moment-independent method and according to the Sobol indices method. We see that there is broad---but not perfect---agreement between the different methods.
+The variable order in each plot is from the input parameter with the highest $\delta_i$ sensitivity to the input parameter with the lowest $delti_i$ sensitivity. That makes it straightforward to compare the ordering of sensitivities according to the delta moment-independent method and according to the Sobol method. We see that there is broad---but not perfect---agreement between the different methods.
 
 <figure class="natural-fig">
 ![Sobol sensitivities for each input parameter in the GiveDirectly cost-effectiveness calculation](/images/givewell-analysis/sensitivity-big-GiveDirectly-s1.png)
@@ -434,7 +436,7 @@ The variable order in each plot is from the input parameter with the highest $\d
 <figcaption>Sobol sensitivities for each input parameter in the Against Malaria Foundation cost-effectiveness calculation</figcaption>
 </figure>
 
-<br>
+<hr class="references">
 
 [^monte-carlo]: This is, in fact, approximately what Monte Carlo methods do so this is a very convenient analysis to run.
 [^cheat]: I swear I didn't cheat by just picking the results on the scatter plot that match the delta sensitivities!
