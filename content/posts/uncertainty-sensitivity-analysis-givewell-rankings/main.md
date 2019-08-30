@@ -88,6 +88,8 @@ One drawback of the above metrics is that they throw away information in going f
 
 Angular distance is a metric which satisfies these criteria. We can regard the table of charities and cost-effectiveness values as an 8-dimensional vector. When our output produces another vector of cost-effectiveness estimates (one for each charity), we can compare this to our reference vector by finding [the angle between the two]{.noted}[^angle].
 
+<!--more-->
+
 # Results
 
 ## Uncertainties

@@ -40,6 +40,8 @@ The scatter plots show that, given our choice of input uncertainty, the output i
 | baseline consumption per capita                         | Empirical                             | Diminishing marginal returns to consumption mean that baseline consumption matters |
 </figure>
 
+<!--more-->
+
 ## Deworming
 
 Some useful and non-obvious context for the following is that the primary claimed benefit of deworming is increased income later in life.
