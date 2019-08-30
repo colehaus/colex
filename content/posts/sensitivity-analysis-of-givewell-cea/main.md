@@ -17,7 +17,7 @@ The first kind of sensitivity analysis we'll run is just to look at scatter plot
 
 One nice feature of this sort of analysis is that we see how the output depends on a particular input even in the face of variations in all the other inputs---we don't hold everything else constant. In other words, this is a [global](https://en.wikipedia.org/wiki/Sensitivity_analysis#Local_methods) sensitivity analysis.
 
-(Caveat: We are again pretending that we are equally uncertain about each input parameter and the results reflect this limitation. To see the analysis result for different input uncertainties, edit and run [the Jupyter notebook](TODO).)
+(Caveat: We are again pretending that we are equally uncertain about each input parameter and the results reflect this limitation. To see the analysis result for different input uncertainties, edit and run [the Jupyter notebook](https://colab.research.google.com/drive/1TCXBi7lF69Xaaygub5HGD6-Rb6qE924e#sandboxMode=true).)
 
 ## Direct cash transfers
 
@@ -390,7 +390,7 @@ Again, there's broad agreement between the scatter plot analysis and this one. F
 We performed visual (scatter plot) sensitivity analyses and delta moment-independent sensitivity analyses on GiveWell's top charities. Conveniently, these two methods generally agreed as to which input factors had the biggest influence on the output. For each charity, we found that there were clear differences in the sensitivity indicators for different inputs. This suggests that certain inputs ought to be targeted for uncertainty reduction to improve GiveWell's cost-effectiveness analyses. For example, the overall estimate of the cost-effectiveness of Helen Keller International's vitamin A supplementation program depends much more on the relative risk of all-cause mortality for children in <abbr title="Vitamin A supplementation">VAS</abbr> programs than it does on the expected value from leverage and funging. If the cost of investigating each were the same, it would be better to spend time on the former.
 Our sensitivity analysis has suggested which varies
 
-An important caveat to remember is that these results still reflect my fairly arbitrary (but scrupulously neutral) decision to pretend that we equally uncertain about each input parameter. To remedy this flaw, head over to the [Jupyter notebook](TODO) and tweak the input distributions.
+An important caveat to remember is that these results still reflect my fairly arbitrary (but scrupulously neutral) decision to pretend that we equally uncertain about each input parameter. To remedy this flaw, head over to the [Jupyter notebook](https://colab.research.google.com/drive/1TCXBi7lF69Xaaygub5HGD6-Rb6qE924e#sandboxMode=true) and tweak the input distributions.
 
 # Appendix
 

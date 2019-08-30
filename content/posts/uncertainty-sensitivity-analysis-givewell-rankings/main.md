@@ -141,7 +141,7 @@ It may be slightly surprising that cost per capita per annum and worm intensity 
 
 We started with a couple of problems with our previous analysis: we were taking cost-effectiveness estimates literally and looking at them independently instead of as a cohesive analysis. We addressed these problems by redoing our analysis while looking at distance metrics from the current best cost-effectiveness estimates as the outcomes of interest. We found that our input uncertainty is consequential even when looking only at the relative value of the charities. We also found that input parameters which our important but unique to a particular charity are most likely to affect the final output substantially.
 
-Finally, we have the same caveat as list time: these results still reflect my fairly arbitrary (but scrupulously neutral) decision to pretend that we equally uncertain about each input parameter. To remedy this flaw, head over to the [Jupyter notebook](TODO) and tweak the input distributions.
+Finally, we have the same caveat as list time: these results still reflect my fairly arbitrary (but scrupulously neutral) decision to pretend that we equally uncertain about each input parameter. To remedy this flaw, head over to the [Jupyter notebook](https://colab.research.google.com/drive/1TCXBi7lF69Xaaygub5HGD6-Rb6qE924e#sandboxMode=true) and tweak the input distributions.
 
 # Appendix
 
