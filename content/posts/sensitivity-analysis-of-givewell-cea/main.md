@@ -1,11 +1,11 @@
 ---
 title: Sensitivity analysis of GiveWell's cost-effectiveness analysis
-date: 2019-09-28
+date: 2019-08-28
 tags: statistics, development
 series: GiveWell cost-effectiveness analysis analysis
 ---
 
-[Last time](/posts/uncertainty-analysis-of-givewell-cea/) we introduced GiveWell's cost effectiveness analysis which uses a spreadsheet model to take point estimates of uncertain input parameters to point estimates of uncertain results. We adjusted this approach to take probability distributions on the input parameters and in exchange got probability distributions on the resulting cost-effectiveness estimates. But this machinery lets us do more. Now that we've completed an uncertainty analysis, we can move on to sensitivity analysis.
+[Last time](/posts/uncertainty-analysis-of-givewell-cea/) we introduced GiveWell's cost-effectiveness analysis which uses a spreadsheet model to take point estimates of uncertain input parameters to point estimates of uncertain results. We adjusted this approach to take probability distributions on the input parameters and in exchange got probability distributions on the resulting cost-effectiveness estimates. But this machinery lets us do more. Now that we've completed an uncertainty analysis, we can move on to sensitivity analysis.
 
 # Sensitivity analysis
 
@@ -15,7 +15,7 @@ The basic idea of [sensitivity analysis](https://en.wikipedia.org/wiki/Sensitivi
 
 The first kind of sensitivity analysis we'll run is just to look at scatter plots comparing each input parameter to the final cost-effectiveness estimates. We can imagine these scatter plots as the result of running [the following procedure many times]{.noted}[^monte-carlo]: sample a single value from the probability distribution for each input parameter and run the calculation on these values to determine a result value. If we repeat this procedure enough times, it starts to approximate the true values of the probability distributions. 
 
-One nice feature of this sort of analysis is that we see how the output depends on a particular input even in the face of variations in all the other inputs---we don't hold everything else constant. In other words, this is a [global](https://en.wikipedia.org/wiki/Sensitivity_analysis#Local_methods) sensitivity analysis.
+(One nice feature of this sort of analysis is that we see how the output depends on a particular input even in the face of variations in all the other inputs---we don't hold everything else constant. In other words, this is a [global](https://en.wikipedia.org/wiki/Sensitivity_analysis#Local_methods) sensitivity analysis.)
 
 (Caveat: We are again pretending that we are equally uncertain about each input parameter and the results reflect this limitation. To see the analysis result for different input uncertainties, edit and run [the Jupyter notebook](https://colab.research.google.com/drive/1TCXBi7lF69Xaaygub5HGD6-Rb6qE924e#sandboxMode=true).)
 
@@ -34,7 +34,7 @@ The scatter plots show that, given our choice of input uncertainty, the output i
 <figcaption>Highlighted input factors to which result is highly sensitive</figcaption>
 | Input                                                   | Type of uncertainty                   | Meaning/importance                                                                 |
 | :---                                                    | :--                                   | :----                                                                              |
-| value of increasing ln consumption per capita per annum | Moral                                 | Determines final conversion between outcomes and value                             |
+| value of increasing ln consumption per capita per annum | Moral                                 | Determines final conversion between empirical outcomes and value                   |
 | transfer as percent of total cost                       | Operational                           | Determines cost of results                                                         |
 | return on investment                                    | Opportunities available to recipients | Determines stream of consumption over time                                         |
 | baseline consumption per capita                         | Empirical                             | Diminishing marginal returns to consumption mean that baseline consumption matters |
@@ -44,7 +44,7 @@ The scatter plots show that, given our choice of input uncertainty, the output i
 
 ## Deworming
 
-Some useful and non-obvious context for the following is that the primary claimed benefit of deworming is increased income later in life.
+Some useful and non-obvious context for the following is that the primary putative benefit of deworming is increased income later in life.
 
 ### The END Fund
 
@@ -75,10 +75,10 @@ Again, it's a little harder to identify certain factors as more important. It se
 
 <figure class="big-fig">
 <figcaption>Highlighted input factors to which result is minimally sensitive</figcaption>
-| Input                                    | Type of uncertainty | Meaning/(un)importance                                               |
-| :---                                     | :--                 | :-----                                                               |
-| num yrs between deworming and benefits   | Forecast            | Affects how much discounting of future income streams must be done   |
-| duration of long-term benefits           | Forecast            | The length of time for a which a person works and earns income       |
+| Input                                    | Type of uncertainty | Meaning/(un)importance                                                   |
+| :---                                     | :--                 | :-----                                                                   |
+| num yrs between deworming and benefits   | Forecast            | Affects how much discounting of future income streams must be done       |
+| duration of long-term benefits           | Forecast            | The length of time for a which a person works and earns income           |
 | expected value from leverage and funging | Game theoretic      | How much does money donated to Deworm the World shift around other money |
 </figure>
 
@@ -131,14 +131,14 @@ The scatter plots show that, given our choice of input uncertainty, the output i
 
 <figure class="big-fig">
 <figcaption>Highlighted input factors to which result is highly sensitive</figcaption>
-| Input                                        | Type of uncertainty       | Meaning/importance                                                                                                                   |
-| :----                                        | :--                       | :--------                                                                                                                            |
-| direct mortality in high transmission season | Empirical                 | Fraction of overall malaria mortality  during the peak transmission season and amenable to SMC                                       |
-| internal validity adjustment                 | Methodological            | How much do we trust the results of the underlying <abbr title="Seasonal malaria chemoprevention">SMC</abbr> studies)                |
-| external validity adjustment                 | Methodological            | How much do the results of the underlying <abbr title="Seasonal malaria chemoprevention">SMC</abbr> studies transfer to new settings |
-| coverage in trials in meta-analysis          | Historical/methodological | Determines how much coverage an SMC program needs to achieve to match studies                                                        |
-| value of averting death of a young child     | Moral                     | Determines final conversion between outcomes and value                                                                               |
-| cost per child targeted | Operational | Affects cost of results |
+| Input                                        | Type of uncertainty       | Meaning/importance                                                                                                                                   |
+| :----                                        | :--                       | :--------                                                                                                                                            |
+| direct mortality in high transmission season | Empirical                 | Fraction of overall malaria mortality  during the peak transmission season and amenable to <abbr title="Seasonal malaria chemoprevention">SMC</abbr> |
+| internal validity adjustment                 | Methodological            | How much do we trust the results of the underlying <abbr title="Seasonal malaria chemoprevention">SMC</abbr> studies                                 |
+| external validity adjustment                 | Methodological            | How much do the results of the underlying <abbr title="Seasonal malaria chemoprevention">SMC</abbr> studies transfer to new settings                 |
+| coverage in trials in meta-analysis          | Historical/methodological | Determines how much coverage an <abbr title="Seasonal malaria chemoprevention">SMC</abbr> program needs to achieve to match studies  |
+| value of averting death of a young child     | Moral                     | Determines final conversion between empirical outcomes and value                                                                                     |
+| cost per child targeted                      | Operational               | Affects cost of results                                                                                                                              |
 </figure>
 
 ## Vitamin A supplementation
@@ -150,7 +150,7 @@ The scatter plots show that, given our choice of input uncertainty, the output i
 <figcaption>Scatter plots showing sensitivity of the Helen Keller International's cost-effectiveness to each input parameter</figcaption>
 </figure>
 
-The scatter plots show that, given our choice of input uncertainty, the output is most sensitive (i.e. the scatter plot for these parameters shows the greatest directionality) to the input parameters:
+The scatter plots show that, given our choice of input uncertainty, the output is most sensitive to the input parameters:
 
 
 <figure class="big-fig">
@@ -158,8 +158,8 @@ The scatter plots show that, given our choice of input uncertainty, the output i
 | Input                                                               | Type of uncertainty | Meaning/importance                                                                       |
 | :-----                                                              | :--                 | :---                                                                                     |
 | relative risk of all-cause mortality for young children in programs | Causal              | How much do <abbr title="Vitamin A supplementation">VAS</abbr> programs affect mortality |
-| cost per child per round                                            | Operational         | Affects the total cost required to achieve effect                                        |
-| rounds per year                                                     | Operational         | Affects the total cost required to achieve effect                                        |
+| cost per child per round                                            | Operational         | Affects cost of results                                                                  |
+| rounds per year                                                     | Operational         | Affects cost of results                                                                  |
 </figure>
 
 ## Bednets
@@ -177,14 +177,14 @@ The scatter plots show that, given our choice of input uncertainty, the output i
 <figcaption>Highlighted input factors to which result is highly sensitive</figcaption>
 | Input                                                                               | Type of uncertainty  | Meaning/importance                                                                                                      |
 | :---                                                                                | :--                  | :-----                                                                                                                  |
-| num <abbr title="Long-lasting insecticidal net">LLIN</abbr>s distributed per person | Operational          | Affects the total cost required to achieve effect                                                                       |
-| cost per <abbr title="Long-lasting insecticidal net">LLIN</abbr>                    | Operational          | Affects the total cost required to achieve effect                                                                       |
+| num <abbr title="Long-lasting insecticidal net">LLIN</abbr>s distributed per person | Operational          | Affects cost of results                                                                                                 |
+| cost per <abbr title="Long-lasting insecticidal net">LLIN</abbr>                    | Operational          | Affects cost of results                                                                                                 |
 | deaths averted per protected child under 5                                          | Causal               | How effective is the core activity                                                                                      |
 | lifespan of an <abbr title="Long-lasting insecticidal net">LLIN</abbr>              | Empirical            | Determines how many years of benefit accrue to each distribution                                                        |
 | net use adjustment                                                                  | Empirical            | Determines benefits from <abbr title="Long-lasting insecticidal net">LLIN</abbr> as mediated by proper and improper use |
 | internal validity adjustment                                                        | Methodological       | How much do we trust the results of the underlying studies                                                              |
-| percent of mortality due to malaria in AMF areas vs trials                          | Empirical/historical | Affects size of the problem                                                                                   |
-| percent of pop. under 5                                                             | Empirical            | Affects size of the problem                                                                                   |
+| percent of mortality due to malaria in AMF areas vs trials                          | Empirical/historical | Affects size of the problem                                                                                             |
+| percent of pop. under 5                                                             | Empirical            | Affects size of the problem                                                                                             |
 </figure>
 
 # Delta moment-independent sensitivity analysis
@@ -196,9 +196,6 @@ $\delta_i$ (the delta moment-independent sensitivity indicator of parameter $i$)
 ::: {.skippable}
 1. $X = (X_1, X_2, \ldots, X_n) \in \mathbb{R}^n$ be the random variables used as input parameters
 2. $Y = f(X)$ so that $f(X)$ is a function from $\mathbb{R}^n$ to $\mathbb{R}$ describing the relationship between inputs and outputs---i.e. GiveWell's cost-effectiveness model
-<!-- 3. $x = (x_1, x_2, \ldots, x_n)$ be a realization of X---i.e. some particular value for each of the input random variables -->
-<!-- 4. $f_X(x)$ be the joint density of $X$---i.e. the multi-dimensional probability distribution over all input parameters simultaneously -->
-<!-- 5. $f_{X_i}(x_i)$ be the marginal density of $x_i$---i.e. the individual probability distributions for each input parameter that we've already talked about -->
 3. $f_Y(y)$ be the density function of the result $Y$---i.e. the probability distributions we've already seen showing the cost-effectiveness for each charity
 4. $f_{Y|X_i}(y)$ be the conditional density of Y with one of the parameters $X_i$ fixed---i.e. a probability distribution for the cost-effectiveness of a charity while pretending that we know one of the input values precisely
 
@@ -215,8 +212,10 @@ The inner $\int |f_Y(y) - f_{Y|X_i}(y)| \mathrm{d}y$ can be interpreted as the t
 Some useful properties to point out:
 
 - $\delta_i$ ranges from 0 to 1
-- If the output is independent of the input, $delta_i$ for that input is 0
+- If the output is independent of the input, $\delta_i$ for that input is 0
 - The sum of $\delta_i$ for each input considered separately isn't necessarily 1 because there can be interaction effects
+
+In the plots below, for each charity, we visualize the delta sensitivity (and our uncertainty about that sensitivity) for each input parameter.
 
 ## Direct cash transfers
 
@@ -248,7 +247,7 @@ Comfortingly, this agrees with the results of our scatter plot sensitivity analy
 <figcaption>Delta sensitivities for each input parameter in the END Fund cost-effectiveness calculation</figcaption>
 </figure>
 
-[Comfortingly, this again agrees with the results of our scatter plot sensitivity analysis]{.noted}[^cheat]. For convenience, I have copied the table from the scatter plot analysis describing the most influential inputs:
+[Comfortingly, this again agrees with the results of our scatter plot sensitivity analysis]{.noted}[^cheat]. For convenience, I have copied the table from the scatter plot analysis describing the least influential inputs:
 
 <figure class="big-fig">
 <figcaption>Highlighted input factors to which result is minimally sensitive</figcaption>
@@ -266,7 +265,7 @@ Comfortingly, this agrees with the results of our scatter plot sensitivity analy
 <figcaption>Delta sensitivities for each input parameter in the Deworm the World cost-effectiveness calculation</figcaption>
 </figure>
 
-For convenience, I have copied the table from the scatter plot analysis describing the most influential inputs:
+For convenience, I have copied the table from the scatter plot analysis describing the least influential inputs:
 
 <figure class="big-fig">
 <figcaption>Highlighted input factors to which result is minimally sensitive</figcaption>
@@ -284,7 +283,7 @@ For convenience, I have copied the table from the scatter plot analysis describi
 <figcaption>Delta sensitivities for each input parameter in the Schistosomiasis Control Initiative cost-effectiveness calculation</figcaption>
 </figure>
 
-For convenience, I have copied the table from the scatter plot analysis describing the most influential inputs:
+For convenience, I have copied the table from the scatter plot analysis describing the least influential inputs:
 
 <figure class="big-fig">
 <figcaption>Highlighted input factors to which result is minimally sensitive</figcaption>
@@ -302,7 +301,7 @@ For convenience, I have copied the table from the scatter plot analysis describi
 <figcaption>Delta sensitivities for each input parameter in the Sightsavers cost-effectiveness calculation</figcaption>
 </figure>
 
-For convenience, I have copied the table from the scatter plot analysis describing the most influential inputs:
+For convenience, I have copied the table from the scatter plot analysis describing the least influential inputs:
 
 <figure class="big-fig">
 <figcaption>Highlighted input factors to which result is minimally sensitive</figcaption>
@@ -315,7 +314,7 @@ For convenience, I have copied the table from the scatter plot analysis describi
 
 ### Deworming comment
 
-That we get substantially identical results in terms of delta sensitivities for each deworming charity is not surprising: The structure of each calculation is the same and (for the sake of tainting the analysis with my idiosyncratic perspective) the uncertainty on each input parameter is the same.
+That we get substantially identical results in terms of delta sensitivities for each deworming charity is not surprising: The structure of each calculation is the same and (for the sake of not tainting the analysis with my idiosyncratic perspective) the uncertainty on each input parameter is the same.
 
 ## Seasonal malaria chemoprevention
 
@@ -336,7 +335,7 @@ Again, there seems to be good agreement between the delta sensitivity analysis a
 | direct mortality in high transmission season | Empirical                 | Fraction of overall malaria mortality  during the peak transmission season and amenable to SMC                                       |
 | cost per child targeted                      | Operational               | Afffects cost of results                                                                                                   |
 | external validity adjustment                 | Methodological            | How much do the results of the underlying <abbr title="Seasonal malaria chemoprevention">SMC</abbr> studies transfer to new settings |
-| coverage in trials in meta-analysis          | Historical/methodological | Determines how much coverage an SMC program needs to achieve to match studies                                                        |
+| coverage in trials in meta-analysis          | Historical/methodological | Determines how much coverage an <abbr title="Seasonal malaria chemoprevention">SMC</abbr> program needs to achieve to match studies  |
 | value of averting death of a young child     | Moral                     | Determines final conversion between outcomes and value                                                                               |
 </figure>
 
@@ -387,8 +386,9 @@ Again, there's broad agreement between the scatter plot analysis and this one. F
 
 # Conclusion
 
-We performed visual (scatter plot) sensitivity analyses and delta moment-independent sensitivity analyses on GiveWell's top charities. Conveniently, these two methods generally agreed as to which input factors had the biggest influence on the output. For each charity, we found that there were clear differences in the sensitivity indicators for different inputs. This suggests that certain inputs ought to be targeted for uncertainty reduction to improve GiveWell's cost-effectiveness analyses. For example, the overall estimate of the cost-effectiveness of Helen Keller International's vitamin A supplementation program depends much more on the relative risk of all-cause mortality for children in <abbr title="Vitamin A supplementation">VAS</abbr> programs than it does on the expected value from leverage and funging. If the cost of investigating each were the same, it would be better to spend time on the former.
-Our sensitivity analysis has suggested which varies
+We performed visual (scatter plot) sensitivity analyses and delta moment-independent sensitivity analyses on GiveWell's top charities. Conveniently, these two methods generally agreed as to which input factors had the biggest influence on the output. For each charity, we found that there were clear differences in the sensitivity indicators for different inputs. 
+
+This suggests that certain inputs are better targets than others for uncertainty reduction. For example, the overall estimate of the cost-effectiveness of Helen Keller International's vitamin A supplementation program depends much more on the relative risk of all-cause mortality for children in <abbr title="Vitamin A supplementation">VAS</abbr> programs than it does on the expected value from leverage and funging. If the cost of investigating each were the same, it would be better to spend time on the former.
 
 An important caveat to remember is that these results still reflect my fairly arbitrary (but scrupulously neutral) decision to pretend that we equally uncertain about each input parameter. To remedy this flaw, head over to the [Jupyter notebook](https://colab.research.google.com/drive/1TCXBi7lF69Xaaygub5HGD6-Rb6qE924e#sandboxMode=true) and tweak the input distributions.
 
@@ -396,7 +396,7 @@ An important caveat to remember is that these results still reflect my fairly ar
 
 I also did a [variance-based sensitivity analysis](https://en.wikipedia.org/wiki/Variance-based_sensitivity_analysis) with Sobol indices. Those plots follow.
 
-The variable order in each plot is from the input parameter with the highest $\delta_i$ sensitivity to the input parameter with the lowest $delti_i$ sensitivity. That makes it straightforward to compare the ordering of sensitivities according to the delta moment-independent method and according to the Sobol method. We see that there is broad---but not perfect---agreement between the different methods.
+The variable order in each plot is from the input parameter with the highest $\delta_i$ sensitivity to the input parameter with the lowest $\delta_i$ sensitivity. That makes it straightforward to compare the ordering of sensitivities according to the delta moment-independent method and according to the Sobol method. We see that there is broad---but not perfect---agreement between the methods.
 
 <figure class="natural-fig">
 ![Sobol sensitivities for each input parameter in the GiveDirectly cost-effectiveness calculation](/images/givewell-analysis/sensitivity-big-GiveDirectly-s1.png)

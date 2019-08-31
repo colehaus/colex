@@ -1,6 +1,6 @@
 ---
 title: Uncertainty analysis of GiveWell's cost-effectiveness analysis
-date: 2019-09-27
+date: 2019-08-27
 tags: statistics, development
 series: GiveWell cost-effectiveness analysis analysis
 ---
@@ -15,15 +15,15 @@ For example, if I go to the "Moral weights" tab and run the calculation with a 0
 
 # Uncertain inputs
 
-GiveWell provides the ability to adjust these input parameters and observe altered output because the inputs are fundamentally uncertain. But our uncertainty means that picking any particular value as input for the calculation misrepresents our state of knowledge. From a [subjective Bayesian](https://en.wikipedia.org/wiki/Bayesian_probability) point of view, the best way to represent our state of knowledge on the input parameters is with a [probability distribution](https://en.wikipedia.org/wiki/Probability_distribution) over the values the parameter could take. Once we do this, we can feed these distributions into the model and, in principle, we'll end up with a probability distribution over our results. This probability distribution on the results helps us understand the uncertainty contained in our estimates and [how literally](https://blog.givewell.org/2011/08/18/why-we-cant-take-expected-value-estimates-literally-even-when-theyre-unbiased/) we should take them.
+GiveWell provides the ability to adjust these input parameters and observe altered output because the inputs are fundamentally uncertain. But our uncertainty means that picking any particular value as input for the calculation misrepresents our state of knowledge. From a [subjective Bayesian](https://en.wikipedia.org/wiki/Bayesian_probability) point of view, the best way to represent our state of knowledge on the input parameters is with a [probability distribution](https://en.wikipedia.org/wiki/Probability_distribution) over the values the parameter could take. For example, I could say that a negative value for increasing consumption seems very improbable to me but that a wide range of positive values seem about equally plausible. Once we specify a probability distribution, we can feed these distributions into the model and, in principle, we'll end up with a probability distribution over our results. This probability distribution on the results helps us understand the uncertainty contained in our estimates and [how literally](https://blog.givewell.org/2011/08/18/why-we-cant-take-expected-value-estimates-literally-even-when-theyre-unbiased/) we should take them.
 
 ## Is this really necessary?
 
-Perhaps that sounds complicated. How are we supposed to multiply, add and otherwise manipulate arbitrary probability distributions in the way our models require? Can we somehow reduce our uncertain beliefs about the input parameters to point estimates and run the calculation on those? One candidate is to take the single most likely value of each input and using that value in our calculations. This is the approach the current cost-effectiveness analysis takes (assuming you provide input values selected in this way). Unfortunately, the output of running the model on these inputs is necessarily a point value and gives no information about the uncertainty of the results. A second possibility is to take lower bounds on the input parameters and run the calculation on these values, and to take the upper bounds on the input parameters and run the calculation on these values. This will produce two bounding values on our results, but it's hard to give them a useful meaning. If the lower and upper bounds on our inputs describe, for example, a 95% confidence interval, the lower and upper bounds on the result don't (usually) describe a 95% confidence interval.
+Perhaps that sounds complicated. How are we supposed to multiply, add and otherwise manipulate arbitrary probability distributions in the way our models require? Can we somehow reduce our uncertain beliefs about the input parameters to point estimates and run the calculation on those? One candidate is to take the single most likely value of each input and using that value in our calculations. This is the approach the current cost-effectiveness analysis takes (assuming you provide input values selected in this way). Unfortunately, the output of running the model on these inputs is necessarily a point value and gives no information about the uncertainty of the results. Because the results are probably highly uncertain, losing this information and being unable to talk about the uncertainty of the results is a major loss. A second possibility is to take lower bounds on the input parameters and run the calculation on these values, and to take the upper bounds on the input parameters and run the calculation on these values. This will produce two bounding values on our results, but it's hard to give them a useful meaning. If the lower and upper bounds on our inputs describe, for example, a 95% confidence interval, the lower and upper bounds on the result don't (usually) describe a 95% confidence interval.
 
 ## Computers are nice
 
-If we had to proceed analytically, working with probability distributions throughout the model would indeed be troublesome and we might have to settle for one of the above approaches. But we live in the future. We can use computers and [Monte Carlo methods](https://en.wikipedia.org/wiki/Monte_Carlo_method) to numerically approximate the results of working with probability distributions while leaving our models clean and unconcerned with these probabilistic details. [Guesstimate](https://www.getguesstimate.com/) is a tool that works along these lines and bills itself as "A spreadsheet for things that aren’t certain".
+If we had to proceed analytically, working with probability distributions throughout, the model would indeed be troublesome and we might have to settle for one of the above approaches. But we live in the future. We can use computers and [Monte Carlo methods](https://en.wikipedia.org/wiki/Monte_Carlo_method) to numerically approximate the results of working with probability distributions while leaving our models clean and unconcerned with these probabilistic details. [Guesstimate](https://www.getguesstimate.com/) is a tool that works along these lines and bills itself as "A spreadsheet for things that aren’t certain".
 
 # Analysis
 
@@ -31,19 +31,19 @@ We have the beginnings of a plan then. We can implement GiveWell's cost-effectiv
 
 <!--more-->
 
-## The model
+## Model
 
 The Python [source code implementing GiveWell's models can be found on [GitHub](https://github.com/colehaus/givewell-analysis)]{.noted}[^models]. The core models can be found in `cash.py`, `nets.py`, `smc.py`, `worms.py` and `vas.py`.
 
-## The inputs
+## Inputs
 
 For the purposes of the uncertainty analysis that follows, it doesn't make much sense to infect the results with my own idiosyncratic views on the appropriate value of the input parameters. Instead, what I have done is uniformly taken GiveWell's best guess and added and subtracted 20%. These upper and lower bounds then become the 90% confidence interval of a [[log-normal distribution](https://en.wikipedia.org/wiki/Log-normal_distribution)]{.noted}[^log-normal]. <!--TODO image here--> For example, if GiveWell's best guess for a parameter is 0.1, I used a log-normal with a 90% CI from 0.08 to 0.12. 
 
-While this approach screens off my influence it also means that the results of the analysis will primarily tell us about the structure of the computation rather than informing us about the world. Fortunately, there's a remedy for this problem too. I have set up a [Jupyter notebook](https://colab.research.google.com/drive/1TCXBi7lF69Xaaygub5HGD6-Rb6qE924e#sandboxMode=true) with the all the input parameters to the calculation which you can manipulate and rerun the analysis. That is, if you think the moral weight given to increasing consumption ought to range from 0.8 to 1.5 instead of 0.8 to 1.2, you can make that edit and see the result of the analysis. Making these modifications is essential for a realistic analysis because we are not, in fact, equally uncertain about every input parameter.
+While this approach screens off my influence it also means that the results of the analysis will primarily tell us about the structure of the computation rather than informing us about the world. Fortunately, there's a remedy for this problem too. I have set up a [[Jupyter notebook](https://colab.research.google.com/drive/1TCXBi7lF69Xaaygub5HGD6-Rb6qE924e#sandboxMode=true)]{.noted}[^jupyter] with the all the input parameters to the calculation which you can manipulate and rerun the analysis. That is, if you think the moral weight given to increasing consumption ought to range from 0.8 to 1.5 instead of 0.8 to 1.2, you can make that edit and see the corresponding results. Making these modifications is essential for a realistic analysis because we are not, in fact, equally uncertain about every input parameter.
 
 It's also worth noting that I have considerably expanded the set of input parameters receiving special scrutiny. The GiveWell cost-effectiveness analysis is (with good reason---it keeps things manageable for outside users) fairly conservative about which parameters it highlights as eligible for user manipulation. In this analysis, I include any input parameter which is not tautologically certain. For example, "Reduction in malaria incidence for children under 5 (from Lengeler 2004 meta-analysis)" shows up in the analysis which follows but is not highlighted in GiveWell's "User inputs" or "Moral weights" tab. Even though we don't have much information with which to second guess the meta-analysis, the value it reports is still uncertain and our calculation ought to reflect that.
 
-## The results
+## Results
 
 Finally, we get to the part that you actually care about, dear reader: the results. Given input parameters which are each distributed log-normally with a 90% confidence interval spanning ±20% of GiveWell's best estimate, here are the resulting uncertainties in the cost-effectiveness estimates:
 
@@ -54,6 +54,8 @@ Finally, we get to the part that you actually care about, dear reader: the resul
 
 For reference, here are the point estimates of value per dollar using GiveWell's values for the charities:
 
+<figure>
+<figcaption>GiveWell's cost-effectiveness estimates for its top charities</figcaption>
 | Charity                              |   Value per dollar |
 | :----------------------------------- | -----------------: |
 | GiveDirectly                         |             0.0038 |
@@ -64,8 +66,9 @@ For reference, here are the point estimates of value per dollar using GiveWell's
 | Malaria Consortium                   |             0.0326 |
 | Helen Keller International           |             0.0223 |
 | Against Malaria Foundation           |             0.0247 |
+</figure>
 
-I've also plotted a version in which the results are normalized---I divided the results for each charity by that charity's expected value per dollar. Instead of showing the probability distribution on the value per dollar for each charity, this normalized version shows the probability distribution on the percentage of that charity's expected value that it achieves. This version of the plot abstracts from the actual value per dollar and emphasizes the spread of uncertainty. It also reemphasizes the earlier point that--because we use the same spread of uncertainty for each input parameter---the current results are telling us more about the structure of the model than about the world. For real results, go try the [Jupyter notebook](https://colab.research.google.com/drive/1TCXBi7lF69Xaaygub5HGD6-Rb6qE924e#sandboxMode=true)!
+I've also plotted a version in which the results are normalized---I divided the results for each charity by that charity's expected value per dollar. Instead of showing the probability distribution on the value per dollar for each charity, this normalized version shows the probability distribution on the percentage of that charity's expected value that it achieves. This version of the plot abstracts from the actual value per dollar and emphasizes the spread of uncertainty. It also reëmphasizes the earlier point that---because we use the same spread of uncertainty for each input parameter---the current results are telling us more about the structure of the model than about the world. For real results, go try the [Jupyter notebook](https://colab.research.google.com/drive/1TCXBi7lF69Xaaygub5HGD6-Rb6qE924e#sandboxMode=true)!
 
 <figure class="natural-fig">
 ![Probability distributions for percentage of expected value obtained with each of GiveWell's top charities](/images/givewell-analysis/uncertainties-overlaid.png)
@@ -78,5 +81,6 @@ Our preliminary conclusion is that all of GiveWell's top charities cost-effectiv
 
 <br>
 
-[^models]: Unfortunately, the code implements the 2019 V4 cost-effectiveness analysis instead of the most recent V5 because I just worked off the V4 tab I'd had lurking in my browser for months and didn't think to check for a new version until too late. I also deviated from the spreadsheet in one place because I think there's an error (Update: The error will be fixed in GiveWell's next publically released version).
+[^models]: Unfortunately, the code implements the 2019 V4 cost-effectiveness analysis instead of the most recent V5 because I just worked off the V4 tab I'd had lurking in my browser for months and didn't think to check for a new version until too late. I also deviated from the spreadsheet in one place because I think there's an error (Update: The error will be fixed in GiveWell's next publically-released version).
 [^log-normal]: Log-normal strikes me as a reasonable default distribution for this task: because it's support is (0, +∞) which fits many of our parameters well (they're all positive but some are actually bounded above by 1); and because ["A log-normal process is the statistical realization of the multiplicative product of many independent random variables"](https://en.wikipedia.org/wiki/Log-normal_distribution) which also seems reasonable here.
+[^jupyter]: When you follow the link, you should see a Jupyter notebook with three "cells". The first is a preamble setting things up. The second has all the parameters with lower and upper bounds. This is the part you want to edit. Once you've edited it, find and click "Runtime > Run all" in the menu. You should eventually see the notebook produce a serious of plots.
