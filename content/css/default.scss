@@ -277,6 +277,11 @@ figure > table {
 
 figure.natural-fig {
     width: 90vw;
+    > figcaption {
+        &:first-child {
+            text-align: left;
+        }
+    }
     > img {
         width: initial;
     }
