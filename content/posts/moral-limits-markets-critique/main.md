@@ -4,6 +4,7 @@ published: 2018-05-28
 edited: 2019-02-11
 tags: ethics, markets
 series: The Moral Limits of Markets
+include-toc: true
 ---
 
 [Last time](/posts/moral-limits-markets-summary/), I summarized Michael Sandel's <i>What Money Can't Buy: The Moral Limits of Markets</i> [@sandel2012]. Now, I'll say my own things instead of regurgitating Sandel (as delicious as premasticated Sandel may be).

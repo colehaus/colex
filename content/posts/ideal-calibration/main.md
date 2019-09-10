@@ -5,6 +5,7 @@ tags: ideal theory, political philosophy
 series: The Tyranny of the Ideal
 css: ideal-calibration
 js: ideal-calibration
+include-toc: true
 ---
 
 ::: macros

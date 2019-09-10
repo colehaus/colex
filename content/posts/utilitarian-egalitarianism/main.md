@@ -4,6 +4,7 @@ tags: social welfare, inequality, interactive
 published: 2018-04-26
 js: util-egal
 css: draw
+include-toc: true
 ---
 
 # Introduction

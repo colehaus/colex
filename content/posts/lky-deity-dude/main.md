@@ -3,6 +3,7 @@ title: Lee Kuan Yew—Deity or dude?
 published: 2018-07-07
 tags: development
 series: The Singapore Story
+include-toc: true
 ---
 
 # Intro

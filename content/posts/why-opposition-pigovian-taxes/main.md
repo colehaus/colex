@@ -4,6 +4,7 @@ subtitle: Why the popular opposition to Pigouvian taxes?
 date: 2018-12-08
 edited: 2019-04-09
 tags: current events, pigouvian taxes
+include-toc: true
 ---
 
 Paris and other French cities have recently been the site of large and heated (there were fires) protests. The most prominent symbol of the protests is the high-visibility [<abbr title="yellow vests"><i>gilets jaunes</i></abbr>](https://en.wikipedia.org/wiki/Yellow_vests_movement) which all French motorists are required to own. This symbol is fitting for a series of protests that coalesced in opposition to an increase in the gas tax. While this protest (and any other protest) [isn't about a single grievance](https://www.nytimes.com/2018/12/06/world/europe/france-fuel-carbon-tax.html), it certainly seems to signify something about the popular opinion of gas taxes.

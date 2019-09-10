@@ -3,6 +3,7 @@ title: Anthropological enumerations
 subtitle: Summary of (most of) <a href="https://www.pearson.com/us/higher-education/program/Ember-Cultural-Anthropology-Plus-NEW-My-Lab-Anthropology-for-Cultural-Anthropology-Access-Card-Package-14th-Edition/PGM30153.html">Cultural Anthropology</a>
 date: 2019-01-08
 tags: yaas, anthropology
+include-toc: true
 ---
 
 # Getting food

@@ -3,6 +3,7 @@ title: Uncertainty analysis of GiveWell's cost-effectiveness analysis
 date: 2019-08-27
 tags: statistics, development
 series: GiveWell cost-effectiveness analysis analysis
+include-toc: true
 ---
 
 # GiveWell's cost-effectiveness analysis

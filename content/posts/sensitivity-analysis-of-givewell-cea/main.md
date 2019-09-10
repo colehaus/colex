@@ -3,6 +3,7 @@ title: Sensitivity analysis of GiveWell's cost-effectiveness analysis
 date: 2019-08-28
 tags: statistics, development
 series: GiveWell cost-effectiveness analysis analysis
+include-toc: true
 ---
 
 [Last time](/posts/uncertainty-analysis-of-givewell-cea/) we introduced GiveWell's cost-effectiveness analysis which uses a spreadsheet model to take point estimates of uncertain input parameters to point estimates of uncertain results. We adjusted this approach to take probability distributions on the input parameters and in exchange got probability distributions on the resulting cost-effectiveness estimates. But this machinery lets us do more. Now that we've completed an uncertainty analysis, we can move on to sensitivity analysis.

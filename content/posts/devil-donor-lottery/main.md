@@ -2,6 +2,7 @@
 title: Doning with the devil
 published: 2018-05-23
 tags: donor lottery, effective altruism
+include-toc: true
 ---
 
 # Donor lotteries

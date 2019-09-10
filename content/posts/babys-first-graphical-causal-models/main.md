@@ -5,6 +5,7 @@ tags: causality, interactive
 js: causal-graphs
 css: causal-graphs
 series: Graphical causal models
+include-toc: true
 ---
 
 # Causal graphs

@@ -4,6 +4,7 @@ subtitle: Your periodic reminder that Pareto efficiency carries exceedingly litt
 published: 2018-04-13
 edited: 2019-02-11
 tags: social welfare, metrics, self-flagellation friday
+include-toc: true
 ---
 
 # Definition and context

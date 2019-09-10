@@ -2,6 +2,7 @@
 title: Minor blessings of a god emperor
 published: 2018-05-30
 tags: political economy, autocracy
+include-toc: true
 ---
 
 # Life extension in autocrats

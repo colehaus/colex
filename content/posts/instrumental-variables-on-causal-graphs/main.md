@@ -6,6 +6,7 @@ tags: causality, interactive
 series: Graphical causal models
 js: causal-graphs
 css: causal-graphs
+include-toc: true
 ---
 
 [Last time](/posts/flip-it-reverse-it-graphical-causal-models/) we talked about viewing d-separation as a tool for model selection. But we're pretty limited in the causal models we can distinguish between by only observing our variables of interest---any two graphs with the same set of d-separations are indistinguishable. [Instrumental variables](https://en.wikipedia.org/wiki/Instrumental_variables_estimation) are a common tool for trying to get around the limitations of purely observational data. 

@@ -6,6 +6,7 @@ edited: 2019-06-10
 tags: decision theory, interactive, yaas
 js: decision-demos
 css: decision-demos
+include-toc: true
 ---
 
 # Decision matrices

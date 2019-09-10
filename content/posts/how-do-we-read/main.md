@@ -3,6 +3,7 @@ title: "YAAS Reading: Most of us read with our eyes <em>and</em> our brains"
 subtitle: "Yet Another Amateur Summary:<br>Rayner et al's <i>So Much to Read, So Little Time: How Do We Read, and Can Speed Reading Help?</i>"
 published: 2018-04-30
 tags: meta monday, reading, yaas
+include-toc: true
 ---
 
 I spend a lot of time reading. But I'm not actually reading very quickly. The typical educated adult reads at about 200 to 400 <abbr title="words per minute">wpm</abbr> (for context, a speaking rate of 150 to 160 <abbr title="words per minute">wpm</abbr> is comfortable). Given that, it seems *possible* that a better understanding of reading could help me spend that time better. So I read [@rayner2016]. Spoiler: It didn't transform the way I read (and reaffirmed that speed reading is rather less than advocates claim), but it was definitely interesting. The regurgitation that follows focuses more on the article's description of the 'how' of reading and less on the debunking of speed reading.

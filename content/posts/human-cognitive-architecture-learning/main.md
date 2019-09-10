@@ -4,6 +4,7 @@ subtitle: "Yet Another Amateur Summary:<br>Sweller's <i>Human cognitive architec
 date: 2018-08-13
 tags: meta monday, pedagogy, yaas
 css: cognitive-architecture
+include-toc: true
 ---
 
 # Preface

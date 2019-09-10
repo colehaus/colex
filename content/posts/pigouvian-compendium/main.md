@@ -2,6 +2,7 @@
 title: Pigouvian compendium
 date: 2018-12-19
 tags: pigouvian taxes, externalities
+include-toc: true
 ---
 
 We've already established that I'm a fan of [Pigouvian taxes](/posts/why-opposition-pigovian-taxes/) and correcting externalities. The harms I visit on my neighbor should be the result of malice aforethought; we should have to look each other in the eye rather than shrug in world-weary acknowledgment of systemic perversities. Because of that interest, I wanted a sense of the total magnitude of Pigouvian taxation possible. Are American GDP numbers the result of accounting fraud that would put [Enron](https://en.wikipedia.org/wiki/Enron) to shame? How much would American production numbers decrease if we accounted for externalities? If the federal government shared my zeal for technocratic delights, how much of the federal budget could be funded by Pigouvian taxes? How much would an individual's annual expenses increase if they'd internalized all their externalities and been absolved of their sins?

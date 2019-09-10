@@ -4,6 +4,7 @@ published: 2018-07-10
 tags: machine ethics, moral uncertainty
 css: example-lazy-approach-ai-safety
 series: Lazy AI safety
+include-toc: true
 ---
 
 Examples often clarify. Let's see an example of the [lazy approach to AI safety](/posts/lazy-ai-safety/) in action.

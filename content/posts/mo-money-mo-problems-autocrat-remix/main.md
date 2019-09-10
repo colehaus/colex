@@ -3,6 +3,7 @@ title: Mo money, mo problems—autocrat remix
 published: 2018-06-14
 tags: political economy, autocracy
 series: Why Nations Fail
+include-toc: true
 ---
 
 <blockquote class="epigraph">

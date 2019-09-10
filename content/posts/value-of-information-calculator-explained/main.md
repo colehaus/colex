@@ -5,6 +5,7 @@ edited: 2019-06-24
 tags: value of information, decision theory, interactive
 css: value-of-information-calculator
 js: value-of-information-calculator
+include-toc: true
 ---
 
 # Motivating scenario

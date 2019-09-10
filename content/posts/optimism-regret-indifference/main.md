@@ -6,6 +6,7 @@ published: 2019-06-11
 tags: decision theory, interactive, yaas
 js: decision-demos
 css: decision-demos
+include-toc: true
 ---
 
 [Last time](/posts/priority-decisions/), we [continued](/posts/dominated-decisions/) our discussion of decision rules that apply in information-poor settings. In particular, we've been focusing on "decisions under ignorance"---decisions where the probabilities associated with various states of the world are unknown.

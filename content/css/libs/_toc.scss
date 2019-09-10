@@ -1,0 +1,33 @@
+@import 'libs/primitives/spacing';
+@import 'libs/colors';
+
+.toc {
+    & > h1, & > h2, & > h3, & > h4, & > h5 {
+        &::before {
+            content: none;
+        }
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+    & a[href^="#"]::after {
+        content: none;
+    }
+    font-size: smaller;
+    ul ul {
+        @include margin-left-neg-15em;
+    }
+
+    @include background-alt-color-translucent;
+    @include border-radius;
+    @include padding-1ex;
+    @include margin-left-1em;
+    width: fit-content;
+    width: -moz-fit-content;
+    width: -webkit-fit-content;
+    @include margin-bottom-4ex;
+    @include margin-top-1ex;
+}
+
+.teaser > .toc {
+    display: none;
+}

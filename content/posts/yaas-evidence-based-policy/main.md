@@ -4,6 +4,7 @@ subtitle: "Yet Another Amateur Summary:<br>Cartwright and Hardie's <i>Evidence-b
 date: 2019-06-10
 tags: yaas, applied epistemology
 series: Evidence-based Policy
+include-toc: true
 ---
 
 # Vignette

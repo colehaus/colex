@@ -10,6 +10,7 @@ module Main where
 import Control.Applicative (empty)
 import Control.Monad ((<=<), (>=>), unless)
 import Control.Monad.Trans.Class (lift)
+import qualified Data.Char as Char
 import Data.Functor ((<$>))
 import Data.Hashable (hash)
 import Data.List (sortOn, foldl1', stripPrefix)
@@ -503,7 +504,7 @@ buildAtom renderMethod destinationDir webHost postPat bibIdent cslIdent =
            traverse markdownTransform >=>
            ifMarkdown (toHtmlAndBack bib csl) >=>
            traverse htmlTransform >=>
-           pure . (relativizeUrlsWith webHost <$>) . writePandocWith writerOpt) >>=
+           pure . (relativizeUrlsWith webHost <$>) . writePandocWith (writerOpt NoToc)) >>=
         fmap (replaceAll "index.html" (const mempty) <$>) .
         renderAtom feedConfig (postCtx <> bodyField "description")
   where
@@ -532,7 +533,7 @@ toHtmlAndBack ::
 toHtmlAndBack bib csl =
   fmap (setExtension' ".md") .
   readPandocBiblio readerOpt csl bib .
-  setExtension' ".html" . writePandocWith writerOpt
+  setExtension' ".html" . writePandocWith (writerOpt NoToc)
   where
     setExtension' ext (Item identifier body) =
       Item
@@ -615,15 +616,15 @@ buildPosts ::
 buildPosts defaultTemplate postTemplate bibIdent cslIdent tags series chunkMap dir = do
   overlayPat <-
     match (fromGlob $ dir <> "/*/overlay.md") . compile $
-    pandocCompilerWith readerOpt writerOpt
+    pandocCompilerWith readerOpt (writerOpt NoToc)
   overlays <- makePatternDependency overlayPat
   abstractPat <-
     match (fromGlob $ dir <> "/*/abstract.md") . compile $ do
       r <- getResourceBody
       _ <-
         saveSnapshot "plain" <=<
-        renderPandocPlainWith readerOpt writerOpt $ replaceAll "\"" (const "'") <$> r
-      renderPandocWith readerOpt writerOpt r
+        renderPandocPlainWith readerOpt (writerOpt NoToc) $ replaceAll "\"" (const "'") <$> r
+      renderPandocWith readerOpt (writerOpt NoToc) r
   abstracts <- makePatternDependency abstractPat
   warningsPat <-
     match (fromGlob $ dir <> "/*/warnings.md") $ compile getResourceBody
@@ -650,15 +651,22 @@ buildPosts defaultTemplate postTemplate bibIdent cslIdent tags series chunkMap d
          in do bib <- load bibIdent
                csl <- load cslIdent
                directory <- takeDirectory . toFilePath <$> getUnderlying
+               tocStatus <- getTocStatus
                getResourceString >>=
                  saveSnapshot "raw" .
                  fmap (addCiteLinkDirective . swapJsForEin . includeOrgFiles directory) >>=
                  readPandocBiblio readerOpt csl bib >>=
                  saveSnapshot "teaser" .
-                 (demoteHeaders . demoteHeaders <$>) . writePandocWith writerOpt >>=
+                 (demoteHeaders . demoteHeaders <$>) . writePandocWith (writerOpt tocStatus) >>=
                  loadAndApplyTemplate postTemplate ctx >>=
                  finish defaultTemplate ctx
   pure (postPat, warningsPat, overlayPat, abstractPat)
+
+getTocStatus :: Compiler TocStatus
+getTocStatus = fmap (maybe NoToc (boolToTocStatus . read . titleCase)) . flip getMetadataField "include-toc" =<< getUnderlying
+  where
+    titleCase (x : xs) = Char.toUpper x : xs
+    titleCase [] = error "include-toc was empty string"
 
 compileScss :: Compiler (Item String)
 compileScss = do
@@ -884,12 +892,21 @@ extensions =
 readerOpt :: ReaderOptions
 readerOpt = defaultHakyllReaderOptions {readerExtensions = extensions}
 
-writerOpt :: WriterOptions
-writerOpt =
+data TocStatus = YesToc | NoToc
+
+boolToTocStatus :: Bool -> TocStatus
+boolToTocStatus True = YesToc
+boolToTocStatus False = NoToc
+
+writerOpt :: TocStatus -> WriterOptions
+writerOpt toc =
   defaultHakyllWriterOptions
     -- Hakyll + Pandoc don't insert <script> correctly,
     -- so we add dummy URL and do it manually
-    {writerHTMLMathMethod = MathJax mempty, writerExtensions = extensions}
+    { writerHTMLMathMethod = MathJax mempty, writerExtensions = extensions
+    , writerTableOfContents = case toc of YesToc -> True; NoToc -> False
+    , writerTemplate = case toc of NoToc -> Nothing; YesToc -> Just "\n<div class=\"toc\"><h3>Contents</h3>\n$toc$\n</div>\n$body$"
+    }
 
 perPage :: Int
 perPage = 5

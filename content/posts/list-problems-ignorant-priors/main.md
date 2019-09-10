@@ -3,6 +3,7 @@ title: A non-exhaustive list of putative problems with ignorant priors
 date: 2018-08-17
 edited: 2018-11-14
 tags: bayes, epistemology
+include-toc: true
 ---
 
 The [principle of indifference](https://en.wikipedia.org/wiki/Principle_of_indifference) (a.k.a. the principle of insufficient reason) suggests that when considering a set of possibilities and there's no known reason for granting special credence to one possibility, we ought to assign all possibilities the same credence (which, on the [Bayesian](https://plato.stanford.edu/entries/epistemology-bayesian/) point of view, is also a probability). For example, when someone asks what the result of a 6-sided die roll is, the principle of indifference recommends we assign a probability of 1/6 to each outcome. Slightly more interesting is that it *also* recommends assigning a probability of 1/6 to each outcome even when we're told the die is weighted as long as we're not told how it's weighted.

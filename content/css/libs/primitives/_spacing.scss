@@ -1,3 +1,6 @@
+@mixin margin-left-neg-15em {
+    margin-left: -1.5em;
+}
 @mixin margin-left-1em {
     margin-left: 1em;
 }
@@ -36,6 +39,10 @@
 
 @mixin margin-bottom-1ex {
     margin-bottom: 1ex;
+}
+
+@mixin margin-bottom-4ex {
+    margin-bottom: 4ex;
 }
 
 @mixin margin-bottom-8ex {

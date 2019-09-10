@@ -5,6 +5,7 @@ tags: development
 css: is-development-easy
 js: is-development-easy
 series: The Singapore Story
+include-toc: true
 ---
 
 # Singapore's economy grew. A lot.

@@ -2,6 +2,7 @@
 title: The curse of the altruistic voter
 date: 2018-11-06
 tags: voting, mechanism design, constructive
+include-toc: true
 ---
 
 Broke

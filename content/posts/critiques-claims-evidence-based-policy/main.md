@@ -3,6 +3,7 @@ title: Critiques and claims regarding <i>Evidence-based Policy</i>
 date: 2019-06-12
 tags: review, applied epistemology
 series: Evidence-based Policy
+include-toc: true
 ---
 
 # Man of straw

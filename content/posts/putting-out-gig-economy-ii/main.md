@@ -4,6 +4,7 @@ subtitle: The pre-Industrial putting-out system and its parallels to the modern 
 published: 2018-05-20
 tags: economic history, current events, labor
 series: Putting-out with smartphones
+include-toc: true
 ---
 
 <blockquote class="epigraph">

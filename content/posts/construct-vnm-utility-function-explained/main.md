@@ -4,6 +4,7 @@ published: 2018-05-13
 tags: decision theory, interactive
 css: construct-vnm-utility-function
 js: construct-vnm-utility-function
+include-toc: true
 ---
 
 # von Neumann--Morgenstern utility theorem

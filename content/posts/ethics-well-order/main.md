@@ -3,6 +3,7 @@ title: Ethics as well-order
 published: 2018-05-17
 tags: metaethics, order theory
 css: ethics-well-order
+include-toc: true
 ---
 
 # Intro

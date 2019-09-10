@@ -6,6 +6,7 @@ edited: 2019-06-10
 tags: decision theory, interactive, yaas
 js: decision-demos
 css: decision-demos
+include-toc: true
 ---
 
 [Last time](/posts/dominated-decisions/), we introduced the basic setup of decision theory and examined the dominance decision rule. We also emphasized that the dominance decision rule is "weak" because it applies in very general settings with limited information to go on.

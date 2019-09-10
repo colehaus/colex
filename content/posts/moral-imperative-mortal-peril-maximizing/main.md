@@ -3,6 +3,7 @@ title: The moral imperative and mortal peril of maximizing
 date: 2018-08-19
 edited: 2019-02-11
 tags: meta
+include-toc: true
 ---
 
 # The world as we understand it

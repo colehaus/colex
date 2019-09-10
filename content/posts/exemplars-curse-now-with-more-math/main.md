@@ -5,6 +5,7 @@ edited: 2019-02-11
 tags: decision theory, interactive
 js: exemplars-curse
 css: exemplars-curse
+include-toc: true
 ---
 
 Edit: [@marks2008satisficer] covers essentially the same ground. But there's no interactive calculator!

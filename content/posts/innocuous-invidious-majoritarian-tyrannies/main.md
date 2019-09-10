@@ -2,6 +2,7 @@
 title: Innocuous and invidious majoritarian tyrannies
 published: 2018-04-10
 tags: social choice, mechanism design
+include-toc: true
 ---
 
 ::: macros

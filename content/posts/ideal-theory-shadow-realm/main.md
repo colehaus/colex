@@ -3,6 +3,7 @@ title: Ideal theory in the shadow realm
 published: 2018-06-21
 tags: ideal theory, political philosophy
 series: The Tyranny of the Ideal
+include-toc: true
 ---
 
 It's opposite day! Instead of talking about the ideal, we're going to talk about the anti-ideal---the worst of all possible worlds. I contend that, if ideal theory is useful, anti-ideal theory is also useful.

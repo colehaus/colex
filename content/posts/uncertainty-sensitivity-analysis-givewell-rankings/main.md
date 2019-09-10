@@ -2,8 +2,9 @@
 title: Uncertainty and sensitivity analysis of GiveWell's top charity rankings
 date: 2019-08-29
 edited: 2019-08-31
-tag: statistics, development
+tags: statistics, development
 series: GiveWell cost-effectiveness analysis analysis
+include-toc: true
 ---
 
 In the [last](/posts/uncertainty-analysis-of-givewell-cea/) [two](/posts/sensitivity-analysis-of-givewell-cea/) posts, we performed uncertainty and sensitivity analyses on GiveWell's charity cost-effectiveness estimates. Our outputs were, respectively:

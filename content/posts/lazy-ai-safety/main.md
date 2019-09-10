@@ -4,6 +4,7 @@ subtitle: Using value of information calculations to defer ethical investigation
 published: 2018-03-31
 tags: machine ethics, moral uncertainty, constructive
 series: Lazy AI safety
+include-toc: true
 ---
 
 According to most ethical theories, the actions of any AI agent we create have moral import. To accommodate this reality, we guide the agent with a utility function and (implicitly or explicitly) an ethical framework.

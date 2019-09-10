@@ -4,6 +4,7 @@ published: 2018-06-15
 edited: 2018-06-21
 tags: political economy, autocracy, constructive
 series: Why Nations Fail
+include-toc: true
 ---
 
 We've been talking about autocrats lately. It'd be good if we could put our new understanding to use. In that spirit, here are a couple of constructive schemes.

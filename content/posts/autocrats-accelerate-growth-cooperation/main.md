@@ -4,6 +4,7 @@ subtitle: Disagreeing with <i>Institutions as a fundamental cause of long-run gr
 published: 2018-06-01
 tags: political economy, autocracy
 series: Why Nations Fail
+include-toc: true
 ---
 
 # Intro

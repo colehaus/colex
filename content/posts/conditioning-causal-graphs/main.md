@@ -5,6 +5,7 @@ tags: causality, interactive
 js: causal-graphs
 css: causal-graphs
 series: Graphical causal models
+include-toc: true
 ---
 
 As mentioned in the warnings on the [first post on graphical causal models](/posts/babys-first-graphical-causal-models/), I've been lying to you so far. But it was for a good reason: that sweet, sweet expository simplicity. So far, all our definitions, algorithms, etc. have proceeded without any acknowledgment of the social scientists' favorite statistical tool: [[controlling for a variable](https://en.wikipedia.org/wiki/Controlling_for_a_variable)]{.noted}[^conditioning].

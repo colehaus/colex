@@ -3,6 +3,7 @@ title: Shilling for Anki
 date: 2018-08-27
 edited: 2018-11-15
 tags: meta monday, pedagogy
+include-toc: true
 ---
 
 # The decline and rise of long-term memory

@@ -6,6 +6,7 @@ edited: 2018-11-15
 tags: yaas, norms
 graph-of-contents: yaas-social-norms
 series: Norms in the Wild
+include-toc: true
 ---
 
 <menu id="norm-problem" type="popup">

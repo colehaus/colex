@@ -3,6 +3,7 @@ title: Inclusive and extractive societies each have structural advantages
 published: 2018-06-07
 tags: political economy, autocracy
 series: Why Nations Fail
+include-toc: true
 ---
 
 # Intro
