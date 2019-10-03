@@ -105,7 +105,7 @@ There's only an <abbr title="instrumental variable">IV</abbr> for the causal eff
 Once we make this same modification---add a variable X which is a parent/cause of Y---to the other paths, we can determine whether X is truly an instrumental variable. In other words, it's important that our instrumental variable separates case 1---where Y genuinely has a causal effect on Z---from the other two cases---where it doesn't. Here's what happens in each case:
 
 1. X → Y → A → ... → B → Z: Our instrument X is d-connected to the effect Z.
-2. X → Y ← A ← ... ← B ← Z: Our instrument X is d-separated from Z by the collider at Y..
+2. X → Y ← A ← ... ← B ← Z: Our instrument X is d-separated from Z by the collider at Y.
 3. X → Y ← ... ← A → ... → Z: Our instrument X is d-separated from Z by the collider at Y.
 
 ### Model selection

@@ -36,7 +36,7 @@ When we add the possibility of conditioning, things change dramatically:
 | Inverted fork     | Collider/common effect    | A → B ← C   | Noncausally                 |
 </figure>
 
-The complete reversal of in/dependence occasioned by conditioning on the middle vertex may be a bit surprising. There's a certain reflex that says when ever you want to draw a clean story out of messy data, conditioning on more stuff will help you. But as we see here, [that's not generally true]{.noted}[^open-question].
+The complete reversal of in/dependence occasioned by conditioning on the middle vertex may be a bit surprising. There's a certain reflex that says when ever you want to draw a clean causal story out of messy data, conditioning on more stuff will help you. But as we see here, [that's not generally true]{.noted}[^open-question]. Conditioning can also introduce spurious correlation.
 
 <!--more-->
 
