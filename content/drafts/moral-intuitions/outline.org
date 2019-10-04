@@ -12,7 +12,12 @@ Not Asian disease
 
 Roots are "Experimental philosophy" on libgen, "moral psychology" on libgen, "reliability of moral intuition" on google scholar, "experiment philosophy: ethics" on philpapers
 
-* History
+* DONE History
+  CLOSED: [2019-10-03 Thu 19:11]
+  :LOGBOOK:
+  - State "DONE"       from "TODO"       [2019-10-03 Thu 19:11]
+  - State "TODO"       from              [2019-10-03 Thu 19:11]
+  :END:
 
 4.1.1
 Piaget’s stage theory and Kohlberg’s improvements
@@ -36,7 +41,11 @@ illustrated by pictures or vignettes. They attempted to show that, from
 early childhood on, children tend to differentiate between conven-
 tional and moral judgments
 
-* What are intuitions?
+* DONE What are intuitions?
+  CLOSED: [2019-10-03 Thu 19:11]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-03 Thu 19:11]
+  :END:
 
 First, according to intuitionism , moral intuitions have something in com-
 mon with perception in the realm of scientifi c discovery. Both intuitions
@@ -65,7 +74,11 @@ the experience of something seeming to be, or striking you as, the case – “w
 p it seems to one that p” (Koksvik, 2013, 3); or, as Chalmers (2014) put it, “intuitive claims seem
 obviously [i.e., not requiring further “broadly inferential” justification] true” (3).
 
-* Why should we care?
+* DONE Why should we care?
+  CLOSED: [2019-10-03 Thu 20:31]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-03 Thu 20:31]
+  :END:
 
 Here is one way of construing the restrictionist challenge, in terms of three main
 moving pieces. First, there are the experimental results themselves, which at this point
