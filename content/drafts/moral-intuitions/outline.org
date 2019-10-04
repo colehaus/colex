@@ -1,0 +1,1809 @@
+This review has it all! Hynosis, incest, dubious statistical practices!
+
+* Procedure
+
+PICOS, PRISMA
+
+* Inclusion criteria
+
+Not moral motivation, blameworthiness, responsibility, intentionality, objectivity, virtue
+
+Not Asian disease
+
+Roots are "Experimental philosophy" on libgen, "moral psychology" on libgen, "reliability of moral intuition" on google scholar, "experiment philosophy: ethics" on philpapers
+
+* History
+
+4.1.1
+Piaget’s stage theory and Kohlberg’s improvements
+4.1.2
+Nucci’s and Turiel’s domain theory
+4.1.3
+Haidt’s social intuitionist model
+4.2.1
+Greene’s dual process theory
+4.2.2
+Universal moral grammar theory
+
+Kohlberg‘s and Piaget‘s rather rationalistic approach, claiming that
+moral judgment always requires conscious moral reasoning, became the
+target of much criticism later on. In particular, the idea of fixed devel-
+opmental stages fell into disrepute. Therefore, Larry Nucci and Elliot
+Turiel tried to improve Piaget’s and Kohlberg’s methods by conducting
+standardized stimulus-driven interviews with school and preschool
+children. An element of these interviews was to judge real-life scenarios
+illustrated by pictures or vignettes. They attempted to show that, from
+early childhood on, children tend to differentiate between conven-
+tional and moral judgments
+
+* What are intuitions?
+
+First, according to intuitionism , moral intuitions have something in com-
+mon with perception in the realm of scientifi c discovery. Both intuitions
+and perceptions purport to track an independent reality.
+
+Some moral questions (like whether it’s wrong to cheat people out of
+their retirement savings) are fairly easy, but we do sometimes face moral
+questions to which we don’t know the answers. When this happens we
+seek moral knowledge, or at least a reasonable position.
+A moral intuition is a moral judgment that seems true without having to
+engage in refl ection or reasoning. Intuitions about cases are often thought
+to be evidence for moral conclusions.
+
+When we refer to moral intuitions, we mean strong, stable, immediate
+moral beliefs. These moral beliefs are strong insofar as they are held with
+confidence and resist counter-evidence (although strong enough counter-
+evidence can sometimes overturn them). They are stable in that they are not
+just temporary whims but last a long time (although there will be times when
+a person who has a moral intuition does not focus attention on it). They
+are immediate because they do not arise from any process that goes through
+intermediate steps of conscious reasoning (although the believer is conscious
+of the resulting moral belief).
+
+Moving forward, let us assume a relatively thin notion of intuitions – namely, that they are (or involve)
+the experience of something seeming to be, or striking you as, the case – “when one has the intuition that
+p it seems to one that p” (Koksvik, 2013, 3); or, as Chalmers (2014) put it, “intuitive claims seem
+obviously [i.e., not requiring further “broadly inferential” justification] true” (3).
+
+* Why should we care?
+
+Here is one way of construing the restrictionist challenge, in terms of three main
+moving pieces. First, there are the experimental results themselves, which at this point
+in time overwhelmingly concern ‘ordinary’ subjects (typically, but not entirely,
+university undergraduates). In particular, there is the claim that the studies in
+question reveal a worrisome pattern of responses in those subjects, such as ethnic
+variation or sensitivity to the order of presentation of the cases. Second, there is a
+metaphilosophical claim that the relevant philosophical facts do not pattern in the
+same way; there is a misalignment between the contours of the philosophical facts and
+the contours of philosophical judgments (or, at least, of those judgments as studied by
+the experimental philosophers). Third, there is an ampliative inference from the
+patterns disclosed concerning the ordinary subjects to the predicted occurrence of
+those patterns in professional philosophers. Putting all three pieces together, the
+armchair practice is thus challenged: we have reason to think that it involves deploying
+a source of putative evidence that is sensitive to non-truth-tracking factors.
+
+We will use the term ‘cathedrist’ for those looking to defend the trustworthiness of
+the traditional armchair method in the face of the restrictionist challenge. There are
+at least three different main avenues of cathedrist response, corresponding to each of
+the three parts of the restrictionist challenge. 1 They can attack the first, experimental
+piece, by critiquing the studies themselves (e.g., by proposing confounds; see Cullen,
+forthcoming; Sytsma & Livengood, forthcoming). They can attack the second,
+metaphilosophical piece, by suggesting philosophical appropriateness of variation
+(e.g., by going relativistic in the face of diversity; see Goldman, 2007; Jackson, 1998;
+Lycan, 2006; Sosa, 2009) or contextualist in the face of instability (see discussion at
+the end of Swain et al., 2008). And they can attack the third piece, by demonstrating
+some relevant difference between the psychology of philosophers when engaged in
+their professional activities, and the psychology of undergraduates in the context of
+doing surveys, which would thereby defeat the restrictionist’s ampliative inference.
+
+moral intuitions are unreliable to the extent that morally
+irrelevant factors affect moral intuitions.
+
+Learning more about philosophical cog-
+nition has yielded significant insights into the methods that we employ when doing philosophy,
+and has led some experimental philosophers to raise concerns about the role that intuitions play
+in philosophical practice (for discussion, see Alexander and Weinberg 2007, and Alexander
+2012). It turns out that different people have different intuitions and that people’s intuitions are
+sensitive to a range of things that are both unwelcome and unexpected. What makes this
+situation worse is that, because we know so little about the cognitive processes involved, we cur-
+rently lack the resources needed to determine whose intuitions to trust and when to trust them.
+Weinberg (2007) calls this kind of situation hopeless (in a technical sense), but not hopelessly so,
+and the challenge is to figure out how best to restore hope to the way that most philosophers go
+about the business of doing philosophy.
+
+Or so goes what has come to be known
+as the ‘restrictionist challenge’, which maintains that the instability found in people’s intuitional
+judgments represents “a worrisome methodological deficiency in philosophers’ armchair
+p­ractice of appeal to intuitions” (Weinberg et al. 2012, 257; see also Alexander and Weinberg
+2007) and, more, “undermines the supposed evidential status of these intuitions, such that
+p­hilosophers [and others] who deal in intuitions can no longer rest comfortably in their
+a­rmchairs” (Swain, Alexander, and Weinberg 2008, 1).
+
+* Indirect evidence
+
+** Moral intuitions as heuristics
+
+I propose three hypotheses. First, moral intuitions as described in the social
+intuitionist theory (e.g., Haidt, 2001) can be explicated in terms of fast and
+frugal heuristics (Gigerenzer, 2007).
+
+What intuitionist theories could gain from the science of heuristics is to
+explicate intuition in terms of fast and frugal heuristics. This would provide
+an understanding of how intuitions are formed.
+
+Here is my second hypothesis: Heuristics that underlie moral actions are
+largely the same as those for underlying behavior that is not morally
+tinged.
+
+The third hypothesis is that the heuristics underlying moral action are
+generally unconscious.
+
+Moral intuitions fit the pattern of heuristics, in our ‘‘narrow’’ sense, if they
+involve (a) a target attribute that is relatively inaccessible, (b) a heuristic attribute
+that is more easily accessible, and (c) an unconscious substitution of the target
+attribute for the heuristic attribute.
+
+Luckily, we do not need to commit ourselves
+to any particular account of moral wrongness, for all the plausible candidates
+suggest that moral wrongness is not accessible in the relevant way.
+
+Heuristics that guide non-
+moral beliefs, decisions, and actions clearly also affect moral beliefs, decisions,
+and actions. Gigerenzer mentions Laland’s (2001) do-what-the-majority-does
+heuristic: if you see the majority of peers behave in a certain way, do the same.
+We could add Chaiken’s (1980) I-agree-with-people-I-like heuristic.
+
+Unlike the aforementioned moral heuristics, which
+caution against specific acts or act-types, the affect heuristic is content-free.
+All the affect heuristic says is, roughly: if thinking about the act (whatever
+the act might be) makes you feel bad in a certain way, then judge that it
+is morally wrong.
+
+** Evolution
+
+Morality as Cooperation: A Problem-Centred Approach
+
+Plomin's behavioral genetics
+
+In contrast, it is eminently more plausible that in many cases designs that vied
+away from objective truth seeking in the direction of inferences and behaviors that
+reliably contributed to reproductive fitness were the ones that better survived the
+various filters. We should expect this for three distinct but convergent reasons. First,
+there are likely many inferences for which knowing the true state of the world caries
+absolutely no fitness gain. For example, for a terrestrial primate, perceiving gravity
+as a distortion of space-time and not merely a force that pulls objects down toward
+the Earth cannot plausibly have influenced anyone’s fitness over ancestral condi-
+tions; this information is irrelevant in the extreme.
+
+Second, there are likely many inferences for which the costs of getting the infer-
+ence wrong are asymmetrical—that is, the false positives are more or less costly
+than the misses (Delton et al. 2011; Haselton and Buss 2000; Johnson et al. 2013).
+Taking again the example of a terrestrial primate, mistaking a bit of ground-level
+motion at your peripheral vision for a snake and deploying an evasive response is
+minimally costly—regardless of whether you are actually avoiding a snake or a
+harmless breeze, the energy expended is relatively minimal.
+
+Third, the social world is not a solitary game: my behavior can influence others’
+behavior which can then impact my fitness. The beliefs I hold, my motivations for
+action, the things I value, and how I act can all have consequences, and can be rel-
+evant to others and how they treat me.
+
+Taking these points together—that the objective truth is often fitness irrelevant,
+that the right kind of error is often ecologically rational, and that the adaptive prob-
+lem is at least sometimes about changing someone else’s behavior—helps suggest a
+program for an evolutionarily informed study of human moral psychology.
+
+There is no reason to expect our moral intuitions to show consistent,
+logically defensible reactions to evolutionarily novel moral dilemmas that
+involve isolated, hypothetical, behavioral acts by unknown strangers
+who cannot be rewarded or punished through any normal social primate
+channels.
+
+This paper develops a theory that sexual selection shaped many of our
+distinctively human moral virtues as reliable fi tness indicators.
+
+we devel-
+oped social contract theory: a task analysis of the computational require-
+ments for adaptively engaging in social exchange (see Cosmides, 1985;
+Cosmides & Tooby, 1989). Many of these requirements were so particular
+to adaptive problems that arise in social exchange that they could only be
+implemented by a computational system whose design was functionally
+specialized for this function. To discover whether a system of this kind
+exists in the human mind, we conducted reasoning experiments that
+looked for evidence of the design features predicted by social contract
+theory.
+
+Social contract theory is based on the hypothesis that the human mind
+was designed by evolution to reliably develop a cognitive adaptation spe-
+cialized for reasoning about social exchange. To test whether a system is
+an adaptation that evolved for a particular function, one must produce
+design evidence. It is an engineering standard: functional design is evi-
+denced by a set of features of the phenotype that (i) combine to solve an
+element of a specifi c adaptive problem particularly well and (ii) do so in a
+way unlikely to have arisen by chance alone or as a side effect of a mech-
+anism with a different function.
+
+These analyses showed that ability to reliably and systematically detect
+cheaters is a necessary condition for cooperation in the repeated Prisoners’
+Dilemma to be an ESS
+
+Cosmides and Tooby (2005a) review the design evidence that supports
+the claim that the human mind reliably develops an adaptive specializa-
+tion for reasoning about social exchange and that rules out by-product
+hypotheses.
+
+People are poor at detecting violations of conditional rules when their
+content is descriptive. But this result does not generalize to conditional
+rules that express a social contract. People who ordinarily cannot detect
+violations of if-then rules can do so easily and accurately when that viola-
+tion represents cheating in a situation of social exchange.
+
+In Section 1, we examine a First interpretation
+of the claim that morality evolved—one on which some components of moral
+psychology have evolved. We argue that this claim is uncontroversial although
+it can be very difficult to show that some particular components of moral
+psychology really evolved. In Section 2, we turn to a second interpretation of
+the claim that morality evolved, the claim that normative cognition—that is, the
+capacity to grasp norms and to make normative judgments—is a product of
+evolution. We argue that normative cognition might well have evolved, and
+that it may even be an adaptation. Finally, we turn to the philosophically most
+interesting interpretation of the claim that morality evolved. In Section 3, we
+set out the view that moral cognition, understood as a special sort of normative
+cognition, is the product of evolution, and we argue that the evidence adduced
+in support of the view is unpersuasive.
+
+Frans de Waal’s work is a good illustration of this approach (e.g. de
+Waal, 1996; Preston & de Waal, 2002; see also Darwin, 1871; Bekoff, 2004).
+He is interested in whether some of the emotions, dispositions, and cognitive
+competences that underlie moral behaviors—e.g. empathy and the recognition
+of norms—are present in our closest extant relatives, the apes, as well as in
+more distant relatives, such as old-world and new-world monkeys.
+
+De Waal has long argued that many important components of moral psy-
+chology, such as the sense of fairness and numerous fairness-related emotions,
+e.g. gratitude (Brosnan & de Waal, 2002) and inequity aversion (Brosnan &
+de Waal, 2003; Brosnan, 2006), are homologous to psychological systems in
+other primates.7
+
+Here, we focus critically on de Waal’s claim that there is
+evidence for a precursor of the human sense of fairness among female brown
+capuchins.
+
+People judge fairness based both on the distribution of gains and on the possible
+alternatives to a given outcome. Capuchin monkeys, too, seem to measure reward in
+relative terms, comparing their own rewards with those available, and their own efforts
+with those of others. They respond negatively to previously acceptable rewards if a
+partner gets a better deal. Although our data cannot elucidate the precise motivations
+underlying these responses, one possibility is that monkeys, similarly to humans, are
+guided by social emotions.
+
+Note however that Brosnan, Freeman, & de Waal (2006) failed to replicate capuchin monkeys’
+aversion to inequity in a different experimental design, and that Bräuer, Call, & Tomasello (2006) failed
+to replicate chimpanzees’ aversion to inequity. Brosnan and de Waal’s design has also been severely
+criticized (Dubreuil, Gentile, & Visalberghi, 2006; but see van Wolkenten, Brosnan, & de Waal, 2007).
+
+To claim that a trait evolved is simply to claim that the trait
+has a phylogenetic history, and one project would be to inquire into this
+history.15 That is, one can study what changes took place in the psychology
+of our primate ancestors during the evolution of normative cognition (just
+as one can study the evolution of the human eye by identifying the changes
+that took place during the evolution of the mammalian eye). A stronger
+claim is that normative cognition constitutes an adaptation. An adaptation is
+a specific sort of evolved trait—i.e. a trait whose evolution is the result of
+natural selection. Since not all products of evolution are adaptations, someone
+who conjectures that normative cognition is an evolved trait can also examine
+whether it is an adaptation, the by-product of another adaptation, or an
+evolutionary accident.
+
+When a trait is ancient and universal, it is either because it can be
+easily acquired by individual learning or by social learning, or because a
+developmental system is designed to ensure its regular development. In the
+latter case, but not in the former case, the universality and antiquity of a trait
+is evidence that it evolved.
+
+Since it is difficult
+to see how one could acquire the capacity for normative attitudes toward
+thoughts, behaviors, and other traits—i.e. a capacity for norms—from one’s
+environment (in contrast to acquiring specific norms, which can obviously be
+learned), it is plausible that normative cognition evolved.
+
+While people reason poorly about non normative matters, they are
+adept at reasoning about normative matters (for review, see Cosmides &
+Tooby, 2005). Both Western and non-literate Shuar Amazonian subjects
+easily determine in which situations deontic conditionals, such as ‘‘If you eat
+mongongo nut (described as an aphrodisiac in the cover story), then you must
+have a tattoo on your chest’’ (described as a mark denoting married status), are
+violated, while they are surprisingly poor at determining in which situations
+indicative conditionals, such as (‘‘If there is a red bird in the drawing on
+top, then there is an orange on the drawing below’’), are false (Cosmides,
+1989; Sugiyama, Tooby, & Cosmides, 2002). Although the interpretation of
+these findings remains somewhat controversial (e.g. Sperber, Cara, & Girotto,
+1995), they suggest to us that people are distinctively adept at detecting norm
+violation.
+
+Furthermore, just like adults, young children are much better at reasoning
+about the violations of deontic conditionals than about the falsity of indicative
+conditionals (Cummins, 1996a; Harris & Núñez, 1996).
+
+The existence of a cognitive system that seems dedicated specifically to
+produce good reasoning about norms from an early age on provides some
+suggestive evidence that normative cognition is an adaptation. Generally, the
+functional specificity of a trait is (defeasible) evidence that it is an adaptation.
+Furthermore, the fact that a trait develops early and that its development is
+distinctive—it is independent from the development of other traits—suggests
+that natural selection acted on its developmental pathway. The early develop-
+ment of a psychological trait suggests that it is not acquired as a result of our
+domain-general learning capacity; the distinctive development of a psycholog-
+ical trait suggests that it is not acquired as a by-product of the acquisition of
+another psychological capacity
+
+(How-possible models of evolution of normative faculties)
+Boyd & Richerson (1992); Henrich & Boyd (2001); Boyd et al. (2003); Gintis et al. (2003);
+Richerson et al. (2003); Richerson & Boyd (2005); Boyd & Mathew (2007); Hauert et al. (2007).
+
+The basic idea is that moral norms are a distinct type of
+norm and that related entities like moral judgments, moral motivations, and
+moral behaviors and thoughts are similarly distinct.
+
+For other approaches to the evolution of moral cognition, understood as a distinct type of
+normative cognition, see Darwin (1871), Ruse & Wilson (1985), Ruse (1986), Dennett (1995: chs.
+16–17), Kitcher (1998), Singer (2000), and Levy (2004).
+
+Nonetheless, the body of evidence
+about the size and fluidity of the social groups that have been common during
+part of the evolution of our species casts at least some doubt on the importance
+of reciprocal altruism for understanding the evolution of altruism.
+
+reciprocal altruism and indirect reciprocity also explain
+the evolution of morality in humans. Alexander puts it succinctly (1987: 77):
+‘‘Moral systems are systems of indirect reciprocity.
+
+it is very unclear how one can extend these two evolutionary mechanisms to
+account for the evolution of moral norms—like food taboos—that are not
+related to altruism.
+
+To summarize, because the main adaptationist models of the evolution of
+morality appeal to direct or indirect reciprocity, they seem badly tailored to
+account for three key properties of moral cognition: moral norms do not
+exclusively (nor even primarily) bear on pairwise interactions; many moral
+norms have nothing to do with altruism; and violations of norms are punished.
+
+a poverty of the stimulus argument (Dwyer, 1999, 2006; Mikhail, 2000).
+According to this type of argument, developed most famously by Chomsky
+(1975), the fact that a trait, such as the capacity to speak a language, develops
+reliably, while the environmental stimuli are variable and impoverished, is
+evidence that this trait is innate
+
+Joyce concludes that ‘‘[t]hese results from developmental psychology strongly
+suggest that the tendency to make moral judgments is innate’’ (2006: 137).
+
+Turiel and colleagues argue that very early on, and pancul-
+turally, children distinguish two types of norms, called ‘‘moral norms’’ and
+‘‘conventional norms.’’
+
+First, as Gabennesch (1990) has convincingly argued, the common wis-
+dom—endorsed by Dwyer and others—that very early on, children view
+some norms as social conventions is poorly supported by the evidence. Carter
+and Patterson (1982) found that half of their second- and fourth-grader subjects
+judged that table manners (e.g. eating with one’s fingers) were not variable
+across cultures and that they were authority-independent. Similarly, Shweder
+and colleagues (1987: 35) concluded that among American children under 10,
+‘‘there [was] not a single practice in [their] study that is viewed predominantly
+in conventional terms’’ (see Gabennesch, 1990 for many other references).
+
+To summarize, while many philosophers, psychologists, and anthropologists
+have claimed that morality is a product of the evolution of the human species,
+the evidence for this claim is weak at best. First, we do not know whether
+moral norms are present in every culture: because researchers endorse rich
+characterizations of what moral norms are, it is not obvious that norms that
+have the distinctive properties of moral norms will be found in every culture,
+and, in any case, researchers have simply not shown that, in numerous cultures,
+there are norms that fit some rich characterization of moral norms. Second, the
+claim that early on children display some complex moral knowledge in spite
+of variable and impoverished environmental stimuli is based on the research
+on the moral/conventional distinction. Although this research remains widely
+accepted in much of psychology, a growing body of evidence has highlighted
+its shortcomings.
+
+*** Linguistic analogy
+
+The fi rst model, which I call the “Simple Innateness Model,” pro-
+poses that humans possess an innate body of moral rules and principles.
+These rules are universal among humans and arise without the need for
+any highly specifi c instruction or cultural inputs. As I’ll argue, a problem
+for the Simple Innateness Model is that it has trouble accounting for the
+variability of moral norms across human groups. The next two models I
+discuss, which I call the “Principles and Parameters Model” and the “Innate
+Biases Model,” are more complex in that they envision a role for both
+innate structure and culture in shaping the contents of moral norms.
+
+A second argument used to support the Principles and Parameters Model
+is a poverty of the stimulus argument. According to this argument, there is a
+problem in explaining how some cognitive capacity is acquired because
+there is a gap between two features of the learning situation—the complex-
+ity of the learning target and the resources available to the learner. The
+existence of this gap is taken as evidence that there must be some kind
+innate structure that bridges the gap, thus explaining how children reliably
+end up acquiring the mature cognitive competence (see Cowie, 1999).
+
+An important disanalogy between language learning and moral norm
+learning is that in the case of moral norm learning, the learning target is
+far simpler than in the case of language. Moral norms are not abstruse and
+far removed from experience in the same manner as the hierarchical tree
+structures and recursive rules of human grammars. Rather, moral norm
+learning merely requires that the child acquire a readily understandable
+collection of fairly concrete rules, for example, rules such as “Share your
+toys,” “Don’t hit other children,” “Respect your elders,” “Don’t eat pork,”
+and so on. Many of the more diffi cult rules, for example, “Treat each
+person with equal respect and dignity” or “Don’t have extra-marital sexual
+relations” are learned much later in life (if at all), after the conceptual
+resources needed to understand such rules are fi rmly in place.
+
+A second crucial disanalogy between language learning and moral norm
+learning is that while language learning must necessarily be an induc-
+tive learning problem, the learning of moral norms needn’t be an inductive
+learning problem at all. That is, in the case of learning moral norms, the
+child already has language and can be explicitly instructed as to what are
+the correct moral norms to follow.
+
+As I use
+the term, an “innate bias” on the contents of moral norms is some element
+of innate structure that serves to make the presence of some moral norms
+in the Norms Box more likely relative to the case in which the bias is absent.
+
+** Cultural
+
+Underlying most forms of human interaction is the norm of conditional coopera-
+tion (Brandts and Schram 2001; Fehr and Fischbacher 2004a, b; Fischbacher et al.
+2001; Keser and van Winden 2000).
+
+It is widely believed by sociologists and other scholars that norms are instrumental
+(Hechter and Opp 2001)—that is, they exist to help groups of people maximize
+their collective welfare.
+
+Our suspicion that people like those imagined in Stich’s thought experiment might actually exist was fi rst provoked by the results of two recent research programs in psychology. In one of these, Richard Nisbett and his collabora- tors have shown that there are large and systematic differences between East Asians and Westerners 18 on a long list of basic cognitive processes, including perception, attention, and memory.
+
+Henrich and colleagues have
+documented that there is much cross-cultural normative diversity in the norms
+bearing on the distribution of windfall gains (Henrich et al., 2004, 2005).
+For instance, Americans believe that a fair distribution of such gains consists
+in splitting them equally. By contrast, in a few small-scale societies, such
+as the Machiguengas of the Peruvian Amazon, people seem to expect the
+beneficiaries of windfall gains to keep the gain for themselves.
+
+** Neural
+
+Random utility models
+
+Our model also exposed a novel cognitive process
+that relates to moral behavior. People vary in the extent
+to which they choose the more highly valued option—
+that is, their decision process is “noisy” and they some-
+times make mistakes. This noise is another latent
+component of choice quantified within the model. We
+explored the possibility that people make noisier choices
+when deciding for others relative to themselves and that
+this would relate to moral behavior. Indeed, the extent to
+which people made noisier choices for others than for
+themselves was positively correlated with moral behavior
+(Crockett et al., 2014).
+
+We propose a neurocomputational model of altruistic
+choice and test it using behavioral and fMRI data from
+a task in which subjects make choices between real
+monetary prizes for themselves and another. We
+show that a multi-attribute drift-diffusion model, in
+which choice results from accumulation of a relative
+value signal that linearly weights payoffs for self and
+other, captures key patterns of choice, reaction
+time, and neural response in ventral striatum, tempor-
+oparietal junction, and ventromedial prefrontal cor-
+tex. The model generates several novel insights into
+the nature of altruism. It explains when and why
+generous choices are slower or faster than selfish
+choices, and why they produce greater response
+in TPJ and vmPFC, without invoking competition
+between automatic and deliberative processes or
+reward value for generosity. It also predicts that
+when one’s own payoffs are valued more than
+others’, some generous acts may reflect mistakes
+rather than genuinely pro-social preferences.
+
+Importantly, the drift diffusion model also assumes a certain amount of noise in
+the particle’s drift, as illustrated by its jagged path in Fig. 3. While the particle
+tends to drift toward the boundary corresponding to the choice with greater evi-
+dence, sometimes this noise will push the particle off course, causing it to reach
+the other boundary instead.
+
+The drift diffusion model has recently been applied to moral decision-making
+(Hutcherson et al. 2015; Krajbich et al. 2015b). In one recent study (Hutcherson
+et al. 2015), participants’ brains were scanned using functional magnetic reso-
+nance imaging (fMRI) as they made several decisions about how to share money
+with another anonymous participant. (fMRI indirectly measures activity in dif-
+ferent parts of the brain by detecting changes in blood flow.) Participants could
+accept more money in exchange for the other person receiving less, or vice
+versa, with the amounts varying from trial to trial.
+
+*** Dual process
+
+Elsewhere I have argued that a better understanding of moral psychology favors utilitari-
+anism/consequentialism in precisely this way (Greene 2013). My claim is not that one can derive
+moral “oughts” from the “is” of psychological science. Rather, the claim is that a scientific under-
+standing of our judgments can reveal latent tensions within our preexisting set of “oughts,” and
+thus redirect our normative thinking toward a “double‐wide reflective equilibrium” (Greene
+2014) – conclusions reached by incorporating scientific self‐knowledge into our reflective moral
+theorizing
+
+Josh Greene, a neuroscientist and philosopher, has made just this argu-
+ment about a subset of our intuitions. Greene argues that diff erent moral
+intuitions are caused in diff erent ways and that, together with some assump-
+tions about when diff erent mental processes are reliable and when not, we
+have good reason to discount at least some of our moral intuitions.
+
+Greene sets about trying to explain them causally. His view is that the dif-
+ferent intuitions in Footbridge Switch and Footbridge are explained by the
+fact that we have two diff erent cognitive systems in our brains. In short, we
+have one system that is emotional and automatic; this system is engaged
+when we respond emotionally to the thought of physically touching the
+man, and it gives rise to the judgment that we should not push the man
+into the train. Th e other system is non-emotional and more refl ective; when
+we read the relatively cold Switch cases, our emotions are not engaged, so
+this system can get to work, and it gives rise to the judgment that we should
+pull the switch in order to save more people. Let’s consider this in a little
+more detail.
+Th e theory that there are these two systems in the brain is called Dual
+Process Th eory
+Greene and his colleagues argue that the two processes in Dual Process
+psychology tend to make diff erent kinds of moral judgments: System 1
+produces “characteristically deontological” judgments (judgments naturally
+defended in terms of rules, rights and duties); System 2 produces “charac-
+teristically consequentialist” judgments (judgments naturally defended in
+terms of the greatest benefi t to the greatest number).
+
+Dual Process Th eory, which says that our moral intuitions are the result
+of diff erent cognitive systems, is one explanation for why we have these
+confl icting intuitions. Joshua Greene argues that our quick System 1 pro-
+cessing is not trustworthy in novel situations because it is an automatic
+system that doesn’t pause to consider the new circumstances.
+Intuitionists and constructivists agree that moral intuitions must be
+taken into account in the search for moral knowledge, though for diff er-
+ent reasons.
+
+** Non-moral decisions
+
+** Moral disagreement
+
+* Direct evidence
+
+Most of the work that tries to identify such errors can be divided into four
+categories: studies of demographic differences; order effects; framing effects; and
+environmental influences.
+
+Extensionality
+
+But, it is important to be clear that
+these differences likely represent a different sort of worry from the problem of other cognitive
+biases (such as framing and order effects). The latter involves intuitive judgments being unduly
+influenced by information present/salient at the moment our judgments are formed, while the
+former involves a much more complex story about the ways in which sociocultural belief
+systems/norms become internalized, shaping our understanding and use of certain concepts – and
+perhaps even the concepts themselves.
+
+** Actor/observer
+
+There is also evidence that philosophers may be subject to framing effects, though again in a
+slightly different manner than non-philosophers. Extending previous findings on actor-observer
+bias in naïve subjects, Tobia et al. (2013a) presented philosophers and non-philosophers with
+moral dilemma vignettes presented either in the second person (‘you are the driver of a
+trolley...’) or the third person (‘Jim is the driver of a trolley...’). Non-philosophers were less
+likely to judge an action to be morally obligatory when the vignette portrayed them in the role
+of the actor; they were also less likely to judge an action morally permissible. Philosophers
+showed the same bias but in the opposite direction; they were more likely to judge an action
+obligatory/permissible in ‘actor’ cases. Again, Tobia et al. take this to provide evidence that
+directly undermines the expertise defense. Interestingly, in a second study of this effect, Tobia
+et al. (2013b) found that exposure to a ‘clean’ smell (Lysol) during testing affected the strength
+of the actor-observer bias in both philosophers and non-philosophers. Lysol-smelling philoso-
+phers, in fact, reversed their pattern of bias as compared to philosophers in the control group.
+
+However, not only personal traits can bias moral judgments.
+Nadelhoffer and Feltz (2008), for example, found an actor-observer bias
+in responses to the switch scenario. Participants tend to claim that it
+is more permissible for an observer to throw the switch than it would
+be for themselves. Feltz and Cokely (2008) took a closer look at this
+aspect and hypothesized that cognitively highly reflective individuals
+would be more sensitive to different perspectives on moral dilemmas
+compared to lowly or averagely reflective individuals. Participants with
+high scores on cognitive reflectivity are said to search problem space
+more widely and consider alternatives and options in problem-solving
+situations more thoroughly before making their decision. To initiate a
+change in perspectives, Feltz and Cokely therefore presented a moral
+dilemma either described from a second person/actor perspective (‘you’)
+or from a third/observer person perspective (‘Jim/he’). Highly cognitive
+reflective participants now showed a reversed effect: they felt a stronger
+moral obligation to kill one person in order to save the group in the
+actor context than in the observer context. Thus, they felt they were
+more morally obligated to kill a person in order to save the group than
+an observer of the scene. The low and average scorers, however, showed
+the expected opposite actor-observer bias. They felt less morally obli-
+gated to kill one person in order to save the group as compared to an
+uninvolved observer.
+
+Order effects are one kind of problematic intuitional sensitivity; there are others. Folk
+philosophical intuitions, for example, seem to be subject to something called the actor/observer
+bias, where evaluations of a given case are influenced by whether the case is presented in the
+second or third person (for discussion, see Jones and Nisbett 1971).
+
+In a
+study involving philosophers and nonphilosophers, Tobia, Buckwalter, and Stich (2013) found
+that nonphilosophers were much more likely to think that the relevant action was morally oblig-
+atory when the vignette was presented in the third person than when it was presented in the first
+person and that philosophers were much more likely to think that the relevant action was mor-
+ally obligatory when the vignette was presented in the first person than when the vignette was
+presented in the third person. 7
+
+More specifically, 19% of undergraduate participants judged that the action was morally obligatory
+when the vignette was presented in the first person, while 53% of undergraduate participants judged
+that the action was morally obligatory when the vignette was presented in the third person. A Fisher’s
+exact test revealed that the difference was statistically significant at the level p < 0.05. By contrast, 36%
+of professional philosophers judged that the action was morally obligatory when the vignette was pre-
+sented in the first person, while only 9% judged that the action was morally obligatory when the
+vignette was presented in the third person. Again, a Fisher’s exact test revealed the difference was sta-
+tistically significant at the level p < 0.05.
+
+** Order effects
+
+As expected, we found a trend indicating that order affected how people
+responded to the bystander dilemma. Subjects who got the bystander case
+first tended to agree with the claim that the morally right thing to do is not hit
+the switch, whereas only a small proportion of those who got bystander last
+agreed with the claim. 7 And in line with previous studies, virtually everyone
+said that the right thing to do was not do the transplant, regardless of
+order. The real focus of the study, though, was on whether people would
+differ in their confidence in their responses. The answer was quite clear:
+people were significantly less confident in their answer to bystander (mean =
+3.59 on a scale from 0 to 5) than they were in their answer to transplant
+(mean = 4.47). 8 Indeed, people were extremely confident in their responses
+to transplant, coming close to the top of the scale.
+
+Form 1R posed the same
+three problems in the reverse order: transplant, then scan, then side-track.
+Thirty students received Form 1, and 29 students received Form 1R.
+The answers to Form 1 were not significantly different from the answers
+to Form 1R, so there was no evidence of any framing effect.
+
+Participants’ agreement with action in the Trolley and Person dilemmas
+were significantly affected by the order. Specifically, “People more strongly
+approved of action when it appeared first in the sequence than when it
+appeared last” (Petrinovich & O’Neill, 1996, p. 157). The order also sig-
+nificantly affected participants’ agreement with action in the Button
+dilemma (whose position in the middle did not change when the order
+changed). Specifically, participants approved more strongly of action in the
+Button dilemma when it followed the Trolley dilemma than when it fol-
+lowed the Person dilemma.
+
+Why were such framing effects found with Forms 2 and 2R but not with
+Forms 1 and 1R? Petrinovich and O’Neill speculate that the dilemmas in
+Forms 1 and 1R are so different from each other that participants’ judg-
+ments on one dilemma does not affect their judgments on the others.
+When dilemmas are more homogeneous, as in Forms 2 and 2R, partici-
+pants who already judged action wrong in one dilemma will find it harder
+to distinguish that action from action in the other dilemmas, so they will
+be more likely to go along with their initial judgment, possibly just in order
+to maintain coherence in their judgments.
+
+However, Petrinovich and O’Neill’s third pair of forms suggests a more
+subtle analysis. Forms 3 and 3R presented five heterogeneous moral prob-
+lems (boat, trolley, shield, shoot, shark) in reverse order. Participants’
+responses to action and inaction in the outside dilemmas did not vary with
+order. Nonetheless, in the middle shield dilemma, “participants approved
+of action more strongly (2.6) when it was preceded by the Boat and Trolley
+dilemmas than when it was preceded by the Shoot and Shark dilemmas
+(1.0)” (Petrinovich & O’Neill, 1996, p. 160). Some significant framing
+effects, thus, occur even in heterogeneous sets of moral dilemmas.
+
+The six resulting stories were distributed to 91 students who were asked
+to rate Nick’s “goodness” from +100 (maximally good) to 0 (morally
+neutral) to −100 (maximally immoral). Each subject answered this ques-
+tion about both an act version and an omission version of one of the role
+variations. Half of the subjects received the act version first. The other half
+got the omission version first.
+
+What is surprising is an order effect: “Eighty per cent of subjects in the
+omission-first condition rated the act worse than the omission, while only
+50 per cent of subjects in the act-first condition made such a distinction”
+(Haidt & Baron, 1996, p. 210). This order effect had not been predicted by
+Haidt and Baron, so they designed another experiment to check it more
+carefully.
+
+In their second experiment, Haidt and Baron varied roles within subjects
+rather than between subjects. Half of the subjects were asked about the act
+and omission versions with Kathy and Nick as strangers, then about the
+act and omission versions with Kathy and Nick as casual acquaintances,
+and finally about the act and omission versions with Kathy and Nick as
+close friends. The other half of the subjects were asked these three pairs
+in the reverse order: friends, then acquaintances, and finally strangers. 8
+Within each group, half were asked to rate the act first, and the others were
+asked to rate the omission first.
+
+More importantly for our purposes, a systematic order effect was found
+again: “a general tendency for subjects to make later ratings more severe
+than earlier ratings.” This effect was found, first, in the role variations: “In
+the Mazda story, 88 per cent of subjects lowered their ratings as Nick
+changed from stranger to friend, yet only 66 percent of subjects raised their
+ratings as Nick changed from friend to stranger.” Similarly, “In the Crane
+story, 78 per cent of those who first rated Jack as a subordinate lowered
+their ratings when Jack became the foreman, while only 56 percent of
+those who first rated Jack as the foreman raised their ratings when he
+became a subordinate.” The same pattern recurs in comparisons between
+act and omission versions: “In the Crane story, 66 per cent of subjects in
+the omission-first condition gave the act a lower rating in at least one
+version of the story, while only 39 per cent of subjects in the act-first
+condition made such a distinction.” In both kinds of comparisons, then,
+“subjects show a general bias towards increasing blame” (Haidt & Baron,
+1996, p. 211).
+
+The other kind of framing effect involves context. Recall the man stand-
+ing next to a Giant Sequoia tree.
+
+A special kind of context framing effect involves order.
+
+This evidence comes from research I have conducted to investigate intuitional instability
+(Wright 2010, 2013), which resulted in two discoveries:
+1 Across multiple studies there was a subset of stable cases (i.e., cases that elicited stable
+i­ntuitional judgments) – for example, in Wright (2010) two‐thirds (6 of 9) of the epistemological
+and ethical cases presented generated judgments that were stable across order
+manipulations.
+2 People successfully “tracked” this stability, in the sense that their confidence in their j­udgments,
+and the strength with which they believed their content, predicted judgment stability. People
+reported being significantly more confident in, and believing more strongly, the judgments
+that were stable against manipulation.
+
+• Swain, Alexander, and Weinberg (2008) found that people’s responses to concrete cases were
+vulnerable to an “order effect” (Tversky and Kahneman 1974), their judgments significantly
+influenced by the case they had previously considered (see also Liao, Wiegmann, Alexander,
+and Vong forthcoming; Nichols and Zamzow 2009; Petrinovich and O’Neill 1996). And other
+research suggests this instability is not simply an artifact of shallow reflection – Weinberg,
+Alexander, Gonnerman, and Reuter (2012) found order effects in the judgments of people dis-
+positionally inclined towards high levels of cognition 4 (though interestingly in the opposite
+direction) and Schwitzgebel and Cushman (2011) found order effects in philosophers
+themselves.
+
+
+Further, it turns out that changing the order in which moral cases get
+presented to people can also change the judgments they make about them.
+For example, when people were asked about a case in which someone lied
+and a very similar case in which a guy named Nick omitted the truth, but
+didn’t tell an outright falsehood, how much worse they thought it was to
+lie outright than to omit the truth depended on the order in which they
+heard the two cases. Th ose who heard “omit the truth” fi rst and “lie outright”
+second were more likely to judge that lying outright is worse than omitting
+the truth (Haidt and Baron 1996).
+
+In a study involving four groups (ethicists, philosophers, academic
+nonphilosophers, and nonacademics), Schwitzgebel and Cushman (2012) found that everyone’s
+philosophical intuitions about the moral valence of the relevant actions in these two were
+affected by the order of presentation. They grouped responses into two categories (equivalent
+responses, where evaluations of moral valence were identical across the two cases; and inequiva-
+lent responses, where participants judged the relevant action in Case A to be morally worse than
+the corresponding action in Case B) and found that participants, regardless of academic
+background or experience, were more likely to give equivalent responses when Case A was pre-
+sented before Case B than they were when Case B was presented before Case A.
+
+** Wording
+
+One study found that participants’ responses were affected by how vividly the
+action’s harm was described as well as the number of lives that would be saved
+(Bartels 2008).
+
+In another experiment, Bjorklund and Haidt (in preparation) asked sub-
+jects to make moral judgments of norm violation scenarios that involved
+disgusting features. In order to manipulate the strength of the intuitive
+judgment made in Link 1, one group of subjects got a version of the sce-
+narios where the disgusting features were vividly described, and another
+group got a version where they were not vividly described. Subjects who
+got scenarios with vividly described disgust made stronger moral judg-
+ments, even though the disgusting features were morally irrelevant.
+
+Imagine that the U.S. is preparing for an outbreak of an unusual Asian disease which
+is expected to kill 600 people. Two alternative programs to fight the disease, A and
+B, have been proposed. Assume that the exact scientific estimates of the conse-
+quences of the programs are as follows: If program A is adopted, 200 people will be
+saved. If program B is adopted, there is a 1/3 probability that 600 people will be
+saved, and a 2/3 probability that no people will be saved. Which of the two pro-
+grams would you favor? (p. 453)
+The same story was told to a second group of subjects, but these subjects
+had to choose between these programs:
+If program C is adopted, 400 people will die. If program D is adopted, there is a 1/3
+probability that nobody will die and a 2/3 probability that 600 people will die.
+(p. 453)
+It should be obvious that programs A and C are equivalent, as are programs
+B and D. However, 72% of the subjects who chose between A and B favored
+A, but only 22% of the subjects who chose between C and D favored C.
+More generally, subjects were risk averse when results were described in
+positive terms (such as “lives saved”) but risk seeking when results were
+described in negative terms (such as “lives lost” or “deaths”).
+
+The trick lay in the wording. Half of the questionnaires used “kill” word-
+ings so that subjects faced a choice between (1) “. . . throw the switch
+which will result in the death of the one innocent person on the side track
+. . .” and (2) “. . . do nothing which will result in the death of the five inno-
+cent people . . .”. The other half of the questionnaires used “save” word-
+ings, so that subjects faced a choice between (1*) “. . . throw the switch
+which will result in the five innocent people on the main track being saved
+. . .” and (2*) “. . . do nothing which will result in the one innocent person
+being saved . . .”. These wordings did not change the facts of the case,
+which were described identically before the question was posed.
+The results are summarized in table 2.1 (from Petrinovich & O’Neill,
+1996, p. 152). The top row shows that the average response was to agree
+slightly with action (such as pulling the switch) when the question was
+asked in the save wording but then to disagree slightly with action when
+the question was asked in the kill wording.
+
+These effects were not due to only a few cases: “Participants were likely
+to agree more strongly with almost any statement worded to Save than
+one worded to Kill.” Out of 40 relevant questions, 39 differences were
+significant. The effects were also not shallow: “The wording effect . . .
+accounted for as much as one-quarter of the total variance, and on average
+accounted for almost one-tenth when each individual question was
+considered.” Moreover, wording affected not only strength of agreement
+(whether a subject agreed slightly or moderately) but also whether
+subjects agreed or disagreed: “the Save wording resulted in a greater like-
+lihood that people would absolutely agree” (Petrinovich & O’Neill, 1996,
+p. 152).
+
+A person’s belief is subject to a word framing effect when whether the
+person holds the belief depends on which words are used to describe what
+the belief is about
+
+What if you were an advisor to the Center for Disease Control and you
+were asked to decide whether to choose between two treatment plans. You’re
+told that 600 people will die from a disease if no action is taken, but you
+have some options. If you adopt program A, 200 lives will be saved. On
+the other hand, if you adopt program B, there is a one-third probability
+that everyone will be saved and a two-thirds probability that no one will be
+saved. If you’re like most people (72% of the subjects in the original experi-
+ment), you’ll choose program A, which guarantees that you save 200 people.
+But what if your options were these instead: If you choose program C, 400
+people will die. If you choose program D, there’s a one-third probability
+that no one will die and a two-thirds probability that all 600 will die. If
+you’re like most people (88% of subjects in the original experiment), you’ll
+choose program D, since at least there’s a chance you won’t cause 400 people
+to die (Tversky and Kahneman 1981).
+
+Half the subjects in this study got the scenario as above. Th e other half
+had to choose between “throwing the switch, which will result in the death
+of one innocent person, and doing nothing, which will result in the death of
+fi ve innocent people.” Th e only diff erence between the descriptions of the
+two cases is that one emphasizes the positive side (how many were saved)
+and the other emphasizes the negative side (how many will die). Th is diff er-
+ence made a diff erence: when the positive was emphasized, people were likely
+to think that you should pull the switch, whereas when the negative (death)
+was emphasized, people on average thought you should do nothing.
+
+• Petrinovich and O’Neill (1996) found that people’s judgments were strongly influenced by
+“framing effects” (Tversky and Kahneman 1981), specifically by whether they were encour-
+aged to focus on the number of people who would be saved or the number of people who would
+die because of their chosen action – the numbers being the same across both cases.
+
+** Disgust
+
+Schnall and colleagues’ (2008) famous study,
+according to which priming people with purity thoughts makes moral judgment less
+severe, has not always been replicated (Johnson et al. 2014, 2016; but see Huang
+2014). The same is true for the Valdesolo and DeSteno (2006) study allegedly show-
+ing that participants are more likely to push the large person in the “footbridge case”
+after having watched a funny skit from the television how Saturday Night Live
+(Seyedsayamdost 2014; Duke and Bègue 2015). The same for Zhong’s Lady
+Macbeth effect, according to which cleanliness leads to more severe judgments
+(Fayard et al. 2009 and Earp et al. 2014 on Zhong and Liljenquist’s 2006;
+Seyedsayamdost 2014 on Zhong et al. 2010).
+
+Another way of inducing irrelevant disgust is to alter the environment
+in which people make moral judgments. Schnall, Haidt, Clore, and Jordan
+(2007) asked subjects to make moral judgments while seated either at a
+clean and neat desk or at a dirty desk with fast food wrappers and dirty
+tissues strewn about. The dirty desk was assumed to induce low-level feel-
+ings of disgust and avoidance motivations. Results showed that the dirty
+desk did make moral judgments more severe, but only for those subjects
+who had scored in the upper half of a scale measuring “private body con-
+sciousness,” which means the general tendency to be aware of bodily states
+and feelings such as hunger and discomfort. For people who habitually
+listen to their bodies, extraneous feelings of disgust did affect moral
+judgment.
+
+In another experiment, Bjorklund and Haidt (in preparation) asked sub-
+jects to make moral judgments of norm violation scenarios that involved
+disgusting features. In order to manipulate the strength of the intuitive
+judgment made in Link 1, one group of subjects got a version of the sce-
+narios where the disgusting features were vividly described, and another
+group got a version where they were not vividly described. Subjects who
+got scenarios with vividly described disgust made stronger moral judg-
+ments, even though the disgusting features were morally irrelevant.
+
+We (Haidt, Bjorklund, & Murphy, 2000) brought moral dumbfounding
+into the lab to examine it more closely. In Study 1 we gave subjects five
+tasks: Kohlberg’s Heinz dilemma (should Heinz steal a drug to save his
+wife’s life?), which is known to elicit moral reasoning; two harmless taboo
+violations (consensual adult sibling incest and harmless cannibalism of an
+unclaimed corpse in a pathology lab); and two behavioral tasks that were
+designed to elicit strong gut feelings: a request to sip a glass of apple juice
+into which a sterilized dead cockroach had just been dipped and a request
+to sign a piece of paper that purported to sell the subject’s soul to the
+experimenter for $2 (the form explicitly said that it was not a binding
+contract, and the subject was told she could rip up the form immediately
+after signing it). The experimenter presented each task and then played
+devil’s advocate, arguing against anything the subject said. The key ques-
+tion was whether subjects would behave like (idealized) scientists, looking
+for the truth and using reasoning to reach their judgments, or whether
+they would behave like lawyers, committed from the start to one side and
+then searching only for evidence to support that side, as the SIM suggests.
+Results showed that on the Heinz dilemma people did seem to use some
+reasoning, and they were somewhat responsive to the counterarguments
+given by the experimenter. (Remember the social side of the SIM: People
+are responsive to reasoning from another person when they do not have
+a strong countervailing intuition.) However, responses to the two harm-
+less taboo violations were more similar to responses on the two behavioral
+tasks: Very quick judgment was followed by a search for supporting reasons
+only; when these reasons were stripped away by the experimenter, few
+subjects changed their minds, even though many confessed that they
+could not explain the reasons for their decisions. In Study 2 we repeated
+the basic design while exposing half of the subjects to a cognitive load—
+an attention task that took up some of their conscious mental work space—
+and found that this load increased the level of moral dumbfounding
+without changing subjects’ judgments or their level of persuadability.
+
+Wheatley and Haidt (2005) hypnotized one group of subjects
+to feel a flash of disgust whenever they read the word “take”; another group
+was hypnotized to feel disgust at the word “often.” Subjects then read six
+moral judgment stories, each of which included either the word “take” or
+the word “often.” Only highly hypnotizable subjects who were amnesic
+for the posthypnotic suggestion were used. In two studies, the flash of
+disgust that subjects felt while reading three of their six stories made their
+moral judgments more severe. In Study 2, a seventh story was included in
+which there was no violation whatsoever, to test the limits of the phe-
+nomenon: “Dan is a student council representative at his school. This
+semester he is in charge of scheduling discussions about academic issues.
+He [tries to take] <often picks> topics that appeal to both professors and
+students in order to stimulate discussion.” We predicted that with no vio-
+lation of any kind, subjects would be forced to override their feelings of
+disgust, and most did. However, one third of all subjects who encountered
+their disgust word in the story still rated Dan’s actions as somewhat
+morally wrong, and several made up post hoc confabulations reminiscent
+of Gazzaniga’s findings. One subject justified his condemnation of Dan by
+writing “it just seems like he’s up to something.” Another wrote that Dan
+seemed like a “popularity seeking snob.” These cases provide vivid exam-
+ples of reason playing its role as slave to the passions.
+
+Wheatley and Haidt (2005) showed
+that when highly hypnotizable individuals were given a posthypnotic suggestion
+to experience disgust upon encountering an arbitrary word, they made harsher
+judgments of both morally relevant actions (e.g. eating one’s dead pet dog,
+shoplifting) and morally irrelevant actions (e.g. choosing topics for academic
+discussion) specifically when these actions were described in vignettes including
+the disgust-inducing word.
+
+Governed by the same logic, a second study (Schnall et al., 2008) probed
+subjects’ responses to moral scenarios featuring morally relevant actions such
+as eating one’s dead pet dog while priming subjects to feel disgusted. In one
+experiment, subjects filled out their questionnaires while seated at either a clean
+desk or a disgusting desk, stained and sticky and located near an overflowing
+waste bin containing used pizza boxes and dirty-looking tissues. Subjects who
+were rated as highly sensitive to their own bodily state were more likely to
+condemn the actions when seated at the disgusting desk than at the clean desk.
+
+In contrast to the previous studies, Valdesolo and DeSteno (2006) sought
+to reduce affect, specifically, negative affect, by presenting short comedic film
+clips to subjects before they produced moral judgments. Reducing negative
+affect was found to result in a greater proportion of consequentialist judgments,
+supporting the proposal that (negative) affect is not merely associated with but
+critically drives nonconsequentialist judgments.
+
+** Gender
+
+Fiery Cushman was one of the researchers who agreed to look for gender effects in data
+he had collected online in collaboration with Liane Young. One study in which he found them
+used a version of one of contemporary philosophy’s most famous thought experiments, the
+“Violinist” case first introduced into the literature by Judith Jarvis Thomson (1971) in a widely
+discussed paper on abortion. In this experiment, Cushman and Young presented participants (N
+= 298; 176 men, 122 women) with the following vignette:
+
+For male participants the mean was 4.32, SD = 1.39; for female participants the mean was 3.86,
+SD = 1.57, (d = 0.31). An independent samples t-test reveals a significant difference between
+these two groups, t(296) = 2.65, p < 0.01.
+
+A second case in which Cushman found a significant gender effect was a version of the
+“Magistrate and the Mob” thought experiment made prominent by Smart (1973). Participants (N
+= 529; 380 men, 149 women) read the following:
+
+For male participants the mean was -158, SD = 120.39; and for female participants the mean
+was -129, SD = 108.36, (d = 0.25). A significant main effect was obtained for gender, F(1,521) =
+7.40, p < 0.01.
+
+Participants, each of whom saw only one version of the vignette, were asked the extent to which
+they agreed with several statements including: “It is morally acceptable for me to pull the
+switch.” Responses were collected on a 7 point scale with 1 labeled “strongly disagree” and 7
+labeled “strongly agree”.
+
+16
+In the stranger case, the mean response among male participants was 4.21, SD = 1.93, and the
+mean among female participants was 4.95, SD = 1.07, (d = 0.50).
+17
+In the 12 year old boy case, the mean response for male participants was 4.87, SD = 1.71, and
+the mean for female participants was 4.26, SD = 1.79, (d = 0.35). A two-way between-subjects
+analysis of variance was conducted to evaluate the effect of condition (either stranger or 12 year
+old boy) and gender on participant responses. The interaction of these two factors approached
+significance F(1, 85) = 3.46, p = 0.07.
+18
+In the killing your brother case, the mean judgment for male participants was 3.41, SD = 1.67,
+and the mean for female participants was 4.33, SD = 1.35, (d = 0.59). In the killing your sister
+case, mean judgments for male participants was 4.40, SD = 2.13, and the mean for female
+participants was 3.78, SD = 1.58, (d = 0.33). A two-way between-subjects analysis of variance
+reveals a significant interaction effect between these two factors F(1, 95) = 4.45, p < 0.05.
+
+We found that female participants judged that killing a child to save the
+five was less morally acceptable than did males. 4 When subjects were asked
+whether it was morally acceptable to kill your sister to save the five, females
+judged the action to be less morally acceptable than did males; symmetrically,
+when subjects were asked whether it was morally acceptable to kill your
+brother to save the five, males judged the action to be less morally acceptable
+than did females. 5 Thus, our study does indicate that males and females
+show some differences in their moral judgments. In particular, female moral
+intuitions seem to privilege children more than males’, and there appears to
+be a bias in favor of one’s own gender, at least when it comes to siblings and
+speeding trains.
+
+In studies involving trolley dilemmas,
+Greene et al. (unpublished) found that men tended to make more utilitarian
+judgments than women. Petrinovich et al. (1993) found that women tended
+toward more egalitarian moral judgments such as choosing to draw lots to
+determine which one of six individuals aboard a sinking lifeboat would get
+thrown over.
+
+In addition, gender
+differences are not systematic (Antony 2012). Starmans and Friedman (2009) found no gender
+differences when the stolen item was a book rather than a watch, and in a follow‐up study they
+were unable to replicate a difference. Finally, Adleberg, Thompson, and Nahmias (2014) con-
+ducted replication studies of 14 thought experiments examined by Buckwalter and Stich and
+were unable to replicate statistically significant gender differences in any of them.
+
+** Culture
+
+There have also been studies suggesting that people’s judgments vary as a function of differ-
+ences in their cultural backgrounds, socioeconomic status (Weinberg, Nichols, and Stich 2001;
+see also Machery et al. 2004)
+
+gender (Buckwalter and Stich 2011; see also Nichols and
+Zamzow 2009; Petrinovich, O’Neill, and Jorgenson 1993).
+
+** Personality
+
+Some experiments suggest that those who
+were higher in the global personality trait openness to experience were more likely to express
+non‐objectivist intuitions than those who were lower in the personality trait openness to experi­
+ence (Feltz and Cokely 2008).
+
+personality is the strongest predictor that we currently have for any
+of these intuitions. But more than that, the average strength of the relationship (about 10% of
+the behavioral variance) needs to be put into perspective.
+
+** SES
+
+The second research program that led us to suspect there might actually be
+people like those in Stich’s thought experiment was the work of Jonathan Haidt
+and his collaborators. 22 These investigators were interested in exploring the
+extent to which moral intuitions about events in which no one is harmed track
+judgments about disgust in people from different cultural and socioeconomic
+groups. For their study they constructed a set of brief stories about victimless
+activities that were intended to trigger the emotion of disgust. They presented
+these stories to subjects using a structured interview technique designed to
+determine whether the subjects found the activities described to be disgusting
+and also to elicit the subjects’ moral intuitions about the activities. As an illus-
+tration, here is a story describing actions which people in all the groups studied
+found (not surprisingly) to be quite disgusting:
+A man goes to the supermarket once a week and buys a dead chicken.
+But before cooking the chicken, he has sexual intercourse with it. Then
+he cooks it and eats it.
+The interviews were administered to both high and low socioeconomic status
+(SES) subjects in Philadelphia (USA) and in two cities in Brazil. Perhaps the
+most surprising fi nding in this study was that there are large differences in moral
+intuitions between social classes. Indeed, in most cases the difference between
+social classes was signifi cantly greater than the difference between Brazilian and
+American subjects of the same SES. Of course we haven’t yet told you what the
+differences in moral intuitions were, though you should be able to predict them
+by noting your own moral intuitions. (Hint: If you are reading this article, you
+count as high SES.) Not to keep you in suspense, low SES subjects tend to think
+that the man who has sex with the chicken is doing something that is seriously
+morally wrong; high SES subjects don’t. Much the same pattern was found with
+the other scenarios used in the study.
+
+* Responses
+
+** Meta
+
+In answering general-information questions, a within-person confidence–accuracy (C-A) correlation is
+typically observed, suggesting that people can monitor the correctness of their knowledge. However,
+because the correct answer is generally the consensual answer—the one endorsed by most participants—
+confidence judgment may actually monitor the consensuality of the answer rather than its correctness.
+Indeed, the C-A correlation was positive for items with a consensually correct answer but negative for
+items with a consensually wrong answer. Results suggest that the consensuality– confidence correlation
+may be mediated by 2 internal mnemonic cues that are correlated with consensuality: Consensual
+answers are reached faster and are selected more consistently by the same person on different occasions
+than nonconsensual answers. The results argue against a direct-access view of confidence judgments and
+suggest that such judgments will be accurate only as long as people’s responses are by and large correct
+across the sampled items, thus stressing the criticality of a representative design.
+
+Standard research on confidence judgments shows that people tend to be
+more confident about their answers when their answers are, as it happens,
+correct (see, e.g., Gigerenzer et al. 1991).
+
+In recent
+experiments, Asher Koriat (2008) pulls apart these two factors by including
+examples of statements about which there is a mistaken consensus (e.g.,
+that Sydney is the capital of Australia). Koriat finds that what confidence
+most clearly indicates is consensuality. People’s confidence in their answers
+correlates with the right answer when the right answer is widely agreed on, but
+confidence does not correlate with the right answer when the wrong answer is
+widely agreed on (Koriat 2008). This finding is of particular relevance in the
+debate over intuitions. For the advocate of intuitions can take solace in the
+fact that confidence provides some information about the representativeness
+of one’s intuitions, but confidence cannot be taken to be a direct indicator
+(independent of consensus) that one’s intuitions are correct.
+
+** Enough stability
+
+However, nowhere in his discussion of the framing studies
+does he actually provide evidence concerning the size of the probability that moral intuitions
+are affected by framing, let alone that the probability is “large.” He only assumes it. But the
+size of the probability of error is crucial, for in order for justification to be defeated he must
+show that framing effects are sufficiently likely to determine people’s moral beliefs.
+
+For, as Laio (2008) points out, even if we take seriously the findings that some
+i­ntuitional judgments were influenced by cultural background, socioeconomic status, order of
+presentation, and so on, we must also then take seriously the fact that others were not (see also
+Petrinovich and O’Neill 1996). One of the largely unacknowledged gems of the studies in
+question is that, in the midst of all the instability discovered, there was stability as well.
+
+This evidence comes from research I have conducted to investigate intuitional instability
+(Wright 2010, 2013), which resulted in two discoveries:
+1 Across multiple studies there was a subset of stable cases (i.e., cases that elicited stable
+i­ntuitional judgments) – for example, in Wright (2010) two‐thirds (6 of 9) of the epistemological
+and ethical cases presented generated judgments that were stable across order
+manipulations.
+2 People successfully “tracked” this stability, in the sense that their confidence in their j­udgments,
+and the strength with which they believed their content, predicted judgment stability. People
+reported being significantly more confident in, and believing more strongly, the judgments
+that were stable against manipulation.
+
+Suppose John has a very strong intuition that it is wrong to claim benefits to which one has no
+legal entitlement and a pretty weak intuition that those with certain disabilities should be provided
+with financial assistance by the state. Suppose that Jane has a pretty weak intuition that it is wrong
+to claim benefits to which one has no legal entitlement but a very strong intuition that those with
+certain disabilities should be provided with state help. John and Jane have the same intuitions. They
+find the same propositions intuitive and the same negations counterintuitive. And in both their cases,
+those same intuitions are likely going to factor into their theorizing when they consider what a just
+organization of the benefits system is going to look like. However, we can foresee that the different
+relative strengths of those intuitions is likely to mean that the upshot of John and Jane’s theorizing
+will be rather different.
+
+Three of the studies Demaree-Cotton examines allow us to do something close: 3
+1. Nadelhoffer and Feltz (2008) report that participants asked to state ‘how much control you
+think [X] has over the outcome’ in a standard switch trolley case had a mean response of 4.28
+(on a scale from 1 to 7) when the protagonist was ‘you’ and 5.12 when the protagonist was
+‘John’ (t(83) = −2.217, p = .029). 4 We can get a sense of the size of this effect; from the df and
+t-value we can calculate Cohen’s d which reveals this to be a medium sized effect d = .49).
+2. Liao et al. (2011) report that participants asked about the statement ‘It is morally permissible to
+redirect the trolley onto the second track’ in a Loop trolley case had a mean response of 3.10
+(on a scale from 1 to 6) when preceded by a push trolley case and 3.82 when preceded by a
+standard trolley case (p = 0.029).
+3. Wiegmann et al. (2012) report a number of significant effects. All concern responses on a
+scale from 1 to 6 to ‘Karl shouldn’t, in terms of morality, [perform the relevant action]’. The
+two orders were MAF (most agreeable first) and LAF (least agreeable first). The results are
+in Table 1. Again we can calculate effect sizes – this time from reported means and standard
+deviations – for all order effects observed. All are large.
+
+We can see that whether or not these framing effects make a worrying contribution to what
+intuitions one has, they threaten to make an appreciable contribution to the strength of one’s intuition.
+Given one framing, one’s intuition might be fairly firm; given another, it might be pretty non-
+committal. This is no trivial difference given the way that intuitive judgments factor into moral
+theorizing.
+
+** Intuitions vs judgment
+
+The aim of this paper is to pose a constructive, evenhanded challenge
+to such experimental attacks on intuitions. It is a challenge because it
+contends that these attacks neglect a considerable gap between the
+answers elicited by the relevant empirical studies and the intuitions
+about which naysayers naysay. It cannot innocently be assumed that
+subjects' answers expressed how things struck them - what intuitions
+they had, if any
+
+Notice that in order to secure the relevance of studies that elicit
+prompted answers to debates about intuitions, it is necessary to make
+an inference (move, transition) from an observation about how it is
+with subjects' prompted answers to a conclusion about how it is with
+subjects' intuitions
+
+One important line of defense given is that we cannot
+draw conclusions about the epistemic status of intuitions from these studies, as conducted,
+because “[i]t cannot innocently be assumed that subjects’ answers expressed how things struck
+them – what intuitions they had, if any” (Bengson 2013, 496). That is, we cannot simply assume
+that the participants in these studies were forming intuitional judgments, because it is just as
+(if not more) likely that they were doing something else entirely – for example, guessing, giving
+responses that they deemed socially suitable/acceptable, and so on – and none of the studies
+conducted thus far have attempted (much less successfully managed) to control for this. 6
+
+These studies are suggestive, but they are limited by the fact that the
+questions posed to subjects asked the subject what she would do in the face
+of the dilemma, not what is morally permissible or morally right. And of
+course judgments of what you would do in a situation can come apart
+from your moral judgments.
+
+** Reflection
+
+First, not many philosophers think that the
+intuitions we rely on in arriving at moral knowledge are just unfi ltered, imme-
+diate gut reactions to situations. Instead, they tend to think that the intuitions
+we should rely on are “considered judgments.” 5 Th at is, they are the judg-
+ments we make about situations after some refl ection on what’s relevant and
+what is not relevant.
+
+** Gigerenzer
+
+** Expertise
+
+Shanteau (1992) surveys a vast swath of the literature on
+the development of expertise, and finds tremendous diversity in the development of
+expertise according to the characteristics of the task and the learning environment.
+Some areas, such as meteorology and chess, have proved conducive to acquiring
+expertise; others, such as psychiatry, stock brockerage, and polygraph testing, have
+tended not to produce real expertise, even for those with years of experience and
+training (for general reviews on the insufficiency of training and experience alone in
+producing genuine expertise, see Camerer & Johnson, 1991; Ericsson, 2006, pp. 686,
+691; Ericsson & Lehman, 1996, pp. 276–77; Feltovich, Prietula, & Ericsson, 2006,
+p. 60; Garb, 1989; Shanteau & Stewart, 1991).
+
+Moreover, even when some expertise does develop, it
+does not follow that all of the problems that we discussed earlier will go away. For
+example, Damisch, Mussweiler, and Plessner (2006) found that even highly trained
+Olympic gymnastics judges were remarkably susceptible to order effects, depending
+on the perceived similarity between the performance that they were judging and the
+immediately preceding performance. (See also, e.g., Brown, 2009, for concerns about
+order effects in professional auditors.)
+
+It is ‘‘one of the most enduring findings in the study of
+expertise’’ that it typically develops highly narrowly and task-specifically, and that
+there is ‘‘little transfer from high-level proficiency in one domain to proficiency in
+other domains—even when the domains seem, intuitively, very similar’’ (Feltovich
+et al., 2006, p. 47). Experts in one board game will not automatically have any
+particular expertise in another, similar game; surgical expertise turns out to be
+surprisingly specific to individual surgical tasks. (See also Norman, Eva, Brooks, &
+Hamstra, 2006.)
+
+The three hypotheses that we will consider are that philosophers have superior
+conceptual schemata to the folk; that they deploy more sophisticated theories than the
+folk; and that they possess a more finely-tuned set of cognitive skills than the folk.
+
+Premise 1: In all (of a significant number of) examined domains
+where accurate professional intuitions have been acquired, clear,
+reliable and timely feedback is available to enable intuitions to be
+improved.
+Premise 2: Clear, reliable and timely feedback is unavailable to
+enable philosophers’ intuitions to be improved.
+Conclusion: Therefore, it is very unlikely that professional
+philosophers have developed accurate professional intuitions.
+
+The only feedback we typically receive in response to reports of our
+philosophical intuitions comes in the form of reports of the intuitions of
+other philosophers; and it is difficult to see how this feedback could be
+employed in philosophical training to cause hitherto unreliable
+intuitions to become reliable.
+
+However, we need to keep in mind that there is compelling
+evidence that the members of several major professions have so far failed
+to acquire reliable intuitions. These include financial analysts,
+psychotherapists and clinical psychologists (Dawes 1994). Like
+philosophers, these professionals appear to lack accurate reliable
+feedback from the environment, enabling them to improve their
+intuitions. And like many philosophers, many members of these
+professions sincerely believe that they do make reliable judgments on
+the basis of accurate intuitions. Many clinical psychologists sincerely
+believe that they can judge which students are best suited for academic
+programs, which employees are best suited to particular jobs and which
+parolees are likely to reoffend. Unfortunately, the available evidence
+suggests that clinical psychologists are unable to perform any of these
+tasks reliably (Dawes 1994, 82-91).
+
+Also political experts (Tetlock 2005) and baseball recruiters and managers (Lewis 2003).
+
+Consider, for instance, the finding by Livengood et al. (2010) that subjects with philosophical
+training show improved performance on the Cognitive Reflection Test developed by Shane
+Frederick (2005). The Cognitive Reflection Test consists of questions for which there are
+highly intuitive yet incorrect responses, as in the following example:
+‘A bat and a ball cost $1.10 in total. The bat costs $1.00 more than the ball. How much does the ball cost?’
+In order to provide the correct answer ($0.05), the subject must suppress the immediate
+inclination to answer $0.10. Philosophers were more likely than untrained subjects to answer
+such questions correctly, even when controlling for education level; one possible interpretation
+of this finding might be that philosophers have an enhanced ability to reflect on and correct their
+own intuitions. It’s possible that this ability, if it exists, could also mitigate biases observed in
+response to thought experiments.
+
+Weinberg et al. argue that many defenders of expertise seem to invoke a ‘folk theory’ of
+expertise, according to which sufficient experience suffices to improve performance in all areas
+of a given discipline. On the contrary, however, psychological work on the development of
+expertise indicates that the situation is much more complex. Not all areas are conducive to
+the development of expertise – even extensive experience in areas such as stock brokerage
+and clinical psychology appears not to improve predictive ability (see Shanteau 1992).
+
+Weinberg et al.
+isolate three possible candidates for a robust account of philosophical expertise – each of which
+draws plausibility from corresponding forms of expertise that have been studied in other fields.
+These three possible candidates are (i) improved conceptual schemata; (ii) more sophisticated
+theories; and (iii) more finely tuned cognitive skills. 
+
+Schwitzgebel
+and Rust (2009) found that peers rated the moral behavior of their ethicist colleagues no more
+highly than that of non-ethicists; other studies by Schwitzgebel and colleagues have found that
+ethicists are not substantially more likely than non-ethicists to vote (Schwitzgebel and Rust
+2010), 8 to behave courteously at conferences (Schwitzgebel et al. 2012), to respond to student
+emails (Schwitzgebel and Rust 2013), to pay fees when doing so is on an ‘honor system’
+(Schwitzgebel 2013), or to be vegetarian, donate blood, or contribute large portions of income
+to charity (Scwitzgebel and Rust, manuscript). Finally, Schwitzgebel (2009) found that ethics
+books are more likely than other types of books to ‘go missing’ from academic libraries –
+implying that ethicists may in some contexts behave worse than non-ethicists.
+
+There is some reason to think that this line of
+argument would be successful. Experts in many domains are known to have qualitatively better
+intuitions, for example, in chess (Ericsson, Prietula, and Cokely 2007). However, the domains
+where expertise is known to have specific features like immediate and unambiguous feedback.
+Some have argued that philosophy is not likely to have many, or any, of those features (Alexander
+and Weinberg 2007). Moreover, there is some evidence suggesting that in some philosophically
+relevant domains, verifiable expert intuitions vary with irrelevant features such as personality in
+the same way and by the same magnitude as folk intuitions (Schulz, Cokely, and Feltz 2011). If
+philosophy lacks many of the features of that makes expert intuitions better or if philosophical
+experts are influenced in many of the same as the folk, then the expertise defense fails (Feltz and
+Cokely 2012a).
+
+As you can see, the expertise defense is almost devilishly straightforward: some philosophical
+intuitions are better than others, and philosophers should be interested in expert philosophical
+intuitions rather than folk philosophical intuitions. 2 Who are the experts? Philosophers, of
+course. After all, philosophers have better concepts and theories, or at least a better under-
+standing of the relevant concepts and theories, have thought long and hard about these concepts
+and theories, and have been trained in how best to read and think about philosophical thought
+experiments that call upon us to apply these concepts and theories.
+Let’s call this the folk theory of philosophical expertise. It is an attractive theory that promises to
+restore our hope in at least some kinds of intuitional evidence. The trouble is that it turns out to
+be really difficult to determine who has expertise about what and when. Only certain kinds of
+training help improve task performance and, even then, only for certain kinds of tasks, and there
+is reason to worry both that philosophical training is not the right kind of training and that
+thought experimentation is not the right kind of task (for discussion, see Weinberg et al. 2010). 3
+
+Evidence that philosophers have a
+different understanding of ordinary concepts would not be evidence that they have a better
+understanding of those concepts unless we had some independent reason to think that
+philosophical education somehow improves our conceptual understanding, and it is simply not
+clear how this is supposed to happen. Most philosophers seem to think that it happens through a
+process of trial and error, where philosophers train their conceptual competencies by checking
+their conceptual judgments against some received standard, but this invites worries about
+pernicious explanatory regress and bootstrapping, and more general worries that philosophical
+intuitions do not receive anything like the kind of objective feedback necessary to improve
+conceptual understanding (for discussion, see Weinberg et al. 2010). 5
+
+Another problem is that theoretical commitments are just as likely to
+contaminate our conceptual judgments as they are to decontaminate them. This means that the
+fact that expert intuitional evidence is theoretically informed does little to ensure that it is better
+than folk intuitional evidence.
+
+questions of comparative procedural exper-
+tise, like questions of comparative conceptual competence and increased theoretical acumen, are
+open empirical questions.
+
+The whole idea that
+philosophical education produces philosophical expertise, whatever philosophical expertise might
+involve, is predicated on the idea that reflection improves cognitive performance. This idea about
+the relationship between reflection and cognition is what makes it seem so natural to think that,
+since philosophers spend more time thinking about philosophical issues, expert philosophical cog-
+nition should be better than folk philosophical cognition. The problem is that the relationship bet-
+ween reflection and cognition is not this straightforward. There are times when reflection helps
+improve philosophical cognition. Goldman (2007) provides some nice examples: reflection can
+help us realize that we have we have been misinformed or uninformed about some relevant details
+of a particular case, that we had lost track of some of the relevant details, or that our initial judg-
+ments about what details are relevant were contaminated by our theoretical commitments. But
+there are also times where reflection serves as an echo chamber, simply ratifying whatever initial
+judgments we might have made, and increasing the confidence we have in those judgments without
+increasing their reliability (Kornblith 2010, and for discussion Weinberg and Alexander 2014).
+
+On this way of framing things, philosophical education involves a kind of careful practice
+that helps sort out and track the kinds of conceptual and methodological problems that come from using
+philosophical intuitions. The basic idea is that, while expert philosophical intuitions might be subject to
+the same kinds of cognitive limitations as folk philosophical intuitions, philosophical expertise involves
+awareness of these limitations and the ability to accommodate them in practice.
+
+** Stats
+
+One might object that we already have very good reason to think that we cur-
+rently possess and regularly deploy resources sufficient for detecting and rooting
+out such errors where they may emerge, namely, via the deployment of coherence
+norms of rationality. That’s what coherence norms are for, one might have
+thought—to take noisy, conflicting information streams, and filter out a unitary,
+accurate signal from it. Experimental philosophers have only shown, at worst,
+that there is some noise to be thus filtered, but not that current philosophical
+practices of disputation and reflection aren’t up to the task of doing so.
+
+Unfortunately, we have good reason to worry that such general invocations of
+coherence will be insufficient. First, seeking coherence can only help if the right
+mix of information is coming into the process in the first place: an error will only
+be corrigible if sufficient correcting information is present. Given the very sub-
+stantial ethnic and cultural homogeneity of the profession, for example, we may
+just not yet be receiving any correcting information for any errors of cultural bias
+we may be making. Moreover, the many stages of selection and professional
+enculturation that any would-be philosopher (quite appropriately) must persevere
+through will have an unintended consequence of shielding us from other variants
+of the human instrument whose inputs we might stand in need of.
+
+Perhaps in some of these we could train artificial
+pattern-detectors to recognize what we do—but that would be purely parasitic on
+the human capacities, and not an extension of or bypassing of those capacities.
+
+we must find better ways of extracting the infor-
+mation from instruments that we already have.
+
+What we need, then, in an S-strategic inquiry and especially one that will be
+relying on forms of inference like IBE, is an account of what we might call the
+epistemic profile of a source of evidence. We are used to asking of a source of evi-
+dence whether and, in gross terms, to what extent it is reliable. An epistemic profile
+expands such a reliability characterization along several dimensions at once. In
+addition to a target domain, we must consider also particular environmental
+contexts and modes of use:
+
+There is a rough idea in general circulation that judg-
+ments about more far-fetched or fantastic or esoteric cases are less trustworthy than ones
+about more ordinary or normal or common sorts of cases. Let me call this the esotericity
+thesis.
+
+(24026204.pdf)
+
+Note that the argument requires
+that the witnesses be more reliable than chance, but not that they be more than 50% reliable.
+Note also that I do not hereby embrace a coherence theory of justification, since I do not
+claim that coherence is either necessary or sufficient for justification; I claim only that
+coherence can ratchet up the level of justification that intuitions start with. In this example,
+the witnesses, overall, are less than 50% reliable—two-thirds of the witnesses report
+incorrect license plate numbers. Nevertheless, by relying on coherence—trusting the two
+witnesses whose answers agree with each other—one can attain a conclusion that is much
+more than 50% likely to be correct.
+
+Analogously, suppose that only a third of our ethical intuitions were accurate, the
+others being skewed in various directions by various factors. We might nevertheless be able
+to identify the correct intuitions, since the correct intuitions would tend to cohere with each
+other, while the other two-thirds of our intuitions would generally fail to cohere either with
+the correct intuitions or with each other. If we found that the largest coherent subset of our
+intuitions comprised one-third of our intuitions, while there was no other coherent subset
+anywhere near as large, then we would be prima facie justified in regarding that largest
+coherent subset as roughly accurate. The point here is not that such a coherent set of
+intuitions would be guaranteed to be true or close to the truth. Rather, the point is that,
+pace Sharon Street, even if our moral intuitions are unreliable overall, it does not follow that
+ethical reflection cannot produce conclusions that are highly likely to be true.
+
+Intuitions of different levels of generality differ in their susceptibility to various kinds
+of error. Concrete and mid-level intuitions are particularly susceptible to the kinds of biases
+discussed in section III. One reason for this is that we typically have stronger emotions
+about concrete cases and mid-level generalizations than about very abstract principles.
+Compare the emotional impact of the statement, “Killing deformed human infants is
+acceptable” to that of the statement, “A being has a right to x only if that being is capable of
+desiring x.” xxix The latter, abstract principle is much less susceptible to emotionally-based
+bias. In addition, concrete intuitions are more likely to be influenced by biological
+programming, because the biases with which evolution is most likely to have endowed us are
+biases favoring relatively specific forms of behavior that would have promoted our
+ancestors’ inclusive fitness. Biological evolution is unlikely to have endowed us with biases
+towards embracing very abstract principles, since our biological ancestors probably engaged
+in little abstract reasoning. For instance, attitudes towards incest, human offspring, and social
+hierarchies are more likely to be influenced by biology than are intuitions about principles of
+additivity in axiology. xxx Finally, culturally generated biases are more likely to affect specific
+and mid-level judgments than highly general ethical judgments, because our culture has a
+complex set of relatively specific rules—rules governing who is allowed to marry whom,
+how one should greet a stranger, how one should interact with one’s boss, and so on.
+
+Abstract theoretical intuitions, on the other hand, are prone to the simple but
+widespread problem of overgeneralization. This is the tendency to judge the truth of a
+generalization in terms of typical cases, or the sort of cases that are easy to think of.
+
+In addition to this, however, there is a
+particular species of abstract ethical intuitions that seems to me to be unusually trustworthy.
+These are what I call formal intuitions—intuitions that impose formal constraints on ethical
+theories, though they do not themselves positively or negatively evaluate anything. The
+following are examples of such formal ethical intuitions:
+If A is better than B and B is better than C, then A is better than C.
+If A and B are qualitatively identical in non-evaluative respects, then A and B are
+morally indistinguishable.
+If it is permissible to do A, and it is permissible to do B given that one does A, then it
+is permissible to do both A and B.
+If it is wrong to do A, and it is wrong to do B, then it is wrong to do both A and B.
+If two states of affairs, A and B, are so related that B can be produced by adding
+something valuable to A, without creating anything bad, lowering the value of anything
+in A, or removing anything of value from A, then B is better than A.
+The ethical status (whether permissible, wrong, obligatory, etc.) of choosing (A and B)
+over (A and C) is the same as that of choosing B over C, given the knowledge that A
+exists/occurs.
+
+(also weikna.1.pdf)
+
+Hanson, R. (2002). Why health is not special: errors in evolved bioethics
+intuitions. Social Philosophy and Policy, 19(02), 153-179.
+
+In brief, the challenge has three parts. First, there are the
+experimental philosophers’ empirical results themselves, that purport to reveal particular
+patterns of responses in ordinary subjects (typically, but not exclusively, university
+undergraduates). Second, there is a metaphilosophical premise that the pattern revealed in
+those experiments is not one that is well-aligned with the relevant philosophical truths.
+For example, intuitions about reference seem to vary with culture, but the fundamental
+facts about reference perhaps ought not so vary (Machery et al. (2004)). Third, there is an
+abductive inference from the observed patterns in the folk’s intuitions to the same
+patterns afflicting the intuitions as deployed by philosophers in their armchair practice.
+Taken together, these underwrite an inference to the claim that there is a worrisome
+methodological deficiency in philosophers’ armchair practice of appeal to intuitions.
+
+The most fundamental fix for this methodological
+flaw reached its first full fruition in 1937, when Gold et al. published a paper on the
+treatment of cardiac pain in which appears the first documented appearance of “blind” as
+a methodological term (Strong 1999), and in which both subjects and scientists were kept
+in the dark as to which subjects were in which experimental groups. Science triumphed
+not by refusing to change in response to a documented problem, but by devising an
+elegant solution to that problem, with a methodological change that was rapidly
+promulgated and adopted as a new experimental norm.
+
+Calibration is a process of regulating a putative source of evidence, by inspecting it and,
+if needed, adjusting it to render it accurate. Calibration is divisible into three parts:
+testing, diagnosis, and correction.
+
+then the next step in a calibration will be to determine in what way the device goes
+awry. Optimally, we would have a worked-out theory of the source of error 
+
+how do we go about
+correcting for this deviation? There are at least two methods for correction: restriction
+and rehabilitation. With restriction, as the name suggests, we simply ignore the device’s
+results in circumstances when we expect it to be unreliable. 11 With rehabilitation, we
+tweak the problematic device itself, rendering it accurate across its entire domain.
+
+Cummins offers a powerful argument against the calibration of intuition. It
+seems that intuitions can be calibrated only if we already have trusted non-intuitive
+access to the facts of its intended domain of application. And we have this sort of access,
+it seems, only when we have a trusted, non-intuitive theory covering that domain. But
+with this sort of theory in hand, there is no epistemic work left for the intuitions to
+do!
+
+we can think of three other possible
+sources for a partial certified basis. First, one might have an independently justified
+theory that only covers a proper subset of the target domain. Second, one might have
+other instruments or devices that yield results concerning some values within the domain.
+Third, there might a proper subset of the device’s deliverances that one has independent
+reason to trust.
+
+In summary, we find Cummins’ argument overlooks the potential for extrapolative
+calibration, and underestimates the variety of resources potentially available for
+calibrating intuition.
+
+As we have seen, calibration may produce new epistemic value so long as the calibrator
+has both (i) sufficient sources for a partial certified basis (but not so generous as to fail to
+be partial), and (ii) a sufficient theory of the instrument to underwrite an extrapolative
+inference from partial certified basis to the projected performance of the device over its
+whole intended domain.
+
+First, recent work in psychology raises worries
+about the very idea that our performance in one intuitive area can shed light on our
+performance in others. For many psychologists and philosophers 18 have come to believe
+that we do not have one big domain-general intuition system, but rather a number of
+distinct domain-specific mechanisms subserving our cognition in these areas—what
+Steven Pinker has colorfully called “the mind as a Swiss Army knife” (Pinker (1997)). If
+such ‘massive modularity’ theories are correct, then our verifiable successes in one
+domain (like the everyday world of middle-sized dry goods) would, at best, be evidence
+that the intuition-producing mechanism subserving that domain can be trusted.
+
+A second worry is the suspicion that the sorts of cases philosophers are wont to deploy in
+their arguments will have a tendency to be of a sort where ordinary sources of reliability
+would be expected to break down. With ordinary cases of determining that whether A is
+F, we might expect that the various factors that are of primary relevance to determining
+the categorization of things as F or not-F will largely be in agreement regarding A.
+Typical non-ducks will neither look like a duck, nor swim like a duck, nor quack like a
+duck. Yet philosophers often need to recruit cases where this consilience exactly breaks
+down.
+
+The real lesson here is not that
+consensus cases cannot be of use in calibration. It is that they cannot be of use in
+calibration without the assistance of a theory of the instrument that will license particular
+extrapolations.
+
+The other members of our list of candidate subsets of intuition: clear/forceful intuitions,
+reflective intuitions, expert intuitions, suffer from a different problem. Their candidate
+theories of the instrument do generalize to philosophical contexts; the problem is with the
+claim of the relevant subsets to genuinely trustworthy.
+
+Suppose that we know that the reliability of a given device is 51%, say,
+in terms of telling whether a given sample is an acid or a base. (For ease of
+exposition I will just consider cases where there each datum is a simple binary, but
+the argument easily expands, mutatis mutandis, to more complicated sorts of
+outputs.) But allow that we know that the device's reports are both repeatable, and
+so, for example, it does not totally use up the sample in any trial. Moreover, the
+reports are independent even when applied to the same sample, and so, it will not
+necessarily just give the same answer every time, when re-applied to the same
+sample. Moreover, suppose we know it is not subject to any biases in its readings, in
+that its mistakes are a matter of chance and not, say, on average more likely to
+mistake an acid for a base than vice-versa. Under such assumptions, one can apply
+the device over and over again to the same sample, and while each individual report
+may have a 51% chance of being correct, we know the average response of the
+device to any given sample will be increasingly likely to be true, as the number of
+readings increases.
+
+Thus, no degree of poor reliability is sufficient to rule out trusting a source of evidence
+in inquiry, so long as it is at least modestly above chance. Nor is any high degree of
+reliability sufficient to establish trustworthiness, so long as it is at least in any practical
+sense less than utterly certain.
+
+But
+these cases teach, first, that further methodological resources can yield reliable
+theory selection from not-especially-reliable data; and second, that weaknesses in
+our inferential resources can make even a highly reliable source nonetheless
+inadequate to our theoretical demands.
+
+Philosophical theory-selection and empirical model-selection are highly similar
+problems: in both, we have a data stream in which we expect to find both signal and
+noise, and we are trying to figure out how best to exploit the former without
+inadvertently building the latter into our theories or models themselves.
+Under-utilizing the signal is one kind of danger - but clinging too close to the precise
+contours of our data stream is yet another.
+
+** Internal validity
+
+categorical data as ratio scale
+
+Findings from both experiments suggest that priming self
+cleanliness led to harsh moral judgments. On the surface these re-
+sults contradict the conclusion that cleanliness lessens the severity
+of moral judgment (Schnall, Benton et al., 2008). However, it is
+important to note that Study 1 of Schnall, Benton et al., (2008) ab-
+stractly primed cleanliness related concepts and hence it is unclear
+whether the prime implicated the self or the target. Additionally in
+their second study, cleanliness is relevant to the extent that it mit-
+igated the visceral disgust induced by the video and prevents
+disgust being misattributed to the target. Whereas we suggest that
+a state of self cleanliness may directly impact moral self-perception
+through the metaphorical link between cleanliness and moral pur-
+ity. The resulting change in one’s own moral standing, in turn,
+influences judgment of others by a comparison process. Our find-
+ings highlight the complexity of the relationship between cleanli-
+ness and moral judgment – the source of cleanliness matters. By
+examining cleanliness as it clearly pertains to the self, our studies
+complement previous research in developing a more nuanced pic-
+ture of the psychological consequences of physical cleanliness. Just
+as a disgusting target can keep people at distance, a clean self can
+make objects or activities that are otherwise tolerable seem un-
+clean and contaminated by comparison. -- [@zhong2010clean]
+
+In short, there are competing predictions in the literature
+about the direction of the connection between cleanliness
+and moral judgments. One attempt to reconcile the results
+for the impact of cleanliness on moral judgments draws a
+distinction between general cleanliness and self cleanliness
+(Zhong et al., 2010). General cleanliness does not have a
+clearly identifiable source, making it prone to misattribu-
+tion. General cleanliness can become attached to others’
+actions, resulting in less severe moral judgments of those
+actions. In contrast, when cleanliness is primed through
+behaviors like hand-washing, it may lead to enhanced
+personal feelings of virtue and thus more severe judgments
+of others by contrast effects. However, this explanation runs
+counter to the results obtained by SBH; participants who
+washed their hands after experiencing disgust (Exp. 2) -- [@johnson2014does]
+
+We conducted a post hoc power analysis to test
+whether our study had enough statistical power to detect significant gender differences. -- [@adelberg2015men]
+
+Despite being a direct replication of SBH, JCD differed from
+SBH on at least two subtle aspects that might have resulted in a
+slightly higher level of response effort. First, whereas undergradu-
+ate students from University of Plymouth in England “participated
+as part of a course requirement” in SBH (p. 1219), undergraduates
+from Michigan State University in the United States participated
+in exchange of “partial fulfillment of course requirements or extra
+credit” in JCD (p. 210). It is plausible that students who partici-
+pated for extra credit in JCD may have been more motivated and
+attentive than those who were required to participate, leading to
+a higher level of response effort in JCD than in SBH. Second,
+JCD included quality assurance items near the end of their study
+to exclude participants “admitting to fabricating their answers”
+(p. 210); such features were not reported in SBH. It is possible that
+researchers’ reputation for screening for IER resulted in a more
+effortful sample in JCD. -- [@huang2014does]
+
+Schnall and colleagues’ (2008) famous study,
+according to which priming people with purity thoughts makes moral judgment less
+severe, has not always been replicated (Johnson et al. 2014, 2016; but see Huang
+2014). The same is true for the Valdesolo and DeSteno (2006) study allegedly show-
+ing that participants are more likely to push the large person in the “footbridge case”
+after having watched a funny skit from the television how Saturday Night Live
+(Seyedsayamdost 2014; Duke and Bègue 2015). The same for Zhong’s Lady
+Macbeth effect, according to which cleanliness leads to more severe judgments
+(Fayard et al. 2009 and Earp et al. 2014 on Zhong and Liljenquist’s 2006;
+Seyedsayamdost 2014 on Zhong et al. 2010).
+
+Why were such framing effects found with Forms 2 and 2R but not with
+Forms 1 and 1R? Petrinovich and O’Neill speculate that the dilemmas in
+Forms 1 and 1R are so different from each other that participants’ judg-
+ments on one dilemma does not affect their judgments on the others.
+When dilemmas are more homogeneous, as in Forms 2 and 2R, partici-
+pants who already judged action wrong in one dilemma will find it harder
+to distinguish that action from action in the other dilemmas, so they will
+be more likely to go along with their initial judgment, possibly just in order
+to maintain coherence in their judgments.
+
+However, Petrinovich and O’Neill’s third pair of forms suggests a more
+subtle analysis. Forms 3 and 3R presented five heterogeneous moral prob-
+lems (boat, trolley, shield, shoot, shark) in reverse order. Participants’
+responses to action and inaction in the outside dilemmas did not vary with
+order. Nonetheless, in the middle shield dilemma, “participants approved
+of action more strongly (2.6) when it was preceded by the Boat and Trolley
+dilemmas than when it was preceded by the Shoot and Shark dilemmas
+(1.0)” (Petrinovich & O’Neill, 1996, p. 160). Some significant framing
+effects, thus, occur even in heterogeneous sets of moral dilemmas.
+
+In addition, gender
+differences are not systematic (Antony 2012). Starmans and Friedman (2009) found no gender
+differences when the stolen item was a book rather than a watch, and in a follow‐up study they
+were unable to replicate a difference. Finally, Adleberg, Thompson, and Nahmias (2014) con-
+ducted replication studies of 14 thought experiments examined by Buckwalter and Stich and
+were unable to replicate statistically significant gender differences in any of them.
+
+Every scenario
+description has to be short enough to fit in an experiment, so many pos-
+sibly relevant facts always have to be left out. These omissions might seem
+to account for framing effects, so critics might speculate that framing
+effects would be reduced or disappear if more complete descriptions were
+provided. Indeed, Kühberger (1995) did not find any framing effects of
+wording in the questions when certain problems were fully described. A
+possible explanation is that different words in the questions lead subjects
+to fill in gaps in the scenario descriptions in different ways. Kuhn (1997)
+found, for example, that words in questions led subjects to change their
+estimates of unspecified probabilities in medical and economic scenarios.
+
+In support of this contention,
+some studies have found that framing effects are reduced, though not
+eliminated, when subjects are asked to provide a rationale (Fagley & Miller,
+1990) or take more time to think about the cases (Takemura, 1994) or
+have a greater need for cognition (Smith & Levin, 1996) or prefer a ratio-
+nal thinking style (McElroy & Seta, 2003). In contrast, a large recent study
+(LeBoeuf & Shafir, 2003) concludes, “More thought, as indexed here [by
+need for cognition], does not reduce the proclivity to be framed” (p. 77).
+Another recent study (Shiloh, Salton, & Sharabi, 2002) found that subjects
+who combined rational and intuitive thinking styles were among those
+most prone to framing effects. Thus, it is far from clear that framing effects
+will be eliminated by the kind of reflection that some moral intuitionists
+require.
+
+There is also evidence that philosophers may be subject to framing effects, though again in a
+slightly different manner than non-philosophers. Extending previous findings on actor-observer
+bias in naïve subjects, Tobia et al. (2013a) presented philosophers and non-philosophers with
+moral dilemma vignettes presented either in the second person (‘you are the driver of a
+trolley...’) or the third person (‘Jim is the driver of a trolley...’). Non-philosophers were less
+likely to judge an action to be morally obligatory when the vignette portrayed them in the role
+of the actor; they were also less likely to judge an action morally permissible. Philosophers
+showed the same bias but in the opposite direction; they were more likely to judge an action
+obligatory/permissible in ‘actor’ cases. Again, Tobia et al. take this to provide evidence that
+directly undermines the expertise defense. Interestingly, in a second study of this effect, Tobia
+et al. (2013b) found that exposure to a ‘clean’ smell (Lysol) during testing affected the strength
+of the actor-observer bias in both philosophers and non-philosophers. Lysol-smelling philoso-
+phers, in fact, reversed their pattern of bias as compared to philosophers in the control group.
+
+Fiery Cushman was one of the researchers who agreed to look for gender effects in data
+he had collected online in collaboration with Liane Young. One study in which he found them
+used a version of one of contemporary philosophy’s most famous thought experiments, the
+“Violinist” case first introduced into the literature by Judith Jarvis Thomson (1971) in a widely
+discussed paper on abortion. In this experiment, Cushman and Young presented participants (N
+= 298; 176 men, 122 women) with the following vignette:
+
+** External validity---lab vs real life, unrealistic
+
+But, herein lies the rub (as they say), because important philosophical work often goes on “at
+the margins,” involving complex concoctions of thought experiments that push beyond of our
+conceptual and experiential comfort zones. 15 This observation not only renders paradigmatic
+cases – and the clear/strong intuitions they generate – philosophically uninteresting, but it leaves
+the philosopher with cold comfort, because it is precisely were instability is most likely to lurk that
+she may need to rely the most heavily on her intuitions.

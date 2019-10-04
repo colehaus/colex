@@ -1,0 +1,2061 @@
+* DONE Haidt 1993; disgust; dogs and chickens
+  CLOSED: [2019-09-27 Fri 11:38]
+  :LOGBOOK:
+  - State "DONE"       from "TODO"       [2019-09-27 Fri 11:38]
+  - State "TODO"       from              [2019-09-27 Fri 11:20]
+  :END:
+
+haidt.koller.1993.affect-culture-morality.pub001.pdf
+@article{haidt1993affect,
+  title={Affect, culture, and morality, or is it wrong to eat your dog?},
+  author={Haidt, Jonathan and Koller, Silvia Helena and Dias, Maria G},
+  journal={Journal of personality and social psychology},
+  volume={65},
+  number={4},
+  pages={613},
+  year={1993},
+  publisher={American Psychological Association}
+}
+** Experiment
+
+In each of the three cities, four groups of 30 subjects were inter-
+viewed. The four groups crossed age (adult vs. child) with SES (high vs.
+low). Thus, there were 12 groups in all, comprising 360 subjects in a 3 X
+2 x 2 design (City X SES X Age)
+
+Flag: A woman is cleaning out her closet, and she finds her old
+[American or Brazilian] flag. She doesn't want the flag anymore,
+so she cuts it up into pieces and uses the rags to clean her
+bathroom.
+Promise: A woman was dying, and on her deathbed she asked her
+son to promise that he would visit her grave every week. The son
+loved his mother very much, so he promised to visit her grave
+every week. But after the mother died, the son didn't keep his
+promise, because he was very busy.
+Dog: A family's dog was killed by a car in front of their house.
+They had heard that dog meat was delicious, so they cut up the
+dog's body and cooked it and ate it for dinner.
+Kissing: A brother and sister like to kiss each other on the mouth.
+When nobody is around, they find a secret hiding place and kiss
+each other on the mouth, passionately.
+Chicken: A man goes to the supermarket once a week and buys a
+dead chicken. But before cooking the chicken, he has sexual inter-
+course with it. Then he cooks it and eats it. [This story was given to
+adults only]
+
+After each story, six probe questions were asked: (a) Evaluation:
+"What do you think about this? Is it very wrong, a little wrong, or is it
+perfectly OK for [act specified]?
+
+The Bonferroni procedure
+was used to correct for the inflation of alpha resulting from
+multiple post hoc significance tests. There were no effects of
+gender, either for adults or for children, and gender was
+dropped from subsequent analyses.
+
+Subjects were asked to describe the actions as perfectly OK, a little wrong, or very wrong. Because we could not be certain that this scale was an interval scale in which the middle point was perceived to be equidistant from the endpoints, we dichotomized the responses, separating perfectly OK from the other two responses. An ANOVA on the percentage of harmless-offensive stories said to be wrong in any way showed effects of SES, F(1, 174) = 73.1, p < .001; city F(2, 174) = 5.6, p < 0.01; and an interaction of SES with city, F(2, 174) = 4.5, p < .05. High-SES groups were more permissive than low-SES groups, especially in Philadelphia, and Recife was less permissive than Philadelphia (p < .01). Porto Alegre did not differ significantly from either city. (The low and high SES group means were 91% and 63% in Recife, 78% and 59% in Porto Alegre, and 85% and 40% in Philadelphia.
+
+The children were consistently critical
+of the actions in the harmless-offensive stories. Each story was
+said to be "very wrong" or "a little wrong" by a majority in each
+of the six groups. When all stories were combined, low-SES
+subjects condemned the stories more than high-SES subjects,
+F(\, 174) = 9.00, p < .01, and there was an effect of city, F(2,
+174) = 5.91, p < .01, reflecting the fact that Philadelphians were
+less likely than Recifeans to condemn the acts (p < .01). Porto
+Alegre fell between the other two cities and did not differ from
+either.
+
+* DONE Haidt and Baron 1996; order effects; lieing car
+  CLOSED: [2019-09-27 Fri 12:05]
+  :LOGBOOK:
+  - State "DONE"       from "TODO"       [2019-09-27 Fri 12:05]
+  - State "TODO"       from              [2019-09-27 Fri 11:38]
+  :END:
+
+haidt1996.pdf
+@article{haidt1996social,
+  title={Social roles and the moral judgement of acts and omissions},
+  author={Haidt, Jonathan and Baron, Jonathan},
+  journal={European Journal of Social Psychology},
+  volume={26},
+  number={2},
+  pages={201--218},
+  year={1996},
+  publisher={Wiley Online Library}
+}
+
+The first
+experiment involved 91 students, (42 male, 49 female, mean age: 19) who were
+handed a questionnaire upon entering an introductory psychology class.
+
+Subjects were then asked to ‘rate Nick’s goodness, or virtue, in this situation on a
+scale from - 100 to + 100 where - 100 means “extremely bad”, as reprehensible as a
+person could ever be; 0 means “neutral”, neither good nor bad; and + 100 means
+“extremely good”, as commendable as a person could ever be’.
+
+The second experiment involved 48 undergraduates at the University of
+Pennsylvania (24 male, 24 female, mean age: 19), solicited by sign-up and
+telephone, and paid $3 for completing a set of two questionnaires that generally
+required 20 to 30 minutes. An additional sample of 21 subjects was obtained from
+the first year class at New York University Law School (13 male, eight female, mean
+age: 23), solicited personally by a fellow student, and not paid.
+
+In Experiment 1, half the subjects read the omission version first, rated Nick’s
+action, then read the act version. The other half read the versions in the opposite
+order. This counter balancing was done as a matter of course, to control for an order
+effect, although none was predicted. Unexpectedly, a large order effect was found.
+Eighty per cent of subjects in the omission-first condition rated the act worse than
+the omission, while only 50 per cent of subjects in the act-first condition made such a
+distinction (x2=7.32, p<O.Ol, 1 dfl. This order effect does not affect the
+interpretation of Experiment 1, since all effects were in the same direction in both
+orders.
+
+We initially dismissed this order effect as a puzzling but harmless quirk. However
+it reappeared in a systematic way in Experiment 2. In the Crane story, 66 per cent of
+subjects in the omission-first condition gave the act a lower rating in at least one
+version of the story, while only 39 per cent of subjects in the act-first condition made
+such a distinction (x2 = 0.50). Thus there seems to be a general tendency for subjects
+to make later ratings more severe than earlier ratings. (Again, the predicted effects of
+role and of act-omission went in the same direction in both order conditions).
+
+The same sort of order effect was found for the manipulation of roles within
+subjects. In the Crane story, 78 per cent of those who first rated Jack as a
+subordinate lowered their ratings when Jack became the foreman, while only 56 per
+cent of those who first rated Jack as the foreman raised their ratings when he became
+a subordinate (x2 = 2.91, p < 0.05, 1 dfl. In the Mazda story, 88 per cent of subjects
+lowered their ratings as Nick changed from stranger to friend, yet only 66 per cent of
+subjects raised their ratings as Nick changed from friend to stranger (x2 = 3.25,
+p < 0 . 0 5 , 1 dfl.
+
+In sum, subjects show a general bias towards increasing blame. When making a
+second moral judgement, having already made the first, subjects find it easier to say
+‘this is worse’ than to say ‘this one is not so bad’. In other words, subjects who rated
+the omission first had no difficulty giving the act an even lower rating. But subjects
+who rated the act first found it more difficult to ‘pull back’, and partially excuse the
+omission. Likewise on the role manipulation, subjects found it easy to increase blame
+as solidarity or hierarchy increased, yet they were reluctant to decrease blame when
+solidarity or hierarchy were decreased.
+
+* DONE Wheatley and Haidt 2005; disgust; hynosis
+  CLOSED: [2019-09-27 Fri 12:42]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-09-27 Fri 12:42]
+  :END:
+Lecture11_WheatleyHaidt2005_DisgustMoralJudgments.pdf
+@article{wheatley2005hypnotic,
+  title={Hypnotic disgust makes moral judgments more severe},
+  author={Wheatley, Thalia and Haidt, Jonathan},
+  journal={Psychological science},
+  volume={16},
+  number={10},
+  pages={780--784},
+  year={2005},
+  publisher={SAGE Publications Sage CA: Los Angeles, CA}
+}
+
+** Experiment 1
+
+Sixty-four highly hypnotizable participants (19 male) took part
+in small group-hypnosis sessions1 that included a posthypnotic
+suggestion to experience "a brief pang of disgust ... a sickening
+feeling in your stomach" when reading a particular word, but to
+have no memory for this instruction until cued to remember. Half
+of the groups were instructed to feel disgust when reading the
+word often; half were instructed to feel disgust when reading the
+word take. After participants were brought out of the hypnotic
+state, they were given a packet of vignettes, ostensibly as part of
+an unrelated study
+
+Each vignette described a moral transgression and was fol-
+lowed by two rating scales, one for rating "how morally wrong"
+and the second for rating "how disgusting" the behavior was.
+Ratings were indicated by making a slash mark along a 14-cm
+line anchored by the endpoints not at all morally wrong and
+extremely morally wrong or not at all disgusting and extremely
+disgusting. Slash marks were later converted to a scale from 0
+to 100. After making their ratings, participants were asked to
+briefly explain their morality ratings.
+
+These vignettes
+were about second cousins who had a sexual relationship, a man
+who ate his already dead dog, a congressman who took bribes, an
+ambulance-chasing lawyer, a shoplifter, and a student who stole 
+library books Each vignette was written in two versions that
+differed by a few words but were semantically identical; one
+version included the word take, and the other the word often. For
+example, the bribery vignette read as follows:
+
+Half of the participants read three experimental vignettes in
+the take version, followed by three buffer vignettes that were
+about non-disgust-related infractions (e.g., speeding) and in-
+cluded neither hypnotic word, followed by three experimental
+vignettes in the often version. The remaining participants read
+three often vignettes, followed by three buffer vignettes, followed
+by three take vignettes. The ordering of vignettes was ran-
+domized across participants and condition (take vs. often).
+
+All 64 participants passed at least two of the three tests of
+hypnotic depth, indicating that they were in a hypnotic state
+during the posthypnotic suggestion. Forty-five participants (11
+male) were amnesic for the instructions until cued to remember
+at the end of the experiment. We limited our analyses to these
+participants, as their lack of conscious memory for the true
+cause of their disgust affords the most stringent test of whether
+disgust informs moral judgment. The cookie task provided a
+rough indication of the suggestion's effectiveness: Participants
+in the take condition took significantly fewer cookies (M = 0.53)
+than participants in the often condition (M = 1.16), t(SS) = 2.86,
+p < .01, r = .42 (Rosenthal, 1991).
+
+The main results are presented in Table 1. For each partici-
+pant, we calculated the average of the disgust ratings for the
+three stories that included the hypnotic disgust word and the
+average of the disgust ratings for the three stories with no hyp-
+notic disgust word. As predicted, participants rated the vi-
+gnettes as more disgusting when the hypnotic disgust word was
+present (M = 68.0) than when the word was absent (M = 43.1),
+/(44) = 5.78, p < .001, r = .66. More important, participants
+rated vignettes as being more morally wrong when the hypnotic
+disgust word was present (M = 73.9) than when the word was
+absent (M = 64.7), t(U) = 2.41, p < .05, r = .34.
+
+** Experiment 2
+
+Ninety-four highly hypnotizable participants (37 males) took
+part in hypnosis sessions conducted identically to those in Ex-
+periment 1. The vignettes and rating scales were identical to
+those in Experiment 1 with the following changes. First, the story
+about a man eating his dead dog was replaced by a story less
+likely to yield a disgust ceiling effect: a story about a woman who
+littered. Second, the "Student Council" story was added to
+provide a story with no violation of any kind: "Dan is a student
+council representative at his school. This semester he is in
+charge of scheduling discussions about academic issues. He
+[tries to take/often picks] topics that appeal to both professors
+and students in order to stimulate discussion." Third, after
+rating each transgression for moral wrongness and disgust,
+participants rated how much they approved or disapproved of
+something related to the story, but not the transgression itself.
+
+Sixty-three participants (26 male) were amnesic for the in-
+structions and passed two or all three tests of hypnotic depth.
+There were no significant sex differences on any comparisons of
+interest. The manipulation check showed that activities were
+less liked (M = 4.7) when they contained the participants'
+hypnotic disgust word than when they contained the other word
+(M = 5.4), t(62) = 4.02,/? < .001, r = .45.
+
+The main results are shown in Table 2. Participants judged
+actions to be more disgusting when their hypnotic word was
+present (M = 60.0) than when it was absent (M = 50.7), t(62)
+3.04, p < .005, r = .36.
+
+Participants judged the actions to be
+more morally wrong when their hypnotic word was present (M =
+73.4) than when it was absent {M = 69.6), t(62) = 1.74, p = .09;
+Wilcoxon Z = 2.18, p < .05, r = .27.
+
+Second, the "Student Council" story was added to
+provide a story with no violation of any kind: "Dan is a student
+council representative at his school. This semester he is in
+charge of scheduling discussions about academic issues. He
+[tries to take/often picks] topics that appeal to both professors
+and students in order to stimulate discussion."
+
+In the absence of the hypnotic word, the Student Council story
+was rated as not at all disgusting (M = 2.3) and not at all morally
+wrong (M = 2.7). The presence of the hypnotic word, however,
+elevated ratings of disgust (M = 20.9), t(6l) = 3.73, p = .001,
+r = .43, and moral wrongness (M = 14.0), t(6l) = 3.32, p <
+.005, r = .39. The effects of hypnotic disgust were limited to
+Dan's action and did not increase disapproval of university tu-
+ition rates (the non-transgression-related rating), t(61) = 1.53,
+n.s., r = .19.
+
+* TODO Schnall 2008; disgust; gender
+  :LOGBOOK:
+  - State "TODO"       from              [2019-09-27 Fri 12:42]
+  :END:
+
+schnall2008.pdf
+@article{schnall2008disgust,
+  title={Disgust as embodied moral judgment},
+  author={Schnall, Simone and Haidt, Jonathan and Clore, Gerald L and Jordan, Alexander H},
+  journal={Personality and social psychology bulletin},
+  volume={34},
+  number={8},
+  pages={1096--1109},
+  year={2008},
+  publisher={Sage Publications Sage CA: Los Angeles, CA}
+}
+
+** Experiment 1
+
+One-hundred twenty-seven Stanford students (55
+male) participated individually in an outdoor setting in
+exchange for candy.
+
+Five participants were excluded from analysis
+because of noncompliance with instructions, and 2 were
+excluded because they guessed the experimental
+hypothesis, leaving 40 participants in each condition.
+
+Odor manipulation. Participants were randomly
+assigned to one of three conditions differing in the level
+of disgusting odor present. The conditions were identi-
+cal except for the quantity of fart spray applied to the
+bag lining a trash bucket hidden approximately 6 ft
+from the participant. In the control condition, no fart
+spray was present; in the mild-stink condition, four
+sprays were applied to the bag; in the strong-stink con-
+dition, eight sprays were applied to the bag.
+
+Using 7-point Likert scales, partic-
+ipants responded to four vignettes related to moral judg-
+ments (see the appendix for vignettes and scales). The
+four vignettes gauged participants’ support for the legal-
+ization of marriage between first cousins (Marriage),
+approval of sex between first cousins (Sex), moral judg-
+ments of driving rather than walking to work (Driving),
+and approval of a studio’s decision to release a morally
+controversial film (Film).
+
+Following the moral judgment
+items, participants indicated on 7-point Likert scales (a)
+how disgusted they currently felt (from not at all dis-
+gusted to extremely disgusted); (b) whether they were
+consciously aware of any unpleasant odor while they
+were answering the moral judgment questions, and if
+so, how much the odor bothered them (from didn’t
+notice any smell to stench completely nauseated me); (c)
+how much they thought that any environmental odor
+affected their answers to the moral judgment questions
+(from didn’t affect my answers at all to strongly affected
+my answers—this item was not a manipulation check);
+and (d) whether they could, at present, detect any
+unpleasant odor, and if so, how much the odor both-
+ered them (from no smell detectable to extremely nau-
+seating stench).
+
+As expected, mean moral judgment var-
+ied significantly as a function of condition, F(2, 117) =
+7.43, p = .001, η_p^2 = 0.11. Post hoc tests revealed that
+mild-stink participants and strong-stink participants
+were both more severe in their average moral judgments
+than were control participants. The mild-stink and
+strong-stink participants did not differ.
+
+Control mean: 3.75
+Control SD: 0.88
+Mild stink mean: 3.15
+Mild stink SD: 0.69
+Strong stink mean: 3.18
+Strong stink SD: 0.79
+
+(Why don't they discuss that strong vs mild isn't in the direction predicted?)
+
+** Experiment 2
+
+Forty-three undergraduate students (18 male) at the
+University of Virginia participated in exchange for
+credit toward a course requirement.
+
+Six
+vignettes that generated substantial variance among
+respondents (i.e., that avoided floor and ceiling effects)
+were selected for use (see the appendix). Three of these
+vignettes involved a moral violation with disgust—Dog
+(a man who ate his dead dog), Plane Crash (starving
+survivors of a plane crash consider cannibalism), and
+Kitten (a man deriving sexual pleasure from playing
+with a kitten)—and three of the vignettes involved a
+moral violation with no disgust—Wallet (finding a wal-
+let and not returning it to its owner), Resume (a person
+falsifying his resume), and Trolley (preventing the death
+of five men by killing one man). The instructions told
+participants to go with their initial intuitions when
+responding.
+
+Before each participant entered the laboratory, the
+experimenter prepared the experimental room for either
+the extraneous-disgust or the no-disgust condition. For
+the disgust condition, a workspace was set up to look
+rather disgusting: An old chair with a torn and dirty
+cushion was placed in front of a desk that had various
+stains and was sticky. On the desk there was a trans-
+parent plastic cup with the dried up remnants of a
+smoothie and a pen that was chewed up. Next to the
+desk was a trash can overflowing with garbage includ-
+ing greasy pizza boxes and dirty-looking tissues. For the
+no-disgust condition, the same desk was used, but it
+was covered up with a clean white tablecloth. A new
+chair was provided, and none of the disgusting objects
+were present. A new and unchewed pen was provided
+for filling out the questionnaires.
+
+After asking the participant to have a seat at the
+desk, the experimenter administered several question-
+naires. Each of the two pages of the questionnaire con-
+tained three moral scenarios, followed by three
+questions concerning public policy, followed by two
+questions concerning whether the participant would
+like to engage in certain activities after the experiment.
+The order of the two questionnaire pages was counter-
+balanced so that half of the participants received page 1
+first, the other half received page 2 first. Next partici-
+pants indicated on a series of rating scales to what
+extent they were feeling various emotions, namely,
+relaxed, angry, happy, sad, afraid, depressed, disgusted,
+upset, and confused, on a 10.5-cm visual analogue scale
+labeled don’t feel at all and feel very strongly at the end
+points. Participants were asked to make a slash through
+the line to represent their feelings at the moment. All
+scales were scored by measuring in half centimeters
+from the don’t feel at all end, yielding raw scores that
+could range from 0 to 21.
+
+Participants rated the emotions they were feeling at
+the end of the manipulation. Unexpectedly, the disgust
+condition did not differ from the control condition in
+terms of self-reported disgust. However, we believed
+our disgust manipulation had high face validity and that
+it was possible participants were reporting their feelings
+toward the experimental stimuli rather than toward the
+physical setting we had created. We therefore proceeded
+to analyze the data as planned.
+
+(No discussion?)
+
+None of the three main effects were significant
+
+** Experiment 3
+
+Sixty-nine undergraduate students (17 male) at the
+University of Plymouth participated in exchange for
+credit toward a course requirement.
+
+In the disgust condition, partici-
+pants were asked to write about a specific event that
+happened to them that involved seeing or touching
+something physically disgusting.
+
+At the beginning of the
+experiment all participants completed mood ratings of
+relaxed, angry, happy, sad, afraid, depressed, disgusted,
+upset, and confused, on 10.5-cm visual analogue scales
+labeled don’t feel at all and feel very strongly at the end
+points, with the instruction to indicate current feelings.
+At the end of the experiment the same items were pre-
+sented again.
+
+Two participants were identified who wrote
+primarily about moral disgust rather than physical disgust;
+their data were excluded. Two additional participants
+wrote primarily about feeling emotions other than disgust
+(one fear, one anger); their data were excluded as well.
+
+Composite scores of moral vignettes
+involving disgust and moral items not involving disgust
+were submitted to a three-way repeated measures
+ANOVA with vignette content as a within-subjects factor,
+and condition and PBC as between-subjects factors. There
+were no main effects
+
+** Experiment 4
+
+One hundred and thirty-three undergraduate students
+(60 male) at the University of Plymouth participated in
+exchange for course credit or for payment. Three partici-
+pants were excluded for not following instructions.
+
+The moral judgment vignettes were the same as in
+Experiment 2. Film clips previously shown to result in
+disgust (a scene from Trainspotting involving a disgust-
+ing toilet) and sadness (a scene from The Champ where
+a boy watches his father die) were used. An emotionally
+neutral film clip consisted of a scene about whales from
+the documentary Planet Earth.
+
+Participants were randomly assigned to watch one of
+the three films immediately before completing the moral
+judgment vignettes. They then filled out the PBC scale
+and the emotion rating scale used in Experiment 2.
+
+As in Experiment 2 we created composite scores for
+vignettes involving disgust (Dog, Plane Crash, Kitten)
+and for vignettes not involving disgust (Wallet, Resume,
+Trolley). We conducted a repeated measures ANOVA
+with content of vignette (involving disgust vs. not involv-
+ing disgust) as a within-subjects factor, and film condi-
+tion (disgust vs. sadness vs. neutral), PBC (high vs. low)
+and sex (male vs. female) as between-subjects factors.
+
+As in Experiment 2 we created composite scores for
+vignettes involving disgust (Dog, Plane Crash, Kitten)
+and for vignettes not involving disgust (Wallet, Resume,
+Trolley). We conducted a repeated measures ANOVA
+with content of vignette (involving disgust vs. not involv-
+ing disgust) as a within-subjects factor, and film condi-
+tion (disgust vs. sadness vs. neutral), PBC (high vs. low)
+and sex (male vs. female) as between-subjects factors.
+
+* DONE Schnall 2008; disgust; pet dog
+  CLOSED: [2019-09-27 Fri 12:58]
+  :LOGBOOK:
+  - State "DONE"       from "TODO"       [2019-09-27 Fri 12:58]
+  - State "TODO"       from              [2019-09-27 Fri 12:50]
+  :END:
+
+schnall2008 (1).pdf
+@article{schnall2008clean,
+  title={With a clean conscience: Cleanliness reduces the severity of moral judgments},
+  author={Schnall, Simone and Benton, Jennifer and Harvey, Sophie},
+  journal={Psychological science},
+  volume={19},
+  number={12},
+  pages={1219--1222},
+  year={2008},
+  publisher={SAGE Publications Sage CA: Los Angeles, CA}
+}
+
+** Experiment 1
+
+Forty University of Plymouth undergraduate students (30 fe-
+male, 10 male; mean age 5 20.00 years, SD 5 1.85 years)
+participated as part of a course requirement.
+
+Participants, in individual sessions, first completed a scram-
+bled-sentences task (adapted from Costin, 1969) involving 40
+sets of four words each. By underlining any three words in a set, a
+sentence could be formed. For the neutral condition, the task
+contained 40 sets of scrambled neutral words. For the cleanli-
+ness condition, half of the sets contained words related to the
+theme of cleanliness and purity (e.g., pure, washed, clean, im-
+maculate, pristine), and the other sets contained only neutral
+words.
+Immediately after the priming task, participants rated six
+moral dilemmas (as used by Schnall et al., 2008): ‘‘Dog’’ (eating
+one’s dead dog), ‘‘Trolley’’ (switching the tracks of a trolley to kill
+one workman instead of five), ‘‘Wallet’’ (keeping money inside a
+found wallet), ‘‘Plane Crash’’ (killing a terminally ill plane crash
+survivor to avoid starvation), ‘‘Résumé’’ (putting false informa-
+tion on a résumé), and ‘‘Kitten’’ (using a kitten for sexual
+arousal). Participants rated how wrong each action was from 0
+(perfectly OK) to 9 (extremely wrong).
+
+The mean composite of all six moral vignettes was computed. To
+test whether priming the participants with cleanliness reduced
+the severity of moral judgments, we conducted a one-way
+ANOVA on the composites with priming (cleanliness vs. neutral)
+as a factor. As predicted, participants gave lower ratings after
+the cleanliness priming (M 5 4.98, SD 5 1.26) than they did
+after the neutral priming (M 5 5.81, SD 5 1.47), F(1, 38) 5 3.63,
+p rep 5.90, Z p 2 1⁄4 :09.
+
+** Experiment 2
+
+Forty-four University of Plymouth undergraduate students (32
+female, 12 male; mean age 5 22.18 years, SD 5 4.89 years)
+participated as part of a course requirement. One participant’s
+data were excluded from analysis because she declined to wash
+her hands when asked to do so.
+
+Participants were tested individually. Two laboratory rooms were
+used: We showed the film clip in the first room and administered
+the moral dilemmas in the second. Participants first watched a 3-
+min clip from the film Trainspotting that was previously shown to
+elicit strong disgust (Lerner, Small, & Loewenstein, 2004;
+Schnall et al., 2008). Participants were then taken to a different
+room, ostensibly because the next participant would soon be
+arriving to watch the film. Participants in the hand-washing
+condition were additionally told that the second room was a staff
+room and that they would be required to wash their hands when
+going into it, because the room needed to be kept as clean and
+tidy as possible. The staff room was equipped with a sink, an-
+tibacterial soap in a pump dispenser, and paper towels. To make
+the cover story about the room plausible, the table was covered
+with a tablecloth, and a vase with artificial flowers was placed on
+it to create the sense of its being a tidy staff room. Participants
+sat down at the table and completed the same six vignettes used
+in Experiment 1. 1 To ensure that the film induced comparable
+levels of disgust in both conditions, participants were then asked
+to think back of how they had felt immediately after watching the
+film and indicate their feelings at the time using the same
+emotion rating scales as in Experiment 1.
+
+ooking specifically
+at disgust, simple contrasts showed that the disgust ratings were
+significantly higher than each of the other mood ratings (all p rep s <
+.99). Means indicated that participants felt disgust more strongly
+(M 5 14.26, SD 5 6.09) than any other emotion
+
+Participants in both conditions
+felt equally disgusted immediately after watching the film, as in-
+dicated by a nonsignificant effect between condition for the rating
+of disgust, F(1, 41) 5 1.04, p rep 5 .76. Thus, all participants re-
+ported feeling strong disgust before the hand-washing manipula-
+tion.
+
+We computed the mean composite of all six moral vignettes and
+predicted that participants who washed their hands following
+the disgusting film clip would make less severe judgments than
+would participants who did not wash their hands. Indeed, a one-
+way ANOVA with condition (hand washing vs. no hand washing)
+as a factor found a significant difference between the conditions
+on the composite rating, F(1, 41) = 7.81, p_rep = .97, eta_p^2 = .16.
+
+Because of the danger of making the cleansing manipulation
+salient, we did not obtain additional disgust ratings after the
+hand-washing procedure. However, given our conceptual
+framework and the magnitude of the effect across conditions, we
+presume that the hand washing reduced feelings of disgust,
+which in turn reduced the severity of the moral judgments.
+
+* TODO Johnson et al 2014; cleanliness; replication
+  :LOGBOOK:
+  - State "TODO"       from              [2019-09-27 Fri 12:58]
+  :END:
+1864-9335_a000186.pdf
+@article{johnson2014does,
+  title={Does cleanliness influence moral judgments?},
+  author={Johnson, David J and Cheung, Felix and Donnellan, M Brent},
+  journal={Social Psychology},
+  year={2014},
+  publisher={Hogrefe Publishing}
+}
+
+** Experiment 1
+
+We used the point estimate of effect size d = 0.60 from
+the composite to compute statistical power. Assuming equal
+sized groups, we needed at least 208 participants to achieve
+.99 power (104 participants in each group). Thus, we col-
+lected data from 219 Michigan State University undergrad-
+uates, 76.7% of which were females, M age = 19.5 years,
+SD = 2.4 (compare to SBH’s Exp. 1: 75% female,
+M age = 20.0 years, SD = 1.9).
+
+They first com-
+pleted a scrambled sentence task that involved either neu-
+tral words (control condition; n = 102) or cleanliness
+related words (cleanliness condition; n = 106). Participants
+then responded to six vignettes describing moral dilemmas
+on 10-point scales ranging from 0 (perfectly OK) to 9
+(extremely wrong). A composite score was created by aver-
+aging responses to all six dilemmas. Finally, participants
+gave self-report measures of their current emotions and
+completed the PBC scale. Research assistants were blind
+to condition to prevent the possibility of expectancy effects
+biasing participant responses
+
+We did not find statistically significant effects for
+the overall composite, F(1, 206) = 0.004, p = .95,
+d = 0.01, 95% CI [-.28, .26]. Analyses of individual
+vignettes also yielded null results (see Table 1) including
+the ‘‘kitten’’ dilemma (d = 0.05, p = .72, 95% CI [-.22,
+.33]), the only vignette that yielded a statistically significant
+difference at p < .05 in the original experiment.
+
+** Experiment 2
+
+We used the point estimate of effect size d = 0.85 from
+the composite to compute statistical power. Assuming equal
+sized groups, we needed at least 104 participants to achieve
+.99 power (52 in each group). Thus, we collected data from
+132 Michigan State University undergraduates, 70.5% of
+which were females, M age = 20.5 years, SD = 3.6 (com-
+pare to SBH’s Exp. 2: 73% female, M age = 22.2 years,
+SD = 4.9).
+
+Participants completed tasks in indi-
+vidual sessions. They first watched a video that invoked
+disgust (the same clip from Trainspotting used by SBH).
+Participants were randomly asked to either wash their hands
+(cleanliness condition; n = 58) or given no prompt (control
+condition; n = 68). Participants then responded to the same
+six vignettes describing moral dilemmas on 7-point scales
+ranging from 1 (nothing wrong at all) to 7 (extremely
+wrong). A composite score was created by averaging
+responses to all six dilemmas.
+
+The focal comparisons involved tests of whether hand-
+washing reduced the severity of moral judgments using a
+series of one-way ANOVAs. We did not find statistically
+significant effects for the overall composite, F(1, 124) =
+0.001, p = .97, d = 0.01, 95% CI [ .34, .36]. Analyses
+of individual vignettes also yielded null results (see Table 2)
+including the ‘‘trolley’’ and ‘‘wallet’’ dilemmas (d = 0.08,
+95% CI [ .27, .43] and 0.11, 95% CI [ .46, .24], respec-
+tively), both vignettes that were statistically significant in
+the original experiment.
+
+* Johnson et al 2016; disgust; replication
+
+a307d5247d19f7153b903e6335ed2fe2649e.pdf
+@article{johnson2016effects,
+  title={The effects of disgust on moral judgments: Testing moderators},
+  author={Johnson, David J and Wortman, Jessica and Cheung, Felix and Hein, Megan and Lucas, Richard E and Donnellan, M Brent and Ebersole, Charles R and Narr, Rachel K},
+  journal={Social Psychological and Personality Science},
+  volume={7},
+  number={7},
+  pages={640--647},
+  year={2016},
+  publisher={Sage Publications Sage CA: Los Angeles, CA}
+}
+
+** Study 1
+
+Undergraduates from Michigan (n 1⁄4 518) completed the study
+for course credit during the spring 2014 semester.
+
+Participants were randomly assigned to either recall and
+describe a disgusting event (disgust condition; n 1⁄4 262) or a
+neutral event (control condition; n 1⁄4 256).
+
+Following
+exclusion rules from SHCJ, participants in the disgust condi-
+tion were removed if they did not write about a physically dis-
+gusting event (n 1⁄4 40). 1 This resulted in a final sample size of
+478.
+
+Participants described how much they were feeling an
+emotion both before the mood manipulation and after rating the
+moral scenarios on a 1 (don’t feel at all) to 10 (feel very
+strongly) scale. The moods listed were relaxed, angry, happy,
+sad, afraid, depressed, disgusted, upset, and confused. The dis-
+gust item served as the manipulation check.
+
+Six scenarios about moral violations were taken
+from SHCJ. Three scenarios involved physically disgusting
+violations (eating a dead dog, cannibalism, and masturbating
+with a kitten) and three involved nondisgusting moral viola-
+tions (e.g., stealing a wallet, lying on a resume, and killing
+one person to save three). Participants were asked to judge
+the morality of the actions on a 0 (perfectly okay) to 9
+(extremely wrong) scale. Moral scenarios were combined
+into two composites, one for physically disgusting scenarios
+(M = 7.98, SD = 1.25, a = .52) and one for morally dis-
+gusting scenarios (M = 6.16, SD = 1.58, a = .55). 3 All
+items were also combined to create a single variable indicat-
+ing the severity of the participants’ total moral judgments
+(M = 7.07, SD = 1.17, a = .62).
+
+Participants in the disgust condition did not rate the scenar-
+ios more severely (M = 7.09, SD = 1.10) than those in the con-
+trol condition (M = 7.04, SD = 1.22), F(1, 474) = 0.04, p = 
+.84, d = 0.04, 95% CI [-.14, .22], BF_01 = 10.4.
+
+** Study 2
+
+Undergraduates from a Michigan (n = 496) and Texas univer-
+sity (n = 538) completed the study for course credit.
+
+The procedure was identical to Study 1 except for three
+changes. First, participants completed the study online. Second,
+participants were randomly assigned to complete (or not) a
+series of pretest mood questions. Finally, participants in the dis-
+gust condition completed the Winterich et al. (2014) writing
+task, whereas participants in the control condition did not com-
+plete any writing task.
+
+Participants were asked to rate how much they felt each
+mood on a 1 (don’t feel at all) to 10 (feel very strongly) scale.
+They rated the extent to which they felt angry, annoyed, dirty,
+disgusted, frustrated, good, gross, guilty, happy, negative, pos-
+itive, sad, and unclean
+
+Because the samples in Study 2 used the same method and we
+expected small effect sizes (Landy & Goodwin, 2015a), we
+pooled data across the samples to increase statistical power. 7
+This resulted in a sample of 986 participants. However, only
+934 of those participants completed all measures
+
+For analytic simpli-
+city, we examined the composite score of all moral scenarios
+because a preliminary analysis showed no interaction between
+scenario type (physical or moral) and disgust. This result is
+consistent with SHCJ, who also did not find interactions
+between scenario type and disgust manipulation.
+
+Partici-
+pants in the disgust condition did not rate the scenarios more
+severely (M = 7.08, SD = 1.27) than those in the control con-
+dition (M = 7.02, SD = 1.28), F(1, 926) = 0.48, p = .48,
+d = 0.05, 95% CI [-.08, .18], BF_01 = 25.0.
+
+* Huang 2014; disgust; replication
+fpsyg-05-01276.pdf
+@article{huang2014does,
+  title={Does cleanliness influence moral judgments? Response effort moderates the effect of cleanliness priming on moral judgments},
+  author={Huang, Jason L},
+  journal={Frontiers in Psychology},
+  volume={5},
+  pages={1276},
+  year={2014},
+  publisher={Frontiers}
+}
+
+** Study 1
+
+268 English-speaking adults residing in the United States com-
+pleted the current survey as a task on Mturk in exchange for
+$0.50 compensation. Of these, 214 participants (n cleanliness = 111,
+n neutral = 103; mean age = 35 years; 55% female; 72% white) were
+retained in the analysis
+
+Participants performed a 40-item sentence unscram-
+bling task, evaluated six moral judgment vignettes, and rated
+their emotional states.
+
+Participants performed a 40-item sentence unscram-
+bling task, evaluated six moral judgment vignettes, and rated
+their emotional states.
+
+The six moral vignettes included: (a) “dog,” eating one’s dog that
+died of an accident; (b) “trolley,” switching the direction of a
+runaway trolley to kill a workman instead five others; (c) “wal-
+let,” keeping the money from a lost wallet found in the street;
+(d) “plane,” killing and eating an injured survivor of a plane
+crash to avoid starvation; (e) “résumé,” falsifying one’s resume
+to find employment; and (f) “kitten,” using one’s kitten for sex-
+ual arousal. After reading each vignette, respondents rated their
+moral judgments on a 10-point scale ranged from 0 (perfectly ok)
+to 9 (extremely wrong). A moral judgment composite was cre-
+ated by averaging the ratings across these six vignettes, Cronbach’s
+α = 0.59. The internal consistency reliability for the composite
+measure was low but comparable to the values calculated from
+SBH’s and JCD’s Study 1 data (Cronbach’s α = 0.66 and 0.48,
+respectively).
+
+I conducted an independent samples t-test to examine the overall
+effect of cleanliness priming on the severity of composite moral
+judgments. Although in the hypothesized direction, the effect
+was non-significant, t(212) = −1.22, p = 0.23, d = −0.17.
+
+** Study 2
+
+535 English-speaking adults residing in the United States (after
+removing 23 responses from repeat participants based on worker
+ID and IP address) recruited from Mturk completed this online
+survey in exchange for $0.50. Of these, 440 (n cleanliness = 211,
+n neutral = 229; mean age = 37 years; 63% female; 75% white) were
+retained in the analysis after planned exclusion based on the same
+criteria as in Study 1. Sample size consideration was similar to
+the one in Study 1 (i.e., ≥ 208 individuals in each response effort
+condition after planned exclusion).
+
+As an initial step of the analysis, an independent samples t-test
+on the composite moral ratings across the cleanliness and neutral
+conditions revealed non-significant difference, t(438) = −0.42,
+p = 0.68, d = −0.04. Similar to Study 1, the overall
+result from Study 2 would suggest that the cleanliness prim-
+ing did not have the hypothesized impact on moral judgment.
+
+* Seyedsayomdost 2015; gender; replication
+
+SEYOGA-2.1.pdf
+@article{seyedsayamdost2015gender,
+  title={On gender and philosophical intuition: Failure of replication and other negative results},
+  author={Seyedsayamdost, Hamid},
+  journal={Philosophical Psychology},
+  volume={28},
+  number={5},
+  pages={642--673},
+  year={2015},
+  publisher={Taylor \& Francis}
+}
+
+For this section we collected data though two different sources. The first was through Amazon's
+Mechanical Turk (MT) following the methodology in Buckwalter & Stich (forthcoming). For
+!the second data set we ran surveys on SurveyMonkey (SM).
+
+The scenario was followed by a
+comprehension check question (the same that was asked in the original paper) and a question
+asking for a response on a seven-point scale.
+
+** Plank of Carneades
+
+Buckwalter & Stich report for N = 110 (Male = 37, Female = 73). Male: Mean = 4.95,
+SD = 2.07. Female: Mean = 5.64, SD = 1.35 (d = 0.42). Independent Samples t-test:
+t(108) = -2.13, p < 0.05.
+
+Our MT data yielded no significant difference for N = 156 (Male = 70, Female = 86).
+Male: Mean = 5.20, SD = 1.55. Female: Mean = 5.51, SD = 1.44. Independent Samples
+t-test: t(154) = -1.302, p = 0.195.
+
+Similarly with the SurveyMonkey data, our sample showed no significant difference: N
+= 98 (Male = 48, Female = 50). Male: Mean = 5.85, SD = 1.46. Female: Mean = 5.62,
+SD = 1.71. Independent Samples t-test: t(96) = 0.727, p = 0.469. 
+
+* Zhong et al 2010; cleanliness
+
+Smell of Virtue Psych Sci.pdf
+@article{liljenquist2010smell,
+  title={The smell of virtue: Clean scents promote reciprocity and charity},
+  author={Liljenquist, Katie and Zhong, Chen-Bo and Galinsky, Adam D},
+  journal={Psychological science},
+  volume={21},
+  number={3},
+  pages={381--383},
+  year={2010},
+  publisher={Sage Publications Sage CA: Los Angeles, CA}
+}
+
+** Experiment 1
+
+Twenty-eight participants (12 female) were individually assigned to either a clean-
+scented room or a baseline room. The only difference between the two rooms was a spray of
+citrus-scented Windex in the clean-scented room
+
+All the participants in the current experiment were told they had been randomly assigned
+to play the role of the receiver and that their ostensible counterpart had decided to send them the
+full amount ($4) which was now tripled to $12. They had to decide how much money to keep or
+return to the sender. Participants could exploit their counterpart by keeping all the money or
+they could honor the trust by returning some portion to the other party.
+
+As predicted, participants in the clean-scented rooms returned significantly more money
+than those in the baseline condition, t(26) = 2.64, p = .01, d = 1.03 (see Table 1). The clean-
+scented room led participants to resist exploitation and reciprocate the trusting behavior of the
+sender.
+
+** Experiment 2
+
+Ninety-nine undergraduate students (50 female) were
+individually assigned to either a clean-scented room (sprayed with Windex) or a baseline no-
+scent room and asked to work on a packet of unrelated tasks. Included in the packet was a flier
+requesting volunteers for a charity, Habitat for Humanity. Participants indicated their interest
+level in volunteering for future Habitat efforts (1-7 scale), specified the activities they would like
+to assist with, and selected whether they wanted to donate funds to the cause (yes/no).
+
+As predicted, participants in the clean-scented environment expressed greater interest in
+volunteering than control participants, t(97) = 2.33, p = .02, d = .47. Additionally, a greater
+proportion of participants in the clean-scented rooms indicated a willingness to donate money,
+χ 2 (1, N = 99) = 4.78, p = .03 (see Table 1).
+
+|             | Experiment 1   | Experiment 2          |          Experiment 2 |
+|-------------+----------------+-----------------------+-----------------------|
+|             | Money returned | Volunteering interest | Willingness to donate |
+| Clean scent | $5.33 (2.01)   | 4.21 (1.86)           |                   22% |
+| Baseline    | $2.81 (2.81)   | 3.29 (2.04)           |                    6% |
+
+* Zhong et al 2010; cleanliness
+
+zhong2010.pdf
+@article{zhong2010clean,
+  title={A clean self can render harsh moral judgment},
+  author={Zhong, Chen-Bo and Strejcek, Brendan and Sivanathan, Niro},
+  journal={Journal of experimental social psychology},
+  volume={46},
+  number={5},
+  pages={859--862},
+  year={2010},
+  publisher={Elsevier}
+}
+
+** Experiment 1
+
+For $5, 58 undergradu-
+ate students (38 females, mean age = 21.14 years) at the University
+of Toronto were randomly assigned to a single factor (cleanliness
+prime: clean vs. control) between-subject design.
+Therefore, participants were asked to cleanse their hands using
+an antiseptic wipe before they used the keyboard and mouse. In
+the control condition, participants did not cleanse their hands.
+Afterwards, participants in both conditions were asked to rate 6 so-
+cial issues on the dimension of morality on an 11-point scale, from
+5 (very immoral) to 5 (very moral). The six issues were smoking,
+using drugs, pornography, use of profane language, littering, and
+adultery.
+We created a composite score by summing the six judgments
+( a = .77). As expected, participants who cleansed their hands be-
+fore rating the social issues, judged these issues to be more morally
+wrong (M = 2.62, SD = 1.30) compared to those who did not
+cleanse their hands (M = 1.85, SD = 1.46), t(56) = 2.10, p = .04.
+
+** Experiment 2
+
+Participants were recruited from a nation-wide database
+that includes 15,000 registered participants across the US with
+wide demographic characteristics. In exchange for being entered
+into a lottery for a $25 and $50 online gift certificate, 323 partici-
+pants (201 female, mean age = 33.89) were randomly assigned to a
+single factor (cleanliness prime: clean vs. dirty vs. control) be-
+tween-subject online experiment 1 .
+
+After giving consent, participants were informed that the exper-
+iment included a number of unrelated tasks. Participants in the
+clean and dirty conditions first visualized a statement in the first
+person, while typing this into a text box. They were instructed that
+they would be tested on their ability to recall these sentences, fol-
+lowing a set of ‘‘unrelated” questions. In the clean condition, partic-
+ipants read, ‘‘My hair feels clean and light. My breath is fresh. My
+clothes are pristine and like new. My fingernails are freshly clipped
+and groomed and my shoes are spotless. I feel so clean.” In the dirty
+condition, they read, ‘‘My hair feels oily and heavy. My breath stinks.
+I can see oil stains and dirt all over my clothes. My fingernails are en-
+crusted with dirt and my shoes are covered in mud. I feel so dirty.” Par-
+ticipants in the control condition did not engage in the
+visualization task.
+
+Following this, participants rated 16 social issues on the dimen-
+sion of morality on an 11-point scale, from 5 (very immoral) to 5
+(very moral). These 16 items were comprised of the 6 items in
+Experiment 1 plus 10 additional items. Together they covered a
+wide variety of social issues or activities; ranging from those vigor-
+ously contested in society (i.e., abortion, homosexuality) to those
+considered a form of personal indulgence (i.e., masturbation) (see
+Fig. 1 for a complete list).
+None of the participants reported any suspicion regarding the
+link between the prime and the judgment task. Similar to Experi-
+ment 1, the 16 items were averaged to create a composite measure
+of moralization ( a = .88) (see Fig. 1 for scores on individual issues).
+Consistent with Experiment 1, cleanliness primed participants ren-
+dered harsher moral judgment (M = 1.76, SD = 1.13) than both
+the dirtiness primed participants (M = 1.42, SD = 1.14) and con-
+trol participants (M = 1.49, SD = 1.55), t(320) = 2.02, p = .045;
+there was no difference between the dirty and control condition,
+t(320) = .42, p = .675.
+
+** Experiment 3
+
+For $5, 136 undergraduate students (98 female, mean age = 22.00)
+at the University of Toronto were randomly assigned to a similar
+single factor (cleanliness prime: clean vs. dirty) between-subject
+design. Given no difference between the dirty and control condition
+in Experiment 2, we used the dirty condition as control.
+
+As in Experiment 2, cleanliness primed participants rendered
+harsher moral judgment on the 16 issues or activities (M = 2.04,
+SD = 1.28) than dirtiness primed participants (M = 1.59,
+SD = 1.16), t(134) = 2.13, p = .04.
+
+* Valdesolo desteno 2006; disgust/affect; comedy
+valdesolo2006.pdf
+@article{valdesolo2006manipulations,
+  title={Manipulations of emotional context shape moral judgment},
+  author={Valdesolo, Piercarlo and DeSteno, David},
+  journal={PSYCHOLOGICAL SCIENCE-CAMBRIDGE-},
+  volume={17},
+  number={6},
+  pages={476},
+  year={2006},
+  publisher={Blackwell Publishing Ltd}
+}
+
+** Experiment
+
+We examined this hypothesis using a paradigm in which 79
+participants received a positive or neutral affect induction and
+immediately afterward were presented with the footbridge and
+trolley dilemmas embedded in a small set of nonmoral distrac-
+tors.
+
+To induce positive affect, we showed participants a 5-min
+comedy clip taken from ‘‘Saturday Night Live.’’ The neutral clip
+consisted of a 5-min segment taken from a documentary on a
+small Spanish village. Positive affect was assessed as the mean
+response to a four-item feeling-descriptor measure consisting of
+the following items rated on 7-point scales: happy, content,
+pleasant, good (Cronbach’s a 5 .92). After the affect induction,
+individual dilemmas were presented in random order on a
+computer monitor. Each dilemma was presented through a series
+of three screens, the first two explaining the dilemma and the last
+asking the participant to indicate whether a described course of
+action would be ‘‘appropriate’’ or ‘‘inappropriate.’’ Each screen
+was visible for a maximum of 15 s (cf. Greene et al., 2001).
+
+As expected, participants who viewed the positive clip reported a
+more positive affective state (M 5 4.57) than did those who
+viewed the neutral clip (M 5 2.77), t(77) 5 7.47, p rep 5 .99. More
+important, heightened positivity increased the odds of selecting
+the appropriate (i.e., utilitarian) response to the footbridge di-
+lemma by a factor of 3.8, w 2 (1, N 5 79) 5 3.90, p rep 5 .89, thereby
+confirming our central prediction (see Table 1). As expected,
+affect did not influence responses to the trolley dilemma.
+
+* Petrinovich, O'Neill 1996; order, wording
+
+petrinovich1996.pdf
+@article{petrinovich1996influence,
+  title={Influence of wording and framing effects on moral intuitions},
+  author={Petrinovich, Lewis and O'Neill, Patricia},
+  journal={Ethology and Sociobiology},
+  volume={17},
+  number={3},
+  pages={145--171},
+  year={1996},
+  publisher={Elsevier}
+}
+
+** Study 1
+
+(same as petrinovich1993)
+
+For the 40 questions in which the Kill/Save effect
+was involved, there were 39 significant differences between the scaled values for the
+Save and Kill wording (for 32 questions p < .0001; for 4, p < .001; for 3, p < .05).
+
+Mean and standard deviation of agreement with action and inaction
+
+|          | Saving wording | Killing wording |
+| Action   | 0.65 (0.93)    | -0.78 (1.04)    |
+| Inaction | 0.10 (1.04)    | -1.35 (1.15)    |
+
+** Study 2
+
+Participants (n = 188) were drawn from the general introductory
+psychology subject pool and participated in the experiment in small groups.
+
+All questions were phrased in a Save wording. As in
+Study l, participants responded using the 6-point scale.
+
+Form 1 was composed of three dilemmas, each with
+two questions. The first question of each dilemma required Action, and the second
+question required Inaction. In the standard order, each set of dilemmas was posed so
+that the first question would elicit a high degree of agreement and end with one that
+would not elicit a high degree of agreement. Form 1R, the reverse, contained the
+same three dilemmas in reverse order (with Action vs Inaction always in the same
+order, with the first question requiring Action and the second requiring Inaction).
+Form 2 contained another series of three dilemmas (six questions) beginning with a
+question that would elicit a high degree of agreement and ending with one that
+would not elicit a high degree of agreement. Form 2R had the same dilemmas in re-
+verse order. Form 3 contained a series of five dilemmas (10 questions), ranging
+from high to low agreement, and in Form 3R the same five dilemmas were in re-
+verse order.
+
+Is there any framing effect due to Order? This analysis was ex-
+plored in two ways. First, we determined whether the mean approval for Action
+when a specific dilemma was the first one posed differed from mean approval rating
+for Action when that dilemma was the last one posed (the Order by Action/Inaction
+by Dilemma three-way interaction, referred to as the Order effect). Second, we com-
+pared the mean approval rating for Dilemma 2, which always appeared in the mid-
+dle position in the order, for the two versions of each form. The two versions of each
+form differed in terms of the dilemmas preceding Dilemma 2 (this effect is referred
+to as the Context effect).
+
+*** Form 1
+
+Form 1 (n = 30) started with (and Form 1R (n = 29) ended with) a standard
+switch-trolley dilemma.
+
+For both Forms, the sec-
+ond dilemma was one in which a scan could be done of the brain of a healthy indi-
+vidual to generate information to save five dying persons.
+
+Form 1
+ended with (and Form 1R began with) a dilemma in which the participants were to
+imagine that they were a surgeon. There are five people in the hospital, each of
+whom needs an organ in order to survive.
+
+The first type of framing effect (Order) was examined by analyzing the three-
+way Dilemma by Action/Inaction by Order interaction, which was not significant
+(F2,114 = 2.16; p > . 10). ParticipantS' approval of the Inaction alternative in the Dis-
+section dilemma changed little as a result of Order (3.1 for when it was the first di-
+lemma posed and 2.8 when it was the last dilemma
+
+The second type of framing effect (Context) was analyzed by comparing the re-
+sponses to the Scan dilemma when the Trolley dilemma preceded it (Form 1) with
+those when the Dissection dilemma preceded it (Form 1R). This effect, the Action/
+Inaction by Order interaction, was not significant F_1,57 = 0.37; p > .50) (see Figure 1).
+
+Thus, whereas the Dilemma manipulation resulted in significant differences in
+level of agreement or disagreement, there was no evidence of any framing effect in
+this series of questions that involved three different kinds of dilemmas: trolley, scan,
+and dissection.
+
+*** Form 2
+
+Form 2 (n = 30) began with (and Form 2R (n = 29) ended with)
+the same Trolley dilemma as Form 1 began with (and Form 1R ended with).
+
+For the first type of framing effect (Order) the three-way Dilemma by Action/
+Inaction by Order interaction was significant (F2,114 = 6.31; p < .005, partial .q2 =
+0.09).
+
+Analysis of the second type of framing effect (Context) revealed that partici-
+pants moderately approved of Action for the Push-Button dilemma when it was pre-
+ceded by the Pull-Switch dilemma (mean rating = 2.70) and marginally approved of
+Action when the Push-Button dilemma was preceded by the Push-Person dilemma
+(mean rating = 0.65). This difference was significant (F1,57 = 5 . 0 7 ; p < .02, partial
+eta^2 = 0.08)
+
+*** Form 3
+
+Analysis of this Context framing effect showed that, for the Shield question,
+the preceding dilemma was of some importance. Participants disapproved of Inac-
+tion when the Boat and Trolley dilemma preceded the Shield dilemma (mean
+rating = - 2 . 6 ) and also disapproved of Inaction when the Shark and Shoot dilem-
+mas preceded the Shield dilemma (mean rating = -2.3). However, participants ap-
+proved of action more strongly (2.6) when it was preceded by the Boat and Trolley
+dilemmas than when it was preceded by the Shoot and Shark dilemmas (1.0) (see
+Figure 3).
+
+* Petrinovich, O'Neill, Jorgenson, 1993; gender
+
+petrinovich1993.pdf
+@article{petrinovich1993empirical,
+  title={An empirical study of moral intuitions: Toward an evolutionary ethics.},
+  author={Petrinovich, Lewis and O'Neill, Patricia and Jorgensen, Matthew},
+  journal={Journal of personality and social psychology},
+  volume={64},
+  number={3},
+  pages={467},
+  year={1993},
+  publisher={American Psychological Association}
+}
+
+** Experiment
+
+For half of the participants all trolley problems were phrased in a
+killing wording: (a) "Throw the switch, which will result in the death of
+the one innocent person on the side track" and (b) "Do nothing, which
+will result in the death of the five innocent people." They were required
+to respond to both alternatives.
+For the other half of the participants the questions were phrased in a
+saving wording: (a) "Throw the switch, which will result in the five
+innocent people on the main track being saved" and (b) "Do nothing,
+which will result in the one innocent person being saved." It should be
+emphasized that the outcomes of the killing and saving forms are iden-
+tical; only the wording of the questions differ.
+
+The questionnaire was administered in the classroom to two psychol-
+ogy classes in 1990. The first was a general introductory psychology
+class that students could elect to satisfy the university lower division
+social science requirement (General class; n = 387). The second was an
+introductory psychology class required of all sophomore students ma-
+joring in biomedical science (Biomeds; n = 60) at the University of
+California, Riverside. Of an original 465 people tested only 18 did not
+complete the task, and these individuals were eliminated from
+analysis.
+
+There were 21 trolley problems, each with a choice to switch the
+trolley (Action) or to do nothing (Inaction), for a total of 43 responses (1
+problem contained a third possible alternative, sacrificing oneself).
+
+For half of the participants all trolley problems were phrased in a
+killing wording: (a) "Throw the switch, which will result in the death of
+the one innocent person on the side track" and (b) "Do nothing, which
+will result in the death of the five innocent people." They were required
+to respond to both alternatives.
+For the other half of the participants the questions were phrased in a
+saving wording: (a) "Throw the switch, which will result in the five
+innocent people on the main track being saved" and (b) "Do nothing,
+which will result in the one innocent person being saved." It should be
+emphasized that the outcomes of the killing and saving forms are iden-
+tical; only the wording of the questions differ.
+The participants chose a response on a 6-point scale: strongly agree
+(+5), moderately agree (+3), slightly agree (+1), slightly disagree (-1),
+moderately disagree (-3), or strongly disagree (-5).
+
+There were five lifeboat problems, each with a choice of two or three
+alternatives for a total of 12 responses. The basic statement of the
+problem was as follows:
+
+A ship has sunk and there are six survivors on a lifeboat. Because
+of limits of size, the lifeboat can only support five individuals, and
+you must decide what to do. Five of the six are normal adult hu-
+man beings and the sixth is a collie dog.
+One individual must be thrown over to drown. What would you
+do?
+a). Throw the dog over.
+b). Draw lots among the humans and throw the losing human over,
+c). Draw equal lots and throw the loser among all six over.
+Again, participants responded on a 6-point, agree-disagree scale,
+and the composition of the beings on the lifeboat was varied for each of
+the five lifeboat dilemma problems.
+
+Subjects were included in this
+analysis only if there were no missing data. Therefore, the mul-
+tivariate analyses were performed on 361 participants. The
+multivariate approach to a repeated measures ANOVA (O'Brien
+& Kaiser, 1985) was used to analyze the between-subjects form
+effect (kill-save)
+
+The mean response across all items was used as the depen-
+dent variable to analyze the Kill-Save form effect.
+
+F ratio for kill-save in general student population (n=359) 296.51
+F ratio for kill-save in biomed student population (n=57) 18.07
+Partial eta^2 for kill-save in general student population (n=359) .45
+Partial eta^2 for kill-save in biomed student population (n=359) .24
+
+* Lombrozo 2009; order
+
+j.1551-6709.2009.01013.x.pdf
+@article{lombrozo2009role,
+  title={The role of moral commitments in moral judgment},
+  author={Lombrozo, Tania},
+  journal={Cognitive Science},
+  volume={33},
+  number={2},
+  pages={273--286},
+  year={2009},
+  publisher={Wiley Online Library}
+}
+
+** Experiment
+
+Three hundred thirty-six participants completed the study (112 male, 224 female, mean
+age = 20 years). The majority were Berkeley undergraduates who participated for course
+credit; a minority were summer school students and volunteers recruited from the campus
+community.
+
+Trolley switch
+
+In the Judgments task, participants were presented with trolley car problems modified
+from Hauser et al. (2007). One third of participants were randomly assigned to the Switch
+condition, in which they read the following scenario and made the judgments that follow
+
+Is it morally permissible for David to switch the train to the side track?
+1 definitely 6 definitely not
+
+One third of participants were randomly assigned to the Push condition
+
+The remaining third of participants were in the Both condition, in which they read both
+the switch and push scenarios, and only after reading both were they asked to make the cor-
+responding judgments for each scenario. The scenario order in this condition was counter-
+balanced.
+
+However, permissibility judgments for the switch scenario
+in the Both condition did vary as a function of scenario order (see also Petrinovich &
+O’Neill, 1996), with subjects who saw the switch scenario first providing higher permis-
+sibility ratings than those who saw it after the push scenario [4.59 (1.11) vs. 3.80 (1.39);
+t(110) = 3.30, p < .01, r = .30]. Unlike responses on the commitments task, there were no
+significant sex differences in responses on the switch scenario [men: 4.30 (1.31), women:
+4.31 (1.38), t(222) = ).10, p = .92] nor on the push scenario [men: 2.42 (1.49), women:
+2.56 (1.38), t(222) = ).69, p = .49].
+
+As Fig. 3 illustrates, participants in the Both
+condition tended to find the switch scenario less permissible and the push scenario more
+permissible than participants in the respective between-subjects conditions.
+
+* Schwitzgebel, Cushman 2012; order; philosophers
+
+schwitzgebel&cushman_2012.pdf
+@article{schwitzgebel2012expertise,
+  title={Expertise in moral reasoning? Order effects on moral judgment in professional philosophers and non-philosophers},
+  author={Schwitzgebel, Eric and Cushman, Fiery},
+  journal={Mind \& Language},
+  volume={27},
+  number={2},
+  pages={135--153},
+  year={2012},
+  publisher={Wiley Online Library}
+}
+
+Our
+usable sample comprised 324 ‘philosophers’ (completed MA or PhD in philosophy),
+753 ‘academic non-philosophers’ (completed Master’s or PhD not in philosophy),
+and 1389 ‘non-academics’ (no Master’s or PhD in any field) tested between October
+2008 and July 2009. Among philosophers, 221 (68%) claimed an area of specializa-
+tion or competence in ethics and 91 of those also claimed a PhD (‘ethics PhDs’).
+
+The survey consisted of several demographic questions (age, gender, education
+level, etc.), then 17 hypothetical scenarios, each requiring a moral judgment, fol-
+lowed by 5 questions about general moral principles.
+
+In Questions 1–2, respondents were more likely to rate the Push and Switch scenar-
+ios equivalently when Push was presented before Switch (70% versus 54%, Z = 8.1,
+p < .001). All three participant groups showed similar effect sizes (Figure 1a), and
+for each the effect was statistically significant (Table 1).
+Questions 14–17 showed order effects similar to those in Questions 1–2.
+When Push was presented before Switch among the four scenario types, 73% of
+respondents rated the two equivalently, versus 60% when Switch was presented
+before Push (Z = 6.27, p < .001). The order effect size was smaller for philosophers
+(Table 1), but not significantly (binary logistic regression, Z = −1.3, p = .21).
+
+Considering only the first presented scenario pair, participants were more likely
+to rate the Good Luck and Bad Luck cases equivalently when a Good Luck scenario
+was presented first (68% versus 60%, Z = 3.6, p < .001). Ethics PhDs trended
+in the opposite direction (figure 1d and Table 1), but a binary logistic regression
+predicting equivalency from Good Luck-Bad Luck order and ethics PhD (versus all
+others) found no significant interaction effect (Z = 1.3, p = .21), so it is not clear
+whether the lack of a similar effect among the ethics PhDs was due to chance.
+The second Good Luck-Bad Luck scenario pair showed a marginally significant
+order effect in the opposite direction (62% versus 66%, Z = −1.9, p = .06).
+Because scenarios were counterbalanced GBBG or BGGB, the observed reverse
+equivalency effect for the second pair may have reflected order effects carrying
+over from the first pair. For example, having judged the two drunk driver cases
+equivalently (hitting the tree versus hitting the girl), participants may have been
+more likely to judge the subsequent pair of construction worker cases equivalently
+(killing a pedestrian versus not killing a pedestrian), and vice versa for judgments of
+inequivalency.
+
+We aggregated equivalency order effects across all scenarios into a single summary
+statistic for each participant, facilitating an overall comparison of the magnitude
+of equivalency order effects between participant groups (Figure 2). The dependent
+variable was the number of scenario pairs (0 to 6) that the participant rated
+as equivalent. We included all scenario pairs analyzed above, including only
+participants whose data were included in all six analyses. The predictor was a
+variable indicating the number of scenario pairs (0 to 6) the participant viewed in the
+order favoring equivalency responses. These two variables were correlated (r = .22,
+p < .001), and to a similar extent for all groups: non-academics r = .21 (p < .001),
+academic non-philosophers r = .19 (p < .001), philosophers r = .29 (p < .001;
+ethics phds, r = .35, p = .007). Indeed, philosophers trended towards showing
+larger order effects than did the reference group of academic non-philosophers in
+a general linear model (t = 1.8, p = .08), including after controlling for age and
+gender (t = 1.9, p = .07).
+
+* Tobia, Buckwalter, Stich 2013; actor/observer
+
+Moral_intuitions_Are_philosophers_expert.pdf
+@article{tobia2013moral,
+  title={Moral intuitions: Are philosophers experts?},
+  author={Tobia, Kevin and Buckwalter, Wesley and Stich, Stephen},
+  journal={Philosophical Psychology},
+  volume={26},
+  number={5},
+  pages={629--638},
+  year={2013},
+  publisher={Taylor \& Francis}
+}
+
+** Experiments
+
+We conducted two experiments to compare the moral intuitions of philosophers with
+those of non-philosophers. The non-philosophers were Rutgers University undergraduates
+surveyed in classrooms between January and June of 2011; the professional philosophers were
+surveyed at the American Philosophical Association Pacific Division Conference in April, 2011.
+In each of the two experiments, participants received either an Actor or an Observer condition of
+a moral scenario and corresponding questions about the scenario. 
+
+Jim and the natives
+
+Participants were then asked a series of ‘yes’ or ‘no’ questions about the scenario, the first of
+which was:
+Do you think that in these circumstances you are morally obligated to shoot and kill
+the one native in order to save the others?
+
+Forty undergraduates and 62 professional philosophers with a PhD in philosophy were
+presented with this moral dilemma in either the Actor (1 st person) or Observer (3 rd person)
+condition. The result was that significant framing effects were found between members of both
+groups. Among the undergraduates, 19% rated the agent’s proposed action as morally obligatory
+for themselves in the Actor condition while 53% in the Observer condition rated the action as
+morally obligatory for ‘Jim’ (Fisher’s exact test, p < 0.05, all tests two-tailed). Among the
+professional philosophers, a significant difference between conditions was also found, but it was
+in the opposite direction! In the Actor condition 36% rated the action as morally obligatory while
+only 9% rated it obligatory for ‘Jim’ in the Observer condition (Fisher’s exact test, p < 0.05).
+These results are shown in figure 1 below.
+
+Trolley switch
+
+Even if you don’t think that you have a moral obligation to throw the switch, is it
+nevertheless morally permissible for you to kill the one in order to save the five?
+What they [Nadelhoffer and Feltz (2008)] found was evidence for a bias similar to the one non-philosophers exhibited in
+response to the moral obligation question in our Jim and the Natives experiment above. In the
+Actor condition, 65% of the undergraduates answered ‘yes,’ while in the Observer condition,
+90% answered ‘yes.’
+
+Given this pattern of actor-observer bias in the judgments of non-philosophers, we were
+curious to see whether the intuitions of professional philosophers would display a framing effect
+for moral permissibility similar to the one found for moral obligation in the Jim and the Natives
+experiment. That is exactly what we found. When 49 professional philosophers were presented
+with this scenario, they displayed a significant actor-observer bias opposite to that of the
+undergraduates surveyed by Nadelhoffer and Feltz: 89% of philosophers in the Actor condition
+responded that the action was permissible, while 64% in the Observer condition answered that
+the action was permissible (Fisher’s exact test, p < 0.05). These results, along with the original
+findings from non-philosophers by Nadelhoffer and Feltz, are shown in figure 2 below.
+
+* Tobia et al 2013; cleanliness
+ssrn-id2360029.pdf
+@article{tobia2013cleanliness,
+  title={Cleanliness is next to morality, even for philosophers},
+  author={Tobia, Kevin P and Chapman, Gretchen B and Stich, Stephen},
+  journal={Journal of Consciousness Studies},
+  volume={20},
+  number={11-12},
+  year={2013}
+}
+
+** Experiment
+
+We presented 168 undergraduate students at a Rutgers University bus stop and 117
+attendees in the conference registration line at the American Philosophical Association Eastern
+Division 2011 conference with paper surveys containing eight moral purity scenarios
+
+Participants rated the action in
+each scenario on a scale from 1 (not at all wrong) to 7 (totally wrong). Participants were
+randomly assigned to receive either “actor scenarios,” depicting themselves as the acting agents
+in each scenario, or “observer scenarios,” depicting someone else as the acting agent. Crossed
+with this factor, participants were randomly assigned to “clean” surveys sprayed with Lysol or
+“control” surveys sprayed with water prior to distribution.
+
+Ratings for the eight scenarios were combined into one overall measure (Cronbach’s α =
+.805) and subjected to a 2(expertise: philosopher vs. students) × 2(agent: actor vs. observer) ×
+2(cleanliness: clean vs. control) ANOVA (Figure 1B).
+
+An agent × expertise interaction (F(1,284) = 5.58, η 2 =0.01, p = .02), was modified by a 3-
+way cleanliness × agent × expertise interaction (F(1,284) = 7.71, η 2 =0.02, p = .006). Students
+and philosophers showed divergent actor-observer effects in the control condition: students rated
+themselves more harshly than others, while the philosophers rated others more harshly than
+themselves, replicating a previous finding (Tobia et al., Forthcoming). In contrast, in the clean
+condition students and philosophers showed an actor-observer effect in the same direction; the
+cleanliness manipulation caused a reversal of the actor-observer effect for philosophers but not
+for students. Put differently, the cleanliness manipulation caused students to give higher ratings
+in both the actor and observer conditions, and caused philosophers to give higher ratings in the
+actor condition, but lower ratings in the observer condition.
+
+We next conducted separate ANOVAs for the students and philosophers. Philosophers
+showed a cleanliness × actor-observer interaction (F(1,113) = 6.15, η2=0.05, p = .01) but no
+main effects of either factor. As explained above, this interaction indicates that the philosopher
+actor/observer effect was in opposite directions in the clean and control conditions.
+
+Students did not show a condition × actor-observer interaction (F(1,164) = 1.68, η2=0.01,
+p = .20), but they did show main effects of actor-observer (F(1,164) = 15.24, η2=0.08, p < .0001)
+and of cleanliness condition (F(1,164) = 8.56, η2=0.05, p = .004). Thus, students gave higher
+ratings for the actor compared to the observer condition, and they gave higher ratings in the clean
+compared to the control condition.
+
+* Liao, Weigmann, Alexander, Vong 2012; order
+
+Putting_the_Trolley_in_Order_Experimental_Philosop.pdf
+@article{liao2012putting,
+  title={Putting the trolley in order: Experimental philosophy and the loop case},
+  author={Liao, S Matthew and Wiegmann, Alex and Alexander, Joshua and Vong, Gerard},
+  journal={Philosophical Psychology},
+  volume={25},
+  number={5},
+  pages={661--671},
+  year={2012},
+  publisher={Taylor \& Francis}
+}
+
+** Experiment
+
+145 participants were recruited via the Research Subject Volunteer Program SM
+(http://rsvp.alkami.org) and redirected to the test page (www.psycho-experimente.de) where the
+experiment was run as an online questionnaire study. The majority of the subjects were between
+18 and 30 years old (58%), and the sample had a female bias (70%). 84% listed English as their
+primary language. 31% had some background in philosophy.
+
+In a between-subjects design, each subject was randomly assigned to one of three conditions (see
+figure B). In each condition participants had to judge several scenarios consecutively (see figure
+A). In each condition the last two scenarios served as control scenarios. For the purposes of our
+experiment, the crucial comparison was between the rating of Loop in Condition 1 and Loop in
+Condition 2, i.e., the rating of Loop when preceded by Push vs. Loop when preceded by
+Standard.
+
+After each scenario
+participants were asked to indicate the degree to which they agreed or disagreed with a
+corresponding claim (see figure A) [it is morally permissible]. Responses were made on a rating scale ranging from 1
+(strongly disagree) to 6 (strongly agree).
+
+Since the ratings of “3” and “4” were labeled with “mildly disagree” and “mildly agree”,
+respectively, we used the midpoint (3.5) of the scale to interpret ratings below 3.5 as “rather
+disagree” and above 3.5 as “rather agree”.
+
+Figure B displays the mean responses for each scenario. The mean response for Loop
+when preceded by Push was 3.10 (SE = 0.23) and the mean response for Loop when preceded by
+Standard was higher, namely, 3.82 (SE = 0.25). Planned comparisons revealed that this effect
+was significant (F (1, 130) = 4.850446; p = 0.029). This confirmed our prediction that intuitive
+judgments regarding the permissibility of Loop vary significantly depending on whether Loop is
+preceded by Standard or by Push. Not only is this difference between the two test conditions
+quantitatively significant, it is qualitatively significant. The majority of participants presented
+with Loop after Push "rather disagree" with the action (29 out of 52; 56%) whereas the majority
+of participants presented with Loop after Standard "rather agree" with the action (25 out of 38;
+66%). A chi-squared test revealed that this difference was significant (χ 2(1) =4.1; p<0.05).
+
+* Weigmann, Nagel, Mangold, Okan 2012; order
+
+qt3sf3f8nn.pdf
+@article{wiegmann2012order,
+  title={Order effects in moral judgment},
+  author={Wiegmann, Alex and Okan, Yasmina and Nagel, Jonas},
+  journal={Philosophical Psychology},
+  volume={25},
+  number={6},
+  pages={813--836},
+  year={2012},
+  publisher={Taylor \& Francis}
+}
+
+Only
+judgments of actions that are normally regarded as morally
+acceptable are affected by the order of presentation.
+Additionally, this is only the case for dilemmas immediately
+preceded by a scenario where the proposed action was judged
+as morally unacceptable.
+
+** Experiment
+
+Fifty participants (35 women) were recruited using the lab
+in the psychology department at the University of
+Göttingen. They were randomly distributed to the different
+experimental conditions. The average age was 23
+(SD=2.83).
+
+We presented participants a series of five moral dilemma
+scenarios (the standard switch trolley and four
+modifications; see Table 1). Each scenario included a brief
+description of a situation and an action that could potentially
+be carried out in each case, accompanied by a diagram
+depicting the situation schematically. The initial description
+of the situational set-up was identical for all scenarios: An
+out-of-control trolley rapidly approaches three railroad
+workers who will die if Karl, the only bystander in the
+scenario, does not intervene.
+
+In order to establish a baseline of agreement with the
+action proposed in each of the five different scenarios we
+conducted a pilot study using a different sample consisting
+of 100 University of Göttingen students.
+
+After each scenario,
+participants were requested to rate, on a scale from 1 to 6,
+whether Karl should act in the proposed way or not, where 1
+was “not at all” and 6 was “absolutely”. Half of the
+participants saw the sequence of dilemmas in increasing
+order of agreeability (Least Agreeable First [LAF]
+condition, beginning with Push), whereas the other half saw
+the sequence of dilemmas in the reverse order (Most
+Agreeable First [MAF] condition, beginning with Standard).
+
+They revealed a main effect for order of
+presentation. Specifically, average ratings were significantly
+lower in LAF compared to MAF (F[ 1,48 ]=8.03; p<0.01).
+
+Crucially, the interaction between order of presentation and
+scenario was significant (F 4,192 =8,2; p<0.001), suggesting
+the presence of a strong asymmetric order effect, in line
+with our predictions.
+
+| Order condition | Push        | Trap        | Redirect    | Run over    | Standard    |
+|-----------------+-------------+-------------+-------------+-------------+-------------|
+| MAF (n=25)      | 2.16 (1.21) | 3.24 (1.69) | 3.84 (1.52) | 3.84 (1.57) | 4.08 (1.53) |
+| LAF (n=25)      | 2.16 (1.31) | 2.12 (1.33) | 2.52 (1.42) | 2.52 (1.36) | 2.68 (1.41) |
+| MAF (n=25)      | 76          | 52          | 40          | 32          | 32          |
+| LAF (n=25)      | 80          | 80          | 72          | 72          | 68          |
+
+* Nichols, Zamzow 2009; order, gender
+
+Zamzow and Nichols- Variations in ethical intuitions.pdf
+@article{zamzow2009variations,
+  title={Variations in ethical intuitions},
+  author={Zamzow, Jennifer L and Nichols, Shaun},
+  journal={Philosophical Issues},
+  volume={19},
+  number={1},
+  pages={368--388},
+  year={2009},
+  publisher={Blackwell Publishing Inc Malden, USA}
+}
+
+In order to test for judgments that were more
+clearly moral judgments, we developed a study that asked participants to
+respond to statements about whether an action was morally acceptable or
+the right thing to do.
+
+We found that female participants judged that killing a child to save the
+five was less morally acceptable than did males.
+
+Males judged that killing a stranger to save the five was less morally acceptable (M =
+4.21, SD = 1.93) than did females (M = 4.95 SD = 1.07), and females judged
+that killing a child to save the five was less morally acceptable (M = 4.26, SD =
+1.79) than did males (M = 4.87, SD = 1.71).
+
+
+Subjects who got the bystander case
+first tended to agree with the claim that the morally right thing to do is not hit
+the switch, whereas only a small proportion of those who got bystander last
+agreed with the claim.
+
+This trend wasn’t quite significant (χ 2 (1, N = 17) = 2.837, p = .09, two-tailed),
+but this isn’t surprising given how few subjects we had (8 in one condition; 9 in
+the other). Interestingly, while we found judgments of the bystander case seem to
+be impacted by order of presentation, our results trend in the opposite direction
+of Petrinovich and O’Neill. They found that people were more likely to not pull
+the switch when the bystander case was presented last. This asymmetry might
+reflect the difference in questions asked—“what is the right thing to do?” versus
+“what would you do?”
+
+* Wright 2013; order; stability and confidence
+
+wright2013.pdf
+@article{wright2013tracking,
+  title={Tracking instability in our philosophical judgments: Is it intuitive?},
+  author={Wright, Jennifer},
+  journal={Philosophical Psychology},
+  volume={26},
+  number={4},
+  pages={485--501},
+  year={2013},
+  publisher={Taylor \& Francis}
+}
+
+** Study 1
+
+215 undergraduate college students (159 females; dominantly Caucasian) from the
+College of Charleston participated in this study.
+
+Seven participants were eliminated from the study due to
+incomplete surveys and all analyses were conducted with the remaining 208
+participants.
+
+Clear yes (Break-Promise): Stan promises his grandfather that he will give him a
+ride to a free clinic at the hospital for his annual check-up at 12pm on Wednesday.
+Wednesday at 11:45am, on his way to his grandfather’s house, Stan gets a call from
+his friend, who is on his way to a baseball game. He has an extra ticket, and invites
+Stan to join him. Stan decides to go with his friend to the game, even though he
+knows that doing so means that he will be breaking his promise to take his
+grandfather to the free clinic for his annual check-up.
+
+Clear no (Hide-Neighbors): Hilda hides her Jewish neighbors in her basement
+during the Nazi occupation of France. A German soldier comes to her door one
+afternoon and asks her if she knows where her neighbors have gone. Hilda lies to
+the soldier, telling them no, she hasn’t seen them recently, but she believes that they
+fled the country.
+
+to which they could answer ‘‘yes’’ or ‘‘no.’’
+After each case, participants were then asked how confident they were in their
+answer (1 1⁄4 Not at all confident, to 7 1⁄4 Very confident) and how strongly they
+believed their answer (1 1⁄4 Not at all strongly, to 7 1⁄4 Very strongly). 5
+
+While every participant received all four cases, they did so under one of four
+different conditions which varied along two dimensions: (1) whether they received
+the clear ‘‘yes’’ or clear ‘‘no’’ cases first; and (2) whether they were given consistent or
+inconsistent expert opinions about the cases.
+
+In addition,
+participants judged Hilda’s action in Hide-Neighbors as not wrong more frequently
+when given a consistent expert opinion (98%) than when given an inconsistent
+expert opinion (90%), X 2 (1, N = 208) = 6.3, p = 0.012. They did not, however, judge
+Stan’s action in Break-Promise as wrong more frequently when given a consistent
+expert opinion (95%) than when given an inconsistent expert opinion (91%),
+X 2 (1, N = 208) = 1.6, p = 0.21, though the trend was moving in the right direction
+(i.e., more participants judging Stan’s action as wrong following consistent than
+inconsistent expert opinion; Figure 1).
+
+It is interesting to note that participants’ confidence was lower in both
+experimental conditions, whether they received the consistent or inconsistent
+expert opinion information. In fact, there was no significant difference between the
+confidence/belief strength reported between the consistent and inconsistent condi-
+tions, ts(206–216) 1⁄4 0.084–1.63, ns. This suggests that while the introduction of
+consistent versus inconsistent expert opinions generated instability in participants’492
+judgments (participants gave the dominant answer more frequently in the no
+information and consistent conditions than in the inconsistent condition), it was the
+induction of instability itself—via the introduction of external information that
+influenced their judgments—that resulted in a reduction in participants’ confidence
+and belief strength. Whether this information supported or undermined their initial
+intuitions did not matter.
+
+(?)
+
+** Study 2
+
+109 undergraduate college students (83 females; dominantly Caucasian) from the
+College of Charleston participated in this study.
+
+This time participants were presented with two different sets of cases; six cases in
+total. One set involved three cases in epistemology and the other, three ethical cases.
+As in study 1, four of the six cases were ‘‘clear’’ cases (i.e., cases that had been
+previously shown to elicit stable ‘‘yes’’ or ‘‘no’’ judgments), while the other two cases
+were ‘‘unclear’’ cases (i.e., cases that had been previously shown to be vulnerable to
+the order effect; Swain, et al., 2008; Wright, 2010).
+
+Clear yes (Sell-iPod)
+Clear no (Break-Promise)
+Unclear (Hide-Bombers)
+
+The three epistemological
+cases always preceded the three ethical cases and the unclear cases were always
+preceded by a clear case, but whether that case was a clear ‘‘yes’’ or ‘‘no’’ case was
+counterbalanced (condition 1: Epistemology Yes-Unclear-No/Ethics Yes-Unclear-
+No; condition 2: Epistemology No-Unclear-Yes/Ethics No-Unclear-Yes). Each
+version presented participants with a case and then provided them with expert
+opinion about the case. The expert opinion was always in agreement and consistent
+with the clear ‘‘yes’’ and ‘‘no’’ cases.
+
+to which they could answer ‘‘yes’’ or ‘‘no.’’
+After each case, participants were then asked how confident they were in their
+answer (1 = Not at all confident, to 7 = Very confident) and how strongly they
+believed their answer (1 = Not at all strongly, to 7 = Very strongly).
+
+In Hide-Bombers, participants judged Hilda’s action to be wrong more
+frequently when the expert opinion was a dominant ‘‘yes’’ (50%) than when it was
+dominant ‘‘no’’ (18%), X 2 (1, X 1⁄4 109) 1⁄4 11.7, p 5 0.001 (Figure 2).
+
+In addition, in Hide-Bombers there was no difference in either
+confidence or belief strength between participants whose judgments were consistent
+and those whose were inconsistent with the dominant expert opinion, whether they
+were affirmative or negative, ts(47–58) = 0.56–1.3, ns. So, while there was a difference
+between the attitudinal states reported by participants whose judgments were
+consistent with the presented expert opinion and those whose judgments were
+inconsistent with the presented expert opinion, it was limited to one attitudinal state
+for one of the unclear cases, so this clearly cannot fully account for the reduction in
+confidence and belief strength found in the unclear cases.
+
+* Wright 2010; order stability
+
+Cog Publication 2010.pdf
+
+@article{wright2010intuitional,
+  title={On intuitional stability: The clear, the strong, and the paradigmatic},
+  author={Wright, Jennifer Cole},
+  journal={Cognition},
+  volume={115},
+  number={3},
+  pages={491--503},
+  year={2010},
+  publisher={Elsevier}
+}
+
+** Study 2
+
+One hundred and eighty-one undergraduate college
+students (33 males, 148 females; dominantly Caucasian)
+from the College of Charleston participated in this study.
+
+It was anticipated that six of these cases
+(Perception, Coin-Flip, Testimony, Guess, Break-Promise, and
+Sell-iPod) would elicit stable judgments and the other three
+would elicit unstable judgments.
+
+After
+reading an ethics case, they were asked whether the action
+performed in the case was morally wrong, to which they
+answered YES or NO. Once again, participants were asked
+to rate on a Likert scale (this time, a 7-point scale in order
+to provide a neutral midpoint) how confident they were
+about their answer (1 = not very confident to 7 = very con-
+fident). Participants were also asked to rate on a 7-point
+Likert scale how strongly they believed their answer
+(1 = not very strongly to 7 = very strongly). Finally, partici-
+pants were asked a perceived consensus question: If 100
+other College of Charleston students were asked the same
+question, how many do you think would give the same an-
+swer you did? (1 = none of them to 7 = all 100 of them).
+The order of these questions was counterbalanced between
+participants.
+
+Participants
+also dominantly judged the action to be morally wrong in
+Sell-iPod (100%) and not wrong in Break-Promise (0–3%),
+regardless of order.
+
+Likewise, when reading Hide-Bombers, partici-
+pants were marginally more likely to say that what Hilda
+did was morally wrong immediately after reading Sell-iPod
+(55%) than after reading Break-Promise (32%), X^2 (1,
+N = 60) = 3.2, p = .073 (Fig. 6).
+
+Finally, for Set 3, belief strength was once again a strong
+predictor of stable vs. unstable cases, X 2 (2, N = 176) = 73.8,
+p < .001. For every 1 unit increase in participants’ belief
+strength, the odds of the case being Sell-iPod (over Hide-
+Bombers) increased by 903%, X 2 (1) = 21.0, p < .001, and
+the odds of the case being Break-Promise (over Hide-Bomb-
+ers) increased by 411%, X 2 (1) = 21.3, p < .001. Belief
+strength was not predictive between Sell-iPod and Break
+Promise, X 2 (1) = 2.5, p = .110. As participants’ belief
+strength increased, the probability that they were consid-
+ering Hide-Bombers decreased, from almost 100% at a belief
+strength of ‘1’ to around 10% at ‘7’, while the probability of
+the case being either Sell-iPod or Break-Promise increased
+from almost 0% at ‘1’ to around 45% at ‘7’. The case proba-
+bilities merged and became approximately equal around
+‘6’
+
+A.2.3. Set 3: ethical vignettes
+
+CLEAR NO (Break-Promise): Fred promises his girlfriend
+that he will meet her for lunch at 12 pm on Wednesday at
+their favorite café. Wednesday at 11:45 am, on his way to
+the café, Fred runs into his grandfather, who is out for a
+stroll. They exchange hellos, and then suddenly Fred’s
+grandfather clutches his chest and falls to the ground
+unconscious. An ambulance arrives minutes later to take
+Fred’s grandfather to the hospital. Fred accompanies his
+grandfather to the hospital, even though he knows that
+doing so means that he will be breaking his promise to
+have lunch with his girlfriend.
+
+CLEAR YES (Sell-iPod): Laura and Suzy are roommates.
+Laura asks Suzy if she has seen her new iPod, which she
+had worked an extra job over the summer to be able to af-
+ford. Suzy did recently see it under a pile of papers on the
+bookshelf. But Suzy lies to Laura, telling her that she hasn’t
+seen it. She thinks that if Laura doesn’t find it on her own in
+a day or two, she can take it down to the pawn shop and
+get $100 for it, which would provide her with beer money
+for the week.
+
+UNCLEAR (Hide-Bombers): Martha hides her Jewish
+neighbors in her basement during the Nazi occupation of
+France. A German soldier comes to her door one afternoon
+and asks her if she knows where her neighbors have gone.
+Martha knows that her neighbors are wanted by the Ger-
+mans for bombing a German-only schoolyard and killing
+several children, injuring others. Martha lies to the soldier,
+telling them no, she hasn’t seen them recently, but she be-
+lieves that they fled the country.
+
+* Feltz and Cokely, 2008; personality
+
+The_fragmented_folk_More_evidence_of_stable_indivi.pdf
+@inproceedings{feltz2008fragmented,
+  title={The fragmented folk: More evidence of stable individual differences in moral judgments and folk intuitions},
+  author={Feltz, Adam and Cokely, Edward T},
+  booktitle={Proceedings of the 30th annual conference of the Cognitive Science Society},
+  pages={1771--1776},
+  year={2008},
+  organization={Cognitive Science Society Austin, TX}
+}
+
+** Experiment 2
+
+Harmful chicken: John and Fred are members of different
+cultures. They are in an argument about a newspaper article
+describing a man, Barney, who bought a frozen chicken,
+took it home, defrosted it, had sex with it, and then ate it.
+The article notes that doctors interviewed said there was
+nothing medically dangerous about having sex with and
+then eating the chicken (for example, salmonella is not
+transmitted via sex and the chicken was very well cooked).
+
+Participants were 162 volunteers from lower level
+philosophy classes. Participants were given three questions.
+First, they were asked if one of the disputants is right or
+there is no fact of the matter. They were also asked if the
+action was harmful. Finally, they were asked if the action
+was wrong.
+As predicted, we found that extraversion was related to
+harm judgments r (145) =.24, p = .003, supporting our first
+hypothesis. We also found that those who were higher in
+extraversion thought the action was wrong r (146) =.23, p
+= .005, supporting our second hypothesis. Finally, the vast
+majority (75%, N = 123) of participants expressed non-
+objectivist intuitions about the dispute between John and
+Fred, providing considerable evidence for our third
+hypothesis. Hence, we have shown that we can manipulate
+moral intuitions by altering the nature of the moral violation,
+demonstrating that intuitions are systematically related to
+individual social sensitivities predicted by extraversion.
+
+As predicted, we found that extraversion was related to
+harm judgments r (145) =.24, p = .003, supporting our first
+hypothesis. We also found that those who were higher in
+extraversion thought the action was wrong r (146) =.23, p
+= .005, supporting our second hypothesis.
+
+* Adleberg, Thompson, Nahmias 2014; gender
+ADLDMA.2.pdf
+@article{adleberg2015men,
+  title={Do men and women have different philosophical intuitions? Further data},
+  author={Adleberg, Toni and Thompson, Morgan and Nahmias, Eddy},
+  journal={Philosophical Psychology},
+  volume={28},
+  number={5},
+  pages={615--641},
+  year={2015},
+  publisher={Taylor \& Francis}
+}
+
+** Experiments
+
+Participants were undergraduate students
+enrolled in a critical thinking course at Georgia State University over the summer term
+in 2012, who received extra credit for completing a survey online through QuestionPro.
+One group (n 1⁄4 136; female 1⁄4 84 and male 1⁄4 52) was presented with the following
+seven scenarios in this order: Compatibilism; Twin Earth; Violinist; Gettier case;
+Positive Normal; Negative Deviant; and Trolley (switch). The second group (n 1⁄4 158;
+female 1⁄4 87 and male 1⁄4 71) was presented with the following seven scenarios in this
+order: Chinese Room; Plank of Carneades; Magistrate and the Mob; Brain in a Vat;
+Positive Deviant; Negative Normal; and Dualism.
+
+** Violinist
+
+pulling the plug is
+1 forbidden to 4 permissible to 7 obligatory
+
+For women, M = 3.99, SD = 1.27, and for men, M = 4.01, SD = 1.37, t(134) = -0.39, p = 0.70.
+
+** Magistrate and the mob
+
+Not framing little brother is
+1 = bad, 3 = in between, 5 = good
+
+For women, M = 4.13, SD = 1.26 and for men, M = 4.18, SD = .123, t(156) = -0.28, p=0.78.
+
+** Trolley
+
+Morally acceptable to pull the switch
+strongly disagree (1) to strongly agree (7)
+women: M = 5.97 SD = 1.60
+men: M = 5.67, SD = 1.93
+t(134) = 0.26, p=0.34
+
+Would you pull the switch?
+73.8% of women and 71.2% of men answered yes
+
+* Nadelhoffer and Feltz 2008; actor/observer
+
+NadelhofferandFeltzonAOAssymetry.pdf
+@article{nadelhoffer2008actor,
+  title={The actor--observer bias and moral intuitions: adding fuel to Sinnott-Armstrong’s fire},
+  author={Nadelhoffer, Thomas and Feltz, Adam},
+  journal={Neuroethics},
+  volume={1},
+  number={2},
+  pages={133--144},
+  year={2008},
+  publisher={Springer}
+}
+
+** Experiment
+
+Participants were 85 undergraduate volunteers at
+Florida State University from an introductory philos-
+ophy course. Participants were tested as one group.
+
+We used a between-subjects design where one group
+(N=43) received the actor condition and a different
+group (N=42) received the observer condition.
+
+Trolley switch
+
+Participants in the actor condition were then asked
+the following questions:
+1. Even if you don’t think you have a moral
+obligation to throw the switch, is it nevertheless
+morally permissible for you to kill the one in
+order to save the five? Yes No
+
+Sixty-five percent of the participants in the actor
+condition judged that it was morally permissible for
+them to hit the switch, 90% of the participants in
+the observer condition judged that it was morally
+permissible for John to hit the switch. 14 This
+statistically significant difference suggests that 25%
+of the participants’ intuitions were affected by the
+actor–observer difference. 
+
+* Lanteri, Chelini, Rizzelo 2008; order
+
+ 25482413.pdf
+@article{lanteri2008experimental,
+  title={An experimental investigation of emotions and reasoning in the trolley problem},
+  author={Lanteri, Alessandro and Chelini, Chiara and Rizzello, Salvatore},
+  journal={Journal of Business Ethics},
+  volume={83},
+  number={4},
+  pages={789--804},
+  year={2008},
+  publisher={Springer}
+}
+** Experiment
+
+62 undergrads
+roughly half in each treatment
+between subjects
+standard treatment: lever-pulling scenario first followed by overweight stranger
+reversed treatment
+at the end of scenario, answer yes or no questions
+standard treatment, lever: 34% think morally obligatory, 94% think morally acceptable 
+reverse treatment, lever: 11%, 78%
+standard treatment, push: 3% think obligatory, 46% think acceptable
+reversed treatment, push: 7% think obligatory, 48% think acceptable
+
+* Landy and Goodwin 2015; disgust
+
+TODO
