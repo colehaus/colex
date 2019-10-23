@@ -142,6 +142,7 @@ solidarity or hierarchy were decreased.
   :LOGBOOK:
   - State "DONE"       from              [2019-09-27 Fri 12:42]
   :END:
+
 Lecture11_WheatleyHaidt2005_DisgustMoralJudgments.pdf
 @article{wheatley2005hypnotic,
   title={Hypnotic disgust makes moral judgments more severe},
@@ -273,8 +274,10 @@ Dan's action and did not increase disapproval of university tu-
 ition rates (the non-transgression-related rating), t(61) = 1.53,
 n.s., r = .19.
 
-* TODO Schnall 2008; disgust; gender
+* DONE Schnall 2008; disgust; gender
+  CLOSED: [2019-10-21 Mon 16:15]
   :LOGBOOK:
+  - State "DONE"       from "TODO"       [2019-10-21 Mon 16:15]
   - State "TODO"       from              [2019-09-27 Fri 12:42]
   :END:
 
@@ -612,8 +615,10 @@ framework and the magnitude of the effect across conditions, we
 presume that the hand washing reduced feelings of disgust,
 which in turn reduced the severity of the moral judgments.
 
-* TODO Johnson et al 2014; cleanliness; replication
+* DONE Johnson et al 2014; cleanliness; replication
+  CLOSED: [2019-10-20 Sun 20:47]
   :LOGBOOK:
+  - State "DONE"       from "TODO"       [2019-10-20 Sun 20:47]
   - State "TODO"       from              [2019-09-27 Fri 12:58]
   :END:
 1864-9335_a000186.pdf
@@ -690,7 +695,11 @@ including the ‘‘trolley’’ and ‘‘wallet’’ dilemmas (d = 0.08,
 tively), both vignettes that were statistically significant in
 the original experiment.
 
-* Johnson et al 2016; disgust; replication
+* DONE Johnson et al 2016; disgust; replication
+  CLOSED: [2019-10-20 Sun 21:02]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-20 Sun 21:02]
+  :END:
 
 a307d5247d19f7153b903e6335ed2fe2649e.pdf
 @article{johnson2016effects,
@@ -784,7 +793,12 @@ severely (M = 7.08, SD = 1.27) than those in the control con-
 dition (M = 7.02, SD = 1.28), F(1, 926) = 0.48, p = .48,
 d = 0.05, 95% CI [-.08, .18], BF_01 = 25.0.
 
-* Huang 2014; disgust; replication
+* DONE Huang 2014; disgust; replication
+  CLOSED: [2019-10-21 Mon 16:24]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-21 Mon 16:24]
+  :END:
+
 fpsyg-05-01276.pdf
 @article{huang2014does,
   title={Does cleanliness influence moral judgments? Response effort moderates the effect of cleanliness priming on moral judgments},
@@ -803,10 +817,6 @@ pleted the current survey as a task on Mturk in exchange for
 $0.50 compensation. Of these, 214 participants (n cleanliness = 111,
 n neutral = 103; mean age = 35 years; 55% female; 72% white) were
 retained in the analysis
-
-Participants performed a 40-item sentence unscram-
-bling task, evaluated six moral judgment vignettes, and rated
-their emotional states.
 
 Participants performed a 40-item sentence unscram-
 bling task, evaluated six moral judgment vignettes, and rated
@@ -852,7 +862,11 @@ p = 0.68, d = −0.04. Similar to Study 1, the overall
 result from Study 2 would suggest that the cleanliness prim-
 ing did not have the hypothesized impact on moral judgment.
 
-* Seyedsayomdost 2015; gender; replication
+* DONE Seyedsayomdost 2015; gender; replication
+  CLOSED: [2019-10-21 Mon 16:34]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-21 Mon 16:34]
+  :END:
 
 SEYOGA-2.1.pdf
 @article{seyedsayamdost2015gender,
@@ -888,7 +902,11 @@ Similarly with the SurveyMonkey data, our sample showed no significant differenc
 = 98 (Male = 48, Female = 50). Male: Mean = 5.85, SD = 1.46. Female: Mean = 5.62,
 SD = 1.71. Independent Samples t-test: t(96) = 0.727, p = 0.469. 
 
-* Zhong et al 2010; cleanliness
+* DONE Zhong et al 2010; cleanliness
+  CLOSED: [2019-10-21 Mon 18:36]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-21 Mon 18:36]
+  :END:
 
 Smell of Virtue Psych Sci.pdf
 @article{liljenquist2010smell,
@@ -939,7 +957,11 @@ proportion of participants in the clean-scented rooms indicated a willingness to
 | Clean scent | $5.33 (2.01)   | 4.21 (1.86)           |                   22% |
 | Baseline    | $2.81 (2.81)   | 3.29 (2.04)           |                    6% |
 
-* Zhong et al 2010; cleanliness
+* DONE Zhong et al 2010; cleanliness
+  CLOSED: [2019-10-21 Mon 19:06]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-21 Mon 19:06]
+  :END:
 
 zhong2010.pdf
 @article{zhong2010clean,
@@ -1030,7 +1052,11 @@ harsher moral judgment on the 16 issues or activities (M = 2.04,
 SD = 1.28) than dirtiness primed participants (M = 1.59,
 SD = 1.16), t(134) = 2.13, p = .04.
 
-* Valdesolo desteno 2006; disgust/affect; comedy
+* DONE Valdesolo desteno 2006; affect; comedy
+  CLOSED: [2019-10-21 Mon 16:35]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-21 Mon 16:35]
+  :END:
 valdesolo2006.pdf
 @article{valdesolo2006manipulations,
   title={Manipulations of emotional context shape moral judgment},
@@ -1074,7 +1100,11 @@ lemma by a factor of 3.8, w 2 (1, N 5 79) 5 3.90, p rep 5 .89, thereby
 confirming our central prediction (see Table 1). As expected,
 affect did not influence responses to the trolley dilemma.
 
-* Petrinovich, O'Neill 1996; order, wording
+* DONE Petrinovich, O'Neill 1996; order, wording
+  CLOSED: [2019-10-20 Sun 19:57]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-20 Sun 19:57]
+  :END:
 
 petrinovich1996.pdf
 @article{petrinovich1996influence,
@@ -1191,7 +1221,11 @@ proved of action more strongly (2.6) when it was preceded by the Boat and Trolle
 dilemmas than when it was preceded by the Shoot and Shark dilemmas (1.0) (see
 Figure 3).
 
-* Petrinovich, O'Neill, Jorgenson, 1993; gender
+* DONE Petrinovich, O'Neill, Jorgenson, 1993; wording
+  CLOSED: [2019-10-20 Sun 19:57]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-20 Sun 19:57]
+  :END:
 
 petrinovich1993.pdf
 @article{petrinovich1993empirical,
@@ -1397,7 +1431,11 @@ larger order effects than did the reference group of academic non-philosophers i
 a general linear model (t = 1.8, p = .08), including after controlling for age and
 gender (t = 1.9, p = .07).
 
-* Tobia, Buckwalter, Stich 2013; actor/observer
+* DONE Tobia, Buckwalter, Stich 2013; actor/observer
+  CLOSED: [2019-10-21 Mon 16:56]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-21 Mon 16:56]
+  :END:
 
 Moral_intuitions_Are_philosophers_expert.pdf
 @article{tobia2013moral,
@@ -1457,8 +1495,13 @@ responded that the action was permissible, while 64% in the Observer condition a
 the action was permissible (Fisher’s exact test, p < 0.05). These results, along with the original
 findings from non-philosophers by Nadelhoffer and Feltz, are shown in figure 2 below.
 
-* Tobia et al 2013; cleanliness
-ssrn-id2360029.pdf
+* DONE Tobia et al 2013; cleanliness
+  CLOSED: [2019-10-21 Mon 19:24]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-21 Mon 19:24]
+  :END:
+
+SSRN-id2360029.pdf
 @article{tobia2013cleanliness,
   title={Cleanliness is next to morality, even for philosophers},
   author={Tobia, Kevin P and Chapman, Gretchen B and Stich, Stephen},
@@ -1890,7 +1933,11 @@ several children, injuring others. Martha lies to the soldier,
 telling them no, she hasn’t seen them recently, but she be-
 lieves that they fled the country.
 
-* Feltz and Cokely, 2008; personality
+* DONE Feltz and Cokely, 2008; personality
+  CLOSED: [2019-10-21 Mon 17:01]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-21 Mon 17:01]
+  :END:
 
 The_fragmented_folk_More_evidence_of_stable_indivi.pdf
 @inproceedings{feltz2008fragmented,
@@ -1938,7 +1985,12 @@ hypothesis. We also found that those who were higher in
 extraversion thought the action was wrong r (146) =.23, p
 = .005, supporting our second hypothesis.
 
-* Adleberg, Thompson, Nahmias 2014; gender
+* DONE Adleberg, Thompson, Nahmias 2014; gender
+  CLOSED: [2019-10-21 Mon 16:42]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-21 Mon 16:42]
+  :END:
+
 ADLDMA.2.pdf
 @article{adleberg2015men,
   title={Do men and women have different philosophical intuitions? Further data},
@@ -1988,7 +2040,11 @@ t(134) = 0.26, p=0.34
 Would you pull the switch?
 73.8% of women and 71.2% of men answered yes
 
-* Nadelhoffer and Feltz 2008; actor/observer
+* DONE Nadelhoffer and Feltz 2008; actor/observer
+  CLOSED: [2019-10-21 Mon 16:46]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-21 Mon 16:46]
+  :END:
 
 NadelhofferandFeltzonAOAssymetry.pdf
 @article{nadelhoffer2008actor,
@@ -2055,6 +2111,9 @@ standard treatment, lever: 34% think morally obligatory, 94% think morally accep
 reverse treatment, lever: 11%, 78%
 standard treatment, push: 3% think obligatory, 46% think acceptable
 reversed treatment, push: 7% think obligatory, 48% think acceptable
+
+
+* Chapman & anderson 2013; disgust
 
 * Landy and Goodwin 2015; disgust
 

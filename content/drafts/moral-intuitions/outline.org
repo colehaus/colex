@@ -4,7 +4,11 @@ This review has it all! Hynosis, incest, dubious statistical practices!
 
 PICOS, PRISMA
 
-* Inclusion criteria
+* DONE Inclusion criteria
+  CLOSED: [2019-10-07 Mon 13:27]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-07 Mon 13:27]
+  :END:
 
 Not moral motivation, blameworthiness, responsibility, intentionality, objectivity, virtue
 
@@ -132,9 +136,17 @@ p­ractice of appeal to intuitions” (Weinberg et al. 2012, 257; see also Alexa
 p­hilosophers [and others] who deal in intuitions can no longer rest comfortably in their
 a­rmchairs” (Swain, Alexander, and Weinberg 2008, 1).
 
-* Indirect evidence
+* DONE Indirect evidence
+  CLOSED: [2019-10-16 Wed 17:00]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-16 Wed 17:00]
+  :END:
 
-** Moral intuitions as heuristics
+** DONE Moral intuitions as heuristics
+   CLOSED: [2019-10-14 Mon 17:36]
+   :LOGBOOK:
+   - State "DONE"       from              [2019-10-14 Mon 17:36]
+   :END:
 
 I propose three hypotheses. First, moral intuitions as described in the social
 intuitionist theory (e.g., Haidt, 2001) can be explicated in terms of fast and
@@ -172,9 +184,11 @@ All the affect heuristic says is, roughly: if thinking about the act (whatever
 the act might be) makes you feel bad in a certain way, then judge that it
 is morally wrong.
 
-** Evolution
-
-Morality as Cooperation: A Problem-Centred Approach
+** DONE Evolution
+   CLOSED: [2019-10-15 Tue 13:38]
+   :LOGBOOK:
+   - State "DONE"       from              [2019-10-15 Tue 13:38]
+   :END:
 
 Plomin's behavioral genetics
 
@@ -418,7 +432,11 @@ on the moral/conventional distinction. Although this research remains widely
 accepted in much of psychology, a growing body of evidence has highlighted
 its shortcomings.
 
-*** Linguistic analogy
+*** DONE Linguistic analogy
+    CLOSED: [2019-10-14 Mon 20:46]
+    :LOGBOOK:
+    - State "DONE"       from              [2019-10-14 Mon 20:46]
+    :END:
 
 The fi rst model, which I call the “Simple Innateness Model,” pro-
 poses that humans possess an innate body of moral rules and principles.
@@ -464,7 +482,14 @@ the term, an “innate bias” on the contents of moral norms is some element
 of innate structure that serves to make the presence of some moral norms
 in the Norms Box more likely relative to the case in which the bias is absent.
 
-** Cultural
+
+** DONE Cultural
+   CLOSED: [2019-10-16 Wed 17:00]
+   :LOGBOOK:
+   - State "DONE"       from              [2019-10-16 Wed 17:00]
+   :END:
+
+Morality as Cooperation: A Problem-Centred Approach
 
 Underlying most forms of human interaction is the norm of conditional coopera-
 tion (Brandts and Schram 2001; Fehr and Fischbacher 2004a, b; Fischbacher et al.
@@ -484,7 +509,11 @@ in splitting them equally. By contrast, in a few small-scale societies, such
 as the Machiguengas of the Peruvian Amazon, people seem to expect the
 beneficiaries of windfall gains to keep the gain for themselves.
 
-** Neural
+** DONE Neural
+   CLOSED: [2019-10-14 Mon 18:16]
+   :LOGBOOK:
+   - State "DONE"       from              [2019-10-14 Mon 18:16]
+   :END:
 
 Random utility models
 
@@ -537,7 +566,11 @@ ferent parts of the brain by detecting changes in blood flow.) Participants coul
 accept more money in exchange for the other person receiving less, or vice
 versa, with the amounts varying from trial to trial.
 
-*** Dual process
+** DONE Dual process
+   CLOSED: [2019-10-14 Mon 20:14]
+   :LOGBOOK:
+   - State "DONE"       from              [2019-10-14 Mon 20:14]
+   :END:
 
 Elsewhere I have argued that a better understanding of moral psychology favors utilitari-
 anism/consequentialism in precisely this way (Greene 2013). My claim is not that one can derive
@@ -582,11 +615,22 @@ Intuitionists and constructivists agree that moral intuitions must be
 taken into account in the search for moral knowledge, though for diff er-
 ent reasons.
 
-** Non-moral decisions
+** DONE Non-moral decisions
+   CLOSED: [2019-10-14 Mon 17:02]
+   :LOGBOOK:
+   - State "DONE"       from              [2019-10-14 Mon 17:02]
+   :END:
+** DONE Moral disagreement
+   CLOSED: [2019-10-15 Tue 12:21]
+   :LOGBOOK:
+   - State "DONE"       from              [2019-10-15 Tue 12:21]
+   :END:
 
-** Moral disagreement
-
-* Direct evidence
+* DONE Direct evidence
+  CLOSED: [2019-10-14 Mon 16:10]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-14 Mon 16:10]
+  :END:
 
 Most of the work that tries to identify such errors can be divided into four
 categories: studies of demographic differences; order effects; framing effects; and
@@ -1131,7 +1175,11 @@ the other scenarios used in the study.
 
 * Responses
 
-** Meta
+** DONE Meta
+   CLOSED: [2019-10-16 Wed 22:48]
+   :LOGBOOK:
+   - State "DONE"       from              [2019-10-16 Wed 22:48]
+   :END:
 
 In answering general-information questions, a within-person confidence–accuracy (C-A) correlation is
 typically observed, suggesting that people can monitor the correctness of their knowledge. However,
@@ -1162,7 +1210,18 @@ fact that confidence provides some information about the representativeness
 of one’s intuitions, but confidence cannot be taken to be a direct indicator
 (independent of consensus) that one’s intuitions are correct.
 
-** Enough stability
+** DONE Enough stability
+   CLOSED: [2019-10-16 Wed 22:48]
+   :LOGBOOK:
+   - State "DONE"       from              [2019-10-16 Wed 22:48]
+   :END:
+
+But, herein lies the rub (as they say), because important philosophical work often goes on “at
+the margins,” involving complex concoctions of thought experiments that push beyond of our
+conceptual and experiential comfort zones. 15 This observation not only renders paradigmatic
+cases – and the clear/strong intuitions they generate – philosophically uninteresting, but it leaves
+the philosopher with cold comfort, because it is precisely were instability is most likely to lurk that
+she may need to rely the most heavily on her intuitions.
 
 However, nowhere in his discussion of the framing studies
 does he actually provide evidence concerning the size of the probability that moral intuitions
@@ -1220,7 +1279,11 @@ Given one framing, one’s intuition might be fairly firm; given another, it mig
 committal. This is no trivial difference given the way that intuitive judgments factor into moral
 theorizing.
 
-** Intuitions vs judgment
+** DONE Intuitions vs judgment
+   CLOSED: [2019-10-16 Wed 19:13]
+   :LOGBOOK:
+   - State "DONE"       from              [2019-10-16 Wed 19:13]
+   :END:
 
 The aim of this paper is to pose a constructive, evenhanded challenge
 to such experimental attacks on intuitions. It is a challenge because it
@@ -1251,8 +1314,6 @@ of the dilemma, not what is morally permissible or morally right. And of
 course judgments of what you would do in a situation can come apart
 from your moral judgments.
 
-** Reflection
-
 First, not many philosophers think that the
 intuitions we rely on in arriving at moral knowledge are just unfi ltered, imme-
 diate gut reactions to situations. Instead, they tend to think that the intuitions
@@ -1260,9 +1321,17 @@ we should rely on are “considered judgments.” 5 Th at is, they are the judg-
 ments we make about situations after some refl ection on what’s relevant and
 what is not relevant.
 
-** Gigerenzer
+** DONE Gigerenzer
+   CLOSED: [2019-10-16 Wed 22:01]
+   :LOGBOOK:
+   - State "DONE"       from              [2019-10-16 Wed 22:01]
+   :END:
 
-** Expertise
+** DONE Expertise
+   CLOSED: [2019-10-19 Sat 20:43]
+   :LOGBOOK:
+   - State "DONE"       from              [2019-10-19 Sat 20:43]
+   :END:
 
 Shanteau (1992) surveys a vast swath of the literature on
 the development of expertise, and finds tremendous diversity in the development of
@@ -1664,7 +1733,11 @@ inadvertently building the latter into our theories or models themselves.
 Under-utilizing the signal is one kind of danger - but clinging too close to the precise
 contours of our data stream is yet another.
 
-** Internal validity
+** DONE Internal validity
+   CLOSED: [2019-10-16 Wed 19:13]
+   :LOGBOOK:
+   - State "DONE"       from              [2019-10-16 Wed 19:13]
+   :END:
 
 categorical data as ratio scale
 
@@ -1811,12 +1884,3 @@ used a version of one of contemporary philosophy’s most famous thought experim
 “Violinist” case first introduced into the literature by Judith Jarvis Thomson (1971) in a widely
 discussed paper on abortion. In this experiment, Cushman and Young presented participants (N
 = 298; 176 men, 122 women) with the following vignette:
-
-** External validity---lab vs real life, unrealistic
-
-But, herein lies the rub (as they say), because important philosophical work often goes on “at
-the margins,” involving complex concoctions of thought experiments that push beyond of our
-conceptual and experiential comfort zones. 15 This observation not only renders paradigmatic
-cases – and the clear/strong intuitions they generate – philosophically uninteresting, but it leaves
-the philosopher with cold comfort, because it is precisely were instability is most likely to lurk that
-she may need to rely the most heavily on her intuitions.
