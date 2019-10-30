@@ -68,8 +68,15 @@ const addTooltips = (pairs: Array<Pair<HTMLElement, string>>): void => {
 }
 
 documentReadyPromise.then(() => {
-  const citeLinks = Array.from(document.querySelectorAll('.citation > a'))
   const citations = Array.from(document.querySelectorAll('.citation'))
+  const citeLinks = citations.map(c => S.pipe([
+    x => x.querySelector('a'),
+    S.toMaybe,
+    S.fromMaybe_(() => {
+      throw new Error('Expected citation to have link')
+    })
+  ])(c))
   const refs = Array.from(document.querySelectorAll('#refs > div'))
+  console.log(citations.length, citeLinks.length)
   addTooltips(S.zip(citations)(getRefTitles(citeLinks, refs)))
 })
