@@ -540,6 +540,9 @@ thead > tr:nth-of-type(2) {
     font-size: smaller;
 
     @include weight-light;
+    a[href^="#ref"]::after {
+        content: none;
+    }
 }
 
 .small-caps {
