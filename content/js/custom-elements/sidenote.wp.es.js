@@ -25,13 +25,22 @@ const getReferrer = (el: HTMLElement): ?HTMLElement =>
     S.maybeToNullable
   ])(el)
 
+const cumulativeOffsetTop = (el: HTMLElement) => {
+  const offsetParent = el.offsetParent
+  if (offsetParent instanceof HTMLElement) {
+    return offsetParent.tagName === 'MAIN' ? el.offsetTop : el.offsetTop + cumulativeOffsetTop(offsetParent)
+  } else {
+    throw new Error('Expected an `offsetParent`:' + el.outerHTML)
+  }
+}
+
 const fixNotes = () => {
   S.reduce((prevBot: number) => (el: HTMLElement) => {
     const referrer = fromNullableError(`No referrer for ${el.toString()}`)(
       getReferrer(el)
     )
     const notedSpan = relative(el => el.previousElementSibling)(referrer)
-    const top = S.max(notedSpan.offsetTop)(prevBot)
+    const top = S.max(cumulativeOffsetTop(notedSpan))(prevBot)
     el.style.top = top + 'px'
     return top + outerHeight(el)
   })(0)(Array.from(document.querySelectorAll('.sidenote:not(#warnings)')))
@@ -116,8 +125,10 @@ const addOrRemoveNotes = () => {
 }
 
 documentReadyPromise.then(() => {
-  addOrRemoveNotes()
-  window.addEventListener('resize', addOrRemoveNotes)
+  if (!document.querySelector('.disable-sidenotes')) {
+    addOrRemoveNotes()
+    window.addEventListener('resize', addOrRemoveNotes)
+  }
 })
 
 export default { setNotes, fixNotes }

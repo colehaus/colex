@@ -29,17 +29,17 @@ const parseRefTitle: string => string = S.pipe([
   stripPrefixIfPresent('“')
 ])
 
-const getRefId: HTMLElement => string = S.pipe([
+const getRefId: HTMLElement => string = el => S.pipe([
   cite => cite.getAttribute('href'),
   S.toMaybe,
   S.fromMaybe_(() => {
-    throw new Error('Expected citation to have link')
+    throw new Error('Expected citation to have link: ' + el.outerHTML)
   }),
   S.stripPrefix('#'),
   S.fromMaybe_(() => {
-    throw new Error('Expected citation link to be an anchor')
+    throw new Error('Expected citation link to be an anchor: ' + el.outerHTML)
   })
-])
+])(el)
 
 const findRefById = (refs: Array<HTMLElement>): (string => HTMLElement) =>
   S.pipe([
@@ -73,10 +73,10 @@ documentReadyPromise.then(() => {
     x => x.querySelector('a'),
     S.toMaybe,
     S.fromMaybe_(() => {
-      throw new Error('Expected citation to have link')
+      throw new Error('Expected citation to have link: ' + c.outerHTML)
     })
   ])(c))
   const refs = Array.from(document.querySelectorAll('#refs > div'))
-  console.log(citations.length, citeLinks.length)
+  console.assert(citations.length === citeLinks.length, 'Citation length mismatch')
   addTooltips(S.zip(citations)(getRefTitles(citeLinks, refs)))
 })
