@@ -1314,7 +1314,11 @@ F ratio for kill-save in biomed student population (n=57) 18.07
 Partial eta^2 for kill-save in general student population (n=359) .45
 Partial eta^2 for kill-save in biomed student population (n=359) .24
 
-* Lombrozo 2009; order
+* DONE Lombrozo 2009; order
+  CLOSED: [2019-10-27 Sun 13:25]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-27 Sun 13:25]
+  :END:
 
 j.1551-6709.2009.01013.x.pdf
 @article{lombrozo2009role,
@@ -1364,7 +1368,11 @@ As Fig. 3 illustrates, participants in the Both
 condition tended to find the switch scenario less permissible and the push scenario more
 permissible than participants in the respective between-subjects conditions.
 
-* Schwitzgebel, Cushman 2012; order; philosophers
+* DONE Schwitzgebel, Cushman 2012; order; philosophers
+  CLOSED: [2019-10-27 Sun 13:38]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-27 Sun 13:38]
+  :END:
 
 schwitzgebel&cushman_2012.pdf
 @article{schwitzgebel2012expertise,
@@ -1550,7 +1558,11 @@ and of cleanliness condition (F(1,164) = 8.56, η2=0.05, p = .004). Thus, studen
 ratings for the actor compared to the observer condition, and they gave higher ratings in the clean
 compared to the control condition.
 
-* Liao, Weigmann, Alexander, Vong 2012; order
+* DONE Liao, Weigmann, Alexander, Vong 2012; order
+  CLOSED: [2019-10-27 Sun 13:48]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-27 Sun 13:48]
+  :END:
 
 Putting_the_Trolley_in_Order_Experimental_Philosop.pdf
 @article{liao2012putting,
@@ -1599,7 +1611,11 @@ with Loop after Push "rather disagree" with the action (29 out of 52; 56%) where
 of participants presented with Loop after Standard "rather agree" with the action (25 out of 38;
 66%). A chi-squared test revealed that this difference was significant (χ 2(1) =4.1; p<0.05).
 
-* Weigmann, Nagel, Mangold, Okan 2012; order
+* DONE Weigmann, Nagel, Mangold, Okan 2012; order
+  CLOSED: [2019-10-27 Sun 13:55]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-27 Sun 13:55]
+  :END:
 
 qt3sf3f8nn.pdf
 @article{wiegmann2012order,
@@ -1670,7 +1686,11 @@ with our predictions.
 | MAF (n=25)      | 76          | 52          | 40          | 32          | 32          |
 | LAF (n=25)      | 80          | 80          | 72          | 72          | 68          |
 
-* Nichols, Zamzow 2009; order, gender
+* DONE Nichols, Zamzow 2009; order, gender
+  CLOSED: [2019-10-27 Sun 14:14]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-27 Sun 14:14]
+  :END:
 
 Zamzow and Nichols- Variations in ethical intuitions.pdf
 @article{zamzow2009variations,
@@ -1712,7 +1732,11 @@ the switch when the bystander case was presented last. This asymmetry might
 reflect the difference in questions asked—“what is the right thing to do?” versus
 “what would you do?”
 
-* Wright 2013; order; stability and confidence
+* DONE Wright 2013; order; stability and confidence
+  CLOSED: [2019-10-27 Sun 14:16]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-27 Sun 14:16]
+  :END:
 
 wright2013.pdf
 @article{wright2013tracking,
@@ -1828,7 +1852,11 @@ inconsistent with the presented expert opinion, it was limited to one attitudina
 for one of the unclear cases, so this clearly cannot fully account for the reduction in
 confidence and belief strength found in the unclear cases.
 
-* Wright 2010; order stability
+* DONE Wright 2010; order stability
+  CLOSED: [2019-10-27 Sun 14:25]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-27 Sun 14:25]
+  :END:
 
 Cog Publication 2010.pdf
 
@@ -2086,7 +2114,11 @@ statistically significant difference suggests that 25%
 of the participants’ intuitions were affected by the
 actor–observer difference. 
 
-* Lanteri, Chelini, Rizzelo 2008; order
+* DONE Lanteri, Chelini, Rizzelo 2008; order
+  CLOSED: [2019-10-27 Sun 15:46]
+  :LOGBOOK:
+  - State "DONE"       from              [2019-10-27 Sun 15:46]
+  :END:
 
  25482413.pdf
 @article{lanteri2008experimental,
@@ -2112,8 +2144,6 @@ reverse treatment, lever: 11%, 78%
 standard treatment, push: 3% think obligatory, 46% think acceptable
 reversed treatment, push: 7% think obligatory, 48% think acceptable
 
-
-* Chapman & anderson 2013; disgust
 
 * Landy and Goodwin 2015; disgust
 

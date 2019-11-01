@@ -201,6 +201,10 @@ blockquote::after {
 
 .abstract {
     @include margin-bottom-8ex;
+    a[href^="#"]::after {
+        // Without this, smaller font-size in abstract means superscripts mess up line spacing
+        font-size: x-small;
+    }
 }
 
 .abstract::before {
