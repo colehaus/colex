@@ -46,7 +46,7 @@ const handleEvent = (event: Event) => (resolve: Function, reject: Function) => {
     case 'SELECTEDOPEN':
       resolve()
       break
-    case 'SELECTEDNEWVISIBLE':
+    case 'SELECTEDNEWVISIBLE': {
       // Flow behaving badly
       const event_ = event
       const pho = getHeight(event_.parent)
@@ -83,6 +83,7 @@ const handleEvent = (event: Event) => (resolve: Function, reject: Function) => {
         .then(cleanUp)
         .then(resolve)
       break
+    }
     default:
       ;(event.tag: empty) // eslint-disable-line no-unused-expressions
       throw new Error(`Unexpected tag in ${event}`)
@@ -113,13 +114,13 @@ const choose = (ev: MouseEvent) => {
     const event = contentBranch.classList.contains('open')
       ? { tag: 'SELECTEDOPEN' }
       : getComputedStyle(parentEl).display !== 'none'
-        ? {
+      ? {
           tag: 'SELECTEDNEWVISIBLE',
           from,
           to: contentBranch,
           parent: parentEl
         }
-        : { tag: 'INVISIBLEPARENT', from, to: contentBranch }
+      : { tag: 'INVISIBLEPARENT', from, to: contentBranch }
     new Promise(handleEvent(event)).then(() => {
       sidenote.setNotes()
       sidenote.fixNotes()

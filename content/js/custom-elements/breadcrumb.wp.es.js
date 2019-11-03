@@ -8,7 +8,11 @@ import { documentReadyPromise, toMaybe } from 'libs/util'
 const S = create({ checkTypes: false, env })
 
 type InitialLoadEvent = { tag: 'InitialLoad' }
-type ScrollEvent = { tag: 'Scroll', direction: 'Up' | 'Down', entries: Array<IntersectionObserverEntry>}
+type ScrollEvent = {
+  tag: 'Scroll',
+  direction: 'Up' | 'Down',
+  entries: Array<IntersectionObserverEntry>
+}
 type SemanticEvent = InitialLoadEvent | ScrollEvent
 
 type ScrollDownAction =
@@ -30,7 +34,9 @@ type Action =
 
 let lastScrollPosition
 
-const interpretEvent = (targets: Array<HTMLElement>) => (entries: Array<IntersectionObserverEntry>): SemanticEvent => {
+const interpretEvent = (targets: Array<HTMLElement>) => (
+  entries: Array<IntersectionObserverEntry>
+): SemanticEvent => {
   const isInitialLoad = lastScrollPosition === undefined
   if (isInitialLoad) {
     lastScrollPosition = window.scrollY
@@ -44,7 +50,7 @@ const interpretEvent = (targets: Array<HTMLElement>) => (entries: Array<Intersec
 
 // Core logic
 
-const determineActionOnScrollDown: (ScrollEvent => ScrollDownAction) = S.pipe([
+const determineActionOnScrollDown: ScrollEvent => ScrollDownAction = S.pipe([
   evt => evt.entries,
   S.filter(entry => !entry.isIntersecting),
   S.last,
@@ -53,22 +59,25 @@ const determineActionOnScrollDown: (ScrollEvent => ScrollDownAction) = S.pipe([
   })
 ])
 
-const determineActionOnScrollUp = (targets: Array<HTMLElement>): (ScrollEvent => ScrollUpAction) =>
+const determineActionOnScrollUp = (
+  targets: Array<HTMLElement>
+): (ScrollEvent => ScrollUpAction) =>
   S.pipe([
     evt => evt.entries,
     S.filter(entry => entry.isIntersecting),
     S.head,
     S.map(entry => entry.target),
     S.map(target => targets.findIndex(t => t === target)),
-    S.maybe({ tag: 'DoNothing' })(
-      index =>
-        index === 0
-          ? { tag: 'DeleteBreadcrumbs' }
-          : { tag: 'SetBreadcrumb', target: targets[index - 1] }
+    S.maybe({ tag: 'DoNothing' })(index =>
+      index === 0
+        ? { tag: 'DeleteBreadcrumbs' }
+        : { tag: 'SetBreadcrumb', target: targets[index - 1] }
     )
   ])
 
-const determineActionOnInitialLoad = (targets: Array<HTMLElement>) => (event: InitialLoadEvent): InitialLoadAction =>
+const determineActionOnInitialLoad = (targets: Array<HTMLElement>) => (
+  event: InitialLoadEvent
+): InitialLoadAction =>
   S.pipe([
     S.filter(target => target.getBoundingClientRect().top < 0),
     S.last,
@@ -77,7 +86,9 @@ const determineActionOnInitialLoad = (targets: Array<HTMLElement>) => (event: In
     })
   ])(targets)
 
-const determineAction = (targets: Array<HTMLElement>) => (event: SemanticEvent): Action => {
+const determineAction = (targets: Array<HTMLElement>) => (
+  event: SemanticEvent
+): Action => {
   switch (event.tag) {
     case 'InitialLoad':
       return determineActionOnInitialLoad(targets)(event)
@@ -99,7 +110,9 @@ const determineAction = (targets: Array<HTMLElement>) => (event: SemanticEvent):
 
 // Actions
 
-const executeAction = (targets: Array<HTMLElement>) => (action: Action): void => {
+const executeAction = (targets: Array<HTMLElement>) => (
+  action: Action
+): void => {
   switch (action.tag) {
     case 'SetBreadcrumb':
       getOrCreateBreadcrumbs().innerHTML = prettyPrintHeaders(
@@ -150,7 +163,9 @@ const prettyPrintHeaders = S.pipe([
   values => values.join(' ⊃ ')
 ])
 
-const breadcrumbHeaders = (targets: Array<HTMLElement>): (HTMLElement => Map<string, HTMLElement>) =>
+const breadcrumbHeaders = (
+  targets: Array<HTMLElement>
+): (HTMLElement => Map<string, HTMLElement>) =>
   S.pipe([
     target => [target, S.takeWhile(t => t !== target)(targets)],
     ([current, prev]) => [
@@ -171,8 +186,11 @@ documentReadyPromise.then(() => {
   targets.forEach(el => observer.observe(el))
 })
 
-const cb = (targets: Array<HTMLElement>): (Array<IntersectionObserverEntry> => void) => S.pipe([
-  interpretEvent(targets),
-  determineAction(targets),
-  executeAction(targets)
-])
+const cb = (
+  targets: Array<HTMLElement>
+): ((Array<IntersectionObserverEntry>) => void) =>
+  S.pipe([
+    interpretEvent(targets),
+    determineAction(targets),
+    executeAction(targets)
+  ])

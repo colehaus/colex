@@ -15,8 +15,9 @@ const S = create({ checkTypes: false, env })
 //   <p>Jehiel, Philippe, and Benny Moldovanu. 2001. “Efficient Design with Interdependent Valuations.” <em>Econometrica</em> 69 (5). Wiley Online Library: 1237–59. <a href="https://ub-madoc.bib.uni-mannheim.de/2838/1/dp99_74.pdf" class="uri">https://ub-madoc.bib.uni-mannheim.de/2838/1/dp99_74.pdf</a>.</p>
 // </div>
 
-const stripPrefixIfPresent = S.curry2((prefix: string, str: string): string =>
-  S.fromMaybe(str)(S.stripPrefix(prefix)(str))
+const stripPrefixIfPresent = S.curry2(
+  (prefix: string, str: string): string =>
+    S.fromMaybe(str)(S.stripPrefix(prefix)(str))
 )
 
 const parseRefTitle: string => string = S.pipe([
@@ -30,17 +31,18 @@ const parseRefTitle: string => string = S.pipe([
   stripPrefixIfPresent('“')
 ])
 
-const getRefId: HTMLElement => string = el => S.pipe([
-  cite => cite.getAttribute('href'),
-  toMaybe,
-  S.fromMaybe_(() => {
-    throw new Error('Expected citation to have link: ' + el.outerHTML)
-  }),
-  S.stripPrefix('#'),
-  S.fromMaybe_(() => {
-    throw new Error('Expected citation link to be an anchor: ' + el.outerHTML)
-  })
-])(el)
+const getRefId: HTMLElement => string = el =>
+  S.pipe([
+    cite => cite.getAttribute('href'),
+    toMaybe,
+    S.fromMaybe_(() => {
+      throw new Error('Expected citation to have link: ' + el.outerHTML)
+    }),
+    S.stripPrefix('#'),
+    S.fromMaybe_(() => {
+      throw new Error('Expected citation link to be an anchor: ' + el.outerHTML)
+    })
+  ])(el)
 
 const findRefById = (refs: Array<HTMLElement>): (string => HTMLElement) =>
   S.pipe([
@@ -70,14 +72,19 @@ const addTooltips = (pairs: Array<Pair<HTMLElement, string>>): void => {
 
 documentReadyPromise.then(() => {
   const citations = Array.from(document.querySelectorAll('.citation'))
-  const citeLinks = citations.map(c => S.pipe([
-    x => x.querySelector('a'),
-    toMaybe,
-    S.fromMaybe_(() => {
-      throw new Error('Expected citation to have link: ' + c.outerHTML)
-    })
-  ])(c))
+  const citeLinks = citations.map(c =>
+    S.pipe([
+      x => x.querySelector('a'),
+      toMaybe,
+      S.fromMaybe_(() => {
+        throw new Error('Expected citation to have link: ' + c.outerHTML)
+      })
+    ])(c)
+  )
   const refs = Array.from(document.querySelectorAll('#refs > div'))
-  console.assert(citations.length === citeLinks.length, 'Citation length mismatch')
+  console.assert(
+    citations.length === citeLinks.length,
+    'Citation length mismatch'
+  )
   addTooltips(S.zip(citations)(getRefTitles(citeLinks, refs)))
 })

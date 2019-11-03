@@ -23,7 +23,7 @@ const setHandlers = (
   box: Box,
   callback: ?((number) => number) => void
 ) => {
-  let points = []
+  const points = []
   sel
     .select(drawEl)
     .select('svg')

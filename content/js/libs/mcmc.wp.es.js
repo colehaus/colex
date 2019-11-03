@@ -142,7 +142,7 @@ var run_BEST = function (ys, n_samples_, n_burnin, progress_cb, final_cb) {
   var burn_asynch = function (n) {
     sampler.burn(500)
     if (n > 0) {
-      var fracDone = 1 - 500 * n / n_burnin
+      var fracDone = 1 - (500 * n) / n_burnin
       progress_cb(0.45 * fracDone)
       burn_timeout_id = setTimeout(function () {
         burn_asynch(n - 1)

@@ -29,7 +29,9 @@ const getReferrer = (el: HTMLElement): ?HTMLElement =>
 const cumulativeOffsetTop = (el: HTMLElement) => {
   const offsetParent = el.offsetParent
   if (offsetParent instanceof HTMLElement) {
-    return offsetParent.tagName === 'MAIN' ? el.offsetTop : el.offsetTop + cumulativeOffsetTop(offsetParent)
+    return offsetParent.tagName === 'MAIN'
+      ? el.offsetTop
+      : el.offsetTop + cumulativeOffsetTop(offsetParent)
   } else {
     throw new Error('Expected an `offsetParent`:' + el.outerHTML)
   }

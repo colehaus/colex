@@ -33,7 +33,7 @@ const renderMenuItem = (menuItem: MenuItem): HTMLElement => {
   switch (menuItem.tag) {
     case 'HR':
       return document.createElement('hr')
-    case 'MENUITEM':
+    case 'MENUITEM': {
       const li = document.createElement('li')
       li.textContent = menuItem.label
       li.setAttribute('type', menuItem.type)
@@ -43,6 +43,7 @@ const renderMenuItem = (menuItem: MenuItem): HTMLElement => {
         li.removeAttribute('checked')
       }
       return li
+    }
     default:
       ;(menuItem.tag: empty) // eslint-disable-line no-unused-expressions
       throw new Error(menuItem.toString())
@@ -53,11 +54,12 @@ const renderMenu = (menu: Menu): ?HTMLElement => {
   switch (menu.tag) {
     case 'CLOSED':
       return null
-    case 'OPEN':
+    case 'OPEN': {
       const ul = document.createElement('ul')
       ul.classList.add('menu')
       S.map(S.pipe([renderMenuItem, x => ul.appendChild(x)]))(menu.items)
       return ul
+    }
     default:
       ;(menu.tag: empty) // eslint-disable-line no-unused-expressions
       throw new Error(menu.toString())
@@ -96,11 +98,11 @@ const parseMenu = (menu: HTMLElement): Menu =>
   menu.dataset.active === 'true'
     ? { tag: 'CLOSED' }
     : {
-      tag: 'OPEN',
-      items: S.map(el => parseMenuItem(el))(
-        Array.from(menu.querySelectorAll('menuitem, hr'))
-      )
-    }
+        tag: 'OPEN',
+        items: S.map(el => parseMenuItem(el))(
+          Array.from(menu.querySelectorAll('menuitem, hr'))
+        )
+      }
 
 type Event =
   | { tag: 'MENUCLICK', menu: HTMLElement }

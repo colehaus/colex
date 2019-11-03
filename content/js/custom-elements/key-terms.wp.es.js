@@ -1,10 +1,7 @@
 // @flow
 /* eslint no-undef: "off" */
 
-import {
-  documentReadyPromise,
-  getBySelector
-} from 'libs/util'
+import { documentReadyPromise, getBySelector } from 'libs/util'
 
 const close = () => {
   getBySelector('#underlay').classList.remove('inactive')
@@ -28,9 +25,13 @@ documentReadyPromise.then(() => {
   if (location.hash.endsWith('key-terms')) {
     open()
   }
-  window.addEventListener('hashchange', () => {
-    if (location.hash.endsWith('key-terms')) {
-      open()
-    }
-  }, false)
+  window.addEventListener(
+    'hashchange',
+    () => {
+      if (location.hash.endsWith('key-terms')) {
+        open()
+      }
+    },
+    false
+  )
 })

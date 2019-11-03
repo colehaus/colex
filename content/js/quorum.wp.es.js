@@ -27,7 +27,7 @@ const interval = [-1, 1]
 
 const plotMcmcHist = (jq, paramData, conf, preds = []) => {
   let barData
-  let plotOpts = $.extend(true, {}, plotOptions)
+  const plotOpts = $.extend(true, {}, plotOptions)
   const data = []
   if (conf.log === true) {
     const logTrans = {
@@ -207,10 +207,10 @@ const freq = ds => {
   const mean = jStat.mean(ds)
   const stdev = jStat.stdev(ds)
   const cis = plot.sampleFunc(-1, 1, mu =>
-    jStat.studentt.pdf((mean - mu) / stdev * Math.sqrt(l), dof)
+    jStat.studentt.pdf(((mean - mu) / stdev) * Math.sqrt(l), dof)
   )
   const ci = conf => {
-    const bound = jStat.studentt.inv(conf, dof) * stdev / Math.sqrt(l)
+    const bound = (jStat.studentt.inv(conf, dof) * stdev) / Math.sqrt(l)
     const y = jStat.studentt.pdf(jStat.studentt.inv(conf, dof), dof)
     if (mean > 0) {
       return [y, mean - bound, Infinity]

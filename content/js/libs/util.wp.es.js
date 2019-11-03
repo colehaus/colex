@@ -103,7 +103,7 @@ const uniquifyValue = <A>(as: Array<A>): Array<A> =>
     S.map(JSON.parse)
   ])(as)
 
-const toMaybe = <A>(a: ?A): Maybe<A> => a == null ? S.Nothing : S.Just(a)
+const toMaybe = <A>(a: ?A): Maybe<A> => (a == null ? S.Nothing : S.Just(a))
 
 export {
   asHTMLElement,
