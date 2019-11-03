@@ -1,5 +1,9 @@
 [ignore]
-.*/node_modules/.*
+.*/output/.*
+.*/vendoredOut/.*
+.*/dist/.*
+.*/elm_dependencies/.*
+.*/.psci_modules/.*
 
 [include]
 

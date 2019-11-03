@@ -3,7 +3,7 @@
 
 import { create, env } from 'sanctuary'
 
-import { documentReadyPromise } from 'libs/util'
+import { documentReadyPromise, toMaybe } from 'libs/util'
 
 const S = create({ checkTypes: false, env })
 
@@ -116,7 +116,7 @@ const executeAction = (targets: Array<HTMLElement>) => (action: Action): void =>
 
 const deleteBreadcrumbs = (): void => {
   S.pipe([
-    S.toMaybe,
+    toMaybe,
     S.map(bc => {
       bc.outerHTML = ''
     })
@@ -124,7 +124,7 @@ const deleteBreadcrumbs = (): void => {
 }
 
 const getOrCreateBreadcrumbs = (): HTMLElement =>
-  S.pipe([S.toMaybe, S.fromMaybe_(createBreadcrumbs)])(
+  S.pipe([toMaybe, S.fromMaybe_(createBreadcrumbs)])(
     document.querySelector('#article-breadcrumb')
   )
 
@@ -132,7 +132,7 @@ const createBreadcrumbs = (): HTMLElement => {
   const div = document.createElement('div')
   div.id = 'article-breadcrumb'
   S.pipe([
-    S.toMaybe,
+    toMaybe,
     S.fromMaybe_(() => {
       throw new Error('<article> must exist')
     }),

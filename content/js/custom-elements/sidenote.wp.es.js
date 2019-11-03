@@ -9,7 +9,8 @@ import {
   getBySelector,
   outerHeight,
   relative,
-  removeElement
+  removeElement,
+  toMaybe
 } from 'libs/util'
 
 const S = create({ checkTypes: false, env })
@@ -20,7 +21,7 @@ const getReferrer = (el: HTMLElement): ?HTMLElement =>
     Array.from,
     S.last,
     S.map(el => el.getAttribute('href')),
-    S.chain(S.toMaybe),
+    S.chain(toMaybe),
     S.map(id => getBySelector('#' + id.slice(1))),
     S.maybeToNullable
   ])(el)

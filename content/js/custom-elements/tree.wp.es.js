@@ -11,7 +11,8 @@ import {
   getBySelector,
   makeAnimationPromise,
   parent,
-  relative
+  relative,
+  toMaybe
 } from 'libs/util'
 
 const S = create({ checkTypes: false, env })
@@ -91,7 +92,7 @@ const handleEvent = (event: Event) => (resolve: Function, reject: Function) => {
 const getIndexAmongSiblings = (el: HTMLElement): number =>
   S.pipe([
     parent,
-    S.toMaybe,
+    toMaybe,
     S.map(e => e.children),
     S.map(Array.from),
     S.map(els => els.findIndex(child => child === el)),
@@ -164,7 +165,7 @@ documentReadyPromise.then(() => {
         target: EventTarget
       }) => {
         const menuEl = menu.getMenu(asHTMLElement(target))
-        const menuUlM: Maybe<HTMLElement> = S.toMaybe(
+        const menuUlM: Maybe<HTMLElement> = toMaybe(
           menuEl.querySelector('ul.menu')
         )
         S.map((ul: HTMLElement) => {

@@ -96,7 +96,14 @@ const parseMatrixToYTranslation = (transformationMatrix: string): number =>
 
 const uniquify = <A>(as: Array<A>): Array<A> => Array.from(new Set(as).values())
 const uniquifyValue = <A>(as: Array<A>): Array<A> =>
-  S.pipe([S.map(JSON.stringify), uniquify, S.map(JSON.parse)])(as)
+  S.pipe([
+    S.map(JSON.stringify),
+    S.map(fromNullableError('Failed to stringify')),
+    uniquify,
+    S.map(JSON.parse)
+  ])(as)
+
+const toMaybe = <A>(a: ?A): Maybe<A> => a == null ? S.Nothing : S.Just(a)
 
 export {
   asHTMLElement,
@@ -112,6 +119,7 @@ export {
   parseMatrixToYTranslation,
   relative,
   removeElement,
+  toMaybe,
   uniquify,
   uniquifyValue
 }

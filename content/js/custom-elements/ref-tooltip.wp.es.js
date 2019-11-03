@@ -3,7 +3,7 @@
 
 import { create, env } from 'sanctuary'
 
-import { documentReadyPromise } from 'libs/util'
+import { documentReadyPromise, toMaybe } from 'libs/util'
 
 const S = create({ checkTypes: false, env })
 
@@ -21,7 +21,8 @@ const stripPrefixIfPresent = S.curry2((prefix: string, str: string): string =>
 
 const parseRefTitle: string => string = S.pipe([
   S.splitOnRegex(/\.|\?/g),
-  S.at(2),
+  S.drop(2),
+  S.chain(S.head),
   S.fromMaybe_(() => {
     throw new Error('Expect ref title to be in third sentence.')
   }),
@@ -31,7 +32,7 @@ const parseRefTitle: string => string = S.pipe([
 
 const getRefId: HTMLElement => string = el => S.pipe([
   cite => cite.getAttribute('href'),
-  S.toMaybe,
+  toMaybe,
   S.fromMaybe_(() => {
     throw new Error('Expected citation to have link: ' + el.outerHTML)
   }),
@@ -71,7 +72,7 @@ documentReadyPromise.then(() => {
   const citations = Array.from(document.querySelectorAll('.citation'))
   const citeLinks = citations.map(c => S.pipe([
     x => x.querySelector('a'),
-    S.toMaybe,
+    toMaybe,
     S.fromMaybe_(() => {
       throw new Error('Expected citation to have link: ' + c.outerHTML)
     })

@@ -9,7 +9,8 @@ import {
   fromNullableError,
   getBySelector,
   relative,
-  removeElement
+  removeElement,
+  toMaybe
 } from 'libs/util'
 
 const S = create({ checkTypes: false, env })
@@ -111,7 +112,7 @@ const handleEvent = (event: Event) => {
       S.pipe([
         parseMenu,
         renderMenu,
-        S.toMaybe,
+        toMaybe,
         S.maybe_(() => {
           document.querySelectorAll('ul.menu').forEach(removeElement)
           event.menu.dataset.active = 'false'

@@ -35,7 +35,7 @@
     "kernel-smooth": "^0.2.3",
     "npm-check": "^5.9.0",
     "numbers": "^0.7.0",
-    "sanctuary": "^0.15.0",
+    "sanctuary": "^2.0.0",
     "vega-embed": "^3.28.0",
     "vega-lib": "^4.4.0"
   },

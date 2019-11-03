@@ -7,7 +7,7 @@ import * as sel from 'd3-selection'
 import kernel from 'kernel-smooth'
 import { create, env } from 'sanctuary'
 
-import { asHTMLElement } from 'libs/util'
+import { asHTMLElement, toMaybe } from 'libs/util'
 
 const S = create({ checkTypes: false, env })
 
@@ -37,8 +37,8 @@ const clear = (points: Array<Array<[number, number]>>) => (evt: Event) => {
   points.length = 0
   S.pipe([
     el => el.closest('.draw'),
-    S.toMaybe,
-    S.chain(S.pipe([el => el.querySelector('svg'), S.toMaybe])),
+    toMaybe,
+    S.chain(S.pipe([el => el.querySelector('svg'), toMaybe])),
     S.map(svg =>
       sel
         .select(svg)
