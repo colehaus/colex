@@ -7,8 +7,8 @@ import Data.Either (Either(..))
 import Data.Foldable (traverse_)
 import Data.Functor.Compose (Compose(..))
 import Data.Graph (Graph)
-import Data.Graph.Causal as Casual
-import Data.Maybe (Maybe, fromJust)
+import Data.Graph.Causal as Causal
+import Data.Maybe (Maybe)
 import Data.Newtype (un)
 import Data.Set (Set)
 import Data.Set as Set
@@ -19,10 +19,11 @@ import Effect (Effect)
 import FRP ((<+>))
 import FRP.Event (Event)
 import FRP.JQuery (inputTextChangeEvent, textAreaChangeEvent)
+import GDP.Named (name2)
+import GDP.Proof (axiom)
 import Graphics.Graphviz (Engine(..), renderToSvg)
 import JQuery.Fancy (JQuery, One)
 import JQuery.Fancy as J
-import Partial.Unsafe (unsafePartialBecause)
 import Utility (stringToGraph, vertexInGraph)
 import Utility.Render (Element(..), ListType(..), renderFoldableAsHtmlList, replaceElIn)
 import Utility.Render as Render
@@ -115,9 +116,13 @@ parse graphS causeS effectS = do
 
 analyze :: forall k v. Ord k => Input k v -> Analysis k v
 analyze { graph, instrumentsQuery } =
-  { graph, instruments: fromJust' $ Casual.instruments instrumentsQuery Set.empty graph }
+  { graph,
+    instruments:
+      name2 instrumentsQuery Set.empty (\instrumentsQuery' conditioningSet ->
+        Causal.instruments disjoint instrumentsQuery' conditioningSet graph)
+  }
   where
-    fromJust' x = unsafePartialBecause "No conditioning set" $ fromJust x
+    disjoint = axiom -- Automatically satisified because no conditioning set
 
 
 unparse :: forall k v. Show k => (k -> String) -> (v -> String) -> Analysis k v -> Output

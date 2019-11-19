@@ -12,7 +12,7 @@ import Data.Graph (Graph)
 import Data.Graph as Graph
 import Data.Graph.Causal as Causal
 import Data.Map as Map
-import Data.Maybe (Maybe, fromJust)
+import Data.Maybe (Maybe)
 import Data.Newtype (un)
 import Data.Set (Set)
 import Data.Set as Set
@@ -23,11 +23,12 @@ import Effect (Effect)
 import FRP as FRP
 import FRP.Event (Event)
 import FRP.JQuery (textAreaChangeEvent)
+import GDP.Named (name2)
+import GDP.Proof (axiom)
 import Graphics.Graphviz (Engine(..))
 import Graphics.Graphviz as Dot
 import JQuery.Fancy (JQuery, One)
 import JQuery.Fancy as J
-import Partial.Unsafe (unsafePartialBecause)
 import Utility (stringToGraph)
 import Utility.Render (Element(..), replaceElIn)
 import Utility.Render as Render
@@ -110,7 +111,6 @@ analyze idForInstrument valueForInstrument { graph1, graph2 } =
         Array.zip (mkVariations graph1) (mkVariations graph2)
       | otherwise -> { instruments: Left { graph1: graph1Seps, graph2: graph2Seps } }
   where
-    fromJust' x = unsafePartialBecause "No conditioning set" $ fromJust x
     munge (Tuple graph1Variant graph2Variant) =
       { instrument: idForInstrument graph1Variant.cause
       , cause: graph1Variant.cause
@@ -121,10 +121,12 @@ analyze idForInstrument valueForInstrument { graph1, graph2 } =
       where
         dSeps (Tuple k _) g' =
           { cause: k
-          , dSeparations: fromJust' $ Causal.dSeparatedFrom (idForInstrument k) Set.empty g'
+          , dSeparations: name2 (idForInstrument k) Set.empty (\k' conditionedOn ->
+            Causal.dSeparatedFrom disjoint k' conditionedOn g')
           , graph: g'
           }
         -- We already checked during the parse phase that the graphs have the same vertices
+        disjoint = axiom -- Automatically satisfied because no conditioning set
         vertices = Map.toUnfoldable <<< map fst <<< Graph.toMap $ graph1
         addInstrument graph (Tuple k v) =
           Graph.insertEdgeWithVertices

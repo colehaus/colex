@@ -1,7 +1,7 @@
 {
-  "url": "https://github.com/colehaus/nix-extras",
-  "rev": "c03d893e7168682682ccdd097d8451220c755e2d",
-  "date": "2019-06-20T11:37:09-07:00",
-  "sha256": "16mjrgqq44fx42293b56ni1zrfqk8pws6vvi0cvzd187pnkw13zg",
+  "url": "https://github.com/colehaus/nix-extras.git",
+  "rev": "f33ab8f70982073b08c67e0d4f6144d029f0441d",
+  "date": "2019-11-19T17:54:31-08:00",
+  "sha256": "07lqv38iv14r2yjlkmh6a13w1s3vw5jwywlm61m4gwdb91lka0ba",
   "fetchSubmodules": false
 }

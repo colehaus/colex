@@ -2,6 +2,7 @@ module DotLang where
 
 import Prelude
 
+import Causal.Kernel (Path)
 import Color (Color)
 import Data.Array as Array
 import Data.DotLang (Edge(..))
@@ -13,21 +14,20 @@ import Data.Graph (Graph)
 import Data.Graph as Graph
 import Data.List (List(..))
 import Data.List as List
-import Data.List.NonEmpty (NonEmptyList)
 import Data.Map as Map
 import Data.Set (Set)
 import Data.Tuple (Tuple(..))
 import Partial.Unsafe (unsafePartialBecause)
 import Utility (piecesOfN)
 
-highlightPaths :: forall k. Show k => Color -> Set (NonEmptyList k) -> Dot.Graph -> Dot.Graph
+highlightPaths :: forall k. Show k => Color -> Set (Path k) -> Dot.Graph -> Dot.Graph
 highlightPaths color paths g =
   Foldable.foldr (modifyPath <<< Array.cons $ Edge.Color color) g paths
 
 modifyPath ::
   forall k.
   Show k =>
-  (Array Edge.Attr -> Array Edge.Attr) -> NonEmptyList k -> Dot.Graph -> Dot.Graph
+  (Array Edge.Attr -> Array Edge.Attr) -> Path k -> Dot.Graph -> Dot.Graph
 modifyPath f path g =
   case g of
     Dot.Graph defs -> Dot.Graph defs

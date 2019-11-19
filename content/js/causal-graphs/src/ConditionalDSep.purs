@@ -4,6 +4,7 @@ module ConditionalDSep where
 import Prelude
 
 import App (App)
+import Causal.Kernel (Path, disjointnessTwoSet)
 import Color (rgb)
 import Data.Argonaut.Decode (decodeJson)
 import Data.Bifunctor (rmap)
@@ -13,8 +14,7 @@ import Data.Functor.Compose (Compose(..))
 import Data.Graph (Graph)
 import Data.Graph.Causal (dSeparations)
 import Data.Graph.Causal as Causal
-import Data.List.NonEmpty (NonEmptyList)
-import Data.Maybe (Maybe(..), fromJust, maybe)
+import Data.Maybe (Maybe(..), maybe)
 import Data.Newtype (un)
 import Data.Set (Set)
 import Data.Set as Set
@@ -28,11 +28,12 @@ import Effect (Effect)
 import FRP ((<+>))
 import FRP.Event (Event)
 import FRP.JQuery (inputTextChangeEvent, textAreaChangeEvent)
+import GDP.Named (name3, unName)
 import Graphics.Graphviz (Engine(..))
 import Graphics.Graphviz as Dot
 import JQuery.Fancy (JQuery, One)
 import JQuery.Fancy as J
-import Partial.Unsafe (unsafePartialBecause)
+import Partial.Unsafe (unsafeCrashWith)
 import Utility (stringToGraph, vertexInGraph)
 import Utility.Render (Element(..), ListType(..), renderFoldableAsHtmlList, replaceElIn)
 import Utility.Render as Render
@@ -66,7 +67,7 @@ type Input k v =
 
 type Analysis k v =
   { graph :: Graph k v
-  , dConnections :: Maybe (Set (NonEmptyList k))
+  , dConnections :: Maybe (Set (Path k))
   , dSeparations :: Set (TwoSet k)
   }
 
@@ -143,13 +144,17 @@ analyze :: forall k v. Ord k => Input k v -> Analysis k v
 analyze { graph, connectionQuery, conditionedOn } =
   { graph
   , dSeparations: dSeparations conditionedOn graph
-  , dConnections:
-    (\ks -> fromJust' $ Causal.dConnectedBy ks conditionedOn graph) <$> connectionQuery
+  , dConnections: dConnections' <$> connectionQuery
   }
   where
-    fromJust' x =
-      unsafePartialBecause "Already checked conditioning overlap during parsing" $
-      fromJust x
+    dConnections' ks = name3 ks conditionedOn graph (\ks' conditionedOn' graph' ->
+      case disjointnessTwoSet ks' conditionedOn' of
+        Just proof ->
+          Set.map unName $ Causal.dConnectedBy proof ks' conditionedOn' graph'
+        Nothing ->
+          -- TODO: It would be nice to actually create the proof there and
+          -- carry it through to here instead of rechecking
+          unsafeCrashWith "Already checked conditioning overlap during parsing")
 
 unparse :: forall k v. Show k => (k -> String) -> (v -> String) -> Analysis k v -> Output
 unparse kToId valueToLabel { dSeparations: dSep, dConnections, graph } =

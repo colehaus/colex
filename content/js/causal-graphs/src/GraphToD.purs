@@ -3,6 +3,7 @@ module GraphToD where
 import Prelude
 
 import App (App)
+import Causal.Kernel (Path)
 import Color (rgb)
 import Data.Bifunctor (rmap)
 import Data.Either (Either(..))
@@ -11,8 +12,7 @@ import Data.Functor.Compose (Compose(..))
 import Data.Graph (Graph)
 import Data.Graph.Causal (dSeparations)
 import Data.Graph.Causal as Causal
-import Data.List.NonEmpty (NonEmptyList)
-import Data.Maybe (Maybe(..), fromJust, maybe)
+import Data.Maybe (Maybe(..), maybe)
 import Data.Newtype (un)
 import Data.Set (Set)
 import Data.Set as Set
@@ -25,11 +25,12 @@ import Effect (Effect)
 import FRP ((<+>))
 import FRP.Event (Event)
 import FRP.JQuery (inputTextChangeEvent, textAreaChangeEvent)
+import GDP.Named (name3, unName)
+import GDP.Proof (axiom)
 import Graphics.Graphviz (Engine(..))
 import Graphics.Graphviz as Dot
 import JQuery.Fancy (JQuery, One)
 import JQuery.Fancy as J
-import Partial.Unsafe (unsafePartialBecause)
 import Utility (stringToGraph, vertexInGraph)
 import Utility.Render (Element(..), ListType(..), renderFoldableAsHtmlList, replaceElIn)
 import Utility.Render as Render
@@ -61,7 +62,7 @@ type Input k v =
 
 type Analysis k v =
   { graph :: Graph k v
-  , dConnections :: Maybe (Set (NonEmptyList k))
+  , dConnections :: Maybe (Set (Path k))
   , dSeparations :: Set (TwoSet k)
   }
 
@@ -149,11 +150,13 @@ analyze :: forall k v. Ord k => Input k v -> Analysis k v
 analyze { graph, connectionQuery } =
   { graph
   , dSeparations: dSeparations Set.empty graph
-  , dConnections:
-    (\ks -> fromJust' $ Causal.dConnectedBy ks Set.empty graph) <$> connectionQuery
+  , dConnections: dConnectedBy <$> connectionQuery
   }
   where
-    fromJust' x = unsafePartialBecause "No conditioning set" $ fromJust x
+    dConnectedBy ks =
+      name3 ks Set.empty graph (\ks' conditionedOn graph' ->
+        Set.map unName (Causal.dConnectedBy disjoint ks' conditionedOn graph'))
+    disjoint = axiom -- Automatically satisified because no conditioning set
 
 parse :: String -> String -> String -> Either String (Input String String)
 parse graphS fromS toS = do
