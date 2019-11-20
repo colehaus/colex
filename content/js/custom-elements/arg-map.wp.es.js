@@ -62,20 +62,20 @@ const fetchData = <NTy: string, LTy: string>(
     Array<LinkType<LTy>>
   ]
 > =>
-  Promise.all([
-    csv(dataSrc + '/nodes.csv'),
-    csv(dataSrc + '/links.csv'),
-    csv(dataSrc + '/node-types.csv'),
-    csv(dataSrc + '/link-types.csv')
-  ])
+    Promise.all([
+      csv(dataSrc + '/nodes.csv'),
+      csv(dataSrc + '/links.csv'),
+      csv(dataSrc + '/node-types.csv'),
+      csv(dataSrc + '/link-types.csv')
+    ])
 
 const isUndirectedLink = <LTy: string>(
   links: Array<Link<LTy>>
 ): ((Link<LTy>) => boolean) => link =>
-  S.pipe([
-    S.find(l => l.target === link.source && l.source === link.target),
-    S.isJust
-  ])(links)
+    S.pipe([
+      S.find(l => l.target === link.source && l.source === link.target),
+      S.isJust
+    ])(links)
 const toUndirectedLink = <LTy: string>(link: Link<LTy>): Link<LTy> => {
   return {
     source: link.source < link.target ? link.source : link.target,
@@ -87,13 +87,13 @@ const toUndirectedLink = <LTy: string>(link: Link<LTy>): Link<LTy> => {
 const separateDirectedAndUndirected = <LTy: string>(
   links: Array<Link<LTy>>
 ): [Array<Link<LTy>>, Array<Link<LTy>>] => [
-  S.reject(isUndirectedLink(links))(links),
-  S.pipe([
-    S.filter(isUndirectedLink(links)),
-    S.map(toUndirectedLink),
-    uniquifyValue
-  ])(links)
-]
+    S.reject(isUndirectedLink(links))(links),
+    S.pipe([
+      S.filter(isUndirectedLink(links)),
+      S.map(toUndirectedLink),
+      uniquifyValue
+    ])(links)
+  ]
 
 // Hacky way of telling Flow about d3's property additions
 const forceNodeProps = <T>(t: T): T & ForceNode => (t: any)
@@ -104,10 +104,10 @@ const ticked = <A: ForceLink, B: ForceNode>(
   undirectedLink: SelectWithData<A>,
   node: SelectWithData<B>
 ) => () => {
-  directedLink.attr('d', linkArc)
-  undirectedLink.attr('d', linkArc)
-  node.attr('transform', d => `translate(${d.x}, ${d.y})`)
-}
+    directedLink.attr('d', linkArc)
+    undirectedLink.attr('d', linkArc)
+    node.attr('transform', d => `translate(${d.x}, ${d.y})`)
+  }
 
 const boundingBox = (
   width: number,
@@ -205,33 +205,33 @@ const drawLinks = <Ty: string>(
   svg: SelectWithoutData,
   links: Array<Link<Ty>>
 ): SelectWithData<Link<Ty> & ForceLink> =>
-  svg
-    .append('g')
-    .attr('class', 'links')
-    .selectAll('path')
-    .data(S.map(forceLinkProps)(links))
-    .enter()
-    .append('path')
-    .attr('class', d => d.type)
-    .classed('link', true)
-    .attr('marker-end', d => `url(#${id}-marker-${d.type})`)
-    .attr('stroke', d => `url(#${id}-gradient-${d.type})`)
+    svg
+      .append('g')
+      .attr('class', 'links')
+      .selectAll('path')
+      .data(S.map(forceLinkProps)(links))
+      .enter()
+      .append('path')
+      .attr('class', d => d.type)
+      .classed('link', true)
+      .attr('marker-end', d => `url(#${id}-marker-${d.type})`)
+      .attr('stroke', d => `url(#${id}-gradient-${d.type})`)
 
 const drawUndirectedLinks = <Ty: string>(
   id: string,
   svg: SelectWithoutData,
   links: Array<Link<Ty>>
 ): SelectWithData<Link<Ty> & ForceLink> =>
-  svg
-    .append('g')
-    .attr('class', 'links')
-    .selectAll('path')
-    .data(S.map(forceLinkProps)(links))
-    .enter()
-    .append('path')
-    .attr('class', d => d.type)
-    .classed('link', true)
-    .attr('stroke', d => `url(#${id}-gradient-${d.type})`)
+    svg
+      .append('g')
+      .attr('class', 'links')
+      .selectAll('path')
+      .data(S.map(forceLinkProps)(links))
+      .enter()
+      .append('path')
+      .attr('class', d => d.type)
+      .classed('link', true)
+      .attr('stroke', d => `url(#${id}-gradient-${d.type})`)
 
 const drawNodes = (
   svg: SelectWithoutData,
@@ -457,12 +457,12 @@ const addClickHandler = () =>
       const target = evt.currentTarget
       const id = (target instanceof HTMLAnchorElement
         ? () =>
-            fromNullableError('Link without href')(
-              target.getAttribute('href')
-            ).slice(1)
+          fromNullableError('Link without href')(
+            target.getAttribute('href')
+          ).slice(1)
         : () => {
-            throw new Error('Somehow not a link')
-          })()
+          throw new Error('Somehow not a link')
+        })()
       // This probably doesn't scale beautifully put I doubt it's a problem in practice ATM
       document.querySelectorAll('#overlay svg').forEach(el => {
         el.style.display = 'none'

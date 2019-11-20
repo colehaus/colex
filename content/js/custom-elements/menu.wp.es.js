@@ -98,11 +98,11 @@ const parseMenu = (menu: HTMLElement): Menu =>
   menu.dataset.active === 'true'
     ? { tag: 'CLOSED' }
     : {
-        tag: 'OPEN',
-        items: S.map(el => parseMenuItem(el))(
-          Array.from(menu.querySelectorAll('menuitem, hr'))
-        )
-      }
+      tag: 'OPEN',
+      items: S.map(el => parseMenuItem(el))(
+        Array.from(menu.querySelectorAll('menuitem, hr'))
+      )
+    }
 
 type Event =
   | { tag: 'MENUCLICK', menu: HTMLElement }

@@ -114,13 +114,13 @@ const choose = (ev: MouseEvent) => {
     const event = contentBranch.classList.contains('open')
       ? { tag: 'SELECTEDOPEN' }
       : getComputedStyle(parentEl).display !== 'none'
-      ? {
+        ? {
           tag: 'SELECTEDNEWVISIBLE',
           from,
           to: contentBranch,
           parent: parentEl
         }
-      : { tag: 'INVISIBLEPARENT', from, to: contentBranch }
+        : { tag: 'INVISIBLEPARENT', from, to: contentBranch }
     new Promise(handleEvent(event)).then(() => {
       sidenote.setNotes()
       sidenote.fixNotes()
