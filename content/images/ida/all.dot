@@ -1,0 +1,26 @@
+digraph G {
+
+q0 [label=<Q<sub>0</sub>>];
+q1 [label=<Q<sub>1</sub>s>];
+a0 [label=<A<sub>0</sub>>];
+a1 [label=<A<sub>1</sub>s>];
+qd [label="..."];
+ad [label="..."];
+q2 [label=<Q<sub>n</sub>s>];
+a2 [label=<A<sub>n</sub>s>];
+q0 -> a0;
+{ rank="same"; q0; a0; }
+q0 -> q1 [label=<preservation<sub>↓</sub>>];
+a1 -> a0 [label=<progress<sub>↑</sub>>];
+{ rank="same"; q1; a1; }
+ad -> a1;
+a2 -> ad [label=<preservation<sub>↑</sub>>];
+q1 -> qd;
+qd -> q2 [label=<progress<sub>↓</sub>>];
+q2 -> a2 [label=<PROGRESS<sub>qa</sub>>];
+{ rank="same"; q2; a2; }
+{ rank="same"; qd; ad; }
+
+q0 -> q2 [label=<PRESERVATION<sub>↓</sub>>, style="dashed"];
+a2 -> a0 [label=<PRESERVATION<sub>↑</sub>>, style="dashed"];
+}

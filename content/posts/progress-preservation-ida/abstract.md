@@ -1,0 +1,3 @@
+This post arose out of my attempts to understand IDA and ways it could fail. It might help you do the same and could provide useful vocabulary for discussing desiderata for IDA.
+
+We want IDA to satisfy progress---decomposition should make answering questions easier---and preservation---semantics should be retained across transformations. We need progress in each decomposition and, furthermore, repeated decompositions must be able to eventually simplify each question such that it can be answered directly by a human. Also, each decomposition and aggregation of questions and answers must introduce no more than a bounded amount of semantic drift and, furthermore, repeated decompositions and aggregations should also introduce no more than a bounded amount of semantic drift.

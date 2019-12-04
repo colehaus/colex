@@ -7,7 +7,7 @@ revision=`git log --max-count=1 --pretty=format:"%H"`
 comment=`git log --max-count=1 --pretty=format:"%B"`
 access_token=`cat ./rollbar-access-token.txt`
 environment=production
-nix-build --show-trace
+nix-build
 cd ../colehaus.github.io
 sudo rm -r *
 shopt -s extglob
