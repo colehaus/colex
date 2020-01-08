@@ -255,6 +255,7 @@ By *self-enforcing*, we mean that individuals will follow some pattern of collec
 Because social norms are socially enforced, unilateral defiance is rarely advantageous. It's only when social expectations collectively change that changed behavior becomes possible. All of this means that attempts to advocate for alternative collective behaviors must be broadly effective before any change will be visible---there's a threshold. But even convincing a majority of people that some alternative is preferable isn't enough.
 
 The social engineer must convince each person in a community of three things:
+
 1. An alternative norm is superior (accomplishing this is covered in the [shared reasons](#shared-reasons) section)
 2. Other people in the community support an alternative norm 
 3. Other people in the community are also convinced of the above
@@ -312,9 +313,9 @@ Finally, edutainment is, reportedly, [shockingly effective at changing norms](/p
 
 Edutainment may be effective for some combination of the following reasons:
 
-- It can change scripts and schemata by having representative and relatable characters experience events that [diverge from existing schema](#theories-of-persuasion)
-- Characters can function as [trendsetters](#trendsetters)
-- It can make alternative norms [cohere with the existing local moral structure](#targets-of-persuasion)
+- It can change scripts and schemata by having representative and relatable characters experience events that [diverge from existing schema](#theories-of-persuasion).
+- Characters can function as [trendsetters](#trendsetters).
+- It can make alternative norms [cohere with the existing local moral structure](#targets-of-persuasion).
 
 <hr class="references">
 
