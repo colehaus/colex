@@ -2,7 +2,7 @@
   "name": "value-of-information-calculator",
   "version": "0.0.1",
   "dependencies": {
-    "jquery": "^3.3.1",
+    "jquery": "^3.5.0",
     "js-yaml": "^3.12.0"
   }
 }
