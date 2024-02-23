@@ -1,5 +1,6 @@
 # Symlink to `content/data/offline/node_modules` for notebooks
 node_modules
+.direnv
 
 TAGS
 rollbar-access-token.txt

@@ -1,5 +1,5 @@
 {
-  "name": "construct-vnm-utility-function",
+  "name": "bibliometric",
   "version": "0.0.1",
   "dependencies": {
     "jquery": "^3.3.1"

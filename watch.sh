@@ -8,9 +8,6 @@ root=$(pwd)
 # ijsinstall
 # jupyter notebook --no-browser &
 
-cd "${root}/hakyll"
-stack install
-
 cd "${root}/content/js"
 rm -f dist/*
 
@@ -18,7 +15,7 @@ rm -f dist/*
 NO_WATCH=no_watch webpack
 
 cd "${root}/content"
-"${root}/hakyll/.stack-bin/site" watch &
+site watch &
 
 cd "${root}/content/js"
 webpack &

@@ -15,11 +15,10 @@ let
 #     versionSpec = "^5.0.20";
 #   };
 in
-  pkgs.stdenv.mkDerivation {
-    name = "colex-env";
+  pkgs.mkShell {
     LC_ALL = "en_US.UTF-8";
     buildInputs =
-      # [ pkgs.python36Packages.jupyter ijavascript pkgs.stack ] ++
+      # [ pkgs.python36Packages.jupyter ijavascript ] ++
       hakyllColEx.nativeBuildInputs ++
       content.nativeBuildInputs ++
       webpack.nativeBuildInputs ++

@@ -5,7 +5,6 @@ import { drag } from 'd3-drag'
 import { csv } from 'd3-fetch'
 import * as sel from 'd3-selection'
 import * as force from 'd3-force'
-import asciiStringSplit from 'ascii-string-split'
 import { create, env } from 'sanctuary'
 
 import * as shapesImport from 'libs/shapes'
@@ -394,6 +393,14 @@ const mkLegend = <NTy: string, LTy: string>(
     .classed('link', true)
 
   drawTSpans(d => d.label, RADIUS + 5)(legendLink.append('text'))
+}
+
+const asciiStringSplit = (str: string, length: number) => {
+  const result = []
+  for (let i = 0; i < str.length; i += length) {
+    result.push(str.substring(i, i + length))
+  }
+  return result
 }
 
 const drawTSpans = <T>(

@@ -1,0 +1,9 @@
+{
+  "name": "mathjax-node-cli-wrapper",
+  "dependencies": {
+    "commander": "11.1.0",
+    "mathjax-node-cli": "1.0.1",
+    "yargs": "16.2.0",
+    "yargs-parser": "20.2.9"
+  }
+}

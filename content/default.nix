@@ -9,11 +9,12 @@
     exemplar = pkgs.callPackage ./js/exemplars-curse { inherit extras; };
     decisionDemos = pkgs.callPackage ./js/decision-demos { inherit extras; };
     causalGraph = pkgs.callPackage ./js/causal-graphs {inherit extras; };
-    mathJaxNodeCli = extras.callNpm {
-      inherit pkgs;
+    mathJaxNodeCliNix = extras.callNode2nix {
       name = "mathjax-node-cli";
-      versionSpec = "^1.0.1";
+      package = ./mathjax-node-cli-package.json;
+      packageLock = ./mathjax-node-cli-package-lock.json;
     };
+    mathJaxNodeCli = pkgs.callPackage mathJaxNodeCliNix {};
     uglifyJs = extras.callNpm {
       inherit pkgs;
       name = "uglify-js";
@@ -34,7 +35,7 @@
       nativeBuildInputs = [
         hakyllColEx
         pkgs.sass
-        mathJaxNodeCli
+        mathJaxNodeCli.nodeDependencies
         uglifyJs
         stylelint
 
