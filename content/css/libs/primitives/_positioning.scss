@@ -12,6 +12,10 @@
     right: -12em;
 }
 
+@mixin left-negative {
+    left: -14em;
+}
+
 @mixin right-small-negative {
     right: -1em;
 }

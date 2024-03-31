@@ -38,7 +38,7 @@ const cumulativeOffsetTop = (el: HTMLElement) => {
 }
 
 const fixNotes = () => {
-  S.reduce((prevBot: number) => (el: HTMLElement) => {
+  const reducer = (prevBot: number) => (el: HTMLElement) => {
     const referrer = fromNullableError(`No referrer for ${el.toString()}`)(
       getReferrer(el)
     )
@@ -46,7 +46,9 @@ const fixNotes = () => {
     const top = S.max(cumulativeOffsetTop(notedSpan))(prevBot)
     el.style.top = top + 'px'
     return top + outerHeight(el)
-  })(0)(Array.from(document.querySelectorAll('.sidenote:not(#warnings)')))
+  }
+  S.reduce(reducer)(0)(Array.from(document.querySelectorAll('.sidenote:not(#warnings)')))
+  S.reduce(reducer)(0)(Array.from(document.querySelectorAll('.sumnote')))
 }
 
 const setNotes = () => {
@@ -55,21 +57,22 @@ const setNotes = () => {
     const referrer = getReferrer(el)
     if (referrer != null) {
       const noted = relative(el => el.previousElementSibling)(referrer)
+      const noteClass = noted.className === 'noted' ? 'sidenote' : 'sumnote'
       if (getComputedStyle(noted).display !== 'none') {
         const p = noted.closest('p')
         ;(p == null ? noted : p).insertAdjacentHTML(
           'beforebegin',
-          '<aside class="sidenote">' + el.innerHTML + '</aside>'
+          `<aside class="${noteClass}">` + el.innerHTML + '</aside>'
         )
       }
     }
   }
   const delink = () => {
-    document.querySelectorAll('.noted').forEach(el => {
+    document.querySelectorAll('.noted, .summed').forEach(el => {
       const nextSibling = relative(el => el.nextElementSibling)(el)
       nextSibling.style.display = 'none'
     })
-    document.querySelectorAll('.sidenote').forEach(
+    document.querySelectorAll('.sidenote, .sumnote').forEach(
       S.pipe([
         el => el.querySelectorAll('a'),
         Array.from,
@@ -87,7 +90,7 @@ const setNotes = () => {
   document
     .querySelectorAll('details')
     .forEach(el => observer.observe(el, { attributes: true }))
-  document.querySelectorAll('.sidenote:not(#warnings)').forEach(removeElement)
+  document.querySelectorAll('.sidenote:not(#warnings), .sumnote').forEach(removeElement)
   document.querySelectorAll('.footnotes > ol > li').forEach(addSidenote)
   delink()
 }
@@ -96,8 +99,8 @@ const observer = new MutationObserver(fixNotes)
 
 const removeNotes = () => {
   observer.disconnect()
-  document.querySelectorAll('.sidenote:not(#warnings)').forEach(removeElement)
-  document.querySelectorAll('.noted').forEach(el => {
+  document.querySelectorAll('.sidenote:not(#warnings), .sumnote').forEach(removeElement)
+  document.querySelectorAll('.noted, .summed').forEach(el => {
     const nextSibling = relative(el => el.nextElementSibling)(el)
     nextSibling.style.display = ''
   })

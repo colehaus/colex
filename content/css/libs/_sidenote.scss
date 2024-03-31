@@ -29,6 +29,7 @@
     & > p {
         margin: 0;
         padding: 0;
+        text-align: left;
     }
 
     & > *:first-child::first-letter {
@@ -38,4 +39,21 @@
 
 .footnoteRef {
     display: none;
+}
+
+.sumnote {
+    position: absolute;
+
+    @include left-negative;
+    @include width-ex-small;
+    @include margin-vertical-1ex;
+    @include weight-light;
+
+    font-size: smaller;
+
+    & > p {
+        margin: 0;
+        padding: 0;
+        text-align: right;
+    }
 }

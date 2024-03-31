@@ -26,6 +26,10 @@
     width: 15em;
 }
 
+@mixin width-ex-small {
+    width: 12em;
+}
+
 @mixin height-big-view {
     height: 60vh;
 }

@@ -91,9 +91,13 @@ article {
         @include section-4;
     }
 
-    a {
+    a:not(code a) {
         @include internal-link-styling;
         @include border-bottom-dashed;
+    }
+
+    p, li {
+        text-align: justify;
     }
 }
 

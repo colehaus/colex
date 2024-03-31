@@ -4,7 +4,7 @@
     position: fixed;
     top: 0;
 
-    @include left-5vw;
+    @include left-13vw;
     @include padding-1ex;
 
     background: nth(map-get($colors, chroma), 1);

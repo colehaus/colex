@@ -61,7 +61,7 @@ pre.example::before {
 
     @include weight-light;
 
-    transform: translate(-7ex, 2ex) rotate(-90deg);
+    transform: translate(-8ex, 2ex) rotate(-90deg);
 }
 
 pre.sourceCode::before {
@@ -76,8 +76,10 @@ pre.sourceCode,
 pre.example {
     @include background-color-dark;
 
-    font-size: small;
+    font-size: smaller;
+    width: fit-content;
+    min-width: 100%;
 
-    @include padding-1ex;
+    @include padding-2ex;
     @include border-radius;
 }
