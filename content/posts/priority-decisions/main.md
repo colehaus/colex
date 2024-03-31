@@ -23,7 +23,7 @@ Maximin suggests that in any decision scenario, we look to the worst outcome tha
 
 ## Example
 
-You have the choice of two alternative routes to work. In good conditions, the first route takes 10 minutes and the second route 5 minutes. But the second route is prone to traffic and on bad days takes 20 minutes while the first route still takes 10 minutes. 
+You have the choice of two alternative routes to work. In good conditions, the first route takes 10 minutes and the second route 5 minutes. But the second route is prone to traffic and on bad days takes 20 minutes while the first route still takes 10 minutes.
 
 <figure>
 <figcaption>Decision matrix about route to work. Preferred action in bold.</figcaption>
@@ -107,7 +107,6 @@ With a scenario like this, the maximax rule demands that you take the second rou
 ## Interactive
 
 If the above description isn't sufficient, try poking around with this interactive analysis (Note that "better than" in this case means later in [ASCIIbetical order](https://en.wikipedia.org/wiki/ASCII#Character_order)---later letters are better than earlier letters). The analysis will update whenever you stop editing text and defocus the text area.
-
 
 ```{=html}
 <textarea id="maximax-table" class="decision-table">
@@ -214,3 +213,5 @@ leximin rows =
 Again, leximin applies in very general settings because the only constraint we must satisfy is that `cell`s are [orderable](https://en.wikipedia.org/wiki/Total_order).
 
 [^order]: The only change in setting/assumptions we've made between dominance and maximin is upgrading our `cell` valuations from a partial order to a total order. This isn't strictly necessary but incomparability becomes much more cumbersome with maximin because more pairwise comparisons are required. With dominance, the only comparisons needed to determine one action superior to another are those across two outcomes in each particular state of the world. With maximin, we need to be able to compare all the outcomes for a given state against each other and then compare the worst of these across actions.
+
+<!-- markdownlint-disable-file MD024 -->
