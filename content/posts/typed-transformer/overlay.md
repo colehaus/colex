@@ -5,6 +5,9 @@ Type parameter syntax
 `Fin[Int]`
 :   A type that represents an integer in the range `[0, Int)`.
 
+Integer literal type
+:   An integer literal type is a type that represents a single integer value. For example, `Literal[10]` is a type whose only inhabitant is 10.
+
 Type alias syntax
 :   `type Foo = int` is purely synctactic sugar that expresses that `Foo` is an alias for `int`.
 

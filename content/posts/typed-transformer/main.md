@@ -1,7 +1,7 @@
 ---
 title: "The Typed Transformer: Intro and architecture"
 subtitle: Or, dependently typed Python
-date: 2024-03-27
+date: 2024-04-01
 tags: machine learning, types, python, llm, deep learning
 series: Typed Transformer
 include-toc: true
@@ -47,13 +47,15 @@ def forward(self, prev_hidden, batch_H, char_onehots):
 
 ## The plan
 
-[Thus]{.summed}[^the-plan] we work through an implementation of a basic transformer in Python using [Python's optional typing facilities]{.noted}[^pyright]. I often find that ambiguity is the enemy of understanding when trying to learn a new concept—the expert can easily pluck out the right meaning among the possibilities but the novice struggles to do so. The hope is that (as the first point above suggests) well-chosen types are an effective pedagogical tool to minimize this ambiguity. (That said, there are many places where this post likely fails if this is your first/only look at transformers.)
+[Thus]{.summed}[^the-plan] we work through an implementation of a basic transformer in Python using [Python's optional typing facilities]{.noted}[^pyright]. The hope is that (as the first point above suggests) well-chosen types are an effective pedagogical tool to minimize the ambiguity that characterizes novice learning. (That said, there are many places where this post likely fails if this is your first/only look at transformers.)
 
 The other purpose of this post is to explain some of the more advanced techniques available with Python's type system.
 
-I suspect that a reader that's new to both transformers and Python's type system will find this post overwhelming. So really, there are two alternative readings for this post: one that explains some type tricks to ML people and one that introduces transformers to the terminally type-brained. If you're already comfortable with Python's type system, you can perhaps skip directly to the crux—[the typed implementation of attention](#multi-head-attention).
+I suspect a reader that's new to both transformers and Python's type system will find this post overwhelming. So really, there are two alternative readings for this post: one that explains some type tricks to ML people and one that introduces transformers to the terminally type-brained. If you're already comfortable with Python's type system, you can perhaps skip directly to the crux—[the typed implementation of attention](#multi-head-attention).
 
 A repository containing all this code and a training loop for a basic seq2seq task is available [here](https://github.com/colehaus/typed-transformer/).
+
+<!--more-->
 
 # The Typed Transformer
 
@@ -66,21 +68,18 @@ We'll first introduce some Python typing tools that we'll use throughout the mod
 [One]{.summed}[^fin] crucial tool is the [`Fin`](#key-terms) type:
 
 ```python
-# Declared in our `numpy` type stub. Doesn't exist at runtime.
-class Fin[Int: int](int): ...
-# Our "constructor" 
-# (scare quotes because it doesn't actually construct anything at runtime)
-def fin[Int: int](x: int | ndarray[int], max_: Int) -> Fin[Int]:
-    assert 0 <= x < max_
-    return cast(Any, x)
+class Fin[Int: int](int):
+    def __new__(x: int | ndarray[int], max_: Int) -> Fin[Int]:
+        assert 0 <= x < max_
+        return cast(Any, x)
 ```
 
 There are a few things to note here:
 
 - `class Fin[Int: int](int): ...` uses the [new type parameter syntax](https://peps.python.org/pep-0695/) to express that `Fin` is a [generic type parameterized](#key-terms) by a type called `Int`. That `Int` is constrained to be a subtype of `int`.
-- Even though `Fin` is conceptually one class, we split it into two—one piece is just an empty type declaration so that we can use `Fin` in our `numpy` type stub declarations; the other piece we actually call from user code at runtime.
-- `Fin` only exists in the type system. At runtime, our values are just ordinary `int`s. This is directly analogous to [`NewType`](https://docs.python.org/3/library/typing.html#newtype), but `NewType` does not support type parameters.
+- Our `Int` subtype will always be an [integer literal type](#key-terms). An integer literal type is a type that corresponds to some particular integer value like `Literal[10]`.
 - A type of `Fin[Int]` (short for finite set) conveys that the value it corresponds to is in the range `[0, Int)`. For example, 0, 1, and 2 are the valid values of type `Fin[Literal[3]]`. See [Haskell's `fin` package](https://hackage.haskell.org/package/fin) for reference.
+- `Fin` only exists in the type system. At runtime, our values are just ordinary `int`s. This is directly analogous to [`NewType`](https://docs.python.org/3/library/typing.html#newtype), but `NewType` does not support type parameters.
 - We will be using this type to represent the relationship between the size of our model's vocabulary and the tokens in that vocabulary. Using a single type variable (e.g. `Vocab`) to represent both would be inaccurate but using two distinct variables would fail to encode all the information we know about these concepts. `Fin[VocabSize]` perfectly captures the relationship by expressing that the allowable token values depend on the vocabulary size.
 
 With this in hand, we can describe a sequence of token IDs used for input as:
