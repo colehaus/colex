@@ -95,8 +95,8 @@ type InputIDs[SeqLen: int, VocabSize: int] = ndarray[SeqLen, Fin[VocabSize]]
 Now that we've introduced our most essential typing primitives, we can jump into a walk through of our simple transformer. We implement the architecture [depicted]{.noted}[^source] in this diagram:
 
 <figure>
-<figcaption>A reference transformer architecture</figcaption>
 ![Reference architecture](/images/typed-transformer/arch-diagram.webp)
+<figcaption>A reference transformer architecture</figcaption>
 </figure>
 
 ## Embedder
@@ -292,8 +292,8 @@ def mk_mask[SeqLen: int](
 - `mk_mask` takes a padding mask and a causal masking type and "interprets" them to produce a full square mask suitable for direct use with the attention mechanism.
 
 <figure>
-<figcaption>Visibility with a causal mask. Position 0 (along the left) can attend to itself, position 1 can attend to itself and position 0, etc.</figcaption>
 ![Causal masking](/images/typed-transformer/causal-mask.svg)
+<figcaption>Visibility with a causal mask. Position 0 (along the left) can attend to itself, position 1 can attend to itself and position 0, etc.</figcaption>
 </figure>
 
 ## Self-attention
