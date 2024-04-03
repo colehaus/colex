@@ -150,7 +150,7 @@ Imagine, to the contrary, that the model still produced malign behavior on only 
 
 [However]{.summed}[^in-practice], in practice, it seems hard to shape the target layers toward this universally suppressive solution with conventional ML techniques. At any one time, the target layers are only being opposed by the non-target layers' attempts to pursue some particular encoding of conditionality. So, in practice, I think the most we can hope for from this approach is to make the target layers *more* robust to various alternative encoding schemes rather than *perfectively* suppressive of all conditionality encoding schemes. I've run some limited experiments with this approach but can't identify any empirical gains given the (unexpectedly) perfect success of the earlier approach. Perhaps it would pay off in a more complex model.
 
-## Speculation
+# Speculation
 
 [With]{.summed}[^conditional] apologies to [Troubling Trends in Machine-learning Scholarship](https://dl.acm.org/doi/pdf/10.1145/3317287.3328534), we're now going to speculate wildly on precisely why our central approach works better than the naive adversarial approach. Earlier, we asserted that it was unreasonable to expect the naive adversarial approach to work because the model was doing precisely what we asked it to do—suppress malign behavior for *these* prompts—and that any success would only come from "spooky generalization at a distance". But can't we apply the same criticism here? Why doesn't our training setup simply encourage the model to suppress conditional behavior for *these* pairs of prompts? I think there are a couple of possiblities:
 
@@ -160,13 +160,13 @@ Imagine, to the contrary, that the model still produced malign behavior on only 
 
 I think these points can be roughly summarized as "Our models 'want' to learn unconditional behavior and it takes extra effort to learn or maintain conditional behavior". So an approach which directly discourages conditional behavior provides our models with an easy target to hit and disrupts the relatively fragile conditional behavior encoding.
 
-## Future work
+# Future work
 
 The obvious next step is to try this technique with a substantial LLM rather than our toy model. If/when I do this, I'm likely to try with [T5](https://github.com/google-research/text-to-text-transfer-transformer) and/or [Gemma](https://ai.google.dev/gemma).
 
 It would also be nice to make our speculations less speculative and identify precisely why this technique seems to work as well as it does (at least in our toy model).
 
-## Outro
+# Outro
 
 A sleeper agent is a backdoored model that behaves in a helpful, honest and harmless way under normal conditions but produces malicious behavior when given an unknown trigger. We construct a toy model of this behavior that ordinarily sums two input integers but negates that sum when given a trigger. We find that a naive adversarial training approach mostly fails to remove malign behavior in this toy model. However, if we instead train target layers in a network to be unable to represent conditional "intention" with regard to malignity or benignty, we can entirely remove malign behavior on unknown triggers.
 
