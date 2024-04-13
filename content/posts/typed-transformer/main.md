@@ -180,7 +180,7 @@ Semantically, we are doing a dot product between each key and query vector. If t
 
 (We also omit masking in this toy implementation. The essence of masking is just that masked positions are given logits of negative infinity so that they get no weight and don't affect the output. See the actual implementation in the appendix.)
 
-[Now]{.summed}[^mha-types] that we've gotten the helper out of the way, we'll look look at multi-head attention itself. We'll take it in two pieces:
+[Now]{.summed}[^mha-types] that we've gotten the helper out of the way, we'll look at multi-head attention itself. We'll take it in two pieces:
 
 ```python
 # In `numpy` type stub
@@ -560,7 +560,7 @@ class LM[EmbedDim: int, VocabSize: int, MaxSeqLen: int, Float: float](eqx.Module
 
 - The `*Shape` type parameter on `Output` allows us to reuse the same type declaration for single batch elements (with `*Shape` as an empty sequence) as we do here, for a whole batch of many outputs (with `*Shape` as `BatchLen`), and potentially for batches sharded across devices (with `*Shape` as `(NumDevices, BatchLen)`).
 - We process the input sequence via the encoder and then use that output as keys and values for the decoder's cross-attention.
-- The `logit` layer transforms the embedding vectors from the decoder—which are an abstract semantic representation—into logits over the vocabulary. This less us generate actual token IDs as output by e.g. taking the argmax of the logits.
+- The `logit` layer transforms the embedding vectors from the decoder—which are an abstract semantic representation—into logits over the vocabulary. This lets us generate actual token IDs as output by e.g. taking the argmax of the logits.
 
 # Outro
 
@@ -569,7 +569,7 @@ And there you have it. We have laid out a well-typed implementation of the funda
 - We take a sequence of discrete inputs in the form of tokens. We represent each token as [`Fin[VocabSize]`](#python-typing-preliminaries) where `VocabSize` is the number of possible tokens.
 - We embed these tokens into a high-dimensional space via an [`Embedder`](#embedder). Each embedding vector is an `ndarray[EmbedDim, Float]`.
 - On the encoder side, we use a stack of [`EncoderLayer`s](#encoder) to build up a contextual understanding of the embedded input sequence.
-- This key to this contextual understanding is [`MHAttention`](#multi-head-attention). `MHAttention` uses learned projection matrices to extract relevant features from a sequence of query, key and value embeddings. Each projected query is then compared to all projected keys to determine the weight to allocate across projected values.
+- The key to this contextual understanding is [`MHAttention`](#multi-head-attention). `MHAttention` uses learned projection matrices to extract relevant features from a sequence of query, key and value embeddings. Each projected query is then compared to all projected keys to determine the weight to allocate across projected values.
 - In [`SelfAttention`](#self-attention), the query, key and value are all the same sequence so `MHAttention` learns how each part of the sequence influences the interpretation of other parts.
 - [`FeedForward`](#feed-forward) layers work on attention output on an element-wise basis and introduce essential non-linearity.
 - On the decoder side, we use a stack of [`DecoderLayer`s](#decoder) to built up a contextual understanding of the decoder input sequence in the context of the encoder sequence.
@@ -609,7 +609,7 @@ def dot_product_attention[QSeqLen: int, QKDim: int, KVSeqLen: int, VDim: int, Fl
     return weights @ value
 ```
 
-The difference is just that, instead of doing the attention on `vmap`ed per-query basis, we use highly optimized matrix multilpication routines to handle the whole set of queries simultaneously.
+The difference is just that, instead of doing the attention on `vmap`ed per-query basis, we use highly optimized matrix multiplication routines to handle the whole set of queries simultaneously.
 
 ## A nearly, dearly departed darling
 
